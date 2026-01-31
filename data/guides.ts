@@ -1,8 +1,15 @@
 import type { VideoData } from '@/types';
 
 /**
- * TODO: Replace with actual guide videos provided by user
- * These are placeholder Google Drive URLs
+ * Guide Videos for Orci AI Learning Hub
+ *
+ * To add your videos:
+ * 1. Upload video to Google Drive
+ * 2. Right-click → Share → Set to "Anyone with the link can view"
+ * 3. Copy the share link (format: https://drive.google.com/file/d/FILE_ID/view)
+ * 4. Paste it as the 'url' value below
+ *
+ * IMPORTANT: Make sure videos allow embedding (check Drive settings)
  */
 export const GUIDE_VIDEOS: VideoData[] = [
   {
@@ -48,3 +55,21 @@ export const GUIDE_VIDEOS: VideoData[] = [
     category: 'עסקים'
   }
 ];
+
+/**
+ * QUICK START:
+ *
+ * 1. Replace the video URLs above with your actual Google Drive links
+ * 2. Update titles and descriptions in Hebrew
+ * 3. Save this file
+ * 4. Run: git add . && git commit -m "Update guide videos" && git push
+ * 5. Vercel will auto-deploy in ~30 seconds!
+ *
+ * TROUBLESHOOTING:
+ *
+ * If videos don't play:
+ * - Check that video is set to "Anyone with the link can view"
+ * - Try opening the /preview link directly in browser
+ * - Some Google Drive videos can't be embedded (download restriction)
+ * - Alternative: Upload to YouTube and use YouTube embed instead
+ */
