@@ -9,17 +9,43 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * Convert Google Drive share URL to embed URL
- * @param url - Google Drive share URL (https://drive.google.com/file/d/FILE_ID/view)
- * @returns Embed URL (https://drive.google.com/file/d/FILE_ID/preview)
+ * Convert video URL to embed URL
+ * Supports: YouTube, Google Drive, Vimeo
+ * @param url - Video share URL
+ * @returns Embed URL for iframe
  */
 export function getGoogleDriveEmbedUrl(url: string): string {
-  const fileIdMatch = url.match(/\/d\/([^\/]+)/);
-  if (!fileIdMatch) {
-    throw new Error('Invalid Google Drive URL format');
+  // YouTube - RECOMMENDED (works best for embedding)
+  if (url.includes('youtube.com') || url.includes('youtu.be')) {
+    const youtubeMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+    if (youtubeMatch) {
+      return `https://www.youtube.com/embed/${youtubeMatch[1]}?rel=0`;
+    }
   }
-  const fileId = fileIdMatch[1];
-  return `https://drive.google.com/file/d/${fileId}/preview`;
+
+  // Vimeo
+  if (url.includes('vimeo.com')) {
+    const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
+    if (vimeoMatch) {
+      return `https://player.vimeo.com/video/${vimeoMatch[1]}`;
+    }
+  }
+
+  // Google Drive (may have embedding restrictions)
+  if (url.includes('drive.google.com')) {
+    const fileIdMatch = url.match(/\/d\/([^\/]+)/);
+    if (fileIdMatch) {
+      return `https://drive.google.com/file/d/${fileIdMatch[1]}/preview`;
+    }
+  }
+
+  // Direct video file (mp4, webm, etc.)
+  if (url.match(/\.(mp4|webm|ogg)$/i)) {
+    return url;
+  }
+
+  // If no match, return original URL
+  return url;
 }
 
 /**
