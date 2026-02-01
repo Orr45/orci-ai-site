@@ -17,19 +17,9 @@ export default function Home() {
   const portfolioVideos = [
     {
       id: '1',
-      title: 'פרויקט 1',
-      url: 'https://drive.google.com/file/d/1t8UxYi84o7mw4pYQPywae6nNr9ESGleU/view?usp=sharing'
+      title: 'חפצים מדברים עם AI',
+      url: 'https://www.youtube.com/shorts/lxrvd_y8tPI'
     },
-    {
-      id: '2',
-      title: 'פרויקט 2',
-      url: 'https://drive.google.com/file/d/1VKn0udX27xpT3MhJd8EzmjHb-a6dTmq0/view?usp=sharing'
-    },
-    {
-      id: '3',
-      title: 'פרויקט 3',
-      url: 'https://drive.google.com/file/d/1V540n8u5zz2zbcVdMLAzHI9-VK3B6lS7/view?usp=sharing'
-    }
   ];
 
   return (

@@ -17,7 +17,7 @@ export function cn(...inputs: ClassValue[]) {
 export function getGoogleDriveEmbedUrl(url: string): string {
   // YouTube - RECOMMENDED (works best for embedding)
   if (url.includes('youtube.com') || url.includes('youtu.be')) {
-    const youtubeMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+    const youtubeMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/);
     if (youtubeMatch) {
       return `https://www.youtube.com/embed/${youtubeMatch[1]}?rel=0`;
     }
