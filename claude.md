@@ -394,6 +394,19 @@ npm run lint         # Run ESLint
 
 ---
 
-**Last Updated:** 2025-01-31
-**Status:** ✅ Core implementation complete, awaiting content
-**Next Action:** User to provide header image, product features, and guide videos
+**Last Updated:** 2026-02-01
+**Status:** ✅ First guide article (talking objects) published with images
+**Next Action:** Continue adding more guide content, replace remaining placeholder data (products, more guides)
+
+---
+
+## 13. Session Log
+
+### Session 2026-02-01
+- Updated "ai-beginners" guide with real content about the "talking objects" AI trend
+- Added 3 guide images: GPTS.png, ForkImage.png, kLING2.6.png to public/guides/
+- Fixed image file extension mismatch (.jpg → .png) in MDX
+- Also fixed filename case mismatch (kLing2.6 → kLING2.6)
+- Committed and pushed to GitHub → Vercel auto-deploys
+- Guide page: /guides/ai-beginners
+- **Note:** Guide still has some placeholder sections (שלב 1/2/3, טיפים) that need real content
