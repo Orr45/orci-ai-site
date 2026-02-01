@@ -35,7 +35,7 @@ export function ProductHero({ title, subtitle, ctaText, ctaLink }: ProductHeroPr
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto"
+          className="text-xl md:text-2xl text-white mb-8 max-w-2xl mx-auto bg-orci-blue/30 inline-block px-6 py-3 rounded-xl"
         >
           {subtitle}
         </motion.p>
