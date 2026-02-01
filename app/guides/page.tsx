@@ -22,6 +22,14 @@ export default function GuidesPage() {
       url: '/guides/ai-beginners',
       category: 'יצירת תוכן',
       icon: '📝'
+    },
+    {
+      id: 'new-guide',
+      title: 'שם המדריך החדש',
+      description: 'תיאור קצר של המדריך החדש',
+      url: '/guides/new-guide',
+      category: 'קטגוריה',
+      icon: '🚀'
     }
     // Add more article guides here as you create them
   ];

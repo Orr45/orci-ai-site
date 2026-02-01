@@ -1,0 +1,110 @@
+import Image from 'next/image'
+import { GlassmorphicCard } from '@/components/ui/GlassmorphicCard'
+import { CTAButton } from '@/components/ui/CTAButton'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'שם המדריך | Orci AI',
+  description: 'תיאור קצר של המדריך',
+}
+
+<div className="min-h-screen bg-gradient-to-b from-background to-gray-900 pt-24">
+
+{/* Hero Section */}
+<section className="py-20 px-4 text-center">
+  <div className="max-w-4xl mx-auto">
+    <h1 className="text-4xl md:text-6xl font-bold mb-6">
+      <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
+        שם המדריך
+      </span>
+    </h1>
+    <p className="text-xl md:text-2xl text-gray-300 mb-8">
+      תיאור קצר של המדריך
+    </p>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="max-w-4xl mx-auto px-4 pb-20">
+
+<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
+
+<h2 className="text-2xl md:text-3xl font-bold mb-6">
+  <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
+    שלב 1: כותרת השלב
+  </span>
+</h2>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+  הטקסט שלכם כאן. אפשר להדגיש מילים ב-<span className="text-orci-cyan font-bold">צבע סיאן</span> ככה.
+</p>
+
+{/* תמונה - שמרו את התמונה בתיקיית public/guides/ ושנו את הנתיב */}
+{/*
+<div className="my-8 rounded-2xl overflow-hidden">
+  <Image
+    src="/guides/YOUR-IMAGE.png"
+    alt="תיאור התמונה"
+    width={400}
+    height={400}
+    className="w-full h-auto"
+  />
+</div>
+*/}
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+  עוד טקסט כאן...
+</p>
+
+</GlassmorphicCard>
+
+<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
+
+<h2 className="text-2xl md:text-3xl font-bold mb-6">
+  <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
+    שלב 2: כותרת השלב
+  </span>
+</h2>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+  הטקסט שלכם כאן...
+</p>
+
+</GlassmorphicCard>
+
+<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
+
+<h2 className="text-2xl md:text-3xl font-bold mb-6">
+  <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
+    שלב 3: כותרת השלב
+  </span>
+</h2>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+  הטקסט שלכם כאן...
+</p>
+
+</GlassmorphicCard>
+
+{/* CTA Section */}
+<div className="text-center py-12">
+  <GlassmorphicCard blur="xl" className="p-12">
+    <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
+        רוצים ללמוד יותר?
+      </span>
+    </h2>
+    <p className="text-xl text-gray-300 mb-8">
+      שלחו לי הודעה ואעזור לכם להתחיל
+    </p>
+    <CTAButton href="https://wa.me/972542599107" variant="primary" size="lg">
+      בואו נדבר בוואטסאפ
+    </CTAButton>
+  </GlassmorphicCard>
+</div>
+
+</article>
+
+<Footer />
+
+</div>
