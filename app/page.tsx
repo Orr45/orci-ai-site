@@ -1,26 +1,14 @@
 'use client';
 
-import { useState } from 'react';
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from 'framer-motion';
 import { FloatingElement } from '@/components/ui/FloatingElement';
 import { GlassmorphicCard } from '@/components/ui/GlassmorphicCard';
 import { CTAButton } from '@/components/ui/CTAButton';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { VideoModal } from '@/components/video/VideoModal';
 import { Footer } from '@/components/layout/Footer';
 
 export default function Home() {
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
-
-  const portfolioVideos = [
-    {
-      id: '1',
-      title: 'חפצים מדברים עם AI',
-      url: 'https://www.youtube.com/shorts/lxrvd_y8tPI'
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-gray-900">
@@ -148,38 +136,28 @@ export default function Home() {
 
       {/* Portfolio Showcase */}
       <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <SectionHeader>דברים שעשיתי עם AI</SectionHeader>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {portfolioVideos.map((video, index) => (
-              <motion.div
-                key={video.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-              >
-                <GlassmorphicCard
-                  onClick={() => setSelectedVideo(video.url)}
-                  className="group aspect-[9/16] relative overflow-hidden p-0"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
-                  <div className="absolute bottom-0 right-0 left-0 p-6 z-20">
-                    <p className="text-orci-cyan font-bold text-lg">{video.title}</p>
-                    <p className="text-gray-300 text-sm">לחצו לצפייה</p>
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center z-15">
-                    <div className="w-20 h-20 border-4 border-orci-cyan rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <svg className="w-10 h-10 text-orci-cyan" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                      </svg>
-                    </div>
-                  </div>
-                </GlassmorphicCard>
-              </motion.div>
-            ))}
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <GlassmorphicCard className="p-4 overflow-hidden">
+              <div className="relative w-full rounded-xl overflow-hidden" style={{ aspectRatio: '9/16' }}>
+                <iframe
+                  src="https://www.youtube.com/embed/lxrvd_y8tPI?rel=0"
+                  title="חפצים מדברים עם AI"
+                  className="absolute inset-0 w-full h-full"
+                  allow="autoplay; fullscreen"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+            </GlassmorphicCard>
+          </motion.div>
         </div>
       </section>
 
@@ -211,13 +189,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
-      {/* Video Modal */}
-      <VideoModal
-        isOpen={!!selectedVideo}
-        onClose={() => setSelectedVideo(null)}
-        videoUrl={selectedVideo || ''}
-      />
 
       <Footer />
     </div>

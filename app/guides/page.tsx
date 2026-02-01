@@ -38,29 +38,6 @@ export default function GuidesPage() {
         </p>
       </section>
 
-      {/* Featured Video */}
-      <section className="py-10 px-4">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold mb-8 text-center">
-            <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
-              סרטון מומלץ
-            </span>
-          </h2>
-          <GlassmorphicCard className="p-4 overflow-hidden">
-            <div className="relative w-full rounded-xl overflow-hidden" style={{ aspectRatio: '9/16' }}>
-              <iframe
-                src="https://www.youtube.com/embed/lxrvd_y8tPI?rel=0"
-                title="חפצים מדברים עם AI"
-                className="absolute inset-0 w-full h-full"
-                allow="autoplay; fullscreen"
-                allowFullScreen
-                loading="lazy"
-              />
-            </div>
-          </GlassmorphicCard>
-        </div>
-      </section>
-
       {/* Article Guides Section */}
       <section className="py-10 px-4 pb-10">
         <div className="max-w-7xl mx-auto mb-12">
