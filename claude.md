@@ -395,18 +395,37 @@ npm run lint         # Run ESLint
 ---
 
 **Last Updated:** 2026-02-01
-**Status:** ✅ First guide article (talking objects) published with images
-**Next Action:** Continue adding more guide content, replace remaining placeholder data (products, more guides)
+**Status:** ✅ Guide system live, YouTube video embedded, styling polished
+**Next Action:** Fill in new-guide template with content, add more videos/guides
 
 ---
 
 ## 13. Session Log
 
-### Session 2026-02-01
+### Session 2026-02-01 (continued)
+
+**Guide Content & Images:**
 - Updated "ai-beginners" guide with real content about the "talking objects" AI trend
 - Added 3 guide images: GPTS.png, ForkImage.png, kLING2.6.png to public/guides/
-- Fixed image file extension mismatch (.jpg → .png) in MDX
-- Also fixed filename case mismatch (kLing2.6 → kLING2.6)
-- Committed and pushed to GitHub → Vercel auto-deploys
-- Guide page: /guides/ai-beginners
-- **Note:** Guide still has some placeholder sections (שלב 1/2/3, טיפים) that need real content
+- Fixed image file extension mismatch (.jpg → .png) and case mismatch (kLing2.6 → kLING2.6)
+- Styled guide text: each step in its own GlassmorphicCard with cyan gradient titles, key terms highlighted in cyan bold
+
+**YouTube Video Integration:**
+- Added YouTube Shorts support to `getGoogleDriveEmbedUrl()` in lib/utils.ts (handles /shorts/ URLs)
+- Embedded video (https://www.youtube.com/shorts/lxrvd_y8tPI) on home page as inline player (no modal)
+- Added same video to guides page under "מדריכי וידאו" section
+- Replaced all placeholder Google Drive videos with real YouTube content in data/guides.ts
+- Guides page order: "מדריכים כתובים" first, then "מדריכי וידאו"
+
+**Styling Changes (all pages):**
+- Subtitle text across all pages: white text + light blue background (bg-orci-blue/30, rounded-xl)
+- Applied to: home page, guides page, products page (ProductHero), guide article pages
+
+**New Guide Template:**
+- Created blank template at app/guides/new-guide/page.mdx
+- Same structure as ai-beginners: hero, step cards with gradient titles, CTA
+- Added to guides page card list (needs title/description/category update)
+
+**Cleanup:**
+- Removed unused VideoModal, useState, Image imports from home page
+- Removed placeholder sections from ai-beginners guide (unused steps, tips, comments)
