@@ -39,7 +39,7 @@ export default function GuidesPage() {
       {/* Hero Section */}
       <section className="py-20 px-4 text-center">
         <SectionHeader>מרכז הלמידה שלי</SectionHeader>
-        <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl md:text-2xl text-white max-w-3xl mx-auto leading-relaxed bg-orci-blue/30 inline-block px-6 py-3 rounded-xl">
           מדריכים מעשיים ב-AI, אוטומציה ושיווק דיגיטלי.
           <br />
           כל מה שצריך כדי להצליח בעולם הדיגיטלי.
