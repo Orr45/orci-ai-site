@@ -1,10 +1,13 @@
 export interface NewsItem {
   id: string;
   title: string;
-  description: string;
+  bottomLine: string;
+  bullets: string[];
+  orciTake: string;
   imageUrl: string;
   sourceUrl: string;
   date: string;
+  publishedAt: string;
   source: string;
 }
 
