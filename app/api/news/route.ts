@@ -172,7 +172,11 @@ export async function GET() {
       source: 'TechCrunch',
     }));
 
-    return NextResponse.json(newsItems);
+    return NextResponse.json(newsItems, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=3600',
+      },
+    });
   } catch (error) {
     console.error('News fetch error:', error);
     return NextResponse.json([], { status: 500 });
