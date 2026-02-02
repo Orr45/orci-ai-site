@@ -146,7 +146,7 @@ async function rewriteWithOrci(
 export async function GET() {
   try {
     const rssResponse = await fetch(RSS_URL, {
-      next: { revalidate: 10800 }, // Cache for 3 hours
+      next: { revalidate: 86400 }, // Cache for 24 hours
     });
 
     if (!rssResponse.ok) {
