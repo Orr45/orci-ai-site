@@ -12,15 +12,18 @@ export function NewsSection() {
 
   useEffect(() => {
     fetch('/api/news')
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed');
+        return res.json();
+      })
       .then((data) => {
-        setNews(data);
+        if (Array.isArray(data) && data.length > 0) {
+          setNews(data);
+        }
         setLoading(false);
       })
       .catch(() => setLoading(false));
   }, []);
-
-  if (!loading && news.length === 0) return null;
 
   return (
     <section className="py-20 px-4">
