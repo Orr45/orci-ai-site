@@ -131,8 +131,9 @@ async function rewriteWithOrci(
     // Clean potential markdown wrapping
     const cleaned = content.replace(/^```json?\n?/, '').replace(/\n?```$/, '');
     return JSON.parse(cleaned);
-  } catch (error) {
-    console.error('OpenAI error:', error);
+  } catch (error: unknown) {
+    const errMsg = error instanceof Error ? error.message : String(error);
+    console.error('OpenAI error:', errMsg, '| API key set:', !!process.env.OPENAI_API_KEY);
     // Fallback: return basic Hebrew translations
     return items.map((item) => ({
       title: item.title,
@@ -179,6 +180,6 @@ export async function GET() {
     });
   } catch (error) {
     console.error('News fetch error:', error);
-    return NextResponse.json([], { status: 500 });
+    return NextResponse.json({ error: 'fetch failed', hasKey: !!process.env.OPENAI_API_KEY }, { status: 500 });
   }
 }
