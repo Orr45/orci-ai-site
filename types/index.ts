@@ -1,3 +1,13 @@
+export interface NewsItem {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  sourceUrl: string;
+  date: string;
+  source: string;
+}
+
 export interface VideoData {
   id: string;
   title: string;

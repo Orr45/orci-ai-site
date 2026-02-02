@@ -7,6 +7,7 @@ import { GlassmorphicCard } from '@/components/ui/GlassmorphicCard';
 import { CTAButton } from '@/components/ui/CTAButton';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Footer } from '@/components/layout/Footer';
+import { NewsSection } from '@/components/news/NewsSection';
 
 export default function Home() {
 
@@ -182,6 +183,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* AI News Section */}
+      <NewsSection />
 
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gray-900/50">
