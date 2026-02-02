@@ -136,28 +136,50 @@ export default function Home() {
 
       {/* Portfolio Showcase */}
       <section className="py-20 px-4">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <SectionHeader>דברים שעשיתי עם AI</SectionHeader>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <GlassmorphicCard className="p-4 overflow-hidden">
-              <div className="relative w-full rounded-xl overflow-hidden" style={{ aspectRatio: '9/16' }}>
-                <iframe
-                  src="https://www.youtube.com/embed/lxrvd_y8tPI?rel=0"
-                  title="חפצים מדברים עם AI"
-                  className="absolute inset-0 w-full h-full"
-                  allow="autoplay; fullscreen"
-                  allowFullScreen
-                  loading="lazy"
-                />
-              </div>
-            </GlassmorphicCard>
-          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <GlassmorphicCard className="p-4 overflow-hidden">
+                <div className="relative w-full rounded-xl overflow-hidden" style={{ aspectRatio: '9/16' }}>
+                  <iframe
+                    src="https://www.youtube.com/embed/lxrvd_y8tPI?rel=0"
+                    title="חפצים מדברים עם AI"
+                    className="absolute inset-0 w-full h-full"
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                </div>
+              </GlassmorphicCard>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <GlassmorphicCard className="p-4 overflow-hidden">
+                <div className="relative w-full rounded-xl overflow-hidden" style={{ aspectRatio: '9/16' }}>
+                  <iframe
+                    src="https://www.youtube.com/embed/edKRPVP1sWs?rel=0"
+                    title="AI Video"
+                    className="absolute inset-0 w-full h-full"
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                </div>
+              </GlassmorphicCard>
+            </motion.div>
+          </div>
         </div>
       </section>
 
