@@ -429,3 +429,40 @@ npm run lint         # Run ESLint
 **Cleanup:**
 - Removed unused VideoModal, useState, Image imports from home page
 - Removed placeholder sections from ai-beginners guide (unused steps, tips, comments)
+
+
+### Session 2026-02-03
+
+**AI Daily Pulse Feature (Replaced NewsSection):**
+- Removed old NewsSection component (was unstable, called OpenAI on every request)
+- Created new "AI Daily Pulse" feature with Vercel Cron Job
+
+**New Files Created:**
+- `data/daily-pulse.json` - Stores the daily summary, timestamp, and sources
+- `app/api/cron/update-news/route.ts` - Cron job endpoint that:
+  - Fetches headlines from 3 RSS sources (TechCrunch AI, The Verge AI, VentureBeat AI)
+  - Sends to GPT-4o-mini to generate Hebrew summary in Orci persona
+  - Saves result to JSON file
+  - Protected by CRON_SECRET header
+- `app/api/daily-pulse/route.ts` - Public endpoint to read cached data for frontend
+- `components/news/DailyPulse.tsx` - Frontend component with:
+  - Glassmorphism design with cyan glow border
+  - Pulsing "Live" indicator
+  - Hebrew summary paragraph
+  - Source links footer
+  - Timestamp showing last update
+- `vercel.json` - Configures cron job to run at 07:00 AM IST daily (4:00 UTC)
+
+**How It Works:**
+1. Vercel Cron triggers `/api/cron/update-news` once daily at 07:00 AM IST
+2. Endpoint fetches RSS, calls OpenAI once, saves result to `data/daily-pulse.json`
+3. Frontend component reads from `/api/daily-pulse` (no OpenAI calls)
+4. Result: OpenAI called only once per day, not per visitor
+
+**Environment Variables Required:**
+- `OPENAI_API_KEY` - For GPT-4o-mini summary generation
+- `CRON_SECRET` - Optional security for cron endpoint (add to Vercel)
+
+**First-Time Setup:**
+After deploying, manually trigger the cron endpoint once to populate initial data:
+`curl https://your-site.vercel.app/api/cron/update-news`

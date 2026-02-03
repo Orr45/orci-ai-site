@@ -7,7 +7,7 @@ import { GlassmorphicCard } from '@/components/ui/GlassmorphicCard';
 import { CTAButton } from '@/components/ui/CTAButton';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Footer } from '@/components/layout/Footer';
-import { NewsSection } from '@/components/news/NewsSection';
+import DailyPulse from '@/components/news/DailyPulse';
 
 export default function Home() {
 
@@ -184,8 +184,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* AI News Section */}
-      <NewsSection />
+      {/* AI Daily Pulse */}
+      <DailyPulse />
 
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gray-900/50">
