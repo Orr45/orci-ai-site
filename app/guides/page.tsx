@@ -25,11 +25,11 @@ export default function GuidesPage() {
     },
     {
       id: 'new-guide',
-      title: 'שם המדריך החדש',
-      description: 'תיאור קצר של המדריך החדש',
+      title: 'איך ליצור את טרנד הריחוף',
+      description: 'במדריך הזה תלמדו כיצד ליצור את הטרנד הריחוף, שלב אחר שלב',
       url: '/guides/new-guide',
-      category: 'קטגוריה',
-      icon: '🚀'
+      category: 'יצירת תוכן',
+      icon: '🪂'
     }
     // Add more article guides here as you create them
   ];

@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import { GlassmorphicCard } from '@/components/ui/GlassmorphicCard'
 import { CTAButton } from '@/components/ui/CTAButton'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
 import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
-  title: 'שם המדריך | Orci AI',
-  description: 'תיאור קצר של המדריך',
+  title: 'איך ליצור את טרנד הריחוף | Orci AI',
+  description: 'במדריך הזה תלמדו כיצד ליצור את הטרנד הריחוף, שלב אחר שלב',
 }
 
 <div className="min-h-screen bg-gradient-to-b from-background to-gray-900 pt-24">
@@ -15,11 +16,11 @@ export const metadata = {
   <div className="max-w-4xl mx-auto">
     <h1 className="text-4xl md:text-6xl font-bold mb-6">
       <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
-        שם המדריך
+        איך ליצור את טרנד הריחוף
       </span>
     </h1>
     <p className="text-xl md:text-2xl text-white mb-8 bg-orci-blue/30 inline-block px-6 py-3 rounded-xl">
-      תיאור קצר של המדריך
+      במדריך הזה תלמדו כיצד ליצור את הטרנד הריחוף, שלב אחר שלב
     </p>
   </div>
 </section>
@@ -31,20 +32,20 @@ export const metadata = {
 
 <h2 className="text-2xl md:text-3xl font-bold mb-6">
   <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
-    שלב 1: כותרת השלב
+    שלב 1: צילום הסלפי
   </span>
 </h2>
 
 <p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
-  הטקסט שלכם כאן. אפשר להדגיש מילים ב-<span className="text-orci-cyan font-bold">צבע סיאן</span> ככה.
+ השלב הראשון פשוט תצלמו סלפי של עצמכם - <span className="text-orci-cyan font-bold">דגש חשוב שיראו את כל הגוף שלכם</span>
 </p>
 
 {/* תמונה - שמרו את התמונה בתיקיית public/guides/ ושנו את הנתיב */}
 {/*
 <div className="my-8 rounded-2xl overflow-hidden">
   <Image
-    src="/guides/YOUR-IMAGE.png"
-    alt="תיאור התמונה"
+    src="/guides/SelfiFullBody.png"
+    alt="סלפי מלא של הגוף"
     width={400}
     height={400}
     className="w-full h-auto"
@@ -52,8 +53,64 @@ export const metadata = {
 </div>
 */}
 
+</GlassmorphicCard>
+
+<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
+
+<h2 className="text-2xl md:text-3xl font-bold mb-6">
+  <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
+    שלב 2: הכנסת התמונה ל-<span className="text-orci-cyan font-bold">Nano Banana Pro</span>
+  </span>
+</h2>
+
 <p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
-  עוד טקסט כאן...
+עכשיו כל מה שאתם צריכים לעשות זה להיכנס לו את הפרומפט הבא
+</p>
+
+<CopyPrompt prompt="High above the ground at a rose-tinted sunset, a man falls backward in a horizontal pose, his expression calm. Shot at eye level with his full body in frame, the scene feels cinematic, with a softly blurred background and rich color grading, as if time has slowed." />
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+משם תקבלו את התוצאה המטורפת התמונה הראשונה שלכם
+</p>
+
+<div className="my-8 rounded-2xl overflow-hidden">
+  <Image
+    src="/guides/FlotaingMen.png"
+    alt="התמונה המרחפת שלכם"
+    width={400}
+    height={400}
+    className="w-full h-auto"
+  />
+</div>
+
+</GlassmorphicCard>
+
+<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
+
+<h2 className="text-2xl md:text-3xl font-bold mb-6">
+  <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
+    שלב 3: יצירת זווית נוספת
+  </span>
+</h2>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+עכשיו בשביל אפקט הכניסה המרהיב תשימו את התמונה שיצרתם כתמונת רפרנס ותעתיקו את הפרומפט הבא
+</p>
+
+<CopyPrompt prompt="Regenerate this shot from far away so that the person is barely visible. Keep person in the upper third of the image" />
+
+<div className="my-8 rounded-2xl overflow-hidden">
+  <Image
+    src="/guides/FadeFlotaingMen.png"
+    alt="התמונה המרחפת שלכם"
+    width={400}
+    height={400}
+    className="w-full h-auto"
+  />
+</div>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+עכשיו תיצרו עוד כמה זוויות לאווירה, מה שאתם רוצים
 </p>
 
 </GlassmorphicCard>
@@ -62,26 +119,18 @@ export const metadata = {
 
 <h2 className="text-2xl md:text-3xl font-bold mb-6">
   <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
-    שלב 2: כותרת השלב
+    שלב 4: הפיכת התוכן לסרטון
   </span>
 </h2>
 
 <p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
-  הטקסט שלכם כאן...
+עכשיו בשביל אפקט הכניסה המרהיב תכניסו ל-<span className="text-orci-cyan font-bold">Kling 2.5</span> מהפריים הראשון הרחוק לפריים השני הקרוב תכניסו את הפרומפט הבא
 </p>
 
-</GlassmorphicCard>
+<CopyPrompt prompt="A person falling down from sky with natural falling motion. Smooth cinematic camera movement downward." />
 
-<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
-
-<h2 className="text-2xl md:text-3xl font-bold mb-6">
-  <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
-    שלב 3: כותרת השלב
-  </span>
-</h2>
-
-<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
-  הטקסט שלכם כאן...
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+עכשיו בשביל שאר הזוויות פשוט תכתבו <span className="text-orci-cyan font-bold">Levitate</span>
 </p>
 
 </GlassmorphicCard>
