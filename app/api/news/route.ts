@@ -8,6 +8,11 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+// In-memory cache for serverless (will persist within same instance)
+let cachedNews: NewsItem[] | null = null;
+let cacheTimestamp: number = 0;
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
 function extractImageFromContent(content: string): string {
   const imgMatch = content.match(/<img[^>]+src=["']([^"']+)["']/);
   if (imgMatch) return imgMatch[1];
@@ -134,20 +139,29 @@ async function rewriteWithOrci(
   } catch (error: unknown) {
     const errMsg = error instanceof Error ? error.message : String(error);
     console.error('OpenAI error:', errMsg, '| API key set:', !!process.env.OPENAI_API_KEY);
-    // Fallback: return basic Hebrew translations
-    return items.map((item) => ({
-      title: item.title,
-      bottomLine: item.description.slice(0, 100),
-      bullets: [],
-      orciTake: '',
-    }));
+    // Return null to indicate failure (don't cache failed results)
+    throw error;
   }
 }
 
 export async function GET() {
+  // Check if we have valid cached data
+  const now = Date.now();
+  if (cachedNews && (now - cacheTimestamp) < CACHE_DURATION) {
+    console.log('Returning cached news, age:', Math.floor((now - cacheTimestamp) / 60000), 'minutes');
+    return NextResponse.json(cachedNews, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=3600',
+        'X-Cache': 'HIT',
+        'X-Cache-Age': String(Math.floor((now - cacheTimestamp) / 1000)),
+      },
+    });
+  }
+
   try {
+    console.log('Fetching fresh news...');
     const rssResponse = await fetch(RSS_URL, {
-      next: { revalidate: 86400 }, // Cache for 24 hours
+      cache: 'no-store', // Always get fresh RSS
     });
 
     if (!rssResponse.ok) {
@@ -173,13 +187,31 @@ export async function GET() {
       source: 'TechCrunch',
     }));
 
+    // Cache the successful result
+    cachedNews = newsItems;
+    cacheTimestamp = now;
+    console.log('News cached successfully');
+
     return NextResponse.json(newsItems, {
       headers: {
         'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=3600',
+        'X-Cache': 'MISS',
       },
     });
   } catch (error) {
     console.error('News fetch error:', error);
+
+    // If we have stale cache, return it instead of failing
+    if (cachedNews) {
+      console.log('Returning stale cache due to error');
+      return NextResponse.json(cachedNews, {
+        headers: {
+          'Cache-Control': 'public, s-maxage=3600',
+          'X-Cache': 'STALE',
+        },
+      });
+    }
+
     return NextResponse.json({ error: 'fetch failed', hasKey: !!process.env.OPENAI_API_KEY }, { status: 500 });
   }
 }
