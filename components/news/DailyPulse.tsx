@@ -102,8 +102,30 @@ export default function DailyPulse() {
             </div>
 
             {/* Summary Content */}
-            <div className="text-gray-200 text-lg md:text-xl leading-relaxed whitespace-pre-line mb-8">
-              {data.summary}
+            <div className="text-gray-200 text-lg md:text-xl leading-relaxed mb-8 space-y-6">
+              {data.summary.split('•').filter(Boolean).map((bullet, index) => {
+                // Split by "הזווית של Orci" to style it differently
+                const parts = bullet.split(/הזווית של Orci:?/i);
+                const mainContent = parts[0]?.trim();
+                const orciTake = parts[1]?.trim();
+
+                return (
+                  <div key={index} className="border-r-2 border-orci-cyan/50 pr-4">
+                    {/* Main bullet content */}
+                    <div className="mb-2">
+                      <span className="text-orci-cyan font-bold">•</span>{' '}
+                      {mainContent}
+                    </div>
+                    {/* Orci's take - styled differently */}
+                    {orciTake && (
+                      <div className="mt-3 p-4 bg-orci-cyan/10 border border-orci-cyan/20 rounded-xl">
+                        <span className="text-orci-cyan font-bold text-base">הזווית של Orci: </span>
+                        <span className="text-gray-300 text-base">{orciTake}</span>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
 
             {/* Sources */}
