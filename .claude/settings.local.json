@@ -4,7 +4,12 @@
       "Bash(git checkout:*)",
       "Bash(git add:*)",
       "Bash(git rebase:*)",
-      "Bash(git push)"
+      "Bash(git push)",
+      "Bash(npx tsc:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nUpdate: Inline video embed on home page, reorder guides sections\n\n- Home page shows YouTube embed inline \\(no modal click needed\\)\n- Guides page: article guides first, then video guides\n- Replaced placeholder Drive videos with real YouTube content\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nUpdate: Style guide text with colored titles and formatted paragraphs\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd: New guide template page\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)"
     ]
   }
 }
