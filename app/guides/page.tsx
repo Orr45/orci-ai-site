@@ -30,6 +30,14 @@ export default function GuidesPage() {
       url: '/guides/new-guide',
       category: 'יצירת תוכן',
       icon: '🪂'
+    },
+    {
+      id: 'new-guide-2',
+      title: 'איך ליצור את טרנד הדמיות הנטושות',
+      description: 'במדריך הזה אלמד אתכם צעד אחרי צעד כיצד תוכלו ליצור את טרנד הדמיות הנטושות',
+      url: '/guides/new-guide-2',
+      category: 'יצירת תוכן',
+      icon: '👻'
     }
     // Add more article guides here as you create them
   ];

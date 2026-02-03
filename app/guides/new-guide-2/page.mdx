@@ -1,0 +1,105 @@
+import Image from 'next/image'
+import { GlassmorphicCard } from '@/components/ui/GlassmorphicCard'
+import { CTAButton } from '@/components/ui/CTAButton'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'איך ליצור את טרנד הדמיות הנטושות | Orci AI',
+  description: 'במדריך הזה אלמד אתכם צעד אחרי צעד כיצד תוכלו ליצור את טרנד הדמיות הנטושות',
+}
+
+<div className="min-h-screen bg-gradient-to-b from-background to-gray-900 pt-24">
+
+{/* Hero Section */}
+<section className="py-20 px-4 text-center">
+  <div className="max-w-4xl mx-auto">
+    <h1 className="text-4xl md:text-6xl font-bold mb-6">
+      <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
+        איך ליצור את טרנד הדמיות הנטושות
+      </span>
+    </h1>
+    <p className="text-xl md:text-2xl text-white mb-8 bg-orci-blue/30 inline-block px-6 py-3 rounded-xl">
+     במדריך הזה אלמד אתכם צעד אחרי צעד כיצד תוכלו ליצור את טרנד הדמיות הנטושות
+    </p>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="max-w-4xl mx-auto px-4 pb-20">
+
+<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
+
+<h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+  שלב 1: יצירת התמונה הראשונה
+</h2>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+  כל מה שאתם צריכים לבחור איזה דמות שתרצו, תיקחו תמונות רפרנס שלה ברמה גבוה, וכל מה שאתם צריכים לעשות זה להעתיק את הפרומפט שהכנתי לכם כאן:
+</p>
+
+<CopyPrompt prompt="Vertical 9:16, hyper-realistic horror documentary photo.
+A dark rectangular concrete drainage tunnel with damp walls, peeling paint, water stains, and patches of green moss and slime. The tunnel fades into deep black darkness behind the subject.
+Center frame: [REFERENCE_SUBJECT] from the provided reference images, matched as accurately as possible (face/identity/clothing/pose fidelity), positioned as a half-body figure leaning slightly to the right and turned back toward the camera with a subtle unsettling expression. The subject appears dirty and weathered with realistic mud splatter and moisture stains, but still clearly recognizable as the reference identity.
+Lighting: a single strong handheld flashlight beam from the left, creating a circular hotspot on the wall and across the subject, with harsh shadows, high contrast, heavy falloff into darkness, gritty low-light look, realistic sensor noise/film grain.
+Camera: close-up, wide-angle perspective, handheld feel, sharp focus on the subject, background falling into black, no stylization, ultra-detailed concrete texture, realistic grime and moisture, cinematic found-footage realism, no CGI.
+
+⸻
+
+NEGATIVE PROMPT
+
+cartoon, anime, illustration, 3d render, CGI, clean plastic look, glossy skin, beauty lighting, studio softbox, colorful neon, fantasy glow, perfect symmetry, smooth skin, low detail, blur, motion blur, overexposed, extra limbs, deformed face, wrong identity, inaccurate likeness, duplicated head, warped eyes, text, watermark, logo, frame" />
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+עכשיו תיכנסו פשוט ל-<span className="text-orci-cyan font-bold">Nano Banana Pro</span>.
+תחברו את התמונת רפרנס עם הפרומפט הזה ותקבלו את התוצאה המטורפת של הטרנד
+</p>
+
+<div className="my-8 rounded-2xl overflow-hidden">
+  <Image
+    src="/guides/guideold.png"
+    alt="תמונת הדמות הנטושה"
+    width={400}
+    height={400}
+    className="w-full h-auto"
+  />
+</div>
+
+</GlassmorphicCard>
+
+<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
+
+<h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+  שלב 2: הפיכת התמונה לסרטון
+</h2>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+עכשיו אתם אמורים לקבל תוצאה ברמה גבוה, תשחקו קצת עם התוצאה בשביל לקבל בדיוק את מה שאתם רוצים.
+משם זה הכי פשוט בעולם - לוקחים את התוצר ומכניסים אותו ל-<span className="text-orci-cyan font-bold">Veo 3.1</span>.
+תעתיקו את הפרומפט הזה וזהו קיבלתם את הטרנד הזה בסגנון שלכם!
+</p>
+
+<CopyPrompt prompt="POV video shot using a start frame and an end frame. The camera represents a real human point of view. The user is not just walking forward, but actively exploring and scanning the environment with the flashlight. The walking pace is very slow and cautious. The movement is grounded and realistic: Subtle vertical bob from slow, cautious footsteps. Gentle side-to-side sway. Imperfect handheld motion, showing slight hesitation. The user is holding a flashlight. The flashlight beam is the main actor in the scene, exploring the character: The beam doesn't just point forward; it actively scans. It moves up and down the character's body, from head to toe. The beam explores from different angles: The user slowly circles the character partially, or leans in and out, causing the light to hit the character's face and body from the side, below, and above, creating dramatic, shifting shadows. The movement of the light is natural and imperfect: Delayed movement, small overcorrections, uneven scanning, and slight shaking from the hand holding it. The light intensity on the character changes: As the user gets closer or the beam hits directly, the light is harsher (blown highlights); as it moves away or hits from an angle, the light is softer and shadows deepen. The character must remain completely still and lifeless at all times. No character animation. No blinking. No breathing. No movement. Only environmental motion is allowed: Floating dust motes illuminated by the flashlight beam. Minimal light flicker from the flashlight itself. Very subtle movement of loose elements (e.g., cobwebs, torn fabric) caused by air drafts. The environment must remain consistent throughout the entire shot. No set changes. No teleporting. No new objects. photorealistic video, found-footage realism, handheld walking and exploring camera, low light, strong dramatic shadows, gritty textures, natural imperfections, tense atmosphere." />
+
+</GlassmorphicCard>
+
+{/* CTA Section */}
+<div className="text-center py-12">
+  <GlassmorphicCard blur="xl" className="p-12">
+    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+      רוצים ללמוד יותר?
+    </h2>
+    <p className="text-xl text-gray-300 mb-8">
+      שלחו לי הודעה ואעזור לכם להתחיל
+    </p>
+    <CTAButton href="https://wa.me/972542599107" variant="primary" size="lg">
+      בואו נדבר בוואטסאפ
+    </CTAButton>
+  </GlassmorphicCard>
+</div>
+
+</article>
+
+<Footer />
+
+</div>
