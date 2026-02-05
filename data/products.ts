@@ -1,57 +1,57 @@
 import type { ProductFeature } from '@/types';
 
 /**
- * TODO: Replace with actual product features provided by user
- * This is placeholder data for "חבילת המיליון למילואימניק"
+ * Product Features for "חבילת השיווק החכם"
+ * Focused on business owners who want AI-powered marketing
  */
 export const PRODUCT_FEATURES: ProductFeature[] = [
   {
     id: 'feature-1',
     icon: '🎯',
-    title: 'אסטרטגיה דיגיטלית מלאה',
-    description: 'תכנית עבודה מפורטת לבניית נוכחות דיגיטלית חזקה ומשפיעה',
+    title: 'אסטרטגיה שיווקית מלאה',
+    description: 'תכנית עבודה מפורטת להגדלת מכירות ובניית מותג חזק עם AI',
     highlighted: true
   },
   {
     id: 'feature-2',
     icon: '🤖',
     title: 'אוטומציות AI מתקדמות',
-    description: 'כלים ואוטומציות שיחסכו לכם שעות עבודה כל יום',
+    description: 'כלים שעושים את העבודה בשבילכם - תוכן, לידים, ומעקב אוטומטי',
     highlighted: true
   },
   {
     id: 'feature-3',
     icon: '📱',
     title: 'ניהול רשתות חברתיות',
-    description: 'אסטרטגיה ותוכן לבניית קהילה מעורבת ונאמנה',
+    description: 'אסטרטגיה ותוכן שמביא לידים ומכירות - לא סתם "נוכחות"',
     highlighted: false
   },
   {
     id: 'feature-4',
     icon: '💡',
-    title: 'יצירת תוכן בעזרת AI',
-    description: 'למדו ליצור תוכן איכותי ומשפיע בחלק מהזמן',
+    title: 'יצירת תוכן ויראלי עם AI',
+    description: 'למדו ליצור תוכן שמפריד אתכם מהמתחרים - בחלק מהזמן',
     highlighted: false
   },
   {
     id: 'feature-5',
     icon: '📊',
     title: 'ניתוח ואופטימיזציה',
-    description: 'כלים למדידה ושיפור מתמיד של התוצאות',
+    description: 'כלים למדידת ROI ושיפור מתמיד - נתונים שמובילים להחלטות',
     highlighted: false
   },
   {
     id: 'feature-6',
     icon: '🎓',
-    title: 'הדרכה אישית',
-    description: 'ליווי צמוד והדרכה אישית לאורך כל הדרך',
+    title: 'ליווי אישי 1-על-1',
+    description: 'הדרכה וליווי צמוד - אני כאן עד שתראו תוצאות',
     highlighted: true
   }
 ];
 
 export const PRODUCT_INFO = {
-  title: 'חבילת המיליון למילואימניק',
-  subtitle: 'כל מה שצריך לבנות נוכחות דיגיטלית מנצחת - במיוחד למילואימניקים שרוצים לצאת חזק',
+  title: 'חבילת השיווק החכם',
+  subtitle: 'כל מה שעסק צריך לצמוח בעזרת AI - שיווק ברמה גבוהה, תוכן איכותי, ואוטומציות שחוסכות זמן',
   ctaText: 'רוצה לשמוע עוד?',
   ctaLink: 'https://wa.me/972542599107'
 };
