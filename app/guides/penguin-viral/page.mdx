@@ -1,0 +1,275 @@
+import Image from 'next/image'
+import { GlassmorphicCard } from '@/components/ui/GlassmorphicCard'
+import { CTAButton } from '@/components/ui/CTAButton'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'איך יצרתי את טרנד הפינגווין הוויראלי | Orci AI',
+  description: 'מדריך להפיכת טרנד קיים לוויראלי עם טוויסט ישראלי - 2.4M צפיות',
+}
+
+<div className="min-h-screen bg-gradient-to-b from-background to-gray-900 pt-24">
+
+{/* Hero Section */}
+<section className="py-20 px-4 text-center">
+  <div className="max-w-4xl mx-auto">
+    <h1 className="text-4xl md:text-6xl font-bold mb-6 text-orci-cyan">
+      איך יצרתי את טרנד הפינגווין הוויראלי
+    </h1>
+    <p className="text-xl md:text-2xl text-white mb-8 bg-orci-blue/30 inline-block px-6 py-3 rounded-xl">
+      מדריך להפיכת טרנד קיים לוויראלי עם טוויסט ישראלי
+    </p>
+
+    {/* Tools Badge */}
+    <div className="flex flex-wrap gap-3 justify-center mt-8">
+      <span className="px-4 py-2 bg-orci-cyan/20 border border-orci-cyan/50 rounded-full text-orci-cyan text-sm font-medium">
+        🎨 Nano Banana Pro
+      </span>
+      <span className="px-4 py-2 bg-orci-cyan/20 border border-orci-cyan/50 rounded-full text-orci-cyan text-sm font-medium">
+        🤖 Gemini
+      </span>
+      <span className="px-4 py-2 bg-orci-cyan/20 border border-orci-cyan/50 rounded-full text-orci-cyan text-sm font-medium">
+        🎬 Kling 2.6
+      </span>
+    </div>
+
+    {/* Stats Badge */}
+    <div className="mt-6 inline-block px-6 py-3 bg-gradient-to-r from-orci-cyan/20 to-orci-blue/20 border border-orci-cyan/50 rounded-xl">
+      <p className="text-2xl font-bold text-orci-cyan">
+        📊 2.4M צפיות
+      </p>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="max-w-4xl mx-auto px-4 pb-20">
+
+<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
+
+<h2 className="text-2xl md:text-3xl font-bold mb-6">
+  <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
+    שלב 1: יצירת הדמות
+  </span>
+</h2>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+  קודם כל, אספתי <span className="text-orci-cyan font-bold">תמונות רפרנס</span> מהטרנד המקורי של הפינגווין. חיפשתי תמונות באיכות גבוהה מזוויות שונות.
+</p>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+  העליתי את התמונות ל-<span className="text-orci-cyan font-bold">Nano Banana Pro</span> ויצרתי דמות פינגווין עקבית שאפשר להשתמש בה במספר תמונות.
+</p>
+
+{/* Image Placeholder */}
+<div className="my-8 rounded-2xl overflow-hidden bg-gray-800/50 border border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '300px'}}>
+  <div className="text-center p-8">
+    <div className="text-6xl mb-4">🐧</div>
+    <p className="text-gray-400 text-lg">תמונה: תמונות רפרנס של הפינגווין מהטרנד</p>
+    <p className="text-gray-500 text-sm mt-2">(להוסיף תמונה כאן)</p>
+  </div>
+</div>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+  הטיפ: השתמשו ב-5-7 תמונות רפרנס מזוויות שונות כדי שהמערכת תלמד את הדמות היטב.
+</p>
+
+</GlassmorphicCard>
+
+<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
+
+<h2 className="text-2xl md:text-3xl font-bold mb-6">
+  <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
+    שלב 2: הטוויסט הישראלי
+  </span>
+</h2>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+  כאן נכנס הקסם - הוספתי <span className="text-orci-cyan font-bold">דגל ישראל</span> לפינגווין, מה שמייד יצר חיבור עם הקהל הישראלי.
+</p>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+  אבל לא עצרתי שם! יצרתי גם גרסאות עם:
+</p>
+
+<ul className="list-none space-y-3 mb-6">
+  <li className="text-lg md:text-xl text-gray-200 pr-6 relative">
+    <span className="absolute right-0 text-orci-cyan">•</span>
+    <span className="text-orci-cyan font-bold">דגלים נוספים</span> - כדי להגיע לקהלים בינלאומיים
+  </li>
+  <li className="text-lg md:text-xl text-gray-200 pr-6 relative">
+    <span className="absolute right-0 text-orci-cyan">•</span>
+    <span className="text-orci-cyan font-bold">זוויות שונות</span> - מלפנים, מהצד, מגבוהה
+  </li>
+  <li className="text-lg md:text-xl text-gray-200 pr-6 relative">
+    <span className="absolute right-0 text-orci-cyan">•</span>
+    <span className="text-orci-cyan font-bold">סביבות שונות</span> - רקעים מגוונים לכל סצנה
+  </li>
+</ul>
+
+{/* Image Placeholder */}
+<div className="my-8 rounded-2xl overflow-hidden bg-gray-800/50 border border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '300px'}}>
+  <div className="text-center p-8">
+    <div className="text-6xl mb-4">🇮🇱</div>
+    <p className="text-gray-400 text-lg">תמונה: הפינגווין עם דגל ישראל ודגלים נוספים</p>
+    <p className="text-gray-500 text-sm mt-2">(להוסיף תמונה כאן)</p>
+  </div>
+</div>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+  זה הטוויסט שהופך טרנד גלובלי לתוכן מקומי ורלוונטי שאנשים רוצים לשתף.
+</p>
+
+</GlassmorphicCard>
+
+<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
+
+<h2 className="text-2xl md:text-3xl font-bold mb-6">
+  <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
+    שלב 3: בניית פרומפטים
+  </span>
+</h2>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+  עכשיו השתמשתי ב-<span className="text-orci-cyan font-bold">Gemini</span> כדי לבנות פרומפט חכם לכל תמונה.
+</p>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+  למה Gemini? כי הוא מעולה ב:
+</p>
+
+<ul className="list-none space-y-3 mb-6">
+  <li className="text-lg md:text-xl text-gray-200 pr-6 relative">
+    <span className="absolute right-0 text-orci-cyan">•</span>
+    <span className="text-orci-cyan font-bold">ניתוח טרנדים</span> - הוא מבין מה עובד ברשת
+  </li>
+  <li className="text-lg md:text-xl text-gray-200 pr-6 relative">
+    <span className="absolute right-0 text-orci-cyan">•</span>
+    <span className="text-orci-cyan font-bold">יצירת וריאציות</span> - מייצר גרסאות שונות לכל סצנה
+  </li>
+  <li className="text-lg md:text-xl text-gray-200 pr-6 relative">
+    <span className="absolute right-0 text-orci-cyan">•</span>
+    <span className="text-orci-cyan font-bold">שמירה על עקביות</span> - הדמות נשארת זהה בכל תמונה
+  </li>
+</ul>
+
+{/* Image Placeholder */}
+<div className="my-8 rounded-2xl overflow-hidden bg-gray-800/50 border border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '300px'}}>
+  <div className="text-center p-8">
+    <div className="text-6xl mb-4">🤖</div>
+    <p className="text-gray-400 text-lg">תמונה: ממשק Gemini עם הפרומפטים</p>
+    <p className="text-gray-500 text-sm mt-2">(להוסיף תמונה כאן)</p>
+  </div>
+</div>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+  רשמתי ל-Gemini את הרעיון הכללי, והוא בנה לי סדרה שלמה של פרומפטים מדויקים.
+</p>
+
+</GlassmorphicCard>
+
+<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
+
+<h2 className="text-2xl md:text-3xl font-bold mb-6">
+  <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
+    שלב 4: הנפשה
+  </span>
+</h2>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+  השלב האחרון - הכנסתי את כל התמונות ל-<span className="text-orci-cyan font-bold">Kling 2.6</span> והנפשתי אותן.
+</p>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+  Kling 2.6 הוא הכלי הטוב ביותר כרגע להנפשת תמונות למציאות:
+</p>
+
+<ul className="list-none space-y-3 mb-6">
+  <li className="text-lg md:text-xl text-gray-200 pr-6 relative">
+    <span className="absolute right-0 text-orci-cyan">•</span>
+    תנועות <span className="text-orci-cyan font-bold">טבעיות ופיזיקליות</span>
+  </li>
+  <li className="text-lg md:text-xl text-gray-200 pr-6 relative">
+    <span className="absolute right-0 text-orci-cyan">•</span>
+    <span className="text-orci-cyan font-bold">איכות 4K</span> ללא טשטוש
+  </li>
+  <li className="text-lg md:text-xl text-gray-200 pr-6 relative">
+    <span className="absolute right-0 text-orci-cyan">•</span>
+    זמן עיבוד <span className="text-orci-cyan font-bold">מהיר יחסית</span>
+  </li>
+</ul>
+
+{/* Image Placeholder */}
+<div className="my-8 rounded-2xl overflow-hidden bg-gray-800/50 border border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '300px'}}>
+  <div className="text-center p-8">
+    <div className="text-6xl mb-4">🎬</div>
+    <p className="text-gray-400 text-lg">תמונה: ממשק Kling 2.6 עם הנפשת הפינגווין</p>
+    <p className="text-gray-500 text-sm mt-2">(להוסיף תמונה כאן)</p>
+  </div>
+</div>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
+  העליתי את התמונות אחת אחרי השנייה, ביקשתי מ-Kling להנפיש אותן, וחיברתי הכל לסרטון אחד.
+</p>
+
+<p className="text-lg md:text-xl text-gray-200 leading-relaxed">
+  תוצאה: <span className="text-orci-cyan font-bold">סרטון וויראלי בן 60 שניות</span> שעבר את ה-2.4 מיליון צפיות! 🚀
+</p>
+
+</GlassmorphicCard>
+
+{/* Result Section */}
+<GlassmorphicCard blur="xl" className="p-8 md:p-12 mb-12 border-2 border-orci-cyan/50">
+  <div className="text-center">
+    <div className="text-6xl mb-6">🔥</div>
+    <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
+        התוצאה
+      </span>
+    </h2>
+    <p className="text-xl md:text-2xl text-gray-200 leading-relaxed mb-4">
+      סרטון וויראלי עם <span className="text-orci-cyan font-bold">2.4M צפיות</span>
+    </p>
+    <p className="text-lg text-gray-300 mt-2">
+      הסוד? לקחתי טרנד קיים, הוספתי טוויסט מקומי, והפכתי אותו לרלוונטי לקהל שלי.
+    </p>
+  </div>
+</GlassmorphicCard>
+
+{/* Key Takeaway */}
+<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12 bg-orci-cyan/5">
+  <div className="text-center">
+    <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+      💡 המסר המרכזי
+    </h3>
+    <p className="text-xl md:text-2xl text-gray-200 leading-relaxed">
+      <span className="text-orci-cyan font-bold">קחו טרנד, הוסיפו טוויסט, תהיו הבאים בתור</span>
+    </p>
+    <p className="text-lg text-gray-300 mt-4">
+      לא צריך להמציא את הגלגל מחדש - קחו מה שעובד, תנו לזה משהו ייחודי משלכם, ותשיגו תוצאות.
+    </p>
+  </div>
+</GlassmorphicCard>
+
+{/* CTA Section */}
+<div className="text-center py-12">
+  <GlassmorphicCard blur="xl" className="p-12">
+    <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
+        רוצים ללמוד איך ליצור תוכן וויראלי?
+      </span>
+    </h2>
+    <p className="text-xl text-gray-300 mb-6">
+      תכתבו 'מדריך' בתגובות או שלחו לי הודעה
+    </p>
+    <CTAButton href="https://wa.me/972542599107" variant="primary" size="lg">
+      בואו נדבר בוואטסאפ
+    </CTAButton>
+  </GlassmorphicCard>
+</div>
+
+</article>
+
+<Footer />
+
+</div>

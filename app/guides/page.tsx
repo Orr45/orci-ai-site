@@ -24,6 +24,22 @@ export default function GuidesPage() {
       icon: '📝'
     },
     {
+      id: 'ai-influencer',
+      title: 'איך ליצור משפיענית AI ב-60 שניות',
+      description: 'מדריך מקיף ליצירת משפיענית AI שמדברת עברית ונראית אמיתית',
+      url: '/guides/ai-influencer',
+      category: 'יצירת תוכן',
+      icon: '👩‍💼'
+    },
+    {
+      id: 'penguin-viral',
+      title: 'איך יצרתי את טרנד הפינגווין הוויראלי',
+      description: 'מדריך להפיכת טרנד קיים לוויראלי עם טוויסט ישראלי - 2.4M צפיות',
+      url: '/guides/penguin-viral',
+      category: 'יצירת תוכן',
+      icon: '🐧'
+    },
+    {
       id: 'new-guide',
       title: 'איך ליצור את טרנד הריחוף',
       description: 'במדריך הזה תלמדו כיצד ליצור את הטרנד הריחוף, שלב אחר שלב',
