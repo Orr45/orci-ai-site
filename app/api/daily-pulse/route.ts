@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-import { promises as fs } from 'fs';
-import path from 'path';
+import { kv } from '@vercel/kv';
 
 interface NewsSource {
   title: string;
@@ -18,13 +17,21 @@ interface DailyPulseData {
 
 export async function GET() {
   try {
-    // Read from data/daily-pulse.json
-    const filePath = path.join(process.cwd(), 'data', 'daily-pulse.json');
+    // Read from Vercel KV (Redis)
+    const data = await kv.get<DailyPulseData>('daily-pulse');
 
-    const fileContent = await fs.readFile(filePath, 'utf-8');
-    const data: DailyPulseData = JSON.parse(fileContent);
+    if (!data || !data.summary) {
+      return NextResponse.json({
+        summary: '',
+        timestamp: '',
+        sources: [],
+        lastUpdated: '',
+        isEmpty: true,
+        error: 'No data available yet. Cron job needs to run first.',
+      });
+    }
 
-    // Check if data is empty or stale (older than 25 hours)
+    // Check if data is stale (older than 25 hours)
     const isStale = data.lastUpdated
       ? (Date.now() - new Date(data.lastUpdated).getTime()) > (25 * 60 * 60 * 1000)
       : false;
@@ -41,7 +48,7 @@ export async function GET() {
   } catch (error) {
     console.error('Failed to read daily pulse data:', error);
 
-    // Return empty data if file doesn't exist or is corrupted
+    // Return empty data if KV read fails
     return NextResponse.json({
       summary: '',
       timestamp: '',
