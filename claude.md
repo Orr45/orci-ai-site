@@ -57,11 +57,17 @@ components/
 │   ├── FloatingElement.tsx
 │   ├── SectionHeader.tsx
 │   ├── CTAButton.tsx
-│   └── BackgroundGradient.tsx
+│   ├── BackgroundGradient.tsx
+│   ├── button.tsx        # Shadcn Button component
+│   ├── background-paths.tsx  # Animated SVG paths background
+│   ├── container-scroll-animation.tsx  # 3D scroll effect
+│   └── CopyPrompt.tsx
 ├── video/                # Video playback system
 │   ├── VideoPlayer.tsx
 │   ├── VideoModal.tsx
 │   └── VideoGrid.tsx
+├── news/                 # News & content components
+│   └── DailyPulse.tsx    # AI Daily Pulse with cron job
 ├── products/             # Product-specific components
 │   ├── ProductHero.tsx
 │   ├── ProductFeatureCard.tsx
@@ -114,6 +120,21 @@ components/
 - **Separation of concerns:** Data in `/data`, logic in components
 - **Type safety:** All data validated with TypeScript interfaces
 - **Easy updates:** User can update products/guides without touching components
+
+**8. Animated Background Paths**
+- **Component:** BackgroundPathsEffect using Framer Motion and SVG animations
+- **Design:** 36 animated curved paths with continuous motion
+- **Styling:** Orci-cyan color (`#00d1ff`) with subtle opacity (8-15%)
+- **Performance:** Pointer-events disabled, GPU-accelerated transforms
+- **Usage:** Layered behind hero content to add depth without distraction
+- **Flexibility:** Two exports - BackgroundPathsEffect (background only) and BackgroundPaths (full hero)
+
+**9. 3D Scroll Animation**
+- **Component:** ContainerScroll with perspective transforms
+- **Effect:** Content rotates and scales as user scrolls
+- **Responsive:** Different scale parameters for mobile vs desktop
+- **Usage:** Showcasing YouTube channel achievement with visual impact
+- **Border:** 4px orci-cyan border with dark gradient background for contrast
 
 ---
 
@@ -394,9 +415,9 @@ npm run lint         # Run ESLint
 
 ---
 
-**Last Updated:** 2026-02-01
-**Status:** ✅ Guide system live, YouTube video embedded, styling polished
-**Next Action:** Fill in new-guide template with content, add more videos/guides
+**Last Updated:** 2026-02-06
+**Status:** ✅ Animated background paths integrated, scroll animation showcasing YouTube channel stats
+**Next Action:** Continue adding guides and monitoring Daily Pulse feature
 
 ---
 
@@ -466,3 +487,39 @@ npm run lint         # Run ESLint
 **First-Time Setup:**
 After deploying, manually trigger the cron endpoint once to populate initial data:
 `curl https://your-site.vercel.app/api/cron/update-news`
+
+
+### Session 2026-02-06
+
+**Scroll Animation Enhancement:**
+- Updated home page scroll animation (ContainerScroll component) to showcase YouTube channel achievement
+- Changed text from generic "viral content" to specific stats: "בעל ערוץ יוטיוב שהגיע ל-25 מיליון צפיות ו-130,000 רשומים"
+- Replaced Unsplash stock image with real channel screenshot (`public/Chanel.png`)
+- Copied image from Desktop: `C:\Users\0rr Shemer\Desktop\OrciAiSite\Chanel.png` → `public/Chanel.png`
+- Commit: dc2b122
+
+**Background Paths Animation Feature:**
+- Installed dependencies for shadcn components:
+  - `@radix-ui/react-slot` - Slot component for flexible composition
+  - `class-variance-authority` - CVA for managing component variants
+- Created `components/ui/button.tsx` - Shadcn Button component with variants (ghost, outline, secondary, etc.)
+- Created `components/ui/background-paths.tsx` - Animated SVG paths background effect
+  - **FloatingPaths component:** Generates 36 animated SVG paths with continuous motion
+  - **BackgroundPathsEffect:** Subtle background version for layering behind content
+  - **BackgroundPaths:** Full hero version with animated letter-by-letter title (available for future use)
+  - Adapted colors to orci-cyan brand (`#00d1ff` instead of slate)
+  - Reduced opacity (8-15%) for subtlety and readability
+  - Smooth infinite animations creating flowing motion effect
+  - RTL-compatible with Hebrew content
+- Integrated into home page hero section:
+  - Added `BackgroundPathsEffect` behind existing hero content
+  - Hero content layered with `z-10` to sit above animated paths
+  - Maintains cap4learning clean design while adding depth
+- Build successful (16/16 pages)
+- Commit: c4965ce
+
+**Technical Notes:**
+- Framer Motion used for path animations (pathLength, opacity, pathOffset)
+- SVG preserveAspectRatio set to "xMidYMid slice" for responsive scaling
+- Animations staggered with random durations (20-30s) for organic feel
+- Pointer events disabled on background layer to ensure content remains interactive
