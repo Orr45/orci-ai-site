@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Footer } from '@/components/layout/Footer';
 import DailyPulse from '@/components/news/DailyPulse';
 import { ContainerScroll } from '@/components/ui/container-scroll-animation';
+import { BackgroundPathsEffect } from '@/components/ui/background-paths';
 
 export default function Home() {
   const featuredGuides = [
@@ -28,8 +29,11 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* HERO SECTION - Cap4Learning Exact Match */}
-      <section className="cap-section cap-section-teal overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="cap-section cap-section-teal overflow-hidden relative">
+        {/* Animated Background Paths */}
+        <BackgroundPathsEffect />
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="cap-card">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left: Title */}
