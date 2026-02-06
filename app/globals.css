@@ -1,76 +1,64 @@
 @import "tailwindcss";
 
-/* Bootstrap-inspired CSS Variables (cap4learning style) */
+/* CAP4LEARNING EXACT REPLICA - CSS Variables */
 :root {
-  /* Bootstrap Color System */
-  --bs-primary: #03565c;
-  --bs-secondary: #fcc0cc;
-  --bs-success: #03565c;
-  --bs-info: #0dcaf0;
-  --bs-warning: #ffc107;
-  --bs-danger: #be3e82;
-  --bs-light: #f8f9fa;
-  --bs-dark: #212529;
-  --bs-white: #fff;
-  --bs-gray: #6c757d;
-  --bs-gray-dark: #343a40;
+  /* Cap4Learning Colors (with Orci branding) */
+  --cap-teal-bg: #d2e6e4;
+  --cap-green-dark: #03565c;
+  --cap-pink: #fcc0cc;
 
-  /* Orci AI Brand Colors (replacing Bootstrap teal with Orci cyan/blue) */
+  /* Orci AI Brand Colors (replacing their green with our cyan) */
   --orci-cyan: #00d1ff;
   --orci-blue: #00bfff;
   --orci-primary: #00d1ff;
-  --orci-secondary: #fcc0cc;
 
-  /* Background & Foreground */
-  --background: #ffffff;
-  --foreground: #212529;
-  --background-alt: #f8f9fa;
+  /* Backgrounds */
+  --background: #d2e6e4;
+  --background-white: #ffffff;
+  --background-card: #ffffff;
 
-  /* Animation Variables */
-  --animate-duration: 1s;
-  --animate-delay: 1s;
-  --animate-repeat: 1;
+  /* Text */
+  --text-primary: #03565c;
+  --text-dark: #212529;
 
-  /* Font Stack (Bootstrap-style) */
+  /* Bootstrap System */
+  --bs-white: #fff;
+  --bs-gray: #6c757d;
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --color-orci-cyan: var(--orci-cyan);
   --color-orci-blue: var(--orci-blue);
-  --color-orci-primary: var(--orci-primary);
   --font-sans: var(--font-heebo);
 }
 
-/* Dark mode support (optional - cap4learning uses light theme) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --background-alt: #1a1a1a;
-  }
-}
-
-/* Smooth scrolling (Bootstrap default) */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
-/* Box sizing (Bootstrap reset) */
+/* Global Styles - Cap4Learning Exact Match */
 *, ::before, ::after {
   box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background-color: var(--background);
+  color: var(--text-primary);
   font-family: var(--font-heebo), var(--bs-font-sans-serif);
-  line-height: 1.6;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
   margin: 0;
+  overflow-x: hidden;
+}
+
+@media (min-width: 992px) {
+  body {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  body {
+    font-size: 1.125rem;
+  }
 }
 
 /* RTL Support */
@@ -78,152 +66,161 @@ html[dir="rtl"] {
   direction: rtl;
 }
 
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 /* ========================================
-   CLEAN CARD SYSTEM (cap4learning style)
+   CAP4LEARNING CARD SYSTEM
    ======================================== */
 
-.clean-card {
+.cap-card {
   background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.clean-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 209, 255, 0.15);
+.cap-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.cap-card-small {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.cap-card-small:hover {
+  box-shadow: 0 4px 20px rgba(0, 209, 255, 0.15);
   transform: translateY(-2px);
-  border-color: var(--orci-cyan);
 }
 
-.clean-card-flat {
-  background: white;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  padding: 1.5rem;
-}
+/* ========================================
+   BUTTONS - CAP4LEARNING STYLE
+   ======================================== */
 
-/* Section Styles */
-.section-light {
-  background: var(--background);
-}
-
-.section-alt {
-  background: var(--background-alt);
-}
-
-/* Button Styles (Bootstrap-inspired) */
-.btn-primary {
-  background: linear-gradient(135deg, var(--orci-cyan), var(--orci-blue));
-  color: white;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  border: none;
-  transition: all 0.3s ease;
+.cap-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 209, 255, 0.3);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--orci-cyan);
-  border: 2px solid var(--orci-cyan);
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
   font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
+  font-size: 0.95rem;
   transition: all 0.3s ease;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
 }
 
-.btn-outline:hover {
+.cap-btn-primary {
+  background: linear-gradient(135deg, var(--orci-cyan), var(--orci-blue));
+  color: white;
+}
+
+.cap-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 209, 255, 0.4);
+}
+
+.cap-btn-dark {
+  background: var(--text-primary);
+  color: white;
+}
+
+.cap-btn-dark:hover {
+  background: var(--orci-cyan);
+}
+
+.cap-btn-outline {
+  background: transparent;
+  border: 2px solid var(--orci-cyan);
+  color: var(--orci-cyan);
+}
+
+.cap-btn-outline:hover {
   background: var(--orci-cyan);
   color: white;
 }
 
-/* Typography */
+/* ========================================
+   TYPOGRAPHY - CAP4LEARNING STYLE
+   ======================================== */
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
+  color: var(--text-primary);
 }
 
-.text-gradient {
-  background: linear-gradient(135deg, var(--orci-cyan), var(--orci-blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.cap-hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-primary);
 }
 
-/* Badge Styles */
-.badge {
+.cap-section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+/* ========================================
+   BADGE SYSTEM - CAP4LEARNING SCATTERED TAGS
+   ======================================== */
+
+.cap-badge {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  background: rgba(0, 209, 255, 0.1);
-  color: var(--orci-cyan);
-  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  background: white;
+  color: var(--text-primary);
+  border-radius: 2rem;
   font-size: 0.875rem;
   font-weight: 600;
-  border: 1px solid rgba(0, 209, 255, 0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
 }
 
-/* Accordion Styles (cap4learning feature) */
-.accordion-item {
+/* ========================================
+   LAYOUT SECTIONS
+   ======================================== */
+
+.cap-section {
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .cap-section {
+    padding: 6rem 2rem;
+  }
+}
+
+.cap-section-teal {
+  background: var(--background);
+}
+
+.cap-section-white {
   background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  overflow: hidden;
 }
 
-.accordion-header {
-  padding: 1.25rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 600;
-  transition: background 0.2s ease;
-}
+/* ========================================
+   HERO CIRCULAR IMAGES (cap4learning style)
+   ======================================== */
 
-.accordion-header:hover {
-  background: var(--background-alt);
-}
-
-.accordion-content {
-  padding: 1.25rem;
-  border-top: 1px solid #e5e7eb;
-}
-
-/* Link Styles */
-.link-primary {
-  color: var(--orci-cyan);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.link-primary:hover {
-  color: var(--orci-blue);
-  text-decoration: underline;
-}
-
-/* Dark mode card adjustments */
-@media (prefers-color-scheme: dark) {
-  .clean-card,
-  .clean-card-flat,
-  .accordion-item {
-    background: #1a1a1a;
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .section-alt {
-    background: #0f0f0f;
-  }
+.cap-hero-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 1rem;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
