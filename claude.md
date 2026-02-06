@@ -132,7 +132,25 @@ components/
 - **Usage:** Full-page effect flowing continuously across all sections
 - **Flexibility:** Two exports - BackgroundPathsEffect (background only) and BackgroundPaths (full hero)
 
-**9. 3D Scroll Animation**
+**9. Interactive Bento Gallery**
+- **Component:** InteractiveBentoGallery with drag-and-drop reordering
+- **Usage:** Featured guides on home page and guides page
+- **Features:** Animated dock navigation, modal view, Framer Motion drag physics
+- **Integration:** Items link to guide pages via `href` field on MediaItemType
+
+**10. Highlighter Hero**
+- **Components:** HighlightGroup, HighlighterItem, Particles
+- **Effect:** Mouse-tracking cyan glow + canvas particle system
+- **Animation:** Animated pointer cycling between 4 Hebrew service labels
+- **Engine:** framer-motion `useAnimate` for infinite animation sequence
+
+**11. Orbiting Skills**
+- **Component:** OrbitingSkills with requestAnimationFrame animation loop
+- **Layout:** 2 orbital rings (inner: 3 icons, outer: 3 icons) around central Sparkles icon
+- **Responsive:** Dynamic scale factor (`containerSize / 420`) for mobile compatibility
+- **Interaction:** Hover to pause, hover on icon for tooltip
+
+**12. 3D Scroll Animation**
 - **Component:** ContainerScroll with perspective transforms
 - **Effect:** Content rotates and scales as user scrolls
 - **Responsive:** Different scale parameters for mobile vs desktop
@@ -419,8 +437,8 @@ npm run lint         # Run ESLint
 ---
 
 **Last Updated:** 2026-02-06
-**Status:** ✅ Full-page animated background paths (highly visible), scroll animation showcasing YouTube channel stats
-**Next Action:** Continue adding guides and monitoring Daily Pulse feature
+**Status:** ✅ Interactive home page with Bento Gallery, Highlighter Hero, DailyPulse Cards, Orbiting Skills (mobile-responsive)
+**Next Action:** Continue adding guides, refining mobile UX, and monitoring Daily Pulse feature
 
 ---
 
@@ -554,3 +572,81 @@ After deploying, manually trigger the cron endpoint once to populate initial dat
 - Clearly visible with thicker strokes and higher opacity
 - Maintains cap4learning clean aesthetic while adding dynamic motion
 - Fixed positioning keeps animation consistent during scroll
+
+
+### Session 2026-02-06 (continued) - Major Home Page Redesign
+
+**Interactive Bento Gallery on Home Page:**
+- Added `InteractiveBentoGallery` component to home page "המדריכים המובילים שלנו" section
+- Replaced static card grid with interactive draggable bento gallery (same as guides page)
+- 5 guide items with images from `public/guides/`, each linking to their guide page
+- Commit: ccf436e
+
+**DailyPulse News Cards Redesign:**
+- Rewrote `components/news/DailyPulse.tsx` from single text block to 3-card grid layout
+- Created `parseNewsItems()` function to split summary by `•` and extract title/content/orciTake
+- Each card has: numbered badge, title, content, "💡 הזווית של Orci" section, source links
+- Sources distributed across cards via `getSourcesForCard(index)`
+- Staggered Framer Motion entrance animations (delay: index * 0.15)
+- Loading skeleton shows 3 placeholder cards matching grid layout
+- Commit: f50bbda
+
+**Highlighter Hero Section:**
+- Created `components/ui/highlighter.tsx` with 3 exports:
+  - `useMousePosition` hook tracking mouse coordinates
+  - `HighlightGroup` - container setting CSS custom properties (--mouse-x/--mouse-y) on children
+  - `HighlighterItem` - child with mouse-tracking cyan glow effect (`before:bg-orci-cyan`)
+  - `Particles` - canvas-based particle system (default color `#00d1ff`, quantity 200)
+- Created `HeroSection` component in `app/page.tsx`:
+  - Animated pointer (orci-cyan SVG cursor + "Orci" label) cycling between 4 Hebrew labels
+  - Labels: יצירת תוכן AI, אוטומציות חכמות, שיווק דיגיטלי, וידאו ויראלי
+  - `useAnimate` from framer-motion for infinite pointer animation sequence
+  - Center Sparkles icon, particle background, mouse-tracking glow
+  - CTA buttons: WhatsApp "בואו נדבר" + "למדריכים"
+- Replaced old colored blocks hero with new interactive HeroSection
+- Commit: 5487f07
+
+**Orbiting Skills Section:**
+- Created `components/ui/orbiting-skills.tsx`:
+  - 6 AI service icons on two orbital rings using requestAnimationFrame
+  - Inner orbit (radius 100): PenTool (יצירת תוכן AI), Zap (אוטומציות חכמות), TrendingUp (שיווק דיגיטלי)
+  - Outer orbit (radius 175): Users (ניהול רשתות חברתיות), Brain (ייעוץ AI לעסקים), Video (וידאו ויראלי)
+  - White icon backgrounds with orci-cyan borders/glows
+  - Hover: icon scales up, tooltip shows Hebrew service name
+  - Pause on container hover
+  - Orbit paths with pulsing glow animation
+- Replaced scattered badges section in home page
+- Commit: 189a047
+
+**Orbiting Skills Mobile Fix:**
+- **Problem:** Orbit radii (100px/175px) overflow on small mobile screens (375px phone container ~335px, but outer orbit extends 199px from center)
+- **Solution:** Dynamic responsive scaling system:
+  - Added `containerRef` to measure actual container width
+  - `scale = containerSize / BASE_SIZE` where `BASE_SIZE = 420`
+  - All orbit radii multiply by scale: `scaledRadius = orbitRadius * scale`
+  - Icon sizes scale with minimum floor: `scaledSize = Math.round(size * Math.max(scale, 0.7))`
+  - Orbit path circles also scale via `orbitConfigs` array
+  - Container changed to `w-full max-w-[420px] aspect-square`
+  - `ResizeObserver` pattern via resize event listener for responsive updates
+- Result: Orbiting skills now fit perfectly on any screen size
+
+**Home Page Structure (Final):**
+```
+BackgroundPathsEffect (fixed, full-page)
+└── HeroSection (Highlighter + Particles + animated pointer)
+└── InteractiveBentoGallery (featured guides, draggable bento grid)
+└── DailyPulse (3-card AI news grid)
+└── ContainerScroll (YouTube channel showcase)
+└── OrbitingSkills (6 AI services on orbital rings)
+└── Statistics (text stats section)
+└── Newsletter/CTA (dark card)
+└── Footer
+```
+
+**New Components Summary:**
+| Component | File | Purpose |
+|-----------|------|---------|
+| InteractiveBentoGallery | `components/ui/interactive-bento-gallery.tsx` | Draggable image gallery with modal |
+| HighlightGroup/Item | `components/ui/highlighter.tsx` | Mouse-tracking glow container |
+| Particles | `components/ui/highlighter.tsx` | Canvas-based particle effect |
+| OrbitingSkills | `components/ui/orbiting-skills.tsx` | Animated orbital service icons |

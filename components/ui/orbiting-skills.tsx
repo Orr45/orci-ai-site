@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState, memo } from 'react';
+import React, { useEffect, useState, memo, useRef, useCallback } from 'react';
 import { Sparkles, PenTool, Zap, TrendingUp, Users, Brain, Video } from 'lucide-react';
 
 // --- Type Definitions ---
@@ -25,6 +25,7 @@ interface SkillConfig {
 interface OrbitingSkillProps {
   config: SkillConfig;
   angle: number;
+  scale: number;
 }
 
 interface GlowingOrbitPathProps {
@@ -51,7 +52,9 @@ const ServiceIcon = memo(({ type }: ServiceIconProps) => {
 });
 ServiceIcon.displayName = 'ServiceIcon';
 
-// --- Configuration ---
+// --- Base Configuration (designed for 420px container) ---
+const BASE_SIZE = 420;
+
 const skillsConfig: SkillConfig[] = [
   // Inner Orbit
   {
@@ -118,19 +121,22 @@ const skillsConfig: SkillConfig[] = [
 ];
 
 // --- Orbiting Skill ---
-const OrbitingSkill = memo(({ config, angle }: OrbitingSkillProps) => {
+const OrbitingSkill = memo(({ config, angle, scale }: OrbitingSkillProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const { orbitRadius, size, iconType, label } = config;
 
-  const x = Math.cos(angle) * orbitRadius;
-  const y = Math.sin(angle) * orbitRadius;
+  const scaledRadius = orbitRadius * scale;
+  const scaledSize = Math.round(size * Math.max(scale, 0.7));
+
+  const x = Math.cos(angle) * scaledRadius;
+  const y = Math.sin(angle) * scaledRadius;
 
   return (
     <div
       className="absolute top-1/2 left-1/2 transition-all duration-300 ease-out"
       style={{
-        width: `${size}px`,
-        height: `${size}px`,
+        width: `${scaledSize}px`,
+        height: `${scaledSize}px`,
         transform: `translate(calc(${x}px - 50%), calc(${y}px - 50%))`,
         zIndex: isHovered ? 20 : 10,
       }}
@@ -213,6 +219,24 @@ GlowingOrbitPath.displayName = 'GlowingOrbitPath';
 export default function OrbitingSkills() {
   const [time, setTime] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [containerSize, setContainerSize] = useState(BASE_SIZE);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Measure container and compute scale
+  const updateSize = useCallback(() => {
+    if (containerRef.current) {
+      const width = containerRef.current.offsetWidth;
+      setContainerSize(width);
+    }
+  }, []);
+
+  useEffect(() => {
+    updateSize();
+    window.addEventListener('resize', updateSize);
+    return () => window.removeEventListener('resize', updateSize);
+  }, [updateSize]);
+
+  const scale = containerSize / BASE_SIZE;
 
   useEffect(() => {
     if (isPaused) return;
@@ -232,21 +256,22 @@ export default function OrbitingSkills() {
   }, [isPaused]);
 
   const orbitConfigs: Array<{ radius: number; glowColor: GlowColor; delay: number }> = [
-    { radius: 100, glowColor: 'cyan', delay: 0 },
-    { radius: 175, glowColor: 'deepCyan', delay: 1.5 },
+    { radius: Math.round(100 * scale), glowColor: 'cyan', delay: 0 },
+    { radius: Math.round(175 * scale), glowColor: 'deepCyan', delay: 1.5 },
   ];
 
   return (
     <div className="w-full flex items-center justify-center overflow-hidden">
       <div
-        className="relative w-[calc(100vw-40px)] h-[calc(100vw-40px)] max-w-[420px] max-h-[420px] md:w-[420px] md:h-[420px] flex items-center justify-center"
+        ref={containerRef}
+        className="relative w-full max-w-[420px] aspect-square flex items-center justify-center"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         {/* Central Icon */}
-        <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center z-10 relative shadow-xl border border-orci-cyan/20">
+        <div className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center z-10 relative shadow-xl border border-orci-cyan/20">
           <div className="absolute inset-0 rounded-full bg-orci-cyan/15 blur-xl animate-pulse"></div>
-          <Sparkles className="relative z-10 w-8 h-8 text-orci-cyan" />
+          <Sparkles className="relative z-10 w-7 h-7 md:w-8 md:h-8 text-orci-cyan" />
         </div>
 
         {/* Orbit Paths */}
@@ -263,7 +288,7 @@ export default function OrbitingSkills() {
         {skillsConfig.map((config) => {
           const angle = time * config.speed + (config.phaseShift || 0);
           return (
-            <OrbitingSkill key={config.id} config={config} angle={angle} />
+            <OrbitingSkill key={config.id} config={config} angle={angle} scale={scale} />
           );
         })}
       </div>
