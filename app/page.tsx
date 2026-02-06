@@ -1,218 +1,169 @@
 'use client';
 
 import Link from "next/link";
-import { motion } from 'framer-motion';
-import { FloatingElement } from '@/components/ui/FloatingElement';
-import { GlassmorphicCard } from '@/components/ui/GlassmorphicCard';
-import { CTAButton } from '@/components/ui/CTAButton';
-import { SectionHeader } from '@/components/ui/SectionHeader';
+import { CleanCard } from '@/components/ui/CleanCard';
 import { Footer } from '@/components/layout/Footer';
 import DailyPulse from '@/components/news/DailyPulse';
 
 export default function Home() {
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-gray-900">
-      {/* TODO: Header Image Section - User will provide the image URL */}
-      {/* Uncomment and add image URL when ready:
-      <section className="relative w-full h-[40vh] md:h-[50vh] overflow-hidden">
-        <Image
-          src="USER_PROVIDED_IMAGE_URL"
-          alt="Orci AI Header"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background" />
-      </section>
-      */}
-
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 py-20 pt-32">
-        <div className="absolute inset-0 overflow-hidden">
-          <FloatingElement delay={0} duration={8} yOffset={20}>
-            <div className="absolute top-20 left-1/4 w-96 h-96 bg-orci-cyan/10 rounded-full blur-3xl"></div>
-          </FloatingElement>
-          <FloatingElement delay={1} duration={10} yOffset={30}>
-            <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-orci-blue/10 rounded-full blur-3xl"></div>
-          </FloatingElement>
-        </div>
+      <section className="relative pt-32 pb-20 px-4 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <span className="text-gradient">
+              הופכים בינה מלאכותית
+            </span>
+            <br />
+            <span className="text-gray-900">
+              לכלי העבודה החזק ביותר שלכם
+            </span>
+          </h1>
 
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <FloatingElement yOffset={10} duration={6}>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                <span className="text-transparent bg-clip-text bg-gradient-to-l from-orci-cyan to-orci-blue">
-                  הופכים בינה מלאכותית
-                </span>
-                <br />
-                <span className="text-foreground">
-                  לכלי העבודה החזק ביותר שלכם
-                </span>
-              </h1>
-            </FloatingElement>
+          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            המדריכים, הכלים והסודות שיעזרו לכם לשלוט ב-AI - בפשטות ובגובה העיניים
+          </p>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-xl md:text-2xl text-white mb-12 max-w-3xl mx-auto bg-orci-blue/30 inline-block px-6 py-3 rounded-xl"
-            >
-              המדריכים, הכלים והסודות שיעזרו לכם לשלוט ב-AI - בפשטות ובגובה העיניים
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            >
-              <Link href="/guides">
-                <CTAButton variant="primary" size="lg">
-                  המדריכים שלי
-                </CTAButton>
-              </Link>
-              <Link href="/products">
-                <CTAButton variant="secondary" size="lg">
-                  המוצרים שלי
-                </CTAButton>
-              </Link>
-              <CTAButton href="https://wa.me/972542599107" variant="primary" size="lg">
-                דברו איתי בוואטסאפ
-              </CTAButton>
-            </motion.div>
-          </motion.div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link href="/guides">
+              <button className="btn-primary">
+                מדריכי AI חינמיים
+              </button>
+            </Link>
+            <Link href="/products">
+              <button className="btn-outline">
+                חבילת השיווק החכם
+              </button>
+            </Link>
+            <Link href="/contact">
+              <button className="btn-outline">
+                בואו נדבר
+              </button>
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 px-4 bg-gray-900/50">
-        <div className="max-w-4xl mx-auto">
-          <SectionHeader>מי אני?</SectionHeader>
+      {/* Quick Stats */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <CleanCard variant="hover" className="text-center">
+              <div className="text-5xl mb-3">🚀</div>
+              <div className="text-4xl font-bold text-gradient mb-2">2.4M+</div>
+              <div className="text-gray-600">צפיות בטרנדים ויראליים</div>
+            </CleanCard>
 
-          <FloatingElement yOffset={8} duration={7}>
-            <GlassmorphicCard blur="lg" className="p-8 md:p-12">
-              <div className="text-lg md:text-xl leading-relaxed space-y-6 text-gray-200">
-                <motion.p
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                >
-                  נעים מאוד, אני אור (Orci). המסע שלי התחיל בגיל 16, כשבניתי מאפס את 'oci Gaming' -
-                  מותג תוכן שהגיע ל-130,000 רשומים ולמעלה מ-25 מיליון צפיות. שם למדתי מה זה אומר
-                  לייצר ערך, לבנות קהילה ולהפוך תשוקה לעסק.
-                </motion.p>
+            <CleanCard variant="hover" className="text-center">
+              <div className="text-5xl mb-3">📺</div>
+              <div className="text-4xl font-bold text-gradient mb-2">130K+</div>
+              <div className="text-gray-600">מנויים ביוטיוב</div>
+            </CleanCard>
 
-                <motion.p
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  אחרי שנים של יצירת תוכן, עברתי לשדה הקרב. שירתי כמפקד וקצין במילואים (סגן)
-                  בחטיבת החילוץ וההצלה, והובלתי לוחמים במשימות מורכבות במלחמת 'חרבות ברזל'.
-                  הפיקוד לימד אותי דיוק, אחריות ואיך לקבל החלטות תחת לחץ קיצוני.
-                </motion.p>
-
-                <motion.p
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
-                  היום, אני משלב את שני העולמות האלו ב-Orci AI. המשימה שלי היא להנגיש לכם את
-                  מהפכת ה-AI בצורה הכי פרקטית שיש, כדי שגם אתם תוכלו לייעל את העסק, לחסוך זמן
-                  וליצור תוכן מטורף בקלות.
-                </motion.p>
-              </div>
-            </GlassmorphicCard>
-          </FloatingElement>
+            <CleanCard variant="hover" className="text-center">
+              <div className="text-5xl mb-3">🎯</div>
+              <div className="text-4xl font-bold text-gradient mb-2">10+</div>
+              <div className="text-gray-600">שנות ניסיון ביצירת תוכן</div>
+            </CleanCard>
+          </div>
         </div>
       </section>
 
-      {/* Portfolio Showcase */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto">
-          <SectionHeader>דברים שעשיתי עם AI</SectionHeader>
+      {/* What I Do Section */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+            <span className="text-gradient">מה אני עושה?</span>
+          </h2>
+          <p className="text-xl text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+            עוזר לעסקים ויזמים לנצל את הפוטנציאל של AI למיקסום הצמיחה והיעילות
+          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <GlassmorphicCard className="p-4 overflow-hidden">
-                <div className="relative w-full rounded-xl overflow-hidden" style={{ aspectRatio: '9/16' }}>
-                  <iframe
-                    src="https://www.youtube.com/embed/lxrvd_y8tPI?rel=0"
-                    title="חפצים מדברים עם AI"
-                    className="absolute inset-0 w-full h-full"
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                    loading="lazy"
-                  />
-                </div>
-              </GlassmorphicCard>
-            </motion.div>
+            <Link href="/guides">
+              <CleanCard variant="hover" className="h-full">
+                <div className="text-6xl mb-4">📚</div>
+                <h3 className="text-2xl font-bold text-gradient mb-3">
+                  מדריכי AI בחינם
+                </h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  למדו ליצור תוכן ויראלי, משפיענית AI, אוטומציות ועוד - הכל בעברית ובגובה העיניים
+                </p>
+                <span className="text-orci-cyan font-medium inline-flex items-center gap-2">
+                  למדריכים
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </span>
+              </CleanCard>
+            </Link>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <GlassmorphicCard className="p-4 overflow-hidden">
-                <div className="relative w-full rounded-xl overflow-hidden" style={{ aspectRatio: '9/16' }}>
-                  <iframe
-                    src="https://www.youtube.com/embed/edKRPVP1sWs?rel=0"
-                    title="AI Video"
-                    className="absolute inset-0 w-full h-full"
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                    loading="lazy"
-                  />
-                </div>
-              </GlassmorphicCard>
-            </motion.div>
+            <Link href="/products">
+              <CleanCard variant="hover" className="h-full">
+                <div className="text-6xl mb-4">🚀</div>
+                <h3 className="text-2xl font-bold text-gradient mb-3">
+                  ליווי אישי לעסק
+                </h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  אסטרטגיה, אוטומציות, תוכן ויראלי וליווי צמוד - כל מה שצריך כדי לצמוח עם AI
+                </p>
+                <span className="text-orci-cyan font-medium inline-flex items-center gap-2">
+                  לפרטים
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </span>
+              </CleanCard>
+            </Link>
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link href="/about" className="text-orci-cyan hover:text-orci-blue text-lg font-medium transition-colors inline-flex items-center gap-2">
+              רוצים לדעת עוד עליי?
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* AI Daily Pulse */}
-      <DailyPulse />
+      <section className="py-16 px-4 bg-white">
+        <DailyPulse />
+      </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gray-900/50">
-        <div className="max-w-4xl mx-auto text-center">
-          <SectionHeader>מוכנים להתחיל?</SectionHeader>
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <CleanCard padding="lg" className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="text-gradient">
+                מוכנים להתחיל?
+              </span>
+            </h2>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-xl text-gray-300 mb-8"
-          >
-            בואו נדבר על איך AI יכול לקחת את העסק שלכם לשלב הבא
-          </motion.p>
+            <p className="text-xl text-gray-600 mb-8">
+              בואו נדבר על איך AI יכול לקחת את העסק שלכם לשלב הבא
+            </p>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <CTAButton href="https://wa.me/972542599107" variant="primary" size="lg">
-              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-              שלחו לי הודעה עכשיו
-            </CTAButton>
-          </motion.div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/contact">
+                <button className="btn-primary inline-flex items-center gap-2">
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  שלחו לי הודעה עכשיו
+                </button>
+              </Link>
+              <Link href="/portfolio">
+                <button className="btn-outline">
+                  ראו עבודות שלי
+                </button>
+              </Link>
+            </div>
+          </CleanCard>
         </div>
       </section>
 
