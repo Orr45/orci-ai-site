@@ -128,8 +128,8 @@ export function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile Floating Dock - Bottom Navigation */}
-      <div className="fixed bottom-4 left-0 right-0 z-50 lg:hidden">
+      {/* Floating Dock - Bottom Navigation (all screen sizes) */}
+      <div className="fixed bottom-4 left-0 right-0 z-50">
         <Dock items={dockItems} />
       </div>
     </>
