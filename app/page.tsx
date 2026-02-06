@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Footer } from '@/components/layout/Footer';
+import DailyPulse from '@/components/news/DailyPulse';
 
 export default function Home() {
   const featuredGuides = [
@@ -87,6 +88,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* AI NEWS SECTION - Daily Pulse */}
+      <DailyPulse />
 
       {/* LARGE IMAGE + TEXT SECTION */}
       <section className="cap-section cap-section-teal">

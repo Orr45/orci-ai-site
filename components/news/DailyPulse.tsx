@@ -41,11 +41,13 @@ export default function DailyPulse() {
   // Don't render if no data or empty
   if (loading) {
     return (
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-700/50 rounded w-64 mx-auto mb-8"></div>
-            <div className="h-64 bg-gray-700/30 rounded-2xl"></div>
+      <section className="cap-section cap-section-teal">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="cap-card">
+            <div className="animate-pulse">
+              <div className="h-8 bg-gray-200 rounded w-64 mx-auto mb-8"></div>
+              <div className="h-64 bg-gray-100 rounded-2xl"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -57,52 +59,35 @@ export default function DailyPulse() {
   }
 
   return (
-    <section className="py-16 px-4">
-      <div className="max-w-4xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-8"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="bg-gradient-to-l from-orci-cyan to-orci-blue bg-clip-text text-transparent">
+    <section className="cap-section cap-section-teal">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="cap-card">
+          {/* Section Header */}
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
               חדשות ה-AI של היום
-            </span>
-          </h2>
-          <p className="text-white bg-orci-blue/30 inline-block px-6 py-3 rounded-xl">
-            העדכונים החמים מעולם הבינה המלאכותית
-          </p>
-        </motion.div>
+            </h2>
+            <p className="text-gray-600 text-lg">
+              העדכונים החמים מעולם הבינה המלאכותית
+            </p>
+          </div>
 
-        {/* Main Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="relative"
-        >
-          {/* Glow Effect */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-orci-cyan/30 to-orci-blue/30 rounded-3xl blur-xl opacity-50"></div>
-
-          {/* Card */}
-          <div className="relative backdrop-blur-xl bg-gray-900/70 border border-orci-cyan/30 rounded-2xl p-8 md:p-10 shadow-2xl">
+          {/* Main Content */}
+          <div className="border-2 border-orci-cyan/30 rounded-2xl p-6 md:p-8 bg-white">
             {/* Live Indicator */}
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-6 justify-center">
               <div className="relative">
                 <span className="absolute inline-flex h-3 w-3 rounded-full bg-orci-cyan opacity-75 animate-ping"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-orci-cyan"></span>
               </div>
-              <span className="text-orci-cyan font-medium text-sm">עדכון יומי</span>
+              <span className="text-orci-cyan font-medium text-sm">עדכון יומי - 07:00 בבוקר</span>
               {data.isStale && (
-                <span className="text-yellow-500 text-xs">(ממתין לעדכון)</span>
+                <span className="text-yellow-600 text-xs">(ממתין לעדכון)</span>
               )}
             </div>
 
             {/* Summary Content */}
-            <div className="text-gray-200 text-lg md:text-xl leading-relaxed mb-8 space-y-6">
+            <div className="text-gray-700 text-base md:text-lg leading-relaxed space-y-4">
               {data.summary.split('•').filter(Boolean).map((bullet, index) => {
                 // Split by "הזווית של Orci" to style it differently
                 const parts = bullet.split(/הזווית של Orci:?/i);
@@ -110,7 +95,7 @@ export default function DailyPulse() {
                 const orciTake = parts[1]?.trim();
 
                 return (
-                  <div key={index} className="border-r-2 border-orci-cyan/50 pr-4">
+                  <div key={index} className="border-r-4 border-orci-cyan/30 pr-4">
                     {/* Main bullet content */}
                     <div className="mb-2">
                       <span className="text-orci-cyan font-bold">•</span>{' '}
@@ -118,9 +103,9 @@ export default function DailyPulse() {
                     </div>
                     {/* Orci's take - styled differently */}
                     {orciTake && (
-                      <div className="mt-3 p-4 bg-orci-cyan/10 border border-orci-cyan/20 rounded-xl">
-                        <span className="text-orci-cyan font-bold text-base">הזווית של Orci: </span>
-                        <span className="text-gray-300 text-base">{orciTake}</span>
+                      <div className="mt-3 p-4 bg-orci-cyan/5 border-l-4 border-orci-cyan rounded-lg">
+                        <span className="text-orci-cyan font-bold text-sm">💡 הזווית של Orci: </span>
+                        <span className="text-gray-600 text-sm">{orciTake}</span>
                       </div>
                     )}
                   </div>
@@ -130,8 +115,8 @@ export default function DailyPulse() {
 
             {/* Sources */}
             {data.sources && data.sources.length > 0 && (
-              <div className="border-t border-gray-700/50 pt-6">
-                <p className="text-gray-400 text-sm mb-3">מקורות:</p>
+              <div className="border-t border-gray-200 pt-6 mt-6">
+                <p className="text-gray-500 text-sm mb-3 font-medium">מקורות:</p>
                 <div className="flex flex-wrap gap-2">
                   {data.sources.slice(0, 5).map((source, index) => (
                     <a
@@ -139,7 +124,7 @@ export default function DailyPulse() {
                       href={source.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs px-3 py-1.5 bg-gray-800/50 hover:bg-orci-cyan/20 border border-gray-700/50 hover:border-orci-cyan/50 rounded-full text-gray-400 hover:text-orci-cyan transition-all duration-200"
+                      className="cap-badge text-xs hover:bg-orci-cyan/10 hover:text-orci-cyan transition-colors"
                     >
                       {source.source}
                     </a>
@@ -149,11 +134,11 @@ export default function DailyPulse() {
             )}
 
             {/* Timestamp */}
-            <div className="mt-6 text-gray-500 text-sm text-left">
+            <div className="mt-6 text-gray-400 text-xs text-center">
               עדכון אחרון: {data.timestamp}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
