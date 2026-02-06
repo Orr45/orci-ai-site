@@ -99,20 +99,23 @@ export default function Home() {
           titleComponent={
             <>
               <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
-                תוכן שיצרנו הגיע ל-
+                בעל ערוץ יוטיוב שהגיע ל-
               </h2>
-              <span className="text-5xl md:text-[7rem] font-bold text-orci-cyan leading-none">
-                2.4 מיליון צפיות
+              <span className="text-4xl md:text-[5rem] font-bold text-orci-cyan leading-none">
+                25 מיליון צפיות
               </span>
+              <p className="text-3xl md:text-[4rem] font-bold text-orci-cyan mt-4">
+                ו-130,000 רשומים
+              </p>
               <p className="text-xl md:text-2xl text-gray-600 mt-6">
-                וגם אתם יכולים ליצור תוכן ויראלי עם כלי AI מתקדמים
+                וגם אתם יכולים להגיע להישגים כאלה עם AI
               </p>
             </>
           }
         >
           <Image
-            src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1400&h=900&fit=crop"
-            alt="Viral Content Success Dashboard"
+            src="/Chanel.png"
+            alt="ערוץ היוטיוב של Orci - 25M צפיות ו-130K רשומים"
             height={720}
             width={1400}
             className="mx-auto rounded-2xl object-cover h-full object-center"
