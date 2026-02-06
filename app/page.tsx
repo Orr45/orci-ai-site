@@ -6,24 +6,55 @@ import { Footer } from '@/components/layout/Footer';
 import DailyPulse from '@/components/news/DailyPulse';
 import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 import { BackgroundPathsEffect } from '@/components/ui/background-paths';
+import InteractiveBentoGallery from '@/components/ui/interactive-bento-gallery';
 
 export default function Home() {
-  const featuredGuides = [
-    { title: 'איך ליצור חפצים מדברים עם AI', link: '/guides/ai-beginners' },
-    { title: 'יצירת משפיענית AI ב-60 שניות', link: '/guides/ai-influencer' },
-    { title: 'טרנד הפינגווין הוויראלי', link: '/guides/penguin-viral' },
-    { title: 'אוטומציות AI לעסקים', link: '/products' },
-    { title: 'שיווק חכם עם בינה מלאכותית', link: '/products' },
-    { title: 'יצירת תוכן ויראלי עם AI', link: '/guides' },
-  ];
-
-  const services = [
-    'אסטרטגיה שיווקית',
-    'יצירת תוכן AI',
-    'אוטומציות חכמות',
-    'ניהול רשתות חברתיות',
-    'ייעוץ AI לעסקים',
-    'וידאו ויראלי',
+  const guideMediaItems = [
+    {
+      id: 1,
+      type: "image",
+      title: "איך ליצור חפצים מדברים עם AI",
+      desc: "למדו ליצור חפצים מדברים עם AI - מדריך שלב אחר שלב",
+      url: "/guides/ForkImage.png",
+      span: "md:col-span-2 md:row-span-3 sm:col-span-2 sm:row-span-2",
+      href: "/guides/ai-beginners",
+    },
+    {
+      id: 2,
+      type: "image",
+      title: "יצירת משפיענית AI ב-60 שניות",
+      desc: "מדריך מקיף ליצירת משפיענית AI שמדברת עברית ונראית אמיתית",
+      url: "/guides/SelfiFullBody.png",
+      span: "md:col-span-2 md:row-span-3 sm:col-span-1 sm:row-span-2",
+      href: "/guides/ai-influencer",
+    },
+    {
+      id: 3,
+      type: "image",
+      title: "טרנד הפינגווין הוויראלי",
+      desc: "מדריך להפיכת טרנד קיים לוויראלי עם טוויסט ישראלי",
+      url: "/guides/kLING2.6.png",
+      span: "md:col-span-2 md:row-span-3 sm:col-span-2 sm:row-span-2",
+      href: "/guides/penguin-viral",
+    },
+    {
+      id: 4,
+      type: "image",
+      title: "איך ליצור את טרנד הריחוף",
+      desc: "במדריך הזה תלמדו כיצד ליצור את הטרנד הריחוף, שלב אחר שלב",
+      url: "/guides/FlotaingMen.png",
+      span: "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
+      href: "/guides/new-guide",
+    },
+    {
+      id: 5,
+      type: "image",
+      title: "טרנד הדמיות הנטושות",
+      desc: "צעד אחרי צעד כיצד תוכלו ליצור את טרנד הדמיות הנטושות",
+      url: "/guides/FadeFlotaingMen.png",
+      span: "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
+      href: "/guides/new-guide-2",
+    },
   ];
 
   return (
@@ -62,39 +93,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURED GUIDES SECTION - Cap4Learning 6-Card Grid */}
+      {/* FEATURED GUIDES SECTION - Interactive Bento Gallery */}
       <section className="cap-section cap-section-teal">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="cap-card">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl md:text-3xl font-bold">המדריכים המובילים שלנו:</h2>
-              <Link href="/guides" className="cap-btn cap-btn-dark text-sm">
-                כל המדריכים
-              </Link>
-            </div>
-
-            {/* 6 Cards Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-              {featuredGuides.map((guide, index) => (
-                <Link key={index} href={guide.link}>
-                  <div className="cap-card-small min-h-[140px] flex flex-col justify-center">
-                    <h3 className="text-base font-semibold text-gray-800 leading-tight">
-                      {guide.title}
-                    </h3>
-                    <span className="text-orci-cyan text-sm font-medium mt-3 inline-block">
-                      קרא עוד ←
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-
-            <div className="mt-8 text-center">
-              <Link href="/guides" className="text-orci-cyan font-medium hover:underline">
-                כל המדריכים שלנו לפי קטגוריה ←
-              </Link>
-            </div>
-          </div>
+          <InteractiveBentoGallery
+            mediaItems={guideMediaItems}
+            title="המדריכים המובילים שלנו"
+            description="גררו וחקרו את אוסף המדריכים שלנו - לחצו על מדריך כדי לקרוא עוד"
+          />
         </div>
       </section>
 
