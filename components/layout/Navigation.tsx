@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation';
 export function Navigation() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [guidesMenuOpen, setGuidesMenuOpen] = useState(false);
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -30,11 +29,7 @@ export function Navigation() {
             </Link>
 
             {/* Dropdown Menu - like "Formations" */}
-            <div
-              className="relative"
-              onMouseEnter={() => setGuidesMenuOpen(true)}
-              onMouseLeave={() => setGuidesMenuOpen(false)}
-            >
+            <div className="relative group">
               <button className="text-base font-medium text-gray-700 hover:text-orci-cyan transition-colors flex items-center gap-1">
                 מדריכים
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,22 +37,27 @@ export function Navigation() {
                 </svg>
               </button>
 
-              {guidesMenuOpen && (
-                <div className="absolute top-full right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg py-2">
-                  <Link href="/guides" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-orci-cyan">
-                    כל המדריכים
-                  </Link>
-                  <Link href="/guides/ai-beginners" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-orci-cyan">
-                    חפצים מדברים
-                  </Link>
-                  <Link href="/guides/ai-influencer" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-orci-cyan">
-                    משפיענית AI
-                  </Link>
-                  <Link href="/guides/penguin-viral" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-orci-cyan">
-                    טרנד הפינגווין
-                  </Link>
-                </div>
-              )}
+              {/* Dropdown - shows on hover */}
+              <div className="absolute top-full right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <Link href="/guides" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-orci-cyan">
+                  כל המדריכים
+                </Link>
+                <Link href="/guides/ai-beginners" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-orci-cyan">
+                  חפצים מדברים
+                </Link>
+                <Link href="/guides/ai-influencer" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-orci-cyan">
+                  משפיענית AI
+                </Link>
+                <Link href="/guides/penguin-viral" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-orci-cyan">
+                  טרנד הפינגווין
+                </Link>
+                <Link href="/guides/new-guide" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-orci-cyan">
+                  טרנד הריחוף
+                </Link>
+                <Link href="/guides/new-guide-2" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-orci-cyan">
+                  דמיות נטושות
+                </Link>
+              </div>
             </div>
 
             <Link
