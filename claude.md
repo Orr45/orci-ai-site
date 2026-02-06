@@ -124,9 +124,12 @@ components/
 **8. Animated Background Paths**
 - **Component:** BackgroundPathsEffect using Framer Motion and SVG animations
 - **Design:** 36 animated curved paths with continuous motion
-- **Styling:** Orci-cyan color (`#00d1ff`) with subtle opacity (8-15%)
+- **Styling:** Orci-cyan color (`#00d1ff`) with prominent visibility (25-100% opacity)
+- **Stroke Width:** 1.0-3.16px (thick enough to be clearly visible)
+- **Implementation:** Fixed full-page background behind all content
+- **Transparency:** Section backgrounds made semi-transparent (92% opaque) to allow animation to show through
 - **Performance:** Pointer-events disabled, GPU-accelerated transforms
-- **Usage:** Layered behind hero content to add depth without distraction
+- **Usage:** Full-page effect flowing continuously across all sections
 - **Flexibility:** Two exports - BackgroundPathsEffect (background only) and BackgroundPaths (full hero)
 
 **9. 3D Scroll Animation**
@@ -416,7 +419,7 @@ npm run lint         # Run ESLint
 ---
 
 **Last Updated:** 2026-02-06
-**Status:** ✅ Animated background paths integrated, scroll animation showcasing YouTube channel stats
+**Status:** ✅ Full-page animated background paths (highly visible), scroll animation showcasing YouTube channel stats
 **Next Action:** Continue adding guides and monitoring Daily Pulse feature
 
 ---
@@ -523,3 +526,31 @@ After deploying, manually trigger the cron endpoint once to populate initial dat
 - SVG preserveAspectRatio set to "xMidYMid slice" for responsive scaling
 - Animations staggered with random durations (20-30s) for organic feel
 - Pointer events disabled on background layer to ensure content remains interactive
+
+**Full-Page Background Animation & Visibility Fixes:**
+- Extended background animation from hero-only to entire page:
+  - Moved `BackgroundPathsEffect` from hero section to page-level wrapper
+  - Changed to `fixed inset-0` positioning to cover entire viewport
+  - Animation now stays visible as user scrolls through all sections
+  - Commit: 0037f44
+
+**Visibility Issue Resolution (Iterative Improvements):**
+- **Problem:** Animation was initially invisible due to solid section backgrounds covering it
+- **Fix 1:** Made section backgrounds semi-transparent (commit: fdffe6e)
+  - `.cap-section-teal`: solid #d2e6e4 → rgba(210, 230, 228, 0.92)
+  - `.cap-section-white`: solid white → rgba(255, 255, 255, 0.92)
+  - Increased path opacity: strokeOpacity 0.08-0.6 → 0.15-0.87
+  - Increased animation opacity: [0.2, 0.5, 0.2] → [0.4, 0.8, 0.4]
+
+- **Problem:** Animation still too faint, barely visible
+- **Fix 2:** Significantly enhanced visibility (commit: 70ae7ac)
+  - Doubled stroke width: 0.5-1.55px → 1.0-3.16px
+  - Further increased opacity: strokeOpacity 0.15-0.87 → 0.25-1.15 (reaches 100%)
+  - Boosted animation opacity: [0.4, 0.8, 0.4] → [0.6, 1.0, 0.6]
+  - Initial opacity: 0.6 → 0.8
+
+**Final Result:**
+- Animated orci-cyan paths flow continuously across entire page
+- Clearly visible with thicker strokes and higher opacity
+- Maintains cap4learning clean aesthetic while adding dynamic motion
+- Fixed positioning keeps animation consistent during scroll
