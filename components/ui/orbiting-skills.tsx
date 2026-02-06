@@ -120,7 +120,24 @@ const skillsConfig: SkillConfig[] = [
   },
 ];
 
-// --- Orbiting Skill ---
+// --- Mobile Static Card ---
+const MobileServiceCard = memo(({ config }: { config: SkillConfig }) => {
+  const iconConfig = serviceIcons[config.iconType];
+  if (!iconConfig) return null;
+  const Icon = iconConfig.icon;
+
+  return (
+    <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-orci-cyan/20 shadow-sm">
+      <div className="w-10 h-10 bg-orci-cyan/10 rounded-full flex items-center justify-center flex-shrink-0">
+        <Icon className="w-5 h-5" style={{ color: iconConfig.color }} />
+      </div>
+      <span className="text-sm font-medium text-gray-700">{config.label}</span>
+    </div>
+  );
+});
+MobileServiceCard.displayName = 'MobileServiceCard';
+
+// --- Orbiting Skill (Desktop) ---
 const OrbitingSkill = memo(({ config, angle, scale }: OrbitingSkillProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const { orbitRadius, size, iconType, label } = config;
@@ -133,11 +150,12 @@ const OrbitingSkill = memo(({ config, angle, scale }: OrbitingSkillProps) => {
 
   return (
     <div
-      className="absolute top-1/2 left-1/2 transition-all duration-300 ease-out"
+      className="absolute top-1/2 left-1/2"
       style={{
         width: `${scaledSize}px`,
         height: `${scaledSize}px`,
         transform: `translate(calc(${x}px - 50%), calc(${y}px - 50%))`,
+        willChange: 'transform',
         zIndex: isHovered ? 20 : 10,
       }}
       onMouseEnter={() => setIsHovered(true)}
@@ -147,10 +165,12 @@ const OrbitingSkill = memo(({ config, angle, scale }: OrbitingSkillProps) => {
         className={`
           relative w-full h-full p-2 bg-white/90 backdrop-blur-sm
           rounded-full flex items-center justify-center
-          border border-orci-cyan/30 transition-all duration-300 cursor-pointer
-          ${isHovered ? 'scale-125 shadow-2xl' : 'shadow-lg hover:shadow-xl'}
+          border border-orci-cyan/30 transition-shadow duration-300 cursor-pointer
+          ${isHovered ? 'shadow-2xl' : 'shadow-lg'}
         `}
         style={{
+          transform: isHovered ? 'scale(1.25)' : 'scale(1)',
+          transition: 'transform 0.2s ease-out',
           boxShadow: isHovered
             ? `0 0 25px rgba(0, 209, 255, 0.3), 0 0 50px rgba(0, 209, 255, 0.15)`
             : undefined,
@@ -220,13 +240,15 @@ export default function OrbitingSkills() {
   const [time, setTime] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [containerSize, setContainerSize] = useState(BASE_SIZE);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Measure container and compute scale
+  // Detect mobile and measure container
   const updateSize = useCallback(() => {
+    const width = window.innerWidth;
+    setIsMobile(width < 640);
     if (containerRef.current) {
-      const width = containerRef.current.offsetWidth;
-      setContainerSize(width);
+      setContainerSize(containerRef.current.offsetWidth);
     }
   }, []);
 
@@ -239,7 +261,7 @@ export default function OrbitingSkills() {
   const scale = containerSize / BASE_SIZE;
 
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || isMobile) return;
 
     let animationFrameId: number;
     let lastTime = performance.now();
@@ -253,13 +275,27 @@ export default function OrbitingSkills() {
 
     animationFrameId = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [isPaused]);
+  }, [isPaused, isMobile]);
+
+  // Mobile: show a clean grid of services
+  if (isMobile) {
+    return (
+      <div className="w-full px-2">
+        <div className="grid grid-cols-2 gap-3">
+          {skillsConfig.map((config) => (
+            <MobileServiceCard key={config.id} config={config} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   const orbitConfigs: Array<{ radius: number; glowColor: GlowColor; delay: number }> = [
     { radius: Math.round(100 * scale), glowColor: 'cyan', delay: 0 },
     { radius: Math.round(175 * scale), glowColor: 'deepCyan', delay: 1.5 },
   ];
 
+  // Desktop: orbiting animation
   return (
     <div className="w-full flex items-center justify-center overflow-hidden">
       <div

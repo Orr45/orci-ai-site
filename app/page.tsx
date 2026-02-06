@@ -278,7 +278,7 @@ export default function Home() {
           <h2 className="cap-section-title text-center mb-4">
             מה אנחנו מציעים
           </h2>
-          <p className="text-gray-600 text-center mb-8">העבירו את העכבר כדי לעצור, רחפו על אייקון לפרטים</p>
+          <p className="text-gray-600 text-center mb-8 hidden sm:block">העבירו את העכבר כדי לעצור, רחפו על אייקון לפרטים</p>
           <OrbitingSkills />
           <div className="text-center mt-8">
             <Link href="/products" className="cap-btn cap-btn-primary">
