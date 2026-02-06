@@ -27,13 +27,17 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen">
-      {/* HERO SECTION - Cap4Learning Exact Match */}
-      <section className="cap-section cap-section-teal overflow-hidden relative">
-        {/* Animated Background Paths */}
+    <div className="min-h-screen relative">
+      {/* Animated Background Paths - Full Page */}
+      <div className="fixed inset-0 pointer-events-none z-0">
         <BackgroundPathsEffect />
+      </div>
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+      {/* All content with relative positioning to sit above background */}
+      <div className="relative z-10">
+      {/* HERO SECTION - Cap4Learning Exact Match */}
+      <section className="cap-section cap-section-teal overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="cap-card">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left: Title */}
@@ -211,6 +215,7 @@ export default function Home() {
       </section>
 
       <Footer />
+      </div>
     </div>
   );
 }
