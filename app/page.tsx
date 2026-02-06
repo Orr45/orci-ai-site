@@ -11,7 +11,7 @@ export default function Home() {
   const featuredGuides = [
     { title: 'איך ליצור חפצים מדברים עם AI', link: '/guides/ai-beginners' },
     { title: 'יצירת משפיענית AI ב-60 שניות', link: '/guides/ai-influencer' },
-    { title: 'טרנד הפינגווין הוויראלי - 2.4M צפיות', link: '/guides/penguin-viral' },
+    { title: 'טרנד הפינגווין הוויראלי', link: '/guides/penguin-viral' },
     { title: 'אוטומציות AI לעסקים', link: '/products' },
     { title: 'שיווק חכם עם בינה מלאכותית', link: '/products' },
     { title: 'יצירת תוכן ויראלי עם AI', link: '/guides' },
