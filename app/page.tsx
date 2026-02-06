@@ -11,6 +11,7 @@ import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 import { BackgroundPathsEffect } from '@/components/ui/background-paths';
 import InteractiveBentoGallery from '@/components/ui/interactive-bento-gallery';
 import { HighlighterItem, HighlightGroup, Particles } from '@/components/ui/highlighter';
+import OrbitingSkills from '@/components/ui/orbiting-skills';
 
 function HeroSection() {
   const [scope, animate] = useAnimate();
@@ -271,45 +272,15 @@ export default function Home() {
         </ContainerScroll>
       </section>
 
-      {/* SERVICES SECTION - Scattered Badges (Cap4Learning Style) */}
+      {/* SERVICES SECTION - Orbiting Skills */}
       <section className="cap-section cap-section-teal relative">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="cap-section-title text-center mb-16">
-            מה אנחנו מציעים + מה אנחנו שולטים בו
+          <h2 className="cap-section-title text-center mb-4">
+            מה אנחנו מציעים
           </h2>
-
-          {/* Scattered badges layout */}
-          <div className="relative min-h-[400px]">
-            <div className="absolute top-0 left-[10%]">
-              <div className="cap-badge">אסטרטגיה שיווקית</div>
-            </div>
-            <div className="absolute top-20 right-[15%]">
-              <div className="cap-badge">יצירת תוכן AI</div>
-            </div>
-            <div className="absolute top-40 left-[20%]">
-              <div className="cap-badge">אוטומציות חכמות</div>
-            </div>
-            <div className="absolute bottom-40 right-[25%]">
-              <div className="cap-badge">ניהול רשתות חברתיות</div>
-            </div>
-            <div className="absolute bottom-20 left-[30%]">
-              <div className="cap-badge">ייעוץ AI לעסקים</div>
-            </div>
-            <div className="absolute bottom-0 right-[10%]">
-              <div className="cap-badge">וידאו ויראלי</div>
-            </div>
-
-            {/* Center icon */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <div className="w-20 h-20 rounded-full bg-white shadow-lg flex items-center justify-center">
-                <svg className="w-10 h-10 text-orci-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center mt-16">
+          <p className="text-gray-600 text-center mb-8">העבירו את העכבר כדי לעצור, רחפו על אייקון לפרטים</p>
+          <OrbitingSkills />
+          <div className="text-center mt-8">
             <Link href="/products" className="cap-btn cap-btn-primary">
               גלו עוד
             </Link>
