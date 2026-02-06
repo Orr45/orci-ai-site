@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Footer } from '@/components/layout/Footer';
 import DailyPulse from '@/components/news/DailyPulse';
+import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 
 export default function Home() {
   const featuredGuides = [
@@ -92,29 +93,33 @@ export default function Home() {
       {/* AI NEWS SECTION - Daily Pulse */}
       <DailyPulse />
 
-      {/* LARGE IMAGE + TEXT SECTION */}
-      <section className="cap-section cap-section-teal">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Large colorful image */}
-            <div className="bg-gradient-to-br from-yellow-400 to-teal-400 rounded-2xl h-[400px] flex items-center justify-center">
-              <div className="bg-pink-400 w-64 h-64 rounded-2xl"></div>
-            </div>
-
-            {/* Text */}
-            <div>
-              <h2 className="cap-section-title mb-6">
-                השיגו את המטרות המקצועיות שלכם
+      {/* SCROLL ANIMATION SECTION - Showcasing Results */}
+      <section className="cap-section cap-section-white overflow-hidden">
+        <ContainerScroll
+          titleComponent={
+            <>
+              <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-4">
+                תוכן שיצרנו הגיע ל-
               </h2>
-              <p className="text-xl text-gray-700 leading-relaxed">
-                אנחנו מלווים אותכם בכל שלב - מהכשרה טכנולוגית ועד הצלחה עסקית עם AI
+              <span className="text-5xl md:text-[7rem] font-bold text-orci-cyan leading-none">
+                2.4 מיליון צפיות
+              </span>
+              <p className="text-xl md:text-2xl text-gray-600 mt-6">
+                וגם אתם יכולים ליצור תוכן ויראלי עם כלי AI מתקדמים
               </p>
-              <Link href="/products" className="cap-btn cap-btn-primary mt-6">
-                למידע נוסף
-              </Link>
-            </div>
-          </div>
-        </div>
+            </>
+          }
+        >
+          <Image
+            src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1400&h=900&fit=crop"
+            alt="Viral Content Success Dashboard"
+            height={720}
+            width={1400}
+            className="mx-auto rounded-2xl object-cover h-full object-center"
+            draggable={false}
+            priority
+          />
+        </ContainerScroll>
       </section>
 
       {/* SERVICES SECTION - Scattered Badges (Cap4Learning Style) */}
