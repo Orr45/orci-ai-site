@@ -206,11 +206,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cap-section-teal {
-  background: var(--background);
+  background: rgba(210, 230, 228, 0.92);
 }
 
 .cap-section-white {
-  background: white;
+  background: rgba(255, 255, 255, 0.92);
 }
 
 /* ========================================
