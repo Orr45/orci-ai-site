@@ -1,6 +1,4 @@
 import Image from 'next/image'
-import { GlassmorphicCard } from '@/components/ui/GlassmorphicCard'
-import { CTAButton } from '@/components/ui/CTAButton'
 import { CopyPrompt } from '@/components/ui/CopyPrompt'
 import { Footer } from '@/components/layout/Footer'
 
@@ -9,34 +7,37 @@ export const metadata = {
   description: 'במדריך הזה אלמד אתכם צעד אחרי צעד כיצד תוכלו ליצור את טרנד הדמיות הנטושות',
 }
 
-<div className="min-h-screen bg-gradient-to-b from-background to-gray-900 pt-24">
+<div className="min-h-screen">
 
-{/* Hero Section */}
-<section className="py-20 px-4 text-center">
-  <div className="max-w-4xl mx-auto">
-    <h1 className="text-4xl md:text-6xl font-bold mb-6 text-orci-cyan">
-      איך ליצור את טרנד הדמיות הנטושות
-    </h1>
-    <p className="text-xl md:text-2xl text-white mb-8 bg-orci-blue/30 inline-block px-6 py-3 rounded-xl">
-     במדריך הזה אלמד אתכם צעד אחרי צעד כיצד תוכלו ליצור את טרנד הדמיות הנטושות
-    </p>
+{/* Hero Section - Cap4Learning Style */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        איך ליצור את טרנד הדמיות הנטושות
+      </h1>
+      <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
+        במדריך הזה אלמד אתכם צעד אחרי צעד כיצד תוכלו ליצור את טרנד הדמיות הנטושות
+      </p>
+    </div>
   </div>
 </section>
 
-{/* Main Content */}
-<article className="max-w-4xl mx-auto px-4 pb-20">
+{/* Main Content - Cap4Learning Style */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
 
-<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: יצירת התמונה הראשונה
+      </h2>
 
-<h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-  שלב 1: יצירת התמונה הראשונה
-</h2>
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
+        כל מה שאתם צריכים לבחור איזה דמות שתרצו, תיקחו תמונות רפרנס שלה ברמה גבוה, וכל מה שאתם צריכים לעשות זה להעתיק את הפרומפט שהכנתי לכם כאן:
+      </p>
 
-<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
-  כל מה שאתם צריכים לבחור איזה דמות שתרצו, תיקחו תמונות רפרנס שלה ברמה גבוה, וכל מה שאתם צריכים לעשות זה להעתיק את הפרומפט שהכנתי לכם כאן:
-</p>
-
-<CopyPrompt prompt="Vertical 9:16, hyper-realistic horror documentary photo.
+      <CopyPrompt prompt="Vertical 9:16, hyper-realistic horror documentary photo.
 A dark rectangular concrete drainage tunnel with damp walls, peeling paint, water stains, and patches of green moss and slime. The tunnel fades into deep black darkness behind the subject.
 Center frame: [REFERENCE_SUBJECT] from the provided reference images, matched as accurately as possible (face/identity/clothing/pose fidelity), positioned as a half-body figure leaning slightly to the right and turned back toward the camera with a subtle unsettling expression. The subject appears dirty and weathered with realistic mud splatter and moisture stains, but still clearly recognizable as the reference identity.
 Lighting: a single strong handheld flashlight beam from the left, creating a circular hotspot on the wall and across the subject, with harsh shadows, high contrast, heavy falloff into darkness, gritty low-light look, realistic sensor noise/film grain.
@@ -48,78 +49,86 @@ NEGATIVE PROMPT
 
 cartoon, anime, illustration, 3d render, CGI, clean plastic look, glossy skin, beauty lighting, studio softbox, colorful neon, fantasy glow, perfect symmetry, smooth skin, low detail, blur, motion blur, overexposed, extra limbs, deformed face, wrong identity, inaccurate likeness, duplicated head, warped eyes, text, watermark, logo, frame" />
 
-<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
-עכשיו תיכנסו פשוט ל-<span className="text-orci-cyan font-bold">Nano Banana Pro</span>.
-תחברו את התמונת רפרנס עם הפרומפט הזה ותקבלו את התוצאה המטורפת של הטרנד
-</p>
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
+        עכשיו תיכנסו פשוט ל-<span className="text-orci-cyan font-bold">Nano Banana Pro</span>.
+        תחברו את התמונת רפרנס עם הפרומפט הזה ותקבלו את התוצאה המטורפת של הטרנד
+      </p>
 
-<div className="my-8 rounded-2xl overflow-hidden">
-  <Image
-    src="/guides/guideold.png"
-    alt="תמונת הדמות הנטושה"
-    width={400}
-    height={400}
-    className="w-full h-auto"
-  />
-</div>
+      <div className="my-8 rounded-2xl overflow-hidden">
+        <Image
+          src="/guides/guideold.png"
+          alt="תמונת הדמות הנטושה"
+          width={400}
+          height={400}
+          className="w-full h-auto"
+        />
+      </div>
+    </div>
 
-</GlassmorphicCard>
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: הפיכת התמונה לסרטון
+      </h2>
 
-<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
+        עכשיו אתם אמורים לקבל תוצאה ברמה גבוה, תשחקו קצת עם התוצאה בשביל לקבל בדיוק את מה שאתם רוצים.
+        משם זה הכי פשוט בעולם - לוקחים את התוצר ומכניסים אותו ל-<span className="text-orci-cyan font-bold">Veo 3.1</span>.
+        תעתיקו את הפרומפט הזה וזהו קיבלתם את הטרנד הזה בסגנון שלכם!
+      </p>
 
-<h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-  שלב 2: הפיכת התמונה לסרטון
-</h2>
+      <CopyPrompt prompt="POV video shot using a start frame and an end frame. The camera represents a real human point of view. The user is not just walking forward, but actively exploring and scanning the environment with the flashlight. The walking pace is very slow and cautious. The movement is grounded and realistic: Subtle vertical bob from slow, cautious footsteps. Gentle side-to-side sway. Imperfect handheld motion, showing slight hesitation. The user is holding a flashlight. The flashlight beam is the main actor in the scene, exploring the character: The beam doesn't just point forward; it actively scans. It moves up and down the character's body, from head to toe. The beam explores from different angles: The user slowly circles the character partially, or leans in and out, causing the light to hit the character's face and body from the side, below, and above, creating dramatic, shifting shadows. The movement of the light is natural and imperfect: Delayed movement, small overcorrections, uneven scanning, and slight shaking from the hand holding it. The light intensity on the character changes: As the user gets closer or the beam hits directly, the light is harsher (blown highlights); as it moves away or hits from an angle, the light is softer and shadows deepen. The character must remain completely still and lifeless at all times. No character animation. No blinking. No breathing. No movement. Only environmental motion is allowed: Floating dust motes illuminated by the flashlight beam. Minimal light flicker from the flashlight itself. Very subtle movement of loose elements (e.g., cobwebs, torn fabric) caused by air drafts. The environment must remain consistent throughout the entire shot. No set changes. No teleporting. No new objects. photorealistic video, found-footage realism, handheld walking and exploring camera, low light, strong dramatic shadows, gritty textures, natural imperfections, tense atmosphere." />
+    </div>
 
-<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
-עכשיו אתם אמורים לקבל תוצאה ברמה גבוה, תשחקו קצת עם התוצאה בשביל לקבל בדיוק את מה שאתם רוצים.
-משם זה הכי פשוט בעולם - לוקחים את התוצר ומכניסים אותו ל-<span className="text-orci-cyan font-bold">Veo 3.1</span>.
-תעתיקו את הפרומפט הזה וזהו קיבלתם את הטרנד הזה בסגנון שלכם!
-</p>
+    {/* Result Example */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        דוגמא לתוצאה שלי
+      </h2>
 
-<CopyPrompt prompt="POV video shot using a start frame and an end frame. The camera represents a real human point of view. The user is not just walking forward, but actively exploring and scanning the environment with the flashlight. The walking pace is very slow and cautious. The movement is grounded and realistic: Subtle vertical bob from slow, cautious footsteps. Gentle side-to-side sway. Imperfect handheld motion, showing slight hesitation. The user is holding a flashlight. The flashlight beam is the main actor in the scene, exploring the character: The beam doesn't just point forward; it actively scans. It moves up and down the character's body, from head to toe. The beam explores from different angles: The user slowly circles the character partially, or leans in and out, causing the light to hit the character's face and body from the side, below, and above, creating dramatic, shifting shadows. The movement of the light is natural and imperfect: Delayed movement, small overcorrections, uneven scanning, and slight shaking from the hand holding it. The light intensity on the character changes: As the user gets closer or the beam hits directly, the light is harsher (blown highlights); as it moves away or hits from an angle, the light is softer and shadows deepen. The character must remain completely still and lifeless at all times. No character animation. No blinking. No breathing. No movement. Only environmental motion is allowed: Floating dust motes illuminated by the flashlight beam. Minimal light flicker from the flashlight itself. Very subtle movement of loose elements (e.g., cobwebs, torn fabric) caused by air drafts. The environment must remain consistent throughout the entire shot. No set changes. No teleporting. No new objects. photorealistic video, found-footage realism, handheld walking and exploring camera, low light, strong dramatic shadows, gritty textures, natural imperfections, tense atmosphere." />
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
+        הנה דוגמא לתוצאה שיצרתי עם השיטה הזאת:
+      </p>
 
-</GlassmorphicCard>
+      <div className="my-8 rounded-2xl overflow-hidden" style={{ aspectRatio: '9/16', maxWidth: '400px', margin: '0 auto' }}>
+        <iframe
+          src="https://www.youtube.com/embed/lxrvd_y8tPI?rel=0"
+          title="דוגמא לתוצאה"
+          className="w-full h-full"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          loading="lazy"
+        />
+      </div>
+    </div>
 
-<GlassmorphicCard blur="lg" className="p-8 md:p-12 mb-12">
-
-<h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-  דוגמא לתוצאה שלי
-</h2>
-
-<p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-4">
-הנה דוגמא לתוצאה שיצרתי עם השיטה הזאת:
-</p>
-
-<div className="my-8 rounded-2xl overflow-hidden" style={{ aspectRatio: '9/16', maxWidth: '400px', margin: '0 auto' }}>
-  <iframe
-    src="https://www.youtube.com/embed/lxrvd_y8tPI?rel=0"
-    title="דוגמא לתוצאה"
-    className="w-full h-full"
-    allow="autoplay; fullscreen"
-    allowFullScreen
-    loading="lazy"
-  />
-</div>
-
-</GlassmorphicCard>
-
-{/* CTA Section */}
-<div className="text-center py-12">
-  <GlassmorphicCard blur="xl" className="p-12">
-    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
-      רוצים ללמוד יותר?
-    </h2>
-    <p className="text-xl text-gray-300 mb-8">
-      שלחו לי הודעה ואעזור לכם להתחיל
-    </p>
-    <CTAButton href="https://wa.me/972542599107" variant="primary" size="lg">
-      בואו נדבר בוואטסאפ
-    </CTAButton>
-  </GlassmorphicCard>
-</div>
-
+  </div>
 </article>
+
+{/* CTA Section - Dark Card */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים ללמוד יותר?
+      </h2>
+      <p className="text-gray-300 mb-6 text-lg">
+        שלחו לי הודעה ואעזור לכם להתחיל
+      </p>
+      <a
+        href="https://wa.me/972542599107"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        בואו נדבר בוואטסאפ
+      </a>
+    </div>
+  </div>
+</section>
 
 <Footer />
 
