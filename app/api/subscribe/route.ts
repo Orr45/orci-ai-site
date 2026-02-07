@@ -16,7 +16,11 @@ export async function POST(request: Request) {
     const SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX;
 
     if (!API_KEY || !AUDIENCE_ID || !SERVER_PREFIX) {
-      console.error("Missing Mailchimp env vars");
+      console.error("Missing Mailchimp env vars:", {
+        hasApiKey: !!API_KEY,
+        hasAudienceId: !!AUDIENCE_ID,
+        hasServerPrefix: !!SERVER_PREFIX,
+      });
       return NextResponse.json(
         { error: "שירות הרשמה לא מוגדר כרגע" },
         { status: 500 }
