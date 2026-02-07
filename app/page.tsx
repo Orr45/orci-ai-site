@@ -12,6 +12,7 @@ import { BackgroundPathsEffect } from '@/components/ui/background-paths';
 import InteractiveBentoGallery from '@/components/ui/interactive-bento-gallery';
 import { HighlighterItem, HighlightGroup, Particles } from '@/components/ui/highlighter';
 import OrbitingSkills from '@/components/ui/orbiting-skills';
+import Newsletter from '@/components/ui/newsletter';
 
 
 function HeroSection() {
@@ -289,26 +290,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NEWSLETTER/CTA SECTION - Dark Card (Cap4Learning Style) */}
+      {/* NEWSLETTER SECTION - Mailchimp Email Signup */}
       <section className="cap-section cap-section-teal">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center shadow-2xl">
-            {/* Left: Small image */}
-            <div className="bg-purple-400 w-32 h-32 rounded-2xl mx-auto md:mx-0"></div>
-
-            {/* Right: CTA */}
-            <div className="text-white">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                הישארו מעודכנים
-              </h3>
-              <p className="text-gray-300 mb-6">
-                הירשמו לקבלת מדריכים, טיפים וטרנדים חדשים בעולם ה-AI - ישירות למייל
-              </p>
-              <Link href="/contact" className="cap-btn cap-btn-primary">
-                בואו נדבר בוואטסאפ
-              </Link>
-            </div>
-          </div>
+        <div className="max-w-2xl mx-auto px-6">
+          <Newsletter />
         </div>
       </section>
 
