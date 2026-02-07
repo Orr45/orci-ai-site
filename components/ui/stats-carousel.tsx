@@ -87,8 +87,8 @@ const StatsCarousel = () => {
       <div>
         <div className="relative mx-auto flex items-center justify-center lg:max-w-5xl">
           <Carousel
-            opts={{ loop: true, direction: "rtl" }}
-            plugins={[AutoScroll({ playOnInit: true, speed: 1 })]}
+            opts={{ loop: true, direction: "rtl", watchDrag: false }}
+            plugins={[AutoScroll({ playOnInit: true, speed: 1, stopOnInteraction: false, stopOnMouseEnter: false, stopOnFocusIn: false })]}
           >
             <CarouselContent className="ml-0">
               {stats.map((stat) => (
