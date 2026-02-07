@@ -94,17 +94,17 @@ const StatsCarousel = () => {
               {stats.map((stat) => (
                 <CarouselItem
                   key={stat.id}
-                  className="flex basis-1/2 justify-center pl-0 sm:basis-1/3 md:basis-1/4 lg:basis-1/5"
+                  className="flex basis-1/3 justify-center pl-0 sm:basis-1/4 md:basis-1/5 lg:basis-1/6"
                 >
-                  <div className="mx-4 flex shrink-0 items-center justify-center">
-                    <div className="flex flex-col items-center gap-2 px-4 py-3">
-                      <div className="w-12 h-12 rounded-full bg-orci-cyan/10 flex items-center justify-center">
-                        <stat.icon className="w-6 h-6 text-orci-cyan" />
+                  <div className="mx-2 sm:mx-4 flex shrink-0 items-center justify-center">
+                    <div className="flex flex-col items-center gap-1.5 px-2 sm:px-4 py-3">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-orci-cyan/10 flex items-center justify-center">
+                        <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-orci-cyan" />
                       </div>
-                      <span className="text-2xl md:text-3xl font-bold text-orci-cyan">
+                      <span className="text-xl sm:text-2xl md:text-3xl font-bold text-orci-cyan">
                         {stat.value}
                       </span>
-                      <span className="text-sm text-gray-600 font-medium whitespace-nowrap">
+                      <span className="text-xs sm:text-sm text-gray-600 font-medium whitespace-nowrap">
                         {stat.label}
                       </span>
                     </div>
