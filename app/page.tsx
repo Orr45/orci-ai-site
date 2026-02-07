@@ -12,6 +12,7 @@ import { BackgroundPathsEffect } from '@/components/ui/background-paths';
 import InteractiveBentoGallery from '@/components/ui/interactive-bento-gallery';
 import { HighlighterItem, HighlightGroup, Particles } from '@/components/ui/highlighter';
 import OrbitingSkills from '@/components/ui/orbiting-skills';
+import { StatsCarousel } from '@/components/ui/stats-carousel';
 
 function HeroSection() {
   const [scope, animate] = useAnimate();
@@ -288,15 +289,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STATISTICS SECTION - White Background */}
+      {/* STATISTICS SECTION - Scrolling Stats Carousel */}
       <section className="cap-section cap-section-white">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-2xl font-bold mb-8">בכמה מספרים:</h2>
-          <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 leading-relaxed">
-            <span className="text-orci-cyan">2.4 מיליון צפיות</span> בטרנדים ויראליים,
-            <span className="text-orci-cyan"> 130+ אלף מנויים</span> ביוטיוב,
-            ו-<span className="text-orci-cyan">10+ שנות ניסיון</span> ביצירת תוכן
-          </p>
+        <div className="max-w-7xl mx-auto px-6">
+          <StatsCarousel />
         </div>
       </section>
 
