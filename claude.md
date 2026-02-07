@@ -436,9 +436,9 @@ npm run lint         # Run ESLint
 
 ---
 
-**Last Updated:** 2026-02-06
-**Status:** ✅ Interactive home page with Bento Gallery, Highlighter Hero, DailyPulse Cards, Orbiting Skills (mobile-responsive)
-**Next Action:** Continue adding guides, refining mobile UX, and monitoring Daily Pulse feature
+**Last Updated:** 2026-02-07
+**Status:** ✅ AI-generated guide cover images, Mailchimp newsletter integration, comprehensive site audit completed
+**Next Action:** Implement audit improvements (see Session 2026-02-07 audit report below)
 
 ---
 
@@ -650,3 +650,74 @@ BackgroundPathsEffect (fixed, full-page)
 | HighlightGroup/Item | `components/ui/highlighter.tsx` | Mouse-tracking glow container |
 | Particles | `components/ui/highlighter.tsx` | Canvas-based particle effect |
 | OrbitingSkills | `components/ui/orbiting-skills.tsx` | Animated orbital service icons |
+
+
+### Session 2026-02-07
+
+**Orbiting Skills Mobile Fix (continued):**
+- Fixed mobile jitter: removed `transition-all duration-300` from orbiting icon wrapper (fought against requestAnimationFrame)
+- Added `MobileServiceCard` component for static 2-column grid on mobile (<640px)
+- Added `willChange: 'transform'` for GPU acceleration
+
+**Stats Carousel (Added then Removed):**
+- Created `components/ui/carousel.tsx` (shadcn embla-carousel) and `components/ui/stats-carousel.tsx`
+- Installed `embla-carousel-react` and `embla-carousel-auto-scroll`
+- Fixed mobile issues: `stopOnInteraction: false, watchDrag: false`
+- Changed mobile basis from `1/2` to `1/3`
+- **Removed from home page** after user reported it broke the page (file still exists but not imported)
+
+**Newsletter / Mailchimp Integration:**
+- Created `components/ui/newsletter.tsx` - email signup form with loading/success/error states
+- Created `app/api/subscribe/route.ts` - POST endpoint for Mailchimp API
+- Dark gradient card with mail icon, orci-cyan accents, Hebrew UI
+- Env vars: `MAILCHIMP_API_KEY`, `MAILCHIMP_AUDIENCE_ID`, `MAILCHIMP_SERVER_PREFIX`
+- **Important:** Vercel env vars must be set at **Project level**, not Team level (Team-level vars don't inject into serverless functions)
+- Added debug logging for missing env vars
+- Replaced old CTA section in home page with Newsletter component
+
+**AI-Generated Guide Cover Images:**
+- Generated 5 cover images using Nano Banana Pro AI
+- Saved with clean filenames in `public/guides/`:
+  - `guide-talking-objects.png` - Pixar fork in restaurant (Guide 1: חפצים מדברים)
+  - `guide-ai-influencer.png` - Woman with phone (Guide 2: משפיענית AI)
+  - `guide-penguin-viral.png` - Penguins with Israeli flag (Guide 3: פינגווין ויראלי)
+  - `guide-floating-trend.png` - Man levitating in sunset (Guide 4: טרנד הריחוף)
+  - `guide-abandoned-figures.png` - Creepy doll in tunnel (Guide 5: דמיות נטושות)
+- Updated image references in both `app/page.tsx` and `app/guides/page.tsx`
+- Original images preserved for use inside guide articles (step-by-step screenshots)
+- Commit: 2a17669
+
+**Home Page Structure (Current):**
+```
+BackgroundPathsEffect (fixed, full-page)
+└── HeroSection (Highlighter + Particles + animated pointer)
+└── InteractiveBentoGallery (featured guides with AI cover images)
+└── DailyPulse (3-card AI news grid)
+└── ContainerScroll (YouTube channel showcase - 25M views, 130K subs)
+└── OrbitingSkills (6 AI services on orbital rings / mobile grid)
+└── Newsletter (Mailchimp email signup - dark gradient card)
+└── Footer
+```
+
+**Comprehensive Site Audit Completed:**
+Full audit covering Technical Debt, UI/UX, Conversion/Trust, and Content Strategy.
+
+**Essential items to implement next session:**
+1. Remove `'use client'` from static pages (products, contact, portfolio, about) + add metadata
+2. Fix viewport metadata deprecation warning
+3. Hide Dock on desktop (`lg:hidden`) + add bottom padding for dock overlap
+4. Add Course Waitlist section (for Feb 2026 course launch)
+5. Add Testimonials section (trust signals)
+6. Fix inconsistent 2.4M stats in about/portfolio pages
+7. Replace Unsplash stock image in about page with real content
+8. Create AI Prompt Library page (/prompts)
+
+**Enhancement items for later:**
+- Framer Motion animations for inner pages
+- GuidesLayout template + categories/difficulty levels
+- Daily Pulse sharing buttons + weekly archive
+- FAQ Accordion component
+- CTASection component to reduce duplication
+- Background animation prefers-reduced-motion support
+- Before & After gallery
+- AI Tool of the Week feature

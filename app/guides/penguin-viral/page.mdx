@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
 import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
@@ -43,22 +44,59 @@ export const metadata = {
         קודם כל, אספתי <span className="text-orci-cyan font-bold">תמונות רפרנס</span> מהטרנד המקורי של הפינגווין. חיפשתי תמונות באיכות גבוהה מזוויות שונות.
       </p>
 
-      <p className="text-lg text-gray-700 leading-relaxed mb-4">
-        העליתי את התמונות ל-<span className="text-orci-cyan font-bold">Nano Banana Pro</span> ויצרתי דמות פינגווין עקבית שאפשר להשתמש בה במספר תמונות.
-      </p>
-
-      {/* Image Placeholder */}
-      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border-2 border-gray-200 flex items-center justify-center" style={{minHeight: '300px'}}>
-        <div className="text-center p-8">
-          <div className="text-6xl mb-4">🐧</div>
-          <p className="text-gray-600 text-lg">תמונות רפרנס של הפינגווין מהטרנד</p>
-          <p className="text-gray-500 text-sm mt-2">(להוסיף תמונה כאן)</p>
+      {/* 3 Reference Photos Side by Side */}
+      <div className="my-8 grid grid-cols-3 gap-3">
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/penguin-viral/ref-1.png"
+            alt="תמונת רפרנס פינגווין 1"
+            width={400}
+            height={500}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/penguin-viral/ref-2.png"
+            alt="תמונת רפרנס פינגווין 2"
+            width={400}
+            height={500}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/penguin-viral/ref-3.png"
+            alt="תמונת רפרנס פינגווין 3"
+            width={400}
+            height={500}
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
 
-      <p className="text-lg text-gray-700 leading-relaxed">
-        <span className="text-orci-cyan font-bold">טיפ:</span> השתמשו ב-5-7 תמונות רפרנס מזוויות שונות כדי שהמערכת תלמד את הדמות היטב.
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
+        העליתי את התמונות ל-<span className="text-orci-cyan font-bold">Nano Banana Pro</span> עם הפרומפט הזה:
       </p>
+
+      <CopyPrompt prompt="אתה מומחה בשחזור פרומטים לרמת דיוק מאוד גבוה, מכניס לך כאן מספר תמונות רפרנס תיצור לי את הפרומט המדויק שיכין את התמונה" />
+
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
+        ומשם תקבלו את התוצאה שרציתם - את הפרומפט להתחיל ליצור את הגרסה שלכם:
+      </p>
+
+      <CopyPrompt prompt="Prompt: A cinematic wide shot of a lone Emperor penguin walking away from the camera into a vast, desolate Antarctic ice field. In the blurred foreground (bokeh), a colony of penguins stands watching the lone individual depart. A clear trail of footprints is pressed into the crisp, textured snow leading toward the horizon. In the background, jagged snow-covered mountains rise under a heavy, dramatic, and moody overcast sky. Cold atmospheric lighting, high contrast, hyper-realistic, 8k resolution, National Geographic photography style, deep blues and stark whites. --ar 9:16" />
+
+      {/* Main Result Photo */}
+      <div className="my-8 rounded-2xl overflow-hidden" style={{maxWidth: '500px', margin: '2rem auto'}}>
+        <Image
+          src="/guides/penguin-viral/main-photo.png"
+          alt="תוצאת הפינגווין - התמונה הראשונה"
+          width={500}
+          height={700}
+          className="w-full h-auto"
+        />
+      </div>
     </div>
 
     {/* Step 2 */}
@@ -90,12 +128,43 @@ export const metadata = {
         </li>
       </ul>
 
-      {/* Image Placeholder */}
-      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border-2 border-gray-200 flex items-center justify-center" style={{minHeight: '300px'}}>
-        <div className="text-center p-8">
-          <div className="text-6xl mb-4">🇮🇱</div>
-          <p className="text-gray-600 text-lg">הפינגווין עם דגל ישראל ודגלים נוספים</p>
-          <p className="text-gray-500 text-sm mt-2">(להוסיף תמונה כאן)</p>
+      {/* 4 Flag Photos Side by Side */}
+      <div className="my-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/penguin-viral/flag-1.png"
+            alt="פינגווין עם דגל 1"
+            width={400}
+            height={500}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/penguin-viral/flag-2.png"
+            alt="פינגווין עם דגל 2"
+            width={400}
+            height={500}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/penguin-viral/flag-3.png"
+            alt="פינגווין עם דגל 3"
+            width={400}
+            height={500}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/penguin-viral/flag-4.png"
+            alt="פינגווין עם דגל 4"
+            width={400}
+            height={500}
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
 
@@ -133,18 +202,47 @@ export const metadata = {
         </li>
       </ul>
 
-      {/* Image Placeholder */}
-      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border-2 border-gray-200 flex items-center justify-center" style={{minHeight: '300px'}}>
-        <div className="text-center p-8">
-          <div className="text-6xl mb-4">🤖</div>
-          <p className="text-gray-600 text-lg">ממשק Gemini עם הפרומפטים</p>
-          <p className="text-gray-500 text-sm mt-2">(להוסיף תמונה כאן)</p>
-        </div>
+      {/* Gemini Screenshot */}
+      <div className="my-8 rounded-2xl overflow-hidden">
+        <Image
+          src="/guides/penguin-viral/gemini-prompt.jpeg"
+          alt="ממשק Gemini עם הפרומפטים"
+          width={800}
+          height={500}
+          className="w-full h-auto"
+        />
       </div>
 
-      <p className="text-lg text-gray-700 leading-relaxed">
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
         רשמתי ל-Gemini את הרעיון הכללי, והוא בנה לי סדרה שלמה של פרומפטים מדויקים.
+        הנה 4 הפרומפטים שיצרו את הויזואל:
       </p>
+
+      {/* 4 Prompts Expandable Box */}
+      <details className="my-6 bg-gray-800/80 border border-orci-cyan/30 rounded-xl overflow-hidden">
+        <summary className="px-5 py-4 cursor-pointer text-orci-cyan font-bold text-lg hover:bg-gray-700/50 transition-colors flex items-center gap-2">
+          <span>📋</span>
+          <span>4 הפרומפטים המלאים - לחצו לפתיחה</span>
+        </summary>
+        <div className="px-5 pb-5 space-y-4">
+          <div>
+            <p className="text-orci-cyan font-bold text-sm mb-1">P1 - הצעד הראשון:</p>
+            <CopyPrompt prompt="A photorealistic, cinematic wide shot on Antarctica. An Emperor penguin wearing a knitted Israeli flag scarf is walking steadily away from the camera down a snowy path, leaving footprints. In the foreground, a group of other penguins wearing various international scarves look briefly towards the departing penguin with confused movements, shrugging, and then turn back to huddling together. The vast snowy mountains and cloudy sky are in the background. Highly detailed snow texture, 8k documentary footage." />
+          </div>
+          <div>
+            <p className="text-orci-cyan font-bold text-sm mb-1">P2 - המבט הנחוש:</p>
+            <CopyPrompt prompt="An intense, photorealistic close-up of an Emperor penguin wearing a blue and white Israeli flag scarf. The penguin takes its first decisive waddling steps forward, moving past other blurred penguins in the background. It makes direct, intense eye contact with the camera lens with a determined look. Light snowflakes are falling. Shallow depth of field, high fidelity wildlife cinematography, detailed feathers and scarf texture." />
+          </div>
+          <div>
+            <p className="text-orci-cyan font-bold text-sm mb-1">P3 - הזווית מלמעלה:</p>
+            <CopyPrompt prompt="Majestic drone cinematography, rising shot. The camera starts low and slowly ascends high above the Antarctic ice sheet. It reveals a massive, dense colony of thousands of huddling Emperor penguins. A single, small figure of the penguin with the Israeli scarf is seen walking resolutely away from the massive colony on a long, solitary snowy track. The shot emphasizes the vast scale and isolation. Detailed ice patterns visible from above. Super realistic." />
+          </div>
+          <div>
+            <p className="text-orci-cyan font-bold text-sm mb-1">P4 - השקיעה:</p>
+            <CopyPrompt prompt="Cinematic golden hour, photorealistic. The lone Emperor penguin with the Israeli scarf stands perfectly still at the very edge of a massive Antarctic ice shelf cliff. It is gazing out thoughtfully at a spectacular, dramatic sunset with orange and gold clouds over the frozen ocean. The light backlights the penguin and the blowing snow dust. A moment of peaceful contemplation. Slow, subtle camera push-in." />
+          </div>
+        </div>
+      </details>
     </div>
 
     {/* Step 4 */}
@@ -176,13 +274,15 @@ export const metadata = {
         </li>
       </ul>
 
-      {/* Image Placeholder */}
-      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border-2 border-gray-200 flex items-center justify-center" style={{minHeight: '300px'}}>
-        <div className="text-center p-8">
-          <div className="text-6xl mb-4">🎬</div>
-          <p className="text-gray-600 text-lg">ממשק Kling 2.6 עם הנפשת הפינגווין</p>
-          <p className="text-gray-500 text-sm mt-2">(להוסיף תמונה כאן)</p>
-        </div>
+      {/* Kling Result Photo */}
+      <div className="my-8 rounded-2xl overflow-hidden" style={{maxWidth: '500px', margin: '2rem auto'}}>
+        <Image
+          src="/guides/penguin-viral/main-photo-2.png"
+          alt="תוצאת ההנפשה ב-Kling 2.6"
+          width={500}
+          height={700}
+          className="w-full h-auto"
+        />
       </div>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-4">
