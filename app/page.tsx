@@ -12,7 +12,7 @@ import { BackgroundPathsEffect } from '@/components/ui/background-paths';
 import InteractiveBentoGallery from '@/components/ui/interactive-bento-gallery';
 import { HighlighterItem, HighlightGroup, Particles } from '@/components/ui/highlighter';
 import OrbitingSkills from '@/components/ui/orbiting-skills';
-import { StatsCarousel } from '@/components/ui/stats-carousel';
+
 
 function HeroSection() {
   const [scope, animate] = useAnimate();
@@ -286,13 +286,6 @@ export default function Home() {
               גלו עוד
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* STATISTICS SECTION - Scrolling Stats Carousel */}
-      <section className="cap-section cap-section-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <StatsCarousel />
         </div>
       </section>
 
