@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
 import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
@@ -50,48 +51,222 @@ export const metadata = {
       </p>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-4">
-        העלו <span className="text-orci-cyan font-bold">תמונות רפרנס</span> של הסגנון שאתם רוצים - פנים, תסרוקת, לבוש, סגנון צילום. המערכת תלמד את המאפיינים ותיצור דמות מותאמת אישית.
+        יצרתי עבורכם <span className="text-orci-cyan font-bold">פרומפט מיוחד</span> המייצר עבורכם איזה משפיענים שתצטרכו לפי ההגדרות:
       </p>
 
-      {/* Image Placeholder */}
-      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '300px'}}>
-        <div className="text-center p-8">
-          <div className="text-6xl mb-4">🎨</div>
-          <p className="text-gray-600 text-lg">תמונה: צילום מסך של Nano Banana Pro עם תמונות רפרנס</p>
-          <p className="text-gray-500 text-sm mt-2">(להוסיף תמונה כאן)</p>
+      {/* JSON Prompt Expandable Box */}
+      <details className="my-6 bg-gray-800/80 border border-orci-cyan/30 rounded-xl overflow-hidden">
+        <summary className="px-5 py-4 cursor-pointer text-orci-cyan font-bold text-lg hover:bg-gray-700/50 transition-colors flex items-center gap-2">
+          <span>📋</span>
+          <span>פרומפט JSON ליצירת משפיען</span>
+        </summary>
+        <div className="px-5 pb-5">
+          <CopyPrompt prompt={`{
+  "influencer_config": {
+    "identity": {
+      "gender": "Female",
+      "age": 22,
+      "ethnicity": "Caucasian with a sun-kissed tan",
+      "nationality_vibe": "Mediterranean"
+    },
+    "physical_features": {
+      "hair": {
+        "color": "Caramel blonde with natural highlights",
+        "style": "Messy beach waves, loose strands",
+        "length": "Shoulder-length"
+      },
+      "eyes": {
+        "color": "Ocean blue with detailed iris texture",
+        "expression": "Natural, soft smile, looking at camera"
+      },
+      "skin_details": {
+        "texture": "Visible pores, hyper-realistic skin grain, non-perfect skin",
+        "features": "Heavy dusting of natural freckles across nose and cheeks, small beauty marks",
+        "finish": "Slightly dewy, natural oily sheen on forehead, no-makeup look"
+      }
+    },
+    "environment": {
+      "location": "Outdoor sidewalk cafe in Lisbon, blurred background",
+      "lighting": "Golden hour, soft backlighting, warm sunlight filtering through leaves",
+      "atmosphere": "Cinematic, urban yet cozy"
+    },
+    "technical_specs": {
+      "camera": "Sony A7R IV, 85mm lens",
+      "aperture": "f/1.8 for deep bokeh and shallow depth of field",
+      "format": "Raw photo, high dynamic range, 8k resolution",
+      "style_modifiers": [
+        "Hyper-realistic",
+        "Photorealistic",
+        "Ultra-detailed skin",
+        "Film grain",
+        "Kodak Portra 400 aesthetic",
+        "No-filter look"
+      ],
+      "negative_prompt_concepts": [
+        "CGI",
+        "3D render",
+        "Smooth skin",
+        "Plastic texture",
+        "Airbrushed",
+        "Cartoon",
+        "Anime",
+        "Perfect teeth",
+        "Artificial lighting"
+      ]
+    },
+    "outfit": {
+      "top": "Oversized knitted cream sweater, visible fabric texture",
+      "accessories": "Thin gold necklace, small hoop earrings"
+    }
+  }
+}`} />
+        </div>
+      </details>
+
+      {/* 4 Model Example Photos Side by Side */}
+      <div className="my-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/ai-influencer/model-1.png"
+            alt="דוגמא למשפיענית AI 1"
+            width={400}
+            height={500}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/ai-influencer/model-2.png"
+            alt="דוגמא למשפיענית AI 2"
+            width={400}
+            height={500}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/ai-influencer/model-3.png"
+            alt="דוגמא למשפיענית AI 3"
+            width={400}
+            height={500}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/ai-influencer/model-4.jpeg"
+            alt="דוגמא למשפיענית AI 4"
+            width={400}
+            height={500}
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
 
       <p className="text-lg text-gray-700 leading-relaxed">
-        טיפ: השתמשו ב-3-5 תמונות רפרנס באיכות גבוהה לתוצאות הכי טובות.
+        תיצרו את המודל שיהיה הפנים של העסק שלכם
       </p>
     </div>
 
     {/* Step 2 */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 2: התאמה לסביבות
+        שלב 2: הטמעה בסביבה
       </h2>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-4">
         עכשיו הקסם מתחיל - תחליפו את הדמות שלכם ב-<span className="text-orci-cyan font-bold">סביבות אמיתיות</span>: מסעדות, חופים, אירועים, כל מקום שתרצו.
       </p>
 
+      {/* 3 Environment Example Photos Side by Side */}
+      <div className="my-8 grid grid-cols-3 gap-3">
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/ai-influencer/env-1.jpeg"
+            alt="משפיענית AI בסביבה 1"
+            width={400}
+            height={500}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/ai-influencer/env-2.png"
+            alt="משפיענית AI בסביבה 2"
+            width={400}
+            height={500}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/ai-influencer/env-3.png"
+            alt="משפיענית AI בסביבה 3"
+            width={400}
+            height={500}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
       <p className="text-lg text-gray-700 leading-relaxed mb-4">
-        הוסיפו <span className="text-orci-cyan font-bold">אפקט מציאות</span> על ידי שילוב עם תמונות רקע אותנטיות ותאורה טבעית.
+        <span className="text-orci-cyan font-bold">טיפ חשוב שלי</span> - בשביל אפקט המציאות תכניסו את המודל עם תמונות רקע אמיתיות. לדוגמא כאן החלפתי את המודל:
       </p>
 
-      {/* Image Placeholder */}
-      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '300px'}}>
-        <div className="text-center p-8">
-          <div className="text-6xl mb-4">📸</div>
-          <p className="text-gray-600 text-lg">תמונה: דוגמאות לדמות בסביבות שונות</p>
-          <p className="text-gray-500 text-sm mt-2">(להוסיף תמונה כאן)</p>
+      <p className="text-lg text-gray-700 leading-relaxed mb-4 font-bold">
+        תמונות אמיתיות:
+      </p>
+
+      {/* 2 Real Photos Side by Side */}
+      <div className="my-6 grid grid-cols-2 gap-3">
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/ai-influencer/real-1.jpg"
+            alt="תמונת רקע אמיתית 1"
+            width={500}
+            height={400}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/ai-influencer/real-2.jpg"
+            alt="תמונת רקע אמיתית 2"
+            width={500}
+            height={400}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
+        החלפתי את המודל שיהיה בתמונות המציאותיות האלה:
+      </p>
+
+      {/* 2 Model in Real Env Photos Side by Side */}
+      <div className="my-6 grid grid-cols-2 gap-3">
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/ai-influencer/model-real-1.png"
+            alt="מודל AI בסביבה אמיתית 1"
+            width={500}
+            height={400}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="rounded-xl overflow-hidden">
+          <Image
+            src="/guides/ai-influencer/model-real-2.png"
+            alt="מודל AI בסביבה אמיתית 2"
+            width={500}
+            height={400}
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
 
       <p className="text-lg text-gray-700 leading-relaxed">
-        כך נוצרת האשליה שזו באמת משפיענית אמיתית שמצלמת את עצמה במקומות שונים.
+        זה יתן לכם את האפקט האקסטרה מציאותי
       </p>
     </div>
 
@@ -109,13 +284,42 @@ export const metadata = {
         בחרו <span className="text-orci-cyan font-bold">קול בעברית</span> מתוך הספרייה, או העלו הקלטה משלכם. Veo ידאג לסנכרון השפתיים עם הקול באופן מושלם.
       </p>
 
-      {/* Image Placeholder */}
-      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '300px'}}>
-        <div className="text-center p-8">
-          <div className="text-6xl mb-4">🎬</div>
-          <p className="text-gray-600 text-lg">תמונה: ממשק Veo 3.1 עם אפשרויות הנפשה</p>
-          <p className="text-gray-500 text-sm mt-2">(להוסיף תמונה כאן)</p>
+      {/* Animation Prompt Expandable Box */}
+      <details className="my-6 bg-gray-800/80 border border-orci-cyan/30 rounded-xl overflow-hidden">
+        <summary className="px-5 py-4 cursor-pointer text-orci-cyan font-bold text-lg hover:bg-gray-700/50 transition-colors flex items-center gap-2">
+          <span>📋</span>
+          <span>פרומפט לדוגמא</span>
+        </summary>
+        <div className="px-5 pb-5">
+          <CopyPrompt prompt={`No subtitles. No music.
+
+SHOT — Medium close-up framing of the model seated at a wooden table in a cozy café, capturing her from mid-chest up as she holds a coffee cup near her lips.
+
+SUBJECT — Female model with medium-length dark hair, wearing a chunky cream-colored knit sweater. She appears relaxed and content.
+
+SCENE — Indoor café with warm daylight filtering through large windows on the right side. Background softly blurred, showing casual patrons seated and engaged in conversations. Warm, neutral color tones dominate the environment.
+
+VISUAL DETAILS — White ceramic coffee cup with latte art, light coffee stain running down the side. Wooden table with a silver-gray laptop partially visible and a plate with a croissant in the foreground. Soft natural light highlights the texture of her sweater and subtle freckles on her face.
+
+ACTION AND CAMERA MOTION — Model lifts the coffee cup with both hands, brings it slowly to her lips, takes a gentle sip. Subtle smile forms as she savors the coffee. Camera holds steady with slight, smooth forward dolly to enhance intimacy.
+
+CINEMATOGRAPHY — Soft natural lighting from the window fills the space, creating a warm and inviting mood. Color palette emphasizes earth tones—cream, brown, soft grays—with a cozy, comfortable vibe.
+
+AUDIO — Voice: Warm, conversational female voice in Hebrew. Tone: relaxed and happy. Dialogue: "זה פשוט מושלם, בית הקפה האהוב עליי." Primary sounds: gentle sipping, ambient café chatter, faint coffee machine sounds, subtle clinking of cups.
+
+STYLE — Naturalistic, UGC aesthetic with minimal post-processing for authenticity. High-quality 4K video resolution emphasizing texture and atmosphere. No on-screen text or overlays.`} />
         </div>
+      </details>
+
+      {/* Animation Result Image */}
+      <div className="my-8 rounded-2xl overflow-hidden" style={{maxWidth: '500px', margin: '2rem auto'}}>
+        <Image
+          src="/guides/ai-influencer/env-3.png"
+          alt="תוצאת ההנפשה - משפיענית AI בבית קפה"
+          width={500}
+          height={700}
+          className="w-full h-auto"
+        />
       </div>
 
       <p className="text-lg text-gray-700 leading-relaxed">
@@ -152,13 +356,15 @@ export const metadata = {
         </li>
       </ul>
 
-      {/* Image Placeholder */}
-      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '300px'}}>
-        <div className="text-center p-8">
-          <div className="text-6xl mb-4">🎙️</div>
-          <p className="text-gray-600 text-lg">תמונה: ממשק ElevenLabs ליצירת קול</p>
-          <p className="text-gray-500 text-sm mt-2">(להוסיף תמונה כאן)</p>
-        </div>
+      {/* ElevenLabs Screenshot */}
+      <div className="my-8 rounded-2xl overflow-hidden">
+        <Image
+          src="/guides/ai-influencer/elevenlabs-screenshot.png"
+          alt="ממשק ElevenLabs ליצירת קול"
+          width={800}
+          height={500}
+          className="w-full h-auto"
+        />
       </div>
 
       <p className="text-lg text-gray-700 leading-relaxed">
