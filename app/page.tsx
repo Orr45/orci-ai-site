@@ -219,7 +219,7 @@ export default function Home() {
       type: "image",
       title: "טריק הרכב המיניאטורי",
       desc: "הטריק שמשגע את הרשת - בלי אפקטים מיוחדים, רק 2 סרטונים פשוטים",
-      url: "/guides/guide-abandoned-figures.png",
+      url: "/guides/guide-car-miniature.png",
       span: "md:col-span-2 md:row-span-3 sm:col-span-2 sm:row-span-2",
       href: "/guides/car-miniature",
     },
