@@ -1,0 +1,227 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'טריק הרכב המיניאטורי - איך יצרתי את האפקט הוויראלי | Orci AI',
+  description: 'מדריך שלב אחר שלב ליצירת אפקט הרכב המיניאטורי הוויראלי - בלי אפקטים מיוחדים, רק 2 סרטונים פשוטים',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        טריק הרכב המיניאטורי
+      </h1>
+      <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-6">
+        הטריק שמשגע את הרשת - בלי אפקטים מיוחדים, רק 2 סרטונים פשוטים!
+      </p>
+
+      {/* Tools Badges */}
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">📱 צילום בסיסי</span>
+        <span className="cap-badge text-sm">🎨 Nano Banana Pro</span>
+        <span className="cap-badge text-sm">🎬 Kling 3.0</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: צילום הסרטונים
+      </h2>
+
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
+        צאו החוצה לרכב שלכם וצלמו את עצמכם <span className="text-orci-cyan font-bold">לוחצים על הכפתור של הרכב</span>.
+      </p>
+
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
+        עכשיו תזיזו את הרכב ושימו <span className="text-orci-cyan font-bold">חפץ קטן באותו מקום</span>. צלמו שוב - מתקרבים לחפץ ולוקחים אותו.
+      </p>
+
+      {/* Image Placeholder - Filming examples */}
+      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border-2 border-dashed border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '250px'}}>
+        <div className="text-center p-8">
+          <div className="text-5xl mb-3">📱</div>
+          <p className="text-gray-500 text-lg font-medium">תמונות מהצילום - להוסיף כאן</p>
+        </div>
+      </div>
+
+      <p className="text-lg text-gray-700 leading-relaxed">
+        <span className="text-orci-cyan font-bold">חשוב:</span> שמרו על אותה זווית צילום בדיוק בשני הסרטונים!
+      </p>
+    </div>
+
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: יצירת הדגם המיניאטורי
+      </h2>
+
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
+        מפה הקסם מתחיל לקרות - קחו את התמונה <span className="text-orci-cyan font-bold">רגע לפני שאתם לוקחים את החפץ</span> ועם <span className="text-orci-cyan font-bold">Nano Banana Pro</span> תחליפו אותו בדגם מיני של הרכב.
+      </p>
+
+      {/* Prompt Placeholder */}
+      <details className="my-6 bg-gray-800/80 border border-orci-cyan/30 rounded-xl overflow-hidden">
+        <summary className="px-5 py-4 cursor-pointer text-orci-cyan font-bold text-lg hover:bg-gray-700/50 transition-colors flex items-center gap-2">
+          <span>📋</span>
+          <span>פרומפט להחלפת החפץ בדגם מיני - להוסיף</span>
+        </summary>
+        <div className="px-5 pb-5">
+          <p className="text-gray-400 text-sm">פרומפט יתווסף כאן</p>
+        </div>
+      </details>
+
+      {/* Image Placeholder - Before/After */}
+      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border-2 border-dashed border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '250px'}}>
+        <div className="text-center p-8">
+          <div className="text-5xl mb-3">🎨</div>
+          <p className="text-gray-500 text-lg font-medium">תמונות לפני ואחרי - להוסיף כאן</p>
+        </div>
+      </div>
+
+      <p className="text-lg text-gray-700 leading-relaxed">
+        התוצאה: תמונה של <span className="text-orci-cyan font-bold">דגם מיניאטורי מושלם</span> של הרכב שלכם באותו מיקום בדיוק.
+      </p>
+    </div>
+
+    {/* Step 3 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3: יצירת המעבר עם Kling 3.0
+      </h2>
+
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
+        עכשיו קחו את <span className="text-orci-cyan font-bold">התמונה שנייה אחרי שהיד יורדת</span> ואת <span className="text-orci-cyan font-bold">הפריים האחרון עם הדגם</span> שהכנו.
+      </p>
+
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
+        מכניסים ל-<span className="text-orci-cyan font-bold">Kling 3.0</span>, וזהו - הוא יוצר את המעבר המושלם!
+      </p>
+
+      {/* Prompt Placeholder */}
+      <details className="my-6 bg-gray-800/80 border border-orci-cyan/30 rounded-xl overflow-hidden">
+        <summary className="px-5 py-4 cursor-pointer text-orci-cyan font-bold text-lg hover:bg-gray-700/50 transition-colors flex items-center gap-2">
+          <span>📋</span>
+          <span>פרומפט ל-Kling 3.0 - להוסיף</span>
+        </summary>
+        <div className="px-5 pb-5">
+          <p className="text-gray-400 text-sm">פרומפט יתווסף כאן</p>
+        </div>
+      </details>
+
+      {/* Image Placeholder - Kling interface */}
+      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border-2 border-dashed border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '250px'}}>
+        <div className="text-center p-8">
+          <div className="text-5xl mb-3">🎬</div>
+          <p className="text-gray-500 text-lg font-medium">תמונת מסך Kling 3.0 - להוסיף כאן</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Step 4 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 4: השלב הסופי - Kling 3 Edit
+      </h2>
+
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
+        לשלב הסופי והאחרון תכניסו ל-<span className="text-orci-cyan font-bold">Kling 3 Edit</span>:
+      </p>
+
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-gray-700 pr-6 relative">
+          <span className="absolute right-0 text-orci-cyan">•</span>
+          <span className="text-orci-cyan font-bold">הסרטון המקורי</span> עם החפץ
+        </li>
+        <li className="text-lg text-gray-700 pr-6 relative">
+          <span className="absolute right-0 text-orci-cyan">•</span>
+          <span className="text-orci-cyan font-bold">התמונה של הדגם</span> המיניאטורי
+        </li>
+      </ul>
+
+      <p className="text-lg text-gray-700 leading-relaxed mb-4">
+        וזהו - <span className="text-orci-cyan font-bold">התוצאה המטורפת אצלכם!</span>
+      </p>
+
+      {/* Image Placeholder - Final result */}
+      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border-2 border-dashed border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '250px'}}>
+        <div className="text-center p-8">
+          <div className="text-5xl mb-3">✨</div>
+          <p className="text-gray-500 text-lg font-medium">תמונת תוצאה סופית - להוסיף כאן</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Result Section */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">אפקט וויראלי מטורף</span> - בלי אפקטים מיוחדים!
+        </p>
+        <p className="text-lg text-gray-600 mt-2">
+          רק 2 סרטונים פשוטים + AI = קסם שמשגע את הרשת
+        </p>
+      </div>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">לא צריך אפקטים מורכבים - רק רעיון חכם ו-AI</span>
+        </p>
+        <p className="text-lg text-gray-600">
+          הטריק הזה דורש רק טלפון, רכב, וכלי AI פשוטים. התוצאה? תוכן שמשגע את הרשת.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section - Dark Card */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים את כל הפרומפטים?
+      </h2>
+      <p className="text-gray-300 mb-6 text-lg">
+        תכתבו 'מדריך' בתגובות או שלחו לי הודעה
+      </p>
+      <a
+        href="https://wa.me/972542599107"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        בואו נדבר בוואטסאפ
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>

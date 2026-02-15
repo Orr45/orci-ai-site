@@ -56,6 +56,15 @@ export default function GuidesPage() {
       span: "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
       href: "/guides/new-guide-2",
     },
+    {
+      id: 6,
+      type: "image",
+      title: "טריק הרכב המיניאטורי",
+      desc: "הטריק שמשגע את הרשת - בלי אפקטים מיוחדים, רק 2 סרטונים פשוטים",
+      url: "/guides/guide-abandoned-figures.png",
+      span: "md:col-span-2 md:row-span-3 sm:col-span-2 sm:row-span-2",
+      href: "/guides/car-miniature",
+    },
   ];
 
   return (
