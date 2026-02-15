@@ -52,44 +52,43 @@ const InteractiveBentoGallery: React.FC<InteractiveBentoGalleryProps> = ({ media
                 }}
             >
                 {mediaItems.map((item, index) => {
-                    const content = (
-                        <motion.div
-                            key={item.id}
-                            className={`relative overflow-hidden rounded-xl cursor-pointer ${item.span}`}
-                            variants={{
-                                hidden: { y: 50, scale: 0.9, opacity: 0 },
-                                visible: {
-                                    y: 0, scale: 1, opacity: 1,
-                                    transition: { type: "spring", stiffness: 350, damping: 25, delay: index * 0.05 }
-                                }
-                            }}
-                            whileHover={{ scale: 1.02 }}
-                        >
-                            <Image
-                                src={item.url}
-                                alt={item.title}
-                                fill
-                                className="object-cover"
-                                loading="lazy"
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            />
-                            <motion.div
-                                className="absolute inset-0 flex flex-col justify-end p-3 md:p-4"
-                                initial={{ opacity: 0 }}
-                                whileHover={{ opacity: 1 }}
-                                transition={{ duration: 0.2 }}
-                            >
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                                <h3 className="relative text-white text-sm md:text-base font-bold line-clamp-1">{item.title}</h3>
-                                <p className="relative text-white/80 text-xs md:text-sm mt-0.5 line-clamp-2">{item.desc}</p>
-                            </motion.div>
-                        </motion.div>
-                    )
+                    const Wrapper = item.href ? Link : 'div'
+                    const wrapperProps = item.href ? { href: item.href } : {}
 
-                    if (item.href) {
-                        return <Link key={item.id} href={item.href} className={item.span}>{content}</Link>
-                    }
-                    return content
+                    return (
+                        <Wrapper key={item.id} {...wrapperProps as any} className={`block ${item.span}`}>
+                            <motion.div
+                                className="relative overflow-hidden rounded-xl cursor-pointer w-full h-full"
+                                variants={{
+                                    hidden: { y: 50, scale: 0.9, opacity: 0 },
+                                    visible: {
+                                        y: 0, scale: 1, opacity: 1,
+                                        transition: { type: "spring", stiffness: 350, damping: 25, delay: index * 0.05 }
+                                    }
+                                }}
+                                whileHover={{ scale: 1.02 }}
+                            >
+                                <Image
+                                    src={item.url}
+                                    alt={item.title}
+                                    fill
+                                    className="object-cover"
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                />
+                                <motion.div
+                                    className="absolute inset-0 flex flex-col justify-end p-3 md:p-4"
+                                    initial={{ opacity: 0 }}
+                                    whileHover={{ opacity: 1 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                                    <h3 className="relative text-white text-sm md:text-base font-bold line-clamp-1">{item.title}</h3>
+                                    <p className="relative text-white/80 text-xs md:text-sm mt-0.5 line-clamp-2">{item.desc}</p>
+                                </motion.div>
+                            </motion.div>
+                        </Wrapper>
+                    )
                 })}
             </motion.div>
         </div>
