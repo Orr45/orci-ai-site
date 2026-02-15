@@ -89,7 +89,7 @@ export default function GuidesPage() {
           <InteractiveBentoGallery
             mediaItems={guideMediaItems}
             title="מדריכים כתובים"
-            description="גררו וחקרו את אוסף המדריכים שלנו - לחצו על מדריך כדי לקרוא עוד"
+            description="לחצו על מדריך כדי לקרוא עוד"
           />
         </div>
       </section>

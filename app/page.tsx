@@ -243,7 +243,7 @@ export default function Home() {
           <InteractiveBentoGallery
             mediaItems={guideMediaItems}
             title="המדריכים המובילים שלנו"
-            description="גררו וחקרו את אוסף המדריכים שלנו - לחצו על מדריך כדי לקרוא עוד"
+            description="לחצו על מדריך כדי לקרוא עוד"
           />
         </div>
       </section>
