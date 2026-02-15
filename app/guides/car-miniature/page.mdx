@@ -48,11 +48,24 @@ export const metadata = {
         עכשיו תזיזו את הרכב ושימו <span className="text-orci-cyan font-bold">חפץ קטן באותו מקום</span>. צלמו שוב - מתקרבים לחפץ ולוקחים אותו.
       </p>
 
-      {/* Image Placeholder - Filming examples */}
-      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border-2 border-dashed border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '250px'}}>
-        <div className="text-center p-8">
-          <div className="text-5xl mb-3">📱</div>
-          <p className="text-gray-500 text-lg font-medium">תמונות מהצילום - להוסיף כאן</p>
+      <div className="my-8 grid grid-cols-2 gap-4">
+        <div className="rounded-2xl overflow-hidden">
+          <Image
+            src="/guides/car-miniature/car-1.png"
+            alt="צילום הרכב - לחיצה על כפתור"
+            width={500}
+            height={500}
+            className="w-full h-auto"
+          />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image
+            src="/guides/car-miniature/car-2.png"
+            alt="צילום החפץ במקום הרכב"
+            width={500}
+            height={500}
+            className="w-full h-auto"
+          />
         </div>
       </div>
 
@@ -71,22 +84,26 @@ export const metadata = {
         מפה הקסם מתחיל לקרות - קחו את התמונה <span className="text-orci-cyan font-bold">רגע לפני שאתם לוקחים את החפץ</span> ועם <span className="text-orci-cyan font-bold">Nano Banana Pro</span> תחליפו אותו בדגם מיני של הרכב.
       </p>
 
-      {/* Prompt Placeholder */}
-      <details className="my-6 bg-gray-800/80 border border-orci-cyan/30 rounded-xl overflow-hidden">
-        <summary className="px-5 py-4 cursor-pointer text-orci-cyan font-bold text-lg hover:bg-gray-700/50 transition-colors flex items-center gap-2">
-          <span>📋</span>
-          <span>פרומפט להחלפת החפץ בדגם מיני - להוסיף</span>
-        </summary>
-        <div className="px-5 pb-5">
-          <p className="text-gray-400 text-sm">פרומפט יתווסף כאן</p>
-        </div>
-      </details>
+      <CopyPrompt prompt="replace the tiny green dinosaur in image 1 to a tiny model of chevrolet cruze 2014 like in image 2" />
 
-      {/* Image Placeholder - Before/After */}
-      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border-2 border-dashed border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '250px'}}>
-        <div className="text-center p-8">
-          <div className="text-5xl mb-3">🎨</div>
-          <p className="text-gray-500 text-lg font-medium">תמונות לפני ואחרי - להוסיף כאן</p>
+      <div className="my-8 grid grid-cols-2 gap-4">
+        <div className="rounded-2xl overflow-hidden">
+          <Image
+            src="/guides/car-miniature/mini-car.png"
+            alt="התוצאה - דגם מיניאטורי של הרכב"
+            width={500}
+            height={500}
+            className="w-full h-auto"
+          />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image
+            src="/guides/car-miniature/car-2.png"
+            alt="התמונה המקורית עם החפץ"
+            width={500}
+            height={500}
+            className="w-full h-auto"
+          />
         </div>
       </div>
 
@@ -109,22 +126,28 @@ export const metadata = {
         מכניסים ל-<span className="text-orci-cyan font-bold">Kling 3.0</span>, וזהו - הוא יוצר את המעבר המושלם!
       </p>
 
-      {/* Prompt Placeholder */}
-      <details className="my-6 bg-gray-800/80 border border-orci-cyan/30 rounded-xl overflow-hidden">
-        <summary className="px-5 py-4 cursor-pointer text-orci-cyan font-bold text-lg hover:bg-gray-700/50 transition-colors flex items-center gap-2">
-          <span>📋</span>
-          <span>פרומפט ל-Kling 3.0 - להוסיף</span>
-        </summary>
-        <div className="px-5 pb-5">
-          <p className="text-gray-400 text-sm">פרומפט יתווסף כאן</p>
-        </div>
-      </details>
+      <CopyPrompt prompt="cars fold into a tiny model car" />
 
-      {/* Image Placeholder - Kling interface */}
-      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border-2 border-dashed border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '250px'}}>
-        <div className="text-center p-8">
-          <div className="text-5xl mb-3">🎬</div>
-          <p className="text-gray-500 text-lg font-medium">תמונת מסך Kling 3.0 - להוסיף כאן</p>
+      <div className="my-8 grid grid-cols-2 gap-4">
+        <div className="rounded-2xl overflow-hidden">
+          <Image
+            src="/guides/car-miniature/car-1.png"
+            alt="פריים ראשון - הרכב המקורי"
+            width={500}
+            height={500}
+            className="w-full h-auto"
+          />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">פריים ראשון</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image
+            src="/guides/car-miniature/mini-car.png"
+            alt="פריים אחרון - הדגם המיניאטורי"
+            width={500}
+            height={500}
+            className="w-full h-auto"
+          />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">פריים אחרון</p>
         </div>
       </div>
     </div>
@@ -154,12 +177,15 @@ export const metadata = {
         וזהו - <span className="text-orci-cyan font-bold">התוצאה המטורפת אצלכם!</span>
       </p>
 
-      {/* Image Placeholder - Final result */}
-      <div className="my-8 rounded-2xl overflow-hidden bg-gray-100 border-2 border-dashed border-orci-cyan/30 flex items-center justify-center" style={{minHeight: '250px'}}>
-        <div className="text-center p-8">
-          <div className="text-5xl mb-3">✨</div>
-          <p className="text-gray-500 text-lg font-medium">תמונת תוצאה סופית - להוסיף כאן</p>
-        </div>
+      <div className="my-8 rounded-2xl overflow-hidden" style={{ aspectRatio: '9/16', maxWidth: '400px', margin: '0 auto' }}>
+        <iframe
+          src="https://www.youtube.com/embed/dU6vFcGjKRs?rel=0"
+          title="התוצאה הסופית - טריק הרכב המיניאטורי"
+          className="w-full h-full"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          loading="lazy"
+        />
       </div>
     </div>
 
