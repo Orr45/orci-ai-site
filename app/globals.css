@@ -1,39 +1,43 @@
 @import "tailwindcss";
 
-/* CAP4LEARNING EXACT REPLICA - CSS Variables */
+/* ORCI AI - DARK MODE "COMMAND CENTER" DESIGN SYSTEM */
 :root {
-  /* Cap4Learning Colors (with Orci branding) */
-  --cap-teal-bg: #d2e6e4;
-  --cap-green-dark: #03565c;
-  --cap-pink: #fcc0cc;
-
-  /* Orci AI Brand Colors (replacing their green with our cyan) */
+  /* Orci AI Brand Colors */
   --orci-cyan: #00d1ff;
   --orci-blue: #00bfff;
+  --orci-purple: #7c3aed;
   --orci-primary: #00d1ff;
 
-  /* Backgrounds */
-  --background: #d2e6e4;
-  --background-white: #ffffff;
-  --background-card: #ffffff;
+  /* Dark Mode Backgrounds */
+  --background: #050d1a;
+  --surface: #0a1628;
+  --surface-alt: #0d1f3a;
+  --surface-card: #0f2040;
+  --surface-hover: #132850;
 
   /* Text */
-  --text-primary: #03565c;
-  --text-dark: #212529;
+  --text-primary: #e8f4ff;
+  --text-secondary: #7a9bc0;
+  --text-muted: #4a6a8a;
 
-  /* Bootstrap System */
-  --bs-white: #fff;
-  --bs-gray: #6c757d;
-  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  /* Borders */
+  --border-subtle: rgba(0, 209, 255, 0.12);
+  --border-glow: rgba(0, 209, 255, 0.35);
+
+  /* Glows */
+  --glow-cyan: 0 0 20px rgba(0, 209, 255, 0.25);
+  --glow-cyan-strong: 0 0 40px rgba(0, 209, 255, 0.4);
+
+  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 @theme inline {
   --color-orci-cyan: var(--orci-cyan);
   --color-orci-blue: var(--orci-blue);
+  --color-orci-purple: var(--orci-purple);
   --font-sans: var(--font-heebo);
 }
 
-/* Global Styles - Cap4Learning Exact Match */
 *, ::before, ::after {
   box-sizing: border-box;
 }
@@ -49,61 +53,75 @@ body {
   overflow-x: hidden;
 }
 
-@media (min-width: 992px) {
-  body {
-    font-size: 1rem;
-  }
-}
-
-@media (min-width: 1920px) {
-  body {
-    font-size: 1.125rem;
-  }
-}
-
-/* RTL Support */
-html[dir="rtl"] {
-  direction: rtl;
-}
-
-/* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
 }
 
+html[dir="rtl"] {
+  direction: rtl;
+}
+
 /* ========================================
-   CAP4LEARNING CARD SYSTEM
+   SECTION SYSTEM - DARK
+   ======================================== */
+
+.cap-section {
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .cap-section {
+    padding: 6rem 2rem;
+  }
+}
+
+.cap-section-teal {
+  background: rgba(5, 13, 26, 0.95);
+}
+
+.cap-section-white {
+  background: rgba(10, 22, 40, 0.95);
+}
+
+.cap-section-alt {
+  background: rgba(13, 31, 58, 0.95);
+}
+
+/* ========================================
+   CARD SYSTEM - DARK GLASSMORPHISM
    ======================================== */
 
 .cap-card {
-  background: white;
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
   border-radius: 1rem;
   padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
 
 .cap-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-color: var(--border-glow);
+  box-shadow: var(--glow-cyan);
 }
 
 .cap-card-small {
-  background: white;
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
   border-radius: 0.75rem;
   padding: 1.5rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
   text-align: center;
 }
 
 .cap-card-small:hover {
-  box-shadow: 0 4px 20px rgba(0, 209, 255, 0.15);
+  border-color: var(--border-glow);
+  box-shadow: var(--glow-cyan);
   transform: translateY(-2px);
 }
 
 /* ========================================
-   BUTTONS - CAP4LEARNING STYLE
+   BUTTONS
    ======================================== */
 
 .cap-btn {
@@ -122,36 +140,39 @@ html {
 
 .cap-btn-primary {
   background: linear-gradient(135deg, var(--orci-cyan), var(--orci-blue));
-  color: white;
+  color: #050d1a;
+  font-weight: 700;
 }
 
 .cap-btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 209, 255, 0.4);
+  box-shadow: var(--glow-cyan-strong);
 }
 
 .cap-btn-dark {
-  background: var(--text-primary);
-  color: white;
+  background: var(--surface-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
 }
 
 .cap-btn-dark:hover {
-  background: var(--orci-cyan);
+  border-color: var(--orci-cyan);
+  color: var(--orci-cyan);
 }
 
 .cap-btn-outline {
   background: transparent;
-  border: 2px solid var(--orci-cyan);
+  border: 1.5px solid var(--orci-cyan);
   color: var(--orci-cyan);
 }
 
 .cap-btn-outline:hover {
-  background: var(--orci-cyan);
-  color: white;
+  background: rgba(0, 209, 255, 0.1);
+  box-shadow: var(--glow-cyan);
 }
 
 /* ========================================
-   TYPOGRAPHY - CAP4LEARNING STYLE
+   TYPOGRAPHY
    ======================================== */
 
 h1, h2, h3, h4, h5, h6 {
@@ -176,45 +197,96 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ========================================
-   BADGE SYSTEM - CAP4LEARNING SCATTERED TAGS
+   BADGE SYSTEM
    ======================================== */
 
 .cap-badge {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background: white;
+  background: var(--surface-card);
   color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
   border-radius: 2rem;
   font-size: 0.875rem;
   font-weight: 600;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
 }
 
 /* ========================================
-   LAYOUT SECTIONS
+   FILTER BUTTONS
    ======================================== */
 
-.cap-section {
-  padding: 4rem 1rem;
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1.5px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-@media (min-width: 768px) {
-  .cap-section {
-    padding: 6rem 2rem;
-  }
+.filter-btn:hover {
+  border-color: var(--orci-cyan);
+  color: var(--orci-cyan);
 }
 
-.cap-section-teal {
-  background: rgba(210, 230, 228, 0.92);
-}
-
-.cap-section-white {
-  background: rgba(255, 255, 255, 0.92);
+.filter-btn-active {
+  background: rgba(0, 209, 255, 0.12);
+  border-color: var(--orci-cyan);
+  color: var(--orci-cyan);
+  box-shadow: var(--glow-cyan);
 }
 
 /* ========================================
-   HERO CIRCULAR IMAGES (cap4learning style)
+   GLOW UTILITIES
+   ======================================== */
+
+.glow-cyan {
+  box-shadow: var(--glow-cyan);
+}
+
+.glow-cyan-strong {
+  box-shadow: var(--glow-cyan-strong);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 20px rgba(0, 209, 255, 0.5);
+}
+
+/* ========================================
+   NEON GRID DECORATION
+   ======================================== */
+
+.neon-grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 209, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 209, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ========================================
+   DARK SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 209, 255, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 209, 255, 0.6);
+}
+
+/* ========================================
+   HERO LEGACY COMPAT
    ======================================== */
 
 .cap-hero-image {
@@ -222,5 +294,5 @@ h1, h2, h3, h4, h5, h6 {
   height: 140px;
   border-radius: 1rem;
   object-fit: cover;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--glow-cyan);
 }
