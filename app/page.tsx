@@ -143,23 +143,30 @@ function HeroSection() {
       {/* ── Main content ── */}
       <div className="relative z-10 text-center max-w-3xl mx-auto px-6 pt-4 pb-0 w-full">
 
-        {/* Pre-headline chip */}
+        {/* Pre-headline chip — clickable, opens guides tab */}
         <motion.div
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="mb-7"
         >
-          <span
-            className="inline-flex items-center gap-2 text-xs font-bold px-4 py-1.5 rounded-full"
+          <button
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('show-guides-tab'));
+              document.getElementById('content-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+            className="inline-flex items-center gap-2 text-sm font-bold px-5 py-2 rounded-full transition-all hover:scale-105 cursor-pointer"
             style={{
-              background: 'rgba(168,85,247,0.1)',
-              border: '1px solid rgba(168,85,247,0.35)',
-              color: '#c084fc',
+              background: 'rgba(0,209,255,0.08)',
+              border: '1px solid rgba(0,209,255,0.35)',
+              color: '#00d1ff',
+              boxShadow: '0 0 16px rgba(0,209,255,0.1)',
             }}
           >
-            ✦ מנוע ה-AI המוביל בישראל ✦
-          </span>
+            <BookOpen className="w-4 h-4" />
+            מה תרצו ללמוד היום?
+            <ArrowLeft className="w-3.5 h-3.5 opacity-70" />
+          </button>
         </motion.div>
 
         {/* Main headline */}
@@ -374,8 +381,14 @@ const TABS = [
 function ContentTabs() {
   const [active, setActive] = useState('guides');
 
+  useEffect(() => {
+    const handler = () => setActive('guides');
+    window.addEventListener('show-guides-tab', handler);
+    return () => window.removeEventListener('show-guides-tab', handler);
+  }, []);
+
   return (
-    <div>
+    <div id="content-tabs">
       {/* Tab bar */}
       <div
         className="sticky z-40 border-b"
