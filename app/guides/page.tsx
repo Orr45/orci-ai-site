@@ -1,104 +1,46 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { VideoModal } from '@/components/video/VideoModal';
 import { GUIDE_VIDEOS } from '@/data/guides';
-import InteractiveBentoGallery from '@/components/ui/interactive-bento-gallery';
+import TutorialGrid from '@/components/ui/tutorial-grid';
 
 export default function GuidesPage() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
-  const guideMediaItems = [
-    {
-      id: 1,
-      type: "image",
-      title: "איך ליצור חפצים מדברים עם AI",
-      desc: "למדו ליצור חפצים מדברים עם AI - מדריך שלב אחר שלב",
-      url: "/guides/guide-talking-objects.png",
-      span: "md:col-span-2 md:row-span-3 sm:col-span-2 sm:row-span-2",
-      href: "/guides/ai-beginners",
-    },
-    {
-      id: 2,
-      type: "image",
-      title: "יצירת משפיענית AI ב-60 שניות",
-      desc: "מדריך מקיף ליצירת משפיענית AI שמדברת עברית ונראית אמיתית",
-      url: "/guides/guide-ai-influencer.png",
-      span: "md:col-span-2 md:row-span-3 sm:col-span-1 sm:row-span-2",
-      href: "/guides/ai-influencer",
-    },
-    {
-      id: 3,
-      type: "image",
-      title: "טרנד הפינגווין הוויראלי",
-      desc: "מדריך להפיכת טרנד קיים לוויראלי עם טוויסט ישראלי",
-      url: "/guides/guide-penguin-viral.png",
-      span: "md:col-span-2 md:row-span-3 sm:col-span-2 sm:row-span-2",
-      href: "/guides/penguin-viral",
-    },
-    {
-      id: 4,
-      type: "image",
-      title: "איך ליצור את טרנד הריחוף",
-      desc: "במדריך הזה תלמדו כיצד ליצור את הטרנד הריחוף, שלב אחר שלב",
-      url: "/guides/guide-floating-trend.png",
-      span: "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
-      href: "/guides/new-guide",
-    },
-    {
-      id: 5,
-      type: "image",
-      title: "טרנד הדמיות הנטושות",
-      desc: "צעד אחרי צעד כיצד תוכלו ליצור את טרנד הדמיות הנטושות",
-      url: "/guides/guide-abandoned-figures.png",
-      span: "md:col-span-1 md:row-span-3 sm:col-span-1 sm:row-span-2",
-      href: "/guides/new-guide-2",
-    },
-    {
-      id: 6,
-      type: "image",
-      title: "טריק הרכב המיניאטורי",
-      desc: "הטריק שמשגע את הרשת - בלי אפקטים מיוחדים, רק 2 סרטונים פשוטים",
-      url: "/guides/guide-car-miniature.png",
-      span: "md:col-span-2 md:row-span-3 sm:col-span-2 sm:row-span-2",
-      href: "/guides/car-miniature",
-    },
-  ];
-
   return (
-    <div className="min-h-screen">
-      {/* HERO SECTION - Cap4Learning Style */}
+    <div className="min-h-screen" style={{ background: '#050d1a' }}>
+
+      {/* HERO */}
       <section className="cap-section cap-section-teal">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="cap-card text-center">
-            <h1 className="cap-hero-title mb-6">
-              מרכז הלמידה שלנו
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
-              מדריכים מעשיים ב-AI, אוטומציה ושיווק דיגיטלי - כל מה שצריך כדי להצליח בעולם הדיגיטלי
-            </p>
-          </div>
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h1 className="cap-hero-title mb-4" style={{ color: '#e8f4ff' }}>
+            מרכז הלמידה שלנו
+          </h1>
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: '#7a9bc0' }}>
+            מדריכים מעשיים ב-AI, אוטומציה ושיווק דיגיטלי
+          </p>
         </div>
       </section>
 
-      {/* WRITTEN GUIDES SECTION - Interactive Bento Gallery */}
-      <section className="cap-section cap-section-teal">
-        <div className="max-w-7xl mx-auto px-6">
-          <InteractiveBentoGallery
-            mediaItems={guideMediaItems}
-            title="מדריכים כתובים"
-            description="לחצו על מדריך כדי לקרוא עוד"
-          />
-        </div>
-      </section>
-
-      {/* VIDEO GUIDES SECTION - Grid Layout */}
+      {/* WRITTEN GUIDES - with email gate */}
       <section className="cap-section cap-section-white">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">מדריכי וידאו</h2>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold mb-2" style={{ color: '#e8f4ff' }}>מדריכים כתובים</h2>
+            <p className="text-sm" style={{ color: '#7a9bc0' }}>2 מדריכים ראשונים חינם — שאר המדריכים נפתחים עם אימייל</p>
+          </div>
+          <TutorialGrid />
+        </div>
+      </section>
 
+      {/* VIDEO GUIDES */}
+      <section className="cap-section cap-section-teal">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center" style={{ color: '#e8f4ff' }}>
+            מדריכי וידאו
+          </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {GUIDE_VIDEOS.map((video) => (
               <div
@@ -107,16 +49,16 @@ export default function GuidesPage() {
                 className="cap-card-small cursor-pointer min-h-[180px] flex flex-col justify-center"
               >
                 <div className="mb-3">
-                  <div className="w-12 h-12 bg-orci-cyan/20 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto" style={{ background: 'rgba(0,209,255,0.15)' }}>
                     <svg className="w-6 h-6 text-orci-cyan" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
                 </div>
-                <h3 className="text-base font-semibold text-gray-800 leading-tight text-center mb-2">
+                <h3 className="text-base font-semibold leading-tight text-center mb-2" style={{ color: '#e8f4ff' }}>
                   {video.title}
                 </h3>
-                <p className="text-sm text-gray-600 text-center leading-relaxed">
+                <p className="text-sm text-center leading-relaxed" style={{ color: '#7a9bc0' }}>
                   {video.description}
                 </p>
                 <span className="text-orci-cyan text-sm font-medium mt-3 text-center block">
@@ -128,7 +70,6 @@ export default function GuidesPage() {
         </div>
       </section>
 
-      {/* Video Modal */}
       <VideoModal
         isOpen={!!selectedVideo}
         onClose={() => setSelectedVideo(null)}
