@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle, Youtube, ExternalLink, Mail } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Youtube, ExternalLink, Mail, BookOpen, Zap, TrendingUp } from 'lucide-react';
 import { Footer } from '@/components/layout/Footer';
 import DailyPulse from '@/components/news/DailyPulse';
 import { ContainerScroll } from '@/components/ui/container-scroll-animation';
@@ -83,7 +83,7 @@ function HeroSection() {
 
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden neon-grid-hero"
+      className="relative flex items-start overflow-hidden neon-grid-hero pt-6 pb-14 md:pt-10 md:pb-20"
       style={{ background: '#000000' }}
     >
       {/* Animated SVG paths layer */}
@@ -141,7 +141,7 @@ function HeroSection() {
       </FloatingBadge>
 
       {/* ── Main content ── */}
-      <div className="relative z-10 text-center max-w-3xl mx-auto px-6 py-24">
+      <div className="relative z-10 text-center max-w-3xl mx-auto px-6 pt-4 pb-0 w-full">
 
         {/* Pre-headline chip */}
         <motion.div
@@ -255,11 +255,11 @@ function HeroSection() {
                 style={{
                   background:
                     status === 'loading'
-                      ? 'rgba(168,85,247,0.35)'
-                      : 'linear-gradient(135deg, #a855f7, #7c3aed)',
-                  color: '#ffffff',
+                      ? 'rgba(0,209,255,0.3)'
+                      : 'linear-gradient(135deg, #00d1ff, #00bfff)',
+                  color: '#050d1a',
                   boxShadow:
-                    status === 'loading' ? 'none' : '0 0 28px rgba(168,85,247,0.4)',
+                    status === 'loading' ? 'none' : '0 0 28px rgba(0,209,255,0.4)',
                 }}
               >
                 {status === 'loading' ? (
@@ -286,33 +286,166 @@ function HeroSection() {
           </p>
         </motion.div>
 
-        {/* Mobile badges row */}
+        {/* High-tech stat badges row */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.55 }}
-          className="flex justify-center gap-2.5 flex-wrap lg:hidden"
+          className="grid grid-cols-3 gap-3 mt-6 max-w-lg mx-auto"
         >
           {[
-            { icon: <Youtube className="w-3.5 h-3.5 text-red-400" />, text: '130K+ מנויים' },
-            { icon: <span className="text-sm">👁️</span>, text: '25M+ צפיות' },
-            { icon: <span className="text-sm">🎯</span>, text: 'מומחה שיווק AI' },
-          ].map((b, i) => (
-            <span
+            { value: '25M+', label: 'צפיות יוטיוב', icon: <span className="text-xl">👁️</span>, glow: 'rgba(0,209,255,0.12)', border: 'rgba(0,209,255,0.25)' },
+            { value: '130K+', label: 'מנויים', icon: <Youtube className="w-5 h-5 text-red-400" />, glow: 'rgba(255,60,60,0.08)', border: 'rgba(255,80,80,0.25)' },
+            { value: '6+', label: 'מדריכי AI', icon: <span className="text-xl">🎯</span>, glow: 'rgba(168,85,247,0.12)', border: 'rgba(168,85,247,0.3)' },
+          ].map((s, i) => (
+            <div
               key={i}
-              className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full"
+              className="flex flex-col items-center gap-1 rounded-xl py-3 px-2"
               style={{
-                background: 'rgba(8,8,18,0.8)',
-                border: '1px solid rgba(0,209,255,0.2)',
-                color: '#b0d0f0',
+                background: s.glow,
+                border: `1px solid ${s.border}`,
               }}
             >
-              {b.icon} {b.text}
-            </span>
+              {s.icon}
+              <div className="text-lg font-black leading-none" style={{ color: '#e8f4ff' }}>{s.value}</div>
+              <div className="text-[10px] font-medium leading-tight" style={{ color: '#8ab4d4' }}>{s.label}</div>
+            </div>
           ))}
         </motion.div>
       </div>
     </section>
+  );
+}
+
+// ─── Trusted By Row ───────────────────────────────────────────────────────────
+
+const AI_TOOLS = [
+  { name: 'ChatGPT', icon: '🤖' },
+  { name: 'Nano Banana Pro', icon: '🎨' },
+  { name: 'Kling 3.0', icon: '🎬' },
+  { name: 'ElevenLabs', icon: '🎙️' },
+  { name: 'Gemini', icon: '✨' },
+  { name: 'Veo 3.1', icon: '🎥' },
+  { name: 'Midjourney', icon: '🖼️' },
+  { name: 'RunwayML', icon: '⚡' },
+];
+
+function TrustedByRow() {
+  return (
+    <div
+      className="border-y overflow-hidden"
+      style={{ background: 'rgba(0,0,0,0.99)', borderColor: 'rgba(0,209,255,0.1)' }}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="flex items-center gap-3 md:gap-5 overflow-x-auto scrollbar-none">
+          <span
+            className="text-[11px] font-bold whitespace-nowrap flex-shrink-0 tracking-widest uppercase"
+            style={{ color: '#4a6a8a' }}
+          >
+            כלים בשימוש
+          </span>
+          <div className="w-px h-4 flex-shrink-0" style={{ background: 'rgba(0,209,255,0.2)' }} />
+          {AI_TOOLS.map((tool) => (
+            <span
+              key={tool.name}
+              className="flex items-center gap-1.5 text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors cursor-default"
+              style={{ color: '#6a8aaa' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#00d1ff')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#6a8aaa')}
+            >
+              <span className="text-base">{tool.icon}</span>
+              {tool.name}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Content Tabs ─────────────────────────────────────────────────────────────
+
+const TABS = [
+  { id: 'guides', label: 'מדריכים', icon: BookOpen, count: '6' },
+  { id: 'news', label: 'חדשות AI', icon: Zap, count: 'חי' },
+  { id: 'youtube', label: 'יוטיוב', icon: TrendingUp, count: '25M' },
+];
+
+function ContentTabs() {
+  const [active, setActive] = useState('guides');
+
+  return (
+    <div>
+      {/* Tab bar */}
+      <div
+        className="sticky z-40 border-b"
+        style={{
+          top: 'var(--nav-height, 61px)',
+          background: 'rgba(0,0,0,0.97)',
+          borderColor: 'rgba(0,209,255,0.1)',
+          backdropFilter: 'blur(16px)',
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex items-center gap-0 overflow-x-auto scrollbar-none">
+            {TABS.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = active === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActive(tab.id)}
+                  className="flex items-center gap-2 px-5 py-4 text-sm font-bold whitespace-nowrap transition-all border-b-2 flex-shrink-0"
+                  style={{
+                    color: isActive ? '#00d1ff' : '#6a8aaa',
+                    borderBottomColor: isActive ? '#00d1ff' : 'transparent',
+                  }}
+                >
+                  <Icon className="w-4 h-4" />
+                  {tab.label}
+                  <span
+                    className="text-[10px] px-1.5 py-0.5 rounded-full font-bold"
+                    style={{
+                      background: isActive ? 'rgba(0,209,255,0.15)' : 'rgba(255,255,255,0.05)',
+                      color: isActive ? '#00d1ff' : '#4a6a8a',
+                    }}
+                  >
+                    {tab.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Tab content */}
+      {active === 'guides' && (
+        <section className="cap-section cap-section-white neon-grid-bg">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-10">
+              <div
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-4"
+                style={{ background: 'rgba(168,85,247,0.1)', border: '1px solid rgba(168,85,247,0.35)', color: '#c084fc' }}
+              >
+                ✦ מנוע המדריכים
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold mb-3" style={{ color: '#e8f4ff' }}>
+                כל המדריכים שלנו
+              </h2>
+              <p className="text-base max-w-xl mx-auto" style={{ color: '#b0d0f0' }}>
+                2 מדריכים ראשונים חינם. שאר? פשוט תשאירו אימייל ואנחנו נפתח הכל.
+              </p>
+            </div>
+            <TutorialGrid />
+          </div>
+        </section>
+      )}
+
+      {active === 'news' && <DailyPulse />}
+
+      {active === 'youtube' && <YouTubeSection />}
+    </div>
   );
 }
 
@@ -440,35 +573,14 @@ export default function Home() {
   return (
     <div className="min-h-screen" style={{ background: '#000000' }}>
 
-      {/* 1. HERO — black + grid + animated paths + floating badges + email CTA */}
+      {/* 1. HERO */}
       <HeroSection />
 
-      {/* 2. TUTORIAL ENGINE */}
-      <section className="cap-section cap-section-white neon-grid-bg">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-10">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-4"
-              style={{ background: 'rgba(168,85,247,0.1)', border: '1px solid rgba(168,85,247,0.35)', color: '#c084fc' }}
-            >
-              ✦ מנוע המדריכים
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-3" style={{ color: '#e8f4ff' }}>
-              כל המדריכים שלנו
-            </h2>
-            <p className="text-base max-w-xl mx-auto" style={{ color: '#b0d0f0' }}>
-              2 מדריכים ראשונים חינם. שאר? פשוט תשאירו אימייל ואנחנו נפתח הכל.
-            </p>
-          </div>
-          <TutorialGrid />
-        </div>
-      </section>
+      {/* 2. TRUSTED BY TOOLS */}
+      <TrustedByRow />
 
-      {/* 3. AI NEWS */}
-      <DailyPulse />
-
-      {/* 4. YOUTUBE */}
-      <YouTubeSection />
+      {/* 3. CONTENT TABS (guides / news / youtube) */}
+      <ContentTabs />
 
       {/* 5. SCROLL SHOWCASE */}
       <section className="cap-section cap-section-teal overflow-hidden">
