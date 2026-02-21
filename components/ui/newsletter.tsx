@@ -81,7 +81,7 @@ export default function Newsletter() {
             {status === "error" && (
               <p className="mt-3 text-red-400 text-sm">{message}</p>
             )}
-            <p className="mt-4 text-xs text-gray-500">
+            <p className="mt-4 text-xs text-slate-400">
               ללא ספאם, אנחנו מגנים על הפרטיות שלכם
             </p>
           </form>

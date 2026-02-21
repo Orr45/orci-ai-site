@@ -37,7 +37,7 @@ const DockIconButton = React.forwardRef<HTMLButtonElement, DockIconButtonProps>(
       <>
         <Icon className={cn(
           "w-5 h-5 transition-colors",
-          isActive ? "text-orci-cyan" : "text-gray-600"
+          isActive ? "text-orci-cyan" : "text-slate-300"
         )} />
         <span className={cn(
           "absolute -top-9 left-1/2 -translate-x-1/2",

@@ -111,7 +111,7 @@ export default function DailyPulse() {
               חדשות ה-AI של היום
             </h2>
           </div>
-          <p className="text-gray-600 text-base">
+          <p className="text-slate-300 text-base">
             העדכונים החמים מעולם הבינה המלאכותית
           </p>
           {data.isStale && (
@@ -145,7 +145,7 @@ export default function DailyPulse() {
                 </div>
 
                 {/* Card Content */}
-                <p className="text-gray-600 text-sm leading-relaxed flex-1">
+                <p className="text-slate-300 text-sm leading-relaxed flex-1">
                   {item.content}
                 </p>
 
@@ -153,7 +153,7 @@ export default function DailyPulse() {
                 {item.orciTake && (
                   <div className="mt-4 p-3 bg-orci-cyan/5 border-r-4 border-orci-cyan rounded-lg">
                     <p className="text-xs font-bold text-orci-cyan mb-1">💡 הזווית של Orci</p>
-                    <p className="text-gray-600 text-xs leading-relaxed">{item.orciTake}</p>
+                    <p className="text-slate-300 text-xs leading-relaxed">{item.orciTake}</p>
                   </div>
                 )}
 
@@ -166,7 +166,7 @@ export default function DailyPulse() {
                         href={source.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 text-gray-500 hover:bg-orci-cyan/10 hover:text-orci-cyan transition-colors"
+                        className="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 text-slate-400 hover:bg-orci-cyan/10 hover:text-orci-cyan transition-colors"
                       >
                         {source.source}
                       </a>

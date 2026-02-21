@@ -191,7 +191,7 @@ export default function TutorialGrid() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm leading-relaxed mb-3 flex-1" style={{ color: '#7a9bc0' }}>
+                  <p className="text-sm leading-relaxed mb-3 flex-1" style={{ color: '#b0d0f0' }}>
                     {guide.description}
                   </p>
 
@@ -203,7 +203,7 @@ export default function TutorialGrid() {
                       style={{
                         background: summaryOpen ? 'rgba(0,209,255,0.1)' : 'rgba(255,255,255,0.04)',
                         border: `1px solid ${summaryOpen ? 'rgba(0,209,255,0.4)' : 'rgba(255,255,255,0.08)'}`,
-                        color: summaryOpen ? '#00d1ff' : '#7a9bc0',
+                        color: summaryOpen ? '#00d1ff' : '#b0d0f0',
                       }}
                     >
                       <span className="flex items-center gap-1.5">
@@ -248,7 +248,7 @@ export default function TutorialGrid() {
       </motion.div>
 
       {filteredGuides.length === 0 && (
-        <div className="text-center py-16 text-slate-500">
+        <div className="text-center py-16 text-slate-300">
           <Grid className="w-10 h-10 mx-auto mb-3 opacity-30" />
           <p>לא נמצאו מדריכים בקטגוריה זו</p>
         </div>

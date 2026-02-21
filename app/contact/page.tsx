@@ -13,7 +13,7 @@ export default function ContactPage() {
             <h1 className="cap-hero-title mb-6 text-orci-cyan">
               צרו קשר
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
+            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
               מוכנים להתחיל? בואו נדבר על איך AI יכול לעזור לכם
             </p>
           </div>
@@ -29,7 +29,7 @@ export default function ContactPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
               הדרך הכי מהירה ליצור קשר
             </h2>
-            <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+            <p className="text-xl text-slate-300 mb-8 leading-relaxed">
               שלחו לי הודעה בוואטסאפ ואענה לכם בהקדם האפשרי.
               <br />
               בדרך כלל תוך כמה שעות!
@@ -56,17 +56,17 @@ export default function ContactPage() {
               <div className="text-center">
                 <div className="text-4xl mb-3">📞</div>
                 <h4 className="text-xl font-bold text-orci-cyan mb-2">1. שיחה ראשונית</h4>
-                <p className="text-gray-600">נדבר על הצרכים שלכם והמטרות</p>
+                <p className="text-slate-300">נדבר על הצרכים שלכם והמטרות</p>
               </div>
               <div className="text-center">
                 <div className="text-4xl mb-3">🎯</div>
                 <h4 className="text-xl font-bold text-orci-cyan mb-2">2. תכנית מותאמת</h4>
-                <p className="text-gray-600">אבנה תכנית פעולה ספציפית לעסק שלכם</p>
+                <p className="text-slate-300">אבנה תכנית פעולה ספציפית לעסק שלכם</p>
               </div>
               <div className="text-center">
                 <div className="text-4xl mb-3">🚀</div>
                 <h4 className="text-xl font-bold text-orci-cyan mb-2">3. מתחילים לעבוד</h4>
-                <p className="text-gray-600">יישום, ליווי ותוצאות</p>
+                <p className="text-slate-300">יישום, ליווי ותוצאות</p>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ export default function ContactPage() {
             <h3 className="text-2xl md:text-3xl font-bold mb-6 text-center text-orci-cyan">
               שאלות נפוצות
             </h3>
-            <div className="space-y-6 text-gray-700">
+            <div className="space-y-6 text-slate-300">
               <div>
                 <h4 className="text-xl font-bold text-orci-cyan mb-2">כמה זמן לוקח לראות תוצאות?</h4>
                 <p>תלוי בפרויקט, אבל בדרך כלל תוצאות ראשוניות תוך 2-4 שבועות. אוטומציות פשוטות יכולות להיות מוכנות תוך ימים.</p>
@@ -102,7 +102,7 @@ export default function ContactPage() {
       {/* Additional Links */}
       <section className="cap-section cap-section-teal">
         <div className="max-w-2xl mx-auto px-6 text-center">
-          <p className="text-xl text-gray-700 mb-6">
+          <p className="text-xl text-slate-300 mb-6">
             עדיין לא בטוחים? אפשר גם לבדוק את
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

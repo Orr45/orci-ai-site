@@ -110,7 +110,7 @@ function HeroSection() {
         </div>
         <div>
           <div className="text-sm font-bold text-white leading-none mb-0.5">130,000+</div>
-          <div className="text-xs" style={{ color: '#7a9bc0' }}>מנויים ביוטיוב</div>
+          <div className="text-xs" style={{ color: '#b0d0f0' }}>מנויים ביוטיוב</div>
         </div>
       </FloatingBadge>
 
@@ -123,7 +123,7 @@ function HeroSection() {
         </div>
         <div>
           <div className="text-sm font-bold text-white leading-none mb-0.5">25,000,000</div>
-          <div className="text-xs" style={{ color: '#7a9bc0' }}>צפיות סה&quot;כ</div>
+          <div className="text-xs" style={{ color: '#b0d0f0' }}>צפיות סה&quot;כ</div>
         </div>
       </FloatingBadge>
 
@@ -136,7 +136,7 @@ function HeroSection() {
         </div>
         <div>
           <div className="text-sm font-bold text-white leading-none mb-0.5">מומחה AI</div>
-          <div className="text-xs" style={{ color: '#7a9bc0' }}>שיווק דיגיטלי</div>
+          <div className="text-xs" style={{ color: '#b0d0f0' }}>שיווק דיגיטלי</div>
         </div>
       </FloatingBadge>
 
@@ -189,7 +189,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.2 }}
           className="text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed"
-          style={{ color: '#7a9bc0' }}
+          style={{ color: '#b0d0f0' }}
         >
           מדריכים מעשיים, חדשות AI יומיות ושירותים מתקדמים —
           הכל במקום אחד. מבוסס על ניסיון אמיתי של 25 מיליון צפיות.
@@ -223,7 +223,7 @@ function HeroSection() {
               <div className="relative flex-1">
                 <Mail
                   className="absolute top-1/2 -translate-y-1/2 right-4 w-4 h-4 pointer-events-none"
-                  style={{ color: '#4a6a8a' }}
+                  style={{ color: '#8ab4d4' }}
                 />
                 <input
                   type="email"
@@ -281,7 +281,7 @@ function HeroSection() {
             <p className="mt-2 text-red-400 text-xs text-center">משהו השתבש. נסו שוב.</p>
           )}
 
-          <p className="mt-3 text-xs text-center" style={{ color: '#3a5a7a' }}>
+          <p className="mt-3 text-xs text-center" style={{ color: '#8ab4d4' }}>
             ללא ספאם · גישה מיידית לכל המדריכים · בחינם לגמרי
           </p>
         </motion.div>
@@ -304,7 +304,7 @@ function HeroSection() {
               style={{
                 background: 'rgba(8,8,18,0.8)',
                 border: '1px solid rgba(0,209,255,0.2)',
-                color: '#7a9bc0',
+                color: '#b0d0f0',
               }}
             >
               {b.icon} {b.text}
@@ -359,7 +359,7 @@ function YouTubeSection() {
             <br />
             <span style={{ color: '#00d1ff' }}>הסוד? AI + יצירתיות.</span>
           </h2>
-          <p className="text-base max-w-xl mx-auto" style={{ color: '#7a9bc0' }}>
+          <p className="text-base max-w-xl mx-auto" style={{ color: '#b0d0f0' }}>
             כל הסרטונים שהפכו ויראלים — עם ההסבר המלא על איך עשינו את זה
           </p>
         </div>
@@ -406,7 +406,7 @@ function YouTubeSection() {
                 >
                   {video.title}
                 </h3>
-                <p className="text-xs" style={{ color: '#4a6a8a' }}>{video.views}</p>
+                <p className="text-xs" style={{ color: '#8ab4d4' }}>{video.views}</p>
               </div>
             </a>
           ))}
@@ -456,7 +456,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-5xl font-bold mb-3" style={{ color: '#e8f4ff' }}>
               כל המדריכים שלנו
             </h2>
-            <p className="text-base max-w-xl mx-auto" style={{ color: '#7a9bc0' }}>
+            <p className="text-base max-w-xl mx-auto" style={{ color: '#b0d0f0' }}>
               2 מדריכים ראשונים חינם. שאר? פשוט תשאירו אימייל ואנחנו נפתח הכל.
             </p>
           </div>
@@ -484,7 +484,7 @@ export default function Home() {
               <p className="text-3xl md:text-[4rem] font-bold text-orci-cyan mt-4">
                 ו-130,000 רשומים
               </p>
-              <p className="text-xl md:text-2xl mt-6" style={{ color: '#7a9bc0' }}>
+              <p className="text-xl md:text-2xl mt-6" style={{ color: '#b0d0f0' }}>
                 וגם אתם יכולים להגיע להישגים כאלה עם AI
               </p>
             </>
@@ -508,7 +508,7 @@ export default function Home() {
           <h2 className="cap-section-title text-center mb-4" style={{ color: '#e8f4ff' }}>
             מה אנחנו מציעים
           </h2>
-          <p className="text-center mb-8 hidden sm:block" style={{ color: '#7a9bc0' }}>
+          <p className="text-center mb-8 hidden sm:block" style={{ color: '#b0d0f0' }}>
             העבירו את העכבר כדי לעצור, רחפו על אייקון לפרטים
           </p>
           <OrbitingSkills />

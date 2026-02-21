@@ -18,7 +18,7 @@ export default function GuidesPage() {
           <h1 className="cap-hero-title mb-4" style={{ color: '#e8f4ff' }}>
             מרכז הלמידה שלנו
           </h1>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: '#7a9bc0' }}>
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: '#b0d0f0' }}>
             מדריכים מעשיים ב-AI, אוטומציה ושיווק דיגיטלי
           </p>
         </div>
@@ -29,7 +29,7 @@ export default function GuidesPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold mb-2" style={{ color: '#e8f4ff' }}>מדריכים כתובים</h2>
-            <p className="text-sm" style={{ color: '#7a9bc0' }}>2 מדריכים ראשונים חינם — שאר המדריכים נפתחים עם אימייל</p>
+            <p className="text-sm" style={{ color: '#b0d0f0' }}>2 מדריכים ראשונים חינם — שאר המדריכים נפתחים עם אימייל</p>
           </div>
           <TutorialGrid />
         </div>
@@ -58,7 +58,7 @@ export default function GuidesPage() {
                 <h3 className="text-base font-semibold leading-tight text-center mb-2" style={{ color: '#e8f4ff' }}>
                   {video.title}
                 </h3>
-                <p className="text-sm text-center leading-relaxed" style={{ color: '#7a9bc0' }}>
+                <p className="text-sm text-center leading-relaxed" style={{ color: '#b0d0f0' }}>
                   {video.description}
                 </p>
                 <span className="text-orci-cyan text-sm font-medium mt-3 text-center block">

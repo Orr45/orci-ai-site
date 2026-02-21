@@ -14,7 +14,7 @@ export default function AboutPage() {
             <h1 className="cap-hero-title mb-6 text-orci-cyan">
               מי אני?
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
+            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
               הסיפור שלי: מיוצר תוכן לקצין, ועכשיו למומחה AI
             </p>
           </div>
@@ -32,7 +32,7 @@ export default function AboutPage() {
               <span className="text-5xl md:text-[7rem] font-bold text-orci-cyan leading-none">
                 2.4 מיליון צפיות
               </span>
-              <p className="text-xl md:text-2xl text-gray-600 mt-6">
+              <p className="text-xl md:text-2xl text-slate-300 mt-6">
                 וגם אתם יכולים ליצור תוכן ויראלי עם AI
               </p>
             </>
@@ -59,7 +59,7 @@ export default function AboutPage() {
               המסע שלי
             </h2>
 
-            <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+            <div className="space-y-6 text-lg text-slate-300 leading-relaxed">
               <p>
                 נעים מאוד, אני <span className="text-orci-cyan font-bold">אור (Orci)</span>. המסע שלי התחיל בגיל 16, כשבניתי מאפס את <span className="text-orci-cyan font-bold">'oci Gaming'</span> -
                 מותג תוכן שהגיע ל-<span className="text-orci-cyan font-bold">130,000 רשומים</span> ולמעלה מ-<span className="text-orci-cyan font-bold">25 מיליון צפיות</span>. שם למדתי מה זה אומר
@@ -84,17 +84,17 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="cap-card text-center">
               <div className="text-4xl md:text-5xl font-bold text-orci-cyan mb-2">130K+</div>
-              <div className="text-gray-600">מנויים ביוטיוב</div>
+              <div className="text-slate-300">מנויים ביוטיוב</div>
             </div>
 
             <div className="cap-card text-center">
               <div className="text-4xl md:text-5xl font-bold text-orci-cyan mb-2">25M+</div>
-              <div className="text-gray-600">צפיות סה"כ</div>
+              <div className="text-slate-300">צפיות סה"כ</div>
             </div>
 
             <div className="cap-card text-center">
               <div className="text-4xl md:text-5xl font-bold text-orci-cyan mb-2">10+</div>
-              <div className="text-gray-600">שנות ניסיון ביצירת תוכן</div>
+              <div className="text-slate-300">שנות ניסיון ביצירת תוכן</div>
             </div>
           </div>
 
@@ -104,7 +104,7 @@ export default function AboutPage() {
               מה אני עושה?
             </h2>
 
-            <div className="text-lg text-gray-700 leading-relaxed space-y-4">
+            <div className="text-lg text-slate-300 leading-relaxed space-y-4">
               <p>
                 אני עוזר לבעלי עסקים ויזמים לנצל את כוח הבינה המלאכותית כדי:
               </p>
