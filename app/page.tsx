@@ -48,39 +48,6 @@ function FloatingBadge({
 // ─── Hero Section ─────────────────────────────────────────────────────────────
 
 function HeroSection() {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [unlocked, setUnlocked] = useState(false);
-
-  useEffect(() => {
-    setUnlocked(isContentUnlocked());
-    const handler = () => setUnlocked(true);
-    window.addEventListener('orci-unlocked', handler);
-    return () => window.removeEventListener('orci-unlocked', handler);
-  }, []);
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (!email.trim()) return;
-    setStatus('loading');
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-      if (res.ok || res.status === 400) {
-        localStorage.setItem(UNLOCK_KEY, 'true');
-        window.dispatchEvent(new Event('orci-unlocked'));
-        setStatus('success');
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
-  }
-
   return (
     <section
       className="relative flex items-start overflow-hidden neon-grid-hero pt-6 pb-14 md:pt-10 md:pb-20"
@@ -202,94 +169,31 @@ function HeroSection() {
           הכל במקום אחד. מבוסס על ניסיון אמיתי של 25 מיליון צפיות.
         </motion.p>
 
-        {/* ── Rundown-style email CTA ── */}
+        {/* ── Big CTA button ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.3 }}
           className="mb-8"
         >
-          {unlocked || status === 'success' ? (
-            <div
-              className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl"
-              style={{
-                background: 'rgba(0,209,255,0.07)',
-                border: '1px solid rgba(0,209,255,0.3)',
-              }}
-            >
-              <CheckCircle className="w-5 h-5 text-orci-cyan flex-shrink-0" />
-              <span className="font-semibold" style={{ color: '#e8f4ff' }}>
-                גישה מלאה לכל המדריכים נפתחה!
-              </span>
-            </div>
-          ) : (
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col sm:flex-row gap-2.5 max-w-md mx-auto"
-            >
-              <div className="relative flex-1">
-                <Mail
-                  className="absolute top-1/2 -translate-y-1/2 right-4 w-4 h-4 pointer-events-none"
-                  style={{ color: '#8ab4d4' }}
-                />
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="האימייל שלכם..."
-                  required
-                  className="w-full pr-11 pl-4 py-4 rounded-xl text-sm outline-none transition-all"
-                  style={{
-                    background: 'rgba(255,255,255,0.05)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    color: '#e8f4ff',
-                    direction: 'rtl',
-                  }}
-                  onFocus={(e) => {
-                    e.target.style.borderColor = 'rgba(168,85,247,0.55)';
-                    e.target.style.boxShadow = '0 0 0 3px rgba(168,85,247,0.1)';
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = 'rgba(255,255,255,0.1)';
-                    e.target.style.boxShadow = 'none';
-                  }}
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={status === 'loading'}
-                className="flex items-center justify-center gap-2 px-7 py-4 rounded-xl font-bold text-sm whitespace-nowrap transition-all"
-                style={{
-                  background:
-                    status === 'loading'
-                      ? 'rgba(0,209,255,0.3)'
-                      : 'linear-gradient(135deg, #00d1ff, #00bfff)',
-                  color: '#050d1a',
-                  boxShadow:
-                    status === 'loading' ? 'none' : '0 0 28px rgba(0,209,255,0.4)',
-                }}
-              >
-                {status === 'loading' ? (
-                  <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                  </svg>
-                ) : (
-                  <>
-                    <ArrowLeft className="w-4 h-4" />
-                    פתחו גישה חינם
-                  </>
-                )}
-              </button>
-            </form>
-          )}
-
-          {status === 'error' && (
-            <p className="mt-2 text-red-400 text-xs text-center">משהו השתבש. נסו שוב.</p>
-          )}
-
+          <button
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('show-guides-tab'));
+              document.getElementById('content-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+            className="inline-flex items-center gap-3 px-8 py-5 rounded-2xl font-black text-xl transition-all hover:scale-105 active:scale-100"
+            style={{
+              background: 'linear-gradient(135deg, #00d1ff, #00bfff)',
+              color: '#050d1a',
+              boxShadow: '0 0 50px rgba(0,209,255,0.45), 0 4px 20px rgba(0,0,0,0.3)',
+            }}
+          >
+            <BookOpen className="w-6 h-6 flex-shrink-0" />
+            מה תרצו ללמוד היום?
+            <ArrowLeft className="w-5 h-5 flex-shrink-0" />
+          </button>
           <p className="mt-3 text-xs text-center" style={{ color: '#8ab4d4' }}>
-            ללא ספאם · גישה מיידית לכל המדריכים · בחינם לגמרי
+            6 מדריכים מעשיים · גישה מיידית · בחינם לגמרי
           </p>
         </motion.div>
 
@@ -367,6 +271,145 @@ function TrustedByRow() {
         </div>
       </div>
     </div>
+  );
+}
+
+// ─── Email Section (below tabs) ───────────────────────────────────────────────
+
+function EmailSection() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [unlocked, setUnlocked] = useState(false);
+
+  useEffect(() => {
+    setUnlocked(isContentUnlocked());
+    const handler = () => setUnlocked(true);
+    window.addEventListener('orci-unlocked', handler);
+    return () => window.removeEventListener('orci-unlocked', handler);
+  }, []);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok || res.status === 400) {
+        localStorage.setItem(UNLOCK_KEY, 'true');
+        window.dispatchEvent(new Event('orci-unlocked'));
+        setStatus('success');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  }
+
+  return (
+    <section
+      className="py-14 px-6"
+      style={{ background: 'rgba(3,3,12,0.99)', borderTop: '1px solid rgba(0,209,255,0.08)' }}
+    >
+      <div className="max-w-lg mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <div
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-5"
+            style={{ background: 'rgba(0,209,255,0.08)', border: '1px solid rgba(0,209,255,0.25)', color: '#00d1ff' }}
+          >
+            <Mail className="w-3.5 h-3.5" />
+            גישה חינמית לכל התוכן
+          </div>
+          <h3 className="text-2xl md:text-3xl font-black mb-2" style={{ color: '#e8f4ff' }}>
+            רוצים לפתוח את כל המדריכים?
+          </h3>
+          <p className="text-sm mb-6" style={{ color: '#8ab4d4' }}>
+            השאירו אימייל — וכל המדריכים נפתחים מיד. ללא ספאם, בחינם לגמרי.
+          </p>
+
+          {unlocked || status === 'success' ? (
+            <div
+              className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl"
+              style={{ background: 'rgba(0,209,255,0.07)', border: '1px solid rgba(0,209,255,0.3)' }}
+            >
+              <CheckCircle className="w-5 h-5 text-orci-cyan flex-shrink-0" />
+              <span className="font-semibold" style={{ color: '#e8f4ff' }}>
+                גישה מלאה לכל המדריכים נפתחה!
+              </span>
+            </div>
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col sm:flex-row gap-2.5"
+            >
+              <div className="relative flex-1">
+                <Mail
+                  className="absolute top-1/2 -translate-y-1/2 right-4 w-4 h-4 pointer-events-none"
+                  style={{ color: '#8ab4d4' }}
+                />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="האימייל שלכם..."
+                  required
+                  className="w-full pr-11 pl-4 py-4 rounded-xl text-sm outline-none transition-all"
+                  style={{
+                    background: 'rgba(255,255,255,0.05)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    color: '#e8f4ff',
+                    direction: 'rtl',
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = 'rgba(168,85,247,0.55)';
+                    e.target.style.boxShadow = '0 0 0 3px rgba(168,85,247,0.1)';
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = 'rgba(255,255,255,0.1)';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="flex items-center justify-center gap-2 px-7 py-4 rounded-xl font-bold text-sm whitespace-nowrap transition-all"
+                style={{
+                  background: status === 'loading' ? 'rgba(0,209,255,0.3)' : 'linear-gradient(135deg, #00d1ff, #00bfff)',
+                  color: '#050d1a',
+                  boxShadow: status === 'loading' ? 'none' : '0 0 28px rgba(0,209,255,0.4)',
+                }}
+              >
+                {status === 'loading' ? (
+                  <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  </svg>
+                ) : (
+                  <>
+                    <ArrowLeft className="w-4 h-4" />
+                    פתחו גישה חינם
+                  </>
+                )}
+              </button>
+            </form>
+          )}
+
+          {status === 'error' && (
+            <p className="mt-2 text-red-400 text-xs text-center">משהו השתבש. נסו שוב.</p>
+          )}
+        </motion.div>
+      </div>
+    </section>
   );
 }
 
@@ -594,6 +637,9 @@ export default function Home() {
 
       {/* 3. CONTENT TABS (guides / news / youtube) */}
       <ContentTabs />
+
+      {/* 4. EMAIL GATE (below tabs) */}
+      <EmailSection />
 
       {/* 5. SCROLL SHOWCASE */}
       <section className="cap-section cap-section-teal overflow-hidden">
