@@ -32,8 +32,8 @@ export function Navigation() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <div className="text-2xl font-bold text-orci-cyan">
-                Orci AI
+              <div className="text-2xl font-black tracking-tight">
+                <span style={{color:'#ffffff'}}>Orci</span><span style={{background:'linear-gradient(135deg,#00d1ff,#a855f7)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}}>AI</span>
               </div>
             </Link>
 
@@ -78,8 +78,8 @@ export function Navigation() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-center">
             <Link href="/" className="flex items-center">
-              <div className="text-2xl font-bold text-orci-cyan">
-                Orci AI
+              <div className="text-2xl font-black tracking-tight">
+                <span style={{color:'#ffffff'}}>Orci</span><span style={{background:'linear-gradient(135deg,#00d1ff,#a855f7)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}}>AI</span>
               </div>
             </Link>
           </div>

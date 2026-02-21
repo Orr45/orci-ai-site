@@ -1,179 +1,322 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from "next/link";
 import Image from "next/image";
-import { useAnimate } from 'framer-motion';
-import { Sparkles, MessageCircle, Youtube, ExternalLink, Star, Shield, Trophy } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowLeft, CheckCircle, Youtube, ExternalLink, Mail } from 'lucide-react';
 import { Footer } from '@/components/layout/Footer';
 import DailyPulse from '@/components/news/DailyPulse';
 import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 import { BackgroundPathsEffect } from '@/components/ui/background-paths';
-import { HighlighterItem, HighlightGroup, Particles } from '@/components/ui/highlighter';
 import OrbitingSkills from '@/components/ui/orbiting-skills';
 import Newsletter from '@/components/ui/newsletter';
 import TutorialGrid from '@/components/ui/tutorial-grid';
+import { isContentUnlocked, UNLOCK_KEY } from '@/components/ui/email-gate-modal';
 
-// ─── Hero Section ───────────────────────────────────────────────────────────
+// ─── Floating Authority Badge ─────────────────────────────────────────────────
+
+function FloatingBadge({
+  children,
+  delay,
+  className,
+  style,
+}: {
+  children: React.ReactNode;
+  delay: number;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <motion.div
+      animate={{ y: [0, -14, 0] }}
+      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay }}
+      className={`absolute hidden lg:flex items-center gap-3 px-4 py-3 rounded-2xl ${className ?? ''}`}
+      style={{
+        background: 'rgba(8,8,18,0.9)',
+        border: '1px solid rgba(0,209,255,0.25)',
+        boxShadow: '0 0 24px rgba(0,209,255,0.08), inset 0 1px 0 rgba(255,255,255,0.04)',
+        backdropFilter: 'blur(12px)',
+        ...style,
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+// ─── Hero Section ─────────────────────────────────────────────────────────────
 
 function HeroSection() {
-  const [scope, animate] = useAnimate();
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [unlocked, setUnlocked] = useState(false);
 
   useEffect(() => {
-    animate(
-      [
-        ["#pointer", { left: 220, top: 50 }, { duration: 0 }],
-        ["#label-content", { opacity: 1 }, { duration: 0.3 }],
-        ["#pointer", { left: 40, top: 100 }, { at: "+0.5", duration: 0.5, ease: "easeInOut" }],
-        ["#label-content", { opacity: 0.4 }, { at: "-0.3", duration: 0.1 }],
-        ["#label-automation", { opacity: 1 }, { duration: 0.3 }],
-        ["#pointer", { left: 200, top: 170 }, { at: "+0.5", duration: 0.5, ease: "easeInOut" }],
-        ["#label-automation", { opacity: 0.4 }, { at: "-0.3", duration: 0.1 }],
-        ["#label-marketing", { opacity: 1 }, { duration: 0.3 }],
-        ["#pointer", { left: 60, top: 200 }, { at: "+0.5", duration: 0.5, ease: "easeInOut" }],
-        ["#label-marketing", { opacity: 0.4 }, { at: "-0.3", duration: 0.1 }],
-        ["#label-video", { opacity: 1 }, { duration: 0.3 }],
-        ["#pointer", { left: 220, top: 50 }, { at: "+0.5", duration: 0.5, ease: "easeInOut" }],
-        ["#label-video", { opacity: 0.4 }, { at: "-0.3", duration: 0.1 }],
-      ],
-      { repeat: Number.POSITIVE_INFINITY },
-    );
-  }, [animate]);
+    setUnlocked(isContentUnlocked());
+    const handler = () => setUnlocked(true);
+    window.addEventListener('orci-unlocked', handler);
+    return () => window.removeEventListener('orci-unlocked', handler);
+  }, []);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok || res.status === 400) {
+        localStorage.setItem(UNLOCK_KEY, 'true');
+        window.dispatchEvent(new Event('orci-unlocked'));
+        setStatus('success');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  }
 
   return (
-    <section className="cap-section overflow-hidden" style={{ background: 'transparent' }}>
-      <div className="max-w-5xl mx-auto px-6">
-        {/* Authority Badge */}
-        <div className="flex justify-center mb-8">
-          <div
-            className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full text-sm font-bold"
+    <section
+      className="relative min-h-screen flex items-center justify-center overflow-hidden neon-grid-hero"
+      style={{ background: '#000000' }}
+    >
+      {/* Animated SVG paths layer */}
+      <div className="absolute inset-0 pointer-events-none opacity-60">
+        <BackgroundPathsEffect />
+      </div>
+
+      {/* Radial purple+cyan glow center */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 70% 55% at 50% 45%, rgba(168,85,247,0.09) 0%, rgba(0,209,255,0.07) 45%, transparent 70%)',
+        }}
+      />
+
+      {/* ── Floating Badges ── */}
+      <FloatingBadge delay={0} className="top-[22%] right-[7%]">
+        <div
+          className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+          style={{ background: 'rgba(255,0,0,0.15)', border: '1px solid rgba(255,80,80,0.3)' }}
+        >
+          <Youtube className="w-4 h-4 text-red-400" />
+        </div>
+        <div>
+          <div className="text-sm font-bold text-white leading-none mb-0.5">130,000+</div>
+          <div className="text-xs" style={{ color: '#7a9bc0' }}>מנויים ביוטיוב</div>
+        </div>
+      </FloatingBadge>
+
+      <FloatingBadge delay={0.5} className="top-[22%] left-[7%]">
+        <div
+          className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-lg"
+          style={{ background: 'rgba(0,209,255,0.1)', border: '1px solid rgba(0,209,255,0.25)' }}
+        >
+          👁️
+        </div>
+        <div>
+          <div className="text-sm font-bold text-white leading-none mb-0.5">25,000,000</div>
+          <div className="text-xs" style={{ color: '#7a9bc0' }}>צפיות סה&quot;כ</div>
+        </div>
+      </FloatingBadge>
+
+      <FloatingBadge delay={1} className="bottom-[28%] right-[5%]">
+        <div
+          className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-lg"
+          style={{ background: 'rgba(168,85,247,0.12)', border: '1px solid rgba(168,85,247,0.3)' }}
+        >
+          🎯
+        </div>
+        <div>
+          <div className="text-sm font-bold text-white leading-none mb-0.5">מומחה AI</div>
+          <div className="text-xs" style={{ color: '#7a9bc0' }}>שיווק דיגיטלי</div>
+        </div>
+      </FloatingBadge>
+
+      {/* ── Main content ── */}
+      <div className="relative z-10 text-center max-w-3xl mx-auto px-6 py-24">
+
+        {/* Pre-headline chip */}
+        <motion.div
+          initial={{ opacity: 0, y: -16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-7"
+        >
+          <span
+            className="inline-flex items-center gap-2 text-xs font-bold px-4 py-1.5 rounded-full"
             style={{
-              background: 'rgba(0,209,255,0.08)',
-              border: '1px solid rgba(0,209,255,0.35)',
-              color: '#00d1ff',
-              boxShadow: '0 0 20px rgba(0,209,255,0.1)',
+              background: 'rgba(168,85,247,0.1)',
+              border: '1px solid rgba(168,85,247,0.35)',
+              color: '#c084fc',
             }}
           >
-            <Trophy className="w-4 h-4" />
-            <span>130K+ מנויים ביוטיוב</span>
-            <span style={{ color: 'rgba(0,209,255,0.4)' }}>•</span>
-            <span>25M+ צפיות</span>
-            <Shield className="w-4 h-4" />
-          </div>
-        </div>
+            ✦ מנוע ה-AI המוביל בישראל ✦
+          </span>
+        </motion.div>
 
-        <HighlightGroup className="group h-full">
-          <div className="group/item h-full">
-            <HighlighterItem className="rounded-3xl p-6">
-              <div
-                className="relative z-20 h-full overflow-hidden rounded-3xl"
+        {/* Main headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.1 }}
+          className="font-black leading-tight mb-5"
+          style={{ fontSize: 'clamp(2.8rem, 7vw, 5.5rem)', color: '#ffffff' }}
+        >
+          שלטו ב-AI
+          <br />
+          <span
+            style={{
+              background: 'linear-gradient(135deg, #00d1ff 0%, #a855f7 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
+            תוך דקות
+          </span>
+        </motion.h1>
+
+        {/* Sub-headline */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.2 }}
+          className="text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed"
+          style={{ color: '#7a9bc0' }}
+        >
+          מדריכים מעשיים, חדשות AI יומיות ושירותים מתקדמים —
+          הכל במקום אחד. מבוסס על ניסיון אמיתי של 25 מיליון צפיות.
+        </motion.p>
+
+        {/* ── Rundown-style email CTA ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.3 }}
+          className="mb-8"
+        >
+          {unlocked || status === 'success' ? (
+            <div
+              className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl"
+              style={{
+                background: 'rgba(0,209,255,0.07)',
+                border: '1px solid rgba(0,209,255,0.3)',
+              }}
+            >
+              <CheckCircle className="w-5 h-5 text-orci-cyan flex-shrink-0" />
+              <span className="font-semibold" style={{ color: '#e8f4ff' }}>
+                גישה מלאה לכל המדריכים נפתחה!
+              </span>
+            </div>
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col sm:flex-row gap-2.5 max-w-md mx-auto"
+            >
+              <div className="relative flex-1">
+                <Mail
+                  className="absolute top-1/2 -translate-y-1/2 right-4 w-4 h-4 pointer-events-none"
+                  style={{ color: '#4a6a8a' }}
+                />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="האימייל שלכם..."
+                  required
+                  className="w-full pr-11 pl-4 py-4 rounded-xl text-sm outline-none transition-all"
+                  style={{
+                    background: 'rgba(255,255,255,0.05)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    color: '#e8f4ff',
+                    direction: 'rtl',
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = 'rgba(168,85,247,0.55)';
+                    e.target.style.boxShadow = '0 0 0 3px rgba(168,85,247,0.1)';
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = 'rgba(255,255,255,0.1)';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="flex items-center justify-center gap-2 px-7 py-4 rounded-xl font-bold text-sm whitespace-nowrap transition-all"
                 style={{
-                  background: 'rgba(10,22,40,0.85)',
-                  border: '1px solid rgba(0,209,255,0.2)',
-                  backdropFilter: 'blur(12px)',
+                  background:
+                    status === 'loading'
+                      ? 'rgba(168,85,247,0.35)'
+                      : 'linear-gradient(135deg, #a855f7, #7c3aed)',
+                  color: '#ffffff',
+                  boxShadow:
+                    status === 'loading' ? 'none' : '0 0 28px rgba(168,85,247,0.4)',
                 }}
               >
-                <Particles
-                  className="absolute inset-0 -z-10 opacity-10 transition-opacity duration-1000 ease-in-out group-hover/item:opacity-100"
-                  quantity={200}
-                  color="#00d1ff"
-                  vy={-0.2}
-                />
-                <div className="flex justify-center">
-                  <div className="flex h-full flex-col justify-center gap-10 p-4 md:h-[300px] md:flex-row">
-                    {/* Animated Labels */}
-                    <div className="relative mx-auto h-[270px] w-[300px] md:h-[270px] md:w-[300px]" ref={scope}>
-                      <Sparkles className="absolute left-1/2 top-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 text-orci-cyan" />
+                {status === 'loading' ? (
+                  <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  </svg>
+                ) : (
+                  <>
+                    <ArrowLeft className="w-4 h-4" />
+                    פתחו גישה חינם
+                  </>
+                )}
+              </button>
+            </form>
+          )}
 
-                      <div id="label-video" className="absolute bottom-12 left-14 rounded-3xl px-3 py-1.5 text-xs font-medium opacity-50" style={{ border: '1px solid rgba(0,209,255,0.4)', background: 'rgba(0,209,255,0.1)', color: '#e8f4ff' }}>
-                        וידאו ויראלי
-                      </div>
-                      <div id="label-automation" className="absolute left-2 top-20 rounded-3xl px-3 py-1.5 text-xs font-medium opacity-50" style={{ border: '1px solid rgba(0,209,255,0.4)', background: 'rgba(0,209,255,0.1)', color: '#e8f4ff' }}>
-                        אוטומציות חכמות
-                      </div>
-                      <div id="label-marketing" className="absolute bottom-20 right-1 rounded-3xl px-3 py-1.5 text-xs font-medium opacity-50" style={{ border: '1px solid rgba(0,209,255,0.4)', background: 'rgba(0,209,255,0.1)', color: '#e8f4ff' }}>
-                        שיווק דיגיטלי
-                      </div>
-                      <div id="label-content" className="absolute right-2 top-10 rounded-3xl px-3 py-1.5 text-xs font-medium opacity-50" style={{ border: '1px solid rgba(0,209,255,0.4)', background: 'rgba(0,209,255,0.1)', color: '#e8f4ff' }}>
-                        יצירת תוכן AI
-                      </div>
+          {status === 'error' && (
+            <p className="mt-2 text-red-400 text-xs text-center">משהו השתבש. נסו שוב.</p>
+          )}
 
-                      {/* Animated pointer */}
-                      <div id="pointer" className="absolute" style={{ left: 220, top: 50 }}>
-                        <svg height="18" width="15" fill="currentColor" className="text-orci-cyan" strokeWidth="1" xmlns="http://www.w3.org/2000/svg">
-                          <path fillRule="evenodd" clipRule="evenodd" d="M12 5.50676L0 0L2.83818 13L6.30623 7.86537L12 5.50676V5.50676Z" />
-                        </svg>
-                        <span className="bg-orci-cyan relative -top-1 left-3 rounded-3xl px-2 py-1 text-xs font-bold" style={{ color: '#050d1a' }}>
-                          Orci
-                        </span>
-                      </div>
-                    </div>
+          <p className="mt-3 text-xs text-center" style={{ color: '#3a5a7a' }}>
+            ללא ספאם · גישה מיידית לכל המדריכים · בחינם לגמרי
+          </p>
+        </motion.div>
 
-                    {/* Text + CTA */}
-                    <div className="-mt-20 flex h-full flex-col justify-center p-2 md:-mt-4 md:mr-10 md:w-[400px]">
-                      <div className="flex flex-col items-center md:items-start">
-                        <h1 className="mt-6 pb-1 font-bold">
-                          <span className="text-2xl md:text-4xl" style={{ color: '#e8f4ff' }}>
-                            מרכז הפיקוד של ה-AI
-                          </span>
-                        </h1>
-                      </div>
-                      <p className="mb-4 text-sm md:text-base text-center md:text-right" style={{ color: '#7a9bc0' }}>
-                        מדריכים מעשיים, חדשות AI יומיות, ושירותים מתקדמים
-                        <br />
-                        כדי שתוכלו להישאר צעד אחד קדימה תמיד
-                      </p>
-
-                      {/* Trust indicators */}
-                      <div className="flex gap-3 mb-5 justify-center md:justify-start flex-wrap">
-                        {['130K מנויים', '25M צפיות', 'מומחה AI'].map((item) => (
-                          <span
-                            key={item}
-                            className="flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full"
-                            style={{ background: 'rgba(0,209,255,0.08)', border: '1px solid rgba(0,209,255,0.2)', color: '#7a9bc0' }}
-                          >
-                            <Star className="w-3 h-3 text-orci-cyan" />
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                        <a
-                          href="https://wa.me/972542599107"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm transition-all"
-                          style={{
-                            background: 'linear-gradient(135deg, #00d1ff, #00bfff)',
-                            color: '#050d1a',
-                            boxShadow: '0 0 20px rgba(0,209,255,0.3)',
-                          }}
-                        >
-                          <MessageCircle className="w-4 h-4" />
-                          בואו נדבר
-                        </a>
-                        <Link
-                          href="/guides"
-                          className="inline-flex items-center gap-1 px-5 py-2.5 rounded-full text-sm font-medium transition-all"
-                          style={{ border: '1.5px solid rgba(0,209,255,0.3)', color: '#00d1ff' }}
-                        >
-                          כל המדריכים
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </HighlighterItem>
-          </div>
-        </HighlightGroup>
+        {/* Mobile badges row */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.55 }}
+          className="flex justify-center gap-2.5 flex-wrap lg:hidden"
+        >
+          {[
+            { icon: <Youtube className="w-3.5 h-3.5 text-red-400" />, text: '130K+ מנויים' },
+            { icon: <span className="text-sm">👁️</span>, text: '25M+ צפיות' },
+            { icon: <span className="text-sm">🎯</span>, text: 'מומחה שיווק AI' },
+          ].map((b, i) => (
+            <span
+              key={i}
+              className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full"
+              style={{
+                background: 'rgba(8,8,18,0.8)',
+                border: '1px solid rgba(0,209,255,0.2)',
+                color: '#7a9bc0',
+              }}
+            >
+              {b.icon} {b.text}
+            </span>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
 }
 
-// ─── YouTube Section ─────────────────────────────────────────────────────────
+// ─── YouTube Section ──────────────────────────────────────────────────────────
 
 const YT_VIDEOS = [
   {
@@ -203,14 +346,17 @@ function YouTubeSection() {
   return (
     <section className="cap-section cap-section-alt neon-grid-bg">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-4" style={{ background: 'rgba(255,0,0,0.1)', border: '1px solid rgba(255,0,0,0.3)', color: '#ff4444' }}>
+          <div
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-4"
+            style={{ background: 'rgba(255,0,0,0.1)', border: '1px solid rgba(255,0,0,0.3)', color: '#ff4444' }}
+          >
             <Youtube className="w-4 h-4" />
             הערוץ שלנו ביוטיוב
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: '#e8f4ff' }}>
-            25 מיליון צפיות.<br />
+            25 מיליון צפיות.
+            <br />
             <span style={{ color: '#00d1ff' }}>הסוד? AI + יצירתיות.</span>
           </h2>
           <p className="text-base max-w-xl mx-auto" style={{ color: '#7a9bc0' }}>
@@ -218,7 +364,6 @@ function YouTubeSection() {
           </p>
         </div>
 
-        {/* Video Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
           {YT_VIDEOS.map((video) => (
             <a
@@ -229,7 +374,6 @@ function YouTubeSection() {
               className="group relative rounded-xl overflow-hidden block transition-all duration-300 hover:-translate-y-1"
               style={{ border: '1px solid rgba(0,209,255,0.12)' }}
             >
-              {/* Thumbnail */}
               <div className="relative h-48 overflow-hidden">
                 <Image
                   src={video.thumbnail}
@@ -238,23 +382,28 @@ function YouTubeSection() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   unoptimized={video.thumbnail.startsWith('http')}
                 />
-                {/* Play overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'rgba(0,0,0,0.5)' }}>
-                  <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ background: 'rgba(255,0,0,0.85)', boxShadow: '0 0 25px rgba(255,0,0,0.4)' }}>
+                <div
+                  className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ background: 'rgba(0,0,0,0.5)' }}
+                >
+                  <div
+                    className="w-14 h-14 rounded-full flex items-center justify-center"
+                    style={{ background: 'rgba(255,0,0,0.85)', boxShadow: '0 0 25px rgba(255,0,0,0.4)' }}
+                  >
                     <svg className="w-6 h-6 text-white mr-[-2px]" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
                 </div>
-                {/* YouTube badge */}
                 <div className="absolute top-2 left-2">
                   <Youtube className="w-5 h-5 text-red-500" />
                 </div>
               </div>
-
-              {/* Info */}
-              <div className="p-4" style={{ background: 'rgba(10,22,40,0.95)' }}>
-                <h3 className="font-bold text-sm mb-1 group-hover:text-orci-cyan transition-colors line-clamp-2" style={{ color: '#e8f4ff' }}>
+              <div className="p-4" style={{ background: 'rgba(10,10,26,0.97)' }}>
+                <h3
+                  className="font-bold text-sm mb-1 group-hover:text-orci-cyan transition-colors line-clamp-2"
+                  style={{ color: '#e8f4ff' }}
+                >
                   {video.title}
                 </h3>
                 <p className="text-xs" style={{ color: '#4a6a8a' }}>{video.views}</p>
@@ -263,7 +412,6 @@ function YouTubeSection() {
           ))}
         </div>
 
-        {/* CTA */}
         <div className="text-center">
           <a
             href="https://www.youtube.com/@oci"
@@ -271,8 +419,8 @@ function YouTubeSection() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm transition-all"
             style={{
-              background: 'rgba(255,0,0,0.12)',
-              border: '1.5px solid rgba(255,80,80,0.4)',
+              background: 'rgba(255,0,0,0.1)',
+              border: '1.5px solid rgba(255,80,80,0.35)',
               color: '#ff6666',
             }}
           >
@@ -290,105 +438,96 @@ function YouTubeSection() {
 
 export default function Home() {
   return (
-    <div className="min-h-screen relative">
-      {/* Animated Background Paths - Full Page */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <BackgroundPathsEffect />
-      </div>
+    <div className="min-h-screen" style={{ background: '#000000' }}>
 
-      {/* All content above background */}
-      <div className="relative z-10">
+      {/* 1. HERO — black + grid + animated paths + floating badges + email CTA */}
+      <HeroSection />
 
-        {/* 1. HERO - Authority badge + interactive Highlighter */}
-        <HeroSection />
-
-        {/* 2. TUTORIAL ENGINE - High-density grid with filters + email gate + AI summary */}
-        <section className="cap-section cap-section-white neon-grid-bg">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-10">
-              <div
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-4"
-                style={{ background: 'rgba(0,209,255,0.08)', border: '1px solid rgba(0,209,255,0.3)', color: '#00d1ff' }}
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                מנוע המדריכים
-              </div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-3" style={{ color: '#e8f4ff' }}>
-                כל המדריכים שלנו
-              </h2>
-              <p className="text-base max-w-xl mx-auto" style={{ color: '#7a9bc0' }}>
-                2 מדריכים ראשונים חינם. שאר? פשוט תשאירו אימייל ואנחנו נפתח הכל.
-              </p>
+      {/* 2. TUTORIAL ENGINE */}
+      <section className="cap-section cap-section-white neon-grid-bg">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <div
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-4"
+              style={{ background: 'rgba(168,85,247,0.1)', border: '1px solid rgba(168,85,247,0.35)', color: '#c084fc' }}
+            >
+              ✦ מנוע המדריכים
             </div>
-            <TutorialGrid />
-          </div>
-        </section>
-
-        {/* 3. AI NEWS - Daily Pulse */}
-        <DailyPulse />
-
-        {/* 4. YOUTUBE ECOSYSTEM */}
-        <YouTubeSection />
-
-        {/* 5. SCROLL ANIMATION - YouTube achievement showcase */}
-        <section className="cap-section cap-section-teal overflow-hidden">
-          <ContainerScroll
-            titleComponent={
-              <>
-                <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ color: '#e8f4ff' }}>
-                  בעל ערוץ יוטיוב שהגיע ל-
-                </h2>
-                <span className="text-4xl md:text-[5rem] font-bold text-orci-cyan leading-none">
-                  25 מיליון צפיות
-                </span>
-                <p className="text-3xl md:text-[4rem] font-bold text-orci-cyan mt-4">
-                  ו-130,000 רשומים
-                </p>
-                <p className="text-xl md:text-2xl mt-6" style={{ color: '#7a9bc0' }}>
-                  וגם אתם יכולים להגיע להישגים כאלה עם AI
-                </p>
-              </>
-            }
-          >
-            <Image
-              src="/Chanel.png"
-              alt="ערוץ היוטיוב של Orci - 25M צפיות ו-130K רשומים"
-              height={720}
-              width={1400}
-              className="mx-auto rounded-2xl object-cover h-full object-center"
-              draggable={false}
-              priority
-            />
-          </ContainerScroll>
-        </section>
-
-        {/* 6. SERVICES - Orbiting Skills */}
-        <section className="cap-section cap-section-white relative">
-          <div className="max-w-7xl mx-auto px-6">
-            <h2 className="cap-section-title text-center mb-4" style={{ color: '#e8f4ff' }}>
-              מה אנחנו מציעים
+            <h2 className="text-3xl md:text-5xl font-bold mb-3" style={{ color: '#e8f4ff' }}>
+              כל המדריכים שלנו
             </h2>
-            <p className="text-center mb-8 hidden sm:block" style={{ color: '#7a9bc0' }}>
-              העבירו את העכבר כדי לעצור, רחפו על אייקון לפרטים
+            <p className="text-base max-w-xl mx-auto" style={{ color: '#7a9bc0' }}>
+              2 מדריכים ראשונים חינם. שאר? פשוט תשאירו אימייל ואנחנו נפתח הכל.
             </p>
-            <OrbitingSkills />
-            <div className="text-center mt-8">
-              <Link href="/products" className="cap-btn cap-btn-primary">
-                גלו עוד
-              </Link>
-            </div>
           </div>
-        </section>
+          <TutorialGrid />
+        </div>
+      </section>
 
-        {/* 7. NEWSLETTER */}
-        <section className="cap-section cap-section-teal">
-          <div className="max-w-2xl mx-auto px-6">
-            <Newsletter />
+      {/* 3. AI NEWS */}
+      <DailyPulse />
+
+      {/* 4. YOUTUBE */}
+      <YouTubeSection />
+
+      {/* 5. SCROLL SHOWCASE */}
+      <section className="cap-section cap-section-teal overflow-hidden">
+        <ContainerScroll
+          titleComponent={
+            <>
+              <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ color: '#e8f4ff' }}>
+                בעל ערוץ יוטיוב שהגיע ל-
+              </h2>
+              <span className="text-4xl md:text-[5rem] font-bold text-orci-cyan leading-none">
+                25 מיליון צפיות
+              </span>
+              <p className="text-3xl md:text-[4rem] font-bold text-orci-cyan mt-4">
+                ו-130,000 רשומים
+              </p>
+              <p className="text-xl md:text-2xl mt-6" style={{ color: '#7a9bc0' }}>
+                וגם אתם יכולים להגיע להישגים כאלה עם AI
+              </p>
+            </>
+          }
+        >
+          <Image
+            src="/Chanel.png"
+            alt="ערוץ היוטיוב של Orci - 25M צפיות ו-130K רשומים"
+            height={720}
+            width={1400}
+            className="mx-auto rounded-2xl object-cover h-full object-center"
+            draggable={false}
+            priority
+          />
+        </ContainerScroll>
+      </section>
+
+      {/* 6. SERVICES */}
+      <section className="cap-section cap-section-white relative neon-grid-bg">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="cap-section-title text-center mb-4" style={{ color: '#e8f4ff' }}>
+            מה אנחנו מציעים
+          </h2>
+          <p className="text-center mb-8 hidden sm:block" style={{ color: '#7a9bc0' }}>
+            העבירו את העכבר כדי לעצור, רחפו על אייקון לפרטים
+          </p>
+          <OrbitingSkills />
+          <div className="text-center mt-8">
+            <Link href="/products" className="cap-btn cap-btn-primary">
+              גלו עוד
+            </Link>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <Footer />
-      </div>
+      {/* 7. NEWSLETTER */}
+      <section className="cap-section cap-section-teal">
+        <div className="max-w-2xl mx-auto px-6">
+          <Newsletter />
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }

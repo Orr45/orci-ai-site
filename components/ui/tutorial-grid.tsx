@@ -21,9 +21,17 @@ export default function TutorialGrid() {
   useEffect(() => {
     setUnlocked(isContentUnlocked());
 
+    // Cross-tab: storage event
     const onStorage = () => setUnlocked(isContentUnlocked());
+    // Same-page: fired by hero email field or modal after unlock
+    const onCustomUnlock = () => setUnlocked(true);
+
     window.addEventListener('storage', onStorage);
-    return () => window.removeEventListener('storage', onStorage);
+    window.addEventListener('orci-unlocked', onCustomUnlock);
+    return () => {
+      window.removeEventListener('storage', onStorage);
+      window.removeEventListener('orci-unlocked', onCustomUnlock);
+    };
   }, []);
 
   const filteredGuides = GUIDES.filter((g) => {

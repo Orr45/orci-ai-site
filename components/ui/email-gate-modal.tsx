@@ -52,6 +52,7 @@ export default function EmailGateModal({ isOpen, onClose, onUnlock, guideName }:
       if (res.ok) {
         setStatus('success');
         localStorage.setItem(UNLOCK_KEY, 'true');
+        window.dispatchEvent(new Event('orci-unlocked'));
         setTimeout(() => { onUnlock(); onClose(); }, 1800);
       } else {
         const data = await res.json().catch(() => ({}));
@@ -59,6 +60,7 @@ export default function EmailGateModal({ isOpen, onClose, onUnlock, guideName }:
         if (data?.error?.includes('already') || res.status === 400) {
           setStatus('success');
           localStorage.setItem(UNLOCK_KEY, 'true');
+          window.dispatchEvent(new Event('orci-unlocked'));
           setTimeout(() => { onUnlock(); onClose(); }, 1800);
         } else {
           setStatus('error');

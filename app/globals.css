@@ -5,15 +5,16 @@
   /* Orci AI Brand Colors */
   --orci-cyan: #00d1ff;
   --orci-blue: #00bfff;
-  --orci-purple: #7c3aed;
+  --orci-purple: #a855f7;
+  --orci-purple-dark: #7c3aed;
   --orci-primary: #00d1ff;
 
-  /* Dark Mode Backgrounds */
-  --background: #050d1a;
-  --surface: #0a1628;
-  --surface-alt: #0d1f3a;
-  --surface-card: #0f2040;
-  --surface-hover: #132850;
+  /* Dark Mode Backgrounds - Pure Black */
+  --background: #000000;
+  --surface: #0a0a0a;
+  --surface-alt: #111111;
+  --surface-card: #0d0d1a;
+  --surface-hover: #15152a;
 
   /* Text */
   --text-primary: #e8f4ff;
@@ -23,10 +24,13 @@
   /* Borders */
   --border-subtle: rgba(0, 209, 255, 0.12);
   --border-glow: rgba(0, 209, 255, 0.35);
+  --border-purple: rgba(168, 85, 247, 0.35);
 
   /* Glows */
   --glow-cyan: 0 0 20px rgba(0, 209, 255, 0.25);
   --glow-cyan-strong: 0 0 40px rgba(0, 209, 255, 0.4);
+  --glow-purple: 0 0 20px rgba(168, 85, 247, 0.3);
+  --glow-purple-strong: 0 0 40px rgba(168, 85, 247, 0.45);
 
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -35,6 +39,7 @@
   --color-orci-cyan: var(--orci-cyan);
   --color-orci-blue: var(--orci-blue);
   --color-orci-purple: var(--orci-purple);
+  --color-orci-purple-dark: var(--orci-purple-dark);
   --font-sans: var(--font-heebo);
 }
 
@@ -76,15 +81,15 @@ html[dir="rtl"] {
 }
 
 .cap-section-teal {
-  background: rgba(5, 13, 26, 0.95);
+  background: rgba(0, 0, 0, 0.97);
 }
 
 .cap-section-white {
-  background: rgba(10, 22, 40, 0.95);
+  background: rgba(10, 10, 26, 0.97);
 }
 
 .cap-section-alt {
-  background: rgba(13, 31, 58, 0.95);
+  background: rgba(13, 13, 26, 0.97);
 }
 
 /* ========================================
@@ -262,9 +267,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .neon-grid-bg {
   background-image:
-    linear-gradient(rgba(0, 209, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 209, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(rgba(0, 209, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 209, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.neon-grid-hero {
+  background-image:
+    linear-gradient(rgba(0, 209, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 209, 255, 0.06) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
 
 /* ========================================
