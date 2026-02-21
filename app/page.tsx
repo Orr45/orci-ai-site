@@ -331,14 +331,14 @@ const YT_VIDEOS = [
     title: 'איך ליצור משפיענית AI שנראית אמיתית',
     views: '120K צפיות',
     thumbnail: '/guides/guide-ai-influencer.png',
-    url: 'https://www.youtube.com/@oci',
+    url: 'https://www.youtube.com/@Orci_Ai',
   },
   {
     id: 'channel-2',
     title: 'טרנד הפינגווין - גרסה ישראלית ויראלית',
     views: '95K צפיות',
     thumbnail: '/guides/guide-penguin-viral.png',
-    url: 'https://www.youtube.com/@oci',
+    url: 'https://www.youtube.com/@Orci_Ai',
   },
 ];
 
@@ -414,7 +414,7 @@ function YouTubeSection() {
 
         <div className="text-center">
           <a
-            href="https://www.youtube.com/@oci"
+            href="https://www.youtube.com/@Orci_Ai"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm transition-all"
