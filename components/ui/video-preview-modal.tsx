@@ -51,7 +51,7 @@ export function VideoPreviewModal({ isOpen, onClose, guide }: VideoPreviewModalP
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-4 pt-8 md:items-center md:p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -62,17 +62,17 @@ export function VideoPreviewModal({ isOpen, onClose, guide }: VideoPreviewModalP
 
           {/* Modal Content */}
           <motion.div
-            className="relative w-full max-w-md"
+            className="relative w-full max-w-md my-8 md:my-0"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
+            {/* Close Button - Top Right Corner */}
             <button
               onClick={onClose}
-              className="absolute -top-12 left-1/2 -translate-x-1/2 w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-colors z-10"
+              className="absolute -top-4 -right-4 md:-top-12 md:left-1/2 md:-translate-x-1/2 md:right-auto w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 rounded-full transition-colors z-10 shadow-lg"
               aria-label="סגור"
             >
               <X className="w-6 h-6 text-white" />
@@ -107,16 +107,27 @@ export function VideoPreviewModal({ isOpen, onClose, guide }: VideoPreviewModalP
                 {guide.summary}
               </p>
 
-              {/* CTA Button */}
-              <button
-                onClick={handleNavigateToGuide}
-                className="w-full px-6 py-4 bg-orci-cyan hover:bg-orci-blue text-white font-bold rounded-xl transition-colors shadow-lg hover:shadow-orci-cyan/50 flex items-center justify-center gap-2"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-                למדריך המפורט
-              </button>
+              {/* CTA Buttons */}
+              <div className="space-y-3">
+                <button
+                  onClick={handleNavigateToGuide}
+                  className="w-full px-6 py-4 bg-orci-cyan hover:bg-orci-blue text-white font-bold rounded-xl transition-colors shadow-lg hover:shadow-orci-cyan/50 flex items-center justify-center gap-2"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                  למדריך המפורט
+                </button>
+
+                {/* Mobile Close Button */}
+                <button
+                  onClick={onClose}
+                  className="md:hidden w-full px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-xl transition-colors flex items-center justify-center gap-2"
+                >
+                  <X className="w-4 h-4" />
+                  סגור
+                </button>
+              </div>
             </motion.div>
           </motion.div>
         </motion.div>
