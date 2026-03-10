@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle, Youtube, ExternalLink, Mail, BookOpen, Zap, TrendingUp } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Youtube, ExternalLink, Mail, BookOpen, Zap, TrendingUp, Play } from 'lucide-react';
 import { Footer } from '@/components/layout/Footer';
 import DailyPulse from '@/components/news/DailyPulse';
 import { ContainerScroll } from '@/components/ui/container-scroll-animation';
@@ -13,6 +13,7 @@ import OrbitingSkills from '@/components/ui/orbiting-skills';
 import Newsletter from '@/components/ui/newsletter';
 import TutorialGrid from '@/components/ui/tutorial-grid';
 import { isContentUnlocked, UNLOCK_KEY } from '@/components/ui/email-gate-modal';
+import { LearningModeModal } from '@/components/ui/learning-mode-modal';
 
 // ─── Floating Authority Badge ─────────────────────────────────────────────────
 
@@ -423,6 +424,7 @@ const TABS = [
 
 function ContentTabs() {
   const [active, setActive] = useState('guides');
+  const [isLearningModeOpen, setIsLearningModeOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setActive('guides');
@@ -492,6 +494,17 @@ function ContentTabs() {
               <p className="text-base max-w-xl mx-auto" style={{ color: '#b0d0f0' }}>
                 2 מדריכים ראשונים חינם. שאר? פשוט תשאירו אימייל ואנחנו נפתח הכל.
               </p>
+
+              {/* Learning Mode Button */}
+              <motion.button
+                onClick={() => setIsLearningModeOpen(true)}
+                className="mt-6 mx-auto flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-orci-cyan to-orci-blue hover:from-orci-blue hover:to-orci-cyan text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-orci-cyan/50"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Play className="w-5 h-5" />
+                <span>מצב למידה - צפו במדריכים בסגנון נטפליקס</span>
+              </motion.button>
             </div>
             <TutorialGrid />
           </div>
@@ -501,6 +514,12 @@ function ContentTabs() {
       {active === 'news' && <DailyPulse />}
 
       {active === 'youtube' && <YouTubeSection />}
+
+      {/* Learning Mode Modal */}
+      <LearningModeModal
+        isOpen={isLearningModeOpen}
+        onClose={() => setIsLearningModeOpen(false)}
+      />
     </div>
   );
 }

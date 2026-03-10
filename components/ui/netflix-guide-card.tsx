@@ -2,15 +2,15 @@
 import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import Link from 'next/link'
 import { GuideData } from '@/data/guides'
 
 interface NetflixGuideCardProps {
   guide: GuideData
   index: number
+  onClick?: (guide: GuideData) => void
 }
 
-export function NetflixGuideCard({ guide, index }: NetflixGuideCardProps) {
+export function NetflixGuideCard({ guide, index, onClick }: NetflixGuideCardProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
@@ -38,18 +38,24 @@ export function NetflixGuideCard({ guide, index }: NetflixGuideCardProps) {
     setIsPlaying(false)
   }
 
+  const handleClick = () => {
+    if (onClick) {
+      onClick(guide)
+    }
+  }
+
   return (
-    <Link href={guide.href}>
-      <motion.div
-        className="group relative flex-shrink-0 cursor-pointer"
-        style={{ width: '200px', aspectRatio: '9/16' }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.1, type: 'spring', stiffness: 300, damping: 30 }}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        whileHover={{ scale: 1.05, zIndex: 10 }}
-      >
+    <motion.div
+      className="group relative flex-shrink-0 cursor-pointer"
+      style={{ width: '200px', aspectRatio: '9/16' }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, type: 'spring', stiffness: 300, damping: 30 }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      whileHover={{ scale: 1.05, zIndex: 10 }}
+      onClick={handleClick}
+    >
         {/* Thumbnail Image */}
         <div className="relative w-full h-full rounded-xl overflow-hidden bg-gray-900 border-2 border-transparent group-hover:border-orci-cyan transition-all duration-300">
           {!isPlaying ? (
@@ -109,7 +115,6 @@ export function NetflixGuideCard({ guide, index }: NetflixGuideCardProps) {
           animate={{ opacity: isHovered ? 0.5 : 0 }}
           transition={{ duration: 0.3 }}
         />
-      </motion.div>
-    </Link>
+    </motion.div>
   )
 }

@@ -9,9 +9,10 @@ interface NetflixGuideRowProps {
   title: string
   guides: GuideData[]
   emoji?: string
+  onCardClick?: (guide: GuideData) => void
 }
 
-export function NetflixGuideRow({ title, guides, emoji }: NetflixGuideRowProps) {
+export function NetflixGuideRow({ title, guides, emoji, onCardClick }: NetflixGuideRowProps) {
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const scroll = (direction: 'left' | 'right') => {
@@ -69,7 +70,12 @@ export function NetflixGuideRow({ title, guides, emoji }: NetflixGuideRowProps) 
           }}
         >
           {guides.map((guide, index) => (
-            <NetflixGuideCard key={guide.id} guide={guide} index={index} />
+            <NetflixGuideCard
+              key={guide.id}
+              guide={guide}
+              index={index}
+              onClick={onCardClick}
+            />
           ))}
         </div>
       </div>
