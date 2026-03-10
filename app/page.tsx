@@ -141,8 +141,7 @@ function HeroSection() {
         >
           <button
             onClick={() => {
-              window.dispatchEvent(new CustomEvent('show-guides-tab'));
-              document.getElementById('content-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              window.dispatchEvent(new CustomEvent('open-learning-mode'));
             }}
             className="inline-flex items-center gap-3 px-8 py-5 rounded-2xl font-black text-xl transition-all hover:scale-105 active:scale-100"
             style={{
@@ -151,8 +150,8 @@ function HeroSection() {
               boxShadow: '0 0 50px rgba(0,209,255,0.45), 0 4px 20px rgba(0,0,0,0.3)',
             }}
           >
-            <BookOpen className="w-6 h-6 flex-shrink-0" />
-            מה תרצו ללמוד היום?
+            <Play className="w-6 h-6 flex-shrink-0" />
+            בואו נתחיל ללמוד
             <ArrowLeft className="w-5 h-5 flex-shrink-0" />
           </button>
         </motion.div>
@@ -337,7 +336,6 @@ const TABS = [
 
 function ContentTabs() {
   const [active, setActive] = useState('guides');
-  const [isLearningModeOpen, setIsLearningModeOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setActive('guides');
@@ -410,7 +408,7 @@ function ContentTabs() {
 
               {/* Learning Mode Button */}
               <motion.button
-                onClick={() => setIsLearningModeOpen(true)}
+                onClick={() => window.dispatchEvent(new CustomEvent('open-learning-mode'))}
                 className="mt-6 mx-auto flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-orci-cyan to-orci-blue hover:from-orci-blue hover:to-orci-cyan text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-orci-cyan/50"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -427,12 +425,6 @@ function ContentTabs() {
       {active === 'news' && <DailyPulse />}
 
       {active === 'youtube' && <YouTubeSection />}
-
-      {/* Learning Mode Modal */}
-      <LearningModeModal
-        isOpen={isLearningModeOpen}
-        onClose={() => setIsLearningModeOpen(false)}
-      />
     </div>
   );
 }
@@ -558,6 +550,14 @@ function YouTubeSection() {
 // ─── Home Page ────────────────────────────────────────────────────────────────
 
 export default function Home() {
+  const [isLearningModeOpen, setIsLearningModeOpen] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setIsLearningModeOpen(true);
+    window.addEventListener('open-learning-mode', handler);
+    return () => window.removeEventListener('open-learning-mode', handler);
+  }, []);
+
   return (
     <div className="min-h-screen" style={{ background: '#000000' }}>
 
@@ -628,6 +628,12 @@ export default function Home() {
       </section>
 
       <Footer />
+
+      {/* Learning Mode Modal */}
+      <LearningModeModal
+        isOpen={isLearningModeOpen}
+        onClose={() => setIsLearningModeOpen(false)}
+      />
     </div>
   );
 }
