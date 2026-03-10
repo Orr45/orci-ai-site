@@ -111,38 +111,12 @@ function HeroSection() {
       {/* ── Main content ── */}
       <div className="relative z-10 text-center max-w-3xl mx-auto px-6 pt-4 pb-0 w-full">
 
-        {/* Pre-headline chip — clickable, opens guides tab */}
-        <motion.div
-          initial={{ opacity: 0, y: -16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-7"
-        >
-          <button
-            onClick={() => {
-              window.dispatchEvent(new CustomEvent('show-guides-tab'));
-              document.getElementById('content-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }}
-            className="inline-flex items-center gap-2 text-sm font-bold px-5 py-2 rounded-full transition-all hover:scale-105 cursor-pointer"
-            style={{
-              background: 'rgba(0,209,255,0.08)',
-              border: '1px solid rgba(0,209,255,0.35)',
-              color: '#00d1ff',
-              boxShadow: '0 0 16px rgba(0,209,255,0.1)',
-            }}
-          >
-            <BookOpen className="w-4 h-4" />
-            מה תרצו ללמוד היום?
-            <ArrowLeft className="w-3.5 h-3.5 opacity-70" />
-          </button>
-        </motion.div>
-
         {/* Main headline */}
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.1 }}
-          className="font-black leading-tight mb-5"
+          className="font-black leading-tight mb-12 mt-8"
           style={{ fontSize: 'clamp(2.8rem, 7vw, 5.5rem)', color: '#ffffff' }}
         >
           שלטו ב-AI
@@ -157,18 +131,6 @@ function HeroSection() {
             תוך דקות
           </span>
         </motion.h1>
-
-        {/* Sub-headline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.2 }}
-          className="text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed"
-          style={{ color: '#b0d0f0' }}
-        >
-          מדריכים מעשיים, חדשות AI יומיות ושירותים מתקדמים —
-          הכל במקום אחד. מבוסס על ניסיון אמיתי של 25 מיליון צפיות.
-        </motion.p>
 
         {/* ── Big CTA button ── */}
         <motion.div
@@ -193,9 +155,6 @@ function HeroSection() {
             מה תרצו ללמוד היום?
             <ArrowLeft className="w-5 h-5 flex-shrink-0" />
           </button>
-          <p className="mt-3 text-xs text-center" style={{ color: '#8ab4d4' }}>
-            6 מדריכים מעשיים · גישה מיידית · בחינם לגמרי
-          </p>
         </motion.div>
 
         {/* High-tech stat badges row */}
