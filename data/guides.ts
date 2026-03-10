@@ -10,6 +10,7 @@ export interface GuideData {
   isNew: boolean;
   date: string; // ISO date for sorting
   free: boolean; // first 2 are free, rest need email gate
+  videoUrl?: string; // YouTube Shorts URL for Netflix-style preview
 }
 
 export const GUIDES: GuideData[] = [
@@ -38,6 +39,7 @@ export const GUIDES: GuideData[] = [
     isNew: false,
     date: '2026-01-18',
     free: true,
+    videoUrl: 'https://www.youtube.com/shorts/BoOTbU2k1QQ',
   },
   {
     id: 'penguin-viral',
@@ -51,6 +53,7 @@ export const GUIDES: GuideData[] = [
     isNew: false,
     date: '2026-01-25',
     free: false,
+    videoUrl: 'https://www.youtube.com/shorts/p5jLM4_9Zug',
   },
   {
     id: 'new-guide',
@@ -64,6 +67,7 @@ export const GUIDES: GuideData[] = [
     isNew: true,
     date: '2026-02-01',
     free: false,
+    videoUrl: 'https://www.youtube.com/shorts/IB0Gu0JE5D8',
   },
   {
     id: 'new-guide-2',
@@ -90,6 +94,7 @@ export const GUIDES: GuideData[] = [
     isNew: true,
     date: '2026-02-15',
     free: false,
+    videoUrl: 'https://www.youtube.com/shorts/DHhcgituYeA',
   },
 ];
 
