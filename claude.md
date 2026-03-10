@@ -436,8 +436,8 @@ npm run lint         # Run ESLint
 
 ---
 
-**Last Updated:** 2026-02-07
-**Status:** ✅ AI-generated guide cover images, Mailchimp newsletter integration, comprehensive site audit completed
+**Last Updated:** 2026-03-10
+**Status:** ✅ Car miniature guide completed with images and prompts, static bento gallery refactored (no drag/modal)
 **Next Action:** Implement audit improvements (see Session 2026-02-07 audit report below)
 
 ---
@@ -646,7 +646,7 @@ BackgroundPathsEffect (fixed, full-page)
 **New Components Summary:**
 | Component | File | Purpose |
 |-----------|------|---------|
-| InteractiveBentoGallery | `components/ui/interactive-bento-gallery.tsx` | Draggable image gallery with modal |
+| InteractiveBentoGallery | `components/ui/interactive-bento-gallery.tsx` | Static bento grid with direct guide navigation |
 | HighlightGroup/Item | `components/ui/highlighter.tsx` | Mouse-tracking glow container |
 | Particles | `components/ui/highlighter.tsx` | Canvas-based particle effect |
 | OrbitingSkills | `components/ui/orbiting-skills.tsx` | Animated orbital service icons |
@@ -691,7 +691,7 @@ BackgroundPathsEffect (fixed, full-page)
 ```
 BackgroundPathsEffect (fixed, full-page)
 └── HeroSection (Highlighter + Particles + animated pointer)
-└── InteractiveBentoGallery (featured guides with AI cover images)
+└── InteractiveBentoGallery (static grid, direct navigation to guides)
 └── DailyPulse (3-card AI news grid)
 └── ContainerScroll (YouTube channel showcase - 25M views, 130K subs)
 └── OrbitingSkills (6 AI services on orbital rings / mobile grid)
@@ -721,3 +721,51 @@ Full audit covering Technical Debt, UI/UX, Conversion/Trust, and Content Strateg
 - Background animation prefers-reduced-motion support
 - Before & After gallery
 - AI Tool of the Week feature
+
+
+### Session 2026-03-10
+
+**Car Miniature Guide Completion:**
+- Filled in car miniature guide (`app/guides/car-miniature/page.mdx`) with real content:
+  - **Step 1:** Added `car-1.png` and `car-2.png` side by side (filming process)
+  - **Step 2:** Added `mini-car.png` and `car-2.png` with CopyPrompt: "replace the tiny green dinosaur in image 1 to a tiny model of chevrolet cruze 2014 like in image 2"
+  - **Step 3:** Added `car-1.png` (labeled "פריים ראשון") and `mini-car.png` (labeled "פריים אחרון") with CopyPrompt: "cars fold into a tiny model car"
+  - **Step 4:** Embedded YouTube video (https://www.youtube.com/shorts/dU6vFcGjKRs) as final result
+- All 3 images copied to `public/guides/car-miniature/`
+- Commit: b9fae45
+
+**Car Miniature Cover Image:**
+- Replaced placeholder cover image with real cover: `guide-car-miniature.png`
+- Updated references in both `app/page.tsx` and `app/guides/page.tsx`
+- Commit: 022a042
+
+**Static Bento Gallery Refactor:**
+- **Problem:** User wanted non-draggable guides, direct navigation on click (no modal)
+- **Solution:** Completely rewrote `components/ui/interactive-bento-gallery.tsx`:
+  - Removed all drag-related code (drag props, isDragging state, onDragStart/End handlers)
+  - Removed modal system (GalleryModal component, Dock, selectedItem state)
+  - Removed AnimatePresence modal switching
+  - Changed click behavior: items now wrapped in `<Link>` for direct navigation to guide page
+  - Kept bento grid layout, hover animations, and stagger entrance
+- Updated description text on both pages: "גררו וחקרו..." → "לחצו על מדריך כדי לקרוא עוד"
+- Component reduced from 242 lines to ~100 lines
+- Commit: 1eb27f4
+
+**Bento Gallery Layout Fix:**
+- **Problem:** Images not showing after Link wrapper added - `span` classes on wrong element
+- **Root cause:** When wrapping in `<Link>`, the grid child is the Link, but `motion.div` inside had the span classes and no explicit height for `Image fill`
+- **Solution:**
+  - Used dynamic wrapper pattern: `const Wrapper = item.href ? Link : 'div'`
+  - Grid span classes (`item.span`) moved to wrapper (the actual grid child)
+  - Inner `motion.div` changed to `w-full h-full` to fill wrapper
+  - Wrapper gets `block` class to ensure proper sizing
+- Images now display correctly, clicking navigates directly to guide
+- Commit: b549335
+
+**New Component Behavior:**
+| Before | After |
+|--------|-------|
+| Drag items to reorder | Static grid, no dragging |
+| Click opens modal with image | Click navigates to guide page |
+| Modal has Dock navigation | No modal at all |
+| "גררו וחקרו..." description | "לחצו על מדריך..." description |
