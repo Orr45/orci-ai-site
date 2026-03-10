@@ -14,7 +14,7 @@ export default function ProductsPage() {
             <h1 className="cap-hero-title mb-6 text-orci-cyan">
               {PRODUCT_INFO.title}
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed max-w-3xl mx-auto">
               {PRODUCT_INFO.subtitle}
             </p>
             <a
@@ -49,7 +49,7 @@ export default function ProductsPage() {
                 <h3 className="text-lg font-semibold text-gray-800 leading-tight mb-2 text-center">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-gray-600 leading-relaxed text-center">
+                <p className="text-sm text-slate-300 leading-relaxed text-center">
                   {feature.description}
                 </p>
                 {feature.highlighted && (

@@ -13,7 +13,7 @@ export default function PortfolioPage() {
             <h1 className="cap-hero-title mb-6 text-orci-cyan">
               עבודות שלי
             </h1>
-            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
+            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
               דברים שיצרתי עם AI - מטרנדים ויראליים ועד כלים מתקדמים
             </p>
           </div>
@@ -39,7 +39,7 @@ export default function PortfolioPage() {
                 />
               </div>
               <h3 className="text-xl font-bold text-orci-cyan mb-2">חפצים מדברים עם AI</h3>
-              <p className="text-gray-600 mb-3">טרנד ויראלי שיצרתי עם כלי AI מתקדמים</p>
+              <p className="text-slate-300 mb-3">טרנד ויראלי שיצרתי עם כלי AI מתקדמים</p>
               <Link href="/guides/ai-beginners">
                 <span className="text-orci-cyan hover:text-orci-blue text-sm font-medium cursor-pointer">
                   קרא את המדריך המלא ←
@@ -60,7 +60,7 @@ export default function PortfolioPage() {
                 />
               </div>
               <h3 className="text-xl font-bold text-orci-cyan mb-2">תוכן AI מתקדם</h3>
-              <p className="text-gray-600">עוד דוגמה ליכולות של AI ביצירת תוכן</p>
+              <p className="text-slate-300">עוד דוגמה ליכולות של AI ביצירת תוכן</p>
             </div>
 
             {/* Placeholder */}
@@ -69,7 +69,7 @@ export default function PortfolioPage() {
                 <div className="text-center p-8">
                   <div className="text-6xl mb-4">🎬</div>
                   <h3 className="text-xl font-bold text-orci-cyan mb-3">פרויקט הבא בקרוב</h3>
-                  <p className="text-gray-600">עוד תוכן מטורף בדרך...</p>
+                  <p className="text-slate-300">עוד תוכן מטורף בדרך...</p>
                 </div>
               </div>
             </div>
@@ -83,25 +83,25 @@ export default function PortfolioPage() {
               <div className="cap-card text-center">
                 <div className="text-4xl mb-3">🚀</div>
                 <div className="text-3xl font-bold text-orci-cyan mb-2">2.4M+</div>
-                <div className="text-gray-600">צפיות בטרנד הפינגווין</div>
+                <div className="text-slate-300">צפיות בטרנד הפינגווין</div>
               </div>
 
               <div className="cap-card text-center">
                 <div className="text-4xl mb-3">📺</div>
                 <div className="text-3xl font-bold text-orci-cyan mb-2">25M+</div>
-                <div className="text-gray-600">צפיות סה"כ בערוץ</div>
+                <div className="text-slate-300">צפיות סה"כ בערוץ</div>
               </div>
 
               <div className="cap-card text-center">
                 <div className="text-4xl mb-3">👥</div>
                 <div className="text-3xl font-bold text-orci-cyan mb-2">130K+</div>
-                <div className="text-gray-600">מנויים ביוטיוב</div>
+                <div className="text-slate-300">מנויים ביוטיוב</div>
               </div>
 
               <div className="cap-card text-center">
                 <div className="text-4xl mb-3">🎯</div>
                 <div className="text-3xl font-bold text-orci-cyan mb-2">10+</div>
-                <div className="text-gray-600">מדריכי AI מתקדמים</div>
+                <div className="text-slate-300">מדריכי AI מתקדמים</div>
               </div>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function PortfolioPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="cap-card">
                 <h3 className="text-2xl font-bold text-orci-cyan mb-4">כלי AI שאני משתמש בהם</h3>
-                <div className="space-y-2 text-gray-700">
+                <div className="space-y-2 text-slate-300">
                   <p>• ChatGPT & GPT-4 - יצירת תוכן ואוטומציות</p>
                   <p>• Midjourney & DALL-E - יצירת תמונות</p>
                   <p>• Kling 2.6 - הנפשת וידאו</p>
@@ -125,7 +125,7 @@ export default function PortfolioPage() {
 
               <div className="cap-card">
                 <h3 className="text-2xl font-bold text-orci-cyan mb-4">שירותים שאני מציע</h3>
-                <div className="space-y-2 text-gray-700">
+                <div className="space-y-2 text-slate-300">
                   <p>• ייעוץ אסטרטגי בשימוש ב-AI</p>
                   <p>• הקמת אוטומציות שיווקיות</p>
                   <p>• יצירת תוכן ויראלי</p>
