@@ -188,52 +188,6 @@ function HeroSection() {
   );
 }
 
-// ─── Trusted By Row ───────────────────────────────────────────────────────────
-
-const AI_TOOLS = [
-  { name: 'ChatGPT', icon: '🤖' },
-  { name: 'Nano Banana Pro', icon: '🎨' },
-  { name: 'Kling 3.0', icon: '🎬' },
-  { name: 'ElevenLabs', icon: '🎙️' },
-  { name: 'Gemini', icon: '✨' },
-  { name: 'Veo 3.1', icon: '🎥' },
-  { name: 'Midjourney', icon: '🖼️' },
-  { name: 'RunwayML', icon: '⚡' },
-];
-
-function TrustedByRow() {
-  return (
-    <div
-      className="border-y overflow-hidden"
-      style={{ background: 'rgba(0,0,0,0.99)', borderColor: 'rgba(0,209,255,0.1)' }}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center gap-3 md:gap-5 overflow-x-auto scrollbar-none">
-          <span
-            className="text-[11px] font-bold whitespace-nowrap flex-shrink-0 tracking-widest uppercase"
-            style={{ color: '#4a6a8a' }}
-          >
-            כלים בשימוש
-          </span>
-          <div className="w-px h-4 flex-shrink-0" style={{ background: 'rgba(0,209,255,0.2)' }} />
-          {AI_TOOLS.map((tool) => (
-            <span
-              key={tool.name}
-              className="flex items-center gap-1.5 text-sm font-medium whitespace-nowrap flex-shrink-0 transition-colors cursor-default"
-              style={{ color: '#6a8aaa' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#00d1ff')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = '#6a8aaa')}
-            >
-              <span className="text-base">{tool.icon}</span>
-              {tool.name}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 // ─── Email Section (below tabs) ───────────────────────────────────────────────
 
 function EmailSection() {
@@ -610,10 +564,7 @@ export default function Home() {
       {/* 1. HERO */}
       <HeroSection />
 
-      {/* 2. TRUSTED BY TOOLS */}
-      <TrustedByRow />
-
-      {/* 3. CONTENT TABS (guides / news / youtube) */}
+      {/* 2. CONTENT TABS (guides / news / youtube) */}
       <ContentTabs />
 
       {/* 4. EMAIL GATE (below tabs) */}
