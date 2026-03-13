@@ -436,8 +436,8 @@ npm run lint         # Run ESLint
 
 ---
 
-**Last Updated:** 2026-03-10
-**Status:** ✅ Car miniature guide completed with images and prompts, static bento gallery refactored (no drag/modal)
+**Last Updated:** 2026-03-13
+**Status:** ✅ Cinematic Lighting guide built with Guide Builder skill. Game World guide pushed + cover image fixed.
 **Next Action:** Implement audit improvements (see Session 2026-02-07 audit report below)
 
 ---
@@ -769,3 +769,28 @@ Full audit covering Technical Debt, UI/UX, Conversion/Trust, and Content Strateg
 | Click opens modal with image | Click navigates to guide page |
 | Modal has Dock navigation | No modal at all |
 | "גררו וחקרו..." description | "לחצו על מדריך..." description |
+
+
+### Session 2026-03-13
+
+**Guide Builder Skill:**
+- New skill added: `/guide-builder` (trigger: "בנה מדריך", "build a guide", or paste a video script)
+- Interactive flow: extracts title/tools/steps/prompts from script → confirms with user → asks for images step by step → creates MDX + updates guides.ts
+- Skill file: `C:\Users\0rr Shemer\.claude\skills\guide-builder\`
+
+**Cinematic Lighting Guide (built with /guide-builder):**
+- `app/guides/cinematic-lighting/page.mdx`
+- Tools: Nano Banana Pro (Gemini) + Kling Motion
+- Images: `image.png` (filming), `lighting-1/2/3.png` (reference examples side by side), `result-1/2/3` (before/after side by side)
+- Long Gemini prompt wrapped in expandable `<details>` block
+- Cover: `public/guides/guide-cinematic-lighting.png`
+- `data/guides.ts` entry: free: true, isNew: true, category: יצירת תוכן
+
+**Game World Guide:**
+- `app/guides/game-world/page.mdx` (built previous session, first pushed this session)
+- Cover image required multiple fixes: `/guides/Cover.png` → `/guides/game-world/CoverWorld.png` → `/guides/guide-game-world.png`
+
+**⚠️ Critical Convention — Guide Cover Images:**
+- ✅ Correct: `public/guides/guide-[slug].png` (at root of `public/guides/`)
+- ❌ Wrong: `public/guides/[slug]/image.png` (in subfolder) — causes Next.js Image **400 error**
+- All guide covers must follow the `guide-[slug].png` naming pattern at root level
