@@ -114,7 +114,7 @@ export const GUIDES: GuideData[] = [
     title: 'הפוך את עצמך לדמות בכל עולם',
     description: 'איך להפוך את עצמך לדמות ב-Minecraft, הארי פוטר, סייברפאנק ועוד — עם SeedDream ו-Kling',
     summary: 'הדרך הכי מהירה להפוך את עצמך לדמות ב-Minecraft, Hogwarts, עולם ממתקים או עיר סייברפאנק — בלי ציוד מיוחד. מצלמים סרטון אחד בחדר, יוצרים סביבה עם SeedDream, מחברים עם Kling — ומקבלים סרטון ויראלי. אותו צילום, 4 עולמות שונים, 4 סרטונים.',
-    image: '/guides/Cover.png',
+    image: '/guides/game-world/Cover.png',
     href: '/guides/game-world',
     category: 'יצירת תוכן',
     popular: false,
