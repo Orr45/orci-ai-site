@@ -1,0 +1,219 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'קמפיין שיווקי ויראלי עם Pomelli | Orci AI',
+  description: 'איך ליצור קמפיין שיווקי ויראלי עם AI — Pomelli מבין את סגנון המותג שלכם מהקישור לאתר ומייצר תמונות, אנימציות וסלוגנים תוך דקות.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        קמפיין שיווקי ויראלי עם AI
+      </h1>
+      <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        תוך כמה דקות — תמונות, אנימציות וסלוגנים שמותאמים בדיוק למותג שלכם
+      </p>
+
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🎯 Pomelli</span>
+        <span className="cap-badge text-sm">🍌 Nano Banana 2</span>
+        <span className="cap-badge text-sm">🎬 Kling 3</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: נכנסים ל-Pomelli
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        נכנסים לכלי <span className="text-orci-cyan font-bold">Pomelli</span> של Google Labs —
+        כלי AI שמבין את הסגנון הויזואלי של כל מותג רק מהקישור לאתר.
+      </p>
+
+      <a
+        href="https://labs.google.com/pomelli"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 cap-btn cap-btn-primary"
+      >
+        🔗 פתח את Pomelli
+      </a>
+    </div>
+
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: מדביקים את הקישור לאתר
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        מדביקים את <span className="text-orci-cyan font-bold">הקישור לאתר של המותג</span> שלכם —
+        ו-Pomelli מבין לבד את הצבעים, הפונטים, הסגנון והאווירה. לא צריך להסביר כלום.
+      </p>
+
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/pomelli-campaign/Step2.png" alt="Pomelli מנתח את סגנון המותג" width={600} height={400} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 3 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3: בוחרים סוג קמפיין
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        כותבים ל-Pomelli <span className="text-orci-cyan font-bold">מה סוג הקמפיין</span> שרוצים —
+        למשל קמפיין עונתי, קמפיין שקשור לאירוע נוכחי, או מבצע מיוחד.
+        הכלי יוצר חומרים שמתאימים בדיוק לתקופה ולסגנון שביקשתם.
+      </p>
+    </div>
+
+    {/* Step 4 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 4: מקבלים את החומרים
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        תוך <span className="text-orci-cyan font-bold">כמה דקות בודדות</span> — Pomelli מייצר עבורכם
+        תמונות, אנימציות וסלוגנים שמותאמים לסגנון המותג ולקמפיין שביקשתם.
+      </p>
+
+      <div className="my-8 grid grid-cols-2 gap-4">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/pomelli-campaign/8bpVC5NaFNXd9Za17F1_Og.png" alt="תוצאה מ-Pomelli 1" width={500} height={500} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/pomelli-campaign/9zmO3FmyqFL3nhtjdSxOwJ.png" alt="תוצאה מ-Pomelli 2" width={500} height={500} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/pomelli-campaign/90K_oc2Dbfd6TyQm3VIkd6.png" alt="תוצאה מ-Pomelli 3" width={500} height={500} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/pomelli-campaign/b5GJolDINalckYnyZfuOww.png" alt="תוצאה מ-Pomelli 4" width={500} height={500} className="w-full h-auto" />
+        </div>
+      </div>
+    </div>
+
+    {/* Step 5 - Bonus */}
+    <div className="cap-card border-2 border-orci-cyan/40">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 5: בונוס למתקדמים 🚀
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-6">
+        עכשיו שיש לכם חומרים בסגנון המותג — אפשר לקחת אותם ל<span className="text-orci-cyan font-bold">רמה אחרת לגמרי</span>.
+        לוקחים את התמונות מ-Pomelli ומכניסים אותן ל-<span className="text-orci-cyan font-bold">Nano Banana 2</span>
+        עם פרומפט שמגדיר את האווירה הסופית.
+      </p>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        לדוגמה — לקחתי תמונה בסיסית מ-Pomelli והוספתי פרומפט קצר:
+      </p>
+
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 פרומפט 1 — לחץ לצפייה
+        </summary>
+        <CopyPrompt prompt="Kinder Bueno package floating in mid-air against a dramatic cinematic night sky. Deep navy blue sky with scattered stars and soft moonlight. The package is center frame, slightly tilted at a dynamic angle," />
+      </details>
+
+      <div className="my-8 rounded-2xl overflow-hidden max-w-sm mx-auto">
+        <Image src="/guides/pomelli-campaign/MoonKinder.png" alt="תוצאה מ-Nano Banana 2" width={500} height={500} className="w-full h-auto" />
+      </div>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        ואז לקחתי את התמונה הזאת <span className="text-orci-cyan font-bold">שלב נוסף קדימה</span> עם פרומפט מפורט יותר:
+      </p>
+
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 פרומפט 2 — לחץ לצפייה
+        </summary>
+        <CopyPrompt prompt={`A vertical 9:16 social media reel cover. A surreal luxury advertising visual: a giant Kinder Bueno chocolate bar floating dramatically in deep outer space, center-frame. The bar breaks apart mid-air revealing a glowing golden wafer and creamy hazelnut interior that emits warm amber light. Surrounding the chocolate: sweeping Electric Purple (#534AB7) nebula clouds and glowing Cyber Mint (#00FFD1) star particles trail across the deep Midnight Black (#0D0D1A) space background. Tiny chocolate fragments and wafer pieces float outward in zero gravity. The upper two-thirds of the frame hold the main chocolate explosion visual. Bold white Hebrew text "קמפיין מהחלל לקינדר" appears in the upper-center with a subtle Cyber Mint glow behind the letters. Small "ORCIAI" label in Cyber Mint, bottom-right corner. Luxury commercial photography meets sci-fi, photorealistic product render, 8K ultra sharp, cinematic lighting.`} />
+      </details>
+
+      <div className="my-8 rounded-2xl overflow-hidden max-w-sm mx-auto">
+        <Image src="/guides/pomelli-campaign/CoverKinder2.png" alt="תוצאה סופית מ-Nano Banana 2" width={500} height={800} className="w-full h-auto" />
+      </div>
+
+      <p className="text-lg text-slate-300 leading-relaxed">
+        ובאמצעות <span className="text-orci-cyan font-bold">אנימציה פשוטה ב-Kling 3</span> — תוכלו להגיע לרמות מטורפות. 🔥
+      </p>
+    </div>
+
+    {/* Result */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          מהקישור לאתר ועד <span className="text-orci-cyan font-bold">קמפיין ויראלי מוכן</span> —
+          תמונות, אנימציות וסלוגנים בסגנון המותג שלכם תוך כמה דקות בודדות.
+        </p>
+      </div>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">לא צריך סוכנות פרסום</span> כדי לצאת עם קמפיין מקצועי.
+        </p>
+        <p className="text-lg text-slate-300">
+          Pomelli + Nano Banana 2 + Kling 3 = תשתית קמפיין שלמה בידיים שלכם.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים את כל הפרומפטים?
+      </h2>
+      <p className="text-gray-300 mb-6 text-lg">
+        תכתבו 'מדריך' בתגובות או שלחו לי הודעה
+      </p>
+      <a
+        href="https://wa.me/972542599107"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        בואו נדבר בוואטסאפ
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>
