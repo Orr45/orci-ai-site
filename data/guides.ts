@@ -96,6 +96,33 @@ export const GUIDES: GuideData[] = [
     free: false,
     videoUrl: 'https://www.youtube.com/shorts/DHhcgituYeA',
   },
+  {
+    id: 'cinematic-lighting',
+    title: 'תאורה קולנועית עם AI',
+    description: 'הטריק שהופך כל סרטון רגיל לרגע קולנועי — בלי ציוד, בלי סטודיו',
+    summary: 'תאורה היא ההבדל בין תוכן רגיל לתוכן ויראלי. המדריך מלמד איך להעביר תאורה קולנועית מכל תמונה שאהבתם לצילום שלכם עם Nano Banana Pro, ואז להחיות אותה עם Kling Motion. התוצאה: סרטון שנראה כאילו הופק עם תקציב של אולפן — בכמה רגעים בלבד.',
+    image: '/guides/guide-cinematic-lighting.png',
+    href: '/guides/cinematic-lighting',
+    category: 'יצירת תוכן',
+    popular: false,
+    isNew: true,
+    date: '2026-03-13',
+    free: true,
+  },
+  {
+    id: 'game-world',
+    title: 'הפוך את עצמך לדמות בכל עולם',
+    description: 'איך להפוך את עצמך לדמות ב-Minecraft, הארי פוטר, סייברפאנק ועוד — עם SeedDream ו-Kling',
+    summary: 'הדרך הכי מהירה להפוך את עצמך לדמות ב-Minecraft, Hogwarts, עולם ממתקים או עיר סייברפאנק — בלי ציוד מיוחד. מצלמים סרטון אחד בחדר, יוצרים סביבה עם SeedDream, מחברים עם Kling — ומקבלים סרטון ויראלי. אותו צילום, 4 עולמות שונים, 4 סרטונים.',
+    image: '/guides/Cover.png',
+    href: '/guides/game-world',
+    category: 'יצירת תוכן',
+    popular: false,
+    isNew: true,
+    date: '2026-03-13',
+    free: true,
+    videoUrl: 'https://www.youtube.com/shorts/2CXBKCbv0og',
+  },
 ];
 
 // Legacy export for guides page video section

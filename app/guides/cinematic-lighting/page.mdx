@@ -1,0 +1,197 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'תאורה קולנועית עם AI | Orci AI',
+  description: 'איך להפוך כל סרטון רגיל לרגע קולנועי עם Nano Banana Pro ו-Kling Motion — בלי ציוד, בלי סטודיו',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        הטריק שהופך כל סרטון לרגע קולנועי
+      </h1>
+      <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        תאורה קולנועית בלי ציוד, בלי סטודיו — רק AI וכמה רגעים
+      </p>
+
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🤖 Nano Banana Pro</span>
+        <span className="cap-badge text-sm">✨ Gemini</span>
+        <span className="cap-badge text-sm">🎬 Kling Motion</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: צלמו את הסרטון שלכם
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        צלמו סרטון רגיל — לא צריך תאורה מיוחדת, לא ציוד, ולא סטודיו.
+        אחרי הצילום, <span className="text-orci-cyan font-bold">תיקחו צילום מסך</span> מהפריים שאתם הכי אוהבים.
+        זה הפריים שישמש כבסיס לשינוי התאורה.
+      </p>
+
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/cinematic-lighting/image.png" alt="צילום סרטון רגיל" width={600} height={400} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: בחרו תאורה שאהבתם
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        מצאו תמונה עם <span className="text-orci-cyan font-bold">תאורה קולנועית</span> שאהבתם —
+        מסרט, מתמונה ברשת, מכל מקום שתרצו.
+        הAI ינתח את התאורה ויעביר אותה לצילום שלכם.
+        הנה כמה דוגמאות לסוגי תאורה:
+      </p>
+
+      <div className="my-8 grid grid-cols-3 gap-4">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/cinematic-lighting/lighting-1.png" alt="דוגמת תאורה 1" width={400} height={400} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/cinematic-lighting/lighting-2.png" alt="דוגמת תאורה 2" width={400} height={400} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/cinematic-lighting/lighting-3.png" alt="דוגמת תאורה 3" width={400} height={400} className="w-full h-auto" />
+        </div>
+      </div>
+    </div>
+
+    {/* Step 3 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3: Gemini + Nano Banana Pro
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        היכנסו ל-<span className="text-orci-cyan font-bold">Gemini</span> עם
+        <span className="text-orci-cyan font-bold"> Nano Banana Pro</span>,
+        העלו את <span className="text-orci-cyan font-bold">צילום המסך שלכם</span> כתמונה ראשונה
+        ואת <span className="text-orci-cyan font-bold">תמונת התאורה</span> כתמונה שנייה,
+        ואז השתמשו בפרומפט הזה:
+      </p>
+
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`Use the first uploaded image as the base photo and the second uploaded image as the lighting reference.
+Analyze the lighting conditions in the reference image and realistically recreate the same lighting on the base photo. Do NOT change the person in the base image and strictly preserve identity, face, body, pose, expression, clothing, camera angle, framing, and background geometry. Do NOT change the environment or any objects. Only the lighting may be modified. Carefully anglyze the reference image to determine light direction, number of light sources, hardness or softness of light, contrast level, color temperature balance, intensity ratios, shadow depth, highlight behavior, and overall exposure.
+Recreate these lighting characteristics on the base image so that it appears as if both images were photographed in the same lighting conditions. Match the placement and behavior of highlights and shadows according to the reference, including shadow falloff, contrast distribution, and relative brightness levels. Match the color relationship between warm and cool areas, as well as any ambient or atmospheric light effects present in the reference image. Do NOT beautify, do NOT add studio lighting, do NOT introduce new light sources, do NOT flatten the face, and do NOT stylize. The lighting must remain physically realistic and consistent with real-world photography. The goal is a precise, photorealistic lighting transfer from the reference image to the base image, with no artistic`} />
+      </details>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        תקבלו את הצילום שלכם עם <span className="text-orci-cyan font-bold">התאורה הקולנועית</span> — הנה כמה תוצאות:
+      </p>
+
+      <div className="my-8 grid grid-cols-3 gap-4">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/cinematic-lighting/result-1.png" alt="תוצאה 1" width={400} height={400} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/cinematic-lighting/result-2.jpeg" alt="תוצאה 2" width={400} height={400} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/cinematic-lighting/result-3.jpeg" alt="תוצאה 3" width={400} height={400} className="w-full h-auto" />
+        </div>
+      </div>
+    </div>
+
+    {/* Step 4 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 4: Kling Motion — הופכים תמונה לסרטון
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        היכנסו ל-<span className="text-orci-cyan font-bold">Kling Motion</span>,
+        העלו את <span className="text-orci-cyan font-bold">הסרטון המקורי</span> ואת
+        <span className="text-orci-cyan font-bold"> תמונת התאורה החדשה</span> שיצרתם.
+        ללא פרומפט — פשוט תנו ל-AI לעשות את העבודה.
+      </p>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        התוצאה: הסרטון שלכם עם <span className="text-orci-cyan font-bold">תאורה קולנועית מושלמת</span>,
+        כאילו יצא מהפקה מקצועית.
+      </p>
+    </div>
+
+    {/* Result Card */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🎬</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          סרטון שנראה כאילו הופק עם <span className="text-orci-cyan font-bold">תקציב של אולפן</span> —
+          בלי לצאת מהבית ובלי שום ציוד.
+        </p>
+      </div>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">התאורה היא ההבדל בין תוכן רגיל לתוכן ויראלי.</span>
+        </p>
+        <p className="text-lg text-slate-300">
+          עכשיו יש לכם את הכלים להפוך כל צילום פשוט לרגע קולנועי — בכמה רגעים בלבד.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים את כל הפרומפטים?
+      </h2>
+      <p className="text-gray-300 mb-6 text-lg">
+        תכתבו 'מדריך' בתגובות או שלחו לי הודעה
+      </p>
+      <a
+        href="https://wa.me/972542599107"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        בואו נדבר בוואטסאפ
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>
