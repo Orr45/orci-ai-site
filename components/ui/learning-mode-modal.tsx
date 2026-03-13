@@ -14,11 +14,12 @@ interface LearningModeModalProps {
 export function LearningModeModal({ isOpen, onClose }: LearningModeModalProps) {
   const [selectedGuide, setSelectedGuide] = useState<GuideData | null>(null)
 
-  // Organize guides by category
-  const viralGuides = GUIDES.filter(g => g.category === 'וידאו ויראלי' && g.videoUrl)
-  const contentGuides = GUIDES.filter(g => g.category === 'יצירת תוכן' && g.videoUrl)
-  const popularGuides = GUIDES.filter(g => g.popular && g.videoUrl)
-  const allGuidesWithVideo = GUIDES.filter(g => g.videoUrl)
+  // Organize guides by category, sorted newest first
+  const byDate = (a: GuideData, b: GuideData) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  const viralGuides = GUIDES.filter(g => g.category === 'וידאו ויראלי' && g.videoUrl).sort(byDate)
+  const contentGuides = GUIDES.filter(g => g.category === 'יצירת תוכן' && g.videoUrl).sort(byDate)
+  const popularGuides = GUIDES.filter(g => g.popular && g.videoUrl).sort(byDate)
+  const allGuidesWithVideo = GUIDES.filter(g => g.videoUrl).sort(byDate)
 
   // ESC key handler
   useEffect(() => {

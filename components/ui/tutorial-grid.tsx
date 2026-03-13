@@ -34,11 +34,13 @@ export default function TutorialGrid() {
     };
   }, []);
 
-  const filteredGuides = GUIDES.filter((g) => {
-    if (filter === 'popular') return g.popular;
-    if (filter === 'new') return g.isNew;
-    return true;
-  });
+  const filteredGuides = GUIDES
+    .filter((g) => {
+      if (filter === 'popular') return g.popular;
+      if (filter === 'new') return g.isNew;
+      return true;
+    })
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   const handleCardClick = useCallback((guide: GuideData) => {
     if (guide.free || unlocked) {
