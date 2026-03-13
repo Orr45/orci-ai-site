@@ -166,7 +166,7 @@ function HeroSection() {
           {[
             { value: '25M+', label: 'צפיות יוטיוב', icon: <span className="text-xl">👁️</span>, glow: 'rgba(0,209,255,0.12)', border: 'rgba(0,209,255,0.25)' },
             { value: '130K+', label: 'מנויים', icon: <Youtube className="w-5 h-5 text-red-400" />, glow: 'rgba(255,60,60,0.08)', border: 'rgba(255,80,80,0.25)' },
-            { value: '6+', label: 'מדריכי AI', icon: <span className="text-xl">🎯</span>, glow: 'rgba(168,85,247,0.12)', border: 'rgba(168,85,247,0.3)' },
+            { value: '9+', label: 'מדריכי AI', icon: <span className="text-xl">🎯</span>, glow: 'rgba(168,85,247,0.12)', border: 'rgba(168,85,247,0.3)' },
           ].map((s, i) => (
             <div
               key={i}
@@ -329,7 +329,7 @@ function EmailSection() {
 // ─── Content Tabs ─────────────────────────────────────────────────────────────
 
 const TABS = [
-  { id: 'guides', label: 'מדריכים', icon: BookOpen, count: '6' },
+  { id: 'guides', label: 'מדריכים', icon: BookOpen, count: '9' },
   { id: 'news', label: 'חדשות AI', icon: Zap, count: 'חי' },
   { id: 'youtube', label: 'יוטיוב', icon: TrendingUp, count: '25M' },
 ];
