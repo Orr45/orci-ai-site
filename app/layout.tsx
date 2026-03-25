@@ -25,11 +25,13 @@ export const metadata: Metadata = {
     siteName: "Orci AI",
     title: "Orci AI - הופכים בינה מלאכותית לכלי העבודה החזק ביותר",
     description: "המדריכים, הכלים והסודות שיעזרו לכם לשלוט ב-AI - בפשטות ובגובה העיניים",
+    images: [{ url: "https://orci-ai-site.vercel.app/og-image.png", width: 1200, height: 630, alt: "Orci AI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Orci AI",
     description: "מדריכי AI בעברית — וידאו, שיווק ואוטומציות",
+    images: ["https://orci-ai-site.vercel.app/og-image.png"],
   },
 };
 
