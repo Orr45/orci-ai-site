@@ -8,7 +8,6 @@ import {
   BookOpen,
   Briefcase,
   FolderOpen,
-  Phone,
   MessageCircle,
 } from 'lucide-react';
 
@@ -20,7 +19,6 @@ export function Navigation() {
     { icon: BookOpen, label: 'מדריכים', href: '/guides', isActive: pathname.startsWith('/guides') },
     { icon: Briefcase, label: 'שירותים', href: '/products', isActive: pathname === '/products' },
     { icon: FolderOpen, label: 'עבודות', href: '/portfolio', isActive: pathname === '/portfolio' },
-    { icon: Phone, label: 'צור קשר', href: '/contact', isActive: pathname === '/contact' },
     { icon: MessageCircle, label: 'וואטסאפ', href: 'https://wa.me/972542599107', isActive: false },
   ];
 
@@ -60,7 +58,6 @@ export function Navigation() {
 
               <Link href="/products" className={`text-base font-medium transition-colors ${pathname === '/products' ? 'text-orci-cyan' : 'text-slate-300 hover:text-orci-cyan'}`}>שירותים</Link>
               <Link href="/portfolio" className={`text-base font-medium transition-colors ${pathname === '/portfolio' ? 'text-orci-cyan' : 'text-slate-300 hover:text-orci-cyan'}`}>עבודות</Link>
-              <Link href="/contact" className={`text-base font-medium transition-colors ${pathname === '/contact' ? 'text-orci-cyan' : 'text-slate-300 hover:text-orci-cyan'}`}>צור קשר</Link>
 
               <a href="https://wa.me/972542599107" target="_blank" rel="noopener noreferrer" className="px-5 py-2 bg-orci-cyan text-slate-900 rounded-full font-bold hover:opacity-90 transition-all flex items-center gap-2" style={{boxShadow:'0 0 16px rgba(0,209,255,0.35)'}}>
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
