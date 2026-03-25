@@ -14,8 +14,23 @@ export const metadata: Metadata = {
   title: "Orci AI - הופכים בינה מלאכותית לכלי העבודה החזק ביותר",
   description: "המדריכים, הכלים והסודות שיעזרו לכם לשלוט ב-AI - בפשטות ובגובה העיניים",
   keywords: ["AI", "בינה מלאכותית", "מדריכים", "אוטומציה", "שיווק דיגיטלי"],
-  authors: [{ name: "Or Shmer (Orci)" }],
-  viewport: "width=device-width, initial-scale=1",
+  authors: [{ name: "Or Shemer (Orci)" }],
+  alternates: {
+    canonical: "https://orci-ai-site.vercel.app",
+  },
+  openGraph: {
+    type: "website",
+    locale: "he_IL",
+    url: "https://orci-ai-site.vercel.app",
+    siteName: "Orci AI",
+    title: "Orci AI - הופכים בינה מלאכותית לכלי העבודה החזק ביותר",
+    description: "המדריכים, הכלים והסודות שיעזרו לכם לשלוט ב-AI - בפשטות ובגובה העיניים",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Orci AI",
+    description: "מדריכי AI בעברית — וידאו, שיווק ואוטומציות",
+  },
 };
 
 export default function RootLayout({
