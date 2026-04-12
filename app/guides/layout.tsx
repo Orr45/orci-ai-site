@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import GuideGuard from '@/components/ui/guide-guard';
 
 export const metadata: Metadata = {
   title: 'מדריכי AI בעברית — וידאו, שיווק ואוטומציות | Orci AI',
@@ -17,5 +18,5 @@ export const metadata: Metadata = {
 };
 
 export default function GuidesLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return <GuideGuard>{children}</GuideGuard>;
 }
