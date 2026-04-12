@@ -187,10 +187,16 @@ export default function OnboardingModal() {
                 style={{ maxHeight: '90vh' }}
               >
                 <div className="p-6 pt-14 pb-3 text-center flex-shrink-0">
-                  <h2 className="text-2xl font-black mb-1" style={{ color: '#e8f4ff' }}>
+                  <h2 className="text-2xl font-black mb-2" style={{ color: '#e8f4ff' }}>
                     הנה מה שתלמד כאן
                   </h2>
-                  <p className="text-slate-500 text-sm">לחץ על מדריך כדי להתחיל</p>
+                  <p className="text-sm mb-2" style={{ color: '#8ab4d4' }}>לחץ על מדריך כדי להתחיל</p>
+                  <div
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium"
+                    style={{ background: 'rgba(0,209,255,0.08)', border: '1px solid rgba(0,209,255,0.2)', color: '#00d1ff' }}
+                  >
+                    🔓 כל המדריכים חינמיים — המנועלים נפתחים עם מייל בלבד
+                  </div>
                 </div>
 
                 {/* Scrollable guide grid */}
@@ -306,6 +312,7 @@ export default function OnboardingModal() {
                   </p>
                 </div>
 
+                {/* CTA Buttons */}
                 <div className="flex flex-col gap-3 w-full max-w-xs">
                   <Link
                     href="/guides"
@@ -337,6 +344,35 @@ export default function OnboardingModal() {
                     </svg>
                     בואו נדבר בוואטסאפ
                   </a>
+                </div>
+
+                {/* Packages teaser */}
+                <div
+                  className="w-full max-w-xs rounded-xl p-4 text-right"
+                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}
+                >
+                  <p className="text-xs font-bold mb-3" style={{ color: '#8ab4d4' }}>
+                    🏆 רוצה שנבנה לך את הנוכחות הדיגיטלית?
+                  </p>
+                  <div className="flex flex-col gap-2">
+                    {[
+                      { name: 'Starter', desc: 'אתר + אינסטגרם + בוט' },
+                      { name: 'Growth', desc: 'שדרוג + אוטומציות + Reels' },
+                    ].map(({ name, desc }) => (
+                      <div key={name} className="flex items-center justify-between">
+                        <span className="text-xs" style={{ color: '#8ab4d4' }}>{desc}</span>
+                        <span className="text-xs font-bold" style={{ color: '#00d1ff' }}>{name}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Link
+                    href="/products"
+                    onClick={dismiss}
+                    className="mt-3 block w-full py-2 rounded-lg text-xs font-bold text-center transition-all hover:opacity-80"
+                    style={{ background: 'rgba(0,209,255,0.1)', border: '1px solid rgba(0,209,255,0.25)', color: '#00d1ff' }}
+                  >
+                    לכל החבילות ←
+                  </Link>
                 </div>
 
                 <button onClick={dismiss} className="text-xs text-slate-600 hover:text-slate-400 transition-colors">
