@@ -14,6 +14,7 @@ import Newsletter from '@/components/ui/newsletter';
 import TutorialGrid from '@/components/ui/tutorial-grid';
 import { isContentUnlocked, UNLOCK_KEY } from '@/components/ui/email-gate-modal';
 import { LearningModeModal } from '@/components/ui/learning-mode-modal';
+import OnboardingModal from '@/components/ui/onboarding-modal';
 
 // ─── Floating Authority Badge ─────────────────────────────────────────────────
 
@@ -560,6 +561,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen" style={{ background: '#000000' }}>
+
+      {/* Onboarding — first-time visitors only */}
+      <OnboardingModal />
 
       {/* 1. HERO */}
       <HeroSection />
