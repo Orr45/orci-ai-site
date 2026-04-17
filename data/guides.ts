@@ -155,7 +155,7 @@ export const GUIDES: GuideData[] = [
     title: 'החלפת דמויות עם Kling',
     description: 'הפכו לכל דמות שתרצו עם Nano Banana 2 ו-Kling Motion — פרסומת מקצועית ב-5 דקות בלי תקציב',
     summary: 'הטכניקה שמאפשרת לך להפוך לכל דמות שתרצה — דוגמן, ספורטאי, משפיען — בלי צלם, בלי סטודיו ובלי תקציב. עם Nano Banana 2 ו-Kling Motion, מצלמים סרטון אחד של עצמכם, בוחרים דמות ורקע, ומקבלים פרסומת מקצועית תוך 5 דקות.',
-    image: '/guides/CoverInfulnce.png',
+    image: '/guides/guide-character-swap.png',
     href: '/guides/character-swap',
     category: 'יצירת תוכן',
     popular: true,
