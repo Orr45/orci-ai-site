@@ -340,16 +340,28 @@ orci-ai-site/
 
 ### Development
 ```bash
-npm run dev          # Start dev server (http://localhost:3000)
-npm run build        # Production build
-npm run start        # Start production server
-npm run lint         # Run ESLint
+npm run dev              # Start dev server (http://localhost:3000)
+npm run build            # Production build
+npm run start            # Start production server
+npm run lint             # Run ESLint
+npm run generate-weekly  # Generate weekly AI dashboard draft (requires OPENAI_API_KEY)
 ```
 
 ### Key Pages
 - Home: http://localhost:3000
 - Products: http://localhost:3000/products
 - Guides: http://localhost:3000/guides
+- **Weekly Dashboard: http://localhost:3000/weekly**
+
+### Weekly Dashboard Workflow
+```bash
+# Every week (Monday morning recommended):
+OPENAI_API_KEY=sk-... npm run generate-weekly
+# → Opens data/weekly-dashboard.json in VS Code
+# → Review, edit titles/descriptions, add/replace image URLs
+# → git add data/weekly-dashboard.json && git commit -m "weekly update"
+# → git push → Vercel deploys automatically
+```
 
 ### Deployment
 - **Recommended:** Vercel (zero-config deployment)
@@ -436,9 +448,9 @@ npm run lint         # Run ESLint
 
 ---
 
-**Last Updated:** 2026-03-13
-**Status:** ✅ Cinematic Lighting guide built with Guide Builder skill. Game World guide pushed + cover image fixed.
-**Next Action:** Implement audit improvements (see Session 2026-02-07 audit report below)
+**Last Updated:** 2026-04-29
+**Status:** ✅ Weekly AI Dashboard built — דשבורד שבועי מלא עם 12 פריטי דמו, סינון קטגוריות, modal, וסקריפט יצירה אוטומטי עם GPT-4o-mini.
+**Next Action:** הפעל `npm run generate-weekly` עם OPENAI_API_KEY כדי לייצר תוכן אמיתי לשבוע הנוכחי, ערוך JSON, push.
 
 ---
 
@@ -630,12 +642,15 @@ After deploying, manually trigger the cron endpoint once to populate initial dat
   - `ResizeObserver` pattern via resize event listener for responsive updates
 - Result: Orbiting skills now fit perfectly on any screen size
 
-**Home Page Structure (Final):**
+**Home Page Structure (Final — updated 2026-04-29):**
 ```
 BackgroundPathsEffect (fixed, full-page)
 └── HeroSection (Highlighter + Particles + animated pointer)
-└── InteractiveBentoGallery (featured guides, draggable bento grid)
-└── DailyPulse (3-card AI news grid)
+└── InteractiveBentoGallery (featured guides, static bento grid)
+└── ContentTabs:
+│   ├── מדריכים tab → TutorialGrid
+│   ├── עדכון שבועי tab → WeeklyPreview (4 hot items + link to /weekly)  ← WAS: DailyPulse
+│   └── יוטיוב tab → YouTubeSection
 └── ContainerScroll (YouTube channel showcase)
 └── OrbitingSkills (6 AI services on orbital rings)
 └── Statistics (text stats section)
@@ -794,3 +809,160 @@ Full audit covering Technical Debt, UI/UX, Conversion/Trust, and Content Strateg
 - ✅ Correct: `public/guides/guide-[slug].png` (at root of `public/guides/`)
 - ❌ Wrong: `public/guides/[slug]/image.png` (in subfolder) — causes Next.js Image **400 error**
 - All guide covers must follow the `guide-[slug].png` naming pattern at root level
+
+---
+
+### Session 2026-03-25
+
+**3D Product AR Guide (built with /guide-builder):**
+- `app/guides/3d-product/page.mdx` — אפקט AR תלת מימד על מוצר ב-60 שניות
+- Tools: Higgsfield NanoBananaPro + Kling 3.0 Omni + Kling Edit
+- 3 prompts extracted: Higgsfield AR overlay, Kling animation transition, Kling Edit tracking
+- Images: `public/guides/3d-product/` — original.jpg + 4 result images (jordan, cream, perfume, dumbbell)
+- Cover: `public/guides/guide-3d-product.png` (latest Higgsfield result image)
+- `data/guides.ts` entry: free: true, isNew: true, category: שיווק דיגיטלי
+- YouTube: https://www.youtube.com/shorts/vnj6utNTjE0
+
+**Services/Packages Page:**
+- Rewrote `app/products/page.tsx` with 3-tier pricing: Starter, Growth, Full Stack (coming soon)
+- No prices shown — CTA leads to Instagram DM
+- Full Stack card greyed out with "בקרוב" badge
+- FAQ section with 3 questions
+- Trust line: "כל החבילות כוללות ליווי אישי, תמיכה שוטפת, ותוצאות מדידות"
+
+**Navigation Cleanup:**
+- Removed contact page link from desktop nav and mobile dock
+- Removed `Phone` icon import (no longer needed)
+- Dock now: בית, מדריכים, שירותים, עבודות, וואטסאפ (5 items)
+
+**Full SEO Audit (score: 41/100):**
+- Crawled 7 pages via WebFetch
+- Reports saved: `FULL-AUDIT-REPORT.md` + `ACTION-PLAN.md`
+- Critical issues found: no robots.txt, no sitemap, identical titles on 4 pages, no OG tags, no structured data
+
+**SEO Critical Fixes (score → ~58/100):**
+- `public/robots.txt` — with AI crawler permissions (GPTBot, ClaudeBot, PerplexityBot)
+- `public/sitemap.xml` — 13 pages listed
+- `public/llms.txt` — AI search readiness (Perplexity, ChatGPT)
+- `app/guides/layout.tsx` — unique metadata + OG for guides
+- `app/products/layout.tsx` — unique metadata + OG for products
+- `app/portfolio/layout.tsx` — unique metadata + OG for portfolio
+- `app/layout.tsx` — Open Graph + Twitter Cards + canonical added
+- **Why nested layouts:** guides/products/portfolio are `'use client'` so can't export metadata directly — solved with layout.tsx wrapper per folder
+
+**OG Image:**
+- Created `public/og-image.png` — 1200×630px landscape, "Orci AI / מדריכי AI בעברית" with cyan HUD aesthetic
+- Connected to layout.tsx og:image + twitter:image
+- **Issue:** 1.25MB was too large — WhatsApp timed out and showed Vercel logo instead
+- **Fix:** Compressed with sharp (built-in to Next.js) from 1.25MB → 355KB
+- WhatsApp now shows image correctly when sharing links
+
+**⚠️ OG Image lesson:**
+- WhatsApp has a timeout for loading preview images — keep og-image under 500KB
+- Use `node -e "require('sharp')('public/og-image.png').resize(1200,630).png({quality:85,compressionLevel:9}).toFile('public/og-image-new.png')"` to compress
+- WhatsApp caches links — test with `?v=N` suffix to force re-scrape
+
+**SEO Next Steps (from ACTION-PLAN.md):**
+- HowTo Schema JSON-LD on guide pages (Rich Results in Google)
+- Rename /new-guide → /floating-trend, /new-guide-2 → /abandoned-figures
+- Add testimonials for E-E-A-T signals
+- Add update dates on guide articles
+
+---
+
+### Session 2026-04-12
+
+**iPhone Notification Animation (Remotion):**
+- Created standalone Remotion project at `C:\Users\0rr Shemer\Documents\iphone-notification`
+- Component: `src/Notification.tsx` — iPhone-style "אין קליטה" banner with spring animation
+- Transparent background (ProRes 4444 with alpha channel)
+- Animation: slides in from top, holds 3s, slides out — total 5s at 30fps
+- Render command: `npm run render` → outputs `out/notification.mov` (ProRes .mov, transparent)
+- Render command full: `npx remotion render src/index.ts IPhoneNotification out/notification.mov --image-format=png --pixel-format=yuva444p10le --codec=prores --prores-profile=4444`
+- **Note:** Remotion downloads Chrome Headless Shell on first render (~107MB), subsequent renders are faster
+- **Note:** Disk must have ~500MB free for Remotion + Chrome install
+
+**First-Time Visitor Onboarding Modal:**
+- New component: `components/ui/onboarding-modal.tsx`
+- Mounted in `app/page.tsx` — self-manages visibility via localStorage
+- localStorage key: `'orci-onboarded'` (separate from `'orci-content-unlocked'`)
+- 3-step flow:
+  1. Welcome — stats (130K subs, 25M views), brand intro
+  2. Guide showcase — scrollable grid of all 10 guides, lock icon on non-free, banner explaining locked = email only
+  3. CTA — "קח אותי למדריכים" + WhatsApp + packages teaser (Starter/Growth) linking to /products
+- Appears 0.8s after first page load, ESC to dismiss
+- Portal-rendered, Framer Motion spring animations, z-index 9999
+
+**GuideGuard — Email Gate Enforcement:**
+- Problem: locked guides (`free: false`) were accessible via direct URL from any entry point
+- Solution: `components/ui/guide-guard.tsx` — client component that wraps all guide pages via `app/guides/layout.tsx`
+- Logic: reads `usePathname()` → finds guide in GUIDES array → if `free: false` AND `!isContentUnlocked()` → shows blur overlay + email form
+- Email gate inline (no separate modal needed) — submits to `/api/subscribe`, sets localStorage on success, fires `'orci-unlocked'` event
+- Free guides and unlocked users: zero impact, renders children directly
+- Works regardless of entry path (direct URL, onboarding modal, Google, etc.)
+
+**⚠️ package.json incident:**
+- Running `npm init -y` in the wrong directory accidentally added `"type": "commonjs"` to orci-ai-site's package.json
+- This broke the Next.js build (44 errors — ESM/CJS conflict)
+- Fix: `git checkout package.json` to restore
+- Prevention: always run `npm init` with `--prefix` or `cd` to the correct directory first
+
+---
+
+### Session 2026-04-29
+
+**Weekly AI Dashboard — מחליף את DailyPulse:**
+
+**הבעיה:** DailyPulse הישן הציג 3 כרטיסיות טקסט בלבד, מתעדכן יומית, ולא נותן תמונה שלמה של מה שקורה בעולם ה-AI.
+
+**הפתרון:** דשבורד שבועי מלא עם:
+- כרטיסיות עם תמונות
+- סינון לפי קטגוריה
+- modal עם פרטים מלאים + "הזווית של Orci" + שתף בווטסאפ
+- תהליך עדכון היברידי: AI מייצר טיוטה → אורצי עורך → git push
+
+**קבצים שנוצרו:**
+- `data/weekly-dashboard.json` — מבנה נתונים עם 12 פריטי דמו לשבוע 18, אפריל–מאי 2026
+- `scripts/generate-weekly.mjs` — סקריפט Node שמושך RSS מ-5 מקורות, מסכם ב-GPT-4o-mini לעברית, שולף OG images, ומוציא JSON
+- `components/ui/weekly-card.tsx` — כרטיס עם תמונה, badge קטגוריה (5 צבעים), badge חם/חדש, hover cyan glow
+- `components/ui/weekly-modal.tsx` — מודאל Framer Motion עם תמונה גדולה, details, orciTake, קישור למקור, שתף בווטסאפ
+- `components/ui/weekly-dashboard.tsx` — client component עם filter tabs, grid חם/שאר, ניהול selectedItem
+- `app/weekly/page.tsx` — Server Component עם metadata, מייבא JSON ב-build time (static)
+
+**קבצים שעודכנו:**
+- `types/index.ts` — נוספו `WeeklyItem` ו-`WeeklyDashboardData` interfaces
+- `app/page.tsx` — הוסרה `DailyPulse`, tab "חדשות AI" שונה ל-"עדכון שבועי" עם תצוגת 4 פריטים חמים + קישור ל-`/weekly`
+- `components/layout/Navigation.tsx` — נוסף "עדכון שבועי" בניווט desktop (עם badge "חדש") ו-dock מובייל
+- `package.json` — נוסף `"generate-weekly": "node scripts/generate-weekly.mjs"`
+
+**מבנה הדשבורד:**
+- 5 קטגוריות עם צבעים: כלים חדשים (ציאן), עדכוני גרסה (סגול), חדשות גדולות (אדום), טרנדים (כתום), מחקר (ירוק)
+- פריטים `isHot: true` מופיעים בשורה ראשונה עם גריד גדול יותר
+- פריטים רגילים: 4 עמודות desktop / 2 tablet / 1 mobile
+- modal: `fixed inset`, scroll פנימי, ESC/click-outside לסגירה
+
+**Data schema כל פריט:**
+```typescript
+{
+  id, title, category, emoji, image,
+  summary,    // 2 משפטות — מוצג על הכרטיס
+  details,    // פסקה מפורטת — מוצגת במודאל
+  orciTake,   // הזווית של Orci — במודאל
+  link, source, isHot, isNew
+}
+```
+
+**Build:** עבר ✅ — `/weekly` מסומן כ-Static prerendered (קורא JSON ב-build time).
+
+**⚠️ חשוב לגבי תמונות בדשבורד:**
+- ה-JSON יכול להכיל כל URL תמונה — Unsplash, OG images מאתרים, או URLs ישירים
+- `<Image unoptimized>` משמש כי URLs חיצוניים לא מוגדרים ב-next.config domains
+- אם תמונה נכשלת — הכרטיס מציג emoji על רקע gradient כ-fallback
+
+**תהליך עדכון שבועי:**
+```bash
+OPENAI_API_KEY=sk-... npm run generate-weekly
+# עורך data/weekly-dashboard.json
+# git commit -m "עדכון שבועי — שבוע X"
+# git push → Vercel deploy אוטומטי
+```

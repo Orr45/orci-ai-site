@@ -77,3 +77,26 @@ export interface SectionHeaderProps {
 export interface NavigationProps {
   className?: string;
 }
+
+export interface WeeklyItem {
+  id: string;
+  title: string;
+  category: 'כלים חדשים' | 'עדכוני גרסה' | 'חדשות גדולות' | 'טרנדים' | 'מחקר';
+  emoji: string;
+  image: string;
+  summary: string;
+  details: string;
+  orciTake: string;
+  link: string;
+  source: string;
+  isHot: boolean;
+  isNew: boolean;
+}
+
+export interface WeeklyDashboardData {
+  weekTitle: string;
+  weekStart: string;
+  weekEnd: string;
+  updatedAt: string;
+  items: WeeklyItem[];
+}

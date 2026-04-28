@@ -6,7 +6,10 @@ import Image from "next/image";
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle, Youtube, ExternalLink, Mail, BookOpen, Zap, TrendingUp, Play } from 'lucide-react';
 import { Footer } from '@/components/layout/Footer';
-import DailyPulse from '@/components/news/DailyPulse';
+import weeklyData from '@/data/weekly-dashboard.json';
+import { WeeklyDashboardData } from '@/types';
+import WeeklyCard from '@/components/ui/weekly-card';
+import WeeklyModal from '@/components/ui/weekly-modal';
 import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 import { BackgroundPathsEffect } from '@/components/ui/background-paths';
 import OrbitingSkills from '@/components/ui/orbiting-skills';
@@ -331,12 +334,16 @@ function EmailSection() {
 
 const TABS = [
   { id: 'guides', label: 'מדריכים', icon: BookOpen, count: '9' },
-  { id: 'news', label: 'חדשות AI', icon: Zap, count: 'חי' },
+  { id: 'news', label: 'עדכון שבועי', icon: Zap, count: 'חדש' },
   { id: 'youtube', label: 'יוטיוב', icon: TrendingUp, count: '25M' },
 ];
 
+const dashboard = weeklyData as WeeklyDashboardData;
+const previewItems = dashboard.items.filter(i => i.isHot).slice(0, 4);
+
 function ContentTabs() {
   const [active, setActive] = useState('guides');
+  const [selectedItem, setSelectedItem] = useState<import('@/types').WeeklyItem | null>(null);
 
   useEffect(() => {
     const handler = () => setActive('guides');
@@ -423,7 +430,43 @@ function ContentTabs() {
         </section>
       )}
 
-      {active === 'news' && <DailyPulse />}
+      {active === 'news' && (
+        <section className="py-10 px-4" style={{ background: 'rgba(5,13,26,0.97)' }}>
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-8">
+              <div
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold mb-3"
+                style={{ background: 'rgba(0,209,255,0.1)', border: '1px solid rgba(0,209,255,0.3)', color: '#00d1ff' }}
+              >
+                🔥 חם השבוע
+              </div>
+              <h2 className="text-2xl md:text-4xl font-bold mb-2" style={{ color: '#e8f4ff' }}>
+                {dashboard.weekTitle}
+              </h2>
+              <p className="text-sm" style={{ color: '#5a7a9a' }}>
+                {dashboard.items.length} עדכונים מעולם ה-AI השבוע
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+              {previewItems.map((item, i) => (
+                <WeeklyCard key={item.id} item={item} onClick={setSelectedItem} index={i} />
+              ))}
+            </div>
+
+            <div className="text-center">
+              <Link
+                href="/weekly"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm transition-all"
+                style={{ background: 'rgba(0,209,255,0.15)', color: '#00d1ff', border: '1px solid rgba(0,209,255,0.35)' }}
+              >
+                לדשבורד המלא ← ({dashboard.items.length} עדכונים)
+              </Link>
+            </div>
+          </div>
+          <WeeklyModal item={selectedItem} onClose={() => setSelectedItem(null)} />
+        </section>
+      )}
 
       {active === 'youtube' && <YouTubeSection />}
     </div>

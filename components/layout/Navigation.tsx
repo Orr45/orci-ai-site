@@ -9,6 +9,7 @@ import {
   Briefcase,
   FolderOpen,
   MessageCircle,
+  Zap,
 } from 'lucide-react';
 
 export function Navigation() {
@@ -17,8 +18,8 @@ export function Navigation() {
   const dockItems = [
     { icon: Home, label: 'בית', href: '/', isActive: pathname === '/' },
     { icon: BookOpen, label: 'מדריכים', href: '/guides', isActive: pathname.startsWith('/guides') },
+    { icon: Zap, label: 'שבועי', href: '/weekly', isActive: pathname === '/weekly' },
     { icon: Briefcase, label: 'שירותים', href: '/products', isActive: pathname === '/products' },
-    { icon: FolderOpen, label: 'עבודות', href: '/portfolio', isActive: pathname === '/portfolio' },
     { icon: MessageCircle, label: 'וואטסאפ', href: 'https://wa.me/972542599107', isActive: false },
   ];
 
@@ -56,6 +57,10 @@ export function Navigation() {
                 </div>
               </div>
 
+              <Link href="/weekly" className={`text-base font-medium transition-colors flex items-center gap-1 ${pathname === '/weekly' ? 'text-orci-cyan' : 'text-slate-300 hover:text-orci-cyan'}`}>
+                עדכון שבועי
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full font-bold" style={{background:'rgba(239,68,68,0.15)',color:'#f87171',border:'1px solid rgba(239,68,68,0.3)'}}>חדש</span>
+              </Link>
               <Link href="/products" className={`text-base font-medium transition-colors ${pathname === '/products' ? 'text-orci-cyan' : 'text-slate-300 hover:text-orci-cyan'}`}>שירותים</Link>
               <Link href="/portfolio" className={`text-base font-medium transition-colors ${pathname === '/portfolio' ? 'text-orci-cyan' : 'text-slate-300 hover:text-orci-cyan'}`}>עבודות</Link>
 
