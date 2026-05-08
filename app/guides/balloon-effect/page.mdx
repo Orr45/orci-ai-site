@@ -1,0 +1,176 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'אפקט הבלון | Orci AI',
+  description: 'איך להפוך כל סרטון לאפקט בלון מנופח עם Nano Banana 2 ו-Kling Motion — 3 שלבים פשוטים',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        🎈 אפקט הבלון
+      </h1>
+      <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        הופכים כל סרטון לדמויות בלון מנופחות ומבריקות — 3 שלבים, תוצאות מטורפות
+      </p>
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🍌 Nano Banana 2</span>
+        <span className="cap-badge text-sm">🎬 Kling Motion</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* שלב 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: Nano Banana 2 — יצירת תמונת הבלון
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        קחו את <span className="text-orci-cyan font-bold">הפריים הראשון</span> מהסרטון שלכם והכניסו אותו ל-Nano Banana 2.
+        הפרומפט הבא יהפוך את הדמות לדמות בלון מנופחת ומבריקה — תוך שמירה על <span className="text-orci-cyan font-bold">זהות הפנים המקורית</span> ועל הקומפוזיציה של הסצנה.
+      </p>
+
+      <div className="my-8 grid grid-cols-2 gap-3">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/balloon-effect/step1-original.jpg" alt="פריים מקורי מהסרטון" width={500} height={500} className="w-full h-auto" />
+          <p className="text-center text-slate-400 text-sm mt-2">הפריים המקורי</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/balloon-effect/step1-balloon.png" alt="תמונת הבלון שנוצרה" width={500} height={500} className="w-full h-auto" />
+          <p className="text-center text-slate-400 text-sm mt-2">תמונת הבלון</p>
+        </div>
+      </div>
+
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`balloon character with a smooth, glossy, reflective surface, similar to a shiny blow-up toy. The character should retain the exact facial structure and recognizable identity of the original person, but reinterpret the facial features as 3D balloon-like forms (inflated cheeks, rounded nose, slightly stretched balloon texture). The material should look rubbery and inflated with visible highlights and reflections, giving a realistic plastic balloon appearance.
+
+The body and head should appear fully inflated, with soft rounded edges and subtle creases typical of an inflatable object. Maintain the original pose, composition, clothing shapes, and scene layout from the source image.
+
+Also convert any other visible person in the background into the same inflatable balloon style, ensuring consistency in material, lighting, and texture so that all characters appear as shiny plastic balloon figures while preserving the overall environment and atmosphere of the scene`} />
+      </details>
+    </div>
+
+    {/* שלב 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: שדרוגים — כי AI אין גבולות 😂
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        זה AI, אין דבר בלתי אפשרי. אפשר להוסיף קוביות בטן, לשנות בגדים, להוסיף אביזרים — כל מה שדמיונכם מגיע אליו.
+      </p>
+
+      <div className="my-8 grid grid-cols-1 gap-3 max-w-sm mx-auto">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/balloon-effect/step2-balloon.png" alt="תמונת הבלון עם שדרוגים" width={500} height={500} className="w-full h-auto" />
+          <p className="text-center text-slate-400 text-sm mt-2">התמונה לאחר שדרוגים</p>
+        </div>
+      </div>
+    </div>
+
+    {/* טיפ */}
+    <div className="bg-orci-cyan/5 rounded-xl p-6 border border-orci-cyan/20">
+      <p className="text-orci-cyan font-bold mb-2">💡 טיפ</p>
+      <p className="text-slate-300 text-base">
+        ב-Nano Banana 2 אפשר להנחות במדויק מה לשנות בתמונה — נסו להוסיף אביזרים, לשנות את הרקע, או לשדרג את הלוק של הדמות לפני שמכניסים ל-Kling Motion.
+      </p>
+    </div>
+
+    {/* שלב 3 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3: Kling Motion — הפיכת הסרטון לאפקט בלון
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        כנסו ל-<span className="text-orci-cyan font-bold">Kling Motion</span> והכניסו את <span className="text-orci-cyan font-bold">הסרטון המקורי</span> יחד עם <span className="text-orci-cyan font-bold">תמונת הרפרנס של הבלון</span>.
+        Kling ישמור על תנועות הסרטון המקורי ויחיל עליהן את סגנון הבלון מהתמונה — התוצאה? סרטון מלא עם אפקט הבלון.
+      </p>
+
+      <div className="my-8 grid grid-cols-2 gap-3">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/balloon-effect/step3-ref1.png" alt="תמונת רפרנס לKling 1" width={500} height={500} className="w-full h-auto" />
+          <p className="text-center text-slate-400 text-sm mt-2">רפרנס בלון 1</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/balloon-effect/step3-ref2.png" alt="תמונת רפרנס לKling 2" width={500} height={500} className="w-full h-auto" />
+          <p className="text-center text-slate-400 text-sm mt-2">רפרנס בלון 2</p>
+        </div>
+      </div>
+    </div>
+
+    {/* סרטון תוצאה */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        התוצאה המוגמרת 🎈
+      </h2>
+      <div className="my-8 rounded-2xl overflow-hidden" style={{ aspectRatio: '9/16', maxWidth: '400px', margin: '0 auto' }}>
+        <iframe
+          src="https://www.youtube.com/embed/2KVg6xU2pPQ?rel=0"
+          title="אפקט הבלון — Orci AI"
+          className="w-full h-full"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    {/* כרטיס מסקנה */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🎈</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">התוצאה</h2>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          3 שלבים פשוטים, <span className="text-orci-cyan font-bold">תמונת בלון מנופחת ומבריקה</span>, וסרטון שלם עם האפקט — בלי צורך בעריכה מקצועית
+        </p>
+      </div>
+    </div>
+
+    {/* המסר המרכזי */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">💡 המסר המרכזי</h3>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">AI אין גבולות</span>
+        </p>
+        <p className="text-lg text-slate-300">תמיד תשאלו את עצמכם — מה עוד אפשר להוסיף? מה עוד אפשר לשדרג? הכלים האלה נותנים לכם חופש יצירה מלא.</p>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים עוד אפקטים מטורפים?
+      </h2>
+      <p className="text-gray-300 mb-6 text-lg">צרו קשר ונבנה ביחד תוכן AI שישבור את הפיד</p>
+      <a href="https://wa.me/972542599107" target="_blank" rel="noopener noreferrer" className="cap-btn cap-btn-primary inline-flex">
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        בואו נדבר בוואטסאפ
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>
