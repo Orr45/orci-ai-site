@@ -1,0 +1,261 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'טרנד הפירות עם AI — סרט אנימציה קצר בכמה שלבים | Orci AI',
+  description: 'למדו ליצור סרטון אנימציה ויראלי עם דמויות פירות תלת-מימדיות — מהדמיות, דרך התסריט, ועד לסרטון המוגמר.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        טרנד הפירות עם AI
+      </h1>
+      <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        מדמיות Pixar ועד סרטון מונפש מוגמר — בלי ציוד, בלי תקציב, בלי ידע בעריכה
+      </p>
+
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🤖 Claude / Gemini</span>
+        <span className="cap-badge text-sm">🍌 GPT Image-2 / Nano Banana 2</span>
+        <span className="cap-badge text-sm">🎬 Kling 3.0 / Veo 3.1</span>
+        <span className="cap-badge text-sm">✂️ CapCut</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: יצירת הדמיות שלכם
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        מצאו דמות פרי שאהבתם מהאינטרנט — כזו שה-AI יבין על מה מדובר.
+        אחר כך בעזרת <span className="text-orci-cyan font-bold">Gemini או Claude</span> בנו את סט הדמיות שלכם:
+        תארו את הדמות בפירוט — צורת הגוף, הביגוד, ההבעה, הרקע — וצרפו את התמונות
+        <span className="text-orci-cyan font-bold"> אחת ליד השנייה</span> כדי לקבל גיליון דמויות אחיד.
+      </p>
+
+      <div className="my-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/fruit-trend/step1-char1.png" alt="דמות פרי 1" width={500} height={500} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/fruit-trend/step1-char2.png" alt="דמות פרי 2" width={500} height={500} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/fruit-trend/step1-char3.png" alt="דמות פרי 3" width={500} height={500} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/fruit-trend/step1-char4.png" alt="דמות פרי 4" width={500} height={500} className="w-full h-auto" />
+        </div>
+      </div>
+
+      <p className="text-base text-slate-400 mb-4">דוגמה לפרומפט יצירת דמות — בננה:</p>
+      <CopyPrompt prompt="A 3D Pixar-style animated banana character, male, tall and slightly lean, warm brown eyes, gentle tired smile. Wearing a dark navy blue worker's shirt with short sleeves, old dark blue jeans with slight wear marks, brown work boots. Warm indoor lighting, cozy small apartment background at night. Full body shot, standing upright with relaxed posture. High quality Pixar CGI render, soft shadows, photorealistic texture on the banana skin." />
+    </div>
+
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: בניית התסריט עם Claude
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        עכשיו שיש לכם את הדמיות, הגיע הזמן לחשוב על <span className="text-orci-cyan font-bold">הסיפור</span>.
+        פתחו Claude ובקשו ממנו לעזור לכם לבנות תסריט לסרטון קצר —
+        תארו את הדמויות שיצרתם, האווירה שאתם רוצים, והמסר.
+        Claude יעזור לכם לפרק את הסרטון ל<span className="text-orci-cyan font-bold">סצנות קצרות</span> עם זרימה טבעית.
+      </p>
+
+      <div className="bg-orci-cyan/5 rounded-xl p-6 border border-orci-cyan/20">
+        <p className="text-orci-cyan font-bold mb-2">💡 טיפ</p>
+        <p className="text-slate-300 text-base">
+          ספרו ל-Claude בעברית מה אתם רוצים — הוא יבנה לכם מבנה סצנות מסודר עם זמנים ותיאורים.
+          ככל שתהיו ספציפיים יותר, התוצאה תהיה מדויקת יותר.
+        </p>
+      </div>
+    </div>
+
+    {/* Step 3 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3: יצירת הסצנות עם GPT Image-2 / Nano Banana 2
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        לכל סצנה מהתסריט — בקשו מ-Claude לכתוב פרומפט מפורט.
+        אז קחו את <span className="text-orci-cyan font-bold">תמונות הרפרנס של הדמיות</span> שיצרתם בשלב 1,
+        והכניסו אותן ל-<span className="text-orci-cyan font-bold">GPT Image-2</span> או <span className="text-orci-cyan font-bold">Nano Banana 2</span>
+        יחד עם הפרומפט — וקבלו תמונה מוגמרת לכל סצנה.
+      </p>
+
+      <div className="my-8 grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/fruit-trend/step3-scene1.png" alt="סצנה 1 — דמויות הפירות" width={800} height={600} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/fruit-trend/step3-scene2.png" alt="סצנה 2 — דמויות הפירות" width={800} height={600} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/fruit-trend/step3-scene3.png" alt="סצנה 3 — דמויות הפירות" width={800} height={600} className="w-full h-auto" />
+        </div>
+      </div>
+
+      <p className="text-base text-slate-400 mb-4">דוגמה לפרומפט סצנה — ארבעה חברים בבר:</p>
+
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`FIRST FRAME of a 3-5 second animation. Four 3D animated anthropomorphic fruit characters sitting together at a bar table at night, laughing and enjoying themselves.
+
+Banana man: banana-shaped yellow head, wearing a fitted navy blue button-down shirt, dark slim jeans, brown loafers. Relaxed confident expression, mid-laugh.
+
+Strawberry girl: strawberry-shaped red head with green leaf hair, wearing a white strappy going-out top, high-waisted black jeans, white sneakers. Animated storytelling expression, hands gesturing dramatically.
+
+Orange character: round orange-shaped head with green leaf sprigs, wearing a bright orange polo shirt, beige chinos, white sneakers. Huge grin, leaning forward.
+
+Lemon character: oval yellow lemon-shaped head, wearing a light yellow linen shirt half-unbuttoned, white pants, sandals. Mid-laugh with drink spraying slightly from mouth.
+
+Bar setting: warm amber lighting, wooden table with drinks and snacks, colorful bar lights in background, other blurred patrons. Cozy fun night-out atmosphere.
+
+Pixar/Disney 3D animation style, hyper-realistic textures, warm bar lighting, 9:16 vertical format, 8K render.`} />
+      </details>
+
+      <div className="bg-orci-cyan/5 rounded-xl p-6 border border-orci-cyan/20">
+        <p className="text-orci-cyan font-bold mb-2">💡 טיפ</p>
+        <p className="text-slate-300 text-base">
+          תמיד תארו כל דמות בנפרד בתוך הפרומפט — כך ה-AI שומר על העקביות בין הסצנות.
+        </p>
+      </div>
+    </div>
+
+    {/* Step 4 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 4: הנפשת הסצנות עם Kling 3.0 / Veo 3.1
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        עכשיו מחיים את הסצנות. הכניסו את כל <span className="text-orci-cyan font-bold">תמונות הסצנות</span> ל-Claude
+        ותארו לו <span className="text-orci-cyan font-bold">בדיוק</span> מה אתם רוצים שיקרה — תנועות, רגשות, אווירה.
+      </p>
+
+      <div className="bg-orci-cyan/5 rounded-xl p-6 border border-orci-cyan/20 mb-6">
+        <p className="text-orci-cyan font-bold mb-2">🔑 הטריק החשוב ביותר</p>
+        <p className="text-slate-300 text-base">
+          בקשו מ-Claude <span className="text-orci-cyan font-bold">הסבר בעברית</span> על מה שיקרה בסצנה.
+          רק כשאתם רואים שזה תואם בדיוק למה שביקשתם — תעתיקו את הפרומפט באנגלית שהוא הכין.
+          זה חוסך הרבה ניסויים מיותרים.
+        </p>
+      </div>
+
+      <p className="text-lg text-slate-300 leading-relaxed">
+        הכניסו את הפרומפט ואת תמונת הסצנה ל-<span className="text-orci-cyan font-bold">Kling 3.0</span> או <span className="text-orci-cyan font-bold">Veo 3.1</span>
+        — והם יוצרים לכם את הסצנה המונפשת.
+      </p>
+    </div>
+
+    {/* Step 5 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 5: חיבור הכל ב-CapCut
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        יש לכם את כל הסצנות מונפשות בדיוק כמו שרציתם.
+        פתחו <span className="text-orci-cyan font-bold">CapCut</span>, חברו את הכל ביחד —
+        ויש לכם סרטון מוגמר לטרנד.
+      </p>
+    </div>
+
+    {/* Result */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        התוצאה המוגמרת
+      </h2>
+      <div className="my-8 rounded-2xl overflow-hidden" style={{ aspectRatio: '9/16', maxWidth: '400px', margin: '0 auto' }}>
+        <iframe
+          src="https://www.youtube.com/embed/9yBWPLPeTNg?rel=0"
+          title="טרנד הפירות — תוצאה סופית"
+          className="w-full h-full"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    {/* Result Card */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🍌</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          חמישה שלבים —{' '}
+          <span className="text-orci-cyan font-bold">סרטון אנימציה ויראלי שנראה כאילו עולה אלפים</span>.
+          ואת זה אפשר לעשות לכל נושא, כל דמות, כל סיפור.
+        </p>
+      </div>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">לא צריך להיות מאייר או עורך כדי לעשות אנימציה.</span>
+        </p>
+        <p className="text-lg text-slate-300">
+          Claude בונה לך את התסריט והפרומפטים, ה-AI מצייר ומנפיש, CapCut מחבר — אתה רק מכוון.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים את כל הפרומפטים?
+      </h2>
+      <p className="text-gray-300 mb-6 text-lg">
+        תכתבו &apos;פירות&apos; בתגובות או שלחו לי הודעה
+      </p>
+      <a
+        href="https://wa.me/972542599107"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        בואו נדבר בוואטסאפ
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>
