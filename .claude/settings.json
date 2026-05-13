@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(npm run build:*)",
-      "Bash(npx vercel:*)"
+      "Bash(npx vercel:*)",
+      "Read(//c/Users/0rr Shemer/claude-seo/skills/**)",
+      "WebFetch(domain:orci-ai-site.vercel.app)"
     ]
   }
 }
