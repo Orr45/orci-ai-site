@@ -448,9 +448,9 @@ OPENAI_API_KEY=sk-... npm run generate-weekly
 
 ---
 
-**Last Updated:** 2026-04-29
-**Status:** ✅ Weekly AI Dashboard built — דשבורד שבועי מלא עם 12 פריטי דמו, סינון קטגוריות, modal, וסקריפט יצירה אוטומטי עם GPT-4o-mini.
-**Next Action:** הפעל `npm run generate-weekly` עם OPENAI_API_KEY כדי לייצר תוכן אמיתי לשבוע הנוכחי, ערוך JSON, push.
+**Last Updated:** 2026-05-13 (session 2)
+**Status:** ✅ מדריך fan-cam-trend שודרג לשתי וריאציות — מתחילים (Nano Banana 2) + מתקדמים (GPT Image 2) עם טאב סלקטור, וידאו מוטמע, וניקוי subtitle descriptions מכרטיסי הליגות.
+**Next Action:** git commit + push → Vercel deploy אוטומטי.
 
 ---
 
@@ -966,3 +966,59 @@ OPENAI_API_KEY=sk-... npm run generate-weekly
 # git commit -m "עדכון שבועי — שבוע X"
 # git push → Vercel deploy אוטומטי
 ```
+
+---
+
+### Session 2026-05-13
+
+**Fan Cam Trend Guide (built with /guide-builder):**
+- `app/guides/fan-cam-trend/page.mdx` — טרנד מצלמת המשחק הוויראלי
+- Tools: GPT Image 2 + Seedance 2.0 + Gemini/Claude
+- `data/guides.ts` entry: popular: true, isNew: true, free: false, category: וידאו ויראלי
+
+**מבנה המדריך:**
+- **שלב 1 — GPT Image 2:** 2 דוגמאות ישראליות (דני ולאמין, אורן להב) side by side עם פרומפטים ותוצאות
+- **4 פורמטים בינלאומיים:** MLB, NFL, F1, Premier League — כל אחד עם תיאור קצר + פרומפט מלא מתקפל
+- **Women1 + Women2 side by side** — דוגמאות לתוצאה עם הפורמטים הבינלאומיים
+- **טיפ זהב:** שימוש ב-Gemini/Claude לכוונון הפרומפט
+- **שלב 2 — Seedance 2.0:** לכל דוגמא — תמונת הקלט לצד פרומפט האנימציה (grid 2 עמודות)
+
+**תמונות:**
+- `public/guides/fan-cam-trend/result-danny.png` ← Desktop\Asset\result_9x16.png
+- `public/guides/fan-cam-trend/result-oren.png` ← Desktop\Asset\oren_blonde_result.png
+- `public/guides/fan-cam-trend/result-women1.png` ← Downloads\Women1.png
+- `public/guides/fan-cam-trend/result-women2.png` ← Downloads\Women2.png
+- `public/guides/guide-fan-cam-trend.png` ← D:\AI\Instagram\GameBreakAs\hf_20260512_...png (כריכה)
+
+**כל הפרומפטים** — ארוכים, עטופים ב-`<details>` expandable. תמונות ופרומפטים side by side ב-grid `md:grid-cols-2`.
+
+---
+
+### Session 2026-05-13 (המשך) — Fan Cam Guide Upgrade
+
+**שדרוג מדריך fan-cam-trend לשתי וריאציות:**
+
+**שינויים:**
+- `app/guides/fan-cam-trend/page.mdx` → נמחק
+- `app/guides/fan-cam-trend/page.tsx` — Server Component עם metadata, מייבא FanCamTabs
+- `app/guides/fan-cam-trend/FanCamTabs.tsx` — Client Component עם tab state: מתחילים / מתקדמים
+
+**טאב מתחילים (חדש):**
+- שלב 1: Nano Banana 2 — העלאת תמונת סצנה (result_9x16.png) + תמונת פנים (face-example.jpg) עם פרומפט להחלפת אדם שמאלי
+- שלב 2: Seedance 2.0 — אנימציית עוגה בפרצוף על result-beginner.png
+- וידאו מוטמע: `trend_video.mp4` (HTML5 `<video>` tag)
+
+**טאב מתקדמים (קיים, עם ניקוי):**
+- הוסרו שורות subtitle descriptions מ-4 כרטיסי הליגות הבינלאומיות (MLB/NFL/F1/Premier League)
+
+**תמונות/קבצים שנוספו ל-`public/guides/fan-cam-trend/`:**
+- `result_9x16.png` — תמונת הסצנה (דני+לאמין, 6.9MB)
+- `face-example.jpg` — תמונת פנים לדוגמה (1.8MB)
+- `result-beginner.png` — תוצאת Nano Banana 2 (7.4MB)
+- `trend_video.mp4` — וידאו תוצאה סופית (3.8MB)
+
+**⚠️ Pattern חשוב — MDX עם state:**
+- כשדף MDX צריך React state (טאבים, toggle וכו') → ממירים ל-TSX עם ארכיטקטורה:
+  - `page.tsx` = Server Component עם `export const metadata`
+  - `ComponentName.tsx` = `'use client'` עם כל הלוגיקה והתוכן
+- לא לנסות להכניס `useState` ישירות ב-MDX
