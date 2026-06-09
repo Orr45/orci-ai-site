@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'best-ai-tools',
+    title: 'דירגתי את כלי ה-AI שלי',
+    description: 'אחרי שניסיתי עשרות כלים — עשיתי לכם סדר. מה השימוש הכי טוב לכל מודל',
+    summary: 'יש המון כלים ב-AI וקל ללכת לאיבוד. המדריך הזה מארגן לכם את הכלים לפי שימוש: Claude לכתיבה ו-Brain Storm, Perplexity למחקר מעמיק, Higgsfield ליצירת וידאו, Claude Code / Codex לפיתוח בלי ידע בתכנות, ו-Loveable לאתרים. המלצות מבוססות ניסיון אמיתי.',
+    image: '/guides/guide-best-ai-tools.png',
+    href: '/guides/best-ai-tools',
+    category: 'יצירת תוכן',
+    popular: false,
+    isNew: true,
+    date: '2026-06-10',
+    free: false,
+  },
+  {
     id: 'ai-beginners',
     title: 'חפצים מדברים עם AI',
     description: 'איך ליצור את הטרנד הוויראלי של החפצים המדברים - מדריך שלב אחר שלב',

@@ -1,0 +1,242 @@
+﻿import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'כלי ה-AI שאני משתמש בהם — המדריך המלא | Orci AI',
+  description: 'הכלים הכי טובים ב-AI לפי שימוש — Claude, Perplexity, Higgsfield, Loveable ועוד. המלצות אמיתיות אחרי ניסיון של עשרות כלים.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        דירגתי את כלי ה-AI שלי
+      </h1>
+      <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        יש המון כלים — וקל מאוד ללכת לאיבוד. אחרי שניסיתי עשרות כלים, עשיתי לכם סדר.<br />
+        <span className="text-orci-cyan font-bold">החוכמה היא לדעת מה השימוש הכי טוב של כל מודל.</span>
+      </p>
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🧠 Claude</span>
+        <span className="cap-badge text-sm">💻 Claude Code</span>
+        <span className="cap-badge text-sm">🔍 Perplexity</span>
+        <span className="cap-badge text-sm">🎬 Higgsfield</span>
+        <span className="cap-badge text-sm">🌐 Loveable</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* Claude */}
+    <div className="cap-card">
+      <p className="text-sm font-bold text-orci-cyan uppercase tracking-widest mb-2">יצירת תוכן וכתיבה</p>
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-white">
+        🧠 Claude
+      </h2>
+
+      <div className="my-6 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/best-ai-tools/claude.png" alt="Claude AI" width={800} height={500} className="w-full h-auto" />
+      </div>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        <span className="text-orci-cyan font-bold">למה אני משתמש בו:</span> יודע לעזור לכם למצוא כיוון, לעשות
+        {' '}<span className="text-orci-cyan font-bold">Brain Storm</span> ברמה גבוה מאוד עם תוצאות איכותיות.
+        אפשר לחבר אליו <span className="text-orci-cyan font-bold">Skills</span> עם ידע נרחב בהמון נושאים
+        וככה לשפר את היעילות ולהפוך אותו ממש ל<span className="text-orci-cyan font-bold">"מוח השני שלכם"</span>.
+        הוא לא נשמע רובוטי.
+      </p>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-6">
+        דוגמה — לסרטון הזה התלבטתי איזה תמונת קאבר לרילס ליצור. אמרתי לו על מה הסרטון וביקשתי ממנו
+        ליצור 3 אפשרויות שונות. תראו את הרמה שהגיע אליה — הוא חשב על הרעיון לגמרי לבד:
+      </p>
+
+      <div className="my-6 grid grid-cols-3 gap-4">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/best-ai-tools/example-1.png" alt="תמונת קאבר — אפשרות 1" width={400} height={700} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/best-ai-tools/example-2.png" alt="תמונת קאבר — אפשרות 2" width={400} height={700} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/best-ai-tools/example-3.png" alt="תמונת קאבר — אפשרות 3" width={400} height={700} className="w-full h-auto" />
+        </div>
+      </div>
+      <p className="text-center text-sm text-orci-cyan font-bold mt-2">3 אפשרויות שClaude יצר — ללא עריכה</p>
+    </div>
+
+    {/* Claude Code / Codex */}
+    <div className="cap-card">
+      <p className="text-sm font-bold text-orci-cyan uppercase tracking-widest mb-2">כתיבת קוד</p>
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-white">
+        💻 Claude Code / Codex
+      </h2>
+
+      <div className="my-6 grid grid-cols-2 gap-4">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/best-ai-tools/claude-code.png" alt="Claude Code" width={600} height={400} className="w-full h-auto" />
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/best-ai-tools/codex.png" alt="Codex" width={600} height={400} className="w-full h-auto" />
+        </div>
+      </div>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        <span className="text-orci-cyan font-bold">למה אני משתמש בו:</span> שני הכלים האלה ידעו רק מאיך שאתם כותבים
+        לייצר לכם <span className="text-orci-cyan font-bold">אתרים / אפליקציות / תוכנות ברמה גבוה מאוד</span> — ללא ידע בתכנות בכלל.
+      </p>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        הדרך שאני משתמש בהם: יש לי <span className="text-orci-cyan font-bold">VS Code</span> — פלטפורמה לכתיבת קוד —
+        משם מתקינים תוסף בהתאם למה שרוצים: Claude Code או Codex.
+        הם סגרו את הפער והיום בקדמת כתיבת הקוד בסגנון של{' '}
+        <span className="text-orci-cyan font-bold">"Vibe Coding"</span>.
+      </p>
+      <p className="text-lg text-slate-300 leading-relaxed">
+        לא צריך להיות טכניים — אפשר לכתוב להם <span className="text-orci-cyan font-bold">בעברית</span> והם ידעו להסביר לכם,
+        לכתוב קוד ולעשות הכל. אם לא ניסיתם — אני ממליץ בחום, זה כמו קסם.
+      </p>
+    </div>
+
+    {/* Perplexity */}
+    <div className="cap-card">
+      <p className="text-sm font-bold text-orci-cyan uppercase tracking-widest mb-2">מחקר</p>
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-white">
+        🔍 Perplexity
+      </h2>
+
+      <div className="my-6 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/best-ai-tools/perplexity.png" alt="Perplexity" width={800} height={500} className="w-full h-auto" />
+      </div>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        <span className="text-orci-cyan font-bold">למה אני משתמש בו:</span> אומנם Gemini של גוגל מאוד טוב במחקר —
+        אבל זה כמה רמה אחרת. הכלי הזה יבצע עבורכם{' '}
+        <span className="text-orci-cyan font-bold">חיפוש מעמיק ממספר מקורות</span>.
+      </p>
+      <ul className="list-none space-y-3 mb-4">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>אפשר להגדיר לו <span className="text-orci-cyan font-bold">מאיזה מקורות לחפש</span> ומאיזה לא</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>נותן <span className="text-orci-cyan font-bold">רשימת מקורות</span> שתוכלו לוודא שהמחקר מהימן</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>התשובה בשפה <span className="text-orci-cyan font-bold">פשוטה ובהירה</span> שבאמת מבינים</li>
+      </ul>
+      <p className="text-lg text-slate-300 leading-relaxed">
+        אם אתם לא רוצים לחפש משהו על רגל אחת — זה המודל שהייתי הולך אליו.
+      </p>
+    </div>
+
+    {/* Higgsfield */}
+    <div className="cap-card">
+      <p className="text-sm font-bold text-orci-cyan uppercase tracking-widest mb-2">יצירת וידאו</p>
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-white">
+        🎬 Higgsfield.ai
+      </h2>
+
+      <div className="my-6 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/best-ai-tools/higgsfield.png" alt="Higgsfield AI" width={800} height={500} className="w-full h-auto" />
+      </div>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        <span className="text-orci-cyan font-bold">למה אני משתמש בו:</span> פלטפורמה שמאגדת בתוכה את{' '}
+        <span className="text-orci-cyan font-bold">כל המודלים הכי חדשים ליצירת תוכן</span> — מודלי וידאו ותמונה עם מלא פיצ'רים.
+        ככה לא צריכים לעשות מלא מינויים בנפרד — בתוכה יש הכל.
+      </p>
+      <ul className="list-none space-y-3 mb-4">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>לאחרונה יש לה <span className="text-orci-cyan font-bold">חיבור ל-Claude</span> — יכולים ליצור תמונות וסרטונים ישירות מתוך הצ'אט</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>פיצ'רים מובנים שחוסכים זמן — כמו <span className="text-orci-cyan font-bold">סרטוני UGC</span>: רק מכניסים קול + מוצר ויש לכם סרטון שלם</li>
+      </ul>
+      <p className="text-lg text-slate-300 leading-relaxed">
+        החיבור בין Claude ל-Higgsfield מרגיש ממש כמו קסם.
+      </p>
+    </div>
+
+    {/* Loveable + Base 44 */}
+    <div className="cap-card">
+      <p className="text-sm font-bold text-orci-cyan uppercase tracking-widest mb-2">בניית אתרים ואפליקציות</p>
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-white">
+        🌐 Loveable + Base 44
+      </h2>
+
+      <div className="my-6 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/best-ai-tools/loveable.png" alt="Loveable" width={800} height={500} className="w-full h-auto" />
+      </div>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        <span className="text-orci-cyan font-bold">למה אני משתמש בו:</span> למי שמפחיד להתעסק עם Claude Code —
+        {' '}<span className="text-orci-cyan font-bold">Loveable</span> הוא ממשק מאוד נוח שבונה אתרים, דפי נחיתה ואפליקציות
+        עם עיצוב איכותי. היתרון הגדול: <span className="text-orci-cyan font-bold">ידידותי מאוד למשתמש</span> לעומת כלים אחרים.
+      </p>
+      <p className="text-lg text-slate-300 leading-relaxed">
+        יש גם את <span className="text-orci-cyan font-bold">Base 44</span> של מפתח ישראלי — שגם הוא מאוד טוב.
+        ממליץ עליו בחום.
+      </p>
+    </div>
+
+    {/* Summary */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🎯</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          הסיכום
+        </h2>
+        <div className="text-right space-y-3 max-w-xl mx-auto">
+          <p className="text-lg text-slate-300"><span className="text-orci-cyan font-bold">✍️ תוכן וכתיבה →</span> Claude</p>
+          <p className="text-lg text-slate-300"><span className="text-orci-cyan font-bold">💻 קוד →</span> Claude Code / Codex</p>
+          <p className="text-lg text-slate-300"><span className="text-orci-cyan font-bold">🔍 מחקר →</span> Perplexity</p>
+          <p className="text-lg text-slate-300"><span className="text-orci-cyan font-bold">🎬 וידאו →</span> Higgsfield.ai</p>
+          <p className="text-lg text-slate-300"><span className="text-orci-cyan font-bold">🌐 אתרים →</span> Loveable / Base 44</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">אין כלי אחד שעושה הכל הכי טוב.</span>
+        </p>
+        <p className="text-lg text-slate-300">
+          החוכמה היא לדעת לאיזה כלי ללכת לפי המשימה — וזה בדיוק מה שמפריד בין מי שמשתמש ב-AI לבין מי שמשתמש בו נכון.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <p className="text-gray-300 mb-6 text-lg">
+        לקבל את המדריכים והטריקים הכי שווים — היכנסו לקבוצת הווצ'אט השקטה שלנו
+      </p>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>
