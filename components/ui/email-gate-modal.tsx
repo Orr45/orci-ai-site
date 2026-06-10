@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Lock, Mail, Sparkles, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 
 interface EmailGateModalProps {
   isOpen: boolean;
@@ -21,6 +22,7 @@ export function isContentUnlocked(): boolean {
 
 export default function EmailGateModal({ isOpen, onClose, onUnlock, guideName }: EmailGateModalProps) {
   const [email, setEmail] = useState('');
+  const [agreed, setAgreed] = useState(false);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [mounted, setMounted] = useState(false);
@@ -37,7 +39,7 @@ export default function EmailGateModal({ isOpen, onClose, onUnlock, guideName }:
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!email.trim() || !agreed) return;
 
     setStatus('loading');
     setErrorMsg('');
@@ -221,7 +223,20 @@ export default function EmailGateModal({ isOpen, onClose, onUnlock, guideName }:
                     </button>
                   </form>
 
-                  <p className="mt-4 text-xs text-slate-600">ללא ספאם. בכל עת ניתן להסיר.</p>
+                  <label className="mt-3 flex items-start gap-2 cursor-pointer text-right">
+                    <input
+                      type="checkbox"
+                      checked={agreed}
+                      onChange={(e) => setAgreed(e.target.checked)}
+                      className="mt-0.5 w-4 h-4 rounded accent-orci-cyan cursor-pointer flex-shrink-0"
+                    />
+                    <span className="text-xs text-slate-400 leading-relaxed">
+                      על ידי הרשמה, אני מאשר/ת את{' '}
+                      <Link href="/privacy" className="text-orci-cyan underline hover:opacity-80">מדיניות הפרטיות</Link>
+                      {' '}ומסכים/ה לקבל עדכונים
+                    </span>
+                  </label>
+                  <p className="mt-2 text-xs text-slate-600">ללא ספאם. בכל עת ניתן להסיר.</p>
                 </>
               )}
             </div>

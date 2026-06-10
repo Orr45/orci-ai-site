@@ -191,6 +191,7 @@ function HeroSection() {
 
 function EmailSection() {
   const [email, setEmail] = useState('');
+  const [agreed, setAgreed] = useState(false);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [unlocked, setUnlocked] = useState(false);
 
@@ -203,7 +204,7 @@ function EmailSection() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!email.trim() || !agreed) return;
     setStatus('loading');
     try {
       const res = await fetch('/api/subscribe', {
@@ -316,6 +317,20 @@ function EmailSection() {
               </button>
             </form>
           )}
+
+          <label className="mt-3 flex items-start gap-2 cursor-pointer justify-center text-right">
+              <input
+                type="checkbox"
+                checked={agreed}
+                onChange={(e) => setAgreed(e.target.checked)}
+                className="mt-0.5 w-4 h-4 rounded accent-orci-cyan cursor-pointer flex-shrink-0"
+              />
+              <span className="text-xs leading-relaxed" style={{ color: '#6a8aaa' }}>
+                על ידי הרשמה, אני מאשר/ת את{' '}
+                <Link href="/privacy" className="text-orci-cyan underline hover:opacity-80">מדיניות הפרטיות</Link>
+                {' '}ומסכים/ה לקבל עדכונים
+              </span>
+            </label>
 
           {status === 'error' && (
             <p className="mt-2 text-red-400 text-xs text-center">משהו השתבש. נסו שוב.</p>
