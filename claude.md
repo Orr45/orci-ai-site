@@ -448,9 +448,9 @@ OPENAI_API_KEY=sk-... npm run generate-weekly
 
 ---
 
-**Last Updated:** 2026-05-13 (session 2)
-**Status:** ✅ מדריך fan-cam-trend שודרג לשתי וריאציות — מתחילים (Nano Banana 2) + מתקדמים (GPT Image 2) עם טאב סלקטור, וידאו מוטמע, וניקוי subtitle descriptions מכרטיסי הליגות.
-**Next Action:** git commit + push → Vercel deploy אוטומטי.
+**Last Updated:** 2026-06-10
+**Status:** ✅ דף נחיתה B2B חדש "המוצרים שלנו" (/products) בסגנון מותג ORCIAI — חבילת השקה 3+1 ב-₪2,250, טופס לידים ל-Mailchimp, 3 קאברים ויראליים מ-Higgsfield, עיצוב פרימיום בהשראת hd-media.ai.
+**Next Action:** מעקב אחרי לידים ראשונים מהדף + בדיקת טופס הליד ב-production.
 
 ---
 
@@ -1022,3 +1022,102 @@ OPENAI_API_KEY=sk-... npm run generate-weekly
   - `page.tsx` = Server Component עם `export const metadata`
   - `ComponentName.tsx` = `'use client'` עם כל הלוגיקה והתוכן
 - לא לנסות להכניס `useState` ישירות ב-MDX
+
+---
+
+### Session 2026-06-10
+
+**מדריך חדש — Best AI Tools:**
+- `app/guides/best-ai-tools/page.mdx` — דירגתי את כלי ה-AI שלי
+- 5 סקשנים: Claude (יצירת תוכן), Claude Code/Codex (קוד), Perplexity (מחקר), Higgsfield (וידאו), Loveable+Base44 (אתרים)
+- 3 תמונות דוגמה של Claude (example-1/2/3.png) + תמונות כלים מ-`D:\AI\Instagram\BestWorst\`
+- `data/guides.ts` entry: free: false, isNew: true, category: יצירת תוכן
+
+**עדכון CTA — כל המדריכים:**
+- 19 קבצי MDX/TSX עודכנו בבת אחת עם PowerShell bulk replace
+- "רוצים את כל הפרומפטים?" → "רוצים להישאר מעודכנים?"
+- כפתור וואטסאפ אישי → קבוצת וואטסאפ: `https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0`
+- "בואו נדבר בוואטסאפ" → "הצטרפו לקבוצה"
+
+**ניקוי ניווט + מחיקת עמודים:**
+- `Navigation.tsx` — הוסרו: dropdown ממדריכים, לינקי שירותים + עבודות
+- `app/products/` ו-`app/portfolio/` — **נמחקו לגמרי**
+- Dock מובייל: נשארו בית, מדריכים, וואטסאפ
+
+**דף הבית — ניקוי:**
+- הוסרו: `ContentTabs`, `YouTubeSection`, `YT_VIDEOS`, `TABS`, imports של `Youtube/TrendingUp/ExternalLink/BookOpen`
+- הוחלפו ב-`GuidesSection` — רנדור ישיר של TutorialGrid ללא טאבים
+
+**Footer — פישוט:**
+- 3 עמודות: Brand | קישורים מהירים | יצירת קשר
+- הוסרו: שירותים, עבודות, צור קשר
+- נוספו: תנאי שימוש `/terms`, מדיניות פרטיות `/privacy`
+- שנה מ-2025 ל-2026
+
+**Accessibility Widget — `components/ui/accessibility-widget.tsx`:**
+- כפתור צף `bottom-20 left-4` (אייקון נגישות)
+- Panel עם 9 אפשרויות: גודל טקסט (80%-150%), ניגודיות גבוהה, היפוך צבעים, גווני אפור, גופן קריא, ריווח שורות, ריווח אותיות, הדגשת קישורים, הפחת אנימציות
+- CSS classes בגלובלס: `a11y-high-contrast`, `a11y-invert`, `a11y-grayscale` וכו' על `html` element
+- State נשמר ב-localStorage תחת `orci-a11y`
+- מוזרק מ-`app/layout.tsx`
+
+**עמודים משפטיים:**
+- `app/terms/page.tsx` — 8 סעיפים, עיצוב dark מותאם לאתר
+- `app/privacy/page.tsx` — 8 סעיפים, ללא מידע לא רלוונטי (טיקרים וכו')
+- מייל יצירת קשר: `orciai45@gmail.com`
+- שניהם נוספו ל-Footer + bottom bar
+
+**Privacy Checkbox — כל 4 טפסי המייל:**
+- `components/ui/newsletter.tsx` ✅
+- `components/ui/guide-guard.tsx` ✅
+- `app/page.tsx` → EmailSection ✅
+- `components/ui/email-gate-modal.tsx` ✅
+- Checkbox מחייב סימון לפני שניתן לשלוח, לינק ל-`/privacy`
+
+**מחיקת סקשן "מדריכי וידאו":**
+- הוסר מ-`app/guides/page.tsx`
+- הוסרו imports: `VideoModal`, `GUIDE_VIDEOS`, `useState`
+
+**⚠️ מייל הפרויקט:** `orciai45@gmail.com` (לא support@orciai.com)
+
+---
+
+### Session 2026-06-10 (המשך) — דף נחיתה "המוצרים שלנו" (/products)
+
+**הקונספט:** דף נחיתה B2B למכירת שירותי יצירת פרסומות ותוכן סושיאל מבוסס AI לעסקים. עוצב בסגנון **מותג ORCIAI של האינסטגרם** (לא בסגנון האתר!) — בכוונה שונה משאר האתר כדי להתאים למי שמגיע מהסושיאל.
+
+**פלטת ORCIAI (לדף הזה בלבד):**
+- רקע: `#0D0D1A` | סגול חשמלי: `#534AB7` | מנטה: `#00FFD1`
+- היררכיית טקסט בשקיפויות: לבן מלא / 65% / 40% (לא גווני אפור)
+- קווי-שיער: `rgba(255,255,255,0.08)` במקום גבולות כבדים
+
+**קבצים שנוצרו:**
+- `app/products/page.tsx` — דף הנחיתה (client component, self-contained styling)
+- `app/products/layout.tsx` — metadata + OG (pattern של layout-wrapper כי הדף 'use client')
+- `app/api/lead/route.ts` — טופס לידים → Mailchimp עם merge fields (FNAME, PHONE) + tag `business-lead` + console.log כגיבוי ב-Vercel logs
+- `public/products/` — cover-847k/297k/137k.png (נוצרו ב-Higgsfield nano_banana_2, כווצו ל-~0.5MB עם sharp) + logo-wave-adv.png + logo-pinookim.jpg
+
+**מבנה הדף (10 סקשנים):**
+Hero (כותרת ענקית clamp עד 116px) → קרוסלת כלים marquee → פס סטטיסטיקות → תוצאות ויראליות (3 קאברים עם badge צפיות → לינק לרילים) → סקשן הצהרה → שירותים (4 כרטיסים) → השוואה AI מול הפקה רגילה → לקוחות (Wave-Adv, Pinookim Sweet) → חבילת השקה 3+1 → טופס ליד + וואטסאפ → FAQ
+
+**החלטות עסקיות (אחרי מחקר מתחרים):**
+- **מחיר גלוי:** ₪4,000 מחוק → ₪2,250 לחבילת 3+1 (3 סרטונים + רביעי מתנה)
+- נימוק: hd-media.ai (המתחרה המוביל) מציגים ₪3,450 ל-3 וריאציות — אנחנו מנצחים אותם במחיר וזה יתרון שצריך להראות. מחיר גלוי גם מסנן לידים לא רציניים
+- וואטסאפ נשאר CTA משני בכל סקשן (עם הודעה prefilled על החבילה)
+- סטטיסטיקות בלי מספרי הגיימינג (130K/25M הוסרו מהפס) — הוחלפו ב-"x10 זול מהפקה רגילה" ו-"100% AI"
+
+**עקרונות עיצוב שנלמדו מ-hd-media.ai (חולצו מהקוד שלהם):**
+- המערכת שלהם: bg `#07070a`, זהב `#FFB54C` יחיד, ink `#f6efe1` עם סולם שקיפויות, קווי-שיער `rgba(.09)`
+- טיפוגרפיה ענקית מול מיקרו-תוויות mono — זה מה שעושה "פרימיום"
+- מספור סקשנים עריכתי (01/, 02/...) במונו-פונט
+- כפתורי גלולה (border-radius: 100px)
+- מספרים/מחירים במונו-פונט
+
+**ניווט:** "המוצרים שלנו" נוסף לדסקטופ + dock מובייל (אייקון Megaphone)
+
+**לינקים לרילים בדף:**
+- טרנד היציע (847K): instagram.com/p/DYPD4JRx3J2
+- טרנד הפירות (297K): instagram.com/p/DYIItEFKx8A
+- הפינגווין הישראלי (137K): instagram.com/p/DUS01xYilsL
+
+**⚠️ לקוחות קיימים:** Wave-Adv + Pinookim Sweet (לוגואים ב-public/products/)

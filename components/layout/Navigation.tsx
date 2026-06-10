@@ -6,6 +6,7 @@ import { Dock } from '@/components/ui/dock-two';
 import {
   Home,
   BookOpen,
+  Megaphone,
   MessageCircle,
 } from 'lucide-react';
 
@@ -15,6 +16,7 @@ export function Navigation() {
   const dockItems = [
     { icon: Home, label: 'בית', href: '/', isActive: pathname === '/' },
     { icon: BookOpen, label: 'מדריכים', href: '/guides', isActive: pathname.startsWith('/guides') },
+    { icon: Megaphone, label: 'המוצרים שלנו', href: '/products', isActive: pathname.startsWith('/products') },
     { icon: MessageCircle, label: 'וואטסאפ', href: 'https://wa.me/972542599107', isActive: false },
   ];
 
@@ -36,6 +38,8 @@ export function Navigation() {
               <Link href="/" className={`text-base font-medium transition-colors ${pathname === '/' ? 'text-orci-cyan' : 'text-slate-300 hover:text-orci-cyan'}`}>בית</Link>
 
               <Link href="/guides" className={`text-base font-medium transition-colors ${pathname.startsWith('/guides') ? 'text-orci-cyan' : 'text-slate-300 hover:text-orci-cyan'}`}>מדריכים</Link>
+
+              <Link href="/products" className={`text-base font-medium transition-colors ${pathname.startsWith('/products') ? 'text-orci-cyan' : 'text-slate-300 hover:text-orci-cyan'}`}>המוצרים שלנו</Link>
 
               <a href="https://wa.me/972542599107" target="_blank" rel="noopener noreferrer" className="px-5 py-2 bg-orci-cyan text-slate-900 rounded-full font-bold hover:opacity-90 transition-all flex items-center gap-2" style={{boxShadow:'0 0 16px rgba(0,209,255,0.35)'}}>
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
