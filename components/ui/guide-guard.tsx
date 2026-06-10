@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, Mail, Sparkles, ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
 import { GUIDES } from '@/data/guides';
 import { isContentUnlocked, UNLOCK_KEY } from '@/components/ui/email-gate-modal';
 
@@ -64,12 +65,13 @@ export default function GuideGuard({ children }: { children: React.ReactNode }) 
 
 function EmailGateInline({ guideName, onUnlock }: { guideName?: string; onUnlock: () => void }) {
   const [email, setEmail] = useState('');
+  const [agreed, setAgreed] = useState(false);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!email.trim() || !agreed) return;
     setStatus('loading');
 
     try {
@@ -147,7 +149,7 @@ function EmailGateInline({ guideName, onUnlock }: { guideName?: string; onUnlock
               <span className="flex items-center gap-1"><span className="text-orci-cyan">✓</span> עדכונים שבועיים</span>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-3">
+            <form onSubmit={handleSubmit} className="space-y-3" dir="rtl">
               <div className="relative">
                 <Mail className="absolute top-1/2 -translate-y-1/2 right-3 w-4 h-4 text-slate-500" />
                 <input
@@ -202,7 +204,20 @@ function EmailGateInline({ guideName, onUnlock }: { guideName?: string; onUnlock
               </button>
             </form>
 
-            <p className="mt-4 text-xs text-slate-600">ללא ספאם. בכל עת ניתן להסיר.</p>
+            <label className="flex items-start gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={agreed}
+                onChange={(e) => setAgreed(e.target.checked)}
+                className="mt-0.5 w-4 h-4 rounded accent-orci-cyan cursor-pointer flex-shrink-0"
+              />
+              <span className="text-xs text-slate-400 leading-relaxed">
+                על ידי הרשמה, אני מאשר/ת את{' '}
+                <Link href="/privacy" className="text-orci-cyan underline hover:opacity-80">מדיניות הפרטיות</Link>
+                {' '}ומסכים/ה לקבל עדכונים
+              </span>
+            </label>
+            <p className="text-xs text-slate-600">ללא ספאם. בכל עת ניתן להסיר.</p>
           </>
         )}
       </div>

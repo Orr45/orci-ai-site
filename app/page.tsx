@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle, Youtube, ExternalLink, Mail, BookOpen, TrendingUp, Play } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Mail, Play } from 'lucide-react';
 import { Footer } from '@/components/layout/Footer';
 import { ContainerScroll } from '@/components/ui/container-scroll-animation';
 import { BackgroundPathsEffect } from '@/components/ui/background-paths';
@@ -74,7 +74,7 @@ function HeroSection() {
           className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
           style={{ background: 'rgba(255,0,0,0.15)', border: '1px solid rgba(255,80,80,0.3)' }}
         >
-          <Youtube className="w-4 h-4 text-red-400" />
+          <span className="text-red-400 text-base font-bold">▶</span>
         </div>
         <div>
           <div className="text-sm font-bold text-white leading-none mb-0.5">130,000+</div>
@@ -165,7 +165,7 @@ function HeroSection() {
         >
           {[
             { value: '25M+', label: 'צפיות יוטיוב', icon: <span className="text-xl">👁️</span>, glow: 'rgba(0,209,255,0.12)', border: 'rgba(0,209,255,0.25)' },
-            { value: '130K+', label: 'מנויים', icon: <Youtube className="w-5 h-5 text-red-400" />, glow: 'rgba(255,60,60,0.08)', border: 'rgba(255,80,80,0.25)' },
+            { value: '130K+', label: 'מנויים', icon: <span className="text-xl">▶</span>, glow: 'rgba(255,60,60,0.08)', border: 'rgba(255,80,80,0.25)' },
             { value: '9+', label: 'מדריכי AI', icon: <span className="text-xl">🎯</span>, glow: 'rgba(168,85,247,0.12)', border: 'rgba(168,85,247,0.3)' },
           ].map((s, i) => (
             <div
@@ -326,219 +326,36 @@ function EmailSection() {
   );
 }
 
-// ─── Content Tabs ─────────────────────────────────────────────────────────────
+// ─── Guides Section ───────────────────────────────────────────────────────────
 
-const TABS = [
-  { id: 'guides', label: 'מדריכים', icon: BookOpen, count: '9' },
-  { id: 'youtube', label: 'יוטיוב', icon: TrendingUp, count: '25M' },
-];
-
-function ContentTabs() {
-  const [active, setActive] = useState('guides');
-
-  useEffect(() => {
-    const handler = () => setActive('guides');
-    window.addEventListener('show-guides-tab', handler);
-    return () => window.removeEventListener('show-guides-tab', handler);
-  }, []);
-
+function GuidesSection() {
   return (
-    <div id="content-tabs">
-      {/* Tab bar */}
-      <div
-        className="sticky z-40 border-b"
-        style={{
-          top: 'var(--nav-height, 61px)',
-          background: 'rgba(0,0,0,0.97)',
-          borderColor: 'rgba(0,209,255,0.1)',
-          backdropFilter: 'blur(16px)',
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center gap-0 overflow-x-auto scrollbar-none">
-            {TABS.map((tab) => {
-              const Icon = tab.icon;
-              const isActive = active === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActive(tab.id)}
-                  className="flex items-center gap-2 px-5 py-4 text-sm font-bold whitespace-nowrap transition-all border-b-2 flex-shrink-0"
-                  style={{
-                    color: isActive ? '#00d1ff' : '#6a8aaa',
-                    borderBottomColor: isActive ? '#00d1ff' : 'transparent',
-                  }}
-                >
-                  <Icon className="w-4 h-4" />
-                  {tab.label}
-                  <span
-                    className="text-[10px] px-1.5 py-0.5 rounded-full font-bold"
-                    style={{
-                      background: isActive ? 'rgba(0,209,255,0.15)' : 'rgba(255,255,255,0.05)',
-                      color: isActive ? '#00d1ff' : '#4a6a8a',
-                    }}
-                  >
-                    {tab.count}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* Tab content */}
-      {active === 'guides' && (
-        <section className="cap-section cap-section-white neon-grid-bg">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-10">
-              <div
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-4"
-                style={{ background: 'rgba(168,85,247,0.1)', border: '1px solid rgba(168,85,247,0.35)', color: '#c084fc' }}
-              >
-                ✦ מנוע המדריכים
-              </div>
-              <h2 className="text-3xl md:text-5xl font-bold mb-3" style={{ color: '#e8f4ff' }}>
-                כל המדריכים שלנו
-              </h2>
-              <p className="text-base max-w-xl mx-auto" style={{ color: '#b0d0f0' }}>
-                2 מדריכים ראשונים חינם. שאר? פשוט תשאירו אימייל ואנחנו נפתח הכל.
-              </p>
-
-              {/* Learning Mode Button */}
-              <motion.button
-                onClick={() => window.dispatchEvent(new CustomEvent('open-learning-mode'))}
-                className="mt-6 mx-auto flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-orci-cyan to-orci-blue hover:from-orci-blue hover:to-orci-cyan text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-orci-cyan/50"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Play className="w-5 h-5" />
-                <span>מצב למידה - צפו במדריכים בסגנון נטפליקס</span>
-              </motion.button>
-            </div>
-            <TutorialGrid />
-          </div>
-        </section>
-      )}
-
-      {active === 'youtube' && <YouTubeSection />}
-    </div>
-  );
-}
-
-// ─── YouTube Section ──────────────────────────────────────────────────────────
-
-const YT_VIDEOS = [
-  {
-    id: 'lxrvd_y8tPI',
-    title: 'חפצים מדברים - הטרנד שכולם מחפשים',
-    views: '85K צפיות',
-    thumbnail: `https://img.youtube.com/vi/lxrvd_y8tPI/hqdefault.jpg`,
-    url: 'https://www.youtube.com/shorts/lxrvd_y8tPI',
-  },
-  {
-    id: 'channel-1',
-    title: 'איך ליצור משפיענית AI שנראית אמיתית',
-    views: '120K צפיות',
-    thumbnail: '/guides/guide-ai-influencer.png',
-    url: 'https://www.youtube.com/@Orci_Ai',
-  },
-  {
-    id: 'channel-2',
-    title: 'טרנד הפינגווין - גרסה ישראלית ויראלית',
-    views: '95K צפיות',
-    thumbnail: '/guides/guide-penguin-viral.png',
-    url: 'https://www.youtube.com/@Orci_Ai',
-  },
-];
-
-function YouTubeSection() {
-  return (
-    <section className="cap-section cap-section-alt neon-grid-bg">
+    <section id="content-tabs" className="cap-section cap-section-white neon-grid-bg">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-10">
           <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-4"
-            style={{ background: 'rgba(255,0,0,0.1)', border: '1px solid rgba(255,0,0,0.3)', color: '#ff4444' }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-4"
+            style={{ background: 'rgba(168,85,247,0.1)', border: '1px solid rgba(168,85,247,0.35)', color: '#c084fc' }}
           >
-            <Youtube className="w-4 h-4" />
-            הערוץ שלנו ביוטיוב
+            ✦ מנוע המדריכים
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: '#e8f4ff' }}>
-            25 מיליון צפיות.
-            <br />
-            <span style={{ color: '#00d1ff' }}>הסוד? AI + יצירתיות.</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-3" style={{ color: '#e8f4ff' }}>
+            כל המדריכים שלנו
           </h2>
           <p className="text-base max-w-xl mx-auto" style={{ color: '#b0d0f0' }}>
-            כל הסרטונים שהפכו ויראלים — עם ההסבר המלא על איך עשינו את זה
+            2 מדריכים ראשונים חינם. שאר? פשוט תשאירו אימייל ואנחנו נפתח הכל.
           </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
-          {YT_VIDEOS.map((video) => (
-            <a
-              key={video.id}
-              href={video.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative rounded-xl overflow-hidden block transition-all duration-300 hover:-translate-y-1"
-              style={{ border: '1px solid rgba(0,209,255,0.12)' }}
-            >
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src={video.thumbnail}
-                  alt={video.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  unoptimized={video.thumbnail.startsWith('http')}
-                />
-                <div
-                  className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: 'rgba(0,0,0,0.5)' }}
-                >
-                  <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center"
-                    style={{ background: 'rgba(255,0,0,0.85)', boxShadow: '0 0 25px rgba(255,0,0,0.4)' }}
-                  >
-                    <svg className="w-6 h-6 text-white mr-[-2px]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
-                <div className="absolute top-2 left-2">
-                  <Youtube className="w-5 h-5 text-red-500" />
-                </div>
-              </div>
-              <div className="p-4" style={{ background: 'rgba(10,10,26,0.97)' }}>
-                <h3
-                  className="font-bold text-sm mb-1 group-hover:text-orci-cyan transition-colors line-clamp-2"
-                  style={{ color: '#e8f4ff' }}
-                >
-                  {video.title}
-                </h3>
-                <p className="text-xs" style={{ color: '#8ab4d4' }}>{video.views}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <a
-            href="https://www.youtube.com/@Orci_Ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm transition-all"
-            style={{
-              background: 'rgba(255,0,0,0.1)',
-              border: '1.5px solid rgba(255,80,80,0.35)',
-              color: '#ff6666',
-            }}
+          <motion.button
+            onClick={() => window.dispatchEvent(new CustomEvent('open-learning-mode'))}
+            className="mt-6 mx-auto flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-orci-cyan to-orci-blue hover:from-orci-blue hover:to-orci-cyan text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-orci-cyan/50"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <Youtube className="w-4 h-4" />
-            עברו לערוץ ← הירשמו להתראות
-            <ExternalLink className="w-3.5 h-3.5" />
-          </a>
+            <Play className="w-5 h-5" />
+            <span>מצב למידה - צפו במדריכים בסגנון נטפליקס</span>
+          </motion.button>
         </div>
+        <TutorialGrid />
       </div>
     </section>
   );
@@ -564,8 +381,8 @@ export default function Home() {
       {/* 1. HERO */}
       <HeroSection />
 
-      {/* 2. CONTENT TABS (guides / news / youtube) */}
-      <ContentTabs />
+      {/* 2. GUIDES */}
+      <GuidesSection />
 
       {/* 4. EMAIL GATE (below tabs) */}
       <EmailSection />

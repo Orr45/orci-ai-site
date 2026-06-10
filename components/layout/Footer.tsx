@@ -4,79 +4,31 @@ export function Footer() {
   return (
     <footer className="py-12 px-6" style={{background:'rgba(5,13,26,0.98)', borderTop:'1px solid rgba(0,209,255,0.12)'}}>
       <div className="max-w-7xl mx-auto">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand Section */}
-          <div className="md:col-span-1">
+          <div>
             <Link href="/" className="text-2xl font-bold inline-block mb-3">
-              <span className="text-orci-cyan">
-                Orci AI
-              </span>
+              <span className="text-orci-cyan">Orci AI</span>
             </Link>
             <p className="text-slate-300 text-sm leading-relaxed mb-4">
               הופכים בינה מלאכותית לכלי העבודה החזק ביותר שלכם
             </p>
-            <p className="text-slate-400 text-xs">
-              By Or Shmer (Orci)
-            </p>
+            <p className="text-slate-400 text-xs">By Or Shmer (Orci)</p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="font-bold mb-3 text-slate-200">קישורים מהירים</h3>
             <ul className="space-y-2 text-sm">
+              <li><Link href="/" className="text-slate-300 hover:text-orci-cyan transition-colors">בית</Link></li>
+              <li><Link href="/guides" className="text-slate-300 hover:text-orci-cyan transition-colors">מדריכים</Link></li>
               <li>
-                <Link href="/" className="text-slate-300 hover:text-orci-cyan transition-colors">
-                  בית
-                </Link>
+                <a href="https://wa.me/972542599107" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-orci-cyan transition-colors">
+                  וואטסאפ
+                </a>
               </li>
-              <li>
-                <Link href="/guides" className="text-slate-300 hover:text-orci-cyan transition-colors">
-                  מדריכים
-                </Link>
-              </li>
-              <li>
-                <Link href="/products" className="text-slate-300 hover:text-orci-cyan transition-colors">
-                  שירותים
-                </Link>
-              </li>
-              <li>
-                <Link href="/portfolio" className="text-slate-300 hover:text-orci-cyan transition-colors">
-                  עבודות
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-slate-300 hover:text-orci-cyan transition-colors">
-                  צור קשר
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Services & Resources */}
-          <div>
-            <h3 className="font-bold mb-3 text-slate-200">שירותים ומשאבים</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/guides" className="text-slate-300 hover:text-orci-cyan transition-colors">
-                  מדריכי AI
-                </Link>
-              </li>
-              <li>
-                <Link href="/products" className="text-slate-300 hover:text-orci-cyan transition-colors">
-                  חבילת השיווק החכם
-                </Link>
-              </li>
-              <li>
-                <Link href="/guides/ai-beginners" className="text-slate-300 hover:text-orci-cyan transition-colors">
-                  חפצים מדברים
-                </Link>
-              </li>
-              <li>
-                <Link href="/guides/ai-influencer" className="text-slate-300 hover:text-orci-cyan transition-colors">
-                  משפיענית AI
-                </Link>
-              </li>
+              <li><Link href="/terms" className="text-slate-300 hover:text-orci-cyan transition-colors">תנאי שימוש</Link></li>
+              <li><Link href="/privacy" className="text-slate-300 hover:text-orci-cyan transition-colors">מדיניות פרטיות</Link></li>
             </ul>
           </div>
 
@@ -97,9 +49,7 @@ export function Footer() {
                   וואטסאפ
                 </a>
               </li>
-              <li className="text-slate-300">
-                📱 054-259-9107
-              </li>
+              <li className="text-slate-300">📱 054-259-9107</li>
             </ul>
           </div>
         </div>
@@ -107,12 +57,12 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-orci-cyan/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-400">
-            <p>
-              © 2025 Orci AI. כל הזכויות שמורות.
-            </p>
-            <p className="text-xs">
-              נבנה עם ❤️ ו-AI
-            </p>
+            <p>© 2026 Orci AI. כל הזכויות שמורות.</p>
+            <div className="flex gap-4 text-xs">
+              <Link href="/terms" className="hover:text-orci-cyan transition-colors">תנאי שימוש</Link>
+              <Link href="/privacy" className="hover:text-orci-cyan transition-colors">מדיניות פרטיות</Link>
+            </div>
+            <p className="text-xs">נבנה עם ❤️ ו-AI</p>
           </div>
         </div>
       </div>

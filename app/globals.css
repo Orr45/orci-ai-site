@@ -321,3 +321,31 @@ h1, h2, h3, h4, h5, h6 {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* ========================================
+   ACCESSIBILITY CLASSES
+   ======================================== */
+
+html.a11y-high-contrast { filter: contrast(160%) brightness(1.05); }
+html.a11y-invert { filter: invert(100%) hue-rotate(180deg); }
+html.a11y-grayscale { filter: grayscale(100%); }
+html.a11y-readable-font,
+html.a11y-readable-font * { font-family: Arial, 'Helvetica Neue', sans-serif !important; }
+html.a11y-line-spacing p,
+html.a11y-line-spacing li,
+html.a11y-line-spacing div { line-height: 2.2 !important; }
+html.a11y-letter-spacing p,
+html.a11y-letter-spacing li,
+html.a11y-letter-spacing span { letter-spacing: 0.12em !important; }
+html.a11y-highlight-links a {
+  text-decoration: underline !important;
+  outline: 2px solid #00d1ff !important;
+  outline-offset: 2px !important;
+}
+html.a11y-no-animations *,
+html.a11y-no-animations *::before,
+html.a11y-no-animations *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}

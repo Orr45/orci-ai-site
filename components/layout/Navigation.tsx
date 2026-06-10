@@ -6,8 +6,6 @@ import { Dock } from '@/components/ui/dock-two';
 import {
   Home,
   BookOpen,
-  Briefcase,
-  FolderOpen,
   MessageCircle,
 } from 'lucide-react';
 
@@ -17,7 +15,6 @@ export function Navigation() {
   const dockItems = [
     { icon: Home, label: 'בית', href: '/', isActive: pathname === '/' },
     { icon: BookOpen, label: 'מדריכים', href: '/guides', isActive: pathname.startsWith('/guides') },
-    { icon: Briefcase, label: 'שירותים', href: '/products', isActive: pathname === '/products' },
     { icon: MessageCircle, label: 'וואטסאפ', href: 'https://wa.me/972542599107', isActive: false },
   ];
 
@@ -38,25 +35,7 @@ export function Navigation() {
             <div className="flex items-center gap-8">
               <Link href="/" className={`text-base font-medium transition-colors ${pathname === '/' ? 'text-orci-cyan' : 'text-slate-300 hover:text-orci-cyan'}`}>בית</Link>
 
-              <div className="relative group">
-                <button className={`text-base font-medium transition-colors flex items-center gap-1 ${pathname.startsWith('/guides') ? 'text-orci-cyan' : 'text-slate-300 hover:text-orci-cyan'}`}>
-                  מדריכים
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div className="absolute top-full right-0 mt-2 w-64 rounded-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50" style={{background:'rgba(10,22,40,0.98)',border:'1px solid rgba(0,209,255,0.2)'}}>
-                  <Link href="/guides" className="block px-4 py-2 text-slate-300 hover:text-orci-cyan hover:bg-white/5 transition-colors">כל המדריכים</Link>
-                  <Link href="/guides/ai-beginners" className="block px-4 py-2 text-slate-300 hover:text-orci-cyan hover:bg-white/5 transition-colors">חפצים מדברים</Link>
-                  <Link href="/guides/ai-influencer" className="block px-4 py-2 text-slate-300 hover:text-orci-cyan hover:bg-white/5 transition-colors">משפיענית AI</Link>
-                  <Link href="/guides/penguin-viral" className="block px-4 py-2 text-slate-300 hover:text-orci-cyan hover:bg-white/5 transition-colors">טרנד הפינגווין</Link>
-                  <Link href="/guides/new-guide" className="block px-4 py-2 text-slate-300 hover:text-orci-cyan hover:bg-white/5 transition-colors">טרנד הריחוף</Link>
-                  <Link href="/guides/new-guide-2" className="block px-4 py-2 text-slate-300 hover:text-orci-cyan hover:bg-white/5 transition-colors">דמיות נטושות</Link>
-                </div>
-              </div>
-
-              <Link href="/products" className={`text-base font-medium transition-colors ${pathname === '/products' ? 'text-orci-cyan' : 'text-slate-300 hover:text-orci-cyan'}`}>שירותים</Link>
-              <Link href="/portfolio" className={`text-base font-medium transition-colors ${pathname === '/portfolio' ? 'text-orci-cyan' : 'text-slate-300 hover:text-orci-cyan'}`}>עבודות</Link>
+              <Link href="/guides" className={`text-base font-medium transition-colors ${pathname.startsWith('/guides') ? 'text-orci-cyan' : 'text-slate-300 hover:text-orci-cyan'}`}>מדריכים</Link>
 
               <a href="https://wa.me/972542599107" target="_blank" rel="noopener noreferrer" className="px-5 py-2 bg-orci-cyan text-slate-900 rounded-full font-bold hover:opacity-90 transition-all flex items-center gap-2" style={{boxShadow:'0 0 16px rgba(0,209,255,0.35)'}}>
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

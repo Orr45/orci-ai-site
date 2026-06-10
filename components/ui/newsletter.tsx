@@ -2,15 +2,17 @@
 
 import { useState } from "react";
 import { Mail, CheckCircle, Loader2 } from "lucide-react";
+import Link from "next/link";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
+  const [agreed, setAgreed] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    if (!email || !agreed) return;
 
     setStatus("loading");
     try {
@@ -81,9 +83,19 @@ export default function Newsletter() {
             {status === "error" && (
               <p className="mt-3 text-red-400 text-sm">{message}</p>
             )}
-            <p className="mt-4 text-xs text-slate-400">
-              ללא ספאם, אנחנו מגנים על הפרטיות שלכם
-            </p>
+            <label className="mt-4 flex items-start gap-2 cursor-pointer text-right">
+              <input
+                type="checkbox"
+                checked={agreed}
+                onChange={(e) => setAgreed(e.target.checked)}
+                className="mt-0.5 w-4 h-4 rounded accent-orci-cyan cursor-pointer flex-shrink-0"
+              />
+              <span className="text-xs text-slate-400 leading-relaxed">
+                על ידי הרשמה, אני מאשר/ת את{' '}
+                <Link href="/privacy" className="text-orci-cyan underline hover:opacity-80">מדיניות הפרטיות</Link>
+                {' '}ומסכים/ה לקבל עדכונים שיווקיים
+              </span>
+            </label>
           </form>
         )}
       </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Heebo } from "next/font/google";
 import { Navigation } from "@/components/layout/Navigation";
 import { Analytics } from "@vercel/analytics/next";
+import AccessibilityWidget from "@/components/ui/accessibility-widget";
 import "./globals.css";
 
 const heebo = Heebo({
@@ -45,6 +46,7 @@ export default function RootLayout({
       <body className={`${heebo.variable} antialiased`}>
         <Navigation />
         {children}
+        <AccessibilityWidget />
         <Analytics />
       </body>
     </html>
