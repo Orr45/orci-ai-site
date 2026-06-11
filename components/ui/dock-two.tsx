@@ -49,7 +49,7 @@ const DockIconButton = React.forwardRef<HTMLButtonElement, DockIconButtonProps>(
           <motion.div
             layoutId="dock-active"
             className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-orci-cyan"
-            style={{ boxShadow: '0 0 8px rgba(0,209,255,0.6)' }}
+            style={{ boxShadow: '0 0 8px rgba(0,255,209,0.6)' }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           />
         )}
@@ -110,8 +110,8 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
             "hover:border-orci-cyan/35 transition-all duration-300"
           )}
           style={{
-            background: 'rgba(5,13,26,0.92)',
-            boxShadow: '0 0 30px rgba(0,209,255,0.08), 0 8px 32px rgba(0,0,0,0.6)',
+            background: 'rgba(13,13,26,0.92)',
+            boxShadow: '0 0 30px rgba(0,255,209,0.08), 0 8px 32px rgba(0,0,0,0.6)',
           }}
         >
           {items.map((item) => (

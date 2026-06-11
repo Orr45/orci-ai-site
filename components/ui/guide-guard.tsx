@@ -48,7 +48,7 @@ export default function GuideGuard({ children }: { children: React.ReactNode }) 
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 flex items-center justify-center p-4"
-            style={{ zIndex: 9000, background: 'rgba(5,13,26,0.7)', backdropFilter: 'blur(4px)' }}
+            style={{ zIndex: 9000, background: 'rgba(13,13,26,0.7)', backdropFilter: 'blur(4px)' }}
           >
             <EmailGateInline
               guideName={guide?.title}
@@ -106,9 +106,9 @@ function EmailGateInline({ guideName, onUnlock }: { guideName?: string; onUnlock
       transition={{ type: 'spring', damping: 25, stiffness: 300 }}
       className="w-full max-w-md rounded-2xl overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #0a1628 0%, #0d1f3a 100%)',
-        border: '1px solid rgba(0,209,255,0.3)',
-        boxShadow: '0 0 60px rgba(0,209,255,0.15), 0 25px 50px rgba(0,0,0,0.5)',
+        background: 'linear-gradient(135deg, #12121f 0%, #1a1a35 100%)',
+        border: '1px solid rgba(0,255,209,0.3)',
+        boxShadow: '0 0 60px rgba(0,255,209,0.15), 0 25px 50px rgba(0,0,0,0.5)',
       }}
       onClick={(e) => e.stopPropagation()}
     >
@@ -117,7 +117,7 @@ function EmailGateInline({ guideName, onUnlock }: { guideName?: string; onUnlock
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="py-4">
             <div
               className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center"
-              style={{ background: 'rgba(0,209,255,0.15)', border: '2px solid rgba(0,209,255,0.5)' }}
+              style={{ background: 'rgba(0,255,209,0.15)', border: '2px solid rgba(0,255,209,0.5)' }}
             >
               <Sparkles className="w-8 h-8 text-orci-cyan" />
             </div>
@@ -128,7 +128,7 @@ function EmailGateInline({ guideName, onUnlock }: { guideName?: string; onUnlock
           <>
             <div
               className="w-16 h-16 rounded-full mx-auto mb-5 flex items-center justify-center"
-              style={{ background: 'rgba(0,209,255,0.1)', border: '1px solid rgba(0,209,255,0.3)' }}
+              style={{ background: 'rgba(0,255,209,0.1)', border: '1px solid rgba(0,255,209,0.3)' }}
             >
               <Lock className="w-7 h-7 text-orci-cyan" />
             </div>
@@ -161,15 +161,15 @@ function EmailGateInline({ guideName, onUnlock }: { guideName?: string; onUnlock
                   className="w-full pr-10 pl-4 py-3 rounded-xl text-sm text-white placeholder-slate-500 outline-none transition-all"
                   style={{
                     background: 'rgba(255,255,255,0.05)',
-                    border: '1px solid rgba(0,209,255,0.2)',
+                    border: '1px solid rgba(0,255,209,0.2)',
                     direction: 'rtl',
                   }}
                   onFocus={(e) => {
-                    e.target.style.borderColor = 'rgba(0,209,255,0.6)';
-                    e.target.style.boxShadow = '0 0 0 3px rgba(0,209,255,0.1)';
+                    e.target.style.borderColor = 'rgba(0,255,209,0.6)';
+                    e.target.style.boxShadow = '0 0 0 3px rgba(0,255,209,0.1)';
                   }}
                   onBlur={(e) => {
-                    e.target.style.borderColor = 'rgba(0,209,255,0.2)';
+                    e.target.style.borderColor = 'rgba(0,255,209,0.2)';
                     e.target.style.boxShadow = 'none';
                   }}
                 />
@@ -182,9 +182,9 @@ function EmailGateInline({ guideName, onUnlock }: { guideName?: string; onUnlock
                 disabled={status === 'loading'}
                 className="w-full py-3 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2"
                 style={{
-                  background: status === 'loading' ? 'rgba(0,209,255,0.4)' : 'linear-gradient(135deg, #00d1ff, #00bfff)',
-                  color: '#050d1a',
-                  boxShadow: status === 'loading' ? 'none' : '0 0 20px rgba(0,209,255,0.3)',
+                  background: status === 'loading' ? 'rgba(0,255,209,0.4)' : 'linear-gradient(135deg, #00FFD1, #534AB7)',
+                  color: '#0D0D1A',
+                  boxShadow: status === 'loading' ? 'none' : '0 0 20px rgba(0,255,209,0.3)',
                 }}
               >
                 {status === 'loading' ? (

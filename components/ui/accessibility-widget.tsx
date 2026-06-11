@@ -82,8 +82,8 @@ export default function AccessibilityWidget() {
         aria-label="פתח תפריט נגישות"
         className="fixed bottom-20 left-4 z-[9998] w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110"
         style={{
-          background: 'linear-gradient(135deg, #00d1ff, #0099cc)',
-          boxShadow: '0 0 18px rgba(0,209,255,0.45)',
+          background: 'linear-gradient(135deg, #00FFD1, #0099cc)',
+          boxShadow: '0 0 18px rgba(0,255,209,0.45)',
         }}
       >
         <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-slate-900">
@@ -97,7 +97,7 @@ export default function AccessibilityWidget() {
           className="fixed bottom-20 left-4 z-[9999] w-72 rounded-2xl shadow-2xl overflow-hidden"
           style={{
             background: 'rgba(10,18,35,0.98)',
-            border: '1px solid rgba(0,209,255,0.25)',
+            border: '1px solid rgba(0,255,209,0.25)',
             backdropFilter: 'blur(16px)',
           }}
           dir="rtl"
@@ -105,7 +105,7 @@ export default function AccessibilityWidget() {
           {/* Header */}
           <div
             className="flex items-center justify-between px-4 py-3 border-b"
-            style={{ borderColor: 'rgba(0,209,255,0.15)', background: 'rgba(0,209,255,0.08)' }}
+            style={{ borderColor: 'rgba(0,255,209,0.15)', background: 'rgba(0,255,209,0.08)' }}
           >
             <span className="font-bold text-white text-sm">נגישות</span>
             <button
@@ -158,15 +158,15 @@ export default function AccessibilityWidget() {
                 onClick={() => toggle(key)}
                 className="w-full flex items-center justify-between px-3 py-2 rounded-xl transition-all text-sm"
                 style={{
-                  background: state[key] ? 'rgba(0,209,255,0.15)' : 'rgba(255,255,255,0.04)',
-                  border: `1px solid ${state[key] ? 'rgba(0,209,255,0.4)' : 'rgba(255,255,255,0.08)'}`,
-                  color: state[key] ? '#00d1ff' : '#94a3b8',
+                  background: state[key] ? 'rgba(0,255,209,0.15)' : 'rgba(255,255,255,0.04)',
+                  border: `1px solid ${state[key] ? 'rgba(0,255,209,0.4)' : 'rgba(255,255,255,0.08)'}`,
+                  color: state[key] ? '#00FFD1' : '#94a3b8',
                 }}
               >
                 <span className="font-medium">{label}</span>
                 <span
                   className="w-8 h-4 rounded-full relative transition-colors"
-                  style={{ background: state[key] ? '#00d1ff' : 'rgba(255,255,255,0.15)' }}
+                  style={{ background: state[key] ? '#00FFD1' : 'rgba(255,255,255,0.15)' }}
                 >
                   <span
                     className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all"

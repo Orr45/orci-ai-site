@@ -5,15 +5,19 @@ import TutorialGrid from '@/components/ui/tutorial-grid';
 
 export default function GuidesPage() {
   return (
-    <div className="min-h-screen" style={{ background: '#050d1a' }}>
+    <div className="min-h-screen" style={{ background: '#0D0D1A' }}>
 
       {/* HERO */}
-      <section className="cap-section cap-section-teal">
+      <section className="cap-section cap-section-teal neon-grid-hero">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="cap-hero-title mb-4" style={{ color: '#e8f4ff' }}>
+          <div className="orci-kicker">
+            <span className="orci-kicker-num">ORCIAI /</span>
+            <span className="orci-kicker-label">מרכז הלמידה</span>
+          </div>
+          <h1 className="cap-hero-title mb-4" style={{ color: '#ffffff' }}>
             מרכז הלמידה שלנו
           </h1>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: '#b0d0f0' }}>
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.65)' }}>
             מדריכים מעשיים ב-AI, אוטומציה ושיווק דיגיטלי
           </p>
         </div>
@@ -23,8 +27,12 @@ export default function GuidesPage() {
       <section className="cap-section cap-section-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold mb-2" style={{ color: '#e8f4ff' }}>מדריכים כתובים</h2>
-            <p className="text-sm" style={{ color: '#b0d0f0' }}>2 מדריכים ראשונים חינם — שאר המדריכים נפתחים עם אימייל</p>
+            <div className="orci-kicker">
+              <span className="orci-kicker-num">01 /</span>
+              <span className="orci-kicker-label">מדריכים</span>
+            </div>
+            <h2 className="cap-section-title mb-2" style={{ color: '#ffffff' }}>מדריכים כתובים</h2>
+            <p className="text-sm" style={{ color: 'rgba(255,255,255,0.65)' }}>2 מדריכים ראשונים חינם — שאר המדריכים נפתחים עם אימייל</p>
           </div>
           <TutorialGrid />
         </div>

@@ -105,7 +105,7 @@ export default function Newsletter() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 30% 50%, rgba(0, 209, 255, 0.08) 0%, transparent 70%)",
+            "radial-gradient(ellipse at 30% 50%, rgba(0, 255, 209, 0.08) 0%, transparent 70%)",
         }}
       />
     </div>

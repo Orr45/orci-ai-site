@@ -36,12 +36,12 @@ interface GlowingOrbitPathProps {
 
 // --- Service Icon Components ---
 const serviceIcons: Record<ServiceType, { icon: React.ElementType; color: string }> = {
-  content: { icon: PenTool, color: '#00d1ff' },
-  automation: { icon: Zap, color: '#00bfff' },
-  marketing: { icon: TrendingUp, color: '#00d1ff' },
-  social: { icon: Users, color: '#00bfff' },
-  consulting: { icon: Brain, color: '#00d1ff' },
-  video: { icon: Video, color: '#00bfff' },
+  content: { icon: PenTool, color: '#00FFD1' },
+  automation: { icon: Zap, color: '#534AB7' },
+  marketing: { icon: TrendingUp, color: '#00FFD1' },
+  social: { icon: Users, color: '#534AB7' },
+  consulting: { icon: Brain, color: '#00FFD1' },
+  video: { icon: Video, color: '#534AB7' },
 };
 
 const ServiceIcon = memo(({ type }: ServiceIconProps) => {
@@ -172,7 +172,7 @@ const OrbitingSkill = memo(({ config, angle, scale }: OrbitingSkillProps) => {
           transform: isHovered ? 'scale(1.25)' : 'scale(1)',
           transition: 'transform 0.2s ease-out',
           boxShadow: isHovered
-            ? `0 0 25px rgba(0, 209, 255, 0.3), 0 0 50px rgba(0, 209, 255, 0.15)`
+            ? `0 0 25px rgba(0, 255, 209, 0.3), 0 0 50px rgba(0, 255, 209, 0.15)`
             : undefined,
         }}
       >
@@ -192,9 +192,9 @@ OrbitingSkill.displayName = 'OrbitingSkill';
 const GlowingOrbitPath = memo(({ radius, glowColor = 'cyan', animationDelay = 0 }: GlowingOrbitPathProps) => {
   const glowColors = {
     cyan: {
-      primary: 'rgba(0, 209, 255, 0.25)',
-      secondary: 'rgba(0, 209, 255, 0.1)',
-      border: 'rgba(0, 209, 255, 0.2)',
+      primary: 'rgba(0, 255, 209, 0.25)',
+      secondary: 'rgba(0, 255, 209, 0.1)',
+      border: 'rgba(0, 255, 209, 0.2)',
     },
     deepCyan: {
       primary: 'rgba(0, 191, 255, 0.25)',

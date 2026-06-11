@@ -35,8 +35,8 @@ function FloatingBadge({
       className={`absolute hidden lg:flex items-center gap-3 px-4 py-3 rounded-2xl ${className ?? ''}`}
       style={{
         background: 'rgba(8,8,18,0.9)',
-        border: '1px solid rgba(0,209,255,0.25)',
-        boxShadow: '0 0 24px rgba(0,209,255,0.08), inset 0 1px 0 rgba(255,255,255,0.04)',
+        border: '1px solid rgba(0,255,209,0.25)',
+        boxShadow: '0 0 24px rgba(0,255,209,0.08), inset 0 1px 0 rgba(255,255,255,0.04)',
         backdropFilter: 'blur(12px)',
         ...style,
       }}
@@ -64,7 +64,7 @@ function HeroSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 70% 55% at 50% 45%, rgba(168,85,247,0.09) 0%, rgba(0,209,255,0.07) 45%, transparent 70%)',
+            'radial-gradient(ellipse 70% 55% at 50% 45%, rgba(83,74,183,0.09) 0%, rgba(0,255,209,0.07) 45%, transparent 70%)',
         }}
       />
 
@@ -78,33 +78,33 @@ function HeroSection() {
         </div>
         <div>
           <div className="text-sm font-bold text-white leading-none mb-0.5">130,000+</div>
-          <div className="text-xs" style={{ color: '#b0d0f0' }}>מנויים ביוטיוב</div>
+          <div className="text-xs" style={{ color: 'rgba(255,255,255,0.65)' }}>מנויים ביוטיוב</div>
         </div>
       </FloatingBadge>
 
       <FloatingBadge delay={0.5} className="top-[22%] left-[7%]">
         <div
           className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-lg"
-          style={{ background: 'rgba(0,209,255,0.1)', border: '1px solid rgba(0,209,255,0.25)' }}
+          style={{ background: 'rgba(0,255,209,0.1)', border: '1px solid rgba(0,255,209,0.25)' }}
         >
           👁️
         </div>
         <div>
           <div className="text-sm font-bold text-white leading-none mb-0.5">25,000,000</div>
-          <div className="text-xs" style={{ color: '#b0d0f0' }}>צפיות סה&quot;כ</div>
+          <div className="text-xs" style={{ color: 'rgba(255,255,255,0.65)' }}>צפיות סה&quot;כ</div>
         </div>
       </FloatingBadge>
 
       <FloatingBadge delay={1} className="bottom-[28%] right-[5%]">
         <div
           className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-lg"
-          style={{ background: 'rgba(168,85,247,0.12)', border: '1px solid rgba(168,85,247,0.3)' }}
+          style={{ background: 'rgba(83,74,183,0.12)', border: '1px solid rgba(83,74,183,0.3)' }}
         >
           🎯
         </div>
         <div>
           <div className="text-sm font-bold text-white leading-none mb-0.5">מומחה AI</div>
-          <div className="text-xs" style={{ color: '#b0d0f0' }}>שיווק דיגיטלי</div>
+          <div className="text-xs" style={{ color: 'rgba(255,255,255,0.65)' }}>שיווק דיגיטלי</div>
         </div>
       </FloatingBadge>
 
@@ -116,14 +116,14 @@ function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.1 }}
-          className="font-black leading-tight mb-12 mt-8"
-          style={{ fontSize: 'clamp(2.8rem, 7vw, 5.5rem)', color: '#ffffff' }}
+          className="font-black mb-12 mt-8"
+          style={{ fontSize: 'clamp(3rem, 8.5vw, 7rem)', lineHeight: 1.05, letterSpacing: '-0.02em', color: '#ffffff' }}
         >
           שלטו ב-AI
           <br />
           <span
             style={{
-              background: 'linear-gradient(135deg, #00d1ff 0%, #a855f7 100%)',
+              background: 'linear-gradient(135deg, #00FFD1 0%, #534AB7 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}
@@ -143,11 +143,11 @@ function HeroSection() {
             onClick={() => {
               window.dispatchEvent(new CustomEvent('open-learning-mode'));
             }}
-            className="inline-flex items-center gap-3 px-8 py-5 rounded-2xl font-black text-xl transition-all hover:scale-105 active:scale-100"
+            className="inline-flex items-center gap-3 px-9 py-5 rounded-full font-black text-xl transition-all hover:scale-105 active:scale-100"
             style={{
-              background: 'linear-gradient(135deg, #00d1ff, #00bfff)',
-              color: '#050d1a',
-              boxShadow: '0 0 50px rgba(0,209,255,0.45), 0 4px 20px rgba(0,0,0,0.3)',
+              background: 'linear-gradient(135deg, #00FFD1, #534AB7)',
+              color: '#0D0D1A',
+              boxShadow: '0 0 50px rgba(0,255,209,0.45), 0 4px 20px rgba(0,0,0,0.3)',
             }}
           >
             <Play className="w-6 h-6 flex-shrink-0" />
@@ -164,9 +164,9 @@ function HeroSection() {
           className="grid grid-cols-3 gap-3 mt-6 max-w-lg mx-auto"
         >
           {[
-            { value: '25M+', label: 'צפיות יוטיוב', icon: <span className="text-xl">👁️</span>, glow: 'rgba(0,209,255,0.12)', border: 'rgba(0,209,255,0.25)' },
+            { value: '25M+', label: 'צפיות יוטיוב', icon: <span className="text-xl">👁️</span>, glow: 'rgba(0,255,209,0.12)', border: 'rgba(0,255,209,0.25)' },
             { value: '130K+', label: 'מנויים', icon: <span className="text-xl">▶</span>, glow: 'rgba(255,60,60,0.08)', border: 'rgba(255,80,80,0.25)' },
-            { value: '9+', label: 'מדריכי AI', icon: <span className="text-xl">🎯</span>, glow: 'rgba(168,85,247,0.12)', border: 'rgba(168,85,247,0.3)' },
+            { value: '9+', label: 'מדריכי AI', icon: <span className="text-xl">🎯</span>, glow: 'rgba(83,74,183,0.12)', border: 'rgba(83,74,183,0.3)' },
           ].map((s, i) => (
             <div
               key={i}
@@ -177,8 +177,8 @@ function HeroSection() {
               }}
             >
               {s.icon}
-              <div className="text-lg font-black leading-none" style={{ color: '#e8f4ff' }}>{s.value}</div>
-              <div className="text-[10px] font-medium leading-tight" style={{ color: '#8ab4d4' }}>{s.label}</div>
+              <div className="text-lg font-black leading-none" style={{ color: '#ffffff' }}>{s.value}</div>
+              <div className="text-[10px] font-medium leading-tight" style={{ color: 'rgba(255,255,255,0.45)' }}>{s.label}</div>
             </div>
           ))}
         </motion.div>
@@ -227,7 +227,7 @@ function EmailSection() {
   return (
     <section
       className="py-14 px-6"
-      style={{ background: 'rgba(3,3,12,0.99)', borderTop: '1px solid rgba(0,209,255,0.08)' }}
+      style={{ background: 'rgba(3,3,12,0.99)', borderTop: '1px solid rgba(0,255,209,0.08)' }}
     >
       <div className="max-w-lg mx-auto text-center">
         <motion.div
@@ -238,25 +238,25 @@ function EmailSection() {
         >
           <div
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-5"
-            style={{ background: 'rgba(0,209,255,0.08)', border: '1px solid rgba(0,209,255,0.25)', color: '#00d1ff' }}
+            style={{ background: 'rgba(0,255,209,0.08)', border: '1px solid rgba(0,255,209,0.25)', color: '#00FFD1' }}
           >
             <Mail className="w-3.5 h-3.5" />
             גישה חינמית לכל התוכן
           </div>
-          <h3 className="text-2xl md:text-3xl font-black mb-2" style={{ color: '#e8f4ff' }}>
+          <h3 className="text-2xl md:text-3xl font-black mb-2" style={{ color: '#ffffff' }}>
             רוצים לפתוח את כל המדריכים?
           </h3>
-          <p className="text-sm mb-6" style={{ color: '#8ab4d4' }}>
+          <p className="text-sm mb-6" style={{ color: 'rgba(255,255,255,0.45)' }}>
             השאירו אימייל — וכל המדריכים נפתחים מיד. ללא ספאם, בחינם לגמרי.
           </p>
 
           {unlocked || status === 'success' ? (
             <div
               className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl"
-              style={{ background: 'rgba(0,209,255,0.07)', border: '1px solid rgba(0,209,255,0.3)' }}
+              style={{ background: 'rgba(0,255,209,0.07)', border: '1px solid rgba(0,255,209,0.3)' }}
             >
               <CheckCircle className="w-5 h-5 text-orci-cyan flex-shrink-0" />
-              <span className="font-semibold" style={{ color: '#e8f4ff' }}>
+              <span className="font-semibold" style={{ color: '#ffffff' }}>
                 גישה מלאה לכל המדריכים נפתחה!
               </span>
             </div>
@@ -268,7 +268,7 @@ function EmailSection() {
               <div className="relative flex-1">
                 <Mail
                   className="absolute top-1/2 -translate-y-1/2 right-4 w-4 h-4 pointer-events-none"
-                  style={{ color: '#8ab4d4' }}
+                  style={{ color: 'rgba(255,255,255,0.45)' }}
                 />
                 <input
                   type="email"
@@ -280,12 +280,12 @@ function EmailSection() {
                   style={{
                     background: 'rgba(255,255,255,0.05)',
                     border: '1px solid rgba(255,255,255,0.1)',
-                    color: '#e8f4ff',
+                    color: '#ffffff',
                     direction: 'rtl',
                   }}
                   onFocus={(e) => {
-                    e.target.style.borderColor = 'rgba(168,85,247,0.55)';
-                    e.target.style.boxShadow = '0 0 0 3px rgba(168,85,247,0.1)';
+                    e.target.style.borderColor = 'rgba(83,74,183,0.55)';
+                    e.target.style.boxShadow = '0 0 0 3px rgba(83,74,183,0.1)';
                   }}
                   onBlur={(e) => {
                     e.target.style.borderColor = 'rgba(255,255,255,0.1)';
@@ -298,9 +298,9 @@ function EmailSection() {
                 disabled={status === 'loading'}
                 className="flex items-center justify-center gap-2 px-7 py-4 rounded-xl font-bold text-sm whitespace-nowrap transition-all"
                 style={{
-                  background: status === 'loading' ? 'rgba(0,209,255,0.3)' : 'linear-gradient(135deg, #00d1ff, #00bfff)',
-                  color: '#050d1a',
-                  boxShadow: status === 'loading' ? 'none' : '0 0 28px rgba(0,209,255,0.4)',
+                  background: status === 'loading' ? 'rgba(0,255,209,0.3)' : 'linear-gradient(135deg, #00FFD1, #534AB7)',
+                  color: '#0D0D1A',
+                  boxShadow: status === 'loading' ? 'none' : '0 0 28px rgba(0,255,209,0.4)',
                 }}
               >
                 {status === 'loading' ? (
@@ -325,7 +325,7 @@ function EmailSection() {
                 onChange={(e) => setAgreed(e.target.checked)}
                 className="mt-0.5 w-4 h-4 rounded accent-orci-cyan cursor-pointer flex-shrink-0"
               />
-              <span className="text-xs leading-relaxed" style={{ color: '#6a8aaa' }}>
+              <span className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>
                 על ידי הרשמה, אני מאשר/ת את{' '}
                 <Link href="/privacy" className="text-orci-cyan underline hover:opacity-80">מדיניות הפרטיות</Link>
                 {' '}ומסכים/ה לקבל עדכונים
@@ -348,16 +348,14 @@ function GuidesSection() {
     <section id="content-tabs" className="cap-section cap-section-white neon-grid-bg">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-10">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-4"
-            style={{ background: 'rgba(168,85,247,0.1)', border: '1px solid rgba(168,85,247,0.35)', color: '#c084fc' }}
-          >
-            ✦ מנוע המדריכים
+          <div className="orci-kicker">
+            <span className="orci-kicker-num">01 /</span>
+            <span className="orci-kicker-label">מנוע המדריכים</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-3" style={{ color: '#e8f4ff' }}>
+          <h2 className="cap-section-title mb-3" style={{ color: '#ffffff' }}>
             כל המדריכים שלנו
           </h2>
-          <p className="text-base max-w-xl mx-auto" style={{ color: '#b0d0f0' }}>
+          <p className="text-base max-w-xl mx-auto" style={{ color: 'rgba(255,255,255,0.65)' }}>
             2 מדריכים ראשונים חינם. שאר? פשוט תשאירו אימייל ואנחנו נפתח הכל.
           </p>
           <motion.button
@@ -388,7 +386,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen" style={{ background: '#000000' }}>
+    <div className="min-h-screen" style={{ background: '#0D0D1A' }}>
 
       {/* Onboarding — first-time visitors only */}
       <OnboardingModal />
@@ -407,7 +405,11 @@ export default function Home() {
         <ContainerScroll
           titleComponent={
             <>
-              <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ color: '#e8f4ff' }}>
+              <div className="orci-kicker">
+                <span className="orci-kicker-num">02 /</span>
+                <span className="orci-kicker-label">ההוכחה</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black mb-4" style={{ color: '#ffffff' }}>
                 בעל ערוץ יוטיוב שהגיע ל-
               </h2>
               <span className="text-4xl md:text-[5rem] font-bold text-orci-cyan leading-none">
@@ -416,7 +418,7 @@ export default function Home() {
               <p className="text-3xl md:text-[4rem] font-bold text-orci-cyan mt-4">
                 ו-130,000 רשומים
               </p>
-              <p className="text-xl md:text-2xl mt-6" style={{ color: '#b0d0f0' }}>
+              <p className="text-xl md:text-2xl mt-6" style={{ color: 'rgba(255,255,255,0.65)' }}>
                 וגם אתם יכולים להגיע להישגים כאלה עם AI
               </p>
             </>
@@ -437,10 +439,14 @@ export default function Home() {
       {/* 6. SERVICES */}
       <section className="cap-section cap-section-white relative neon-grid-bg">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="cap-section-title text-center mb-4" style={{ color: '#e8f4ff' }}>
+          <div className="orci-kicker w-full">
+            <span className="orci-kicker-num">03 /</span>
+            <span className="orci-kicker-label">השירותים</span>
+          </div>
+          <h2 className="cap-section-title text-center mb-4" style={{ color: '#ffffff' }}>
             מה אנחנו מציעים
           </h2>
-          <p className="text-center mb-8 hidden sm:block" style={{ color: '#b0d0f0' }}>
+          <p className="text-center mb-8 hidden sm:block" style={{ color: 'rgba(255,255,255,0.65)' }}>
             העבירו את העכבר כדי לעצור, רחפו על אייקון לפרטים
           </p>
           <OrbitingSkills />

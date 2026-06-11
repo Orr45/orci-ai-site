@@ -1,36 +1,36 @@
 @import "tailwindcss";
 
-/* ORCI AI - DARK MODE "COMMAND CENTER" DESIGN SYSTEM */
+/* ORCI AI - ORCIAI BRAND DESIGN SYSTEM (midnight / electric purple / cyber mint) */
 :root {
-  /* Orci AI Brand Colors */
-  --orci-cyan: #00d1ff;
-  --orci-blue: #00bfff;
-  --orci-purple: #a855f7;
-  --orci-purple-dark: #7c3aed;
-  --orci-primary: #00d1ff;
+  /* ORCIAI Brand Colors */
+  --orci-cyan: #00FFD1;        /* cyber mint — primary accent */
+  --orci-blue: #534AB7;        /* electric purple — secondary (gradients: mint→purple) */
+  --orci-purple: #534AB7;
+  --orci-purple-dark: #3f388f;
+  --orci-primary: #00FFD1;
 
-  /* Dark Mode Backgrounds - Pure Black */
-  --background: #000000;
-  --surface: #0a0a0a;
-  --surface-alt: #111111;
-  --surface-card: #0d0d1a;
-  --surface-hover: #15152a;
+  /* Dark Mode Backgrounds - Midnight */
+  --background: #0D0D1A;
+  --surface: #12121f;
+  --surface-alt: #15152a;
+  --surface-card: rgba(255, 255, 255, 0.03);
+  --surface-hover: rgba(255, 255, 255, 0.06);
 
-  /* Text */
-  --text-primary: #e8f4ff;
-  --text-secondary: #b0d0f0;
-  --text-muted: #8ab4d4;
+  /* Text — opacity ladder (hd-media pattern) */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --text-muted: rgba(255, 255, 255, 0.4);
 
-  /* Borders */
-  --border-subtle: rgba(0, 209, 255, 0.12);
-  --border-glow: rgba(0, 209, 255, 0.35);
-  --border-purple: rgba(168, 85, 247, 0.35);
+  /* Borders — hairlines */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(0, 255, 209, 0.45);
+  --border-purple: rgba(83, 74, 183, 0.45);
 
   /* Glows */
-  --glow-cyan: 0 0 20px rgba(0, 209, 255, 0.25);
-  --glow-cyan-strong: 0 0 40px rgba(0, 209, 255, 0.4);
-  --glow-purple: 0 0 20px rgba(168, 85, 247, 0.3);
-  --glow-purple-strong: 0 0 40px rgba(168, 85, 247, 0.45);
+  --glow-cyan: 0 0 20px rgba(0, 255, 209, 0.2);
+  --glow-cyan-strong: 0 0 40px rgba(0, 255, 209, 0.35);
+  --glow-purple: 0 0 20px rgba(83, 74, 183, 0.35);
+  --glow-purple-strong: 0 0 40px rgba(83, 74, 183, 0.5);
 
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -81,11 +81,11 @@ html[dir="rtl"] {
 }
 
 .cap-section-teal {
-  background: rgba(0, 0, 0, 0.97);
+  background: rgba(13, 13, 26, 0.97);
 }
 
 .cap-section-white {
-  background: rgba(10, 10, 26, 0.97);
+  background: rgba(17, 17, 34, 0.97);
 }
 
 .cap-section-alt {
@@ -145,7 +145,7 @@ html[dir="rtl"] {
 
 .cap-btn-primary {
   background: linear-gradient(135deg, var(--orci-cyan), var(--orci-blue));
-  color: #050d1a;
+  color: #0D0D1A;
   font-weight: 700;
 }
 
@@ -172,7 +172,7 @@ html[dir="rtl"] {
 }
 
 .cap-btn-outline:hover {
-  background: rgba(0, 209, 255, 0.1);
+  background: rgba(0, 255, 209, 0.1);
   box-shadow: var(--glow-cyan);
 }
 
@@ -188,17 +188,42 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cap-hero-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
-  line-height: 1.1;
+  font-size: clamp(2.75rem, 7vw, 6rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
 }
 
 .cap-section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: clamp(2.125rem, 4.5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
+}
+
+/* Editorial micro-label (mono kicker) — hd-media pattern */
+.orci-kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.orci-kicker .orci-kicker-num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--orci-cyan);
+}
+
+.orci-kicker .orci-kicker-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  color: var(--text-muted);
 }
 
 /* ========================================
@@ -239,7 +264,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .filter-btn-active {
-  background: rgba(0, 209, 255, 0.12);
+  background: rgba(0, 255, 209, 0.12);
   border-color: var(--orci-cyan);
   color: var(--orci-cyan);
   box-shadow: var(--glow-cyan);
@@ -258,7 +283,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-glow-cyan {
-  text-shadow: 0 0 20px rgba(0, 209, 255, 0.5);
+  text-shadow: 0 0 20px rgba(0, 255, 209, 0.5);
 }
 
 /* ========================================
@@ -267,15 +292,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .neon-grid-bg {
   background-image:
-    linear-gradient(rgba(0, 209, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 209, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(0, 255, 209, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 209, 0.04) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
 .neon-grid-hero {
   background-image:
-    linear-gradient(rgba(0, 209, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 209, 255, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(0, 255, 209, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 209, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
@@ -290,11 +315,11 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 209, 255, 0.3);
+  background: rgba(0, 255, 209, 0.3);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 209, 255, 0.6);
+  background: rgba(0, 255, 209, 0.6);
 }
 
 /* ========================================
@@ -339,7 +364,7 @@ html.a11y-letter-spacing li,
 html.a11y-letter-spacing span { letter-spacing: 0.12em !important; }
 html.a11y-highlight-links a {
   text-decoration: underline !important;
-  outline: 2px solid #00d1ff !important;
+  outline: 2px solid #00FFD1 !important;
   outline-offset: 2px !important;
 }
 html.a11y-no-animations *,

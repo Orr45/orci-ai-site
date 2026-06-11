@@ -11,7 +11,7 @@ import WeeklyModal from './weekly-modal';
 const CATEGORIES = ['הכל', 'כלים חדשים', 'עדכוני גרסה', 'חדשות גדולות', 'טרנדים', 'מחקר'] as const;
 
 const CATEGORY_DOT: Record<string, string> = {
-  'כלים חדשים':    '#00d1ff',
+  'כלים חדשים':    '#00FFD1',
   'עדכוני גרסה':   '#c084fc',
   'חדשות גדולות':  '#f87171',
   'טרנדים':        '#fb923c',
@@ -40,10 +40,10 @@ export default function WeeklyDashboardClient({ data }: WeeklyDashboardClientPro
   return (
     <div
       className="min-h-screen"
-      style={{ background: 'linear-gradient(180deg, #050d1a 0%, #08142a 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #0D0D1A 0%, #08142a 100%)' }}
     >
       {/* Header */}
-      <div className="border-b" style={{ borderColor: 'rgba(0,209,255,0.1)', background: 'rgba(5,13,26,0.9)', backdropFilter: 'blur(16px)' }}>
+      <div className="border-b" style={{ borderColor: 'rgba(0,255,209,0.1)', background: 'rgba(13,13,26,0.9)', backdropFilter: 'blur(16px)' }}>
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Breadcrumb */}
           <Link
@@ -59,7 +59,7 @@ export default function WeeklyDashboardClient({ data }: WeeklyDashboardClientPro
             <div>
               <div
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold mb-3"
-                style={{ background: 'rgba(0,209,255,0.1)', border: '1px solid rgba(0,209,255,0.3)', color: '#00d1ff' }}
+                style={{ background: 'rgba(0,255,209,0.1)', border: '1px solid rgba(0,255,209,0.3)', color: '#00FFD1' }}
               >
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orci-cyan opacity-75" />
@@ -68,7 +68,7 @@ export default function WeeklyDashboardClient({ data }: WeeklyDashboardClientPro
                 עדכון שבועי
               </div>
 
-              <h1 className="text-3xl md:text-5xl font-black mb-2" style={{ color: '#e8f4ff' }}>
+              <h1 className="text-3xl md:text-5xl font-black mb-2" style={{ color: '#ffffff' }}>
                 🔥 {data.weekTitle}
               </h1>
               <p className="text-base" style={{ color: '#5a7a9a' }}>
@@ -99,9 +99,9 @@ export default function WeeklyDashboardClient({ data }: WeeklyDashboardClientPro
                   onClick={() => setActiveCategory(cat)}
                   className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all flex-shrink-0"
                   style={{
-                    background: isActive ? 'rgba(0,209,255,0.15)' : 'rgba(255,255,255,0.04)',
-                    border: isActive ? '1px solid rgba(0,209,255,0.4)' : '1px solid rgba(255,255,255,0.06)',
-                    color: isActive ? '#00d1ff' : '#5a7a9a',
+                    background: isActive ? 'rgba(0,255,209,0.15)' : 'rgba(255,255,255,0.04)',
+                    border: isActive ? '1px solid rgba(0,255,209,0.4)' : '1px solid rgba(255,255,255,0.06)',
+                    color: isActive ? '#00FFD1' : '#5a7a9a',
                   }}
                 >
                   {cat !== 'הכל' && (
@@ -113,7 +113,7 @@ export default function WeeklyDashboardClient({ data }: WeeklyDashboardClientPro
                   {cat}
                   <span
                     className="text-[10px] px-1.5 py-0.5 rounded-full"
-                    style={{ background: isActive ? 'rgba(0,209,255,0.2)' : 'rgba(255,255,255,0.06)', color: isActive ? '#00d1ff' : '#4a6a8a' }}
+                    style={{ background: isActive ? 'rgba(0,255,209,0.2)' : 'rgba(255,255,255,0.06)', color: isActive ? '#00FFD1' : '#4a6a8a' }}
                   >
                     {count}
                   </span>
@@ -148,9 +148,9 @@ export default function WeeklyDashboardClient({ data }: WeeklyDashboardClientPro
           <section>
             {hotItems.length > 0 && (
               <div className="flex items-center gap-3 mb-4">
-                <div className="h-px flex-1" style={{ background: 'rgba(0,209,255,0.1)' }} />
+                <div className="h-px flex-1" style={{ background: 'rgba(0,255,209,0.1)' }} />
                 <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#4a6a8a' }}>עוד עדכונים</span>
-                <div className="h-px flex-1" style={{ background: 'rgba(0,209,255,0.1)' }} />
+                <div className="h-px flex-1" style={{ background: 'rgba(0,255,209,0.1)' }} />
               </div>
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">

@@ -87,7 +87,7 @@ export default function EmailGateModal({ isOpen, onClose, onUnlock, guideName }:
           className="fixed inset-0 flex items-center justify-center p-4"
           style={{
             zIndex: 9999,
-            background: 'rgba(5,13,26,0.88)',
+            background: 'rgba(13,13,26,0.88)',
             backdropFilter: 'blur(8px)',
           }}
           onClick={onClose}
@@ -100,9 +100,9 @@ export default function EmailGateModal({ isOpen, onClose, onUnlock, guideName }:
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="w-full max-w-md overflow-hidden rounded-2xl"
             style={{
-              background: 'linear-gradient(135deg, #0a1628 0%, #0d1f3a 100%)',
-              border: '1px solid rgba(0,209,255,0.3)',
-              boxShadow: '0 0 60px rgba(0,209,255,0.15), 0 25px 50px rgba(0,0,0,0.5)',
+              background: 'linear-gradient(135deg, #12121f 0%, #1a1a35 100%)',
+              border: '1px solid rgba(0,255,209,0.3)',
+              boxShadow: '0 0 60px rgba(0,255,209,0.15), 0 25px 50px rgba(0,0,0,0.5)',
               position: 'relative',
             }}
             onClick={(e) => e.stopPropagation()}
@@ -110,7 +110,7 @@ export default function EmailGateModal({ isOpen, onClose, onUnlock, guideName }:
             {/* Glow orb — pointer-events-none so it never blocks clicks */}
             <div
               className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full"
-              style={{ background: 'radial-gradient(circle, rgba(0,209,255,0.12) 0%, transparent 70%)' }}
+              style={{ background: 'radial-gradient(circle, rgba(0,255,209,0.12) 0%, transparent 70%)' }}
             />
 
             {/* X close button — z-index above everything in the card */}
@@ -131,7 +131,7 @@ export default function EmailGateModal({ isOpen, onClose, onUnlock, guideName }:
                 >
                   <div
                     className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center"
-                    style={{ background: 'rgba(0,209,255,0.15)', border: '2px solid rgba(0,209,255,0.5)' }}
+                    style={{ background: 'rgba(0,255,209,0.15)', border: '2px solid rgba(0,255,209,0.5)' }}
                   >
                     <Sparkles className="w-8 h-8 text-orci-cyan" />
                   </div>
@@ -142,7 +142,7 @@ export default function EmailGateModal({ isOpen, onClose, onUnlock, guideName }:
                 <>
                   <div
                     className="w-16 h-16 rounded-full mx-auto mb-5 flex items-center justify-center"
-                    style={{ background: 'rgba(0,209,255,0.1)', border: '1px solid rgba(0,209,255,0.3)' }}
+                    style={{ background: 'rgba(0,255,209,0.1)', border: '1px solid rgba(0,255,209,0.3)' }}
                   >
                     <Lock className="w-7 h-7 text-orci-cyan" />
                   </div>
@@ -178,15 +178,15 @@ export default function EmailGateModal({ isOpen, onClose, onUnlock, guideName }:
                         className="w-full pr-10 pl-4 py-3 rounded-xl text-sm text-white placeholder-slate-500 outline-none transition-all"
                         style={{
                           background: 'rgba(255,255,255,0.05)',
-                          border: '1px solid rgba(0,209,255,0.2)',
+                          border: '1px solid rgba(0,255,209,0.2)',
                           direction: 'rtl',
                         }}
                         onFocus={(e) => {
-                          e.target.style.borderColor = 'rgba(0,209,255,0.6)';
-                          e.target.style.boxShadow = '0 0 0 3px rgba(0,209,255,0.1)';
+                          e.target.style.borderColor = 'rgba(0,255,209,0.6)';
+                          e.target.style.boxShadow = '0 0 0 3px rgba(0,255,209,0.1)';
                         }}
                         onBlur={(e) => {
-                          e.target.style.borderColor = 'rgba(0,209,255,0.2)';
+                          e.target.style.borderColor = 'rgba(0,255,209,0.2)';
                           e.target.style.boxShadow = 'none';
                         }}
                       />
@@ -200,10 +200,10 @@ export default function EmailGateModal({ isOpen, onClose, onUnlock, guideName }:
                       className="w-full py-3 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2"
                       style={{
                         background: status === 'loading'
-                          ? 'rgba(0,209,255,0.4)'
-                          : 'linear-gradient(135deg, #00d1ff, #00bfff)',
-                        color: '#050d1a',
-                        boxShadow: status === 'loading' ? 'none' : '0 0 20px rgba(0,209,255,0.3)',
+                          ? 'rgba(0,255,209,0.4)'
+                          : 'linear-gradient(135deg, #00FFD1, #534AB7)',
+                        color: '#0D0D1A',
+                        boxShadow: status === 'loading' ? 'none' : '0 0 20px rgba(0,255,209,0.3)',
                       }}
                     >
                       {status === 'loading' ? (

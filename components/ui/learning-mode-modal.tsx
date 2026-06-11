@@ -56,13 +56,13 @@ export function LearningModeModal({ isOpen, onClose }: LearningModeModalProps) {
         {isOpen && (
           <motion.div
             className="fixed inset-0 z-40 overflow-y-auto"
-            style={{ background: '#050d1a' }}
+            style={{ background: '#0D0D1A' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             {/* Header with Close Button */}
-            <div className="sticky top-0 z-50 bg-gradient-to-b from-[#050d1a] via-[#050d1a]/90 to-transparent pt-6 pb-8">
+            <div className="sticky top-0 z-50 bg-gradient-to-b from-[#0D0D1A] via-[#0D0D1A]/90 to-transparent pt-6 pb-8">
               <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                 <div>
                   <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">

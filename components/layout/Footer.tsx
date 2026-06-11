@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export function Footer() {
   return (
-    <footer className="py-12 px-6" style={{background:'rgba(5,13,26,0.98)', borderTop:'1px solid rgba(0,209,255,0.12)'}}>
+    <footer className="py-12 px-6" style={{background:'rgba(13,13,26,0.98)', borderTop:'1px solid rgba(0,255,209,0.12)'}}>
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand Section */}
