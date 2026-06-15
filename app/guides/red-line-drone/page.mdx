@@ -1,0 +1,262 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'ציירו קו אדום — AI הפך אותו לסרטון רחפן | Orci AI',
+  description: 'למדו איך לצייר קו אדום על תמונה ו-AI הופך אותו לסרטון רחפן קולנועי — שחיין, חתול, POV של Appa ועוד.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        ציירו קו אדום — AI הפך אותו לסרטון רחפן
+      </h1>
+      <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        שחיין, חתול, POV — כל מה שתרצו שיעבור שם. מתמונה אחת.
+      </p>
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🖼️ GPT Image 2</span>
+        <span className="cap-badge text-sm">🎬 Seedance 2.0</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: בחרו תמונה וציירו קו אדום
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        תבחרו את התמונה שאתם רוצים להשתמש בה וציירו <span className="text-orci-cyan font-bold">קו אדום ברור עם חץ בסוף</span> שה-AI יכול להבין את כיוון התנועה — מאיפה הוא מתחיל ומאיפה הוא מסיים.
+      </p>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        תוכלו להשתמש בכל תמונה שתרצו — חדר, רחוב, נוף — או ליצור תמונה מיוחדת. לדוגמה, אם תרצו <span className="text-orci-cyan font-bold">מפת פנטזיה מגניבה</span>, תשתמשו בפרומפט הבא ב-GPT Image 2:
+      </p>
+
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 פרומפט ליצירת מפת פנטזיה — GPT Image 2
+        </summary>
+        <CopyPrompt prompt={`Create a high-resolution 16:9 photorealistic cinematic aerial map depicting the epic journey of a young hero across a vast fantasy world. Show realistic kingdoms, dense enchanted forests, towering mountain ranges, ancient ruins, distant magical cities, hidden cave entrances, floating islands, vast deserts, river valleys, and mysterious coastlines as believable real-world terrain and architectural landmarks. Clearly mark the complete travel route with a thick bright red line winding across the landscape from beginning to end. The route should be easy to follow, with a clear start and finish point. Use cinematic lighting, atmospheric depth, realistic terrain textures, natural shadows, dramatic cloud cover, and high-end fantasy film production design. The image should feel like a realistic aerial reconnaissance shot of an actual fantasy world, not an illustration. Highly detailed, cinematic composition, photorealistic, immersive worldbuilding, 4K quality, no cartoon style, no hand-drawn elements, no illustration, no text labels, no borders, no compass rose.`} />
+      </details>
+
+      <div className="my-8 rounded-2xl overflow-hidden max-w-2xl mx-auto">
+        <Image src="/guides/red-line-drone/map-example.png" alt="מפת פנטזיה עם קו אדום שמסמן את מסלול הטיסה" width={1280} height={720} className="w-full h-auto" />
+      </div>
+      <p className="text-center text-sm text-orci-cyan font-bold -mt-4 mb-2">דוגמה: מפת פנטזיה עם קו אדום שמציין את מסלול הטיסה</p>
+    </div>
+
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: הכניסו ל-Seedance 2.0 וקבלו את הסרטון
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        מצוין, יש לכם את התמונה! עכשיו כל מה שנותר זה להיכנס ל-<span className="text-orci-cyan font-bold">Seedance 2.0</span> ולהדביק את הפרומפט הבא. אלו ההגדרות המומלצות לתוצאה הכי טובה:
+      </p>
+
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">15 שניות</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">16:9</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">1080p</span></li>
+      </ul>
+
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 פרומפט מלא לסרטון הרחפן — Seedance 2.0
+        </summary>
+        <CopyPrompt prompt={`Use the uploaded image as a terrain reference map.
+
+The red route line is a navigation guide only and must not appear in the final video.
+
+Create a 15-second continuous cinematic aerial journey through the fantasy world shown in the image.
+
+The camera must strictly follow the drawn path from beginning to end.
+
+No cuts.
+No transitions.
+No teleportation.
+No map view.
+
+Fly low over villages, forests, rivers, castles, mountains, and landmarks along the route.
+
+Maintain smooth forward motion with natural banking, dynamic altitude changes, and strong foreground parallax.
+
+The environment should feel alive and immersive, with cinematic lighting, volumetric clouds, atmospheric depth, and ultra-detailed fantasy worldbuilding.
+
+Professional drone cinematography.
+Epic fantasy adventure film quality.
+Continuous uninterrupted movement.
+
+Make sure the video and the music ends on a satisfying grand finale at precisely 00:15.`} />
+      </details>
+
+      <div className="my-8 rounded-2xl overflow-hidden" style={{ maxWidth: '700px', margin: '0 auto' }}>
+        <video src="/guides/red-line-drone/result-drone.mp4" controls className="w-full rounded-2xl" />
+      </div>
+      <p className="text-center text-sm text-orci-cyan font-bold mb-2">התוצאה: טיסת רחפן קולנועית מהתמונה הסטטית</p>
+    </div>
+
+    {/* Result Card */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          סרטון שנראה כמו <span className="text-orci-cyan font-bold">הפקה אמיתית</span> — מתמונה אחת וקו אדום.
+        </p>
+      </div>
+    </div>
+
+    {/* YouTube embed */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan text-center">
+        🎬 הסרטון המקורי באינסטגרם
+      </h2>
+      <div className="my-4 rounded-2xl overflow-hidden" style={{ aspectRatio: '9/16', maxWidth: '400px', margin: '0 auto' }}>
+        <iframe
+          src="https://www.youtube.com/embed/21Tprn4A5Ag?rel=0"
+          title="ציירתי קו אדום — AI הפך אותו לסרטון רחפן"
+          className="w-full h-full"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    {/* Bonus 1: Cat */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        🐱 בונוס: חתול פרקור שעוקב אחרי הקו
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        איך יצרתי את הסרטון עם החתול! בדיוק אותה טכניקה — <span className="text-orci-cyan font-bold">תמונה + קו אדום</span> — רק הפעם הפרומפט מבקש מה-AI להניע חתול גינג'י שעושה פרקור לפי המסלול. תוכלו לקחת את הפרומפט, להכניס אותו לצ'אט ולהתאים אותו לתמונה שלכם.
+      </p>
+
+      <div className="my-8 rounded-2xl overflow-hidden max-w-2xl mx-auto">
+        <Image src="/guides/red-line-drone/cat-room.png" alt="חדר עם קו אדום לניווט החתול" width={1280} height={720} className="w-full h-auto" />
+      </div>
+      <p className="text-center text-sm text-orci-cyan font-bold -mt-4 mb-6">התמונה עם הקו האדום שהוכנסה ל-Seedance</p>
+
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 פרומפט מלא לסרטון החתול
+        </summary>
+        <CopyPrompt prompt={`A fluffy ginger cat suddenly appears in the foreground on the rug (at the START point) and executes a series of acrobatic parkour jumps following the red arrow path drawn in the image. The cat leaps from the START dot, springs onto the people sitting on the floor watching the game, then bounds over to the girl on the sofa on the left, and finally makes a long graceful jump landing near the grandfather in the background at the END point. The camera follows the cat from behind in a smooth dynamic third-person tracking shot. Pixar 3D animation style, cinematic, no arrows or text visible in the final video.`} />
+      </details>
+
+      <div className="my-8 rounded-2xl overflow-hidden" style={{ maxWidth: '700px', margin: '0 auto' }}>
+        <video src="/guides/red-line-drone/result-cat.mp4" controls className="w-full rounded-2xl" />
+      </div>
+      <p className="text-center text-sm text-orci-cyan font-bold mb-2">התוצאה: חתול גינג'י פרקור בסגנון Pixar</p>
+    </div>
+
+    {/* Bonus 2: Appa */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        🦬 בונוס: Appa מ-Avatar טס לפי הקו
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        רוצים תמונה מגניבה שהחיה שלכם עפה כמו <span className="text-orci-cyan font-bold">Appa</span>? הטכניקה זהה — מציירים קו אדום על תמונה אמיתית של מקום כלשהו, והפרומפט הבא יוצר <span className="text-orci-cyan font-bold">POV של Aang</span> רוכב על Appa שעוקב בדיוק אחרי המסלול, עם שוקוייב אוורנדינג ואור שעת זהב. הפרומפט כתוב כך שהוא עובד על <span className="text-orci-cyan font-bold">כל תמונה</span> — רחוב, פארק, חוף ים.
+      </p>
+
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 פרומפט מלא — APPA FLIGHT (אוניברסלי לכל תמונה)
+        </summary>
+        <CopyPrompt prompt={`APPA FLIGHT — UNIVERSAL AVATAR AERIAL PROMPT
+Use the reference image as the starting location and flight path. The drawn arrow line in the reference image defines the exact flight route. Do not show any lines, arrows, path markings, or drawn elements of any kind in the final video — these are for direction only and must be completely invisible in the output.
+CAMERA POV — AANG'S EYES
+The camera is Aang's exact POV — seated on Appa's neck, low and close, right behind his head. What we see: the back of Appa's massive white-furred head filling the lower center of the frame, the iconic blue arrow tattooed on his forehead clearly visible and readable, two large black horns curving outward on the left and right edges of the frame. This is the exact view from the reference image — as if you are Aang, gripping Appa's fur, looking forward between his horns at the world rushing past. The blue arrow on Appa's head is always visible and always identifiable — this is the primary visual signature that tells the viewer this is Appa.
+APPA
+Appa is rendered in a stylized animation style matching Avatar: The Last Airbender — white fur, six legs visible during flight, large flat tail moving in powerful sweeping strokes. Every tail stroke generates a massive airbending shockwave beneath him — a visible circular ripple of compressed air that explodes downward and outward, bending nearby trees, water, flags, grass or any surface element present in the reference image location. The blue arrow on his head must remain clearly visible throughout the entire shot.
+FLIGHT BEHAVIOR
+Appa follows the exact drawn route in the reference image at high speed. Flight is dynamic and adrenaline-driven — banking hard on turns, horns tilting left and right in frame as he turns, dipping low near surfaces, pulling up sharply near landmarks. At the lowest point of the route, Appa skims close to the most prominent natural surface visible in the image — his airbending shockwave sprays particles, water droplets or dust upward in golden slow bursts. He then ascends hard toward the most recognizable landmark in the image, which fills the final frame.
+ENVIRONMENT
+Every building, structure, landscape and architectural detail must match the reference image exactly as photographed. Do not alter, replace, add or remove anything visible in the reference image. The real-world location is 100% photorealistic and cinematic.
+LIGHTING
+Always golden hour. Deep orange at the horizon fading to soft violet-blue overhead. All surfaces catch warm low-angle sunlight. Appa's white fur glows amber and gold. The blue arrow on his head catches warm light but remains clearly blue and readable. Shockwave ripples catch and reflect golden light.
+VISUAL STYLE
+Split-reality: the environment is hyper-realistic cinematic footage. Appa is stylized animation blended seamlessly into the real world — like a high-budget VFX film integration. The camera sits tight and low on Appa's neck — slight natural movement from Appa's body, not artificial shake. Wide forward view with horns framing the sides. 24fps. Single continuous unbroken shot. No cuts.
+SHOT STRUCTURE — 15 SECONDS
+0:00–0:03: Appa launches from the starting point. His first tail stroke fires a shockwave. The landmark ahead comes into view between his horns. Blue arrow on his head visible as he surges forward.
+0:03–0:06: Hard banking turn following the route — the horns tilt visibly in frame, landscape sweeps below, golden light catches Appa's fur.
+0:06–0:09: Appa climbs along the upper arc of the route, full landscape revealed ahead and below, shockwave ripples beneath him with each tail beat.
+0:09–0:12: Low skim pass — Appa descends aggressively, skimming the nearest surface. Shockwave explosion at ground level. Particles, spray or dust burst upward in golden light.
+0:12–0:15: Hard pull-up and ascent toward the main landmark. The full landmark fills the frame ahead. Appa's head and blue arrow in the lower frame, the landmark towering above, burning golden horizon behind it.
+AUDIO
+Appa's powerful wingbeats and low rumbling bellow. Airbending shockwave — deep cinematic air-burst with each tail stroke. Ambient sounds matching the reference image location. Warm adventure orchestral score — light strings building gently. Natural wind rush throughout.
+NEGATIVE PROMPT
+No drawn lines, no red arrows, no path markings visible in video, no cuts, no freeze frames, no altered buildings, no replaced architecture, no night lighting, no overexposed sky, no cartoon environment, no text overlays, no subtitles, no unstable camera, no missing blue arrow on Appa's head, no front-facing Appa shots, no third-person view pulling away from Appa — always Aang's POV from the neck.`} />
+      </details>
+
+      <div className="my-8 rounded-2xl overflow-hidden" style={{ maxWidth: '700px', margin: '0 auto' }}>
+        <video src="/guides/red-line-drone/result-appa.mp4" controls className="w-full rounded-2xl" />
+      </div>
+      <p className="text-center text-sm text-orci-cyan font-bold mb-2">התוצאה: Appa עף בשעת זהב על רקע אמיתי</p>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">קו אדום = שפה שה-AI מבין</span>
+        </p>
+        <p className="text-lg text-slate-300">
+          לא צריכים ציוד, צוות הפקה, או ידע טכני. תמונה + חץ + פרומפט — וה-AI עושה את שאר העבודה.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <p className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+      </p>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>

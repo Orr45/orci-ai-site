@@ -15,6 +15,20 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'red-line-drone',
+    title: 'ציירו קו אדום — AI הפך אותו לסרטון רחפן',
+    description: 'ציירתי קו אדום על תמונה — ו-AI הפך אותו לסרטון של רחפן אמיתי. שחיין, חתול, POV של Appa — כל מה שתרצו שיעבור שם',
+    summary: 'הטריק הכי פשוט שיוצר את הסרטונים הכי מרשימים: מציירים קו אדום עם חץ על כל תמונה — ו-Seedance 2.0 הופך אותו לטיסת רחפן קולנועית של 15 שניות. כולל בונוסים: חתול פרקור בסגנון Pixar ו-POV של Appa מ-Avatar — עם הפרומפטים המלאים לכל אחד.',
+    image: '/guides/guide-red-line-drone.png',
+    href: '/guides/red-line-drone',
+    category: 'יצירת תוכן',
+    popular: false,
+    isNew: true,
+    date: '2026-06-15',
+    free: false,
+    videoUrl: 'https://www.youtube.com/shorts/21Tprn4A5Ag',
+  },
+  {
     id: 'best-ai-tools',
     title: 'דירגתי את כלי ה-AI שלי',
     description: 'אחרי שניסיתי עשרות כלים — עשיתי לכם סדר. מה השימוש הכי טוב לכל מודל',
