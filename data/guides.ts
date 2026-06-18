@@ -15,6 +15,20 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'ai-headshots',
+    title: 'מסלפי לתמונת פרופיל מקצועית עם ChatGPT',
+    description: 'סלפי אחד, 5 סגנונות שונים — קזואל, עבודה, עסקי, מודרני ודרמטי. GPT Image 2 עושה את הכל',
+    summary: 'לא צריך צלם, לא צריך סטודיו — רק סלפי וPrrompt. המדריך הזה נותן לכם 5 פרומפטים מוכנים שהופכים כל תמונת פנים לתמונת פרופיל מקצועית: LinkedIn, עסקי, מודרני, קזואל ואפילו קינמטי שחור-לבן. כולל גלריה עם 12 תוצאות לדוגמה.',
+    image: '/guides/guide-ai-headshots.png',
+    href: '/guides/ai-headshots',
+    category: 'יצירת תוכן',
+    popular: false,
+    isNew: true,
+    date: '2026-06-18',
+    free: false,
+    videoUrl: 'https://youtube.com/shorts/aHMP0-zFRV4',
+  },
+  {
     id: 'red-line-drone',
     title: 'ציירו קו אדום — AI הפך אותו לסרטון רחפן',
     description: 'ציירתי קו אדום על תמונה — ו-AI הפך אותו לסרטון של רחפן אמיתי. שחיין, חתול, POV של Appa — כל מה שתרצו שיעבור שם',
