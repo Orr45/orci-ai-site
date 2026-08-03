@@ -30,48 +30,59 @@ export default function Newsletter() {
         setEmail("");
       } else {
         setStatus("error");
-        setMessage(data.error || "משהו השתבש, נסו שוב");
+        setMessage(data.error || "משהו השתבש, נסה שוב");
       }
     } catch {
       setStatus("error");
-      setMessage("שגיאת חיבור, נסו שוב מאוחר יותר");
+      setMessage("שגיאת חיבור, נסה שוב מאוחר יותר");
     }
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 p-8 md:p-12 shadow-2xl">
+    <div
+      className="relative overflow-hidden rounded-2xl p-8 md:p-12"
+      style={{ background: 'var(--surface-card)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+    >
       <div className="relative z-10 max-w-xl mx-auto text-center">
-        <div className="w-14 h-14 bg-orci-cyan/20 rounded-full flex items-center justify-center mx-auto mb-6">
-          <Mail className="w-7 h-7 text-orci-cyan" />
+        <div
+          className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-6"
+          style={{ background: 'var(--accent-soft)', border: '1px solid var(--accent-line)' }}
+        >
+          <Mail className="w-7 h-7" style={{ color: 'var(--accent)' }} />
         </div>
-        <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-          הישארו מעודכנים
+        <h3 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: 'var(--text-primary)' }}>
+          הישאר מעודכן
         </h3>
-        <p className="text-gray-300 leading-relaxed mb-6">
-          הירשמו לקבלת מדריכים, טיפים וטרנדים חדשים בעולם ה-AI - ישירות למייל
+        <p className="leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
+          הירשם לקבלת מדריכים, טיפים וטרנדים חדשים בעולם ה-AI — ישירות למייל
         </p>
 
         {status === "success" ? (
-          <div className="flex items-center justify-center gap-2 py-4 text-green-400">
+          <div className="flex items-center justify-center gap-2 py-4" style={{ color: 'var(--whatsapp)' }}>
             <CheckCircle className="w-5 h-5" />
             <span className="font-medium">{message}</span>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
-            <div className="flex items-center bg-white/10 backdrop-blur-sm rounded-xl p-1.5 border border-white/10 max-w-md mx-auto">
+            <div
+              className="flex items-center rounded-full p-1.5 max-w-md mx-auto"
+              style={{ background: 'var(--surface-hover)', border: '1px solid var(--border-strong)' }}
+            >
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="הכניסו את המייל שלכם"
-                className="w-full px-4 py-2.5 bg-transparent text-white placeholder-gray-400 outline-none text-sm"
+                placeholder="האימייל שלך"
+                className="w-full px-4 py-2.5 bg-transparent outline-none text-sm"
+                style={{ color: 'var(--text-primary)' }}
                 dir="rtl"
               />
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="flex-shrink-0 px-5 py-2.5 bg-orci-cyan text-white rounded-lg font-medium text-sm hover:bg-orci-blue transition-colors disabled:opacity-50 flex items-center gap-2"
+                className="flex-shrink-0 px-5 py-2.5 rounded-full font-bold text-sm transition-colors disabled:opacity-50 flex items-center gap-2"
+                style={{ background: 'var(--accent)', color: 'var(--on-accent)' }}
               >
                 {status === "loading" ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -81,33 +92,25 @@ export default function Newsletter() {
               </button>
             </div>
             {status === "error" && (
-              <p className="mt-3 text-red-400 text-sm">{message}</p>
+              <p className="mt-3 text-red-500 text-sm">{message}</p>
             )}
-            <label className="mt-4 flex items-start gap-2 cursor-pointer text-right">
+            <label className="mt-4 flex items-start gap-2 cursor-pointer text-right justify-center">
               <input
                 type="checkbox"
                 checked={agreed}
                 onChange={(e) => setAgreed(e.target.checked)}
-                className="mt-0.5 w-4 h-4 rounded accent-orci-cyan cursor-pointer flex-shrink-0"
+                className="mt-0.5 w-4 h-4 rounded cursor-pointer flex-shrink-0"
+                style={{ accentColor: 'var(--accent)' }}
               />
-              <span className="text-xs text-slate-400 leading-relaxed">
+              <span className="text-xs leading-relaxed" style={{ color: 'var(--text-muted)' }}>
                 על ידי הרשמה, אני מאשר/ת את{' '}
-                <Link href="/privacy" className="text-orci-cyan underline hover:opacity-80">מדיניות הפרטיות</Link>
+                <Link href="/privacy" className="underline hover:opacity-80" style={{ color: 'var(--accent)' }}>מדיניות הפרטיות</Link>
                 {' '}ומסכים/ה לקבל עדכונים שיווקיים
               </span>
             </label>
           </form>
         )}
       </div>
-
-      {/* Background gradient overlay */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at 30% 50%, rgba(0, 255, 209, 0.08) 0%, transparent 70%)",
-        }}
-      />
     </div>
   );
 }

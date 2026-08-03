@@ -25,36 +25,38 @@ interface DockIconButtonProps {
   className?: string
 }
 
-const floatingTransition = {
-  duration: 4,
-  repeat: Infinity,
-  ease: "easeInOut" as const,
-}
-
 const DockIconButton = React.forwardRef<HTMLButtonElement, DockIconButtonProps>(
   ({ icon: Icon, label, onClick, href, isActive, className }, ref) => {
     const content = (
       <>
-        <Icon className={cn(
-          "w-5 h-5 transition-colors",
-          isActive ? "text-orci-cyan" : "text-slate-400"
-        )} />
-        <span className={cn(
-          "text-[10px] font-medium mt-0.5 transition-colors",
-          isActive ? "text-orci-cyan" : "text-slate-500"
-        )}>
+        <Icon
+          className="w-5 h-5 transition-colors"
+          style={{ color: isActive ? 'var(--accent)' : 'var(--text-muted)' }}
+        />
+        <span
+          className="text-[10px] font-medium mt-0.5 transition-colors"
+          style={{ color: isActive ? 'var(--accent)' : 'var(--text-muted)' }}
+        >
           {label}
         </span>
         {isActive && (
           <motion.div
             layoutId="dock-active"
-            className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-orci-cyan"
-            style={{ boxShadow: '0 0 8px rgba(0,255,209,0.6)' }}
+            className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full"
+            style={{ background: 'var(--accent)' }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           />
         )}
       </>
     )
+
+    const sharedClass = cn(
+      "relative group flex flex-col items-center gap-0.5 px-3 pt-2.5 pb-2 rounded-xl min-w-[52px] transition-colors",
+      className
+    )
+    const sharedStyle: React.CSSProperties = {
+      background: isActive ? 'var(--accent-soft)' : 'transparent',
+    }
 
     if (href) {
       return (
@@ -63,12 +65,8 @@ const DockIconButton = React.forwardRef<HTMLButtonElement, DockIconButtonProps>(
           whileHover={{ scale: 1.08, y: -2 }}
           whileTap={{ scale: 0.95 }}
           onClick={onClick}
-          className={cn(
-            "relative group flex flex-col items-center gap-0.5 px-3 pt-2.5 pb-2 rounded-xl min-w-[52px]",
-            "hover:bg-orci-cyan/8 transition-colors",
-            isActive && "bg-orci-cyan/10",
-            className
-          )}
+          className={sharedClass}
+          style={sharedStyle}
         >
           {content}
         </motion.a>
@@ -81,12 +79,8 @@ const DockIconButton = React.forwardRef<HTMLButtonElement, DockIconButtonProps>(
         whileHover={{ scale: 1.08, y: -2 }}
         whileTap={{ scale: 0.95 }}
         onClick={onClick}
-        className={cn(
-          "relative group flex flex-col items-center gap-0.5 px-3 pt-2.5 pb-2 rounded-xl min-w-[52px]",
-          "hover:bg-orci-cyan/8 transition-colors",
-          isActive && "bg-orci-cyan/10",
-          className
-        )}
+        className={sharedClass}
+        style={sharedStyle}
       >
         {content}
       </motion.button>
@@ -99,25 +93,18 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
   ({ items, className }, ref) => {
     return (
       <div ref={ref} className={cn("flex items-center justify-center", className)}>
-        <motion.div
-          initial={{ y: 0 }}
-          animate={{ y: [-1, 1, -1] }}
-          transition={floatingTransition}
-          className={cn(
-            "flex items-center gap-0.5 px-2 py-1 rounded-2xl",
-            "backdrop-blur-xl border shadow-2xl",
-            "border-orci-cyan/20",
-            "hover:border-orci-cyan/35 transition-all duration-300"
-          )}
+        <div
+          className="flex items-center gap-0.5 px-2 py-1 rounded-2xl backdrop-blur-xl transition-all duration-300"
           style={{
-            background: 'rgba(13,13,26,0.92)',
-            boxShadow: '0 0 30px rgba(0,255,209,0.08), 0 8px 32px rgba(0,0,0,0.6)',
+            background: 'color-mix(in srgb, var(--surface) 92%, transparent)',
+            border: '1px solid var(--border-subtle)',
+            boxShadow: 'var(--shadow-card-hover)',
           }}
         >
           {items.map((item) => (
             <DockIconButton key={item.label} {...item} />
           ))}
-        </motion.div>
+        </div>
       </div>
     )
   }

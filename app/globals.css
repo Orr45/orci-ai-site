@@ -1,38 +1,87 @@
 @import "tailwindcss";
 
-/* ORCI AI - ORCIAI BRAND DESIGN SYSTEM (midnight / electric purple / cyber mint) */
+/* ═══════════════════════════════════════════════════════════
+   ORCI AI — DESIGN SYSTEM v2 "אור שמר"
+   Trust-premium: light-first, deep navy ink, sapphire accent.
+   Dark mode via [data-theme="dark"] (html toggle OR local zone
+   wrapper — e.g. the guides reading area stays dark).
+   ═══════════════════════════════════════════════════════════ */
+
 :root {
-  /* ORCIAI Brand Colors */
-  --orci-cyan: #00FFD1;        /* cyber mint — primary accent */
-  --orci-blue: #534AB7;        /* electric purple — secondary (gradients: mint→purple) */
-  --orci-purple: #534AB7;
-  --orci-purple-dark: #3f388f;
-  --orci-primary: #00FFD1;
+  /* Surfaces */
+  --bg: #F5F7FA;
+  --surface: #FFFFFF;
+  --surface-alt: #ECF1F7;
+  --surface-card: #FFFFFF;
+  --surface-hover: #F0F4F9;
 
-  /* Dark Mode Backgrounds - Midnight */
-  --background: #0D0D1A;
-  --surface: #12121f;
-  --surface-alt: #15152a;
-  --surface-card: rgba(255, 255, 255, 0.03);
-  --surface-hover: rgba(255, 255, 255, 0.06);
+  /* Ink — opacity ladder */
+  --ink: #0E1D33;
+  --text-primary: #0E1D33;
+  --text-secondary: rgba(14, 29, 51, 0.70);
+  --text-muted: rgba(14, 29, 51, 0.46);
 
-  /* Text — opacity ladder (hd-media pattern) */
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.65);
-  --text-muted: rgba(255, 255, 255, 0.4);
+  /* Accent — sapphire */
+  --accent: #1B4FD8;
+  --accent-strong: #163FAE;
+  --accent-soft: rgba(27, 79, 216, 0.08);
+  --accent-line: rgba(27, 79, 216, 0.28);
+  --on-accent: #FFFFFF;
 
-  /* Borders — hairlines */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glow: rgba(0, 255, 209, 0.45);
-  --border-purple: rgba(83, 74, 183, 0.45);
+  /* Functional */
+  --whatsapp: #15803D;
+  --whatsapp-hover: #166534;
 
-  /* Glows */
-  --glow-cyan: 0 0 20px rgba(0, 255, 209, 0.2);
-  --glow-cyan-strong: 0 0 40px rgba(0, 255, 209, 0.35);
-  --glow-purple: 0 0 20px rgba(83, 74, 183, 0.35);
-  --glow-purple-strong: 0 0 40px rgba(83, 74, 183, 0.5);
+  /* Lines & shadows */
+  --border-subtle: rgba(14, 29, 51, 0.10);
+  --border-strong: rgba(14, 29, 51, 0.18);
+  --shadow-card: 0 1px 2px rgba(14, 29, 51, 0.05), 0 8px 24px rgba(14, 29, 51, 0.06);
+  --shadow-card-hover: 0 2px 4px rgba(14, 29, 51, 0.06), 0 16px 40px rgba(14, 29, 51, 0.10);
+
+  /* Legacy aliases — old classes/pages keep working, re-tinted to brand */
+  --orci-cyan: #1B4FD8;
+  --orci-blue: #163FAE;
+  --orci-purple: #163FAE;
+  --orci-purple-dark: #122F80;
+  --orci-primary: #1B4FD8;
+  --background: var(--bg);
+  --border-glow: var(--accent-line);
+  --glow-cyan: var(--shadow-card);
+  --glow-cyan-strong: var(--shadow-card-hover);
 
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Dark tokens — applied by html[data-theme] toggle OR any zone wrapper */
+[data-theme="dark"] {
+  --bg: #0A1424;
+  --surface: #111F36;
+  --surface-alt: #0D1A2E;
+  --surface-card: #111F36;
+  --surface-hover: #16263F;
+
+  --ink: #EEF3FA;
+  --text-primary: #EEF3FA;
+  --text-secondary: rgba(238, 243, 250, 0.72);
+  --text-muted: rgba(238, 243, 250, 0.46);
+
+  --accent: #6E9BF5;
+  --accent-strong: #8FB3FF;
+  --accent-soft: rgba(110, 155, 245, 0.12);
+  --accent-line: rgba(110, 155, 245, 0.35);
+  --on-accent: #0A1424;
+
+  --whatsapp: #22A555;
+  --whatsapp-hover: #2ABB63;
+
+  --border-subtle: rgba(238, 243, 250, 0.10);
+  --border-strong: rgba(238, 243, 250, 0.18);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.28);
+  --shadow-card-hover: 0 2px 4px rgba(0, 0, 0, 0.30), 0 16px 40px rgba(0, 0, 0, 0.36);
+
+  --orci-cyan: #6E9BF5;
+  --orci-blue: #8FB3FF;
+  --background: var(--bg);
 }
 
 @theme inline {
@@ -48,14 +97,15 @@
 }
 
 body {
-  background-color: var(--background);
+  background-color: var(--bg);
   color: var(--text-primary);
   font-family: var(--font-heebo), var(--bs-font-sans-serif);
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
   overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 html {
@@ -67,163 +117,207 @@ html[dir="rtl"] {
 }
 
 /* ========================================
-   SECTION SYSTEM - DARK
+   TYPOGRAPHY — Frank Ruhl Libre display + Heebo body
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-frank), var(--font-heebo), serif;
+  font-weight: 700;
+  line-height: 1.18;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+
+.font-display {
+  font-family: var(--font-frank), var(--font-heebo), serif;
+}
+
+.font-body {
+  font-family: var(--font-heebo), var(--bs-font-sans-serif);
+}
+
+.cap-hero-title {
+  font-family: var(--font-frank), var(--font-heebo), serif;
+  font-size: clamp(2.5rem, 6.2vw, 4.75rem);
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.cap-section-title {
+  font-family: var(--font-frank), var(--font-heebo), serif;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+/* Editorial micro-label */
+.orci-kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.1rem;
+}
+
+.orci-kicker .orci-kicker-num {
+  display: none;
+}
+
+.orci-kicker .orci-kicker-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--accent);
+}
+
+.orci-kicker::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* ========================================
+   SECTION SYSTEM
    ======================================== */
 
 .cap-section {
-  padding: 4rem 1rem;
+  padding: 4.5rem 1rem;
 }
 
 @media (min-width: 768px) {
   .cap-section {
-    padding: 6rem 2rem;
+    padding: 6.5rem 2rem;
   }
 }
 
 .cap-section-teal {
-  background: rgba(13, 13, 26, 0.97);
+  background: var(--bg);
 }
 
 .cap-section-white {
-  background: rgba(17, 17, 34, 0.97);
+  background: var(--surface-alt);
 }
 
 .cap-section-alt {
-  background: rgba(13, 13, 26, 0.97);
+  background: var(--bg);
 }
 
 /* ========================================
-   CARD SYSTEM - DARK GLASSMORPHISM
+   CARD SYSTEM — clean, sharp, no glass
    ======================================== */
 
 .cap-card {
   background: var(--surface-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 1rem;
+  border-radius: 1.1rem;
   padding: 2rem;
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
 .cap-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--border-glow);
-  box-shadow: var(--glow-cyan);
+  border-color: var(--accent-line);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .cap-card-small {
   background: var(--surface-card);
   border: 1px solid var(--border-subtle);
-  border-radius: 0.75rem;
+  border-radius: 0.9rem;
   padding: 1.5rem;
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
   text-align: center;
 }
 
 .cap-card-small:hover {
-  border-color: var(--border-glow);
-  box-shadow: var(--glow-cyan);
-  transform: translateY(-2px);
+  border-color: var(--accent-line);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.tutorial-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.tutorial-card:hover {
+  border-color: var(--accent-line);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
 }
 
 /* ========================================
-   BUTTONS
+   BUTTONS — pill, confident, minimal
    ======================================== */
 
 .cap-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 2rem;
-  border-radius: 2rem;
-  font-weight: 600;
+  padding: 0.8rem 2rem;
+  border-radius: 999px;
+  font-weight: 700;
   font-size: 0.95rem;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   text-decoration: none;
   border: none;
   cursor: pointer;
 }
 
 .cap-btn-primary {
-  background: linear-gradient(135deg, var(--orci-cyan), var(--orci-blue));
-  color: #0D0D1A;
-  font-weight: 700;
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .cap-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--glow-cyan-strong);
+  background: var(--accent-strong);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.cap-btn-whatsapp {
+  background: var(--whatsapp);
+  color: #ffffff;
+}
+
+.cap-btn-whatsapp:hover {
+  background: var(--whatsapp-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .cap-btn-dark {
   background: var(--surface-card);
   color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-strong);
 }
 
 .cap-btn-dark:hover {
-  border-color: var(--orci-cyan);
-  color: var(--orci-cyan);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .cap-btn-outline {
   background: transparent;
-  border: 1.5px solid var(--orci-cyan);
-  color: var(--orci-cyan);
+  border: 1.5px solid var(--border-strong);
+  color: var(--text-primary);
 }
 
 .cap-btn-outline:hover {
-  background: rgba(0, 255, 209, 0.1);
-  box-shadow: var(--glow-cyan);
-}
-
-/* ========================================
-   TYPOGRAPHY
-   ======================================== */
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-}
-
-.cap-hero-title {
-  font-size: clamp(2.75rem, 7vw, 6rem);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
-}
-
-.cap-section-title {
-  font-size: clamp(2.125rem, 4.5vw, 3.5rem);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-  color: var(--text-primary);
-}
-
-/* Editorial micro-label (mono kicker) — hd-media pattern */
-.orci-kicker {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-
-.orci-kicker .orci-kicker-num {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  color: var(--orci-cyan);
-}
-
-.orci-kicker .orci-kicker-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.35em;
-  color: var(--text-muted);
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
 }
 
 /* ========================================
@@ -232,11 +326,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .cap-badge {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.4rem;
   background: var(--surface-card);
   color: var(--text-primary);
   border: 1px solid var(--border-subtle);
-  border-radius: 2rem;
+  border-radius: 999px;
   font-size: 0.875rem;
   font-weight: 600;
   white-space: nowrap;
@@ -248,78 +342,65 @@ h1, h2, h3, h4, h5, h6 {
 
 .filter-btn {
   padding: 0.5rem 1.25rem;
-  border-radius: 2rem;
+  border-radius: 999px;
   font-size: 0.875rem;
   font-weight: 600;
   border: 1.5px solid var(--border-subtle);
-  background: transparent;
+  background: var(--surface-card);
   color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .filter-btn:hover {
-  border-color: var(--orci-cyan);
-  color: var(--orci-cyan);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .filter-btn-active {
-  background: rgba(0, 255, 209, 0.12);
-  border-color: var(--orci-cyan);
-  color: var(--orci-cyan);
-  box-shadow: var(--glow-cyan);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
 }
 
 /* ========================================
-   GLOW UTILITIES
+   LEGACY GLOW UTILITIES — mapped to soft shadows
    ======================================== */
 
 .glow-cyan {
-  box-shadow: var(--glow-cyan);
+  box-shadow: var(--shadow-card);
 }
 
 .glow-cyan-strong {
-  box-shadow: var(--glow-cyan-strong);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .text-glow-cyan {
-  text-shadow: 0 0 20px rgba(0, 255, 209, 0.5);
+  text-shadow: none;
 }
 
-/* ========================================
-   NEON GRID DECORATION
-   ======================================== */
-
-.neon-grid-bg {
-  background-image:
-    linear-gradient(rgba(0, 255, 209, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 209, 0.04) 1px, transparent 1px);
-  background-size: 50px 50px;
-}
-
+/* Neon grids retired — kept as no-op classes for legacy markup */
+.neon-grid-bg,
 .neon-grid-hero {
-  background-image:
-    linear-gradient(rgba(0, 255, 209, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 209, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-image: none;
 }
 
 /* ========================================
-   DARK SCROLLBAR
+   SCROLLBAR
    ======================================== */
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 255, 209, 0.3);
-  border-radius: 3px;
+  background: var(--border-strong);
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 255, 209, 0.6);
+  background: var(--accent);
 }
 
 /* ========================================
@@ -331,9 +412,8 @@ h1, h2, h3, h4, h5, h6 {
   height: 140px;
   border-radius: 1rem;
   object-fit: cover;
-  box-shadow: var(--glow-cyan);
+  box-shadow: var(--shadow-card);
 }
-
 
 /* ========================================
    NETFLIX-STYLE SCROLLBAR HIDE
@@ -364,7 +444,7 @@ html.a11y-letter-spacing li,
 html.a11y-letter-spacing span { letter-spacing: 0.12em !important; }
 html.a11y-highlight-links a {
   text-decoration: underline !important;
-  outline: 2px solid #00FFD1 !important;
+  outline: 2px solid var(--accent) !important;
   outline-offset: 2px !important;
 }
 html.a11y-no-animations *,
@@ -373,4 +453,10 @@ html.a11y-no-animations *::after {
   animation-duration: 0.001ms !important;
   animation-iteration-count: 1 !important;
   transition-duration: 0.001ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

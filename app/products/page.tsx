@@ -14,53 +14,42 @@ import {
   TrendingUp,
   ChevronDown,
   Send,
+  Quote,
 } from 'lucide-react';
-import { Particles } from '@/components/ui/highlighter';
 import { Footer } from '@/components/layout/Footer';
-
-/* ─── Brand constants (ORCIAI Instagram brand — intentionally distinct from site cyan) ─── */
-const BG = '#0D0D1A';
-const PURPLE = '#534AB7';
-const MINT = '#00FFD1';
-
-/* Text hierarchy — opacity ladder instead of multiple colors (hd-media pattern) */
-const INK_DIM = 'rgba(255,255,255,0.65)';
-const INK_MUTE = 'rgba(255,255,255,0.4)';
-/* Hairline borders */
-const LINE = 'rgba(255,255,255,0.08)';
-const LINE_STRONG = 'rgba(255,255,255,0.16)';
+import { TESTIMONIALS } from '@/data/testimonials';
 
 const WHATSAPP_URL = `https://wa.me/972542599107?text=${encodeURIComponent(
-  'היי אורצי! ראיתי את דף המוצרים ואני רוצה לשמוע עוד על חבילת ההשקה 3+1 לעסק שלי'
+  'היי אור! ראיתי את דף השיווק לעסקים ואשמח לשמוע עוד על חבילת ההשקה 3+1 לעסק שלי'
 )}`;
 
-/* ─── Viral results — covers generated in ORCIAI style, view badge rendered in CSS ─── */
+/* ─── Recent viral results — real reels, real numbers ─── */
 const VIRAL_RESULTS = [
   {
-    views: '847K',
+    views: '921K',
     title: 'טרנד היציע',
     image: '/products/cover-847k.png',
-    link: 'https://www.instagram.com/p/DYPD4JRx3J2/',
+    link: 'https://www.instagram.com/reel/DYPD4JRx3J2/',
   },
   {
-    views: '297K',
-    title: 'טרנד הפירות',
+    views: '350K',
+    title: 'פרסומת לחנות ממתקים',
     image: '/products/cover-297k.png',
-    link: 'https://www.instagram.com/p/DYIItEFKx8A/',
+    link: 'https://www.instagram.com/reel/DYIItEFKx8A/',
   },
   {
-    views: '137K',
-    title: 'הפינגווין הישראלי',
+    views: '140K',
+    title: 'סרטון הסברה על ישראל',
     image: '/products/cover-137k.png',
-    link: 'https://www.instagram.com/p/DUS01xYilsL/',
+    link: 'https://www.instagram.com/reel/DUS01xYilsL/',
   },
 ];
 
 const STATS = [
-  { value: 'x10', label: 'זול מהפקה רגילה' },
+  { value: 'x10', label: 'זול מהפקה מסורתית' },
   { value: '100%', label: 'AI — בלי צלם ואולפן' },
-  { value: '847K', label: 'צפיות בריל בודד' },
-  { value: '72h', label: 'זמן אספקה' },
+  { value: '921K', label: 'צפיות בסרטון בודד' },
+  { value: '72h', label: 'זמן אספקה לסרטון' },
 ];
 
 const TOOLS = ['VEO 3.1', 'KLING 3.0', 'HIGGSFIELD', 'NANO BANANA PRO', 'GPT IMAGE 2', 'SEEDANCE 2.0', 'ELEVENLABS', 'CLAUDE'];
@@ -69,12 +58,12 @@ const SERVICES = [
   {
     icon: Video,
     title: 'פרסומות AI',
-    desc: 'פרסומת ברמה קולנועית לעסק שלכם — בלי צלם, בלי אולפן, בלי שחקנים. רק תוצאה שנראית כמו מיליון דולר.',
+    desc: 'פרסומת ברמה קולנועית לעסק שלך — בלי צלם, בלי אולפן, בלי שחקנים. רק תוצאה שנראית כמו מיליון דולר.',
   },
   {
     icon: TrendingUp,
     title: 'תוכן סושיאל שוטף',
-    desc: 'רילסים וטיקטוקים שבנויים על הנוסחאות שהביאו לי מאות אלפי צפיות — מותאמים למותג שלכם.',
+    desc: 'רילסים וטיקטוקים שבנויים על הנוסחאות שהביאו לי מאות אלפי צפיות — מותאמים למותג שלך.',
   },
   {
     icon: PenTool,
@@ -84,7 +73,7 @@ const SERVICES = [
   {
     icon: ImageIcon,
     title: 'קאברים וויז׳ואלים',
-    desc: 'תמונות קאבר, באנרים וויז׳ואלים ממותגים בסגנון אחיד — כדי שהפיד שלכם ייראה כמו מותג, לא כמו עסק קטן.',
+    desc: 'תמונות קאבר, באנרים וויז׳ואלים ממותגים בסגנון אחיד — כדי שהפיד שלך ייראה כמו מותג, לא כמו עסק קטן.',
   },
 ];
 
@@ -92,7 +81,7 @@ const PACKAGE_INCLUDES = [
   'תסריט ויראלי מותאם לעסק',
   'הפקת AI מלאה ברמה קולנועית',
   'קאבר ממותג לכל סרטון',
-  'התאמה מלאה לשפת המותג שלכם',
+  'התאמה מלאה לשפת המותג שלך',
   'עד 2 סבבי תיקונים לכל סרטון',
   'אספקה תוך 72 שעות לסרטון',
 ];
@@ -100,9 +89,15 @@ const PACKAGE_INCLUDES = [
 const CLIENTS = [
   { name: 'Wave-Adv', logo: '/products/logo-wave-adv.png' },
   { name: 'Pinookim Sweet', logo: '/products/logo-pinookim.jpg' },
+  { name: 'DeepDataTerminal', logo: null },
+  { name: 'מחבר הספר "תה בלי סוכר"', logo: null },
 ];
 
 const FAQ = [
+  {
+    q: 'פרסומת AI לא תיראה מזויפת או זולה לעסק שלי?',
+    a: 'זה החשש הכי נפוץ — ובצדק, כי רוב תוכן ה-AI ברשת באמת נראה ככה. ההבדל הוא שאני לא מייצר "סרטון AI" — אני מפיק פרסומת, עם תסריט, סגנון ובקרת איכות של יוצר תוכן. תסתכל על הדוגמאות למעלה: הן הגיעו למאות אלפי צפיות בדיוק כי הן לא נראות מזויפות.',
+  },
   {
     q: 'כמה זמן לוקח לקבל את הסרטונים?',
     a: 'כל סרטון נמסר תוך 72 שעות מרגע אישור התסריט. חבילה מלאה של 4 סרטונים — בדרך כלל תוך שבועיים.',
@@ -113,24 +108,19 @@ const FAQ = [
   },
   {
     q: 'למי זה מתאים?',
-    a: 'עסקים קטנים-בינוניים שרוצים תוכן ברמה של מותגים גדולים בלי תקציב של מותגים גדולים — מסעדות, קליניקות, איקומרס, נותני שירות ועוד.',
+    a: 'לכל עסק שרוצה נוכחות דיגיטלית ברמה של מותגים גדולים — בלי תקציב של מותגים גדולים. מסעדות, קליניקות, איקומרס, נותני שירות, חנויות ועוד.',
   },
   {
-    q: 'מה אם הסרטון לא מוצא חן בעיניי?',
-    a: 'כל סרטון כולל עד 2 סבבי תיקונים. התסריט מאושר על ידכם לפני ההפקה, כך שאין הפתעות בדרך.',
+    q: 'מה אם הסרטון לא ימצא חן בעיניי?',
+    a: 'כל סרטון כולל עד 2 סבבי תיקונים. התסריט מאושר על ידך לפני ההפקה, כך שאין הפתעות בדרך.',
   },
 ];
 
-/* ─── Section micro-label — mono number + tracked Hebrew label (hd-media editorial pattern) ─── */
-function SectionLabel({ num, label }: { num: string; label: string }) {
+/* ─── Section micro-label ─── */
+function SectionLabel({ label }: { label: string }) {
   return (
-    <div className="flex items-center justify-center gap-3 mb-5">
-      <span className="font-mono text-[11px] tracking-[0.3em]" style={{ color: MINT }}>
-        {num} /
-      </span>
-      <span className="text-[11px] font-bold tracking-[0.35em]" style={{ color: INK_MUTE }}>
-        {label}
-      </span>
+    <div className="orci-kicker">
+      <span className="orci-kicker-label">{label}</span>
     </div>
   );
 }
@@ -162,11 +152,11 @@ function LeadForm() {
       } else {
         const data = await res.json().catch(() => ({}));
         setStatus('error');
-        setErrorMsg(data?.error || 'משהו השתבש, נסו שוב');
+        setErrorMsg(data?.error || 'משהו השתבש, נסה שוב');
       }
     } catch {
       setStatus('error');
-      setErrorMsg('שגיאת רשת, נסו שוב');
+      setErrorMsg('שגיאת רשת, נסה שוב');
     }
   }
 
@@ -179,20 +169,23 @@ function LeadForm() {
       >
         <div
           className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center"
-          style={{ background: 'rgba(0,255,209,0.12)', border: `2px solid ${MINT}` }}
+          style={{ background: 'var(--accent-soft)', border: '2px solid var(--accent)' }}
         >
-          <Check className="w-8 h-8" style={{ color: MINT }} />
+          <Check className="w-8 h-8" style={{ color: 'var(--accent)' }} />
         </div>
-        <h3 className="text-2xl font-bold text-white mb-2">הפרטים נשלחו!</h3>
-        <p style={{ color: INK_DIM }}>אחזור אליכם תוך 24 שעות עם הצעה מותאמת</p>
+        <h3 className="text-2xl font-bold mb-2">הפרטים נשלחו!</h3>
+        <p style={{ color: 'var(--text-secondary)' }}>אחזור אליך תוך 24 שעות עם הצעה מותאמת</p>
       </motion.div>
     );
   }
 
-  const inputStyle = {
-    background: 'rgba(255,255,255,0.04)',
-    border: `1px solid ${LINE_STRONG}`,
+  const inputStyle: React.CSSProperties = {
+    background: 'var(--surface-card)',
+    border: '1px solid var(--border-strong)',
+    color: 'var(--text-primary)',
   };
+  const inputClass =
+    'w-full px-5 py-3.5 rounded-full text-sm outline-none transition-colors placeholder:opacity-50';
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
@@ -203,7 +196,7 @@ function LeadForm() {
           onChange={(e) => setName(e.target.value)}
           placeholder="שם מלא *"
           required
-          className="w-full px-5 py-3.5 rounded-full text-sm text-white placeholder:text-white/35 outline-none focus:border-[#00FFD1] transition-colors"
+          className={inputClass}
           style={inputStyle}
         />
         <input
@@ -212,7 +205,7 @@ function LeadForm() {
           onChange={(e) => setPhone(e.target.value)}
           placeholder="טלפון *"
           required
-          className="w-full px-5 py-3.5 rounded-full text-sm text-white placeholder:text-white/35 outline-none focus:border-[#00FFD1] transition-colors"
+          className={inputClass}
           style={inputStyle}
         />
       </div>
@@ -222,7 +215,7 @@ function LeadForm() {
         onChange={(e) => setEmail(e.target.value)}
         placeholder="אימייל *"
         required
-        className="w-full px-5 py-3.5 rounded-full text-sm text-white placeholder:text-white/35 outline-none focus:border-[#00FFD1] transition-colors"
+        className={inputClass}
         style={inputStyle}
       />
       <input
@@ -230,24 +223,20 @@ function LeadForm() {
         value={business}
         onChange={(e) => setBusiness(e.target.value)}
         placeholder="תחום העסק (מסעדה, קליניקה, חנות אונליין...)"
-        className="w-full px-5 py-3.5 rounded-full text-sm text-white placeholder:text-white/35 outline-none focus:border-[#00FFD1] transition-colors"
+        className={inputClass}
         style={inputStyle}
       />
 
-      {errorMsg && <p className="text-red-400 text-xs text-center">{errorMsg}</p>}
+      {errorMsg && <p className="text-red-500 text-xs text-center">{errorMsg}</p>}
 
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full py-4 rounded-full font-black text-base transition-all flex items-center justify-center gap-2 hover:opacity-90"
-        style={{
-          background: status === 'loading' ? 'rgba(0,255,209,0.4)' : MINT,
-          color: BG,
-          boxShadow: status === 'loading' ? 'none' : '0 0 30px rgba(0,255,209,0.3)',
-        }}
+        className="cap-btn cap-btn-primary w-full text-base"
+        style={{ padding: '1rem', opacity: status === 'loading' ? 0.6 : 1 }}
       >
         <Send className="w-5 h-5" />
-        {status === 'loading' ? 'שולח...' : 'שלחו לי הצעה מותאמת'}
+        {status === 'loading' ? 'שולח...' : 'שלח לי הצעה מותאמת'}
       </button>
 
       <label className="flex items-start gap-2 cursor-pointer text-right">
@@ -256,11 +245,11 @@ function LeadForm() {
           checked={agreed}
           onChange={(e) => setAgreed(e.target.checked)}
           className="mt-0.5 w-4 h-4 rounded cursor-pointer flex-shrink-0"
-          style={{ accentColor: MINT }}
+          style={{ accentColor: 'var(--accent)' }}
         />
-        <span className="text-xs leading-relaxed" style={{ color: INK_MUTE }}>
+        <span className="text-xs leading-relaxed" style={{ color: 'var(--text-muted)' }}>
           על ידי שליחה, אני מאשר/ת את{' '}
-          <Link href="/privacy" className="underline hover:opacity-80" style={{ color: MINT }}>
+          <Link href="/privacy" className="underline hover:opacity-80" style={{ color: 'var(--accent)' }}>
             מדיניות הפרטיות
           </Link>{' '}
           ומסכים/ה שתחזרו אליי
@@ -274,19 +263,19 @@ function LeadForm() {
 function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div style={{ borderBottom: `1px solid ${LINE}` }}>
+    <div style={{ borderBottom: '1px solid var(--border-subtle)' }}>
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between gap-4 py-6 text-right"
       >
-        <span className="font-bold text-white text-base md:text-lg">{q}</span>
+        <span className="font-bold text-base md:text-lg" style={{ color: 'var(--text-primary)' }}>{q}</span>
         <ChevronDown
           className={`w-5 h-5 flex-shrink-0 transition-transform ${open ? 'rotate-180' : ''}`}
-          style={{ color: MINT }}
+          style={{ color: 'var(--accent)' }}
         />
       </button>
       {open && (
-        <p className="pb-6 leading-relaxed text-sm md:text-base" style={{ color: INK_DIM }}>
+        <p className="pb-6 leading-relaxed text-sm md:text-base" style={{ color: 'var(--text-secondary)' }}>
           {a}
         </p>
       )}
@@ -301,12 +290,8 @@ function WhatsAppButton({ label, outline = false }: { label: string; outline?: b
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-base transition-all hover:opacity-90"
-      style={
-        outline
-          ? { border: `1px solid ${LINE_STRONG}`, color: '#ffffff', background: 'rgba(255,255,255,0.03)' }
-          : { background: MINT, color: BG, boxShadow: '0 0 30px rgba(0,255,209,0.3)' }
-      }
+      className={`cap-btn text-base ${outline ? 'cap-btn-outline' : 'cap-btn-whatsapp'}`}
+      style={{ padding: '1rem 2.2rem' }}
     >
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -325,7 +310,7 @@ const fadeUp = {
 
 export default function ProductsPage() {
   return (
-    <div className="min-h-screen text-white" style={{ background: BG }}>
+    <div className="min-h-screen" style={{ background: 'var(--bg)', color: 'var(--text-primary)' }}>
       {/* Marquee keyframes */}
       <style>{`
         @keyframes orci-marquee {
@@ -335,54 +320,27 @@ export default function ProductsPage() {
       `}</style>
 
       {/* ─── Hero ─── */}
-      <section className="relative overflow-hidden px-6 pt-24 pb-20 md:pt-36 md:pb-28">
-        <Particles className="absolute inset-0" quantity={120} color={MINT} ease={80} />
-        {/* Purple glow orbs */}
-        <div
-          className="pointer-events-none absolute -top-32 right-1/4 w-96 h-96 rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(83,74,183,0.35) 0%, transparent 70%)' }}
-        />
-        <div
-          className="pointer-events-none absolute top-40 left-1/4 w-72 h-72 rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(0,255,209,0.1) 0%, transparent 70%)' }}
-        />
-
-        <div className="relative max-w-6xl mx-auto text-center">
+      <section className="relative overflow-hidden px-6 pt-20 pb-16 md:pt-28 md:pb-24">
+        <div className="relative max-w-5xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex items-center justify-center gap-3 mb-8"
+            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-sm font-semibold mb-8"
+            style={{ background: 'var(--accent-soft)', color: 'var(--accent)', border: '1px solid var(--accent-line)' }}
           >
-            <span className="font-mono text-[11px] tracking-[0.3em]" style={{ color: MINT }}>
-              ORCIAI
-            </span>
-            <span className="w-1 h-1 rounded-full" style={{ background: MINT }} />
-            <span className="text-[11px] font-bold tracking-[0.35em]" style={{ color: INK_MUTE }}>
-              תוכן AI לעסקים
-            </span>
+            שיווק AI לעסקים · אור שמר
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-black mb-8"
-            style={{ fontSize: 'clamp(42px, 8.5vw, 116px)', lineHeight: 1.05, letterSpacing: '-0.02em' }}
+            className="cap-hero-title mb-8"
           >
-            תוכן שעוצר
+            תוכן שעוצר את הגלילה.
             <br />
-            את הגלילה.
-            <br />
-            <span
-              style={{
-                background: `linear-gradient(135deg, ${MINT} 30%, ${PURPLE})`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
-              במחיר שלא עוצר אתכם.
-            </span>
+            <span style={{ color: 'var(--accent)' }}>במחיר שלא עוצר אותך.</span>
           </motion.h1>
 
           <motion.p
@@ -390,11 +348,11 @@ export default function ProductsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-base md:text-xl leading-relaxed max-w-2xl mx-auto mb-12"
-            style={{ color: INK_DIM }}
+            style={{ color: 'var(--text-secondary)' }}
           >
-            פרסומות וסרטוני סושיאל מבוססי <span className="font-bold" style={{ color: MINT }}>AI</span> לעסק
-            שלכם — מהיוצר שמאחורי <span className="font-bold" style={{ color: MINT }}>25 מיליון צפיות</span>.
-            בלי צלם, בלי אולפן, בלי תקציבי ענק.
+            פרסומות וסרטוני סושיאל מבוססי AI לעסק שלך — מהיוצר שמאחורי{' '}
+            <span className="font-bold" style={{ color: 'var(--text-primary)' }}>מיליוני צפיות</span>.
+            בלי צלם, בלי אולפן, בלי תקציבי ענק — ובלי שזה ייראה מזויף.
           </motion.p>
 
           <motion.div
@@ -405,12 +363,12 @@ export default function ProductsPage() {
           >
             <a
               href="#lead-form"
-              className="inline-flex items-center justify-center px-9 py-4 rounded-full font-black text-base transition-all hover:opacity-90"
-              style={{ background: MINT, color: BG, boxShadow: '0 0 30px rgba(0,255,209,0.3)' }}
+              className="cap-btn cap-btn-primary text-base"
+              style={{ padding: '1rem 2.4rem' }}
             >
-              אני רוצה תוכן כזה ←
+              אני רוצה תוכן כזה לעסק שלי
             </a>
-            <WhatsAppButton label="דברו איתי בוואטסאפ" outline />
+            <WhatsAppButton label="דבר איתי בוואטסאפ" outline />
           </motion.div>
         </div>
       </section>
@@ -418,22 +376,22 @@ export default function ProductsPage() {
       {/* ─── Tools marquee ─── */}
       <div
         className="overflow-hidden py-5"
-        style={{ borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}`, direction: 'ltr' }}
+        style={{ borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)', direction: 'ltr', background: 'var(--surface-alt)' }}
       >
         <div
           className="flex w-max items-center gap-10"
           style={{ animation: 'orci-marquee 30s linear infinite' }}
         >
           {[...TOOLS, ...TOOLS].map((tool, i) => (
-            <span key={i} className="flex items-center gap-10 font-mono text-xs tracking-[0.25em] whitespace-nowrap" style={{ color: INK_MUTE }}>
+            <span key={i} className="flex items-center gap-10 font-mono text-xs tracking-[0.25em] whitespace-nowrap" style={{ color: 'var(--text-muted)' }}>
               {tool}
-              <span className="w-1 h-1 rounded-full inline-block" style={{ background: MINT }} />
+              <span className="w-1 h-1 rounded-full inline-block" style={{ background: 'var(--accent)' }} />
             </span>
           ))}
         </div>
       </div>
 
-      {/* ─── Stats strip — hairline grid, mono numbers ─── */}
+      {/* ─── Stats strip ─── */}
       <section className="px-6 py-14 md:py-20">
         <motion.div
           {...fadeUp}
@@ -441,10 +399,10 @@ export default function ProductsPage() {
         >
           {STATS.map((s) => (
             <div key={s.label} className="text-center px-4 py-6">
-              <div className="font-mono text-4xl md:text-5xl font-bold mb-2" style={{ color: MINT }}>
+              <div className="font-display text-4xl md:text-5xl font-black mb-2" style={{ color: 'var(--accent)' }}>
                 {s.value}
               </div>
-              <div className="text-xs md:text-sm" style={{ color: INK_MUTE }}>
+              <div className="text-xs md:text-sm" style={{ color: 'var(--text-muted)' }}>
                 {s.label}
               </div>
             </div>
@@ -453,15 +411,15 @@ export default function ProductsPage() {
       </section>
 
       {/* ─── Viral results ─── */}
-      <section className="px-6 py-20 md:py-28" style={{ borderTop: `1px solid ${LINE}` }}>
+      <section className="px-6 py-20 md:py-28" style={{ borderTop: '1px solid var(--border-subtle)', background: 'var(--surface-alt)' }}>
         <div className="max-w-5xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <SectionLabel num="01" label="תוצאות" />
-            <h2 className="font-black mb-5" style={{ fontSize: 'clamp(34px, 5vw, 64px)', lineHeight: 1.1 }}>
-              התוצאות <span style={{ color: MINT }}>מדברות בעצמן</span>
+            <SectionLabel label="תוצאות" />
+            <h2 className="cap-section-title mb-5">
+              התוצאות <span style={{ color: 'var(--accent)' }}>מדברות בעצמן</span>
             </h2>
-            <p className="text-base md:text-lg max-w-2xl mx-auto" style={{ color: INK_DIM }}>
-              אלה לא הבטחות — אלה סרטונים אמיתיים שיצרתי עם AI. לחצו וראו בעצמכם.
+            <p className="text-base md:text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+              אלה לא הבטחות — אלה סרטונים אמיתיים שיצרתי עם AI. לחץ וראה בעצמך.
             </p>
           </motion.div>
 
@@ -477,7 +435,7 @@ export default function ProductsPage() {
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.5, delay: i * 0.15 }}
                 className="group relative block rounded-2xl overflow-hidden transition-transform hover:-translate-y-2"
-                style={{ border: `1px solid ${LINE_STRONG}`, aspectRatio: '9/16' }}
+                style={{ border: '1px solid var(--border-subtle)', aspectRatio: '9/16', boxShadow: 'var(--shadow-card)' }}
               >
                 <Image
                   src={item.image}
@@ -489,23 +447,18 @@ export default function ProductsPage() {
                 {/* Bottom gradient */}
                 <div
                   className="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none"
-                  style={{ background: 'linear-gradient(to top, rgba(13,13,26,0.95), transparent)' }}
-                />
-                {/* Hover glow */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-2xl"
-                  style={{ boxShadow: `inset 0 0 60px rgba(0,255,209,0.15)`, border: `1px solid ${MINT}` }}
+                  style={{ background: 'linear-gradient(to top, rgba(10,16,28,0.95), transparent)' }}
                 />
                 {/* Views badge */}
                 <div className="absolute bottom-4 inset-x-0 flex flex-col items-center gap-1.5">
                   <div
-                    className="flex items-center gap-2 px-5 py-1.5 rounded-full font-mono font-bold text-xl"
-                    style={{ background: 'rgba(13,13,26,0.75)', border: `1px solid ${MINT}`, color: '#fff', backdropFilter: 'blur(8px)' }}
+                    className="flex items-center gap-2 px-5 py-1.5 rounded-full font-bold text-xl text-white"
+                    style={{ background: 'rgba(10,16,28,0.7)', border: '1px solid rgba(255,255,255,0.3)', backdropFilter: 'blur(8px)' }}
                   >
-                    <Eye className="w-5 h-5" style={{ color: MINT }} />
+                    <Eye className="w-5 h-5" />
                     {item.views}
                   </div>
-                  <span className="text-xs" style={{ color: INK_DIM }}>{item.title}</span>
+                  <span className="text-xs text-white/85">{item.title}</span>
                 </div>
               </motion.a>
             ))}
@@ -513,27 +466,49 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* ─── Manifesto statement ─── */}
-      <section className="px-6 py-20 md:py-28" style={{ borderTop: `1px solid ${LINE}` }}>
-        <motion.div {...fadeUp} className="max-w-4xl mx-auto text-center">
-          <p
-            className="font-black"
-            style={{ fontSize: 'clamp(28px, 4.5vw, 52px)', lineHeight: 1.25 }}
-          >
-            אני לא מפיק עוד תוכן.
-            <br />
-            <span style={{ color: MINT }}>אני מפיק תוכן שאנשים עוצרים בשבילו.</span>
-          </p>
-        </motion.div>
-      </section>
+      {/* ─── Testimonials — real client quotes, anonymous by request ─── */}
+      {TESTIMONIALS.length > 0 && (
+        <section className="px-6 py-20 md:py-28" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+          <div className="max-w-5xl mx-auto">
+            <motion.div {...fadeUp} className="text-center mb-14">
+              <SectionLabel label="לקוחות מספרים" />
+              <h2 className="cap-section-title">
+                במילים <span style={{ color: 'var(--accent)' }}>שלהם</span>
+              </h2>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {TESTIMONIALS.map((t, i) => (
+                <motion.figure
+                  key={t.quote}
+                  initial={{ opacity: 0, y: 26 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="cap-card flex flex-col"
+                  style={{ padding: '1.75rem' }}
+                >
+                  <Quote className="w-6 h-6 mb-4" style={{ color: 'var(--accent)' }} />
+                  <blockquote className="text-lg font-medium leading-relaxed flex-1 mb-4" style={{ color: 'var(--text-primary)' }}>
+                    &quot;{t.quote}&quot;
+                  </blockquote>
+                  <figcaption>
+                    <div className="font-bold text-sm">{t.name}</div>
+                    {t.role && <div className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>{t.role}</div>}
+                  </figcaption>
+                </motion.figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ─── Services ─── */}
-      <section className="px-6 py-20 md:py-28" style={{ borderTop: `1px solid ${LINE}` }}>
+      <section className="px-6 py-20 md:py-28" style={{ borderTop: '1px solid var(--border-subtle)', background: 'var(--surface-alt)' }}>
         <div className="max-w-5xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <SectionLabel num="02" label="השירותים" />
-            <h2 className="font-black" style={{ fontSize: 'clamp(34px, 5vw, 64px)', lineHeight: 1.1 }}>
-              מה <span style={{ color: MINT }}>תקבלו</span>
+            <SectionLabel label="השירותים" />
+            <h2 className="cap-section-title">
+              מה <span style={{ color: 'var(--accent)' }}>תקבל</span>
             </h2>
           </motion.div>
 
@@ -545,22 +520,16 @@ export default function ProductsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="rounded-2xl p-8 transition-colors hover:border-[#00FFD1]/40"
-                style={{ background: 'rgba(255,255,255,0.025)', border: `1px solid ${LINE}` }}
+                className="cap-card"
               >
-                <div className="flex items-center justify-between mb-5">
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center"
-                    style={{ background: 'rgba(0,255,209,0.08)', border: '1px solid rgba(0,255,209,0.25)' }}
-                  >
-                    <s.icon className="w-5 h-5" style={{ color: MINT }} />
-                  </div>
-                  <span className="font-mono text-[11px] tracking-[0.25em]" style={{ color: INK_MUTE }}>
-                    0{i + 1}
-                  </span>
+                <div
+                  className="w-12 h-12 rounded-full flex items-center justify-center mb-5"
+                  style={{ background: 'var(--accent-soft)', border: '1px solid var(--accent-line)' }}
+                >
+                  <s.icon className="w-5 h-5" style={{ color: 'var(--accent)' }} />
                 </div>
                 <h3 className="text-xl font-bold mb-3">{s.title}</h3>
-                <p className="leading-relaxed text-sm md:text-base" style={{ color: INK_DIM }}>
+                <p className="leading-relaxed text-sm md:text-base" style={{ color: 'var(--text-secondary)' }}>
                   {s.desc}
                 </p>
               </motion.div>
@@ -570,12 +539,12 @@ export default function ProductsPage() {
       </section>
 
       {/* ─── AI vs traditional ─── */}
-      <section className="px-6 py-20 md:py-28" style={{ borderTop: `1px solid ${LINE}` }}>
+      <section className="px-6 py-20 md:py-28" style={{ borderTop: '1px solid var(--border-subtle)' }}>
         <div className="max-w-5xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-14">
-            <SectionLabel num="03" label="ההשוואה" />
-            <h2 className="font-black" style={{ fontSize: 'clamp(34px, 5vw, 64px)', lineHeight: 1.1 }}>
-              למה AI ולא <span style={{ color: '#8b80f0' }}>הפקה רגילה?</span>
+            <SectionLabel label="ההשוואה" />
+            <h2 className="cap-section-title">
+              למה AI ולא <span style={{ color: 'var(--accent)' }}>הפקה רגילה?</span>
             </h2>
           </motion.div>
 
@@ -583,28 +552,28 @@ export default function ProductsPage() {
             <motion.div
               {...fadeUp}
               className="rounded-2xl p-8 md:p-10"
-              style={{ background: 'rgba(255,255,255,0.02)', border: `1px solid ${LINE}` }}
+              style={{ background: 'var(--surface-card)', border: '1px solid var(--border-subtle)' }}
             >
-              <h3 className="text-lg font-bold mb-6" style={{ color: INK_MUTE }}>הפקה מסורתית</h3>
-              <ul className="space-y-4" style={{ color: INK_DIM }}>
-                <li className="flex gap-3"><span className="text-red-400/70">✗</span> ₪10,000+ לסרטון בודד</li>
-                <li className="flex gap-3"><span className="text-red-400/70">✗</span> שבועות של תיאומים, צלמים ולוקיישנים</li>
-                <li className="flex gap-3"><span className="text-red-400/70">✗</span> כל שינוי = יום צילום נוסף</li>
-                <li className="flex gap-3"><span className="text-red-400/70">✗</span> מוגבל למה שאפשר לצלם במציאות</li>
+              <h3 className="text-lg font-bold mb-6" style={{ color: 'var(--text-muted)' }}>הפקה מסורתית</h3>
+              <ul className="space-y-4" style={{ color: 'var(--text-secondary)' }}>
+                <li className="flex gap-3"><span className="text-red-500/80">✗</span> 10,000 ש&quot;ח ומעלה לסרטון בודד</li>
+                <li className="flex gap-3"><span className="text-red-500/80">✗</span> שבועות של תיאומים, צלמים ולוקיישנים</li>
+                <li className="flex gap-3"><span className="text-red-500/80">✗</span> כל שינוי = יום צילום נוסף</li>
+                <li className="flex gap-3"><span className="text-red-500/80">✗</span> מוגבל למה שאפשר לצלם במציאות</li>
               </ul>
             </motion.div>
 
             <motion.div
               {...fadeUp}
               className="rounded-2xl p-8 md:p-10 relative overflow-hidden"
-              style={{ background: 'rgba(0,255,209,0.04)', border: `1px solid rgba(0,255,209,0.45)`, boxShadow: '0 0 50px rgba(0,255,209,0.08)' }}
+              style={{ background: 'var(--accent-soft)', border: '1.5px solid var(--accent)', boxShadow: 'var(--shadow-card)' }}
             >
-              <h3 className="text-lg font-bold mb-6" style={{ color: MINT }}>הפקת AI עם ORCIAI</h3>
-              <ul className="space-y-4 text-white/90">
-                <li className="flex gap-3"><Check className="w-5 h-5 flex-shrink-0" style={{ color: MINT }} /> חלק קטן מהמחיר</li>
-                <li className="flex gap-3"><Check className="w-5 h-5 flex-shrink-0" style={{ color: MINT }} /> סרטון מוכן תוך 72 שעות</li>
-                <li className="flex gap-3"><Check className="w-5 h-5 flex-shrink-0" style={{ color: MINT }} /> תיקונים בקליק, בלי ימי צילום</li>
-                <li className="flex gap-3"><Check className="w-5 h-5 flex-shrink-0" style={{ color: MINT }} /> כל רעיון אפשרי — גם מה שאי אפשר לצלם</li>
+              <h3 className="text-lg font-bold mb-6" style={{ color: 'var(--accent)' }}>הפקת AI עם אור שמר</h3>
+              <ul className="space-y-4" style={{ color: 'var(--text-primary)' }}>
+                <li className="flex gap-3"><Check className="w-5 h-5 flex-shrink-0" style={{ color: 'var(--accent)' }} /> חלק קטן מהמחיר</li>
+                <li className="flex gap-3"><Check className="w-5 h-5 flex-shrink-0" style={{ color: 'var(--accent)' }} /> סרטון מוכן תוך 72 שעות</li>
+                <li className="flex gap-3"><Check className="w-5 h-5 flex-shrink-0" style={{ color: 'var(--accent)' }} /> תיקונים בקליק, בלי ימי צילום</li>
+                <li className="flex gap-3"><Check className="w-5 h-5 flex-shrink-0" style={{ color: 'var(--accent)' }} /> כל רעיון אפשרי — גם מה שאי אפשר לצלם</li>
               </ul>
             </motion.div>
           </div>
@@ -612,26 +581,34 @@ export default function ProductsPage() {
       </section>
 
       {/* ─── Clients ─── */}
-      <section className="px-6 py-16 md:py-20" style={{ borderTop: `1px solid ${LINE}` }}>
+      <section className="px-6 py-16 md:py-20" style={{ borderTop: '1px solid var(--border-subtle)', background: 'var(--surface-alt)' }}>
         <motion.div {...fadeUp} className="max-w-3xl mx-auto text-center">
-          <SectionLabel num="04" label="לקוחות" />
-          <div className="flex flex-wrap justify-center items-center gap-5 mt-2">
+          <SectionLabel label="לקוחות" />
+          <div className="flex flex-wrap justify-center items-stretch gap-5 mt-2">
             {CLIENTS.map((client) => (
               <div
                 key={client.name}
-                className="rounded-2xl p-3 transition-transform hover:-translate-y-1"
-                style={{ background: 'rgba(255,255,255,0.025)', border: `1px solid ${LINE}` }}
+                className="rounded-2xl p-3 transition-transform hover:-translate-y-1 flex flex-col items-center justify-center"
+                style={{ background: 'var(--surface-card)', border: '1px solid var(--border-subtle)', minWidth: '8.5rem', boxShadow: 'var(--shadow-card)' }}
               >
-                <div className="relative w-28 h-28 rounded-xl overflow-hidden bg-white">
-                  <Image
-                    src={client.logo}
-                    alt={client.name}
-                    fill
-                    sizes="112px"
-                    className="object-contain"
-                  />
-                </div>
-                <p className="mt-2 text-xs font-bold" style={{ color: INK_MUTE }}>{client.name}</p>
+                {client.logo ? (
+                  <>
+                    <div className="relative w-28 h-28 rounded-xl overflow-hidden bg-white">
+                      <Image
+                        src={client.logo}
+                        alt={client.name}
+                        fill
+                        sizes="112px"
+                        className="object-contain"
+                      />
+                    </div>
+                    <p className="mt-2 text-xs font-bold" style={{ color: 'var(--text-muted)' }}>{client.name}</p>
+                  </>
+                ) : (
+                  <div className="w-28 h-28 flex items-center justify-center text-center px-2">
+                    <p className="text-sm font-bold leading-snug" style={{ color: 'var(--text-secondary)' }}>{client.name}</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -639,46 +616,42 @@ export default function ProductsPage() {
       </section>
 
       {/* ─── Launch package ─── */}
-      <section className="px-6 py-20 md:py-28 relative overflow-hidden" style={{ borderTop: `1px solid ${LINE}` }}>
-        <div
-          className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(83,74,183,0.22) 0%, transparent 70%)' }}
-        />
+      <section className="px-6 py-20 md:py-28 relative overflow-hidden" style={{ borderTop: '1px solid var(--border-subtle)' }}>
         <motion.div {...fadeUp} className="relative max-w-2xl mx-auto">
           <div className="text-center mb-10">
-            <SectionLabel num="05" label="המבצע" />
+            <SectionLabel label="המבצע" />
           </div>
           <div
             className="rounded-3xl p-8 md:p-14 text-center"
             style={{
-              background: 'linear-gradient(160deg, rgba(83,74,183,0.18) 0%, rgba(13,13,26,0.9) 60%)',
-              border: `1px solid ${PURPLE}`,
-              boxShadow: '0 0 80px rgba(83,74,183,0.25)',
+              background: 'var(--surface-card)',
+              border: '1.5px solid var(--accent)',
+              boxShadow: 'var(--shadow-card-hover)',
             }}
           >
             <span
               className="inline-block px-5 py-1.5 rounded-full text-xs font-bold tracking-wider mb-8"
-              style={{ background: 'rgba(0,255,209,0.1)', border: `1px solid ${MINT}`, color: MINT }}
+              style={{ background: 'var(--accent-soft)', border: '1px solid var(--accent-line)', color: 'var(--accent)' }}
             >
-              🔥 מבצע השקה — מקומות מוגבלים
+              מבצע השקה — מקומות מוגבלים
             </span>
 
-            <h2 className="font-black mb-3" style={{ fontSize: 'clamp(32px, 5vw, 56px)', lineHeight: 1.1 }}>
-              חבילת ההשקה <span style={{ color: MINT }}>3+1</span>
+            <h2 className="cap-section-title mb-3">
+              חבילת ההשקה <span style={{ color: 'var(--accent)' }}>3+1</span>
             </h2>
-            <p className="text-base md:text-lg mb-10" style={{ color: INK_DIM }}>
-              3 סרטונים מותאמים לעסק שלכם + <span className="font-bold" style={{ color: MINT }}>סרטון רביעי מתנה</span>
+            <p className="text-base md:text-lg mb-10" style={{ color: 'var(--text-secondary)' }}>
+              3 סרטונים מותאמים לעסק שלך + <span className="font-bold" style={{ color: 'var(--accent)' }}>סרטון רביעי מתנה</span>
             </p>
 
             <div className="flex items-baseline justify-center gap-4 mb-10" style={{ direction: 'ltr' }}>
-              <span className="font-mono text-2xl md:text-3xl line-through" style={{ color: INK_MUTE }}>₪4,000</span>
-              <span className="font-mono text-6xl md:text-7xl font-bold" style={{ color: MINT }}>₪2,250</span>
+              <span className="font-display text-2xl md:text-3xl line-through" style={{ color: 'var(--text-muted)' }}>₪4,000</span>
+              <span className="font-display text-6xl md:text-7xl font-black" style={{ color: 'var(--accent)' }}>₪2,250</span>
             </div>
 
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-right mb-12 max-w-lg mx-auto">
               {PACKAGE_INCLUDES.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm md:text-base text-white/85">
-                  <Check className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: MINT }} />
+                <li key={item} className="flex items-start gap-2.5 text-sm md:text-base" style={{ color: 'var(--text-secondary)' }}>
+                  <Check className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--accent)' }} />
                   {item}
                 </li>
               ))}
@@ -687,15 +660,15 @@ export default function ProductsPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="#lead-form"
-                className="inline-flex items-center justify-center px-9 py-4 rounded-full font-black text-base transition-all hover:opacity-90"
-                style={{ background: MINT, color: BG, boxShadow: '0 0 30px rgba(0,255,209,0.3)' }}
+                className="cap-btn cap-btn-primary text-base"
+                style={{ padding: '1rem 2.4rem' }}
               >
-                שריינו מקום במבצע ←
+                שריין מקום במבצע
               </a>
               <WhatsAppButton label="שאלה? וואטסאפ" outline />
             </div>
 
-            <p className="mt-8 text-xs flex items-center justify-center gap-1.5" style={{ color: INK_MUTE }}>
+            <p className="mt-8 text-xs flex items-center justify-center gap-1.5" style={{ color: 'var(--text-muted)' }}>
               <Clock className="w-3.5 h-3.5" />
               המחיר תקף לחבילות ההשקה הראשונות בלבד
             </p>
@@ -704,48 +677,48 @@ export default function ProductsPage() {
       </section>
 
       {/* ─── Lead form + WhatsApp ─── */}
-      <section id="lead-form" className="px-6 py-20 md:py-28" style={{ borderTop: `1px solid ${LINE}` }}>
+      <section id="lead-form" className="px-6 py-20 md:py-28" style={{ borderTop: '1px solid var(--border-subtle)', background: 'var(--surface-alt)' }}>
         <div className="max-w-xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <SectionLabel num="06" label="יצירת קשר" />
-            <h2 className="font-black mb-4" style={{ fontSize: 'clamp(34px, 5vw, 56px)', lineHeight: 1.1 }}>
-              בואו <span style={{ color: MINT }}>נתחיל</span>
+            <SectionLabel label="יצירת קשר" />
+            <h2 className="cap-section-title mb-4">
+              בוא <span style={{ color: 'var(--accent)' }}>נתחיל</span>
             </h2>
-            <p style={{ color: INK_DIM }}>
-              השאירו פרטים ואחזור אליכם תוך 24 שעות עם הצעה מותאמת לעסק שלכם
+            <p style={{ color: 'var(--text-secondary)' }}>
+              השאר פרטים ואחזור אליך תוך 24 שעות עם הצעה מותאמת לעסק שלך
             </p>
           </motion.div>
 
           <motion.div
             {...fadeUp}
             className="rounded-3xl p-7 md:p-10"
-            style={{ background: 'rgba(255,255,255,0.02)', border: `1px solid ${LINE_STRONG}` }}
+            style={{ background: 'var(--surface-card)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
           >
             <LeadForm />
 
             <div className="flex items-center gap-4 my-7">
-              <div className="flex-1 h-px" style={{ background: LINE }} />
-              <span className="text-xs" style={{ color: INK_MUTE }}>או</span>
-              <div className="flex-1 h-px" style={{ background: LINE }} />
+              <div className="flex-1 h-px" style={{ background: 'var(--border-subtle)' }} />
+              <span className="text-xs" style={{ color: 'var(--text-muted)' }}>או</span>
+              <div className="flex-1 h-px" style={{ background: 'var(--border-subtle)' }} />
             </div>
 
             <div className="text-center">
-              <WhatsAppButton label="דברו איתי ישר בוואטסאפ" outline />
+              <WhatsAppButton label="דבר איתי ישר בוואטסאפ" />
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* ─── FAQ ─── */}
-      <section className="px-6 py-20 md:py-28" style={{ borderTop: `1px solid ${LINE}` }}>
+      <section className="px-6 py-20 md:py-28" style={{ borderTop: '1px solid var(--border-subtle)' }}>
         <div className="max-w-2xl mx-auto">
           <motion.div {...fadeUp} className="text-center mb-12">
-            <SectionLabel num="07" label="שאלות" />
-            <h2 className="font-black" style={{ fontSize: 'clamp(34px, 5vw, 56px)', lineHeight: 1.1 }}>
-              שאלות <span style={{ color: MINT }}>נפוצות</span>
+            <SectionLabel label="שאלות" />
+            <h2 className="cap-section-title">
+              שאלות <span style={{ color: 'var(--accent)' }}>נפוצות</span>
             </h2>
           </motion.div>
-          <motion.div {...fadeUp} style={{ borderTop: `1px solid ${LINE}` }}>
+          <motion.div {...fadeUp} style={{ borderTop: '1px solid var(--border-subtle)' }}>
             {FAQ.map((item) => (
               <FaqItem key={item.q} q={item.q} a={item.a} />
             ))}

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Lock, Unlock, Sparkles, ChevronDown, ChevronUp, TrendingUp, Clock, Grid } from 'lucide-react';
 import { GUIDES, type GuideData } from '@/data/guides';
-import EmailGateModal, { isContentUnlocked, UNLOCK_KEY } from '@/components/ui/email-gate-modal';
+import EmailGateModal, { isContentUnlocked } from '@/components/ui/email-gate-modal';
 
 type FilterType = 'all' | 'popular' | 'new';
 
@@ -111,8 +111,8 @@ export default function TutorialGrid() {
                 <div className="absolute top-3 right-3 z-10 flex gap-1.5">
                   {guide.popular && (
                     <span
-                      className="text-xs font-bold px-2 py-0.5 rounded-full flex items-center gap-1"
-                      style={{ background: 'rgba(0,255,209,0.15)', border: '1px solid rgba(0,255,209,0.4)', color: '#00FFD1' }}
+                      className="text-xs font-bold px-2 py-0.5 rounded-full flex items-center gap-1 text-white"
+                      style={{ background: 'var(--accent)' }}
                     >
                       <TrendingUp className="w-3 h-3" /> פופולרי
                     </span>
@@ -120,7 +120,7 @@ export default function TutorialGrid() {
                   {guide.isNew && (
                     <span
                       className="text-xs font-bold px-2 py-0.5 rounded-full"
-                      style={{ background: 'rgba(83,74,183,0.2)', border: '1px solid rgba(83,74,183,0.4)', color: '#a78bfa' }}
+                      style={{ background: 'var(--surface-card)', border: '1px solid var(--accent-line)', color: 'var(--accent)' }}
                     >
                       חדש
                     </span>
@@ -132,9 +132,9 @@ export default function TutorialGrid() {
                   <div className="absolute top-3 left-3 z-10">
                     <div
                       className="w-8 h-8 rounded-full flex items-center justify-center"
-                      style={{ background: 'rgba(13,13,26,0.8)', border: '1px solid rgba(0,255,209,0.25)' }}
+                      style={{ background: 'rgba(10,16,28,0.75)', border: '1px solid rgba(255,255,255,0.3)' }}
                     >
-                      <Lock className="w-3.5 h-3.5 text-orci-cyan" />
+                      <Lock className="w-3.5 h-3.5 text-white" />
                     </div>
                   </div>
                 )}
@@ -142,9 +142,9 @@ export default function TutorialGrid() {
                   <div className="absolute top-3 left-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
                     <div
                       className="w-8 h-8 rounded-full flex items-center justify-center"
-                      style={{ background: 'rgba(0,255,209,0.15)', border: '1px solid rgba(0,255,209,0.4)' }}
+                      style={{ background: 'rgba(10,16,28,0.6)', border: '1px solid rgba(255,255,255,0.3)' }}
                     >
-                      <Unlock className="w-3.5 h-3.5 text-orci-cyan" />
+                      <Unlock className="w-3.5 h-3.5 text-white" />
                     </div>
                   </div>
                 )}
@@ -164,37 +164,35 @@ export default function TutorialGrid() {
                   {/* Hover overlay */}
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                    style={{ background: 'rgba(0,255,209,0.08)' }}
+                    style={{ background: 'rgba(10,16,28,0.25)' }}
                   >
-                    {isLocked ? (
-                      <span className="text-white font-bold text-sm px-4 py-2 rounded-full" style={{ background: 'rgba(0,255,209,0.2)', border: '1px solid rgba(0,255,209,0.5)' }}>
-                        לחצו לפתיחת גישה
-                      </span>
-                    ) : (
-                      <span className="text-white font-bold text-sm px-4 py-2 rounded-full" style={{ background: 'rgba(0,255,209,0.2)', border: '1px solid rgba(0,255,209,0.5)' }}>
-                        קרא את המדריך
-                      </span>
-                    )}
+                    <span
+                      className="text-white font-bold text-sm px-4 py-2 rounded-full"
+                      style={{ background: 'rgba(10,16,28,0.7)', border: '1px solid rgba(255,255,255,0.35)', backdropFilter: 'blur(6px)' }}
+                    >
+                      {isLocked ? 'לחץ לפתיחת גישה' : 'קרא את המדריך'}
+                    </span>
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="flex flex-col flex-1 p-4">
                   {/* Category */}
-                  <span className="text-xs font-medium mb-2" style={{ color: '#00FFD1' }}>
+                  <span className="text-xs font-semibold mb-2" style={{ color: 'var(--accent)' }}>
                     {guide.category}
                   </span>
 
                   {/* Title */}
                   <h3
-                    className="font-bold text-base text-white mb-1.5 leading-snug cursor-pointer hover:text-orci-cyan transition-colors"
+                    className="font-bold text-base mb-1.5 leading-snug cursor-pointer transition-colors"
+                    style={{ color: 'var(--text-primary)' }}
                     onClick={() => handleCardClick(guide)}
                   >
                     {guide.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-sm leading-relaxed mb-3 flex-1" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                  <p className="text-sm leading-relaxed mb-3 flex-1" style={{ color: 'var(--text-secondary)' }}>
                     {guide.description}
                   </p>
 
@@ -204,14 +202,14 @@ export default function TutorialGrid() {
                       onClick={(e) => toggleSummary(e, guide.id)}
                       className="w-full flex items-center justify-between gap-2 py-2 px-3 rounded-lg text-xs font-semibold transition-all"
                       style={{
-                        background: summaryOpen ? 'rgba(0,255,209,0.1)' : 'rgba(255,255,255,0.04)',
-                        border: `1px solid ${summaryOpen ? 'rgba(0,255,209,0.4)' : 'rgba(255,255,255,0.08)'}`,
-                        color: summaryOpen ? '#00FFD1' : 'rgba(255,255,255,0.65)',
+                        background: summaryOpen ? 'var(--accent-soft)' : 'var(--surface-hover)',
+                        border: `1px solid ${summaryOpen ? 'var(--accent-line)' : 'var(--border-subtle)'}`,
+                        color: summaryOpen ? 'var(--accent)' : 'var(--text-secondary)',
                       }}
                     >
                       <span className="flex items-center gap-1.5">
                         <Sparkles className="w-3 h-3" />
-                        AI Synthesis
+                        סיכום מהיר
                       </span>
                       {summaryOpen ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                     </button>
@@ -228,14 +226,14 @@ export default function TutorialGrid() {
                           <div
                             className="mt-2 p-3 rounded-lg text-xs leading-relaxed"
                             style={{
-                              background: 'rgba(0,255,209,0.05)',
-                              border: '1px solid rgba(0,255,209,0.15)',
-                              color: 'rgba(255,255,255,0.6)',
+                              background: 'var(--accent-soft)',
+                              border: '1px solid var(--accent-line)',
+                              color: 'var(--text-secondary)',
                               direction: 'rtl',
                             }}
                           >
-                            <div className="flex items-center gap-1 mb-1.5 font-semibold" style={{ color: '#00FFD1' }}>
-                              <Sparkles className="w-3 h-3" /> סיכום AI
+                            <div className="flex items-center gap-1 mb-1.5 font-semibold" style={{ color: 'var(--accent)' }}>
+                              <Sparkles className="w-3 h-3" /> על המדריך בקצרה
                             </div>
                             {guide.summary}
                           </div>
@@ -251,7 +249,7 @@ export default function TutorialGrid() {
       </motion.div>
 
       {filteredGuides.length === 0 && (
-        <div className="text-center py-16 text-slate-300">
+        <div className="text-center py-16" style={{ color: 'var(--text-secondary)' }}>
           <Grid className="w-10 h-10 mx-auto mb-3 opacity-30" />
           <p>לא נמצאו מדריכים בקטגוריה זו</p>
         </div>

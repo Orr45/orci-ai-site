@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Heebo } from "next/font/google";
+import { Heebo, Frank_Ruhl_Libre } from "next/font/google";
 import { Navigation } from "@/components/layout/Navigation";
 import { Analytics } from "@vercel/analytics/next";
 import AccessibilityWidget from "@/components/ui/accessibility-widget";
@@ -11,10 +11,16 @@ const heebo = Heebo({
   weight: ["300", "400", "500", "700", "800"],
 });
 
+const frankRuhl = Frank_Ruhl_Libre({
+  variable: "--font-frank",
+  subsets: ["hebrew", "latin"],
+  weight: ["400", "500", "700", "900"],
+});
+
 export const metadata: Metadata = {
-  title: "Orci AI - הופכים בינה מלאכותית לכלי העבודה החזק ביותר",
-  description: "המדריכים, הכלים והסודות שיעזרו לכם לשלוט ב-AI - בפשטות ובגובה העיניים",
-  keywords: ["AI", "בינה מלאכותית", "מדריכים", "אוטומציה", "שיווק דיגיטלי"],
+  title: "אור שמר | Orci AI — שיווק ופרסומות AI לעסקים",
+  description: "פרסומות וסרטוני סושיאל ברמה קולנועית לעסק שלך — עם AI, כמעט ללא תקציב הפקה. מהיוצר שמאחורי מיליוני צפיות. וגם: מדריכי AI חינמיים בעברית.",
+  keywords: ["AI", "בינה מלאכותית", "שיווק לעסקים", "פרסומות AI", "סרטוני AI", "מדריכים"],
   authors: [{ name: "Or Shemer (Orci)" }],
   alternates: {
     canonical: "https://orci-ai-site.vercel.app",
@@ -24,17 +30,27 @@ export const metadata: Metadata = {
     locale: "he_IL",
     url: "https://orci-ai-site.vercel.app",
     siteName: "Orci AI",
-    title: "Orci AI - הופכים בינה מלאכותית לכלי העבודה החזק ביותר",
-    description: "המדריכים, הכלים והסודות שיעזרו לכם לשלוט ב-AI - בפשטות ובגובה העיניים",
+    title: "אור שמר | Orci AI — שיווק ופרסומות AI לעסקים",
+    description: "פרסומות וסרטוני סושיאל ברמה קולנועית לעסק שלך — עם AI, כמעט ללא תקציב הפקה.",
     images: [{ url: "https://orci-ai-site.vercel.app/og-image.png", width: 1200, height: 630, alt: "Orci AI" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Orci AI",
-    description: "מדריכי AI בעברית — וידאו, שיווק ואוטומציות",
+    title: "Orci AI — שיווק ופרסומות AI לעסקים",
+    description: "פרסומות AI ברמה קולנועית לעסקים + מדריכי AI בעברית",
     images: ["https://orci-ai-site.vercel.app/og-image.png"],
   },
 };
+
+/* Applies saved theme before first paint (no flash). Default: light. */
+const themeInitScript = `
+(function(){
+  try {
+    var t = localStorage.getItem('orci-theme');
+    if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+})();
+`;
 
 export default function RootLayout({
   children,
@@ -42,8 +58,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="he" dir="rtl">
-      <body className={`${heebo.variable} antialiased`}>
+    <html lang="he" dir="rtl" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body className={`${heebo.variable} ${frankRuhl.variable} antialiased`}>
         <Navigation />
         {children}
         <AccessibilityWidget />

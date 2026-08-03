@@ -18,5 +18,12 @@ export const metadata: Metadata = {
 };
 
 export default function GuidesLayout({ children }: { children: React.ReactNode }) {
-  return <GuideGuard>{children}</GuideGuard>;
+  /* The guides reading area is a permanent dark zone ("learning theater"):
+     design tokens flip to dark inside this subtree regardless of site theme,
+     so all existing MDX articles (built on light-text-over-dark) stay readable. */
+  return (
+    <div data-theme="dark" style={{ background: 'var(--bg)', color: 'var(--text-primary)' }}>
+      <GuideGuard>{children}</GuideGuard>
+    </div>
+  );
 }
