@@ -63,8 +63,11 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className={`${heebo.variable} ${frankRuhl.variable} antialiased`}>
+        <a href="#main-content" className="skip-link">דלג לתוכן הראשי</a>
         <Navigation />
-        {children}
+        <main id="main-content">
+          {children}
+        </main>
         <AccessibilityWidget />
         <Analytics />
       </body>

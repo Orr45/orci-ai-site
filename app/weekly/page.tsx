@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import WeeklyDashboardClient from '@/components/ui/weekly-dashboard';
 import dashboardData from '@/data/weekly-dashboard.json';
 import { WeeklyDashboardData } from '@/types';
+import { Footer } from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
   title: 'עדכון שבועי AI | Orci AI',
@@ -14,5 +15,10 @@ export const metadata: Metadata = {
 };
 
 export default function WeeklyPage() {
-  return <WeeklyDashboardClient data={dashboardData as WeeklyDashboardData} />;
+  return (
+    <>
+      <WeeklyDashboardClient data={dashboardData as WeeklyDashboardData} />
+      <Footer />
+    </>
+  );
 }

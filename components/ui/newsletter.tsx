@@ -74,6 +74,7 @@ export default function Newsletter() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="האימייל שלך"
+                aria-label="כתובת אימייל"
                 className="w-full px-4 py-2.5 bg-transparent outline-none text-sm"
                 style={{ color: 'var(--text-primary)' }}
                 dir="rtl"
@@ -99,6 +100,7 @@ export default function Newsletter() {
                 type="checkbox"
                 checked={agreed}
                 onChange={(e) => setAgreed(e.target.checked)}
+                aria-label="אישור מדיניות הפרטיות"
                 className="mt-0.5 w-4 h-4 rounded cursor-pointer flex-shrink-0"
                 style={{ accentColor: 'var(--accent)' }}
               />

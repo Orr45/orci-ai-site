@@ -32,6 +32,7 @@ export function Footer() {
               <li><Link href="/about" className="transition-colors hover:opacity-70" style={{ color: 'var(--text-secondary)' }}>מי אני</Link></li>
               <li><Link href="/terms" className="transition-colors hover:opacity-70" style={{ color: 'var(--text-secondary)' }}>תנאי שימוש</Link></li>
               <li><Link href="/privacy" className="transition-colors hover:opacity-70" style={{ color: 'var(--text-secondary)' }}>מדיניות פרטיות</Link></li>
+              <li><Link href="/accessibility" className="transition-colors hover:opacity-70" style={{ color: 'var(--text-secondary)' }}>הצהרת נגישות</Link></li>
             </ul>
           </div>
 
@@ -81,6 +82,7 @@ export function Footer() {
         <div className="pt-8" style={{ borderTop: '1px solid var(--border-subtle)' }}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm" style={{ color: 'var(--text-muted)' }}>
             <p>© 2026 Orci AI — אור שמר. כל הזכויות שמורות.</p>
+            <Link href="/accessibility" className="text-xs underline transition-colors hover:opacity-70">הצהרת נגישות</Link>
             <p className="text-xs">תתחילו לחלום — כי עם AI אפשר הכל.</p>
           </div>
         </div>

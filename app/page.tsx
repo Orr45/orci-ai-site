@@ -499,6 +499,7 @@ function EmailSection() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="האימייל שלך..."
+                  aria-label="כתובת אימייל"
                   required
                   className="w-full pr-11 pl-4 py-4 rounded-full text-sm outline-none transition-all"
                   style={{
@@ -535,6 +536,7 @@ function EmailSection() {
               type="checkbox"
               checked={agreed}
               onChange={(e) => setAgreed(e.target.checked)}
+              aria-label="אישור מדיניות הפרטיות"
               className="mt-0.5 w-4 h-4 rounded cursor-pointer flex-shrink-0"
               style={{ accentColor: 'var(--accent)' }}
             />

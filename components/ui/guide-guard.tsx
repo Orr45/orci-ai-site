@@ -157,6 +157,7 @@ function EmailGateInline({ guideName, onUnlock }: { guideName?: string; onUnlock
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="האימייל שלכם"
+                  aria-label="כתובת אימייל"
                   required
                   className="w-full pr-10 pl-4 py-3 rounded-xl text-sm text-white placeholder-slate-500 outline-none transition-all"
                   style={{

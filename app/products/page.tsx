@@ -195,6 +195,7 @@ function LeadForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="שם מלא *"
+          aria-label="שם מלא"
           required
           className={inputClass}
           style={inputStyle}
@@ -204,6 +205,7 @@ function LeadForm() {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder="טלפון *"
+          aria-label="מספר טלפון"
           required
           className={inputClass}
           style={inputStyle}
@@ -214,6 +216,7 @@ function LeadForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="אימייל *"
+        aria-label="כתובת אימייל"
         required
         className={inputClass}
         style={inputStyle}
@@ -223,6 +226,7 @@ function LeadForm() {
         value={business}
         onChange={(e) => setBusiness(e.target.value)}
         placeholder="תחום העסק (מסעדה, קליניקה, חנות אונליין...)"
+        aria-label="תחום העסק"
         className={inputClass}
         style={inputStyle}
       />
@@ -244,6 +248,7 @@ function LeadForm() {
           type="checkbox"
           checked={agreed}
           onChange={(e) => setAgreed(e.target.checked)}
+          aria-label="אישור מדיניות הפרטיות"
           className="mt-0.5 w-4 h-4 rounded cursor-pointer flex-shrink-0"
           style={{ accentColor: 'var(--accent)' }}
         />

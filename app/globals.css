@@ -428,6 +428,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ========================================
+   SKIP NAVIGATION LINK (IS 5568 requirement)
+   ======================================== */
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: -9999px;
+  top: 0;
+  z-index: 10000;
+  padding: 0.9rem 1.6rem;
+  border-radius: 0 0 0.75rem 0.75rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  inset-inline-start: 0;
+}
+
+/* ========================================
    ACCESSIBILITY CLASSES
    ======================================== */
 
