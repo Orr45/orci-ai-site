@@ -47,32 +47,59 @@ export const metadata = {
       </p>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        הנה חמש דוגמאות אמיתיות — <span className="text-orci-cyan font-bold">אותה שקית במבה בדיוק</span>, חמש פקודות שונות:
+        הנה זה בפועל. זאת תמונת המקור — <span className="text-orci-cyan font-bold">תמונת מוצר רגילה לגמרי</span>:
       </p>
 
-      <div className="my-8 space-y-4">
-        <div className="rounded-2xl overflow-hidden">
-          <Image src="/guides/chatgpt-product-prompts/ex-1.png" alt="תמונת מוצר רגילה לצד תוצאה עם תאורת פיצוץ טעמים" width={1080} height={960} className="w-full h-auto" />
+      <div className="my-8 flex justify-center">
+        <div className="rounded-2xl overflow-hidden border border-white/10 bg-black/20 max-w-[240px]">
+          <Image src="/guides/chatgpt-product-prompts/before.png" alt="תמונת מוצר רגילה של שקית במבה על רקע לבן" width={309} height={500} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-slate-400 font-bold text-sm">לפני</p>
+          </div>
         </div>
-        <p className="text-center text-sm text-orci-cyan font-bold font-mono">/flavorburst</p>
-        <div className="rounded-2xl overflow-hidden">
-          <Image src="/guides/chatgpt-product-prompts/ex-2.png" alt="תמונת מוצר רגילה לצד תוצאה עם קרן אור טבעית" width={1080} height={960} className="w-full h-auto" />
-        </div>
-        <p className="text-center text-sm text-orci-cyan font-bold font-mono">/sunbeam</p>
-        <div className="rounded-2xl overflow-hidden">
-          <Image src="/guides/chatgpt-product-prompts/ex-3.png" alt="תמונת מוצר רגילה לצד באנר לדף נחיתה" width={1080} height={960} className="w-full h-auto" />
-        </div>
-        <p className="text-center text-sm text-orci-cyan font-bold font-mono">/landingpage</p>
-        <div className="rounded-2xl overflow-hidden">
-          <Image src="/guides/chatgpt-product-prompts/ex-4.png" alt="תמונת מוצר רגילה לצד תוצאה במראה יוקרתי" width={1080} height={960} className="w-full h-auto" />
-        </div>
-        <p className="text-center text-sm text-orci-cyan font-bold font-mono">/luxuryedition</p>
-        <div className="rounded-2xl overflow-hidden">
-          <Image src="/guides/chatgpt-product-prompts/ex-5.png" alt="תמונת מוצר רגילה לצד תוצאה בסגנון הולוגרפי" width={1080} height={960} className="w-full h-auto" />
-        </div>
-        <p className="text-center text-sm text-orci-cyan font-bold font-mono">/ridescent</p>
       </div>
-      <p className="text-center text-sm text-orci-cyan font-bold">משמאל התמונה המקורית, מימין מה ש-ChatGPT החזיר</p>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-2">
+        וזה מה שחזר ממנה — <span className="text-orci-cyan font-bold">חמש פקודות, חמש תוצאות</span>. אותה תמונה בדיוק בכל אחת מהן:
+      </p>
+
+      <div className="my-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/chatgpt-product-prompts/after-flavorburst.png" alt="שקית במבה בתוך פיצוץ של חטיפים וחמאת בוטנים" width={900} height={1599} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base">/flavorburst</p>
+            <p className="text-sm text-slate-400 mt-1">פיצוץ של התכולה מסביב למוצר</p>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/chatgpt-product-prompts/after-sunbeam.png" alt="שקית במבה בתאורת שמש רכה על משטח אבן" width={900} height={1599} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base">/sunbeam</p>
+            <p className="text-sm text-slate-400 mt-1">אור טבעי רך וצללים ארוכים</p>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/chatgpt-product-prompts/after-luxuryedition.png" alt="שקית במבה במסגרת זהב על שיש שחור" width={900} height={1599} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base">/luxuryedition</p>
+            <p className="text-sm text-slate-400 mt-1">מסגרת זהב על רקע כהה</p>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/chatgpt-product-prompts/after-ridescent.png" alt="שקית במבה על במה הולוגרפית" width={900} height={1599} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base">/ridescent</p>
+            <p className="text-sm text-slate-400 mt-1">במה הולוגרפית וצבעים מתחלפים</p>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20 md:col-span-2">
+          <Image src="/guides/chatgpt-product-prompts/after-landingpage.png" alt="באנר לדף נחיתה עם הכותרת אהבה מהביס הראשון" width={1400} height={788} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base">/landingpage</p>
+            <p className="text-sm text-slate-400 mt-1">באנר מוכן עם כותרת וכפתור</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     {/* How to use */}
