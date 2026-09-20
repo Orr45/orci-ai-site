@@ -1,0 +1,263 @@
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'תמונה אחת. 16 פרסומות. | Orci AI',
+  description: 'מתמונת מוצר אחת ל-16 סרטוני פרסומת בסגנונות שונים — אונבוקסינג, UGC, לפני ואחרי, טסטימוניאל ועוד — עם 16 פקודות קצרות ב-Gemini.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        תמונה אחת. 16 פרסומות.
+      </h1>
+      <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        כל סגנון פרסומת דורש צלם אחר, עורך אחר ותקציב אחר. חוץ מפה.
+      </p>
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">✨ Gemini</span>
+        <span className="cap-badge text-sm">🎬 16 סגנונות</span>
+        <span className="cap-badge text-sm">📸 תמונה אחת</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-5xl mx-auto px-6 space-y-8">
+
+    {/* Intro */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        למה זה בכלל מעניין
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        כשמותג רוצה לבדוק איזה סגנון פרסומת עובד לו, הוא צריך <span className="text-orci-cyan font-bold">להפיק כל סגנון בנפרד</span>. אונבוקסינג דורש סט אחד, טסטימוניאל דורש שחקנית, מאחורי הקלעים דורש צוות צילום. כל אחד מאלה זה יום צילום, עורך ותקציב.
+      </p>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        וזה הכל <span className="text-orci-cyan font-bold">עוד לפני שבדקתם מה בכלל עובד</span>. רוב העסקים פשוט מנחשים, מפיקים סגנון אחד, ומקווים לטוב.
+      </p>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        לקחתי <span className="text-orci-cyan font-bold">תמונה אחת של שקית במבה</span>, והרצתי עליה 16 פקודות שונות ב-<span className="text-orci-cyan font-bold">Gemini</span>. כל מה שאתם עומדים לראות למטה נוצר מאותה תמונה.
+      </p>
+
+      <div className="rounded-2xl bg-orci-cyan/5 border border-orci-cyan/30 p-6">
+        <p className="text-lg text-slate-300 leading-relaxed">
+          <span className="text-orci-cyan font-bold">איך זה עובד:</span> נכנסים ל-Gemini, מעלים תמונת מוצר אחת, וכותבים את הפקודה — רק אותה, בלי שום דבר נוסף. אחר כך חוזרים על זה עם הפקודה הבאה. אותה תמונה, פקודה אחרת, תוצאה אחרת לגמרי.
+        </p>
+      </div>
+    </div>
+
+    {/* Gallery */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-2 text-orci-cyan">
+        16 הפקודות והתוצאות
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-8">
+        לחצו על כל סרטון כדי לנגן. כולם נוצרו מאותה תמונת מוצר.
+      </p>
+
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+
+        <div>
+          <video src="/guides/multi-ad-generator/photoshootad.mp4" poster="/guides/multi-ad-generator/poster-photoshootad.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/photoshootad</p>
+          <p className="text-center text-sm text-slate-400">צילום פרסומת מסטודיו</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/unboxing.mp4" poster="/guides/multi-ad-generator/poster-unboxing.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/unboxing</p>
+          <p className="text-center text-sm text-slate-400">קופסה נפתחת עם קאטים דרמטיים</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/povproductdemo.mp4" poster="/guides/multi-ad-generator/poster-povproductdemo.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/POVproductdemo</p>
+          <p className="text-center text-sm text-slate-400">מבט כאילו אתם מחזיקים את המוצר לראשונה</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/ugcad.mp4" poster="/guides/multi-ad-generator/poster-ugcad.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/ugcad</p>
+          <p className="text-center text-sm text-slate-400">מודעה בסגנון תוכן גולשים אותנטי</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/productshowcase.mp4" poster="/guides/multi-ad-generator/poster-productshowcase.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/productshowcase</p>
+          <p className="text-center text-sm text-slate-400">תצוגת מוצר נקייה ומוקפדת</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/lifestyle.mp4" poster="/guides/multi-ad-generator/poster-lifestyle.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/lifestyle</p>
+          <p className="text-center text-sm text-slate-400">המוצר משולב בסיטואציה יומיומית</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/tutorial.mp4" poster="/guides/multi-ad-generator/poster-tutorial.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/tutorial</p>
+          <p className="text-center text-sm text-slate-400">הדרכה קצרה על המוצר</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/howtouse.mp4" poster="/guides/multi-ad-generator/poster-howtouse.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/howtouse</p>
+          <p className="text-center text-sm text-slate-400">הדגמה של אופן השימוש</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/beforeafter.mp4" poster="/guides/multi-ad-generator/poster-beforeafter.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/beforeafter</p>
+          <p className="text-center text-sm text-slate-400">לפני ואחרי השימוש במוצר</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/testimonial.mp4" poster="/guides/multi-ad-generator/poster-testimonial.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/testimonial</p>
+          <p className="text-center text-sm text-slate-400">לקוח מדבר על החוויה שלו</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/flatlay.mp4" poster="/guides/multi-ad-generator/poster-flatlay.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/flatlay</p>
+          <p className="text-center text-sm text-slate-400">צילום מלמעלה של המוצר ואביזרים</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/features.mp4" poster="/guides/multi-ad-generator/poster-features.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/features</p>
+          <p className="text-center text-sm text-slate-400">הדגשת התכונות המרכזיות</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/review.mp4" poster="/guides/multi-ad-generator/poster-review.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/review</p>
+          <p className="text-center text-sm text-slate-400">ביקורת על המוצר</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/tryon.mp4" poster="/guides/multi-ad-generator/poster-tryon.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/tryon</p>
+          <p className="text-center text-sm text-slate-400">מישהו שמשתמש במוצר בחיים אמיתיים</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/comparison.mp4" poster="/guides/multi-ad-generator/poster-comparison.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/comparison</p>
+          <p className="text-center text-sm text-slate-400">השוואה מול אלטרנטיבה</p>
+        </div>
+
+        <div>
+          <video src="/guides/multi-ad-generator/bts.mp4" poster="/guides/multi-ad-generator/poster-bts.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/bts</p>
+          <p className="text-center text-sm text-slate-400">מאחורי הקלעים של הפקת המוצר</p>
+        </div>
+
+      </div>
+    </div>
+
+    {/* Which to use */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        באיזה סגנון להתחיל?
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        אם אתם מתחילים מאפס, זה הסדר שאני ממליץ עליו — <span className="text-orci-cyan font-bold">ארבעה סגנונות שמכסים את כל שלבי המשפך</span>:
+      </p>
+
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative">
+          <span className="absolute right-0 text-orci-cyan">•</span>
+          <span className="text-orci-cyan font-bold font-mono">/ugcad</span> — לקהל קר. נראה אותנטי, לא כמו פרסומת, ולכן עוצר את הגלילה.
+        </li>
+        <li className="text-lg text-slate-300 pr-6 relative">
+          <span className="absolute right-0 text-orci-cyan">•</span>
+          <span className="text-orci-cyan font-bold font-mono">/unboxing</span> — יוצר ציפייה. עובד מצוין כשהאריזה עצמה יפה.
+        </li>
+        <li className="text-lg text-slate-300 pr-6 relative">
+          <span className="absolute right-0 text-orci-cyan">•</span>
+          <span className="text-orci-cyan font-bold font-mono">/beforeafter</span> — למוצרים שפותרים בעיה. ההוכחה הכי מהירה שיש.
+        </li>
+        <li className="text-lg text-slate-300 pr-6 relative">
+          <span className="absolute right-0 text-orci-cyan">•</span>
+          <span className="text-orci-cyan font-bold font-mono">/testimonial</span> — לסגירת העסקה. אמון זה מה שמזיז מ"מעניין" ל"קונה".
+        </li>
+      </ul>
+
+      <p className="text-lg text-slate-300 leading-relaxed">
+        תריצו את הארבעה, תעלו אותם כמודעות, <span className="text-orci-cyan font-bold">ותנו לנתונים להחליט</span>. אחרי שבוע תדעו בדיוק איזה סגנון לייצר בכמות.
+      </p>
+    </div>
+
+    {/* Result */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          16 סרטוני פרסומת, <span className="text-orci-cyan font-bold">מתמונה אחת</span>. בלי סט, בלי שחקנים, בלי צוות הפקה.
+        </p>
+        <p className="text-lg text-slate-300">
+          נראה כאילו צוות שלם צילם את כל המוצרים האלה — אבל תנחשו מה, הכל AI.
+        </p>
+      </div>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">היתרון האמיתי הוא לא החיסכון — הוא הבדיקה.</span>
+        </p>
+        <p className="text-lg text-slate-300">
+          כשהפקה עולה אלפי שקלים, אתם מהמרים על סגנון אחד. כשהיא עולה כמה דקות, אתם יכולים לבדוק שישה-עשר סגנונות ולראות מה באמת מוכר. <span className="text-orci-cyan font-bold">זה מה שמשנה את המשחק.</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <p className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+      </p>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>

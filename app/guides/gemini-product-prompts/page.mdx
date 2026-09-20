@@ -1,0 +1,284 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: '48 פקודות Gemini שהופכות תמונת מוצר אחת לקמפיין שלם | Orci AI',
+  description: 'ספריית פקודות מקוצרות ל-Gemini: מעלים תמונת מוצר רגילה, כותבים פקודה אחת, ומקבלים צילום מוצר מקצועי. 48 סגנונות מוכנים.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        תרשמו את זה — תקבלו את זה
+      </h1>
+      <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        48 פקודות קצרות ל-Gemini שהופכות תמונת מוצר רגילה לצילום פרסומת מקצועי.
+      </p>
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">✨ Gemini</span>
+        <span className="cap-badge text-sm">📸 צילום מוצר</span>
+        <span className="cap-badge text-sm">⚡ 48 פקודות</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* Intro */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        הרעיון בשורה אחת
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        במקום לכתוב פרומפט ארוך של חמש שורות בכל פעם שאתם רוצים צילום מוצר — אתם מעלים תמונה אחת ל-<span className="text-orci-cyan font-bold">Gemini</span> וכותבים <span className="text-orci-cyan font-bold">פקודה אחת קצרה</span>. זהו.
+      </p>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        תמונת המוצר יכולה להיות <span className="text-orci-cyan font-bold">צילום רגיל מהטלפון</span> — לא צריך סטודיו, לא צריך תאורה, לא צריך צלם. ה-AI בונה את הסצנה מסביב למוצר.
+      </p>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        הנה חמש דוגמאות אמיתיות — <span className="text-orci-cyan font-bold">אותה שקית במבה בדיוק</span>, חמש פקודות שונות:
+      </p>
+
+      <div className="my-8 space-y-4">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/gemini-product-prompts/ex-1.png" alt="תמונת מוצר רגילה לצד תוצאה עם תאורת פיצוץ טעמים" width={1080} height={960} className="w-full h-auto" />
+        </div>
+        <p className="text-center text-sm text-orci-cyan font-bold font-mono">/flavorburst</p>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/gemini-product-prompts/ex-2.png" alt="תמונת מוצר רגילה לצד תוצאה עם קרן אור טבעית" width={1080} height={960} className="w-full h-auto" />
+        </div>
+        <p className="text-center text-sm text-orci-cyan font-bold font-mono">/sunbeam</p>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/gemini-product-prompts/ex-3.png" alt="תמונת מוצר רגילה לצד באנר לדף נחיתה" width={1080} height={960} className="w-full h-auto" />
+        </div>
+        <p className="text-center text-sm text-orci-cyan font-bold font-mono">/landingpage</p>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/gemini-product-prompts/ex-4.png" alt="תמונת מוצר רגילה לצד תוצאה במראה יוקרתי" width={1080} height={960} className="w-full h-auto" />
+        </div>
+        <p className="text-center text-sm text-orci-cyan font-bold font-mono">/luxuryedition</p>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/gemini-product-prompts/ex-5.png" alt="תמונת מוצר רגילה לצד תוצאה בסגנון הולוגרפי" width={1080} height={960} className="w-full h-auto" />
+        </div>
+        <p className="text-center text-sm text-orci-cyan font-bold font-mono">/ridescent</p>
+      </div>
+      <p className="text-center text-sm text-orci-cyan font-bold">משמאל התמונה המקורית, מימין מה ש-Gemini החזיר</p>
+    </div>
+
+    {/* How to use */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        איך משתמשים בזה
+      </h2>
+
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative">
+          <span className="absolute right-0 text-orci-cyan">1.</span>
+          <span className="pr-4 block">תיכנסו ל-<span className="text-orci-cyan font-bold">Gemini</span> והעלו את תמונת המוצר שלכם.</span>
+        </li>
+        <li className="text-lg text-slate-300 pr-6 relative">
+          <span className="absolute right-0 text-orci-cyan">2.</span>
+          <span className="pr-4 block">תכתבו את <span className="text-orci-cyan font-bold">הפקודה</span> מהטבלה למטה — רק אותה, בלי שום דבר נוסף.</span>
+        </li>
+        <li className="text-lg text-slate-300 pr-6 relative">
+          <span className="absolute right-0 text-orci-cyan">3.</span>
+          <span className="pr-4 block">תקבלו תמונה. לא אהבתם? תריצו את <span className="text-orci-cyan font-bold">אותה פקודה שוב</span> ותקבלו וריאציה אחרת.</span>
+        </li>
+      </ul>
+
+      <div className="rounded-2xl bg-orci-cyan/5 border border-orci-cyan/30 p-6">
+        <p className="text-lg text-slate-300 leading-relaxed">
+          <span className="text-orci-cyan font-bold">💡 טיפ:</span> אפשר להוסיף מילה או שתיים אחרי הפקודה כדי לכוון אותה — למשל <span className="text-orci-cyan font-bold">"/luxury על רקע שחור"</span> או <span className="text-orci-cyan font-bold">"/in-hand יד של גבר"</span>. הפקודה נותנת את הבסיס, אתם נותנים את הכיוון.
+        </p>
+      </div>
+    </div>
+
+    {/* The 43 commands */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        48 הפקודות המלאות
+      </h2>
+
+      <h3 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-orci-cyan">
+        🎬 סגנון וצילום
+      </h3>
+      <ul className="list-none space-y-3 mb-8">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/luxury</span> — צילום מוצר יוקרתי עם תאורה רכה, זוהר והשתקפויות עדינות.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/hero-shot</span> — תמונת פרסומת שבה המוצר הוא הכוכב המרכזי.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/minimalist-white</span> — צילום מוצר נקי על רקע לבן, מתאים לחנות אונליין.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/color-pop</span> — מוצר מוקף בצורות ובצבעים בולטים.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/sunbeam</span> — המוצר בסצנה טבעית עם קרן שמש רכה וצללים ארוכים.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/luxuryedition</span> — המוצר במסגרת זהב על רקע כהה, במראה של מהדורה מוגבלת.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/pedestal-shot</span> — הצגת המוצר במראה מונומנטלי ומרשים.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/power-angle</span> — צילום מזווית נמוכה שמעניק למוצר נוכחות דרמטית.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/symmetry</span> — קומפוזיציה סימטרית ומדויקת.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/flatlay</span> — צילום מלמעלה של מוצר ואביזרים המסודרים על משטח.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/angles</span> — כמה זוויות צילום של אותו מוצר בתוך תמונה אחת.</li>
+      </ul>
+
+      <h3 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-orci-cyan">
+        💥 אפקטים דרמטיים
+      </h3>
+      <ul className="list-none space-y-3 mb-8">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/water-splash</span> — התזת מים בצורת כתר סביב המוצר.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/powder-cloud</span> — ענן אבקה צבעונית סביב המוצר.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/ice-capsule</span> — מוצר הכלוא בתוך קרח שקוף.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/fabric-wave</span> — בד מתנופף ומתעקל סביב המוצר.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/flavorburst</span> — המוצר בתוך פיצוץ של התכולה שלו — מושלם לאוכל ולחטיפים.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/ridescent</span> — המוצר על במה הולוגרפית עם צבעים מתחלפים ונצנוץ.</li>
+      </ul>
+
+      <h3 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-orci-cyan">
+        🏠 המוצר בסביבה אמיתית
+      </h3>
+      <ul className="list-none space-y-3 mb-8">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/in-hand</span> — הצגת המוצר כשהוא מוחזק ביד.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/on-desk</span> — שילוב המוצר בסביבת שולחן עבודה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/kitchen-scene</span> — שילוב המוצר בסביבת מטבח.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/gym-bag</span> — הצגת המוצר כחלק מציוד לאימון.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/travel-pack</span> — הצגת המוצר בהקשר של נסיעות וטיולים.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/weekend-carry</span> — אוסף פריטים לסוף שבוע, הכולל את המוצר.</li>
+      </ul>
+
+      <h3 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-orci-cyan">
+        📦 אריזה, מדף ומארזים
+      </h3>
+      <ul className="list-none space-y-3 mb-8">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/shelf-ready</span> — הצגת המוצר על מדף.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/retail-stack</span> — כמה אריזות של המוצר בקבוצה או בערימה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/bundle</span> — הצגת כמה מוצרים כמארז משותף.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/unboxing</span> — קופסה פתוחה החושפת את תכולתה — תמונה סטטית.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/inside-pack</span> — המחשה של המבנה הפנימי של האריזה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/whats-inside</span> — תמונה המציגה את תכולת המוצר או את מרכיביו.</li>
+      </ul>
+
+      <h3 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-orci-cyan">
+        📊 יתרונות ומידע
+      </h3>
+      <ul className="list-none space-y-3 mb-8">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/feature-zoom</span> — הדגשה חזותית של תכונה מרכזית במוצר.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/benefits</span> — גרפיקה המציגה את היתרונות המרכזיים של המוצר.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/main-benefit</span> — תמונה המתמקדת ביתרון אחד מרכזי.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/three-reasons</span> — גרפיקה עם שלוש סיבות לבחור במוצר.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/before-after</span> — הצגת המוצר כפתרון לבעיה באמצעות השוואת לפני ואחרי.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/specs</span> — הצגה מעוצבת של המפרט והתכונות הטכניות.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/product-match</span> — מדריך חזותי לבחירת המוצר המתאים.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/myth-fact</span> — כרטיס המציג מיתוס מול עובדה.</li>
+      </ul>
+
+      <h3 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-orci-cyan">
+        🎓 הדרכה ושימוש
+      </h3>
+      <ul className="list-none space-y-3 mb-8">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/how-it-works</span> — הסבר חזותי של אופן פעולת המוצר.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/quick-steps</span> — מדריך קצר ומאויר בשלבים.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/usage-guide</span> — המחשה של דרכי שימוש במוצר.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/care-guide</span> — גרפיקה עם הנחיות לטיפול ולתחזוקה של המוצר.</li>
+      </ul>
+
+      <h3 className="text-xl md:text-2xl font-bold mt-6 mb-4 text-orci-cyan">
+        📱 תוכן לסושיאל
+      </h3>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/new-drop</span> — תמונת הכרזה על מוצר חדש.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/reel-cover</span> — תמונת קאבר לריל.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/swipe-opener</span> — שקופית פתיחה לקרוסלה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/vertical-hook</span> — תמונה אנכית עם מוקד חזותי שנועד למשוך תשומת לב.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/saveable-tip</span> — כרטיס טיפ שימושי שמעודד שמירה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/share-card</span> — כרטיס גרפי שנועד לשיתוף.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/landingpage</span> — באנר מוכן לדף נחיתה, כולל כותרת שיווקית וכפתור.</li>
+      </ul>
+    </div>
+
+    {/* Workflow tip */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        איך אני עובד עם זה בפועל
+      </h2>
+
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        אני לא מריץ פקודה אחת — אני מריץ <span className="text-orci-cyan font-bold">חבילה</span>. לכל מוצר חדש אני עושה סבב של חמש-שש פקודות שמכסות את כל הצרכים:
+      </p>
+
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/minimalist-white</span> → לדף המוצר בחנות</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/hero-shot</span> → לבאנר הראשי באתר</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/in-hand</span> או <span className="text-orci-cyan font-bold">/lifestyle</span> → למודעות בפייסבוק ואינסטגרם</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/three-reasons</span> → לקרוסלה שמסבירה למה לקנות</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/reel-cover</span> → לקאבר של הריל</li>
+      </ul>
+
+      <p className="text-lg text-slate-300 leading-relaxed">
+        חמש פקודות, <span className="text-orci-cyan font-bold">עשר דקות</span>, וכל מה שצריך לקמפיין שלם — מתמונה אחת שצילמתי בטלפון.
+      </p>
+    </div>
+
+    {/* Result */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          תמונה אחת מהטלפון הופכת ל<span className="text-orci-cyan font-bold">בנק נכסים שלם</span> — צילומי מוצר, באנרים, מודעות וקאברים. בלי סטודיו, בלי צלם, בלי תקציב.
+        </p>
+      </div>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">הפקודה הקצרה מנצחת את הפרומפט הארוך.</span>
+        </p>
+        <p className="text-lg text-slate-300">
+          לא כי היא חכמה יותר — אלא כי אתם באמת תשתמשו בה. פרומפט של חמש שורות נשאר בקובץ. פקודה של מילה אחת הופכת להרגל.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <p className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+      </p>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>
