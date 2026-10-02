@@ -3,6 +3,7 @@ import { Heebo, Frank_Ruhl_Libre } from "next/font/google";
 import { Navigation } from "@/components/layout/Navigation";
 import { Analytics } from "@vercel/analytics/next";
 import AccessibilityWidget from "@/components/ui/accessibility-widget";
+import OrciTracker from "@/components/OrciTracker";
 import "./globals.css";
 
 const heebo = Heebo({
@@ -70,6 +71,7 @@ export default function RootLayout({
         </main>
         <AccessibilityWidget />
         <Analytics />
+        <OrciTracker />
       </body>
     </html>
   );
