@@ -1,0 +1,439 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: '10 קודים שבורים ל-ChatGPT | Orci AI',
+  description: '10 קודים קצרים ל-ChatGPT שמשנים את הדרך שבה הוא עונה, ועוד 42 קודים בונוס, עם פרומפט מוכן להעתקה לכל אחד.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        10 קודים שבורים ל-ChatGPT
+      </h1>
+      <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        מילה אחת לפני הפרומפט, ו-ChatGPT עונה אחרת לגמרי.
+      </p>
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🤖 ChatGPT</span>
+        <span className="cap-badge text-sm">⚡ 10 קודים</span>
+        <span className="cap-badge text-sm">🎁 42 קודים בונוס</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* The reel */}
+    <div className="cap-card">
+      <div className="my-2 max-w-sm mx-auto">
+        <video
+          src="/guides/chatgpt-secret-codes/reel.mp4"
+          poster="/guides/chatgpt-secret-codes/poster-reel.jpg"
+          controls
+          playsInline
+          preload="none"
+          className="w-full rounded-2xl bg-black"
+        />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הסרטון המלא</p>
+      </div>
+    </div>
+
+    {/* How it works */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        איך זה עובד
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        אלה לא פקודות מובנות של ChatGPT, ואין שום מתג נסתר שנדלק. הקוד הוא <span className="text-orci-cyan font-bold">קיצור להוראה</span>: הוא מבין מה הוא אומר, וכשמוסיפים לו הגדרה של שורה אחת, הוא עובד בכל צ'אט, גם כזה שלא ראה את הקוד אף פעם.
+      </p>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">1.</span><span className="pr-4 block">מעתיקים את <span className="text-orci-cyan font-bold">הפרומפט המוכן</span> של הקוד מהמדריך. הוא כולל את הקוד ואת ההגדרה שלו.</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">2.</span><span className="pr-4 block">מחליפים את מה שבסוגריים המרובעים בשאלה או בטקסט שלכם.</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">3.</span><span className="pr-4 block">רוצים שזה יעבוד תמיד? מדביקים את ההגדרות ב-<span className="text-orci-cyan font-bold">Custom Instructions</span> (הגדרות ← התאמה אישית), ומאז מספיק לכתוב רק את הקוד.</span></li>
+      </ul>
+    </div>
+
+    {/* Code 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        #1 <span className="font-mono" dir="ltr">/truth</span> | בלי נימוסים
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        ChatGPT מנומס מדי. הוא מתחיל ב"רעיון מעניין!" ורק אחר כך, אם בכלל, אומר מה לא עובד. הקוד הזה מבקש ממנו לוותר על ההחמאות ולהגיד מה הוא באמת חושב.
+      </p>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
+        <Image src="/guides/chatgpt-secret-codes/truth.jpg" alt="ChatGPT עונה לפקודה /truth" width={900} height={783} className="w-full h-auto" />
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`/truth = drop the politeness and the compliments. Tell me what you honestly think, including the parts I probably don't want to hear. Be direct and specific, and explain why. Answer in Hebrew.
+
+/truth [your question, idea or work]`} />
+      </details>
+    </div>
+
+    {/* Code 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        #2 <span className="font-mono" dir="ltr">/human</span> | כתיבה שנשמעת כמו בנאדם
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        מכירים את הטקסטים שכולם מזהים מקילומטר כטקסט של AI? "אנו נרגשים להכריז", מילים מפוצצות ומשפטים באותו אורך בדיוק. שמים את הקוד לפני הבקשה, והכתיבה יוצאת טבעית.
+      </p>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
+        <Image src="/guides/chatgpt-secret-codes/human.jpg" alt="ChatGPT עונה לפקודה /human" width={900} height={783} className="w-full h-auto" />
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`/human = write like a real person, not like an AI. No clichés, no buzzwords, no "we're excited to announce". Mix short and long sentences, use everyday words, and keep my voice. Answer in Hebrew.
+
+/human [what to write, or paste your text]`} />
+      </details>
+    </div>
+
+    {/* Code 3 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        #3 <span className="font-mono" dir="ltr">/nofluff</span> | חצי מהאורך, בלי חפירות
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        בלי הקדמה, בלי "שאלה מצוינת", ובלי סיכום שחוזר על מה שכבר נאמר. רק מה שצריך, בערך בחצי מהאורך הרגיל.
+      </p>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
+        <Image src="/guides/chatgpt-secret-codes/nofluff.jpg" alt="ChatGPT עונה לפקודה /nofluff" width={900} height={783} className="w-full h-auto" />
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`/nofluff = give me only what matters. No intro, no recap, no filler, no disclaimers unless critical. About half your usual length. Answer in Hebrew.
+
+/nofluff [your question]`} />
+      </details>
+    </div>
+
+    {/* Code 4 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        #4 <span className="font-mono" dir="ltr">/devil</span> | פרקליט השטן
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        ChatGPT נוטה להסכים איתכם. עם הקוד הזה הוא מפסיק להנהן ותוקף את הרעיון מכל כיוון: שוק, כסף, תחרות וביצוע. כדאי להריץ אותו לפני שמשקיעים זמן או כסף.
+      </p>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
+        <Image src="/guides/chatgpt-secret-codes/devil.jpg" alt="ChatGPT עונה לפקודה /devil" width={900} height={783} className="w-full h-auto" />
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`/devil = act as a tough devil's advocate. Stop agreeing with me and attack my idea from every angle: market, money, competition, execution, timing. List the strongest objections first, and finish with the one question I must answer before moving on. Answer in Hebrew.
+
+/devil [your idea or plan]`} />
+      </details>
+    </div>
+
+    {/* Code 5 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        #5 <span className="font-mono" dir="ltr">/odds</span> | אחוזים על הסיכוי
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        שואלים כל דבר, והוא שם אחוז על הסיכוי שזה יצליח ומסביר מה מעלה ומה מוריד אותו. זו הערכה של המודל ולא הסתברות אמיתית, אבל היא מכריחה אותו להתחייב לתשובה ולפרט את השיקולים.
+      </p>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
+        <Image src="/guides/chatgpt-secret-codes/odds.jpg" alt="ChatGPT עונה לפקודה /odds" width={900} height={783} className="w-full h-auto" />
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`/odds = estimate the probability (in %) that this will succeed. Show the 3 factors that raise the odds, the 3 that lower them, and what I could change to improve them. Be honest about uncertainty. Answer in Hebrew.
+
+/odds [your plan or question]`} />
+      </details>
+    </div>
+
+    {/* Code 6 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        #6 <span className="font-mono" dir="ltr">/decode</span> | מה קיוו שלא תקראו
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        מדביקים חוזה, תנאי שימוש או אותיות קטנות, והוא מוצא את מה שקבור שם: חידוש אוטומטי, קנסות, ויתור על אחריות או שימוש במידע שלכם. זה לא ייעוץ משפטי, אבל זו דרך מצוינת לדעת על מה לשאול.
+      </p>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
+        <Image src="/guides/chatgpt-secret-codes/decode.jpg" alt="ChatGPT עונה לפקודה /decode" width={900} height={783} className="w-full h-auto" />
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`/decode = read the text below like a skeptical lawyer. Tell me in plain language what they hoped I wouldn't notice: auto-renewals, fees, penalties, liability waivers, data use, cancellation terms. Quote the exact clause for each point. Answer in Hebrew.
+
+/decode
+[paste the contract / terms]`} />
+      </details>
+    </div>
+
+    {/* Code 7 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        #7 <span className="font-mono" dir="ltr">/simulate</span> | 5 שנים קדימה
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        מתלבטים בהחלטה גדולה? הוא מריץ אותה חמש שנים קדימה ומציג שלושה תרחישים זה לצד זה: אופטימי, סביר ופסימי, עם מה שקורה בכל שנה.
+      </p>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
+        <Image src="/guides/chatgpt-secret-codes/simulate.jpg" alt="ChatGPT עונה לפקודה /simulate" width={900} height={783} className="w-full h-auto" />
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`/simulate = run my decision 5 years into the future. Show 3 scenarios side by side in a table (optimistic, realistic, pessimistic) with what happens in year 1, 3 and 5, plus the early warning signs for each one. Answer in Hebrew.
+
+/simulate [the decision you're considering + your situation]`} />
+      </details>
+    </div>
+
+    {/* Code 8 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        #8 <span className="font-mono" dir="ltr">/genius</span> | חושב לעומק לפני שהוא עונה
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        במקום התשובה הראשונה שעולה לו, הוא שוקל כמה גישות, בודק את ההנחות ורק אז עונה בצורה מסודרת. מרגישים את ההבדל, במיוחד בשאלות עסקיות ואסטרטגיות.
+      </p>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
+        <Image src="/guides/chatgpt-secret-codes/genius.jpg" alt="ChatGPT עונה לפקודה /genius" width={900} height={783} className="w-full h-auto" />
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`/genius = think deeply before answering. Consider at least 3 different approaches, question my assumptions, check for mistakes, and only then give me your best answer as a clear, structured plan. Answer in Hebrew.
+
+/genius [your question]`} />
+      </details>
+    </div>
+
+    {/* Code 9 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        #9 <span className="font-mono" dir="ltr">/shrink</span> | למה אתם באמת עושים את מה שאתם עושים
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        שמים את הקוד לפני הבקשה, והוא מפרק את הדפוס שמאחורי ההתנהגות: למה אתם דוחים, נתקעים או חוזרים על אותה טעות. הוא לא מחליף טיפול, אבל הוא מראה לכם דברים שקשה לראות לבד.
+      </p>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
+        <Image src="/guides/chatgpt-secret-codes/shrink.jpg" alt="ChatGPT עונה לפקודה /shrink" width={900} height={783} className="w-full h-auto" />
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`/shrink = analyze me like a thoughtful psychologist. Based on what I describe, explain the likely real reason behind my behavior, the pattern it fits, and one small experiment to break it. Be kind but honest, and end with one question for me to reflect on. Answer in Hebrew.
+
+/shrink [what you keep doing and when it happens]`} />
+      </details>
+    </div>
+
+    {/* Code 10 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        #10 <span className="font-mono" dir="ltr">/rewire</span> | השגרה שאתם באמת צריכים
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        הוא לוקח את כל מה שהוא יודע עליכם, מהזיכרון ומהשיחות הקודמות, ובונה שגרה יומית שמתאימה לכם ולא לאיזה מנכ"ל מיוטיוב. הוא עובד הכי טוב כשהזיכרון של ChatGPT דלוק.
+      </p>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
+        <Image src="/guides/chatgpt-secret-codes/rewire.jpg" alt="ChatGPT עונה לפקודה /rewire" width={900} height={783} className="w-full h-auto" />
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`/rewire = using everything you know about me (memory and our past chats), build the daily routine I actually need, not a generic productivity routine. Give it hour by hour, explain why each block is there, and tell me which one change to start with tomorrow. Answer in Hebrew.
+
+/rewire [optional: your goals or constraints]`} />
+      </details>
+    </div>
+
+    {/* Combos */}
+    <div className="cap-card bg-orci-cyan/5">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        ⚡ משלבים שני קודים
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        הקודים עובדים גם יחד. כמה שילובים שכדאי לנסות:
+      </p>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/devil ואז /odds</span>: קודם הוא תוקף את הרעיון, ואז נותן אחוזים אחרי שכל החולשות על השולחן.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/human + /nofluff</span>: טקסט שנשמע אנושי, בחצי מהאורך.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/genius + /simulate</span>: חשיבה עמוקה על ההחלטה, ואז שלושה תרחישים קדימה.</li>
+      </ul>
+      <CopyPrompt prompt={`Use /devil (attack my idea from every angle) and then /odds (estimate the % chance it succeeds, after the objections). Answer in Hebrew.\n\nMy idea: [describe it]`} />
+    </div>
+
+    {/* Bonus */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        🎁 בונוס: עוד 42 קודים לפי נושא
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        את אותו טריק אפשר להפעיל על כל קוד ברשימה: כותבים את הקוד, ההגדרה שלו במילה או שתיים והמשימה. הרשימה מבוססת על האוסף של <a href="https://mavgpt.ai/resources/chatgpt-secret-codes" target="_blank" rel="noopener noreferrer" className="text-orci-cyan underline">Maverick AI</a>.
+      </p>
+      <CopyPrompt prompt={`Use [CODE] ([what it means]) for this task: [your task]. Answer in Hebrew.`} />
+
+      <h3 className="text-xl md:text-2xl font-bold mt-8 mb-4 text-orci-cyan">
+        ✍️ כתיבה וסגנון
+      </h3>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">/rewrite</span> | ניסוח מחדש בלי לשנות את המשמעות</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">/improve</span> | משפר בהירות, זרימה ואיכות</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">/shorten</span> | מכווץ לגרסה הדוקה</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">/expand</span> | מוסיף עומק, פרטים והקשר</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">/simplify</span> | שפה פשוטה וקלה יותר</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">/formal</span> | טון מקצועי ורשמי</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">/casual</span> | טון קליל ושיחתי</li>
+      </ul>
+
+      <h3 className="text-xl md:text-2xl font-bold mt-8 mb-4 text-orci-cyan">
+        🎓 הסברים ולמידה
+      </h3>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">ELI5</span> | מסביר כאילו אתם בני 5</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">/analogies</span> | מסביר דרך השוואות לדברים מוכרים</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">/firstprinciples</span> | מפרק נושא לעקרונות היסוד שלו</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">FEYNMAN</span> | הסבר הכי פשוט שאפשר, כדי לוודא שבאמת הבנתם</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">QUIZME</span> | בוחן אתכם שאלה אחרי שאלה</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">FLASHCARDS</span> | הופך חומר לכרטיסיות שינון</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">/socratic</span> | מלמד דרך שאלות במקום תשובות</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">MISCONCEPTIONS</span> | הטעויות הנפוצות בנושא</li>
+      </ul>
+
+      <h3 className="text-xl md:text-2xl font-bold mt-8 mb-4 text-orci-cyan">
+        📋 פורמט
+      </h3>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">TLDR</span> | הסיכום הקצר ביותר שעדיין שימושי</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">TABLE</span> | טבלת השוואה</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">CHECKLIST</span> | רשימת משימות לביצוע</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">STEPS</span> | תהליך שלב אחרי שלב</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">/keypoints</span> | רק הנקודות החשובות באמת</li>
+      </ul>
+
+      <h3 className="text-xl md:text-2xl font-bold mt-8 mb-4 text-orci-cyan">
+        💡 רעיונות ותוכן
+      </h3>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">IDEAS10</span> | 10 רעיונות סביב נושא</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">HOOKS10</span> | 10 פתיחים לתוכן</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">/viralhooks</span> | פתיחים שתופסים תשומת לב מהר</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">SCAMPER</span> | שיטת חשיבה יצירתית לפיתוח רעיון קיים</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">REMIX</span> | מחבר שני רעיונות לרעיון חדש</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">SCRIPT</span> | כותב בפורמט של תסריט לסרטון</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">THREAD</span> | בונה את התשובה כשרשור לרשתות</li>
+      </ul>
+
+      <h3 className="text-xl md:text-2xl font-bold mt-8 mb-4 text-orci-cyan">
+        ⚖️ ניתוח והחלטות
+      </h3>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">PROSCONS</span> | יתרונות וחסרונות</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">SWOT</span> | חוזקות, חולשות, הזדמנויות ואיומים</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">COMPARE</span> | השוואה בין כמה אפשרויות</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">/steelman</span> | בונה את הגרסה החזקה ביותר של הצד השני</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">RISKMAP</span> | מיפוי הסיכונים בתוכנית</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">SECONDORDER</span> | מה קורה אחרי ההשפעה הראשונה</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">REDTEAM</span> | ביקורת אגרסיבית שחושפת חולשות</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">PARETO</span> | 20% הפעולות שמביאות 80% מהתוצאה</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">FACTCHECK</span> | בודק עובדות מול מקורות עדכניים</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">NEXTSTEP</span> | צעד אחד הבא ואיך מתחילים אותו</li>
+      </ul>
+
+      <h3 className="text-xl md:text-2xl font-bold mt-8 mb-4 text-orci-cyan">
+        🧠 חשיבה מתקדמת
+      </h3>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">X10THINK</span> | חשיבה עמוקה פי 10 לפני התשובה</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">HIDDENASSUMPTIONS</span> | מוצא הנחות שקל לפספס</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">BLACKSWAN</span> | תרחישים נדירים עם השפעה גדולה</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">REVERSEENGINEER</span> | עובד אחורה כדי להבין איך משהו בנוי</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">META</span> | בודק את השאלה עצמה ואת המסגור שלה</li>
+      </ul>
+    </div>
+
+    {/* Result Card */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          במקום תשובות כלליות ומנומסות, <span className="text-orci-cyan font-bold">ChatGPT שעונה בדיוק בדרך שאתם צריכים</span>: ישיר, קצר, ביקורתי או עמוק, לפי הקוד.
+        </p>
+      </div>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">הקוד פותח את הדלת, וההקשר עושה את העבודה.</span>
+        </p>
+        <p className="text-lg text-slate-300">
+          תוסיפו לכל קוד למי זה מיועד, מה התוצאה שאתם רוצים ואת החומר עצמו, והתשובה תהיה טובה פי כמה.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <p className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+      </p>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>

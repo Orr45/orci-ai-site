@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'chatgpt-secret-codes',
+    title: '10 קודים שבורים ל-ChatGPT',
+    description: 'מילה אחת לפני הפרומפט, ו-ChatGPT עונה אחרת לגמרי: ישיר, קצר, ביקורתי או עמוק',
+    summary: 'ChatGPT מנומס מדי, חופר מדי ומסכים איתכם על הכול. המדריך נותן 10 קודים קצרים שמשנים את זה, מ-/truth שאומר את האמת בלי נימוסים ועד /simulate שמריץ החלטה חמש שנים קדימה, עם פרומפט מוכן להעתקה לכל אחד ודוגמה לתשובה. בונוס: עוד 42 קודים לפי נושא, ואיך לגרום לכולם לעבוד תמיד דרך Custom Instructions.',
+    image: '/guides/guide-chatgpt-secret-codes.png',
+    href: '/guides/chatgpt-secret-codes',
+    category: 'טריקים',
+    popular: false,
+    isNew: true,
+    date: '2026-10-03',
+    free: false,
+  },
+  {
     id: 'multi-ad-generator',
     title: 'תמונה אחת. 16 פרסומות.',
     description: 'כל סגנון פרסומת דורש צלם אחר, עורך אחר ותקציב אחר — חוץ מפה. 16 פקודות ב-Gemini, תמונת מוצר אחת',
