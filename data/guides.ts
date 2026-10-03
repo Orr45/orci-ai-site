@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'claude-ui-animation',
+    title: 'אנימציה בפרומפט אחד',
+    description: 'סרטון תדמית לעסק שנראה כמו אפליקציה של אפל, ש-Claude Code בונה לבד על הביט של השיר',
+    summary: 'אנימציה כזאת הייתה לוקחת שבוע באפטר אפקטס. כאן מדביקים ל-Claude Code עם Opus 5.5 פרומפט עבודה אחד: הוא שואל על העסק, מנתח את השיר ומוצא את הקצב, מתכנן טבלת ביטים, ובונה ומרנדר את כל האנימציה על המחשב, בלי תוכנת עריכה ובלי קרדיטים. כולל שני טיפים שחוסכים את רוב התיקונים, ואת הסרטון האמיתי שבנינו למספרה.',
+    image: '/guides/guide-claude-ui-animation.png',
+    href: '/guides/claude-ui-animation',
+    category: 'טריקים',
+    popular: false,
+    isNew: true,
+    date: '2026-10-03',
+    free: false,
+  },
+  {
     id: 'chatgpt-secret-codes',
     title: '10 קודים שבורים ל-ChatGPT',
     description: 'מילה אחת לפני הפרומפט, ו-ChatGPT עונה אחרת לגמרי: ישיר, קצר, ביקורתי או עמוק',

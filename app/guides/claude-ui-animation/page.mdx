@@ -1,0 +1,273 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'אנימציה בפרומפט אחד: סרטון תדמית בסגנון אפל עם Claude | Orci AI',
+  description: 'פרומפט עבודה מוכן ל-Claude Code עם Opus 5.5, שבונה סרטון תדמית מונפש לעסק שלכם על הביט של שיר, בלי תוכנת עריכה ובלי קרדיטים.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        אנימציה בפרומפט אחד
+      </h1>
+      <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        סרטון תדמית לעסק שנראה כמו אפליקציה של אפל, ש-Claude בונה לבד על הביט של השיר.
+      </p>
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🤖 Claude Code</span>
+        <span className="cap-badge text-sm">🧠 Opus 5.5</span>
+        <span className="cap-badge text-sm">🎵 מסונכרן לביט</span>
+        <span className="cap-badge text-sm">💸 בלי קרדיטים של וידאו</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* The reel */}
+    <div className="cap-card">
+      <div className="my-8 max-w-sm mx-auto">
+        <video src="/guides/claude-ui-animation/reel.mp4" poster="/guides/claude-ui-animation/poster-reel.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הסרטון המלא</p>
+      </div>
+    </div>
+
+    {/* What you need */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        מה צריך
+      </h2>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="pr-4 block">מנוי ל-<span className="text-orci-cyan font-bold">Claude</span> עם <span className="text-orci-cyan font-bold">Claude Code</span>, על המחשב (Mac או Windows).</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="pr-4 block">הלוגו של העסק (PNG), ו-3 עד 6 <span className="text-orci-cyan font-bold">תמונות אמיתיות</span> ברזולוציה טובה: הצוות, העבודות, המקום.</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="pr-4 block">שיר בלי זכויות יוצרים (MP3). Claude ימצא בו לבד את הקצב ואת ה-drop.</span></li>
+      </ul>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        את הכלים הטכניים Claude מתקין לבד: <span className="text-orci-cyan font-bold">Python עם numpy</span> לניתוח השיר, קובץ <span className="text-orci-cyan font-bold">HTML</span> אחד לאנימציה, <span className="text-orci-cyan font-bold">Playwright</span> שמצלם אותה פריים אחרי פריים, ו-<span className="text-orci-cyan font-bold">ffmpeg</span> שמחבר הכול ל-MP4 עם השיר. הוא רק יכתוב לכם שורה אחת לפני שהוא מתקין.
+      </p>
+    </div>
+
+    {/* Tips */}
+    <div className="cap-card bg-orci-cyan/5 border border-orci-cyan/30">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        ⚡ שני טיפים לפני שלוחצים Enter
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        תיקונים תמיד יהיו, זה לא יוצא מושלם בפעם הראשונה. אבל שני הדברים האלה חוסכים את רובם:
+      </p>
+      <ul className="list-none space-y-3 mb-2">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">1.</span><span className="pr-4 block">בוחרים את המודל <span className="text-orci-cyan font-bold">Opus 5.5</span> ומעלים את ה-<span className="text-orci-cyan font-bold">Effort level</span> לרמה הכי גבוהה (max). הוא חושב לעומק לפני כל החלטה, והתוצאה טובה משמעותית. זה צורך קצת יותר מהמכסה, ושווה את זה.</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">2.</span><span className="pr-4 block">לפני שלוחצים Enter, מעבירים את Claude ל-<span className="text-orci-cyan font-bold">Plan mode</span>. ככה הוא לא מתחיל לבנות מיד, אלא קודם מתכנן את כל הסצנות ואיזו אנימציה תהיה בכל אחת. רק כשהתוכנית טובה לכם לוחצים <span className="text-orci-cyan font-bold">Accept</span> ונותנים לו לרוץ.</span></li>
+      </ul>
+    </div>
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: מדביקים את פרומפט העבודה
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        זה לא פרומפט שמייצר סרטון אחד, אלא <span className="text-orci-cyan font-bold">כלי עבודה</span>: הוא מלמד את Claude את כל השיטה. קודם הוא שואל אתכם את מה שהוא צריך, אחר כך מתכנן על הביט, ורק אחרי האישור שלכם בונה ומרנדר.
+      </p>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט העבודה המלא
+        </summary>
+        <CopyPrompt prompt={`You are my motion designer. We're making a short Apple-style UI promo for my business: one interface that animates on the beat of a song, driven by a cursor, like a real app being used.
+
+INPUT — ask me in Hebrew, in one message:
+1. The business: name, what it sells, city, Instagram handle.
+2. The customer journey the video shows, as 6–10 UI states (e.g. profile → book → choose staff → pick a time → what's included → our work → booking confirmed → logo). Suggest a list if I don't have one.
+3. Brand assets: logo (PNG), 3–6 real photos (staff, work, place) in good resolution (at least 1080px on the short side), brand colors (or take them from the logo).
+4. A royalty-free song (MP3) and the length (15–20s for Reels).
+5. Format: 9:16, 1080×1920, unless I say otherwise.
+
+PLAN — before any code:
+- Analyze the song with numpy: BPM, beat grid and the first strong drop. Start the video on a downbeat (usually the drop).
+- Show me a table: beat → time → UI state → what the cursor does → Hebrew text on screen. Something happens on every beat. Wait for my OK.
+
+DIRECTION:
+- Dribbble-level UI motion. One shape, never cut: every state is the same card morphing its size, radius and color while its content swaps with a short blur. A cursor drives every change with real clicks and drags.
+- Dark brand background, cream/white components, one accent color from the brand. One Hebrew UI font (Heebo), full RTL for Hebrew.
+- Springs everywhere, a tiny overshoot at most. The camera zooms so each state fills the frame. The last frame equals the first, so it loops.
+- Use my real photos and logo inside the cards. Never invent people or products.
+- Banned: bouncy easing, particle bursts, cheap glows, gradients on UI chrome, dead time, anything that looks like a template.
+
+BUILD:
+0. Tools: Python with numpy (song analysis), one HTML/CSS/JS file (the animation), Playwright + Chromium (frame-by-frame render) and ffmpeg (motion blur, music, MP4). Check what's installed, install what's missing yourself, and tell me in one line before you install anything.
+1. One HTML file at the target size. Every style is computed from time inside seek(t): no CSS transitions, no timers, no state carried between frames.
+2. Springs are closed-form step responses. A value that changes target many times is the sum of one spring per change.
+3. Drags are direct manipulation: while the cursor is held, the value follows its position; on release it springs back.
+4. Render one frame per beat first and show me the contact sheet. Fix anything off the grid, cramped or hard to read.
+5. Full render with Playwright: 4 subframes per frame, blended with ffmpeg tmix for motion blur at 60fps. Add the song from the drop with a short fade-out. Export MP4 (H.264, yuv420p).
+
+PITFALLS:
+- Hebrew text that swaps inside a morphing card needs its own enter and exit timing, or it overlaps.
+- Never put will-change on anything the camera scales, or text renders blurry.
+- Keep text inside x 140–940 (on 1080 wide) so the Reels UI doesn't cover it.
+- Make the last frame identical to the first, cursor included, or the loop stutters.
+
+START: Ask me for the inputs above in one message, in Hebrew. Don't write any code until I approve the beat table.`} />
+      </details>
+    </div>
+
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: עונים על השאלות שלו
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        Claude שואל בהודעה אחת: מה העסק, איזה <span className="text-orci-cyan font-bold">מסלול לקוח</span> הסרטון יראה (למשל: פרופיל, קביעת תור, בחירת ספר, שעה, מה כלול, עבודות, "התור נקבע"), אילו קבצים יש לכם, ואיזה שיר. אין לכם רשימת מסכים? הוא מציע אחת.
+      </p>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        כך זה נראה אצל בר מ-BARDA: אמרנו לו על מה הסרטון, הוא בנה תוכנית סצנה אחרי סצנה:
+      </p>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
+        <Image src="/guides/claude-ui-animation/plan.jpg" alt="Claude Code בונה תוכנית סצנות לסרטון של המספרה" width={900} height={783} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 3 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3: הוא מקשיב לשיר ומאשרים טבלת ביטים
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        Claude מנתח את השיר בעצמו: מוצא את ה-<span className="text-orci-cyan font-bold">BPM</span>, את רשת הביטים ואת ה-<span className="text-orci-cyan font-bold">drop</span>, ומתחיל את הסרטון בדיוק שם. אצל בר יצא 91 BPM, וה-drop בשנייה 10.6.
+      </p>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
+        <Image src="/guides/claude-ui-animation/beats.jpg" alt="ניתוח השיר: גל קול עם סימוני ביט, 91 BPM ו-drop" width={900} height={783} className="w-full h-auto" />
+      </div>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        אחר כך הוא מראה טבלה: מה קורה בכל ביט, מה הסמן עושה ומה כתוב על המסך. לפני הרינדור המלא הוא מרנדר <span className="text-orci-cyan font-bold">פריים אחד לכל ביט</span> כדי שתבדקו. זה דף הבדיקה האמיתי מהסרטון של בר:
+      </p>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-2xl mx-auto border border-orci-cyan/25">
+        <Image src="/guides/claude-ui-animation/beat-sheet.jpg" alt="פריים אחד לכל ביט מתוך הסרטון של BARDA" width={1350} height={1600} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 4 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 4: הוא בונה, ואתם מתקנים בצ'אט
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        Claude בונה את כל האנימציה ומרנדר אותה ישר על המחשב: <span className="text-orci-cyan font-bold">60 פריימים לשנייה</span> עם motion blur. בלי תוכנת עריכה, בלי מודל וידאו ובלי קרדיטים.
+      </p>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
+        <Image src="/guides/claude-ui-animation/render.jpg" alt="Claude Code מרנדר את האנימציה פריים אחרי פריים" width={900} height={783} className="w-full h-auto" />
+      </div>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        משהו לא מוצא חן? כותבים לו כמו לעורך. אלה שלושת התיקונים שעשינו בסרטון של בר:
+      </p>
+      <CopyPrompt prompt="תוסיף שלב שבו הלקוח בוחר עם מי להסתפר, והסמן לוחץ על בר." />
+      <CopyPrompt prompt="במסך הפתיחה תראה את פרופיל המספרה עצמה, כמו בצילום המסך שצירפתי." />
+      <CopyPrompt prompt="תחליף את התמונה של בר בבורר הספרים לתמונה הזאת, ותוסיף שמסאז' ראש כלול רק אצל בר." />
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
+        <Image src="/guides/claude-ui-animation/fix.jpg" alt="תיקון בצ'אט: Claude מתקן לפי בקשה" width={900} height={783} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Result */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          סרטון תדמית של 18 שניות ל-<span className="text-orci-cyan font-bold">BARDA</span>, שנראה כמו אפליקציה אמיתית, עם כל תנועה על הביט.
+        </p>
+      </div>
+      <div className="my-8 max-w-sm mx-auto">
+        <video src="/guides/claude-ui-animation/barda-promo.mp4" poster="/guides/claude-ui-animation/poster-barda.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">BARDA · @barda.haircuts</p>
+      </div>
+    </div>
+
+    {/* Bonus: original prompt */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        🎁 בונוס: הפרומפט הוויראלי המקורי
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        פרומפט העבודה מבוסס על הפרומפט הזה, שמסתובב ברשת. הוא מגיע עם רשימת מסכים כללית (כפתור, נגן, צ'ארט), וטוב אם רוצים אנימציית UI בלי קשר לעסק מסוים.
+      </p>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המקורי
+        </summary>
+        <CopyPrompt prompt={`Ask me for: 8 to 12 UI states I want the shape to become (e.g. button, loader, player, slider, toggle, tabs, chart, command palette, toast), pure black and white or one accent color, and a royalty-free song around 120 BPM (e.g. Mixkit, free for commercial use).
+Dribbble-level UI motion. One shape, never cut: every state is the same element morphing its size, radius and color while its content swaps with a short blur. A cursor drives every change with real clicks and drags. Light warm-gray canvas, black and white components, one clean UI font (Geist). Springs everywhere, a tiny overshoot at most. The camera zooms so each state fills the frame. The last frame is the first frame, so it loops.
+Banned: bouncy easing, particle bursts, glows, gradients on UI chrome, mismatched icon strokes, dead time, anything that looks like a template. set the animation language to hebrew if a text is inserted
+120 BPM, 7 bars, something happens on every beat.
+Button → loader → check → dynamic island → music player with a play/pause morph → scrub the progress bar → it becomes a volume slider that stretches when dragged past max → a toggle flips on the beat → the knob becomes a liquid tab indicator → the tabs open into a chart that draws itself, with a tooltip on hover → it collapses into ⌘K → type to filter → enter → toast → back to the button.
+
+build:
+1.⁠ ⁠One HTML file, square 1440x1440. Every style is computed from time inside seek(t): no CSS transitions, no timers, no state carried between frames.
+2.⁠ ⁠Springs are closed-form step responses. A value that changes target many times is the sum of one spring per change, so it stays a pure function of time.
+3.⁠ ⁠The tab indicator's two edges ride different springs, so the leading edge stretches ahead of the trailing one. Same trick for the toggle knob.
+4.⁠ ⁠Drags are direct manipulation: while the cursor is held, the value is computed from its position. On release it springs back from wherever it was.
+5.⁠ ⁠Analyze the song with numpy for the beat grid and start on a downbeat. Place every UI sound by its measured peak.
+6.⁠ ⁠Render with Playwright: 4 subframes per frame, blended with ffmpeg tmix for motion blur at 60fps.
+7.⁠ ⁠Render one frame per beat before the full render. Fix anything off the grid, cramped or hard to read.
+Never put will-change on anything the camera scales or the text renders blurry. Text that swaps inside a morphing container needs its own enter and exit timing or it overlaps. Make the last frame identical to the first, cursor position and speed included, or the loop stutters.
+Ask me for the inputs, then show me the state list on the beat grid before you write any code.`} />
+      </details>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">קודם תוכנית, אחר כך אנימציה.</span>
+        </p>
+        <p className="text-lg text-slate-300">
+          Plan mode וטבלת הביטים הם מה שמפריד בין סרטון אקראי לסרטון שנראה כאילו סטודיו עבד עליו שבוע.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <p className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+      </p>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>
