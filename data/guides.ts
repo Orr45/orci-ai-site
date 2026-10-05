@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'talking-ai-influencer',
+    title: 'בניתי לעצמי משפיענית',
+    description: 'משפיענית AI שנראית אמיתית ומדברת עברית. המדריך המלא נפתח ב-1,000 לייקים',
+    summary: 'משפיענית שמצטלמת כל יום בכל לוקיישן ולא מבקשת שקל: תמונה ודף דמות ב-GPT Image 2.5, קול בעברית מ-ElevenLabs, תנועה ב-Seedance 2.5, שפתיים ב-Sync 3 ועריכה ב-Claude Code. המדריך המלא עם כל הפרומפטים נפתח כשהסרטון מגיע ל-1,000 לייקים, וחברי קבוצת הווטסאפ מקבלים אותו ראשונים.',
+    image: '/guides/guide-talking-ai-influencer.png',
+    href: '/guides/talking-ai-influencer',
+    category: 'יצירת תוכן',
+    popular: false,
+    isNew: true,
+    date: '2026-10-05',
+    free: true,
+  },
+  {
     id: 'claude-ui-animation',
     title: 'אנימציה בפרומפט אחד',
     description: 'סרטון תדמית לעסק שנראה כמו אפליקציה של אפל, ש-Claude Code בונה לבד על הביט של השיר',
