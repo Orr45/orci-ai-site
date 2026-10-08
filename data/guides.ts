@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'chatgpt-human-writing',
+    title: 'ChatGPT שנשמע כמו בן אדם',
+    description: 'שני פרומפטים והגדרה אחת שמעלימים את סימני ה-AI מכל טקסט ש-ChatGPT כותב, גם בעברית',
+    summary: '"חשוב לציין", "בעידן של היום", קו ארוך באמצע המשפט: כולם מזהים שזה ChatGPT. ChatGPT אוסף בעצמו מוויקיפדיה את כל סימני כתיבת ה-AI עם המקבילות בעברית, הופך אותם לחוקים ומוציא הוראה קבועה קצרה, ומדביקים אותה פעם אחת בהוראות המותאמות אישית. כולל הוראה מוכנה להדבקה ולפני/אחרי על אותה בקשה.',
+    image: '/guides/guide-chatgpt-human-writing.png',
+    href: '/guides/chatgpt-human-writing',
+    category: 'טריקים',
+    popular: false,
+    isNew: true,
+    date: '2026-10-08',
+    free: false,
+  },
+  {
     id: 'ai-influencer-swap',
     title: 'המשפיען שלא קיים',
     description: 'משפיען AI שנכנס לכל טרנד ויראלי ומחליף כל משפיען אחר, עם דף דמות ו-Genjutsu של Higgsfield',
