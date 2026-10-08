@@ -448,9 +448,9 @@ OPENAI_API_KEY=sk-... npm run generate-weekly
 
 ---
 
-**Last Updated:** 2026-06-10
-**Status:** ✅ דף נחיתה B2B חדש "המוצרים שלנו" (/products) בסגנון מותג ORCIAI — חבילת השקה 3+1 ב-₪2,250, טופס לידים ל-Mailchimp, 3 קאברים ויראליים מ-Higgsfield, עיצוב פרימיום בהשראת hd-media.ai.
-**Next Action:** מעקב אחרי לידים ראשונים מהדף + בדיקת טופס הליד ב-production.
+**Last Updated:** 2026-10-08
+**Status:** ✅ דף "שיווק לעסקים" (/products) נבנה מחדש אחרי ניתוח 10 דפי מכירה בקטגוריה — עבודות לקוחות אמיתיות (Troya, LAGO, Ela-Yam, Barda, Save The Date, Vibe or Value), לוגואים מתחת להירו, הסרת סיכון "לא משלמים עד שאישרתם את התסריט".
+**Next Action:** להוסיף לדף /products: לוגו Muzo, מספרי צפיות אצל הלקוחות (שדה `views` ב-WORKS), והמלצות עם שם עסק (שדה `business` ב-data/testimonials.ts).
 
 ---
 
@@ -1121,3 +1121,21 @@ Hero (כותרת ענקית clamp עד 116px) → קרוסלת כלים marquee 
 - הפינגווין הישראלי (137K): instagram.com/p/DUS01xYilsL
 
 **⚠️ לקוחות קיימים:** Wave-Adv + Pinookim Sweet (לוגואים ב-public/products/)
+
+---
+
+### Session 2026-10-08 — בנייה מחדש של "שיווק לעסקים" (/products)
+
+**מחקר:** נותחו 10 דפי מכירה בקטגוריה (Superside, Icon, Billo, hd-media, Harmon Brothers, Creatify, Vidico, Design Pickle, Awesomic, Lemonlight) — צילום מסך מלא + טקסט עם Playwright. נתוני המרה לא פומביים, נבחרו לפי: אותו מוצר + הצלחה מוכחת.
+
+**מה השתנה בדף:** הירו עם ההצעה + המחיר + הסרת סיכון, וטלפון שמנגן מונטאז' עבודות (עם כפתור עצירה) · פס לוגואים מיד מתחת להירו · 6 עבודות עם "הבריף / מה עשינו" · תהליך ב-4 שלבים · השוואה מול חברת הפקה / פרילנסר / לבד עם AI · "מי מאחורי זה" עם הרילסים הוויראליים · וואטסאפ כ-CTA ראשי. הוסרו: מרקיז כלים, "100% AI", כרטיסי שירותים, המלצות אנונימיות, לוגואים-טקסט.
+
+**קבצים:**
+- `public/products/work/` — 6 סרטוני לקוחות (720p, H.264) + פוסטרים + `hero-reel.mp4`
+- `public/products/logos/` — 7 לוגואים מרובעים לבועות עגולות
+- `data/testimonials.ts` — שדה `business` חדש. ב-/products מוצגות רק המלצות עם עסק
+
+**⚠️ פרטיות — Save The Date:** הלקוחות פרטיים. השמות "MICHAL & MOR" וגם "May Mordoch" (בהתראות בטלפון, שניות 6–9) מטושטשים, והפתיחה נחתכה. מקור: `~/Documents/OrciAi/ForClients/Wedding-Invite-May/`. לא להעלות את קובץ המקור.
+
+**⚠️ Vibe or Value** הוא המוצר של אור — מופיע תחת "מותגים שעבדנו איתם", לא "לקוחות".
+

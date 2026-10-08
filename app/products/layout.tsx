@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'המוצרים שלנו — פרסומות ותוכן AI לעסקים | Orci AI',
+  title: 'פרסומות לעסקים — בלי יום צילום | Orci AI',
   description:
-    'פרסומות וסרטוני סושיאל מבוססי AI לעסקים — תוכן שעוצר את הגלילה, במחיר של חלק מהפקה רגילה. מבצע השקה: 3 סרטונים + 1 מתנה.',
+    'פרסומות שנראות כמו הפקה גדולה, בלי יום צילום. עבדנו עם LAGO, TROYA, ELA-YAM ועוד. 3 סרטונים + רביעי מתנה ב-2,250 ₪ — ולא משלמים עד שאישרתם את התסריט.',
   alternates: {
     canonical: 'https://orci-ai-site.vercel.app/products',
   },
   openGraph: {
-    title: 'פרסומות ותוכן AI לעסקים | Orci AI',
+    title: 'פרסומות לעסקים — בלי יום צילום | Orci AI',
     description:
-      'תוכן ויראלי מבוסס AI לעסק שלכם — מהיוצר עם 25 מיליון צפיות. מבצע השקה: 3 סרטונים + 1 מתנה.',
+      'עבדנו עם LAGO, TROYA, ELA-YAM ועוד. 3 סרטונים + רביעי מתנה ב-2,250 ₪ — ולא משלמים עד שאישרתם את התסריט.',
     url: 'https://orci-ai-site.vercel.app/products',
     siteName: 'Orci AI',
     locale: 'he_IL',

@@ -7,6 +7,8 @@ export interface Testimonial {
   name: string;
   role?: string;
   quote: string;
+  /** שם העסק. בדף השיווק לעסקים (/products) מוצגות רק המלצות עם עסק — המלצה אנונימית נקראת כמומצאת. */
+  business?: string;
 }
 
 export const TESTIMONIALS: Testimonial[] = [
