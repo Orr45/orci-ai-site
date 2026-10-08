@@ -31,8 +31,6 @@
 .heroBar { position: relative; z-index: 4; background: var(--paper); border-top: 2px solid var(--olive); }
 .heroBarInner { display: grid; gap: 18px; padding-block: 22px 28px; }
 .heroTitle { font-size: 46px; margin: 0; color: var(--olive); }
-.heroCtas { display: grid; gap: 10px; }
-.heroCtas a { width: 100%; }
 
 /* ═════════ TWO DOORS ═════════ */
 .doors { padding-block: 44px 48px; display: grid; gap: 18px; }
@@ -121,10 +119,8 @@
   .st1 { top: 14%; right: 13%; rotate: -7deg; }
   .st2 { bottom: auto; top: 42%; left: 8%; }
   .st3 { display: flex; gap: 8px; top: 9%; left: 19%; rotate: -10deg; }
-  .heroBarInner { grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px 48px; padding-block: 30px 38px; }
+  .heroBarInner { padding-block: 30px 38px; }
   .heroTitle { font-size: clamp(56px, 6vw, 92px); }
-  .heroCtas { display: flex; gap: 12px; }
-  .heroCtas a { width: auto; }
 
   .doors { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; padding-block: 80px 88px; }
   .door { padding: 40px 36px 34px; border-radius: 32px; }

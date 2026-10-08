@@ -117,14 +117,6 @@ function HeroSection() {
             <br />
             עם <span className="lv-accent">AI</span>.
           </p>
-          <div className={s.heroCtas}>
-            <Link href="/products" className="cap-btn cap-btn-primary">
-              פרסומות לעסק שלי
-            </Link>
-            <Link href="/guides" className="cap-btn cap-btn-outline">
-              למדריכים החינמיים
-            </Link>
-          </div>
         </div>
       </div>
     </section>
