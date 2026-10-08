@@ -1139,3 +1139,5 @@ Hero (כותרת ענקית clamp עד 116px) → קרוסלת כלים marquee 
 
 **⚠️ Vibe or Value** הוא המוצר של אור — מופיע תחת "מותגים שעבדנו איתם", לא "לקוחות".
 
+**עיצוב מחדש — קונספט Lando Norris × Mat Voyce (אותו יום):** הגרסה הראשונה נראתה גנרית. מתוך לוקבוק של 8 אתרים זוכי פרסים אור בחר 1+6: Lando Norris (Awwwards Site of the Year 2025) + Mat Voyce. העיצוב ב-`app/products/products.module.css`: אוף-וייט / זית / שחור מ-Lando, הליים שלו הוחלף בציאן של Orci (שהוא גם הציאן של Mat Voyce), Karantina (נטען רק ב-products/layout.tsx) + Frank Ruhl 900 למילות הדגשה, פורטרט גזור (`public/products/or-cutout.webp`, נגזר מקומית עם Apple Vision) על מפה טופוגרפית (`public/products/topo.svg`), סטיקרים עם צל קשה, ומילים ענקיות שנמתחות לפי מהירות הגלילה. הדף לא מגיב למצב כהה/בהיר של האתר — מראה אחד קבוע.
+

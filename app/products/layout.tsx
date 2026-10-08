@@ -1,4 +1,12 @@
 import type { Metadata } from 'next';
+import { Karantina } from 'next/font/google';
+
+// Condensed display face for this page only (the Lando × Mat Voyce concept). Frank Ruhl comes from the root layout.
+const karantina = Karantina({
+  variable: '--font-karantina',
+  subsets: ['hebrew', 'latin'],
+  weight: ['400', '700'],
+});
 
 export const metadata: Metadata = {
   title: 'פרסומות לעסקים — בלי יום צילום | Orci AI',
@@ -19,5 +27,5 @@ export const metadata: Metadata = {
 };
 
 export default function ProductsLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return <div className={karantina.variable}>{children}</div>;
 }
