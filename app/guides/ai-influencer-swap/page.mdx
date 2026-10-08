@@ -1,0 +1,273 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'המשפיען שלא קיים: משפיען AI שמחליף כל טרנד ויראלי | Orci AI',
+  description: 'איך בונים משפיען AI עם דף דמות ב-GPT Image 2.5 ומכניסים אותו לכל טרנד ויראלי עם Genjutsu של Higgsfield, כולל כל הפרומפטים שהרצנו.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        המשפיען שלא קיים
+      </h1>
+      <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        דמות אחת, טרנד ויראלי אחד, ו-Genjutsu עושה את כל השאר. ככה בונים משפיען AI שרוקד, מדבר ומחליף כל משפיען אחר.
+      </div>
+
+      {/* Tools Badges */}
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🎨 GPT Image 2.5</span>
+        <span className="cap-badge text-sm">🌀 Higgsfield Genjutsu</span>
+        <span className="cap-badge text-sm">🎙️ ElevenLabs</span>
+        <span className="cap-badge text-sm">👄 Sync 3</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* The reel */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        הסרטון
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        כל מה שרואים בסרטון הזה נבנה בשיטה שבמדריך: הדמות, החדר בפריז, הקול, המשפיענית שרוקדת את הטרנד וההחלפה בסוף.
+      </div>
+      <div className="my-8 max-w-sm mx-auto">
+        <video src="/guides/ai-influencer-swap/reel.mp4" poster="/guides/ai-influencer-swap/poster-reel.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הסרטון המלא</p>
+      </div>
+    </div>
+
+    {/* What you need */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        מה צריך
+      </h2>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>חשבון <span className="text-orci-cyan font-bold">Higgsfield</span>: שם נמצאים GPT Image 2.5 ו-Genjutsu.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>3 עד 5 תמונות של הדמות שלכם, או תמונה אחת שיצרתם עם הפרומפט שבשלב 1.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>סרטון ויראלי אחד שאתם רוצים "לגנוב" ממנו את התנועה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>בשביל הבונוס (קול ודיבור): <span className="text-orci-cyan font-bold">ElevenLabs</span> ו-<span className="text-orci-cyan font-bold">Sync 3</span>.</li>
+      </ul>
+    </div>
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: דף דמות ב-GPT Image 2.5
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        המודל שמנפיש את הדמות צריך לדעת איך היא נראית מכל כיוון, אחרת בכל סרטון יופיע מישהו קצת אחר. לכן הדבר הראשון הוא <span className="text-orci-cyan font-bold">דף דמות</span>: תמונה אחת רחבה עם חזית, שלושה רבעים, גב ותקריב פנים.
+      </div>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        נכנסים ל-Higgsfield, בוחרים <span className="text-orci-cyan font-bold">GPT Image 2.5</span> (איכות High, יחס 16:9), מעלים את תמונות הרפרנס ומדביקים את הפרומפט. את מה שבסוגריים המרובעים מחליפים בתיאור של הדמות שלכם.
+      </div>
+
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`Create a photorealistic character sheet of the exact person shown in the reference images, on one wide 16:9 image with a plain muted studio background. Four panels side by side, evenly spaced: (1) full-body front view standing straight, arms relaxed; (2) full-body three-quarter view; (3) full-body back view showing the back of the hair and outfit; (4) ONE large close-up of the face looking straight into the camera, neutral expression. Only one face close-up in the whole sheet. Same person, same face, same hair and same outfit in every panel, matching the references exactly: [body type and height], [skin tone], [face shape and eyes], [haircut and hair color], [facial hair or makeup], [full outfit from top to shoes]. Real photographic skin texture, natural pores, even soft studio light, sharp focus, shot on a full-frame camera. No text, no labels, no numbers, no watermark, no background from the references.`} />
+      </details>
+
+      <div className="my-8 rounded-2xl overflow-hidden">
+        <Image src="/guides/ai-influencer-swap/character-sheet.png" alt="דף דמות: חזית, שלושה רבעים, גב ותקריב פנים" width={1400} height={792} className="w-full h-auto" />
+      </div>
+      <p className="text-center text-sm text-orci-cyan font-bold mt-2">דף הדמות שיצא לנו</p>
+
+      <div className="text-lg text-slate-300 leading-relaxed mt-6 mb-4">
+        <span className="text-orci-cyan font-bold">הטיפ הכי חשוב בשלב הזה:</span> רק תקריב פנים אחד בדף. כשיש כמה תקריבים, המודל מתחיל לערבב ביניהם והפנים זזות מסרטון לסרטון.
+      </div>
+
+      <div className="text-lg text-slate-300 leading-relaxed mt-6 mb-4">
+        אין לכם עדיין דמות? מה שעוצר גלילה זו דמות שמזהים בפריים אחד: תספורת מוגזמת, תו פנים בולט ובגד שלא מתאים לה. הפרומפט הזה יוצר דמות כזאת מאפס:
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 פרומפט ליצירת דמות חדשה
+        </summary>
+        <CopyPrompt prompt={`Photorealistic studio portrait of a real-looking person who is instantly recognizable in one frame. Exaggerate exactly three things and keep everything else realistic: [an unusual haircut, e.g. a giant glossy bowl cut], [one striking facial feature, e.g. a thin curled handlebar mustache], [an outfit that feels wrong for them, e.g. a 1970s houndstooth tweed suit with a striped tie]. Chest-up framing, straight-on, deadpan expression looking into the lens, plain muted background, soft even studio light, real skin texture with pores and slight redness. No text, no logos.`} />
+      </details>
+    </div>
+
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: מוצאים טרנד שכבר התפוצץ
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        גוללים באינסטגרם או בטיקטוק ומחפשים סרטון שכבר הוכיח את עצמו: ריקוד, ליפסינק או תנועות ידיים. לא כל סרטון יעבוד טוב. מה שכדאי לבדוק:
+      </div>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">אדם אחד בפריים</span>, רואים את כל הגוף.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">מצלמה יציבה</span>, כמו טלפון על חצובה, בלי קפיצות.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">בלי קאטים מהירים</span>. טקסט על המסך או בגדים מוזרים לא מפריעים, כי לוקחים רק את התנועה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>בין 4 ל-30 שניות. זה הטווח ש-Genjutsu מקבל.</li>
+      </ul>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        מורידים את הסרטון למחשב ומורידים ממנו את הסאונד. את השיר מוסיפים בסוף מתוך ספריית השירים של אינסטגרם או טיקטוק, וככה הסרטון גם נכנס לעמוד של הטרנד.
+      </div>
+      <CopyPrompt prompt="ffmpeg -i trend.mp4 -an -c:v copy trend_muted.mp4" />
+    </div>
+
+    {/* Step 3a */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3: Genjutsu עושה את כל העבודה
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        ב-Higgsfield נכנסים ל-<span className="text-orci-cyan font-bold">Genjutsu</span>. יש בו שני מצבים, ושניהם נמצאים בסרטון:
+      </div>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Motion Transfer</span>: הדמות שלכם מבצעת את התנועה מהסרטון הוויראלי, במקום שלה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Swap</span>: מחליפים את האדם בתוך הסרטון בדמות שלכם, וכל השאר נשאר בדיוק אותו דבר.</li>
+      </ul>
+
+      <h3 className="text-xl md:text-2xl font-bold mb-4 mt-8 text-white">מצב 1: Motion Transfer</h3>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        מעלים את הסרטון הוויראלי (בלי סאונד) ואת תמונת הדמות, ומדביקים את הפרומפט. בדוגמה שלנו לקחנו את הריקוד הוויראלי, נתנו אותו למשפיענית כושר שיצרנו, והיא רקדה אותו בדיוק באותו קצב.
+      </div>
+      <CopyPrompt prompt={`The person from the reference image performs the entire dance from the reference video: every move, hip shift, arm swing and the exact rhythm and timing, with the same static phone-on-tripod camera position and full-body framing. Keep their face, hair and outfit exactly as in the reference image, in their own location. Real phone footage, natural light, no text, no logos.`} />
+
+      <div className="my-8 grid grid-cols-3 gap-3">
+        <div>
+          <video src="/guides/ai-influencer-swap/character-dance.mp4" poster="/guides/ai-influencer-swap/poster-character-dance.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-slate-400 font-bold mt-2">הסרטון הוויראלי</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/ai-influencer-swap/trend-influencer.png" alt="תמונת הדמות שנכנסת ל-Genjutsu" width={700} height={1238} className="w-full h-auto rounded-2xl" />
+          <p className="text-center text-sm text-slate-400 font-bold mt-2">+ הדמות</p>
+        </div>
+        <div>
+          <video src="/guides/ai-influencer-swap/trend-dance.mp4" poster="/guides/ai-influencer-swap/poster-trend-dance.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">= התוצאה</p>
+        </div>
+      </div>
+
+      <h3 className="text-xl md:text-2xl font-bold mb-4 mt-10 text-white">מצב 2: Swap, להחליף משפיען במשפיען</h3>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        כאן Genjutsu לא בונה סרטון חדש. הוא עורך את הסרטון הקיים ומחליף רק את האדם: החדר, המצלמה, התזמון ואפילו תנועות הפה נשארים. ככה עשינו את הסוף של הסרטון, כשהמשפיען מתחלף במשפיענית באמצע משפט.
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחץ לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`Edit the reference video: replace only the person with the person from the reference image. Keep everything else exactly the same: the room, the background, the lighting, the camera framing, the timing, and every movement - head movements, hand gestures, pointing at the camera, facial expressions and mouth movements while talking to the camera. The new person is the one from the reference image: [hair], [outfit], [one or two key features]. They talk to the camera exactly like the original person, with the same lip movements and the same gestures. Photorealistic, natural skin texture, iPhone front camera look. No text, no subtitles.`} />
+      </details>
+      <div className="my-8 grid grid-cols-2 gap-4 max-w-md mx-auto">
+        <div>
+          <video src="/guides/ai-influencer-swap/swap-before.mp4" poster="/guides/ai-influencer-swap/poster-swap-before.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-slate-400 font-bold mt-2">לפני</p>
+        </div>
+        <div>
+          <video src="/guides/ai-influencer-swap/swap-after.mp4" poster="/guides/ai-influencer-swap/poster-swap-after.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">אחרי</p>
+        </div>
+      </div>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        <span className="text-orci-cyan font-bold">טיפ לחיסכון:</span> מריצים קודם ב-480p. רק כשהתנועה והדמות נראות טוב, מריצים שוב באיכות גבוהה.
+      </div>
+    </div>
+
+    {/* Bonus: talking */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        🎁 בונוס: איך הדמות מדברת עברית
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        בסרטון הדמות לא רק רוקדת, היא גם מעבירה את המדריך מחדר עם נוף למגדל אייפל. ככה עשינו את זה:
+      </div>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">1.</span>יצרנו תמונה של החדר הריק ב-GPT Image 2.5, עם קיר מלא תמונות שלו.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">2.</span>ב-Seedance 2.5 העלינו את דף הדמות ואת החדר כרפרנסים, וביקשנו סרטון של 30 שניות שבו הוא מדבר למצלמה, כמו צילום טלפון אמיתי ולא קולנועי.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">3.</span>הקלטנו את הטקסט ב-<span className="text-orci-cyan font-bold">ElevenLabs</span> בקול גבר צרפתי שמדבר עברית (מודל v3, שפה: עברית). מילים שהמודל קורא לא נכון מתקנים עם ניקוד.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">4.</span>הלבשנו את הקול על הסרטון עם <span className="text-orci-cyan font-bold">Sync 3</span>, שמתאים את תנועות הפה למילים.</li>
+      </ul>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-xs mx-auto">
+        <Image src="/guides/ai-influencer-swap/room.png" alt="החדר בפריז עם מגדל אייפל בחלון" width={700} height={1238} className="w-full h-auto" />
+      </div>
+      <p className="text-center text-sm text-orci-cyan font-bold mt-2">החדר שיצרנו</p>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 הפרומפט ל-Seedance 2.5 (הדמות מדברת)
+        </summary>
+        <CopyPrompt prompt={`Use @Image1 as the main character; preserve the face, hair and outfit exactly in every frame. @Image1 is an identity reference only: never render the character sheet, its background or its panels. Use @Image2 as the environment; the camera stays inside this room. This is real phone footage, not cinematic: a vertical 9:16 iPhone front-camera video, 30 seconds, an influencer filming a casual tutorial on a phone mounted on a small tripod, natural auto-exposure, slight sensor noise, no color grade, like an unedited Instagram upload. Lighting: daylight from the window behind as a rim, a ring light in front as the key. Framing: medium close-up from mid-chest up, face centered. Camera: locked-off, no movement. @Image1 talks continuously to the camera with natural, clearly visible mouth movement; the mouth is never covered by hands or hair. Emotional arc: excited (0-5) → enthusiastic teacher (5-25) → big grin (25-30). Sound: only room tone, no music. No text, no subtitles, no logos, no extra people.
+
+[0:00-0:05] @Image1 leans toward the lens with wide, excited eyes, talking proudly, then laughs and spreads both hands below the chin.
+[0:05-0:12] @Image1 keeps talking like a teacher, raises one finger, then points down as if showing something on screen.
+[0:12-0:18] @Image1 keeps explaining, makes a small typing gesture, then raises two fingers.
+[0:18-0:25] @Image1 opens the eyes wide as if revealing a secret, raises three fingers and rubs the palms together.
+[0:25-0:30] @Image1 breaks into a big grin, points at the lens, then reaches toward the phone to stop the recording.`} />
+      </details>
+    </div>
+
+    {/* Result Card */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          משפיען שנכנס לכל טרנד ויראלי <span className="text-orci-cyan font-bold">בלי לצלם אף פריים</span>, ומחליף כל משפיען אחר בתוך הסרטון שלו.
+        </div>
+      </div>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">התנועה אמיתית, הדמות הזויה.</span>
+        </div>
+        <div className="text-lg text-slate-300">
+          דף דמות טוב הוא חצי מהעבודה. אחריו כל טרנד שמתפוצץ הוא עוד סרטון שלכם.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <div className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+      </div>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>

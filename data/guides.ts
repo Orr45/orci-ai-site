@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'ai-influencer-swap',
+    title: 'המשפיען שלא קיים',
+    description: 'משפיען AI שנכנס לכל טרנד ויראלי ומחליף כל משפיען אחר, עם דף דמות ו-Genjutsu של Higgsfield',
+    summary: 'הוא מתפוצץ ברשת והוא בכלל לא קיים. בונים דף דמות אחד ב-GPT Image 2.5, לוקחים טרנד שכבר עבד, ו-Genjutsu של Higgsfield מעביר את התנועה לדמות שלכם או מחליף משפיען קיים בתוך הסרטון שלו. כולל את כל הפרומפטים שהרצנו, טיפים לבחירת טרנד, ובונוס: איך הדמות מדברת עברית עם ElevenLabs ו-Sync 3.',
+    image: '/guides/guide-ai-influencer-swap.png',
+    href: '/guides/ai-influencer-swap',
+    category: 'וידאו ויראלי',
+    popular: true,
+    isNew: true,
+    date: '2026-10-08',
+    free: false,
+  },
+  {
     id: 'talking-ai-influencer',
     title: 'בניתי לעצמי משפיענית',
     description: 'משפיענית AI שנראית אמיתית ומדברת עברית. המדריך המלא נפתח ב-1,000 לייקים',
