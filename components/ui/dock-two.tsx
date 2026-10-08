@@ -31,31 +31,24 @@ const DockIconButton = React.forwardRef<HTMLButtonElement, DockIconButtonProps>(
       <>
         <Icon
           className="w-5 h-5 transition-colors"
-          style={{ color: isActive ? 'var(--accent)' : 'var(--text-muted)' }}
+          style={{ color: isActive ? 'var(--olive)' : 'var(--text-secondary)' }}
         />
         <span
-          className="text-[10px] font-medium mt-0.5 transition-colors"
-          style={{ color: isActive ? 'var(--accent)' : 'var(--text-muted)' }}
+          className="text-[11px] font-bold mt-0.5 transition-colors"
+          style={{ color: isActive ? 'var(--olive)' : 'var(--text-secondary)' }}
         >
           {label}
         </span>
-        {isActive && (
-          <motion.div
-            layoutId="dock-active"
-            className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full"
-            style={{ background: 'var(--accent)' }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          />
-        )}
       </>
     )
 
     const sharedClass = cn(
-      "relative group flex flex-col items-center gap-0.5 px-3 pt-2.5 pb-2 rounded-xl min-w-[52px] transition-colors",
+      "relative group flex flex-col items-center gap-0.5 px-3 pt-2.5 pb-2 rounded-2xl min-w-[58px] transition-colors",
       className
     )
+    // Active tab is a cyan sticker; ink on cyan keeps 7.9:1 contrast in both themes
     const sharedStyle: React.CSSProperties = {
-      background: isActive ? 'var(--accent-soft)' : 'transparent',
+      background: isActive ? 'var(--cyan)' : 'transparent',
     }
 
     if (href) {
@@ -94,11 +87,11 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     return (
       <div ref={ref} className={cn("flex items-center justify-center", className)}>
         <div
-          className="flex items-center gap-0.5 px-2 py-1 rounded-2xl backdrop-blur-xl transition-all duration-300"
+          className="flex items-center gap-1 px-1.5 py-1.5 rounded-[22px] transition-all duration-300"
           style={{
-            background: 'color-mix(in srgb, var(--surface) 92%, transparent)',
-            border: '1px solid var(--border-subtle)',
-            boxShadow: 'var(--shadow-card-hover)',
+            background: 'var(--surface)',
+            border: '2px solid var(--pill-edge)',
+            boxShadow: '4px 4px 0 var(--pill-edge)',
           }}
         >
           {items.map((item) => (

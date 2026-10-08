@@ -132,7 +132,7 @@ export default function TutorialGrid() {
                   <div className="absolute top-3 left-3 z-10">
                     <div
                       className="w-8 h-8 rounded-full flex items-center justify-center"
-                      style={{ background: 'rgba(10,16,28,0.75)', border: '1px solid rgba(255,255,255,0.3)' }}
+                      style={{ background: 'rgba(17,17,18,0.75)', border: '1px solid rgba(255,255,255,0.3)' }}
                     >
                       <Lock className="w-3.5 h-3.5 text-white" />
                     </div>
@@ -142,7 +142,7 @@ export default function TutorialGrid() {
                   <div className="absolute top-3 left-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
                     <div
                       className="w-8 h-8 rounded-full flex items-center justify-center"
-                      style={{ background: 'rgba(10,16,28,0.6)', border: '1px solid rgba(255,255,255,0.3)' }}
+                      style={{ background: 'rgba(17,17,18,0.6)', border: '1px solid rgba(255,255,255,0.3)' }}
                     >
                       <Unlock className="w-3.5 h-3.5 text-white" />
                     </div>
@@ -164,11 +164,11 @@ export default function TutorialGrid() {
                   {/* Hover overlay */}
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                    style={{ background: 'rgba(10,16,28,0.25)' }}
+                    style={{ background: 'rgba(17,17,18,0.25)' }}
                   >
                     <span
                       className="text-white font-bold text-sm px-4 py-2 rounded-full"
-                      style={{ background: 'rgba(10,16,28,0.7)', border: '1px solid rgba(255,255,255,0.35)', backdropFilter: 'blur(6px)' }}
+                      style={{ background: 'rgba(17,17,18,0.7)', border: '1px solid rgba(255,255,255,0.35)', backdropFilter: 'blur(6px)' }}
                     >
                       {isLocked ? 'לחץ לפתיחת גישה' : 'קרא את המדריך'}
                     </span>

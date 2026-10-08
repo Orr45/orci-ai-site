@@ -7,7 +7,7 @@ import { X, ExternalLink, Share2 } from 'lucide-react';
 import { WeeklyItem } from '@/types';
 
 const CATEGORY_COLORS: Record<string, { bg: string; text: string; border: string }> = {
-  'כלים חדשים':    { bg: 'rgba(0,255,209,0.12)',   text: '#00FFD1',  border: 'rgba(0,255,209,0.35)' },
+  'כלים חדשים':    { bg: 'rgba(0,209,255,0.12)',   text: '#00D1FF',  border: 'rgba(0,209,255,0.35)' },
   'עדכוני גרסה':   { bg: 'rgba(83,74,183,0.12)',  text: '#c084fc',  border: 'rgba(83,74,183,0.35)' },
   'חדשות גדולות':  { bg: 'rgba(239,68,68,0.12)',   text: '#f87171',  border: 'rgba(239,68,68,0.35)' },
   'טרנדים':        { bg: 'rgba(249,115,22,0.12)',  text: '#fb923c',  border: 'rgba(249,115,22,0.35)' },
@@ -64,9 +64,9 @@ export default function WeeklyModal({ item, onClose }: WeeklyModalProps) {
             transition={{ type: 'spring', stiffness: 340, damping: 30 }}
             className="fixed inset-x-4 bottom-4 top-4 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-[680px] md:top-[5%] md:bottom-[5%] z-[9001] rounded-2xl overflow-hidden flex flex-col"
             style={{
-              background: 'rgba(6,14,28,0.98)',
-              border: '1px solid rgba(0,255,209,0.18)',
-              boxShadow: '0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,255,209,0.08)',
+              background: 'rgba(17,17,18,0.98)',
+              border: '1px solid rgba(0,209,255,0.18)',
+              boxShadow: '0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,209,255,0.08)',
             }}
           >
             {/* Image */}
@@ -83,12 +83,12 @@ export default function WeeklyModal({ item, onClose }: WeeklyModalProps) {
               ) : (
                 <div
                   className="w-full h-full flex items-center justify-center text-8xl"
-                  style={{ background: 'linear-gradient(135deg, rgba(0,255,209,0.06), rgba(83,74,183,0.06))' }}
+                  style={{ background: 'linear-gradient(135deg, rgba(0,209,255,0.06), rgba(83,74,183,0.06))' }}
                 >
                   {item.emoji}
                 </div>
               )}
-              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[rgba(6,14,28,0.98)] to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[rgba(17,17,18,0.98)] to-transparent" />
 
               {/* Close button */}
               <button
@@ -116,11 +116,11 @@ export default function WeeklyModal({ item, onClose }: WeeklyModalProps) {
                   </span>
                 )}
                 {item.isNew && (
-                  <span className="text-xs font-bold px-2.5 py-1 rounded-full" style={{ background: 'rgba(0,255,209,0.12)', color: '#00FFD1', border: '1px solid rgba(0,255,209,0.3)' }}>
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-full" style={{ background: 'rgba(0,209,255,0.12)', color: '#00D1FF', border: '1px solid rgba(0,209,255,0.3)' }}>
                     ✨ חדש
                   </span>
                 )}
-                <span className="text-xs mr-auto" style={{ color: '#4a6a8a' }}>{item.source}</span>
+                <span className="text-xs mr-auto" style={{ color: 'rgba(244,244,237,0.62)' }}>{item.source}</span>
               </div>
 
               {/* Title */}
@@ -136,9 +136,9 @@ export default function WeeklyModal({ item, onClose }: WeeklyModalProps) {
               {/* Orci Take */}
               <div
                 className="rounded-xl p-4"
-                style={{ background: 'rgba(0,255,209,0.06)', border: '1px solid rgba(0,255,209,0.2)' }}
+                style={{ background: 'rgba(0,209,255,0.06)', border: '1px solid rgba(0,209,255,0.2)' }}
               >
-                <p className="text-xs font-bold mb-2" style={{ color: '#00FFD1' }}>💡 הזווית של Orci</p>
+                <p className="text-xs font-bold mb-2" style={{ color: '#00D1FF' }}>💡 הזווית של Orci</p>
                 <p className="text-sm leading-relaxed" style={{ color: '#b8d8f0' }}>
                   {item.orciTake}
                 </p>
@@ -151,9 +151,9 @@ export default function WeeklyModal({ item, onClose }: WeeklyModalProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm transition-all"
-                  style={{ background: 'rgba(0,255,209,0.15)', color: '#00FFD1', border: '1px solid rgba(0,255,209,0.35)' }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(0,255,209,0.25)'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(0,255,209,0.15)'; }}
+                  style={{ background: 'rgba(0,209,255,0.15)', color: '#00D1FF', border: '1px solid rgba(0,209,255,0.35)' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(0,209,255,0.25)'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(0,209,255,0.15)'; }}
                 >
                   <ExternalLink className="w-4 h-4" />
                   קרא באתר המקור

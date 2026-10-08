@@ -11,7 +11,7 @@ import WeeklyModal from './weekly-modal';
 const CATEGORIES = ['הכל', 'כלים חדשים', 'עדכוני גרסה', 'חדשות גדולות', 'טרנדים', 'מחקר'] as const;
 
 const CATEGORY_DOT: Record<string, string> = {
-  'כלים חדשים':    '#00FFD1',
+  'כלים חדשים':    '#00D1FF',
   'עדכוני גרסה':   '#c084fc',
   'חדשות גדולות':  '#f87171',
   'טרנדים':        '#fb923c',
@@ -40,16 +40,17 @@ export default function WeeklyDashboardClient({ data }: WeeklyDashboardClientPro
   return (
     <div
       className="min-h-screen"
-      style={{ background: 'linear-gradient(180deg, #0D0D1A 0%, #08142a 100%)' }}
+      data-theme="dark"
+      style={{ background: 'var(--bg)', color: 'var(--text-primary)' }}
     >
       {/* Header */}
-      <div className="border-b" style={{ borderColor: 'rgba(0,255,209,0.1)', background: 'rgba(13,13,26,0.9)', backdropFilter: 'blur(16px)' }}>
+      <div className="border-b" style={{ borderColor: 'rgba(0,209,255,0.1)', background: 'var(--surface)', backdropFilter: 'blur(16px)' }}>
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Breadcrumb */}
           <Link
             href="/"
             className="inline-flex items-center gap-1 text-sm mb-6 transition-colors"
-            style={{ color: '#4a6a8a' }}
+            style={{ color: 'rgba(244,244,237,0.62)' }}
           >
             <ArrowLeft className="w-4 h-4" />
             חזרה לבית
@@ -59,7 +60,7 @@ export default function WeeklyDashboardClient({ data }: WeeklyDashboardClientPro
             <div>
               <div
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold mb-3"
-                style={{ background: 'rgba(0,255,209,0.1)', border: '1px solid rgba(0,255,209,0.3)', color: '#00FFD1' }}
+                style={{ background: 'rgba(0,209,255,0.1)', border: '1px solid rgba(0,209,255,0.3)', color: '#00D1FF' }}
               >
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orci-cyan opacity-75" />
@@ -68,7 +69,7 @@ export default function WeeklyDashboardClient({ data }: WeeklyDashboardClientPro
                 עדכון שבועי
               </div>
 
-              <h1 className="text-3xl md:text-5xl font-black mb-2" style={{ color: '#ffffff' }}>
+              <h1 className="text-6xl md:text-8xl mb-3" style={{ color: 'var(--text-primary)' }}>
                 🔥 {data.weekTitle}
               </h1>
               <p className="text-base" style={{ color: '#5a7a9a' }}>
@@ -78,7 +79,7 @@ export default function WeeklyDashboardClient({ data }: WeeklyDashboardClientPro
 
             <div
               className="flex items-center gap-2 text-sm self-start md:self-end"
-              style={{ color: '#4a6a8a' }}
+              style={{ color: 'rgba(244,244,237,0.62)' }}
             >
               <CalendarDays className="w-4 h-4" />
               עודכן: {formattedDate}
@@ -99,9 +100,9 @@ export default function WeeklyDashboardClient({ data }: WeeklyDashboardClientPro
                   onClick={() => setActiveCategory(cat)}
                   className="flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all flex-shrink-0"
                   style={{
-                    background: isActive ? 'rgba(0,255,209,0.15)' : 'rgba(255,255,255,0.04)',
-                    border: isActive ? '1px solid rgba(0,255,209,0.4)' : '1px solid rgba(255,255,255,0.06)',
-                    color: isActive ? '#00FFD1' : '#5a7a9a',
+                    background: isActive ? 'rgba(0,209,255,0.15)' : 'rgba(255,255,255,0.04)',
+                    border: isActive ? '1px solid rgba(0,209,255,0.4)' : '1px solid rgba(255,255,255,0.06)',
+                    color: isActive ? '#00D1FF' : '#5a7a9a',
                   }}
                 >
                   {cat !== 'הכל' && (
@@ -113,7 +114,7 @@ export default function WeeklyDashboardClient({ data }: WeeklyDashboardClientPro
                   {cat}
                   <span
                     className="text-[10px] px-1.5 py-0.5 rounded-full"
-                    style={{ background: isActive ? 'rgba(0,255,209,0.2)' : 'rgba(255,255,255,0.06)', color: isActive ? '#00FFD1' : '#4a6a8a' }}
+                    style={{ background: isActive ? 'rgba(0,209,255,0.2)' : 'rgba(255,255,255,0.06)', color: isActive ? '#00D1FF' : 'rgba(244,244,237,0.62)' }}
                   >
                     {count}
                   </span>
@@ -148,9 +149,9 @@ export default function WeeklyDashboardClient({ data }: WeeklyDashboardClientPro
           <section>
             {hotItems.length > 0 && (
               <div className="flex items-center gap-3 mb-4">
-                <div className="h-px flex-1" style={{ background: 'rgba(0,255,209,0.1)' }} />
-                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#4a6a8a' }}>עוד עדכונים</span>
-                <div className="h-px flex-1" style={{ background: 'rgba(0,255,209,0.1)' }} />
+                <div className="h-px flex-1" style={{ background: 'rgba(0,209,255,0.1)' }} />
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: 'rgba(244,244,237,0.62)' }}>עוד עדכונים</span>
+                <div className="h-px flex-1" style={{ background: 'rgba(0,209,255,0.1)' }} />
               </div>
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
@@ -168,7 +169,7 @@ export default function WeeklyDashboardClient({ data }: WeeklyDashboardClientPro
             className="text-center py-20"
           >
             <p className="text-5xl mb-4">🤔</p>
-            <p className="text-lg" style={{ color: '#4a6a8a' }}>אין פריטים בקטגוריה זו השבוע</p>
+            <p className="text-lg" style={{ color: 'rgba(244,244,237,0.62)' }}>אין פריטים בקטגוריה זו השבוע</p>
           </motion.div>
         )}
       </div>

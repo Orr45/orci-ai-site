@@ -1,0 +1,91 @@
+/*
+ * About — Lando "on track / off track": portrait beside the name stacked huge,
+ * lime numbers band, dark timeline of three stations, short "today", CTA.
+ */
+.wrap { max-width: 1280px; margin-inline: auto; padding-inline: 18px; }
+
+/* hero */
+.hero { position: relative; background: var(--paper); color: var(--olive); border-bottom: 2px solid var(--olive); overflow: hidden; }
+.topo { position: absolute; inset: 0; pointer-events: none; }
+.heroGrid { position: relative; display: grid; gap: 8px; padding-top: 28px; }
+.nameBlock { display: grid; gap: 14px; align-content: center; }
+.kicker { justify-self: start; }
+.name { margin: 0; font-size: 26vw; color: var(--olive); }
+.name span { display: block; }
+.role { margin: 0; font-size: 18px; line-height: 1.5; font-weight: 600; max-width: 34ch; }
+.photo { position: relative; height: 420px; }
+.portrait {
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  height: 100%; width: auto; max-width: none;
+  filter: drop-shadow(0 24px 34px rgba(17, 17, 18, 0.2));
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 14%, #000 86%, transparent 100%);
+}
+.badge { position: absolute; z-index: 2; top: 10%; left: 6px; rotate: -6deg; }
+
+/* numbers band */
+.stats { background: var(--lime); color: var(--olive); border-bottom: 2px solid var(--olive); }
+.statGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
+.stat { padding: 22px 6px 20px; display: grid; gap: 6px; border-top: 1px solid rgba(40, 44, 32, 0.25); }
+.stat:nth-child(-n + 2) { border-top: 0; }
+.stat:nth-child(even) { border-inline-start: 1px solid rgba(40, 44, 32, 0.25); padding-inline-start: 16px; }
+.statNum { font-size: 64px; }
+.statLab { font-size: 13px; font-weight: 700; line-height: 1.35; }
+
+/* timeline (dark zone) */
+.timeline { background: var(--bg); color: var(--text-primary); padding-block: 52px 56px; }
+.sectionWord { font-size: clamp(56px, 14vw, 150px); margin: 0 0 28px; color: inherit; }
+.stops { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--border-strong); }
+.stop { display: grid; gap: 10px; padding-block: 24px; border-bottom: 1px solid var(--border-subtle); }
+.stopNum { font-family: var(--font-frank), serif; font-weight: 900; font-size: 72px; line-height: 0.8; color: var(--cyan); }
+.stopPeriod { justify-self: start; }
+.stopTitle { font-size: 44px; margin: 0; color: inherit; }
+.stopText { margin: 0; font-size: 17px; line-height: 1.6; color: var(--text-secondary); max-width: 60ch; }
+
+/* today */
+.today { background: var(--bg); padding-block: 52px 56px; }
+.todayList { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.todayList li { display: grid; gap: 2px; padding-inline-start: 22px; position: relative; }
+.todayList li::before { content: ''; position: absolute; right: 0; top: 0.55em; width: 12px; height: 4px; border-radius: 2px; background: var(--cyan); }
+.todayList b { font-family: var(--font-karantina), sans-serif; font-weight: 700; font-size: 32px; line-height: 1; color: var(--text-primary); }
+.todayList span { font-size: 16px; color: var(--text-secondary); }
+
+/* cta */
+.cta { background: var(--cyan); color: var(--olive); border-block: 2px solid var(--olive); padding-block: 48px 52px; }
+.ctaInner { display: grid; gap: 18px; }
+.ctaTitle { font-size: 64px; margin: 0; color: var(--olive); }
+.ctaBtns { display: grid; gap: 10px; }
+.ctaBtns a { width: 100%; }
+
+@media (min-width: 768px) {
+  .wrap { padding-inline: 28px; }
+  .heroGrid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); align-items: end; gap: 32px; padding-top: 48px; }
+  .nameBlock { padding-bottom: 56px; }
+  .name { font-size: clamp(130px, 15vw, 230px); }
+  .role { font-size: 21px; }
+  .photo { height: clamp(520px, 70vh, 700px); }
+  .badge { top: 14%; left: 2%; }
+
+  .statGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .stat { padding: 34px 20px 30px; border-top: 0; }
+  .stat:nth-child(even) { padding-inline-start: 20px; }
+  .stat + .stat { border-inline-start: 1px solid rgba(40, 44, 32, 0.25); }
+  .statNum { font-size: clamp(72px, 7vw, 112px); }
+  .statLab { font-size: 15px; }
+
+  .timeline { padding-block: 88px 96px; }
+  .stop { grid-template-columns: 120px 220px minmax(0, 1fr); align-items: baseline; gap: 28px; padding-block: 36px; }
+  .stopNum { font-size: 104px; }
+  .stopTitle { font-size: 56px; }
+  .stopMain { display: grid; gap: 12px; }
+
+  .today { padding-block: 88px 96px; }
+  .todayList { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 48px; }
+  .todayList b { font-size: 44px; }
+
+  .cta { padding-block: 72px 80px; }
+  .ctaInner { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 40px; }
+  .ctaTitle { font-size: clamp(80px, 9vw, 140px); }
+  .ctaBtns { display: flex; gap: 12px; }
+  .ctaBtns a { width: auto; }
+}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -11,14 +11,17 @@ import {
   useTransform,
   useVelocity,
 } from 'framer-motion';
-import { Check, X, Plus, Play, Send, Eye } from 'lucide-react';
+import { Check, X, Plus, Play, Send, Eye, ChevronLeft, ChevronRight, CalendarHeart } from 'lucide-react';
 import { Footer } from '@/components/layout/Footer';
 import { TESTIMONIALS } from '@/data/testimonials';
 import s from './products.module.css';
 
-const WHATSAPP_URL = `https://wa.me/972542599107?text=${encodeURIComponent(
-  'היי אור! ראיתי את העבודות באתר ואשמח לשמוע איך זה יכול לעבוד לעסק שלי'
-)}`;
+/* Launch offer ends here. A real deadline — when it passes the banner says so; it never resets. */
+const OFFER_ENDS = new Date('2026-10-15T23:59:59+03:00').getTime();
+
+const waLink = (text: string) => `https://wa.me/972542599107?text=${encodeURIComponent(text)}`;
+const WA_GENERAL = waLink('היי אור! ראיתי את העבודות באתר ואשמח לשמוע איך זה יכול לעבוד לעסק שלי');
+const WA_OFFER = waLink('היי אור! אני רוצה את חבילת ההשקה 3+1');
 
 /* ─── Brands. `bg` fills the circle behind the logo. ─── */
 interface Brand {
@@ -36,14 +39,14 @@ const BRANDS: Brand[] = [
   { name: 'Wave-Adv', logo: '/products/logos/wave-adv.png', bg: '#ffcd2a' },
   { name: 'פינוקים', logo: '/products/logos/pinookim.png', bg: '#ffffff' },
 ];
+const brand = (name: string) => BRANDS.find((b) => b.name === name);
 
-/* ─── Client work. `views` = views on the client's own account; the sticker appears only when it's set. ─── */
+/* ─── Client work. `views` = views on the client's own account; a sticker appears only when it's set. ─── */
 interface Work {
   brand: string;
   industry: string;
   format: string;
-  brief: string;
-  solution: string;
+  hook: string;
   video: string;
   poster: string;
   views?: string;
@@ -53,18 +56,16 @@ const WORKS: Work[] = [
   {
     brand: 'TROYA',
     industry: 'אולם אירועים',
-    format: 'סרטון אנימציה בסגנון פיקסאר',
-    brief: 'אולמות אחרים הציגו את עצמם כ"אולם שותף של Troya" — וזוגות התבלבלו.',
-    solution: 'סיפור פריצה מצויר שנגמר במסר אחד ברור: לטרויה אין אולמות שותפים. יש רק Troya אחת.',
+    format: 'אנימציה בסגנון פיקסאר',
+    hook: 'סיפור פריצה מצויר שמבהיר לזוגות: יש רק Troya אחת.',
     video: '/products/work/troya.mp4',
     poster: '/products/work/poster-troya.jpg',
   },
   {
     brand: 'LAGO',
     industry: 'אולם אירועים',
-    format: 'סרטון השוואה קיץ / חורף',
-    brief: 'למלא את תאריכי החורף — העונה שזוגות הכי חוששים ממנה.',
-    solution: 'מתג קיץ/חורף שמראה שזו אותה חוויה בדיוק: חימום מובנה, אותה רחבה, אותו עיצוב — ובסוף הצעה לתאריכי חורף.',
+    format: 'השוואת קיץ / חורף',
+    hook: 'קיץ או חורף — אותה חתונה. ככה מוכרים תאריכי חורף.',
     video: '/products/work/lago.mp4',
     poster: '/products/work/poster-lago.jpg',
   },
@@ -72,17 +73,15 @@ const WORKS: Work[] = [
     brand: 'ELA-YAM',
     industry: 'מועדון כושר',
     format: 'סרטון תדמית',
-    brief: 'להציג מועדון כושר יוקרתי מול הים ולגרום לאנשים לרצות להיות שם.',
-    solution: 'סיור קולנועי במתחם: משקולות, אגרוף, ספינינג, אזור התאוששות וסאונה — ויציאה אל הים.',
+    hook: 'סיור קולנועי במועדון כושר יוקרתי מול הים.',
     video: '/products/work/ela-yam.mp4',
     poster: '/products/work/poster-ela-yam.jpg',
   },
   {
     brand: 'BARDA',
     industry: 'מספרה',
-    format: 'מיתוג + סרטון קביעת תור',
-    brief: 'ספר מצוין עם עמוד אינסטגרם שלא שיקף את זה.',
-    solution: 'לוגו חדש, תבנית לפוסטים, וסרטון שמראה כמה קל לקבוע תור אצל בר — ישר מהביו.',
+    format: 'מיתוג + סרטון',
+    hook: 'מיתוג חדש וסרטון שמוביל ישר לקביעת תור.',
     video: '/products/work/barda.mp4',
     poster: '/products/work/poster-barda.jpg',
   },
@@ -90,77 +89,48 @@ const WORKS: Work[] = [
     brand: 'Save The Date',
     industry: 'אירוע פרטי',
     format: 'הזמנה לחתונה',
-    brief: 'לקוח שביקש סרטון Save The Date שלא נראה כמו עוד הזמנה.',
-    solution: 'הזוג עובר דרך תקופות בהיסטוריה — רומא העתיקה, נמל יפו של 1925, דיזנגוף של 1962 — ועד הרחבה.',
+    hook: 'הזמנה לחתונה שעוברת דרך תקופות בהיסטוריה.',
     video: '/products/work/save-the-date.mp4',
     poster: '/products/work/poster-save-the-date.jpg',
   },
   {
     brand: 'Vibe or Value',
     industry: 'אפליקציה',
-    format: 'סרטון השקה עם פרזנטור',
-    brief: 'להסביר מוצר מורכב — ניתוח פונדמנטלי של מניות — בפחות מדקה.',
-    solution: 'פרזנטור, הדגמה של הממשק האמיתי ואנימציות שמציגות את הבעיה לפני הפתרון.',
+    format: 'סרטון השקה',
+    hook: 'מוצר מורכב, מוסבר בפחות מדקה.',
     video: '/products/work/vibe-or-value.mp4',
     poster: '/products/work/poster-vibe-or-value.jpg',
   },
 ];
 
-const STEPS = [
-  { when: 'היום', title: 'שיחת היכרות', desc: '20 דקות בוואטסאפ או בטלפון: מה העסק, למי אתם מוכרים, ומה הסרטון צריך להשיג.' },
-  { when: 'לפני תשלום', title: 'תסריט לאישור', desc: 'אני כותב את התסריט ושולח לכם. אתם קוראים, מתקנים, מאשרים — ולא משלמים עד שאישרתם.' },
-  { when: 'אחרי האישור', title: 'הפקה', desc: 'ויז׳ואל, תנועה, מוזיקה וכתוביות. בלי יום צילום, בלי לוקיישן ובלי שחקנים.' },
-  { when: 'תוך 72 שעות', title: 'סרטון מוכן', desc: 'הסרטון אצלכם תוך 72 שעות מאישור התסריט, כולל קאבר. עד 2 סבבי תיקונים.' },
+const VALUES = [
+  { big: '72 שעות', text: 'מאישור התסריט ועד סרטון מוכן לעלות' },
+  { big: '0 ימי צילום', text: 'בלי לוקיישן, בלי שחקנים, בלי ציוד' },
+  { big: 'תסריט קודם', text: 'משלמים רק אחרי שאישרתם אותו' },
 ];
 
-const ALTERNATIVES = [
-  { title: 'חברת הפקה', points: ['10,000 ₪ ומעלה לסרטון בודד', 'שבועות של תיאומים', 'יום צילום, לוקיישן ושחקנים'] },
-  { title: 'עורך / פרילנסר', points: ['עורך רק את מה שכבר צילמתם', 'את הצילום עדיין צריך לעשות', 'את התסריט אתם כותבים'] },
-  { title: 'לבד, עם כלי AI', points: ['זול — אבל שבועות של למידה', 'קל שזה ייראה מזויף', 'בלי תסריט שנכתב למכירה'] },
-];
-
-const ORCI_POINTS = ['4 סרטונים ב-2,250 ₪', '72 שעות לסרטון', 'שיחה של 20 דקות — וזהו'];
-
-/* ─── My own reels: proof that I know what stops a scroll ─── */
-const MY_REELS = [
-  { views: '921K', title: 'טרנד היציע', image: '/products/cover-847k.png', link: 'https://www.instagram.com/reel/DYPD4JRx3J2/' },
-  { views: '350K', title: 'פרסומת לחנות ממתקים', image: '/products/cover-297k.png', link: 'https://www.instagram.com/reel/DYIItEFKx8A/' },
-  { views: '140K', title: 'סרטון הסברה על ישראל', image: '/products/cover-137k.png', link: 'https://www.instagram.com/reel/DUS01xYilsL/' },
-];
-
-const PACKAGE_INCLUDES = [
-  '3 סרטוני פרסומת + רביעי מתנה',
-  'תסריט שנכתב למטרה העסקית שלכם',
-  'הפקה מלאה — בלי יום צילום',
-  'קאבר ממותג לכל סרטון',
-  'עד 2 סבבי תיקונים לכל סרטון',
-  'אספקה תוך 72 שעות מאישור התסריט',
-];
+const PACKAGE_INCLUDES = ['3 סרטונים + הרביעי מתנה', 'תסריט וקאבר לכל סרטון', 'מוכן תוך 72 שעות', 'עד 2 סבבי תיקונים'];
 
 const FAQ = [
   {
-    q: 'פרסומת AI לא תיראה מזויפת?',
-    a: 'זה החשש הכי נפוץ — ובצדק, כי רוב תוכן ה-AI ברשת באמת נראה ככה. ההבדל הוא שאני לא מייצר "סרטון AI", אני מפיק פרסומת: תסריט, סגנון ובקרת איכות. תסתכלו על העבודות למעלה ותחליטו בעצמכם.',
+    q: 'זה לא ייראה מזויף?',
+    a: 'תסתכלו על העבודות למעלה ותחליטו בעצמכם. אני לא מייצר "סרטון AI" — אני מפיק פרסומת: תסריט, סגנון ובקרת איכות.',
   },
   {
-    q: 'מה אם לא אוהב את מה שיצא?',
-    a: 'לא משלמים עד שאישרתם את התסריט — כך שאתם יודעים בדיוק מה תקבלו לפני שהוצאתם שקל. אחרי האישור, כל סרטון כולל עד 2 סבבי תיקונים.',
-  },
-  {
-    q: 'כמה זמן זה לוקח?',
-    a: 'כל סרטון נמסר תוך 72 שעות מרגע אישור התסריט. חבילה מלאה של 4 סרטונים — בדרך כלל תוך שבועיים.',
+    q: 'מה אם לא אוהב?',
+    a: 'לא משלמים עד שאישרתם את התסריט. אחרי האישור, כל סרטון כולל עד 2 סבבי תיקונים.',
   },
   {
     q: 'מה אני צריך להביא?',
-    a: 'כמעט כלום. שיחת היכרות של 20 דקות, לוגו, וכמה תמונות של המוצר או העסק. את כל השאר אני עושה.',
+    a: 'שיחה של 20 דקות, לוגו וכמה תמונות של העסק. את כל השאר אני עושה.',
   },
   {
-    q: 'עם איזה עסקים עבדת?',
-    a: 'אולמות אירועים, מועדון כושר, מספרה, אפליקציה ואירועים פרטיים. זה מתאים לכל עסק שמוכר חוויה או מוצר שאפשר להראות — מסעדות, קליניקות, חנויות, נותני שירות.',
+    q: 'כמה זמן זה לוקח?',
+    a: '72 שעות לסרטון מרגע אישור התסריט. חבילה מלאה — בדרך כלל תוך שבועיים.',
   },
 ];
 
-/* ─── Mat Voyce: giant letters stretch with scroll speed and snap back ─── */
+/* ─── Mat Voyce: giant words stretch with scroll speed and snap back ─── */
 function Stretch({ children, className }: { children: React.ReactNode; className?: string }) {
   const reduce = useReducedMotion();
   const { scrollY } = useScroll();
@@ -179,6 +149,21 @@ function Stretch({ children, className }: { children: React.ReactNode; className
   );
 }
 
+/* Stickers pop onto the hero; with reduced motion they appear instantly */
+function Sticker({ className, delay, children }: { className: string; delay: number; children: React.ReactNode }) {
+  const reduce = useReducedMotion();
+  return (
+    <motion.span
+      className={className}
+      initial={{ scale: 0.6, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 320, damping: 18, delay }}
+    >
+      {children}
+    </motion.span>
+  );
+}
+
 function WhatsAppIcon() {
   return (
     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -187,13 +172,13 @@ function WhatsAppIcon() {
   );
 }
 
-function WhatsAppPill({ label, onDark = false }: { label: string; onDark?: boolean }) {
+function WhatsAppPill({ label, href = WA_GENERAL, variant = 'cyan', onDark = false }: { label: string; href?: string; variant?: 'cyan' | 'ink'; onDark?: boolean }) {
   return (
     <a
-      href={WHATSAPP_URL}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`${s.pill} ${s.pillCyan} ${onDark ? s.pillOnDark : ''}`}
+      className={`${s.pill} ${variant === 'ink' ? s.pillInk : s.pillCyan} ${onDark ? s.pillOnDark : ''}`}
     >
       <WhatsAppIcon />
       {label}
@@ -201,52 +186,104 @@ function WhatsAppPill({ label, onDark = false }: { label: string; onDark?: boole
   );
 }
 
-/* ─── Work video: play button over the poster; only one work video plays at a time ─── */
-function WorkVideo({ work }: { work: Work }) {
-  const ref = useRef<HTMLVideoElement>(null);
-  const [started, setStarted] = useState(false);
+/* Round logo for a work tile / lightbox (Save The Date has no brand logo) */
+function WorkLogo({ work, className }: { work: Work; className: string }) {
+  const b = brand(work.brand);
+  return (
+    <span className={className} style={{ background: b?.bg ?? 'var(--cyan)' }}>
+      {b ? <Image src={b.logo} alt="" width={96} height={96} /> : <CalendarHeart className="w-1/2 h-1/2" />}
+    </span>
+  );
+}
 
-  function start() {
-    setStarted(true);
-    ref.current?.play();
-  }
+/* ─── Full-screen player: tap a tile, watch with sound, swipe through with the arrows ─── */
+function Lightbox({ index, onClose, onStep }: { index: number; onClose: () => void; onStep: (dir: 1 | -1) => void }) {
+  const work = WORKS[index];
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  function pauseOthers() {
-    document.querySelectorAll<HTMLVideoElement>('video[data-work]').forEach((v) => {
-      if (v !== ref.current) v.pause();
-    });
-  }
+  useEffect(() => {
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeRef.current?.focus();
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft') onStep(1); // RTL: left is "next"
+      if (e.key === 'ArrowRight') onStep(-1);
+    }
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [onClose, onStep]);
+
+  useEffect(() => {
+    videoRef.current?.play().catch(() => {});
+  }, [index]);
 
   return (
-    <>
-      <video
-        ref={ref}
-        data-work
-        src={work.video}
-        poster={work.poster}
-        controls={started}
-        playsInline
-        preload="none"
-        onPlay={pauseOthers}
-        aria-label={`${work.brand} — ${work.format}`}
-      />
-      {!started && (
-        <button onClick={start} aria-label={`הפעלת הסרטון של ${work.brand}`} className={s.play}>
-          <span>
-            <Play className="w-8 h-8 ml-1" fill="currentColor" color="#282c20" />
-          </span>
-        </button>
-      )}
-    </>
+    <div role="dialog" aria-modal="true" aria-label={`${work.brand} — ${work.format}`} className={s.lightbox} onClick={onClose}>
+      <div className={s.lbInner} onClick={(e) => e.stopPropagation()}>
+        <div className={s.lbTop}>
+          <WorkLogo work={work} className={s.tileLogo} />
+          <div className={s.lbTitle}>
+            <b>{work.brand}</b>
+            <span>
+              {work.industry} · {work.format}
+            </span>
+          </div>
+          <button ref={closeRef} onClick={onClose} aria-label="סגירה" className={s.lbClose}>
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+        <video key={work.video} ref={videoRef} src={work.video} poster={work.poster} controls playsInline className={s.lbVideo} />
+        <p className={s.lbHook}>{work.hook}</p>
+        <div className={s.lbBar}>
+          <button onClick={() => onStep(-1)} aria-label="העבודה הקודמת" className={s.lbNavBtn}>
+            <ChevronRight className="w-5 h-5" />
+          </button>
+          <WhatsAppPill label="רוצה כזה לעסק שלי" onDark />
+          <button onClick={() => onStep(1)} aria-label="העבודה הבאה" className={s.lbNavBtn}>
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+    </div>
   );
+}
+
+/* ─── Countdown to the real offer deadline. Renders "--" until mounted so server and client agree. ─── */
+function useCountdown(target: number) {
+  const [now, setNow] = useState<number | null>(null);
+  useEffect(() => {
+    const tick = () => setNow(Date.now());
+    const first = setTimeout(tick, 0);
+    const id = setInterval(tick, 1000);
+    return () => {
+      clearTimeout(first);
+      clearInterval(id);
+    };
+  }, []);
+  if (now === null) return null;
+  const left = Math.max(0, target - now);
+  return {
+    ended: left === 0,
+    parts: [
+      { n: Math.floor(left / 86_400_000), unit: 'ימים' },
+      { n: Math.floor(left / 3_600_000) % 24, unit: 'שעות' },
+      { n: Math.floor(left / 60_000) % 60, unit: 'דקות' },
+      { n: Math.floor(left / 1000) % 60, unit: 'שניות' },
+    ],
+  };
 }
 
 /* ─── Lead form ─── */
 function LeadForm() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
   const [business, setBusiness] = useState('');
+  const [email, setEmail] = useState('');
   const [agreed, setAgreed] = useState(false);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
@@ -281,29 +318,26 @@ function LeadForm() {
         <span className={`${s.sticker} ${s.stLime}`}>
           <Check className="w-5 h-5" /> נשלח
         </span>
-        <h3 className="text-2xl font-bold">הפרטים אצלי</h3>
-        <p className="text-sm">אחזור אליך תוך 24 שעות.</p>
+        <p className="font-bold">הפרטים אצלי — אחזור אליך תוך 24 שעות.</p>
       </div>
     );
   }
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-3">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <input id="lead-name" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="שם מלא *" aria-label="שם מלא" required className={s.field} />
-        <input id="lead-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="טלפון *" aria-label="מספר טלפון" required className={s.field} />
-      </div>
-      <input id="lead-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="אימייל *" aria-label="כתובת אימייל" required className={s.field} />
-      <input id="lead-business" type="text" value={business} onChange={(e) => setBusiness(e.target.value)} placeholder="שם העסק ותחום" aria-label="שם העסק ותחום" className={s.field} />
+      <input id="lead-name" type="text" autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="שם מלא *" aria-label="שם מלא" required className={s.field} />
+      <input id="lead-phone" type="tel" autoComplete="tel" inputMode="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="טלפון *" aria-label="מספר טלפון" required className={s.field} />
+      <input id="lead-email" type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="אימייל *" aria-label="כתובת אימייל" required className={s.field} />
+      <input id="lead-business" type="text" value={business} onChange={(e) => setBusiness(e.target.value)} placeholder="שם העסק" aria-label="שם העסק" className={s.field} />
       {errorMsg && <p className={s.formError}>{errorMsg}</p>}
-      <button type="submit" disabled={status === 'loading'} className={`${s.pill} ${s.pillCyan} ${s.submit}`} style={{ opacity: status === 'loading' ? 0.6 : 1 }}>
+      <button type="submit" disabled={status === 'loading'} className={`${s.pill} ${s.pillInk}`} style={{ opacity: status === 'loading' ? 0.6 : 1 }}>
         <Send className="w-5 h-5" />
-        {status === 'loading' ? 'שולח...' : 'שלחו לי פרטים'}
+        {status === 'loading' ? 'שולח...' : 'שלחו'}
       </button>
       <label className={s.consent}>
         <input id="lead-consent" type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} aria-label="אישור מדיניות הפרטיות" className="mt-0.5 w-4 h-4 flex-shrink-0" />
         <span>
-          על ידי שליחה, אני מאשר/ת את <Link href="/privacy">מדיניות הפרטיות</Link> ומסכים/ה שתחזרו אליי
+          מאשר/ת את <Link href="/privacy">מדיניות הפרטיות</Link> ושתחזרו אליי
         </span>
       </label>
     </form>
@@ -325,51 +359,23 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-/* Hand-drawn underline under the manifesto (Lando's signature scribble) */
-function Scribble() {
-  const reduce = useReducedMotion();
-  return (
-    <svg className={s.scribble} viewBox="0 0 320 40" fill="none" aria-hidden="true">
-      <motion.path
-        d="M6 26 C 60 8, 110 34, 160 18 S 260 6, 314 22"
-        stroke="#00d1ff"
-        strokeWidth="5"
-        strokeLinecap="round"
-        initial={reduce ? false : { pathLength: 0 }}
-        whileInView={{ pathLength: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.1, ease: 'easeInOut' }}
-      />
-    </svg>
-  );
-}
-
-/* Stickers pop onto the hero; with reduced motion they appear instantly */
-function Sticker({ className, delay, children, style }: { className: string; delay: number; children: React.ReactNode; style?: React.CSSProperties }) {
-  const reduce = useReducedMotion();
-  return (
-    <motion.span
-      className={className}
-      style={style}
-      initial={{ scale: 0.6, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 320, damping: 18, delay }}
-    >
-      {children}
-    </motion.span>
-  );
-}
-
 export default function ProductsPage() {
   // Only named testimonials (with a business) are shown here — anonymous quotes read as made up.
   const testimonials = TESTIMONIALS.filter((t) => t.business);
+  const countdown = useCountdown(OFFER_ENDS);
+  const [open, setOpen] = useState<number | null>(null);
+  const close = useCallback(() => setOpen(null), []);
+  const step = useCallback(
+    (dir: 1 | -1) => setOpen((i) => (i === null ? i : (i + dir + WORKS.length) % WORKS.length)),
+    []
+  );
 
   return (
     <div className={s.page}>
-      {/* ═══ HERO — Lando portrait over a topo map, Mat Voyce giant word + stickers ═══ */}
+      {/* ═══ HERO ═══ */}
       <section className={s.hero}>
         <div className={s.topo} aria-hidden="true" />
-        <h1 className="sr-only">פרסומות שנראות כמו הפקה. בלי יום צילום אחד.</h1>
+        <h1 className="sr-only">פרסומות שנראות כמו הפקה. בלי יום צילום.</h1>
 
         <div className={`${s.wrap} ${s.heroMeta}`}>
           <span className={s.label}>אור שמר · Orci AI</span>
@@ -378,21 +384,14 @@ export default function ProductsPage() {
 
         <div className={s.stage}>
           <Stretch className={`${s.display} ${s.heroWord}`}>פרסומות</Stretch>
-          <Image
-            src="/products/or-cutout.webp"
-            alt="אור שמר"
-            width={1086}
-            height={1284}
-            priority
-            className={s.portrait}
-          />
+          <Image src="/products/or-cutout.webp" alt="אור שמר" width={1086} height={1284} priority className={s.portrait} />
           <Sticker className={`${s.st} ${s.st1} ${s.sticker} ${s.stLime}`} delay={0.35}>
             72 שעות לסרטון
           </Sticker>
           <Sticker className={`${s.st} ${s.st2} ${s.sticker}`} delay={0.5}>
             לא משלמים עד שאישרתם תסריט
           </Sticker>
-          <Sticker className={`${s.st} ${s.st3} ${s.sticker} ${s.stSoft}`} delay={0.65}>
+          <Sticker className={`${s.st} ${s.st3} ${s.sticker}`} delay={0.65}>
             130K רשומים · 25M צפיות
           </Sticker>
           <Sticker className={`${s.st} ${s.st4}`} delay={0.8}>
@@ -406,17 +405,11 @@ export default function ProductsPage() {
 
         <div className={s.heroBottom}>
           <div className={`${s.wrap} ${s.heroBottomInner}`}>
-            <div>
-              <p className={`${s.display} ${s.heroTitle}`} aria-hidden="true">
-                שנראות כמו <span className={s.serifAccent}>הפקה</span>.
-                <br />
-                בלי יום צילום אחד.
-              </p>
-              <p className={s.heroSub}>
-                3 סרטוני פרסומת + רביעי מתנה, ב-<b>2,250 ₪</b>. מופקים ב-AI, נכתבים למכירה —{' '}
-                <b>ולא משלמים עד שאישרתם את התסריט.</b>
-              </p>
-            </div>
+            <p className={`${s.display} ${s.heroTitle}`} aria-hidden="true">
+              שנראות כמו <span className={s.serifAccent}>הפקה</span>.
+              <br />
+              בלי יום צילום.
+            </p>
             <div className={s.heroCtas}>
               <WhatsAppPill label="בואו נדבר על העסק שלכם" />
               <a href="#work" className={`${s.pill} ${s.pillGhost}`}>
@@ -427,188 +420,74 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* ═══ CLIENT TICKER (Lando lime band, client names as type) ═══ */}
-      <div className={s.ticker} role="region" aria-label="מותגים שעבדנו איתם">
-        <div className={s.tickerTrack}>
-          {[...BRANDS, ...BRANDS].map((b, i) => (
-            <span key={`${b.name}-${i}`} aria-hidden={i >= BRANDS.length}>
-              {b.name}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* ═══ MANIFESTO (Lando "Redefining limits…") ═══ */}
-      <section className={s.manifesto}>
+      {/* ═══ CLIENTS ═══ */}
+      <section className={s.clients}>
         <div className={s.wrap}>
-          <p className={s.display}>
-            פרסומות שנראות כמו <span className={s.serifAccent}>הפקה</span>, בלי{' '}
-            <span className={s.serifAccent}>יום צילום</span>, בלי <span className={s.serifAccent}>שחקנים</span> — ובלי
-            לשלם לפני שאישרתם את <span className={s.serifAccent}>התסריט</span>.
-          </p>
-          <Scribble />
-        </div>
-      </section>
-
-      {/* ═══ WORK (Mat Voyce "Featured work") ═══ */}
-      <section id="work" className={`${s.work} scroll-mt-20`}>
-        <div className={s.wrap}>
-          <div className={s.sectionHead}>
-            <h2 className="sr-only">עבודות</h2>
-            <Stretch className={`${s.display} ${s.bigWord}`}>עבודות</Stretch>
-            <p className={s.sectionIntro}>
-              לא עוד &quot;סרטון יפה&quot;. כל פרסומת כאן התחילה משאלה עסקית — והתסריט נכתב כדי לענות עליה.
-            </p>
+          <div className={s.clientsHead}>
+            <h2 className={`${s.display} ${s.sectionTitle}`}>הלקוחות</h2>
+            <span className={`${s.sticker} ${s.stLime}`}>{BRANDS.length} מותגים</span>
           </div>
-
-          <div className={s.workGrid}>
-            {WORKS.map((w) => (
-              <div key={w.brand} className={s.workItem}>
-                <article className={s.card}>
-                  <div className={s.media}>
-                    <WorkVideo work={w} />
-                    {w.views && (
-                      <span className={`${s.sticker} ${s.stLime} ${s.views}`}>
-                        <Eye className="w-5 h-5" />
-                        {w.views}
-                      </span>
-                    )}
-                  </div>
-                  <div className={s.cardBody}>
-                    <div className={s.cardTop}>
-                      <h3 className={`${s.display} ${s.brand}`}>{w.brand}</h3>
-                      <span className={s.chip}>{w.industry}</span>
-                    </div>
-                    <p className={s.format}>{w.format}</p>
-                    <p>
-                      <b>הבריף: </b>
-                      <span>{w.brief}</span>
-                    </p>
-                    <p>
-                      <b>מה עשינו: </b>
-                      <span>{w.solution}</span>
-                    </p>
-                  </div>
-                </article>
-              </div>
-            ))}
-          </div>
-          <p className={s.swipeHint}>החליקו לעבודות נוספות ←</p>
-        </div>
-      </section>
-
-      {/* ═══ ABOUT (Lando "On track / Off track": for clients ↔ for myself) ═══ */}
-      <section className={s.about}>
-        <div className={`${s.wrap} ${s.aboutGrid}`}>
-          <div>
-            <span className={s.label} style={{ color: 'var(--sage)' }}>
-              מי מאחורי זה
-            </span>
-            <h2 className={`${s.display} ${s.aboutTitle}`}>
-              אני אור.
-              <br />
-              <span className={s.serifAccent}>אני יודע מה עוצר גלילה.</span>
-            </h2>
-            <p className={s.aboutText}>
-              לפני ה-AI בניתי ערוץ יוטיוב של <b>130,000 רשומים</b> ו-<b>25 מיליון צפיות</b>. היום אני מייצר תוכן שמגיע
-              למאות אלפי צפיות בחשבון שלי — ואת אותו ידע אני מכניס לפרסומות של עסקים.
-            </p>
-            <p className={s.aboutText}>אתם מדברים איתי ישירות. לא עם מנהל לקוח, לא עם צוות — איתי.</p>
-            <div className={s.stats}>
-              <div className={s.stat}>
-                <div className={`${s.display} ${s.statNum}`}>130K</div>
-                <div className={s.statLab}>רשומים ביוטיוב</div>
-              </div>
-              <div className={s.stat}>
-                <div className={`${s.display} ${s.statNum}`}>25M</div>
-                <div className={s.statLab}>צפיות בערוץ</div>
-              </div>
-              <div className={s.stat}>
-                <div className={`${s.display} ${s.statNum}`}>921K</div>
-                <div className={s.statLab}>צפיות ברילס אחד</div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className={s.reels}>
-              {MY_REELS.map((r, i) => (
-                <a
-                  key={r.title}
-                  href={r.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${s.reel} ${[s.reel1, s.reel2, s.reel3][i]}`}
-                  aria-label={`${r.title} — ${r.views} צפיות באינסטגרם`}
-                >
-                  <Image src={r.image} alt="" fill sizes="260px" style={{ objectFit: 'cover' }} />
-                  <span className={`${s.sticker} ${s.stLime} ${s.reelViews}`}>
-                    <Eye className="w-4 h-4" />
-                    {r.views}
-                  </span>
-                </a>
-              ))}
-            </div>
-            <p className={s.reelsCaption}>מהחשבון שלי באינסטגרם</p>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ PROCESS ═══ */}
-      <section className={s.process}>
-        <div className={s.wrap}>
-          <div className={s.sectionHead}>
-            <h2 className={`${s.display} ${s.bigWord}`} style={{ fontSize: 'clamp(72px, 11vw, 160px)' }}>
-              איך זה עובד
-            </h2>
-            <p className={s.sectionIntro}>מהשיחה ועד הסרטון, בלי הפתעות. התשלום מגיע רק אחרי שאישרתם את התסריט.</p>
-          </div>
-          <ol className={s.steps}>
-            {STEPS.map((st, i) => (
-              <li key={st.title} className={s.step}>
-                <span className={s.stepNum} aria-hidden="true">
-                  {i + 1}
+          <ul className={s.logoGrid}>
+            {BRANDS.map((b) => (
+              <li key={b.name} className={s.logoItem}>
+                <span className={s.logoBubble} style={{ background: b.bg }}>
+                  <Image src={b.logo} alt="" width={216} height={216} />
                 </span>
-                <span className={`${s.sticker} ${s.stLime} ${s.stepWhen}`}>{st.when}</span>
-                <h3 className={`${s.display} ${s.stepTitle}`}>{st.title}</h3>
-                <p>{st.desc}</p>
+                <span className={s.logoName}>{b.name}</span>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       </section>
 
-      {/* ═══ COMPARISON ═══ */}
-      <section className={s.compare}>
+      {/* ═══ WORK ═══ */}
+      <section id="work" className={`${s.work} scroll-mt-20`}>
         <div className={s.wrap}>
-          <h2 className={`${s.display} ${s.compareTitle}`}>
-            יש לכם עוד שלוש אפשרויות. <span className={s.serifAccent}>הנה ההבדל.</span>
-          </h2>
-          <div className={s.compareGrid}>
-            {ALTERNATIVES.map((alt) => (
-              <div key={alt.title} className={s.alt}>
-                <h3>{alt.title}</h3>
-                <ul>
-                  {alt.points.map((p) => (
-                    <li key={p}>
-                      <X className="w-4 h-4 mt-1 flex-shrink-0" />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-            <div className={s.orci}>
-              <h3>עם אור</h3>
-              <ul>
-                {ORCI_POINTS.map((p) => (
-                  <li key={p}>
-                    <Check className="w-4 h-4 mt-1 flex-shrink-0" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className={s.workHead}>
+            <h2 className="sr-only">עבודות</h2>
+            <Stretch className={`${s.display} ${s.sectionTitle}`}>עבודות</Stretch>
+            <p className={s.workLead}>לחצו על עבודה כדי לצפות.</p>
           </div>
+          <ul className={s.workGrid}>
+            {WORKS.map((w, i) => (
+              <li key={w.brand}>
+                <button className={s.tile} onClick={() => setOpen(i)} aria-label={`צפייה: ${w.brand} — ${w.format}`}>
+                  <Image src={w.poster} alt="" fill sizes="(min-width: 768px) 33vw, 50vw" />
+                  <span className={s.tileShade} />
+                  <span className={s.tilePlay}>
+                    <Play className="w-1/2 h-1/2 ml-0.5" fill="currentColor" />
+                  </span>
+                  {w.views && (
+                    <span className={`${s.sticker} ${s.stLime} ${s.views}`}>
+                      <Eye className="w-4 h-4" />
+                      {w.views}
+                    </span>
+                  )}
+                  <span className={s.tileInfo}>
+                    <WorkLogo work={w} className={s.tileLogo} />
+                    <span className={s.tileText}>
+                      <span className={s.tileName}>{w.brand}</span>
+                      <span className={s.tileInd}>{w.industry}</span>
+                    </span>
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ═══ VALUE ═══ */}
+      <section className={s.values} aria-label="מה מקבלים">
+        <div className={s.wrap}>
+          <ul className={s.valueGrid}>
+            {VALUES.map((v) => (
+              <li key={v.big} className={s.value}>
+                <span className={s.valueBig}>{v.big}</span>
+                <span className={s.valueText}>{v.text}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -616,9 +495,7 @@ export default function ProductsPage() {
       {testimonials.length > 0 && (
         <section className={s.quotes}>
           <div className={s.wrap}>
-            <h2 className={`${s.display} ${s.bigWord}`} style={{ fontSize: 'clamp(72px, 11vw, 160px)', marginBottom: 48 }}>
-              במילים שלהם
-            </h2>
+            <h2 className={`${s.display} ${s.sectionTitle}`}>במילים שלהם</h2>
             <div className={s.quoteGrid}>
               {testimonials.map((t) => (
                 <figure key={t.name} className={s.quote}>
@@ -634,21 +511,50 @@ export default function ProductsPage() {
         </section>
       )}
 
-      {/* ═══ OFFER ═══ */}
-      <section className={s.offer}>
-        <div className={s.wrap}>
-          <div className={s.ticket}>
-            <span className={`${s.sticker} ${s.stLime} ${s.guarantee}`}>לא משלמים עד שאישרתם את התסריט</span>
-            <div className={s.ticketTop}>
-              <h2 className={`${s.display} ${s.ticketName}`}>
-                <small>חבילת השקה</small>
-                3+1
-              </h2>
-              <div className={s.price}>
-                <s>4,000 ₪</s>
-                <div className={`${s.display} ${s.priceNow}`}>2,250 ₪</div>
+      {/* ═══ FLAGSHIP OFFER — the only place the price appears ═══ */}
+      <section className={s.offer} aria-labelledby="offer-title">
+        <span className={s.offerGhost} aria-hidden="true">
+          3+1
+        </span>
+        <div className={`${s.wrap} ${s.offerInner}`}>
+          <div className={s.offerMain}>
+            <span className={`${s.sticker} ${s.stLime}`}>מבצע השקה</span>
+            <h2 id="offer-title" className={`${s.display} ${s.offerTitle}`}>
+              חבילת 3+1
+            </h2>
+            <p className={s.offerSub}>3 סרטוני פרסומת לעסק שלכם — והרביעי מתנה.</p>
+
+            {countdown?.ended ? (
+              <p className={s.offerEnded}>מבצע ההשקה הסתיים.</p>
+            ) : (
+              <div className={s.countdown}>
+                <span className={s.countLabel}>המבצע נגמר בעוד</span>
+                <div className={s.countBoxes} role="timer" aria-label="זמן שנותר עד סוף המבצע">
+                  {(countdown?.parts ?? [{ unit: 'ימים' }, { unit: 'שעות' }, { unit: 'דקות' }, { unit: 'שניות' }]).map((p) => (
+                    <span key={p.unit} className={s.countBox}>
+                      <span className={s.countNum}>{'n' in p ? String(p.n).padStart(2, '0') : '--'}</span>
+                      <span className={s.countUnit}>{p.unit}</span>
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
+          </div>
+
+          <div className={s.priceCard}>
+            {countdown?.ended ? (
+              <div className={s.priceRow}>
+                <span className={`${s.priceNow}`}>4,000 ₪</span>
+              </div>
+            ) : (
+              <div className={s.priceRow}>
+                <span className={s.priceWas}>
+                  במקום <s>4,000 ₪</s>
+                </span>
+                <span className={s.priceNow}>2,250 ₪</span>
+                <span className={`${s.sticker} ${s.stLime} ${s.saveChip}`}>חוסכים 1,750 ₪</span>
+              </div>
+            )}
             <ul className={s.includes}>
               {PACKAGE_INCLUDES.map((item) => (
                 <li key={item}>
@@ -657,12 +563,8 @@ export default function ProductsPage() {
                 </li>
               ))}
             </ul>
-            <div className={s.ticketCtas}>
-              <WhatsAppPill label="אני רוצה את החבילה" />
-              <a href="#contact" className={`${s.pill} ${s.pillGhost}`}>
-                השאירו פרטים
-              </a>
-            </div>
+            <WhatsAppPill label="אני רוצה את החבילה" href={WA_OFFER} variant="ink" />
+            <p className={s.guaranteeNote}>לא משלמים עד שאישרתם את התסריט</p>
           </div>
         </div>
       </section>
@@ -670,21 +572,19 @@ export default function ProductsPage() {
       {/* ═══ CONTACT ═══ */}
       <section id="contact" className={`${s.contact} scroll-mt-20`}>
         <div className={`${s.wrap} ${s.contactGrid}`}>
-          <div>
-            <div className={s.avatar}>
-              <Image src="/products/or-cutout.webp" alt="אור שמר" width={176} height={176} />
-            </div>
+          <div className={s.contactIntro}>
+            <span className={s.avatar}>
+              <Image src="/products/or-cutout.webp" alt="אור שמר" width={144} height={144} />
+            </span>
             <h2 className="sr-only">היי, אני אור</h2>
             <Stretch className={`${s.display} ${s.contactTitle}`}>
               היי, אני <span style={{ color: 'var(--cyan)' }}>אור</span>
             </Stretch>
-            <p className={s.contactText}>
-              שלחו לי הודעה עם שם העסק ומה אתם רוצים שהסרטון ישיג — ואחזור אליכם תוך 24 שעות.
-            </p>
-            <WhatsAppPill label="שלחו לי הודעה בוואטסאפ" onDark />
+            <p className={s.contactText}>ספרו לי על העסק — אחזור אליכם תוך 24 שעות.</p>
+            <WhatsAppPill label="שלחו הודעה בוואטסאפ" onDark />
           </div>
           <div className={s.formCard}>
-            <h3>מעדיפים שאחזור אליכם?</h3>
+            <span className={s.formTitle}>או השאירו פרטים</span>
             <LeadForm />
           </div>
         </div>
@@ -693,9 +593,7 @@ export default function ProductsPage() {
       {/* ═══ FAQ ═══ */}
       <section className={s.faq}>
         <div className={s.wrap}>
-          <h2 className={`${s.display} ${s.bigWord}`} style={{ fontSize: 'clamp(72px, 11vw, 160px)', marginBottom: 40 }}>
-            שאלות
-          </h2>
+          <h2 className={`${s.display} ${s.sectionTitle}`}>שאלות</h2>
           <div className={s.faqList}>
             {FAQ.map((f) => (
               <FaqItem key={f.q} q={f.q} a={f.a} />
@@ -705,6 +603,8 @@ export default function ProductsPage() {
       </section>
 
       <Footer />
+
+      {open !== null && <Lightbox index={open} onClose={close} onStep={step} />}
     </div>
   );
 }

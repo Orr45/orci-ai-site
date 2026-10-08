@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Heebo, Frank_Ruhl_Libre } from "next/font/google";
+import { Heebo, Frank_Ruhl_Libre, Karantina } from "next/font/google";
 import { Navigation } from "@/components/layout/Navigation";
 import { Analytics } from "@vercel/analytics/next";
 import AccessibilityWidget from "@/components/ui/accessibility-widget";
@@ -16,6 +16,13 @@ const frankRuhl = Frank_Ruhl_Libre({
   variable: "--font-frank",
   subsets: ["hebrew", "latin"],
   weight: ["400", "500", "700", "900"],
+});
+
+// Condensed display face for the whole site (Lando × Mat Voyce system)
+const karantina = Karantina({
+  variable: "--font-karantina",
+  subsets: ["hebrew", "latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -63,7 +70,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className={`${heebo.variable} ${frankRuhl.variable} antialiased`}>
+      <body className={`${heebo.variable} ${frankRuhl.variable} ${karantina.variable} antialiased`}>
         <a href="#main-content" className="skip-link">דלג לתוכן הראשי</a>
         <Navigation />
         <main id="main-content">

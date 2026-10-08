@@ -56,12 +56,12 @@ const PRIVACY = [
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen" style={{ background: '#000000' }}>
+    <div className="min-h-screen" style={{ background: 'var(--bg)' }}>
       <div className="max-w-2xl mx-auto px-6 py-16">
         {/* Back */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-orci-cyan transition-colors mb-10"
+          className="inline-flex items-center gap-2 text-sm text-[color:var(--text-muted)] hover:text-orci-cyan transition-colors mb-10"
         >
           <svg className="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -72,8 +72,8 @@ export default function PrivacyPage() {
         {/* Header */}
         <div className="mb-10">
           <p className="text-xs font-bold tracking-widest text-orci-cyan uppercase mb-2">ORCI AI</p>
-          <h1 className="text-4xl font-black text-white mb-2">מדיניות פרטיות</h1>
-          <p className="text-sm text-slate-400">עדכון אחרון: יוני 2026</p>
+          <h1 className="cap-hero-title mb-3" style={{ fontSize: 'clamp(3rem, 9vw, 5.5rem)' }}>מדיניות פרטיות</h1>
+          <p className="text-sm text-[color:var(--text-muted)]">עדכון אחרון: יוני 2026</p>
         </div>
 
         {/* Items */}
@@ -82,15 +82,15 @@ export default function PrivacyPage() {
             <div
               key={item.num}
               className="rounded-2xl p-5"
-              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}
+              style={{ background: 'var(--surface-card)', border: '2px solid var(--card-edge)' }}
             >
               <div className="flex items-start gap-4">
-                <span className="text-xs font-black text-orci-cyan opacity-60 mt-0.5 flex-shrink-0 w-6">
+                <span className="text-xs font-black text-orci-cyan mt-0.5 flex-shrink-0 w-6">
                   {item.num}
                 </span>
                 <div>
-                  <h2 className="font-bold text-white mb-2">{item.title}</h2>
-                  <p className="text-slate-300 text-sm leading-relaxed">{item.body}</p>
+                  <h2 className="text-2xl mb-2">{item.title}</h2>
+                  <p className="text-[color:var(--text-secondary)] text-sm leading-relaxed">{item.body}</p>
                 </div>
               </div>
             </div>

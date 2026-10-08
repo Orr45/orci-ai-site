@@ -1,0 +1,161 @@
+/*
+ * Home — Lando Norris × Mat Voyce, mobile-first.
+ * Order: hero (name across the chest) → two doors (business / learning) → results → guides → unlock → FAQ.
+ * Shared primitives (.lv-topo, .lv-display, .lv-accent, .lv-sticker, .cap-btn*) live in globals.css.
+ */
+.wrap { max-width: 1280px; margin-inline: auto; padding-inline: 18px; }
+
+/* ═════════ HERO ═════════ */
+.hero { position: relative; overflow-x: clip; background: var(--paper); color: var(--olive); border-bottom: 2px solid var(--olive); }
+.topo { position: absolute; inset: 0; pointer-events: none; }
+.meta { position: relative; z-index: 4; display: flex; justify-content: space-between; gap: 12px; padding-top: 14px; color: rgba(40, 44, 32, 0.68); font-size: 11px; font-weight: 800; letter-spacing: 0.14em; }
+.stage { position: relative; height: min(58vh, 480px); margin-top: 4px; }
+.portrait {
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  height: 100%; width: auto; max-width: none; z-index: 2;
+  filter: drop-shadow(0 24px 34px rgba(17, 17, 18, 0.18));
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 15%, #000 85%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 15%, #000 85%, transparent 100%);
+}
+.name {
+  position: absolute; inset-inline: 0; bottom: -0.06em; z-index: 3;
+  text-align: center; direction: ltr; color: var(--cyan);
+  -webkit-text-stroke: 3px var(--olive); paint-order: stroke fill;
+  font-size: 44vw; pointer-events: none;
+}
+.st { position: absolute; z-index: 4; }
+.st1 { top: 5%; right: 12px; rotate: -6deg; }
+.st2 { bottom: 33%; left: 12px; rotate: 5deg; }
+.st3 { display: none; }
+
+.heroBar { position: relative; z-index: 4; background: var(--paper); border-top: 2px solid var(--olive); }
+.heroBarInner { display: grid; gap: 18px; padding-block: 22px 28px; }
+.heroTitle { font-size: 46px; margin: 0; color: var(--olive); }
+.heroCtas { display: grid; gap: 10px; }
+.heroCtas a { width: 100%; }
+
+/* ═════════ TWO DOORS ═════════ */
+.doors { padding-block: 44px 48px; display: grid; gap: 18px; }
+.door {
+  position: relative; overflow: hidden; display: grid; gap: 14px; align-content: start;
+  padding: 26px 22px 24px; border-radius: 24px; border: 2px solid var(--olive);
+  box-shadow: 6px 6px 0 var(--olive); text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.door:hover { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 var(--olive); }
+.door:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+.doorBiz { background: var(--cyan); color: var(--olive); }
+.doorLearn { background: var(--olive); color: var(--paper); }
+.doorLabel { font-size: 12px; font-weight: 800; letter-spacing: 0.14em; opacity: 0.8; }
+.doorTitle { font-size: 64px; margin: 0; color: inherit; }
+.doorText { margin: 0; font-size: 17px; line-height: 1.5; font-weight: 600; max-width: 34ch; }
+.doorFoot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 6px; }
+.doorGo { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; font-size: 16px; }
+.logos { display: flex; }
+.logos span {
+  width: 40px; height: 40px; border-radius: 50%; overflow: hidden; border: 2px solid var(--olive);
+  margin-inline-start: -10px;
+}
+.logos span:first-child { margin-inline-start: 0; }
+.logos img { width: 100%; height: 100%; object-fit: contain; }
+.count { font-family: var(--font-karantina), sans-serif; font-weight: 700; font-size: 44px; line-height: 0.9; color: var(--cyan); }
+
+/* ═════════ RESULTS (dark zone) ═════════ */
+.results { background: var(--bg); color: var(--text-primary); padding-block: 52px 56px; }
+.resultsHead { display: grid; gap: 8px; margin-bottom: 24px; }
+.sectionWord { font-size: clamp(64px, 17vw, 168px); margin: 0; color: inherit; }
+.lead { margin: 0; font-size: 16px; line-height: 1.5; color: var(--text-secondary); }
+.reelGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; list-style: none; margin: 0; padding: 0; }
+.reel {
+  position: relative; display: block; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden;
+  border: 2px solid var(--paper); transition: transform 0.2s ease;
+}
+.reel:hover { transform: translateY(-4px) rotate(-1deg); }
+.reel:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+.reel img { object-fit: cover; }
+.reelShade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0) 50%); }
+.reelViews { position: absolute; top: 8px; right: 8px; font-size: 15px !important; padding: 5px 9px 3px !important; }
+.reelTitle { position: absolute; inset-inline: 8px; bottom: 8px; color: #fff; font-size: 12px; font-weight: 700; line-height: 1.3; }
+.resultsCta { margin-top: 24px; }
+.resultsCta a { width: 100%; }
+
+/* ═════════ GUIDES ═════════ */
+.guides { background: var(--bg); padding-block: 52px 56px; }
+.guidesHead { display: grid; gap: 12px; margin-bottom: 28px; justify-items: start; }
+
+/* ═════════ UNLOCK (lime band) ═════════ */
+.unlock { background: var(--lime); color: var(--olive); border-block: 2px solid var(--olive); padding-block: 44px 48px; }
+.unlockInner { display: grid; gap: 18px; }
+.unlockTitle { font-size: 56px; margin: 0; color: var(--olive); }
+.unlockText { margin: 0; font-size: 17px; font-weight: 600; }
+.unlockForm { display: grid; gap: 10px; }
+.field {
+  width: 100%; min-height: 54px; padding: 12px 18px; border-radius: 999px; border: 2px solid var(--olive);
+  background: #fff; color: var(--olive); font-size: 16px; outline: none;
+}
+.field:focus-visible { box-shadow: 3px 3px 0 var(--olive); }
+.consent { display: flex; gap: 8px; align-items: flex-start; font-size: 12.5px; line-height: 1.5; font-weight: 600; }
+.consent a { color: var(--olive); text-decoration: underline; }
+.done { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; }
+
+/* ═════════ FAQ ═════════ */
+.faq { background: var(--bg); padding-block: 52px 64px; }
+.faqList { margin-top: 24px; border-top: 2px solid var(--pill-edge); max-width: 860px; }
+.faqItem { border-bottom: 1px solid var(--border-subtle); }
+.faqQ {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  padding-block: 18px; background: none; border: 0; text-align: right; color: var(--text-primary); cursor: pointer;
+  font-family: var(--font-karantina), sans-serif; font-weight: 700; font-size: 28px; line-height: 1;
+}
+.faqQ:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+.faqIcon { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--pill-edge); display: flex; align-items: center; justify-content: center; transition: rotate 0.2s ease, background 0.2s ease; }
+.faqOpen .faqIcon { rotate: 45deg; background: var(--cyan); color: var(--olive); }
+.faqA { margin: 0 0 18px; font-size: 16px; line-height: 1.6; color: var(--text-secondary); max-width: 68ch; }
+
+/* ═════════ DESKTOP ═════════ */
+@media (min-width: 768px) {
+  .wrap { padding-inline: 28px; }
+  .meta { font-size: 12px; }
+  .stage { height: clamp(520px, 72vh, 740px); margin-top: 8px; }
+  .name { font-size: min(calc(clamp(520px, 72vh, 740px) * 0.78), 46vw); -webkit-text-stroke-width: 4px; }
+  .st1 { top: 14%; right: 13%; rotate: -7deg; }
+  .st2 { bottom: auto; top: 42%; left: 8%; }
+  .st3 { display: flex; gap: 8px; top: 9%; left: 19%; rotate: -10deg; }
+  .heroBarInner { grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px 48px; padding-block: 30px 38px; }
+  .heroTitle { font-size: clamp(56px, 6vw, 92px); }
+  .heroCtas { display: flex; gap: 12px; }
+  .heroCtas a { width: auto; }
+
+  .doors { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; padding-block: 80px 88px; }
+  .door { padding: 40px 36px 34px; border-radius: 32px; }
+  .doorBiz { rotate: -1deg; }
+  .doorLearn { rotate: 1deg; }
+  .doorTitle { font-size: clamp(88px, 9vw, 140px); }
+  .doorText { font-size: 19px; }
+
+  .results { padding-block: 88px 96px; }
+  .resultsHead { grid-template-columns: auto minmax(0, 1fr); align-items: end; gap: 32px; margin-bottom: 40px; }
+  .lead { font-size: 18px; justify-self: end; max-width: 42ch; }
+  .reelGrid { gap: 24px; max-width: 960px; }
+  .reel { border-radius: 22px; }
+  .reelViews { top: 14px; right: 14px; font-size: 22px !important; padding: 8px 13px 6px !important; }
+  .reelTitle { inset-inline: 16px; bottom: 16px; font-size: 15px; }
+  .resultsCta a { width: auto; }
+
+  .guides { padding-block: 88px 96px; }
+  .guidesHead { grid-template-columns: auto minmax(0, 1fr); align-items: end; gap: 32px; margin-bottom: 44px; }
+  .guidesHead > :last-child { justify-self: end; }
+
+  .unlock { padding-block: 72px; }
+  .unlockInner { grid-template-columns: minmax(0, 1fr) minmax(0, 480px); align-items: center; gap: 48px; }
+  .unlockTitle { font-size: clamp(72px, 8vw, 120px); }
+  .unlockForm { grid-template-columns: minmax(0, 1fr) auto; }
+  .unlockForm .consent { grid-column: 1 / -1; }
+
+  .faq { padding-block: 88px 104px; }
+  .faqQ { font-size: 36px; padding-block: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .door, .reel, .faqIcon { transition: none; }
+}

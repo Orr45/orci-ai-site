@@ -47,7 +47,7 @@ export default function OnboardingModal() {
   const CATEGORY_COLORS: Record<string, string> = {
     'יצירת תוכן': 'rgba(83,74,183,0.25)',
     'וידאו ויראלי': 'rgba(239,68,68,0.2)',
-    'שיווק דיגיטלי': 'rgba(0,255,209,0.15)',
+    'שיווק דיגיטלי': 'rgba(0,209,255,0.15)',
     'טריקים': 'rgba(255,229,0,0.18)',
   };
 
@@ -59,7 +59,7 @@ export default function OnboardingModal() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 flex items-center justify-center p-4"
-          style={{ zIndex: 9999, background: 'rgba(13,13,26,0.92)', backdropFilter: 'blur(8px)' }}
+          style={{ zIndex: 9999, background: 'rgba(17,17,18,0.92)', backdropFilter: 'blur(8px)' }}
           onClick={dismiss}
         >
           <motion.div
@@ -71,16 +71,16 @@ export default function OnboardingModal() {
             style={{
               maxWidth: step === 1 ? 720 : 480,
               maxHeight: '90vh',
-              background: 'linear-gradient(135deg, #12121f 0%, #1a1a35 100%)',
-              border: '1px solid rgba(0,255,209,0.25)',
-              boxShadow: '0 0 60px rgba(0,255,209,0.12), 0 25px 50px rgba(0,0,0,0.5)',
+              background: '#1A1C17', // olive-black card of the dark zone
+              border: '1px solid rgba(0,209,255,0.25)',
+              boxShadow: '0 0 60px rgba(0,209,255,0.12), 0 25px 50px rgba(0,0,0,0.5)',
             }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Glow orb */}
             <div
               className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full"
-              style={{ background: 'radial-gradient(circle, rgba(0,255,209,0.1) 0%, transparent 70%)' }}
+              style={{ background: 'radial-gradient(circle, rgba(0,209,255,0.1) 0%, transparent 70%)' }}
             />
 
             {/* Close button */}
@@ -100,7 +100,7 @@ export default function OnboardingModal() {
                   style={{
                     width: step === i ? 20 : 7,
                     height: 7,
-                    background: step === i ? '#00FFD1' : 'rgba(0,255,209,0.25)',
+                    background: step === i ? '#00D1FF' : 'rgba(0,209,255,0.25)',
                   }}
                 />
               ))}
@@ -119,12 +119,12 @@ export default function OnboardingModal() {
                 <div
                   className="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl font-black shadow-lg"
                   style={{
-                    background: 'linear-gradient(135deg, #00FFD122, #534AB722)',
-                    border: '2px solid rgba(0,255,209,0.4)',
-                    boxShadow: '0 0 30px rgba(0,255,209,0.2)',
+                    background: 'rgba(0,209,255,0.13)',
+                    border: '2px solid rgba(0,209,255,0.4)',
+                    boxShadow: '0 0 30px rgba(0,209,255,0.2)',
                   }}
                 >
-                  <span style={{ background: 'linear-gradient(135deg,#00FFD1,#534AB7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                  <span style={{ color: '#00D1FF' }}>
                     AI
                   </span>
                 </div>
@@ -136,7 +136,7 @@ export default function OnboardingModal() {
                   <p className="text-slate-400 text-base leading-relaxed max-w-sm mx-auto">
                     פה תלמד ליצור תוכן AI ויראלי שמגיע למיליוני צפיות —<br />
                     בדיוק כמו שעשיתי ערוץ יוטיוב של
-                    <span style={{ color: '#00FFD1' }}> 130K רשומים ו-25M צפיות</span>
+                    <span style={{ color: '#00D1FF' }}> 130K רשומים ו-25M צפיות</span>
                   </p>
                 </div>
 
@@ -150,9 +150,9 @@ export default function OnboardingModal() {
                     <div
                       key={label}
                       className="px-4 py-2 rounded-xl text-center"
-                      style={{ background: 'rgba(0,255,209,0.08)', border: '1px solid rgba(0,255,209,0.2)' }}
+                      style={{ background: 'rgba(0,209,255,0.08)', border: '1px solid rgba(0,209,255,0.2)' }}
                     >
-                      <div className="text-xl font-black" style={{ color: '#00FFD1' }}>{val}</div>
+                      <div className="text-xl font-black" style={{ color: '#00D1FF' }}>{val}</div>
                       <div className="text-xs text-slate-500">{label}</div>
                     </div>
                   ))}
@@ -162,9 +162,9 @@ export default function OnboardingModal() {
                   onClick={() => setStep(1)}
                   className="mt-2 px-8 py-3 rounded-xl font-bold text-base flex items-center gap-2 transition-all hover:opacity-90 active:scale-95"
                   style={{
-                    background: 'linear-gradient(135deg, #00FFD1, #534AB7)',
-                    color: '#0D0D1A',
-                    boxShadow: '0 0 25px rgba(0,255,209,0.35)',
+                    background: '#00D1FF',
+                    color: '#111112',
+                    boxShadow: '0 0 25px rgba(0,209,255,0.35)',
                   }}
                 >
                   <ChevronLeft className="w-5 h-5" />
@@ -194,7 +194,7 @@ export default function OnboardingModal() {
                   <p className="text-sm mb-2" style={{ color: 'rgba(255,255,255,0.45)' }}>לחץ על מדריך כדי להתחיל</p>
                   <div
                     className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium"
-                    style={{ background: 'rgba(0,255,209,0.08)', border: '1px solid rgba(0,255,209,0.2)', color: '#00FFD1' }}
+                    style={{ background: 'rgba(0,209,255,0.08)', border: '1px solid rgba(0,209,255,0.2)', color: '#00D1FF' }}
                   >
                     🔓 כל המדריכים חינמיים — המנועלים נפתחים עם מייל בלבד
                   </div>
@@ -203,7 +203,7 @@ export default function OnboardingModal() {
                 {/* Scrollable guide grid */}
                 <div
                   className="overflow-y-auto px-5 pb-4 flex-1"
-                  style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(0,255,209,0.2) transparent' }}
+                  style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(0,209,255,0.2) transparent' }}
                 >
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {GUIDES.map((guide) => (
@@ -228,7 +228,7 @@ export default function OnboardingModal() {
                           {!guide.free && (
                             <div
                               className="absolute inset-0 flex items-center justify-center"
-                              style={{ background: 'rgba(13,13,26,0.55)' }}
+                              style={{ background: 'rgba(17,17,18,0.55)' }}
                             >
                               <Lock className="w-5 h-5 text-slate-300" />
                             </div>
@@ -237,7 +237,7 @@ export default function OnboardingModal() {
                           <div
                             className="absolute bottom-2 right-2 text-xs font-bold px-2 py-0.5 rounded-full"
                             style={{
-                              background: CATEGORY_COLORS[guide.category] ?? 'rgba(0,255,209,0.15)',
+                              background: CATEGORY_COLORS[guide.category] ?? 'rgba(0,209,255,0.15)',
                               color: '#ffffff',
                               border: '1px solid rgba(255,255,255,0.1)',
                             }}
@@ -266,9 +266,9 @@ export default function OnboardingModal() {
                     onClick={() => setStep(2)}
                     className="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all hover:opacity-90"
                     style={{
-                      background: 'linear-gradient(135deg, #00FFD1, #534AB7)',
-                      color: '#0D0D1A',
-                      boxShadow: '0 0 20px rgba(0,255,209,0.3)',
+                      background: '#00D1FF',
+                      color: '#111112',
+                      boxShadow: '0 0 20px rgba(0,209,255,0.3)',
                     }}
                   >
                     בואו נתחיל
@@ -296,9 +296,9 @@ export default function OnboardingModal() {
                 <div
                   className="text-5xl w-20 h-20 rounded-2xl flex items-center justify-center"
                   style={{
-                    background: 'rgba(0,255,209,0.1)',
-                    border: '2px solid rgba(0,255,209,0.3)',
-                    boxShadow: '0 0 30px rgba(0,255,209,0.2)',
+                    background: 'rgba(0,209,255,0.1)',
+                    border: '2px solid rgba(0,209,255,0.3)',
+                    boxShadow: '0 0 30px rgba(0,209,255,0.2)',
                   }}
                 >
                   🚀
@@ -320,9 +320,9 @@ export default function OnboardingModal() {
                     onClick={dismiss}
                     className="w-full py-3 rounded-xl font-bold text-base text-center transition-all hover:opacity-90 active:scale-95"
                     style={{
-                      background: 'linear-gradient(135deg, #00FFD1, #534AB7)',
-                      color: '#0D0D1A',
-                      boxShadow: '0 0 25px rgba(0,255,209,0.35)',
+                      background: '#00D1FF',
+                      color: '#111112',
+                      boxShadow: '0 0 25px rgba(0,209,255,0.35)',
                     }}
                   >
                     קח אותי למדריכים
@@ -362,7 +362,7 @@ export default function OnboardingModal() {
                     ].map(({ name, desc }) => (
                       <div key={name} className="flex items-center justify-between">
                         <span className="text-xs" style={{ color: 'rgba(255,255,255,0.45)' }}>{desc}</span>
-                        <span className="text-xs font-bold" style={{ color: '#00FFD1' }}>{name}</span>
+                        <span className="text-xs font-bold" style={{ color: '#00D1FF' }}>{name}</span>
                       </div>
                     ))}
                   </div>
@@ -370,7 +370,7 @@ export default function OnboardingModal() {
                     href="/products"
                     onClick={dismiss}
                     className="mt-3 block w-full py-2 rounded-lg text-xs font-bold text-center transition-all hover:opacity-80"
-                    style={{ background: 'rgba(0,255,209,0.1)', border: '1px solid rgba(0,255,209,0.25)', color: '#00FFD1' }}
+                    style={{ background: 'rgba(0,209,255,0.1)', border: '1px solid rgba(0,209,255,0.25)', color: '#00D1FF' }}
                   >
                     לכל החבילות ←
                   </Link>

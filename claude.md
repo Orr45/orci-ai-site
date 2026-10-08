@@ -448,7 +448,7 @@ OPENAI_API_KEY=sk-... npm run generate-weekly
 
 ---
 
-**Last Updated:** 2026-10-08
+**Last Updated:** 2026-10-08 (ערב)
 **Status:** ✅ דף "שיווק לעסקים" (/products) נבנה מחדש אחרי ניתוח 10 דפי מכירה בקטגוריה — עבודות לקוחות אמיתיות (Troya, LAGO, Ela-Yam, Barda, Save The Date, Vibe or Value), לוגואים מתחת להירו, הסרת סיכון "לא משלמים עד שאישרתם את התסריט".
 **Next Action:** להוסיף לדף /products: לוגו Muzo, מספרי צפיות אצל הלקוחות (שדה `views` ב-WORKS), והמלצות עם שם עסק (שדה `business` ב-data/testimonials.ts).
 
@@ -1140,4 +1140,18 @@ Hero (כותרת ענקית clamp עד 116px) → קרוסלת כלים marquee 
 **⚠️ Vibe or Value** הוא המוצר של אור — מופיע תחת "מותגים שעבדנו איתם", לא "לקוחות".
 
 **עיצוב מחדש — קונספט Lando Norris × Mat Voyce (אותו יום):** הגרסה הראשונה נראתה גנרית. מתוך לוקבוק של 8 אתרים זוכי פרסים אור בחר 1+6: Lando Norris (Awwwards Site of the Year 2025) + Mat Voyce. העיצוב ב-`app/products/products.module.css`: אוף-וייט / זית / שחור מ-Lando, הליים שלו הוחלף בציאן של Orci (שהוא גם הציאן של Mat Voyce), Karantina (נטען רק ב-products/layout.tsx) + Frank Ruhl 900 למילות הדגשה, פורטרט גזור (`public/products/or-cutout.webp`, נגזר מקומית עם Apple Vision) על מפה טופוגרפית (`public/products/topo.svg`), סטיקרים עם צל קשה, ומילים ענקיות שנמתחות לפי מהירות הגלילה. הדף לא מגיב למצב כהה/בהיר של האתר — מראה אחד קבוע.
+
+---
+
+### Session 2026-10-08 (המשך) — מערכת העיצוב Lando × Mat Voyce על כל האתר
+
+**globals.css → Design System v3:** טוקנים חדשים (נייר #F4F4ED, זית #282C20, לילה #111112, ציאן #00D1FF, ליים #D2FF00). Karantina נטען מ-app/layout.tsx לכל האתר. h1–h3 ו-`.cap-hero-title` / `.cap-section-title` ב-Karantina; `.cap-card` = סטיקר (קו דיו + צל קשה) על בהיר, כרטיס זית שקט על כהה; `.cap-btn-primary` ו-`.cap-btn-whatsapp` = מילוי ציאן עם טקסט זית; `.cap-badge` = סטיקר ליים. פרימיטיבים משותפים: `.lv-topo`, `.lv-display`, `.lv-accent`, `.lv-sticker`.
+
+**⚠️ ניגודיות:** ציאן בהיר על נייר = 1.6:1 — אסור כטקסט על רקע בהיר. `--accent` במצב בהיר = #006C88 (5.4:1); `--cyan` רק למילויים ולטקסט על כהה. `--orci-cyan` (בשימוש ב-31 המדריכים) ממופה ל-#006C88 בבהיר ול-#00D1FF בכהה.
+
+**⚠️ שכבות CSS:** הטיפוגרפיה והקומפוננטות ב-globals.css עטופות ב-`@layer components`, כדי ש-utilities של Tailwind (text-orci-cyan, mb-6…) ינצחו כמו שנכתבו. כלל אחד נשאר מחוץ לשכבות בכוונה: `<p>` שה-MDX עוטף בתוך כותרת יורש את ה-line-height שלה.
+
+**עמודים:** בית (`app/home.module.css` — פורטרט + "ORCI" ענק, שתי דלתות עסקים/מדריכים, תוצאות, פס ליים לפתיחת מדריכים), מדריכים (`app/guides/guides.module.css`), מי אני (`app/about/about.module.css`, צילום חליפה גזור `public/or-suit-cutout.webp`), עדכון שבועי ומודאלים (הפלטה הישנה מנטה/נייבי/סגול הוחלפה), תנאים ופרטיות (מטוקנים). ניווט: לוגו ORCI + סטיקר AI, ה-dock רק במובייל/טאבלט. פוטר כהה עם ORCIAI ענק.
+
+**ידוע ולא תוקן:** שגיאת hydration (#418) בכל דפי המדריכים — קיימת גם לפני השינוי. הריפו שוקל 1.4GB בגלל PNG-ים של 30MB במדריכים ישנים, ולכן כל deploy לוקח ~9 דקות.
 

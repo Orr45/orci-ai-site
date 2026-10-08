@@ -32,11 +32,11 @@ export default function ThemeToggle({ className }: { className?: string }) {
       onClick={toggle}
       aria-label={isDark ? 'עבור למצב בהיר' : 'עבור למצב כהה'}
       title={isDark ? 'מצב בהיר' : 'מצב כהה'}
-      className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${className ?? ''}`}
+      className={`w-11 h-11 rounded-full flex items-center justify-center transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 ${className ?? ''}`}
       style={{
-        border: '1px solid var(--border-subtle)',
-        background: 'var(--surface-card)',
-        color: 'var(--text-secondary)',
+        border: '2px solid var(--pill-edge)',
+        background: 'var(--surface)',
+        color: 'var(--text-primary)',
       }}
     >
       {/* Render a stable icon before mount to avoid hydration mismatch */}

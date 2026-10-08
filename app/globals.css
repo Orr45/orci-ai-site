@@ -1,49 +1,63 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════════
-   ORCI AI — DESIGN SYSTEM v2 "אור שמר"
-   Trust-premium: light-first, deep navy ink, sapphire accent.
-   Dark mode via [data-theme="dark"] (html toggle OR local zone
-   wrapper — e.g. the guides reading area stays dark).
+   ORCI AI — DESIGN SYSTEM v3 "Lando × Mat Voyce"
+   Light: off-white paper, olive ink, Orci cyan (Lando's lime → Orci cyan,
+   which is also Mat Voyce's cyan). Dark (toggle OR any [data-theme="dark"]
+   zone — the guides reading area, dark page sections): near-black + olive
+   with cyan text. Display: Karantina (condensed) + Frank Ruhl 900 accents.
+   Bright cyan is a fill / dark-background color only: on paper it is 1.6:1,
+   so text-on-light uses --accent (#006C88, 5.4:1).
    ═══════════════════════════════════════════════════════════ */
 
 :root {
+  /* Brand constants (theme-independent) */
+  --paper: #F4F4ED;
+  --olive: #282C20;
+  --night: #111112;
+  --cyan: #00D1FF;
+  --lime: #D2FF00;
+  --sage: #B4B8A5;
+
   /* Surfaces */
-  --bg: #F5F7FA;
-  --surface: #FFFFFF;
-  --surface-alt: #ECF1F7;
+  --bg: #F4F4ED;
+  --surface: #FBFBF6;
+  --surface-alt: #EAEADF;
   --surface-card: #FFFFFF;
-  --surface-hover: #F0F4F9;
+  --surface-hover: #EFEFE6;
 
-  /* Ink — opacity ladder */
-  --ink: #0E1D33;
-  --text-primary: #0E1D33;
-  --text-secondary: rgba(14, 29, 51, 0.70);
-  --text-muted: rgba(14, 29, 51, 0.46);
+  /* Ink — opacity ladder (muted stays ≥ 4.5:1 on paper) */
+  --ink: #282C20;
+  --text-primary: #282C20;
+  --text-secondary: rgba(40, 44, 32, 0.80);
+  --text-muted: rgba(40, 44, 32, 0.68);
 
-  /* Accent — sapphire */
-  --accent: #1B4FD8;
-  --accent-strong: #163FAE;
-  --accent-soft: rgba(27, 79, 216, 0.08);
-  --accent-line: rgba(27, 79, 216, 0.28);
+  /* Accent — text-safe cyan on light; buttons use the bright --cyan fill */
+  --accent: #006C88;
+  --accent-strong: #00566D;
+  --accent-soft: rgba(0, 209, 255, 0.16);
+  --accent-line: rgba(0, 108, 136, 0.40);
   --on-accent: #FFFFFF;
 
   /* Functional */
   --whatsapp: #15803D;
   --whatsapp-hover: #166534;
 
-  /* Lines & shadows */
-  --border-subtle: rgba(14, 29, 51, 0.10);
-  --border-strong: rgba(14, 29, 51, 0.18);
-  --shadow-card: 0 1px 2px rgba(14, 29, 51, 0.05), 0 8px 24px rgba(14, 29, 51, 0.06);
-  --shadow-card-hover: 0 2px 4px rgba(14, 29, 51, 0.06), 0 16px 40px rgba(14, 29, 51, 0.10);
+  /* Lines & card edges — light cards are stickers: ink edge + hard offset shadow */
+  --border-subtle: rgba(40, 44, 32, 0.14);
+  --border-strong: rgba(40, 44, 32, 0.28);
+  --card-bw: 2px;
+  --card-edge: #282C20;
+  --pill-edge: #282C20;
+  --shadow-card: 5px 5px 0 #282C20;
+  --shadow-card-hover: 8px 8px 0 #282C20;
 
   /* Legacy aliases — old classes/pages keep working, re-tinted to brand */
-  --orci-cyan: #1B4FD8;
-  --orci-blue: #163FAE;
-  --orci-purple: #163FAE;
-  --orci-purple-dark: #122F80;
-  --orci-primary: #1B4FD8;
+  --orci-cyan: #006C88;
+  --orci-blue: #00566D;
+  --orci-purple: #00566D;
+  --orci-purple-dark: #00455A;
+  --orci-primary: #006C88;
   --background: var(--bg);
   --border-glow: var(--accent-line);
   --glow-cyan: var(--shadow-card);
@@ -52,36 +66,42 @@
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Dark tokens — applied by html[data-theme] toggle OR any zone wrapper */
+/* Dark tokens — applied by html[data-theme] toggle OR any zone wrapper (Lando's dark sections) */
 [data-theme="dark"] {
-  --bg: #0A1424;
-  --surface: #111F36;
-  --surface-alt: #0D1A2E;
-  --surface-card: #111F36;
-  --surface-hover: #16263F;
+  --bg: #111112;
+  --surface: #17181A;
+  --surface-alt: #1A1C17;
+  --surface-card: #1E2119;
+  --surface-hover: #262A1F;
 
-  --ink: #EEF3FA;
-  --text-primary: #EEF3FA;
-  --text-secondary: rgba(238, 243, 250, 0.72);
-  --text-muted: rgba(238, 243, 250, 0.46);
+  --ink: #F4F4ED;
+  --text-primary: #F4F4ED;
+  --text-secondary: rgba(244, 244, 237, 0.78);
+  --text-muted: rgba(244, 244, 237, 0.62);
 
-  --accent: #6E9BF5;
-  --accent-strong: #8FB3FF;
-  --accent-soft: rgba(110, 155, 245, 0.12);
-  --accent-line: rgba(110, 155, 245, 0.35);
-  --on-accent: #0A1424;
+  --accent: #00D1FF;
+  --accent-strong: #66E4FF;
+  --accent-soft: rgba(0, 209, 255, 0.12);
+  --accent-line: rgba(0, 209, 255, 0.40);
+  --on-accent: #282C20;
 
   --whatsapp: #22A555;
   --whatsapp-hover: #2ABB63;
 
-  --border-subtle: rgba(238, 243, 250, 0.10);
-  --border-strong: rgba(238, 243, 250, 0.18);
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.28);
-  --shadow-card-hover: 0 2px 4px rgba(0, 0, 0, 0.30), 0 16px 40px rgba(0, 0, 0, 0.36);
+  --border-subtle: rgba(244, 244, 237, 0.12);
+  --border-strong: rgba(244, 244, 237, 0.24);
+  --card-bw: 1px;
+  --card-edge: rgba(244, 244, 237, 0.14);
+  --pill-edge: #F4F4ED;
+  --shadow-card: 0 0 0 0 transparent;
+  --shadow-card-hover: 0 0 0 1px rgba(0, 209, 255, 0.45);
 
-  --orci-cyan: #6E9BF5;
-  --orci-blue: #8FB3FF;
+  --orci-cyan: #00D1FF;
+  --orci-blue: #66E4FF;
+  --orci-purple: #66E4FF;
+  --orci-primary: #00D1FF;
   --background: var(--bg);
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -89,6 +109,11 @@
   --color-orci-blue: var(--orci-blue);
   --color-orci-purple: var(--orci-purple);
   --color-orci-purple-dark: var(--orci-purple-dark);
+  --color-brand-cyan: var(--cyan);
+  --color-brand-lime: var(--lime);
+  --color-brand-paper: var(--paper);
+  --color-brand-olive: var(--olive);
+  --color-brand-night: var(--night);
   --font-sans: var(--font-heebo);
 }
 
@@ -116,21 +141,39 @@ html[dir="rtl"] {
   direction: rtl;
 }
 
+/* Typography, components and Lando × Mat Voyce primitives live in the components layer,
+   so Tailwind utilities on the same element (text-orci-cyan, mb-6, text-base) win as written. */
+@layer components {
+
 /* ========================================
-   TYPOGRAPHY — Frank Ruhl Libre display + Heebo body
+   TYPOGRAPHY — Karantina display + Frank Ruhl 900 accents + Heebo body
    ======================================== */
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-frank), var(--font-heebo), serif;
+h1, h2, h3 {
+  font-family: var(--font-karantina), var(--font-heebo), sans-serif;
   font-weight: 700;
-  line-height: 1.18;
+  line-height: 1;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+
+h4, h5, h6 {
+  font-family: var(--font-heebo), var(--bs-font-sans-serif);
+  font-weight: 800;
+  line-height: 1.25;
   margin-bottom: 1rem;
   color: var(--text-primary);
   text-wrap: balance;
 }
 
 .font-display {
-  font-family: var(--font-frank), var(--font-heebo), serif;
+  font-family: var(--font-karantina), var(--font-heebo), sans-serif;
+}
+
+.font-serif-accent {
+  font-family: var(--font-frank), serif;
+  font-weight: 900;
 }
 
 .font-body {
@@ -138,19 +181,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cap-hero-title {
-  font-family: var(--font-frank), var(--font-heebo), serif;
-  font-size: clamp(2.5rem, 6.2vw, 4.75rem);
-  font-weight: 900;
-  line-height: 1.12;
-  letter-spacing: -0.01em;
+  font-family: var(--font-karantina), var(--font-heebo), sans-serif;
+  font-size: clamp(3.4rem, 10vw, 7.5rem);
+  font-weight: 700;
+  line-height: 0.9;
   color: var(--text-primary);
 }
 
 .cap-section-title {
-  font-family: var(--font-frank), var(--font-heebo), serif;
-  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-family: var(--font-karantina), var(--font-heebo), sans-serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 0.92;
   color: var(--text-primary);
 }
 
@@ -169,17 +211,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .orci-kicker .orci-kicker-label {
   font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.28em;
-  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
 }
 
 .orci-kicker::before {
   content: "";
   width: 26px;
-  height: 2px;
+  height: 3px;
   border-radius: 2px;
-  background: var(--accent);
+  background: var(--cyan);
 }
 
 /* ========================================
@@ -187,7 +229,7 @@ h1, h2, h3, h4, h5, h6 {
    ======================================== */
 
 .cap-section {
-  padding: 4.5rem 1rem;
+  padding: 4rem 1rem;
 }
 
 @media (min-width: 768px) {
@@ -209,130 +251,115 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ========================================
-   CARD SYSTEM — clean, sharp, no glass
+   CARD SYSTEM — Mat Voyce stickers on light, quiet olive cards on dark
    ======================================== */
 
 .cap-card {
   background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 1.1rem;
+  border: var(--card-bw) solid var(--card-edge);
+  border-radius: 1.25rem;
   padding: 2rem;
   box-shadow: var(--shadow-card);
-  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .cap-card:hover {
-  border-color: var(--accent-line);
   box-shadow: var(--shadow-card-hover);
 }
 
 .cap-card-small {
   background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 0.9rem;
+  border: var(--card-bw) solid var(--card-edge);
+  border-radius: 1rem;
   padding: 1.5rem;
   box-shadow: var(--shadow-card);
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: box-shadow 0.2s ease;
   text-align: center;
 }
 
 .cap-card-small:hover {
-  border-color: var(--accent-line);
   box-shadow: var(--shadow-card-hover);
 }
 
 .tutorial-card {
   background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: 1rem;
+  border: var(--card-bw) solid var(--card-edge);
+  border-radius: 1.25rem;
   overflow: hidden;
   box-shadow: var(--shadow-card);
-  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .tutorial-card:hover {
-  border-color: var(--accent-line);
   box-shadow: var(--shadow-card-hover);
-  transform: translateY(-3px);
+  transform: translate(-2px, -3px);
 }
 
 /* ========================================
-   BUTTONS — pill, confident, minimal
+   BUTTONS — Lando's pill, Mat Voyce's hard shadow on hover
    ======================================== */
 
 .cap-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.8rem 2rem;
+  gap: 0.55rem;
+  min-height: 48px;
+  padding: 0.8rem 1.9rem;
   border-radius: 999px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
+  font-weight: 800;
+  font-size: 0.98rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
   text-decoration: none;
-  border: none;
+  border: 2px solid var(--pill-edge);
   cursor: pointer;
 }
 
-.cap-btn-primary {
-  background: var(--accent);
-  color: var(--on-accent);
+.cap-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--pill-edge);
 }
 
-.cap-btn-primary:hover {
-  background: var(--accent-strong);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-card-hover);
+.cap-btn:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 3px;
 }
 
+/* Primary and WhatsApp share the brand fill: bright cyan with olive ink (7.9:1) */
+.cap-btn-primary,
 .cap-btn-whatsapp {
-  background: var(--whatsapp);
-  color: #ffffff;
-}
-
-.cap-btn-whatsapp:hover {
-  background: var(--whatsapp-hover);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-card-hover);
+  background: var(--cyan);
+  color: var(--olive);
 }
 
 .cap-btn-dark {
   background: var(--surface-card);
   color: var(--text-primary);
-  border: 1px solid var(--border-strong);
-}
-
-.cap-btn-dark:hover {
-  border-color: var(--accent);
-  color: var(--accent);
 }
 
 .cap-btn-outline {
   background: transparent;
-  border: 1.5px solid var(--border-strong);
   color: var(--text-primary);
-}
-
-.cap-btn-outline:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-soft);
 }
 
 /* ========================================
-   BADGE SYSTEM
+   BADGES — lime stickers
    ======================================== */
 
 .cap-badge {
-  display: inline-block;
-  padding: 0.6rem 1.4rem;
-  background: var(--surface-card);
-  color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 1rem 0.35rem;
+  background: var(--lime);
+  color: var(--olive);
+  border: 2px solid var(--olive);
   border-radius: 999px;
-  font-size: 0.875rem;
-  font-weight: 600;
+  box-shadow: 3px 3px 0 var(--olive);
+  font-family: var(--font-karantina), var(--font-heebo), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
   white-space: nowrap;
 }
 
@@ -341,26 +368,85 @@ h1, h2, h3, h4, h5, h6 {
    ======================================== */
 
 .filter-btn {
-  padding: 0.5rem 1.25rem;
+  min-height: 42px;
+  padding: 0.45rem 1.2rem;
   border-radius: 999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  border: 1.5px solid var(--border-subtle);
-  background: var(--surface-card);
-  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: 2px solid var(--pill-edge);
+  background: transparent;
+  color: var(--text-primary);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
 }
 
 .filter-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--pill-edge);
 }
 
 .filter-btn-active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--on-accent);
+  background: var(--cyan);
+  color: var(--olive);
+}
+
+/* ========================================
+   LANDO × MAT VOYCE PRIMITIVES (shared by page designs)
+   ======================================== */
+
+/* Topographic map backdrop (Lando hero) */
+.lv-topo {
+  background: url('/products/topo.svg') center / cover no-repeat;
+}
+
+/* Giant condensed word */
+.lv-display {
+  font-family: var(--font-karantina), var(--font-heebo), sans-serif;
+  font-weight: 700;
+  line-height: 0.86;
+}
+
+/* Serif accent word — bright cyan on dark; on light it gets an ink outline so it stays legible */
+.lv-accent {
+  font-family: var(--font-frank), serif;
+  font-weight: 900;
+  font-size: 0.8em;
+  color: var(--cyan);
+  -webkit-text-stroke: 1.5px var(--olive);
+  paint-order: stroke fill;
+}
+[data-theme="dark"] .lv-accent { -webkit-text-stroke: 0; }
+
+/* Sticker (Mat Voyce) */
+.lv-sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-karantina), var(--font-heebo), sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0.5rem 0.85rem 0.4rem;
+  border: 2px solid var(--olive);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--olive);
+  background: var(--paper);
+  color: var(--olive);
+  white-space: nowrap;
+}
+.lv-sticker-lime { background: var(--lime); }
+.lv-sticker-cyan { background: var(--cyan); }
+@media (min-width: 768px) {
+  .lv-sticker { font-size: 1.45rem; padding: 0.6rem 1.05rem 0.5rem; box-shadow: 4px 4px 0 var(--olive); }
+}
+
+}
+
+/* MDX wraps heading text in a <p class="mb-4 leading-relaxed">; let it read as part of the heading.
+   Unlayered on purpose — it has to beat those utilities. */
+:is(h1, h2, h3, .cap-hero-title, .cap-section-title) > p {
+  margin: 0;
+  line-height: inherit;
 }
 
 /* ========================================
@@ -438,9 +524,9 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 10000;
   padding: 0.9rem 1.6rem;
   border-radius: 0 0 0.75rem 0.75rem;
-  background: var(--accent);
-  color: var(--on-accent);
-  font-weight: 700;
+  background: var(--cyan);
+  color: var(--olive);
+  font-weight: 800;
   font-size: 0.95rem;
   text-decoration: none;
 }
