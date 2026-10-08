@@ -3,6 +3,7 @@
 import { Footer } from '@/components/layout/Footer';
 import TutorialGrid from '@/components/ui/tutorial-grid';
 import { GUIDES } from '@/data/guides';
+import { CoachingBanner } from '@/components/ui/coaching-cta';
 import s from './guides.module.css';
 
 export default function GuidesPage() {
@@ -23,6 +24,9 @@ export default function GuidesPage() {
           </div>
         </div>
       </section>
+
+      {/* ONE-ON-ONE COACHING — details stay in WhatsApp */}
+      <CoachingBanner />
 
       {/* ALL GUIDES — with email gate */}
       <section className={s.grid}>

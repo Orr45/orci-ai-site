@@ -1,7 +1,11 @@
 import Link from 'next/link';
+import { GuideCoachingSlot } from '@/components/ui/coaching-cta';
 
 export function Footer() {
   return (
+    <>
+    {/* On guide articles: the coaching invitation closes the guide, just above the footer */}
+    <GuideCoachingSlot position="end" />
     <footer
       data-theme="dark"
       className="pt-14 px-6 pb-32 lg:pb-14 overflow-hidden"
@@ -97,5 +101,6 @@ export function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import GuideGuard from '@/components/ui/guide-guard';
+import { GuideCoachingSlot } from '@/components/ui/coaching-cta';
 
 export const metadata: Metadata = {
   title: 'מדריכי AI בעברית — וידאו, שיווק ואוטומציות | Orci AI',
@@ -23,6 +24,7 @@ export default function GuidesLayout({ children }: { children: React.ReactNode }
      so all existing MDX articles (built on light-text-over-dark) stay readable. */
   return (
     <div data-theme="dark" style={{ background: 'var(--bg)', color: 'var(--text-primary)' }}>
+      <GuideCoachingSlot position="top" />
       <GuideGuard>{children}</GuideGuard>
     </div>
   );
