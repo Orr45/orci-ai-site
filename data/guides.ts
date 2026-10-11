@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'chatgpt-knows-about-you',
+    title: 'מה ChatGPT יודע עליך בסוד',
+    description: 'ארבעה פרומפטים שגורמים ל-ChatGPT לחשוף מה הוא הבין עליך מכל השיחות שלכם',
+    summary: 'ChatGPT קורא בין השורות של כל מה שכתבתם לו. מדליקים זיכרון, ובארבעה פרומפטים באותו צ\'אט הוא חושף חמישה דברים שהבין עליכם ולא אמרתם לו, את הדפוס שאתם מכחישים, שתי גרסאות של חמש השנים הבאות שלכם ופסקה אחת לקרוא כל בוקר. כולל פרומפטים מוכנים להעתקה ופרומפט המשך ל-30 הימים הקרובים.',
+    image: '/guides/guide-chatgpt-knows-about-you.png',
+    href: '/guides/chatgpt-knows-about-you',
+    category: 'טריקים',
+    popular: false,
+    isNew: true,
+    date: '2026-10-11',
+    free: false,
+  },
+  {
     id: 'chatgpt-human-writing',
     title: 'ChatGPT שנשמע כמו בן אדם',
     description: 'שני פרומפטים והגדרה אחת שמעלימים את סימני ה-AI מכל טקסט ש-ChatGPT כותב, גם בעברית',
