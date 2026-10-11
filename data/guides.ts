@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'claude-video-editing',
+    title: 'איך Claude עורך לי רילס שלם',
+    description: 'מקליטים טייק אחד עם כל הגמגומים, ו-Claude Code חותך, כותב סטוריבורד ובונה את כל העריכה, בלי CapCut',
+    summary: 'רילס שלם בלי לפתוח אפליקציית עריכה: מקליטים טייק אחד עם כל הגמגומים, ו-Claude Code מתמלל, חותך את הטייקים הגרועים, כותב סטוריבורד לאישור ובונה את העריכה ב-HyperFrames, עם כתוביות, גרפיקה, מעברים, מוזיקה על הביט ואפקטים. כולל 6 פרומפטים מוכנים, גם להעתקת סגנון עריכה מכל רילס שאהבתם.',
+    image: '/guides/guide-claude-video-editing.png',
+    href: '/guides/claude-video-editing',
+    category: 'יצירת תוכן',
+    popular: false,
+    isNew: true,
+    date: '2026-10-11',
+    free: false,
+  },
+  {
     id: 'chatgpt-knows-about-you',
     title: 'מה ChatGPT יודע עליך בסוד',
     description: 'ארבעה פרומפטים שגורמים ל-ChatGPT לחשוף מה הוא הבין עליך מכל השיחות שלכם',

@@ -1,0 +1,259 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'איך Claude עורך לי רילס שלם, בלי CapCut | Orci AI',
+  description: 'מקליטים טייק אחד עם כל הגמגומים, ו-Claude Code חותך, כותב סטוריבורד ובונה את כל העריכה: כתוביות, גרפיקה, מעברים, מוזיקה ואפקטים. כולל 6 פרומפטים מוכנים.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        איך Claude עורך לי רילס שלם
+      </h1>
+      <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        מקליטים טייק אחד עם כל הגמגומים, ו-Claude עושה את השאר: חותך, כותב סטוריבורד, עורך ומוסיף מוזיקה. בלי CapCut ובלי לפתוח אפליקציית עריכה.
+      </div>
+
+      {/* Tools Badges */}
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🤖 Claude Code</span>
+        <span className="cap-badge text-sm">🎬 HyperFrames</span>
+        <span className="cap-badge text-sm">🎙️ Whisper</span>
+        <span className="cap-badge text-sm">👄 Sync Lipsync 3 (אופציונלי)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* The reel */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        הסרטון
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        את הרילס הזה אף אחד לא ערך ידנית. כל קאט, כתובית, מעבר ואפקט נבנה על ידי <span className="text-orci-cyan font-bold">Claude</span> מהמשפטים שבמדריך הזה.
+      </div>
+      <div className="my-8 max-w-sm mx-auto">
+        <video src="/guides/claude-video-editing/reel.mp4" poster="/guides/claude-video-editing/poster-reel.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הסרטון המלא</p>
+      </div>
+    </div>
+
+    {/* Step 0 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        לפני הכל: מה צריך
+      </h2>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Claude Code</span>: הגרסה של Claude שעובדת ישירות על המחשב שלכם ומריצה כלים בעצמה. נכנס עם מנוי Claude בתשלום.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">HyperFrames</span>: כלי קוד פתוח שהופך עמוד אינטרנט לסרטון. Claude כותב את העריכה כקוד, והכלי מרנדר אותה ל-MP4. אין צורך להתקין מראש, Claude מריץ אותו בעצמו.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>פשוט תגידו ל-Claude Code ״תוודא שיש לי ffmpeg ו-Node.js מותקנים״, והוא יבדוק ויתקין מה שחסר.</li>
+      </ul>
+    </div>
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: מקליטים טייק אחד, גולמי
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        מקליטים את כל הטקסט <span className="text-orci-cyan font-bold">ברצף, בלי לעצור</span>. התבלבלתם? פשוט אומרים את המשפט שוב וממשיכים. גמגומים וטייקים כפולים זה בסדר גמור, בשביל זה יש את השלב הבא. ברילס הזה ההקלטה הגולמית הייתה 1:13, והסרטון המוגמר 0:56.
+      </div>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/claude-video-editing/step1-raw.png" alt="טייק גרוע: 1:13 של צילום גולמי" width={900} height={583} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: Claude חותך את הטייקים הגרועים
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        Claude מתמלל את ההקלטה מילה-מילה עם <span className="text-orci-cyan font-bold">Whisper</span>, מזהה איפה התחלתם משפט ולא סיימתם, ושומר רק את הטייק האחרון. בלי טיימליין ובלי גרירה של קליפים.
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחצו לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`יש לי הקלטה גולמית בקובץ raw.m4a. תמלל אותה עם חותמת זמן לכל מילה, תמצא התחלות שלא נגמרו, משפטים שאמרתי פעמיים ושקטים ארוכים, ותחתוך אותם. תשאיר את הטייק האחרון של כל משפט. אל תקצר שקטים מתחת ל-0.25 שניות כדי שלא יישמע רובוטי. תנקה רעש רקע, תאזן עוצמה ל-14- LUFS ותשמור voice_clean.wav. בסוף תראה לי רשימה של כל מה שחתכת.`} />
+      </details>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/claude-video-editing/step2-cut.png" alt="טיימליין עריכה" width={900} height={583} className="w-full h-auto" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">את כל זה Claude עושה בקוד, בלי שתפתחו טיימליין</p>
+      </div>
+    </div>
+
+    {/* Step 3 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3 (אופציונלי): לא צילמתם? רק הקלטתם
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        את הרילס הזה הקלטתי באודיו בלבד. מעלים ל-<span className="text-orci-cyan font-bold">Higgsfield</span> סרטון בסיס קיים שלכם יחד עם <span className="text-orci-cyan font-bold">voice_clean.wav</span>, בוחרים <span className="text-orci-cyan font-bold">Sync Lipsync 3</span>, והשפתיים שלכם זזות לפי ההקלטה החדשה.
+      </div>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>סרטון בסיס טוב: מצלמה יציבה, פנים במרכז, ושום דבר לא מסתיר את הפה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>אם ההקלטה ארוכה מהבסיס, מחלקים אותה לשני חלקים בהפסקה טבעית ומסנכרנים כל חלק על בסיס אחר. זה גם נראה כמו החלפת זווית.</li>
+      </ul>
+    </div>
+
+    {/* Step 4 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 4: סטוריבורד לפני שמרנדרים
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        זה ההבדל הגדול. לפני שנבנה פריים אחד, Claude כותב <span className="text-orci-cyan font-bold">לוח סצנות</span>: מה נאמר, מה רואים ואיזה אפקט. אתם רואים מה הוא חושב, ומתקנים כשזה עוד זול.
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 פרומפט: סטוריבורד
+        </summary>
+        <CopyPrompt prompt={`לפני שאתה בונה משהו, תכתוב לי סטוריבורד בטבלה: זמן | מה אני אומר | מה רואים על המסך | אפקט או מעבר. כל שוט עד 3 שניות, ובכל 1–2 שניות משהו חדש קורה על המסך. אל תתחיל לבנות ולרנדר עד שאני מאשר.`} />
+      </details>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        <span className="text-orci-cyan font-bold">הטריק החזק:</span> ראיתם רילס שהעריכה שלו מטורפת? Claude יכול לפרק אותו ולהעתיק את הסגנון. ככה נבנה הרילס הזה.
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 פרומפט: להעתיק סגנון עריכה מרילס
+        </summary>
+        <CopyPrompt prompt={`הנה רילס שאני אוהב את העריכה שלו: [לינק]. תוריד אותו, תעבור עליו פריים אחרי פריים ותכתוב לי מסמך סגנון: צבעים, פונטים, כתוביות, מעברים, קצב קאטים, מוזיקה ואפקטים. אחר כך תבנה את הסטוריבורד שלי באותו סגנון. את הסגנון, לא את המיקומים שלו.`} />
+      </details>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/claude-video-editing/step4-storyboard.png" alt="סטוריבורד של Claude" width={900} height={575} className="w-full h-auto" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הסטוריבורד האמיתי של הרילס הזה</p>
+      </div>
+    </div>
+
+    {/* Step 5 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 5: עריכה ב-HyperFrames, והערות בעברית פשוטה
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        אחרי שאישרתם את הסטוריבורד, Claude בונה את העריכה ומרנדר. משהו לא מוצא חן בעיניכם? כותבים לו כמו לעורך, במשפט אחד.
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 פרומפט: לבנות את העריכה
+        </summary>
+        <CopyPrompt prompt={`תבנה את העריכה ב-HyperFrames לפי הסטוריבורד המאושר: כתוביות בעברית מסונכרנות לכל מילה, כרטיסים וגרפיקה מונפשים, ומעבר עם טשטוש תנועה בכל החלפת קטע. תבדוק אם יש קפיצות בצילום עצמו ותסתיר כל אחת מהן בהחלפת זום בדיוק על הפריים. תרנדר ל-MP4 בגודל 1080x1920 ותשלח לי.`} />
+      </details>
+      <CopyPrompt prompt="הערות לגרסה הבאה: תעשה את ההוק יותר אסתטי, תגדיל את הכתוביות, ותוסיף whoosh קצר על כל מעבר. אל תשנה שום דבר אחר." />
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/claude-video-editing/step5-notes.png" alt="הערה ל-Claude ותשובה" width={900} height={467} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 6 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 6: מוזיקה על הביט ואפקטים
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        מה שגורם לעריכה להרגיש מקצועית הוא <span className="text-orci-cyan font-bold">הזרימה</span>: הביט נוחת על הקאטים, ולכל דבר שקופץ על המסך יש צליל קצר.
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 פרומפט: מוזיקה וסאונד
+        </summary>
+        <CopyPrompt prompt={`תוסיף מוזיקה מהתיקייה שלי: תמצא את הטמפו של השיר ותזיז את נקודת ההתחלה כך שהביט ינחת על הקאטים המרכזיים. המוזיקה 14dB מתחת לקול, עם דאקינג כשאני מדבר. תוסיף קליק קצר על כל כרטיס שקופץ, וצלילי הקלדה כשמשהו מוקלד על המסך. בלי צלילים שהגובה שלהם גולש, הם נשמעים כמו לייזר.`} />
+      </details>
+    </div>
+
+    {/* Results gallery */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        מה יצא ממשפט אחד
+      </h2>
+      <div className="my-8 grid grid-cols-2 gap-4">
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-video-editing/after-hook.png" alt="הוק עם טקסט מאחורי הראש" width={600} height={750} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center"><p className="text-orci-cyan font-bold text-base">ההוק</p><p className="text-sm text-slate-400 mt-1">טקסט מאחורי הראש</p></div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-video-editing/after-aesthetic.png" alt="סליידר לפני ואחרי" width={600} height={750} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center"><p className="text-orci-cyan font-bold text-base">״יותר אסתטי״</p><p className="text-sm text-slate-400 mt-1">סליידר לפני/אחרי</p></div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-video-editing/after-magazine.png" alt="שער מגזין" width={600} height={750} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center"><p className="text-orci-cyan font-bold text-base">שער מגזין</p><p className="text-sm text-slate-400 mt-1">CLAUDE מאחורי הראש</p></div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-video-editing/after-moody.png" alt="גרסה מודית" width={600} height={750} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center"><p className="text-orci-cyan font-bold text-base">״תעשה את זה מודי״</p><p className="text-sm text-slate-400 mt-1">קו שמחשיך את הפריים</p></div>
+        </div>
+      </div>
+    </div>
+
+    {/* Result Card */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          רילס של דקה עם <span className="text-orci-cyan font-bold">כתוביות, גרפיקה, מעברים, מוזיקה ו-140 אפקטים</span>, בלי שפתחתם אפליקציית עריכה אחת.
+        </div>
+      </div>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">אתם כבר לא עורכים. אתם במאים.</span>
+        </div>
+        <div className="text-lg text-slate-300">
+          העבודה שלכם היא לדעת מה אתם רוצים לראות ולהגיד את זה במשפט. כל השאר, מהחיתוך ועד הצליל על כל כרטיס, קורה בקוד.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <div className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+      </div>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>
