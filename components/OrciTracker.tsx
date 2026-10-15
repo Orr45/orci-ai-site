@@ -4,9 +4,11 @@
  * מדידת שימוש אנונימית — נשלחת למערכת הניהול (orciai), לא לצד שלישי.
  *
  * מה נשלח: הנתיב של העמוד (בלי מחרוזת השאילתה), משך הזמן שהעמוד היה גלוי,
- * רוחב המסך, האתר שממנו הגיעו, ו-utm_source.
- * מה לא: עוגיות, כתובת IP, או מזהה שנשמר בין ביקורים. מזהה הביקור הוא מספר
- * אקראי ב-sessionStorage, שנמחק כשהלשונית נסגרת.
+ * רוחב המסך, האתר שממנו הגיעו, utm_source, ופעולות בעמוד: לחיצה על וואטסאפ,
+ * צפייה בסרטון, והגעה לאזור העבודות או המחיר.
+ * מזהים: מספר אקראי לביקור (sessionStorage, נמחק כשהלשונית נסגרת), ומספר אקראי
+ * לדפדפן (localStorage) — כדי לספור גולשים ולא לשוניות. אין עוגיות, אין IP,
+ * ושום מזהה אינו מקושר לשם או לפרטים של אדם.
  *
  * כדי לא לספור את עצמך: לפתוח פעם אחת את האתר עם ?notrack=1 באותו מכשיר.
  * לביטול: ?notrack=0.
@@ -49,6 +51,36 @@ function optedOut(): boolean {
   } catch {
     return false;
   }
+}
+
+/** מספר אקראי לדפדפן — אותו גולש בכמה לשוניות ובביקורים חוזרים */
+function visitorId(): string | null {
+  try {
+    const existing = localStorage.getItem('orci-vid');
+    if (existing) return existing;
+    const id = uuid();
+    localStorage.setItem('orci-vid', id);
+    return id;
+  } catch {
+    return null;
+  }
+}
+
+/** פעולה בעמוד. שמות מוכרים בלבד — השרת זורק כל שם אחר. */
+function act(name: string, label?: string | null) {
+  if (optedOut()) return;
+  send({
+    t: 'act', id: uuid(), sid: sessionId().id, vid: visitorId(),
+    path: window.location.pathname, name, label: label ? label.slice(0, 80) : null,
+  });
+}
+
+/** תווית קצרה לקישור: הטקסט שלו, או האזור בעמוד שבו הוא נמצא */
+function labelOf(el: Element): string | null {
+  const text = (el.textContent ?? '').replace(/\s+/g, ' ').trim();
+  const area = el.closest('section[id], section[aria-labelledby], header, footer');
+  const where = area?.id || area?.getAttribute('aria-labelledby') || area?.tagName.toLowerCase() || '';
+  return [text.slice(0, 50), where].filter(Boolean).join(' · ') || null;
 }
 
 function sessionId(): { id: string; fresh: boolean } {
@@ -95,6 +127,7 @@ export default function OrciTracker() {
       t: 'view',
       id: view.current.id,
       sid: session.id,
+      vid: visitorId(),
       path: pathname,
       // המפנה וה-utm רלוונטיים רק לעמוד הראשון של הביקור
       ref: session.fresh ? document.referrer || null : null,
@@ -126,12 +159,49 @@ export default function OrciTracker() {
     document.addEventListener('visibilitychange', onVisibility);
     window.addEventListener('pagehide', flush);
 
+    // לחיצה על וואטסאפ — בכל מקום באתר, בלי לגעת בכל כפתור
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as Element | null)?.closest?.('a[href]');
+      const href = a?.getAttribute('href') ?? '';
+      if (a && /wa\.me|api\.whatsapp\.com|whatsapp:/i.test(href)) act('wa_click', labelOf(a));
+    };
+    // צפייה בסרטון — אירוע play לא מבעבע, ולכן נתפס בשלב ה-capture
+    const played = new Set<string>();
+    const onPlay = (e: Event) => {
+      const v = e.target as HTMLVideoElement | null;
+      if (!(v instanceof HTMLVideoElement) || v.muted && v.autoplay) return; // הפעלה אוטומטית אינה צפייה
+      const src = (v.currentSrc || v.src || '').split('/').pop()?.split('?')[0] ?? 'video';
+      if (played.has(src)) return;
+      played.add(src);
+      act('video_play', src);
+    };
+    // הגעה לאזור מסומן (data-track-seen="works" / "price") — פעם אחת לכל עמוד
+    const io = 'IntersectionObserver' in window
+      ? new IntersectionObserver((entries) => {
+          for (const en of entries) {
+            if (!en.isIntersecting) continue;
+            const what = (en.target as HTMLElement).dataset.trackSeen;
+            if (what === 'works' || what === 'price') act(`${what}_seen`);
+            io?.unobserve(en.target);
+          }
+        }, { threshold: 0.35 })
+      : null;
+    const observeTimer = window.setTimeout(() => {
+      document.querySelectorAll('[data-track-seen]').forEach((el) => io?.observe(el));
+    }, 300);
+    document.addEventListener('click', onClick, true);
+    document.addEventListener('play', onPlay, true);
+
     return () => {
       // מעבר לעמוד אחר בתוך האתר: סוגרים את הצפייה הנוכחית
       flush();
       window.clearInterval(timer);
       document.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('pagehide', flush);
+      document.removeEventListener('click', onClick, true);
+      document.removeEventListener('play', onPlay, true);
+      window.clearTimeout(observeTimer);
+      io?.disconnect();
       view.current = null;
     };
   }, [pathname]);

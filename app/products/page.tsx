@@ -17,7 +17,7 @@ import { TESTIMONIALS } from '@/data/testimonials';
 import s from './products.module.css';
 
 /* Launch offer ends here. A real deadline — when it passes the banner says so; it never resets. */
-const OFFER_ENDS = new Date('2026-10-15T23:59:59+03:00').getTime();
+const OFFER_ENDS = new Date('2026-10-22T23:59:59+03:00').getTime();
 
 const waLink = (text: string) => `https://wa.me/972542599107?text=${encodeURIComponent(text)}`;
 const WA_GENERAL = waLink('היי אור! ראיתי את העבודות באתר ואשמח לשמוע איך זה יכול לעבוד לעסק שלי');
@@ -441,7 +441,7 @@ export default function ProductsPage() {
       </section>
 
       {/* ═══ WORK ═══ */}
-      <section id="work" className={`${s.work} scroll-mt-20`}>
+      <section id="work" className={`${s.work} scroll-mt-20`} data-track-seen="works">
         <div className={s.wrap}>
           <div className={s.workHead}>
             <h2 className="sr-only">עבודות</h2>
@@ -512,7 +512,7 @@ export default function ProductsPage() {
       )}
 
       {/* ═══ FLAGSHIP OFFER — the only place the price appears ═══ */}
-      <section className={s.offer} aria-labelledby="offer-title">
+      <section className={s.offer} aria-labelledby="offer-title" data-track-seen="price">
         <span className={s.offerGhost} aria-hidden="true">
           3+1
         </span>
