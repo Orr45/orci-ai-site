@@ -17,11 +17,11 @@ import { TESTIMONIALS } from '@/data/testimonials';
 import s from './products.module.css';
 
 /* Launch offer ends here. A real deadline — when it passes the banner says so; it never resets. */
-const OFFER_ENDS = new Date('2026-10-22T23:59:59+03:00').getTime();
+const OFFER_ENDS = new Date('2026-12-11T23:59:59+02:00').getTime();
 
 const waLink = (text: string) => `https://wa.me/972542599107?text=${encodeURIComponent(text)}`;
 const WA_GENERAL = waLink('היי אור! ראיתי את העבודות באתר ואשמח לשמוע איך זה יכול לעבוד לעסק שלי');
-const WA_OFFER = waLink('היי אור! אני רוצה את חבילת ההשקה 3+1');
+const WA_OFFER = waLink('היי אור! אני רוצה את החבילה החודשית 4+8 במחיר ההשקה');
 
 /* ─── Brands. `bg` fills the circle behind the logo. ─── */
 interface Brand {
@@ -109,7 +109,14 @@ const VALUES = [
   { big: 'תסריט קודם', text: 'משלמים רק אחרי שאישרתם אותו' },
 ];
 
-const PACKAGE_INCLUDES = ['3 סרטונים + הרביעי מתנה', 'תסריט וקאבר לכל סרטון', 'מוכן תוך 72 שעות', 'עד 2 סבבי תיקונים'];
+const PACKAGE_INCLUDES = [
+  '4 סרטוני פרסומת מושקעים בחודש',
+  '8 פוסטים מעוצבים, כולל טקסט',
+  'מהתמונות והסרטונים האמיתיים של העסק',
+  'תסריט לאישור לפני כל סרטון',
+  'העלאה ותזמון לעמוד שלכם',
+  'עד 2 סבבי תיקונים לכל סרטון',
+];
 
 const FAQ = [
   {
@@ -118,15 +125,19 @@ const FAQ = [
   },
   {
     q: 'מה אם לא אוהב?',
-    a: 'לא משלמים עד שאישרתם את התסריט. אחרי האישור, כל סרטון כולל עד 2 סבבי תיקונים.',
+    a: 'לא משלמים עד שאישרתם את התסריט. אחרי האישור, כל סרטון כולל עד 2 סבבי תיקונים. ואין התחייבות — אפשר לעצור בכל חודש.',
   },
   {
     q: 'מה אני צריך להביא?',
-    a: 'שיחה של 20 דקות, לוגו וכמה תמונות של העסק. את כל השאר אני עושה.',
+    a: 'שיחה של 20 דקות, לוגו, וכל חודש כמה תמונות וסרטונים מהטלפון — מהמקום, מהצוות ומהמוצרים. את כל השאר אני עושה.',
   },
   {
     q: 'כמה זמן זה לוקח?',
-    a: '72 שעות לסרטון מרגע אישור התסריט. חבילה מלאה — בדרך כלל תוך שבועיים.',
+    a: '72 שעות לסרטון מרגע אישור התסריט. כל חודש מתוכנן מראש: סרטון ושני פוסטים בשבוע.',
+  },
+  {
+    q: 'יש לי כבר מנהלת סושיאל. זה מתאים?',
+    a: 'מצוין. היא ממשיכה לנהל ולענות ללקוחות, ואני נותן לה 4 סרטונים מוכנים בחודש. אפשר שהיא תעבוד מולי ישירות.',
   },
 ];
 
@@ -514,15 +525,15 @@ export default function ProductsPage() {
       {/* ═══ FLAGSHIP OFFER — the only place the price appears ═══ */}
       <section className={s.offer} aria-labelledby="offer-title" data-track-seen="price">
         <span className={s.offerGhost} aria-hidden="true">
-          3+1
+          4+8
         </span>
         <div className={`${s.wrap} ${s.offerInner}`}>
           <div className={s.offerMain}>
-            <span className={`${s.sticker} ${s.stLime}`}>מבצע השקה</span>
+            <span className={`${s.sticker} ${s.stLime}`}>מחיר השקה</span>
             <h2 id="offer-title" className={`${s.display} ${s.offerTitle}`}>
-              חבילת 3+1
+              חבילת 4+8
             </h2>
-            <p className={s.offerSub}>3 סרטוני פרסומת לעסק שלכם — והרביעי מתנה.</p>
+            <p className={s.offerSub}>4 סרטוני פרסומת ו-8 פוסטים בכל חודש — מהעסק האמיתי שלכם.</p>
 
             {countdown?.ended ? (
               <p className={s.offerEnded}>מבצע ההשקה הסתיים.</p>
@@ -544,15 +555,19 @@ export default function ProductsPage() {
           <div className={s.priceCard}>
             {countdown?.ended ? (
               <div className={s.priceRow}>
-                <span className={`${s.priceNow}`}>4,000 ₪</span>
+                <span className={`${s.priceNow}`}>
+                  4,200 ₪<span className={s.pricePer}>לחודש</span>
+                </span>
               </div>
             ) : (
               <div className={s.priceRow}>
                 <span className={s.priceWas}>
-                  במקום <s>4,000 ₪</s>
+                  במקום <s>4,200 ₪</s>
                 </span>
-                <span className={s.priceNow}>2,250 ₪</span>
-                <span className={`${s.sticker} ${s.stLime} ${s.saveChip}`}>חוסכים 1,750 ₪</span>
+                <span className={s.priceNow}>
+                  3,600 ₪<span className={s.pricePer}>לחודש</span>
+                </span>
+                <span className={`${s.sticker} ${s.stLime} ${s.saveChip}`}>חוסכים 600 ₪ בחודש</span>
               </div>
             )}
             <ul className={s.includes}>
@@ -564,7 +579,7 @@ export default function ProductsPage() {
               ))}
             </ul>
             <WhatsAppPill label="אני רוצה את החבילה" href={WA_OFFER} variant="ink" />
-            <p className={s.guaranteeNote}>לא משלמים עד שאישרתם את התסריט</p>
+            <p className={s.guaranteeNote}>בלי התחייבות — אפשר לעצור בכל חודש</p>
           </div>
         </div>
       </section>
