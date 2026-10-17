@@ -67,6 +67,10 @@ function visitorId(): string | null {
 }
 
 /** פעולה בעמוד. שמות מוכרים בלבד — השרת זורק כל שם אחר. */
+export function track(name: string, label?: string | null) {
+  act(name, label);
+}
+
 function act(name: string, label?: string | null) {
   if (optedOut()) return;
   send({
@@ -77,6 +81,8 @@ function act(name: string, label?: string | null) {
 
 /** תווית קצרה לקישור: הטקסט שלו, או האזור בעמוד שבו הוא נמצא */
 function labelOf(el: Element): string | null {
+  const explicit = (el as HTMLElement).dataset?.trackLabel;
+  if (explicit) return explicit;
   const text = (el.textContent ?? '').replace(/\s+/g, ' ').trim();
   const area = el.closest('section[id], section[aria-labelledby], header, footer');
   const where = area?.id || area?.getAttribute('aria-labelledby') || area?.tagName.toLowerCase() || '';
@@ -123,6 +129,9 @@ export default function OrciTracker() {
     view.current = { id: uuid(), visibleMs: 0, since: visible ? Date.now() : null, sent: 0 };
 
     const params = new URLSearchParams(window.location.search);
+    if (session.fresh) {
+      try { sessionStorage.setItem('orci-src', (params.get('utm_source') ?? '').toLowerCase()); } catch { /* fine */ }
+    }
     send({
       t: 'view',
       id: view.current.id,

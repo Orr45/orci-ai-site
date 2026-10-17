@@ -28,27 +28,28 @@ function WhatsAppIcon({ size = 18 }: { size?: number }) {
 }
 
 /* Slim strip — one line of text and a cyan pill */
-export function CoachingStrip({ from }: { from?: string }) {
+export function CoachingStrip({ from, trackLabel = 'coaching-strip' }: { from?: string; trackLabel?: string }) {
   return (
     <div className="max-w-4xl mx-auto px-4 md:px-6">
       <a
         href={waLink(from)}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center justify-between gap-3 rounded-[22px] py-2 ps-5 pe-2 transition-transform hover:-translate-y-0.5"
-        style={{ background: 'var(--surface-card)', border: '1px solid var(--accent-line)', color: 'var(--text-primary)' }}
+        data-track-label={trackLabel}
+        className="group flex items-center justify-between gap-3 rounded-[24px] py-3 ps-5 pe-3 transition-transform hover:-translate-y-0.5"
+        style={{ background: 'var(--cyan)', border: '2px solid var(--olive)', boxShadow: '4px 4px 0 var(--olive)', color: 'var(--olive)' }}
       >
-        <span className="grid leading-tight min-w-0">
-          <span className="text-[15px] md:text-base font-extrabold">ליווי אישי 1:1</span>
-          <span className="text-[13px] md:text-sm" style={{ color: 'var(--text-secondary)', textWrap: 'balance' }}>
-            תלמדו ליצור תוכן ברמה הכי גבוהה שיש
+        <span className="grid leading-tight min-w-0 gap-0.5">
+          <span className="text-[17px] md:text-lg font-black">רוצים ליווי אישי 1:1?</span>
+          <span className="text-[14px] md:text-[15px] font-semibold" style={{ textWrap: 'balance' }}>
+            תלמדו ליצור תוכן ברמה הכי גבוהה שיש — צעד אחר צעד איתי
           </span>
         </span>
         <span
-          className="flex-shrink-0 inline-flex items-center gap-1.5 rounded-full px-3 md:px-4 py-2 text-sm font-extrabold"
-          style={{ background: 'var(--cyan)', color: 'var(--olive)' }}
+          className="flex-shrink-0 inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm md:text-base font-extrabold"
+          style={{ background: 'var(--olive)', color: 'var(--cyan)' }}
         >
-          <WhatsAppIcon size={16} />
+          <WhatsAppIcon size={17} />
           דברו איתי
         </span>
       </a>
@@ -57,7 +58,7 @@ export function CoachingStrip({ from }: { from?: string }) {
 }
 
 /* Banner for the top of /guides */
-export function CoachingBanner() {
+export function CoachingBanner({ from, trackLabel = 'coaching-banner' }: { from?: string; trackLabel?: string } = {}) {
   return (
     <section
       aria-labelledby="coaching-title"
@@ -76,7 +77,7 @@ export function CoachingBanner() {
           </h2>
           <p className="m-0 text-lg md:text-2xl font-bold">תלמדו ליצור תוכן ברמה הכי גבוהה שיש.</p>
         </div>
-        <a href={waLink()} target="_blank" rel="noopener noreferrer" className="cap-btn cap-btn-dark w-full md:w-auto">
+        <a href={waLink(from)} target="_blank" rel="noopener noreferrer" data-track-label={trackLabel} className="cap-btn cap-btn-dark w-full md:w-auto">
           <WhatsAppIcon />
           דברו איתי בוואטסאפ
         </a>
@@ -90,12 +91,11 @@ export function GuideCoachingSlot({ position }: { position: 'top' | 'end' }) {
   const pathname = usePathname();
   if (!pathname?.startsWith('/guides/')) return null;
   const guide = GUIDES.find((g) => g.href === pathname);
+  // בסוף המדריך — באנר מלא: הקורא כבר קיבל ערך, וזה הרגע לשאול
+  if (position === 'end') return <CoachingBanner from={guide?.title} trackLabel="coaching-guide-end" />;
   return (
-    <div
-      data-theme="dark"
-      style={{ background: 'var(--bg)', paddingBlock: position === 'top' ? '14px 2px' : '28px 36px' }}
-    >
-      <CoachingStrip from={guide?.title} />
+    <div data-theme="dark" style={{ background: 'var(--bg)', paddingBlock: '16px 6px' }}>
+      <CoachingStrip from={guide?.title} trackLabel="coaching-guide-top" />
     </div>
   );
 }

@@ -568,3 +568,37 @@ html.a11y-no-animations *::after {
     scroll-behavior: auto;
   }
 }
+
+/* ========================================
+   AUDIENCE POP-UP — one offer per audience, once a week at most
+   ======================================== */
+.hook-backdrop {
+  position: fixed; inset: 0; z-index: 10000; /* מעל כפתור הנגישות; הוא חוזר להיות זמין ברגע שסוגרים */
+  background: rgba(40, 44, 32, 0.55); backdrop-filter: blur(6px);
+  display: flex; align-items: flex-end; justify-content: center; padding: 0;
+  animation: hook-fade 0.25s ease both;
+}
+@media (min-width: 640px) { .hook-backdrop { align-items: center; padding: 24px; } }
+.hook-card {
+  position: relative; width: 100%; max-width: 460px;
+  background: var(--paper, #fff); color: var(--olive);
+  border: 2px solid var(--olive); border-radius: 28px 28px 0 0;
+  box-shadow: 8px 8px 0 var(--olive);
+  padding: 30px 24px calc(22px + env(safe-area-inset-bottom));
+  display: grid; gap: 14px; justify-items: start;
+  animation: hook-up 0.32s cubic-bezier(.2,.8,.2,1) both;
+}
+@media (min-width: 640px) { .hook-card { border-radius: 28px; padding: 34px 32px 26px; } }
+.hook-title { margin: 0; font-family: var(--font-heebo), sans-serif; font-weight: 900; font-size: clamp(26px, 6vw, 34px); line-height: 1.1; }
+.hook-text { margin: 0; font-size: 17px; line-height: 1.55; }
+.hook-cta { width: 100%; }
+.hook-close {
+  position: absolute; top: 12px; inset-inline-end: 14px;
+  width: 40px; height: 40px; border-radius: 50%; border: 0; background: transparent;
+  font-size: 28px; line-height: 1; color: var(--olive); cursor: pointer;
+}
+.hook-close:focus-visible, .hook-later:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; }
+.hook-later { justify-self: center; border: 0; background: transparent; color: var(--olive); opacity: .7; font-size: 15px; text-decoration: underline; cursor: pointer; padding: 6px 10px; min-height: 44px; }
+@keyframes hook-fade { from { opacity: 0; } }
+@keyframes hook-up { from { transform: translateY(24px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .hook-backdrop, .hook-card { animation: none; } }

@@ -15,9 +15,9 @@ import { Check, X, Plus, Play, Send, Eye, ChevronLeft, ChevronRight, CalendarHea
 import { Footer } from '@/components/layout/Footer';
 import { TESTIMONIALS } from '@/data/testimonials';
 import s from './products.module.css';
+import { OFFER_ENDS } from '@/data/offer';
 
 /* Launch offer ends here. A real deadline — when it passes the banner says so; it never resets. */
-const OFFER_ENDS = new Date('2026-12-11T23:59:59+02:00').getTime();
 
 const waLink = (text: string) => `https://wa.me/972542599107?text=${encodeURIComponent(text)}`;
 const WA_GENERAL = waLink('היי אור! ראיתי את העבודות באתר ואשמח לשמוע איך זה יכול לעבוד לעסק שלי');

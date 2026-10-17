@@ -4,6 +4,7 @@ import { Navigation } from "@/components/layout/Navigation";
 import { Analytics } from "@vercel/analytics/next";
 import AccessibilityWidget from "@/components/ui/accessibility-widget";
 import OrciTracker from "@/components/OrciTracker";
+import AudienceHook from "@/components/ui/audience-hook";
 import "./globals.css";
 
 const heebo = Heebo({
@@ -79,6 +80,7 @@ export default function RootLayout({
         <AccessibilityWidget />
         <Analytics />
         <OrciTracker />
+        <AudienceHook />
       </body>
     </html>
   );
