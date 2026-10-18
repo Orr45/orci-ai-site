@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <title>עיר המצביעים · איפה הבית שלי?</title>
+    <meta name="description" content="כל מי שהגיב קיבל בית עם השם שלו על מפת ארץ ישראל. חפשו את ה־@ שלכם ומצאו את הבית." />
+    <meta property="og:title" content="עיר המצביעים · איפה הבית שלי?" />
+    <meta property="og:description" content="כל מי שהגיב קיבל בית עם השם שלו. חפשו את ה־@ שלכם." />
+    <meta property="og:image" content="/ir/og.jpg" />
+    <meta name="theme-color" content="#5fb2df" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/ir/style.css" />
+    <script type="importmap">{ "imports": { "three": "/ir/vendor/three.module.min.js" } }</script>
+  </head>
+  <body>
+    <canvas id="gl" aria-label="מפת ארץ ישראל עם בתי התושבים"></canvas>
+
+    <div id="loading" role="status" aria-live="polite">
+      <div class="ld-title">בונים את עיר המצביעים...</div>
+      <div class="ld-msg" id="ldmsg">סופרים קולות</div>
+      <div class="ld-bar"><i id="ldbar"></i></div>
+    </div>
+
+    <header id="top">
+      <div class="brand">עיר המצביעים <span aria-hidden="true">🗳️</span></div>
+      <div class="stats"><span>יום <b id="sday">3</b></span><span><b id="stotal">0</b> תושבים</span><span><b id="slocs">0</b> ערים ויישובים</span></div>
+    </header>
+
+    <section id="panel" aria-label="חיפוש בית">
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="home" class="on">🏠 הבית שלי</button>
+        <button role="tab" aria-selected="false" data-tab="cities">🏆 הערים</button>
+        <button role="tab" aria-selected="false" data-tab="founders">⭐ המייסדים</button>
+      </div>
+      <div class="tab" id="tab-home">
+        <label for="q" class="q-label">איפה הבית שלי?</label>
+        <div class="search">
+          <span class="at" aria-hidden="true">@</span>
+          <input id="q" type="search" inputmode="search" autocomplete="off" autocapitalize="off" spellcheck="false" dir="ltr" placeholder="your_name" aria-describedby="qhint" />
+        </div>
+        <div id="qhint" class="hint">הקלידו את שם המשתמש שלכם באינסטגרם או בטיקטוק</div>
+        <ul id="results" role="listbox" aria-label="תוצאות"></ul>
+        <div id="card" hidden></div>
+      </div>
+      <div class="tab" id="tab-cities" hidden><ol id="cities"></ol></div>
+      <div class="tab" id="tab-founders" hidden>
+        <input id="fq" type="search" placeholder="חיפוש עיר או יישוב" aria-label="חיפוש מייסד לפי עיר" />
+        <ol id="founders"></ol>
+      </div>
+      <footer id="foot">
+      <a href="https://www.instagram.com/orciai45/" target="_blank" rel="noopener">@orciai45</a>
+      <span aria-hidden="true">·</span>
+      <a href="/accessibility">הצהרת נגישות</a>
+      </footer>
+    </section>
+
+    <div id="labels" aria-hidden="true"></div>
+
+
+    <script type="module" src="/ir/app.js"></script>
+  </body>
+</html>

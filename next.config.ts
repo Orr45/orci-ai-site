@@ -3,6 +3,10 @@ import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  // עיר המצביעים: a standalone static app in public/ir (full-screen, outside the site layout)
+  async rewrites() {
+    return [{ source: "/ir", destination: "/ir/index.html" }];
+  },
   images: {
     remotePatterns: [
       {
