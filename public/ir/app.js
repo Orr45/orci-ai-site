@@ -2,6 +2,7 @@
 // Coordinates: 100 scene units per degree, origin 35.0E / 31.5N (same projection as the videos).
 import * as THREE from "three";
 import { MapControls } from "/ir/vendor/MapControls.js";
+import { track } from "/ir/track.js";
 
 const DM_URL = "https://ig.me/m/orciai45"; // replaced by the ManyChat ref link once the flow is live
 const $ = (id) => document.getElementById(id);
@@ -182,8 +183,9 @@ const byUser = new Map();
 RES.forEach((r) => { const k = norm(r.u); if (!byUser.has(k)) byUser.set(k, []); byUser.get(k).push(r); });
 const userKeys = [...byUser.keys()];
 
-function showHouse(r) {
+function showHouse(r, via = "found") {
   selected = r;
+  if (via === "found") track("city_found", r.u);
   const L = LOC[r.c];
   marker.position.set(r.x, LAND_H + 0.05, r.z); marker.visible = true;
   meLabel.textContent = "@" + r.u; meLabel.style.display = "block";
@@ -199,11 +201,13 @@ function showHouse(r) {
       ${r.g ? '<span class="badge garden">🌳 יש לך גינה</span>' : '<span class="badge nogarden">🌳 גינה לעוקבים</span>'}
     </div>
     <div class="actions">
-      <a class="dm" href="${DM_URL}" target="_blank" rel="noopener">📩 שלחו לי את הכתובת</a>
+      <a class="dm" id="dmlink" href="${DM_URL}" target="_blank" rel="noopener">📩 שלחו לי את הכתובת</a>
       <button type="button" id="share">שיתוף</button>
     </div>`;
+  $("dmlink").onclick = () => track("city_dm", r.u);
   $("share").onclick = () => {
-    const url = location.origin + "/ir?u=" + encodeURIComponent(r.u);
+    track("city_share", r.u);
+    const url = location.origin + "/ir?u=" + encodeURIComponent(r.u) + "&src=share";
     const text = `יש לי בית בעיר המצביעים! רחוב ${r.s} ${r.h}, ${L.n} 🏠`;
     if (navigator.share) navigator.share({ title: "עיר המצביעים", text, url }).catch(() => {});
     else navigator.clipboard?.writeText(text + " " + url).then(() => ($("share").textContent = "הקישור הועתק ✓"));
@@ -213,12 +217,16 @@ function showHouse(r) {
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 
 const resultsEl = $("results");
+let missTimer = 0;
 $("q").addEventListener("input", () => {
   const q = norm($("q").value);
   resultsEl.innerHTML = "";
+  clearTimeout(missTimer);
   if (q.length < 2) return;
   const hits = userKeys.filter((k) => k.startsWith(q)).slice(0, 8);
-  if (!hits.length) { resultsEl.innerHTML = `<li class="empty" role="option">עוד לא מצאנו בית בשם הזה. תגיבו בסרטון האחרון עם העיר שלכם, והבית יופיע בעדכון הבא 🏗️</li>`; return; }
+  if (!hits.length) {
+    missTimer = setTimeout(() => track("city_notfound", q), 1500); // only the final text, not every keystroke
+    resultsEl.innerHTML = `<li class="empty" role="option">עוד לא מצאנו בית בשם הזה. תגיבו בסרטון האחרון עם העיר שלכם, והבית יופיע בעדכון הבא 🏗️</li>`; return; }
   hits.forEach((k) => byUser.get(k).forEach((r) => {
     const li = document.createElement("li"); li.setAttribute("role", "option"); li.tabIndex = 0;
     li.innerHTML = `<span class="h">@${esc(r.u)}</span><span class="c">${esc(LOC[r.c].n)} · ${PL[r.p]}</span>`;
@@ -231,13 +239,14 @@ $("q").addEventListener("input", () => {
 document.querySelectorAll(".tabs button").forEach((b) => b.addEventListener("click", () => {
   document.querySelectorAll(".tabs button").forEach((x) => { x.classList.toggle("on", x === b); x.setAttribute("aria-selected", x === b); });
   ["home", "cities", "founders"].forEach((t) => ($("tab-" + t).hidden = t !== b.dataset.tab));
+  track("city_tab", b.dataset.tab);
 }));
 const goCity = (l) => { selected = null; meLabel.style.display = "none"; marker.visible = false; const d = 8 + Math.sqrt(l.k) * 1.1; flyTo(new THREE.Vector3(l.x, LAND_H, l.z + d * 0.35), d); };
 const citiesEl = $("cities");
 DATA.localities.slice(0, 50).forEach((l, i) => {
   const li = document.createElement("li"); li.tabIndex = 0;
   li.innerHTML = `<span class="rk">${i + 1}</span><span>${esc(l.n)}</span><span class="cnt">${l.k.toLocaleString("he-IL")}</span>`;
-  li.onclick = () => goCity(l); citiesEl.appendChild(li);
+  li.onclick = () => { track("city_place", l.n); goCity(l); }; citiesEl.appendChild(li);
 });
 const foundersEl = $("founders");
 function drawFounders(q = "") {
@@ -245,7 +254,7 @@ function drawFounders(q = "") {
   DATA.localities.filter((l) => !q || l.n.includes(q)).slice(0, 60).forEach((l) => {
     const li = document.createElement("li"); li.tabIndex = 0;
     li.innerHTML = `<span class="rk">⭐</span><span>${esc(l.n)}</span><span class="fu">@${esc(l.f)}</span>`;
-    li.onclick = () => { const r = RES.find((x) => x.c === l.c && x.f); if (r) showHouse(r); };
+    li.onclick = () => { track("city_place", l.n); const r = RES.find((x) => x.c === l.c && x.f); if (r) showHouse(r, "founder"); };
     foundersEl.appendChild(li);
   });
 }
@@ -257,3 +266,4 @@ setBar(1);
 clearInterval(msgTimer);
 setTimeout(() => { $("loading").classList.add("done"); setTimeout(() => ($("loading").style.display = "none"), 600); }, 250);
 if (qU && byUser.has(norm(qU))) setTimeout(() => showHouse(byUser.get(norm(qU))[0]), 700);
+else if (qU) track("city_notfound", norm(qU));

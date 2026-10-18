@@ -9,6 +9,7 @@ import {
   BookOpen,
   Megaphone,
   MessageCircle,
+  Map,
 } from 'lucide-react';
 
 const WHATSAPP_URL = 'https://wa.me/972542599107';
@@ -36,6 +37,7 @@ export function Navigation() {
     { icon: Home, label: 'בית', href: '/', isActive: pathname === '/' },
     { icon: BookOpen, label: 'מדריכים', href: '/guides', isActive: pathname.startsWith('/guides') },
     { icon: Megaphone, label: 'שיווק לעסקים', href: '/products', isActive: pathname.startsWith('/products') },
+    { icon: Map, label: 'עיר המצביעים', href: '/ir?src=site', isActive: false },
     { icon: MessageCircle, label: 'וואטסאפ', href: WHATSAPP_URL, isActive: false },
   ];
 
@@ -74,6 +76,8 @@ export function Navigation() {
               <Link href="/products" className="text-base font-bold transition-colors hover:opacity-80" style={linkStyle(pathname.startsWith('/products'))}>שיווק לעסקים</Link>
               <Link href="/guides" className="text-base font-bold transition-colors hover:opacity-80" style={linkStyle(pathname.startsWith('/guides'))}>מדריכים</Link>
               <Link href="/about" className="text-base font-bold transition-colors hover:opacity-80" style={linkStyle(pathname.startsWith('/about'))}>מי אני</Link>
+              {/* העיר היא אפליקציה סטטית מחוץ ל-Next, לכן <a> רגיל ולא Link */}
+              <a href="/ir?src=site" className="text-base font-bold transition-colors hover:opacity-80" style={linkStyle(false)}>עיר המצביעים 🏙️</a>
 
               <ThemeToggle />
 
