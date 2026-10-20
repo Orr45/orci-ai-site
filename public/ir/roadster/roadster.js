@@ -1,6 +1,7 @@
 // "גונבים לביבי את הרודסטר" — a 30–60 second escape game on the same low-poly Israel map as the city.
 // Same projection as /ir: 100 scene units per degree, origin 35.0E / 31.5N, so 1 unit ≈ 1.11 km.
 import * as THREE from "three";
+import { makeRoadster } from "/ir/roadster/car.js";
 
 const API = "https://orciai.vercel.app/api/site/game";
 const TRACK = "https://orciai.vercel.app/api/site/track";
@@ -73,7 +74,8 @@ function makeCar(bodyColor, suv = false) {
   if (!suv) { box(Wd * 0.9, 0.03, 0.05, 0xffd23f, 0, 0.15, -L / 2 - 0.01, g); box(0.07, 0.03, 0.03, 0xfff6c0, -0.08, 0.12, -L / 2 - 0.02, g); box(0.07, 0.03, 0.03, 0xfff6c0, 0.08, 0.12, -L / 2 - 0.02, g); }
   return g;
 }
-const car = makeCar(0xd7262e); scene.add(car);
+const car = new THREE.Group(); car.rotation.order = "YXZ"; scene.add(car);
+const body = makeRoadster(THREE); body.position.y = -0.15; body.scale.setScalar(0.5 / 0.5); car.add(body); car.scale.setScalar(0.5);   // pivot at the middle of the car so the flip spins in place
 // cold-gas vapour puffs for the jump
 const puffs = []; const puffGeo = new THREE.IcosahedronGeometry(0.09, 0);
 function puff(p) { const m = new THREE.Mesh(puffGeo, new THREE.MeshLambertMaterial({ color: 0xffffff, transparent: true, opacity: 0.9 })); m.position.copy(p); m.userData.t = 0; scene.add(m); puffs.push(m); }
@@ -124,7 +126,8 @@ function step(dt) {
   st.pos.addScaledVector(dir, st.speed * dt); st.dist += st.speed * dt;
   if (st.air > 0) st.air = Math.max(0, st.air - dt); if (st.cool > 0) st.cool = Math.max(0, st.cool - dt);
   const h = st.air > 0 ? Math.sin((1 - st.air / 1.1) * Math.PI) * 0.9 : 0;
-  car.position.set(st.pos.x, LAND_H + h, st.pos.z); car.rotation.set(st.air > 0 ? -0.15 : 0, st.yaw, 0);
+  car.position.set(st.pos.x, LAND_H + h + 0.075, st.pos.z);
+  car.rotation.set(st.air > 0 ? -2 * Math.PI * (1 - st.air / 1.1) : 0, st.yaw, 0);   // every jump is a front flip
   if (st.air > 0 && R() < 0.5) puff(car.position.clone().add(new THREE.Vector3(0, -0.02, 0)));
   if (st.air === 0 && !onLand(st.pos.x, st.pos.z)) return end("נפלת לים! 🌊");
 
