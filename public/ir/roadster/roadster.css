@@ -14,7 +14,7 @@ button, input { font: inherit; }
 #km { color: var(--yellow); font-size: 26px; direction: rtl; }
 .pill.alert { background: var(--red); position: fixed; top: calc(max(12px, env(safe-area-inset-top)) + 54px); left: 50%; transform: translateX(-50%); white-space: nowrap; }
 
-#jump { position: fixed; z-index: 12; bottom: max(24px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); width: 108px; height: 108px; border-radius: 50%; border: 6px solid var(--ink); background: var(--yellow); font-size: 40px; line-height: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 24px rgba(0,0,0,.35); cursor: pointer; touch-action: manipulation; }
+#jump-unused { position: fixed; z-index: 12; bottom: max(24px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); width: 108px; height: 108px; border-radius: 50%; border: 6px solid var(--ink); background: var(--yellow); font-size: 40px; line-height: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 24px rgba(0,0,0,.35); cursor: pointer; touch-action: manipulation; }
 #jump span { font-size: 15px; font-weight: 900; }
 #jump.cool { background: #d9dde3; }
 #steerhint { position: fixed; z-index: 11; bottom: calc(max(24px, env(safe-area-inset-bottom)) + 124px); left: 0; right: 0; text-align: center; font-weight: 800; font-size: 17px; color: #fff; -webkit-text-stroke: 4px var(--ink); paint-order: stroke fill; pointer-events: none; }
@@ -47,3 +47,8 @@ h1 { font-weight: 900; font-size: 34px; line-height: 1.08; margin: 4px 0 6px; co
 .search span { font-weight: 900; font-size: 20px; color: var(--muted); }
 .search input { flex: 1; border: 0; outline: 0; padding: 10px 6px; font-size: 18px; font-weight: 700; min-width: 0; background: transparent; }
 .rank { margin-top: 8px; font-weight: 900; font-size: 18px; background: #b8f0a0; border-radius: 12px; padding: 8px; }
+#swipehint { position: fixed; z-index: 11; bottom: calc(max(24px, env(safe-area-inset-bottom)) + 30px); left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; pointer-events: none; font-weight: 900; font-size: 20px; color: #fff; -webkit-text-stroke: 5px var(--ink); paint-order: stroke fill; }
+.obs { font-size: 26px; letter-spacing: 4px; margin-bottom: 10px; }
+.lockbig { font-size: 72px; line-height: 1; margin: 6px 0; }
+.goal { margin-top: 8px; font-weight: 900; font-size: 22px; background: #fff6d1; border: 3px solid var(--ink); border-radius: 14px; padding: 6px 10px 8px; }
+#locked .btn.primary { display: block; margin-top: 12px; text-decoration: none; color: var(--ink); }

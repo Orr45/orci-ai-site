@@ -22,23 +22,37 @@
       <div class="pill" id="coins">🏠 0</div>
       <div class="pill alert" id="alert" hidden></div>
     </div>
-    <button id="jump" type="button" hidden aria-label="קפיצה">🚀<span>קפיצה</span></button>
-    <div id="steerhint" hidden>החזיקו שמאל / ימין כדי להיגוי</div>
+    <div id="swipehint" hidden><span>👈 👉 החלפת נתיב</span><span>👆 קפיצה · 👇 הנמכה</span></div>
 
     <section id="start" class="sheet" aria-labelledby="t1">
       <div class="brand">עיר המצביעים 🗳️</div>
       <h1 id="t1">גונבים לביבי<br />את הרודסטר 🏎️</h1>
       <p class="sub">ראש העיר קיבל רודסטר. אנחנו לוקחים אותה. ברחו מהמאבטחים כמה שיותר רחוק!</p>
       <ul class="how">
-        <li>👈👉 החזיקו צד שמאל או ימין של המסך כדי להיגוי</li>
-        <li>🚀 קפיצה מעל מחסומים וג'יפים</li>
-        <li>🏠 אספו בתים צהובים לבונוס · 🌊 לא ליפול לים</li>
+        <li>👈👉 החליקו ימינה / שמאלה להחלפת נתיב</li>
+        <li>👆 החלקה למעלה = קפיצה (עם סלטה) · 👇 למטה = הנמכה</li>
+        <li>💥 התנגשות אחת: המאבטחים מאחוריך. שתיים: תפסו אותך!</li>
+        <li>🪙 אספו שקלים · 📸 מצלמת מהירות לוקחת לכם 10 ₪</li>
       </ul>
+      <div class="obs" aria-label="מכשולים בדרך">👵 🛴 🚓 🚌 🚧 ⚠️ 📸 🍉 🧆</div>
       <button id="go" class="btn primary" type="button">▶ סעו!</button>
       <div class="board"><h2>🏆 אלופי היום</h2><ol id="top"><li class="muted">טוען...</li></ol></div>
       <p class="prize">הכי רחוק היום: השם שלו על הלוחית בסרטון הבא, והרודסטר חונה ליד הבית שלו במפה.</p>
       <a class="link" href="/ir?src=game">🏠 אין לכם בית בעיר? כתבו את העיר שלכם בתגובות בסרטון האחרון</a>
       <p class="legal">פרודיה · לא קשור לטסלה · הפרס הוא במשחק בלבד</p>
+    </section>
+
+    <section id="locked" class="sheet" hidden aria-labelledby="tl">
+      <div class="brand">עיר המצביעים 🗳️</div>
+      <h1 id="tl">גונבים לביבי<br />את הרודסטר 🏎️</h1>
+      <div class="lockbig">🔒</div>
+      <p class="sub">המשחק כבר בנוי ומחכה. הוא נפתח מחר אם הסרטון יגיע ל:</p>
+      <div class="goal">❤️ <b>1,000</b> לייקים</div>
+      <div class="goal">💬 <b>1,000</b> תגובות "רודסטר"</div>
+      <a class="btn primary" href="https://www.instagram.com/orciai45/" target="_blank" rel="noopener">👉 לסרטון: לייק + "רודסטר"</a>
+      <p class="prize">כשהמשחק ייפתח: מי שבורח הכי רחוק ביום — השם שלו על הלוחית בסרטון הבא 🏆</p>
+      <a class="link" href="/ir?src=game">🏠 אין לכם בית בעיר? כתבו את העיר שלכם בתגובות</a>
+      <p class="legal">פרודיה · לא קשור לטסלה</p>
     </section>
 
     <section id="over" class="sheet" hidden aria-live="polite">
