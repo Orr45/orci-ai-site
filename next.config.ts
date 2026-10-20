@@ -6,10 +6,17 @@ const nextConfig: NextConfig = {
   // עיר המצביעים: a standalone static app in public/ir (full-screen, outside the site layout)
   // קישור קצר לביו באינסטגרם: נכנסים ישר לעיר, והמדידה יודעת שהגיעו מהביו
   async redirects() {
-    return [{ source: "/city", destination: "/ir?src=bio", permanent: false }];
+    return [
+      { source: "/city", destination: "/ir?src=bio", permanent: false },
+      // the Roadster game: short link for the bio / ManyChat DM (?src=dm is kept)
+      { source: "/roadster", destination: "/ir/roadster", permanent: false },
+    ];
   },
   async rewrites() {
-    return [{ source: "/ir", destination: "/ir/index.html" }];
+    return [
+      { source: "/ir", destination: "/ir/index.html" },
+      { source: "/ir/roadster", destination: "/ir/roadster/index.html" },
+    ];
   },
   images: {
     remotePatterns: [

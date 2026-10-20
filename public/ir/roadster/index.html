@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <title>גונבים לביבי את הרודסטר · עיר המצביעים</title>
+    <meta name="description" content="משחק קליל: ברחו עם הרודסטר של ראש העיר מהמאבטחים. הכי רחוק היום — השם שלו על הלוחית בסרטון הבא." />
+    <meta property="og:title" content="גונבים לביבי את הרודסטר 🏎️" />
+    <meta property="og:description" content="כמה רחוק תברחו מהמאבטחים? אלוף היום מופיע בסרטון הבא." />
+    <meta name="theme-color" content="#5fb2df" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/ir/roadster/roadster.css" />
+    <script type="importmap">{ "imports": { "three": "/ir/vendor/three.module.min.js" } }</script>
+  </head>
+  <body>
+    <canvas id="gl" aria-label="מפת ארץ ישראל והרודסטר"></canvas>
+
+    <div id="hud" hidden>
+      <div class="pill" id="km">0.0 ק״מ</div>
+      <div class="pill" id="coins">🏠 0</div>
+      <div class="pill alert" id="alert" hidden></div>
+    </div>
+    <button id="jump" type="button" hidden aria-label="קפיצה">🚀<span>קפיצה</span></button>
+    <div id="steerhint" hidden>החזיקו שמאל / ימין כדי להיגוי</div>
+
+    <section id="start" class="sheet" aria-labelledby="t1">
+      <div class="brand">עיר המצביעים 🗳️</div>
+      <h1 id="t1">גונבים לביבי<br />את הרודסטר 🏎️</h1>
+      <p class="sub">ראש העיר קיבל רודסטר. אנחנו לוקחים אותה. ברחו מהמאבטחים כמה שיותר רחוק!</p>
+      <ul class="how">
+        <li>👈👉 החזיקו צד שמאל או ימין של המסך כדי להיגוי</li>
+        <li>🚀 קפיצה מעל מחסומים וג'יפים</li>
+        <li>🏠 אספו בתים צהובים לבונוס · 🌊 לא ליפול לים</li>
+      </ul>
+      <button id="go" class="btn primary" type="button">▶ סעו!</button>
+      <div class="board"><h2>🏆 אלופי היום</h2><ol id="top"><li class="muted">טוען...</li></ol></div>
+      <p class="prize">הכי רחוק היום: השם שלו על הלוחית בסרטון הבא, והרודסטר חונה ליד הבית שלו במפה.</p>
+      <a class="link" href="/ir?src=game">🏠 אין לכם בית בעיר? כתבו את העיר שלכם בתגובות בסרטון האחרון</a>
+      <p class="legal">פרודיה · לא קשור לטסלה · הפרס הוא במשחק בלבד</p>
+    </section>
+
+    <section id="over" class="sheet" hidden aria-live="polite">
+      <div class="why" id="why">תפסו אותך!</div>
+      <div class="big"><b id="okm">0</b> ק״מ</div>
+      <div class="sub" id="ocity"></div>
+      <div class="score">ניקוד: <b id="oscore">0</b> · 🏠 <b id="ocoins">0</b></div>
+      <form id="sub" autocomplete="off">
+        <label for="handle">שם המשתמש שלכם באינסטגרם / טיקטוק</label>
+        <div class="search"><span aria-hidden="true">@</span><input id="handle" dir="ltr" inputmode="text" autocapitalize="off" spellcheck="false" maxlength="30" placeholder="your_name" required /></div>
+        <button class="btn primary" type="submit" id="send">🏆 לטבלת השיאים</button>
+      </form>
+      <div id="rank" class="rank" hidden></div>
+      <div class="row">
+        <button id="again" class="btn" type="button">🔁 עוד פעם</button>
+        <button id="share" class="btn" type="button">📤 שיתוף</button>
+      </div>
+      <div class="board"><h2>🏆 אלופי היום</h2><ol id="top2"></ol></div>
+      <a class="link" href="/ir?src=game">🏠 לבית שלי בעיר המצביעים</a>
+      <p class="legal">פרודיה · לא קשור לטסלה · הפרס הוא במשחק בלבד</p>
+    </section>
+
+    <div id="loading">בונים את הכביש...</div>
+    <script type="module" src="/ir/roadster/roadster.js"></script>
+  </body>
+</html>
