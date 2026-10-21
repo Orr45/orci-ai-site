@@ -91,46 +91,74 @@ function puff(p, s = 1) { const m = new THREE.Mesh(puffGeo, new THREE.MeshLamber
 // ---------- obstacles (Israeli street life) ----------
 // each: build(group) → { y0, y1, hw, hl } collision box; flags: soft (slows, no hit), cam (speed camera), front (bus: head-on = game over)
 const SKIN = 0xf1c6a0;
+// Difficulty works like Subway Surfers: head-on into anything big ends the run (like a train), a side scrape or a
+// small obstacle is a stumble (the guards close in, a second one within 6 s and they catch you), speed climbs in
+// stair-steps every 12 s with a short breather, and later stages spawn denser rows, combos and oncoming traffic.
+//   fatal: head-on = game over · soft: slows you · cam: speed camera fine · pit: must be airborne · v: moves along z (units/s, + = towards you)
 const KINDS = {
-  grandma: { y0: 0, y1: 0.85, hw: 0.28, hl: 0.25, move: 0.55, build(g) { cyl(0.2, 0.28, 0.55, 0x8e5bb0, 0, 0.28, 0, g); ball(0.13, SKIN, 0, 0.66, 0, g); ball(0.11, 0xe9e9e9, 0, 0.74, 0.02, g); cyl(0.015, 0.015, 0.6, 0x6b4a2b, 0.22, 0.3, -0.05, g, 5); box(0.32, 0.24, 0.28, 0x2f6fe0, -0.36, 0.28, 0, g); } },   // + shopping trolley
-  kid: { y0: 0, y1: 0.75, hw: 0.25, hl: 0.3, move: 1.6, build(g) { box(0.1, 0.03, 0.55, 0x2fbf71, 0, 0.06, 0, g); cyl(0.015, 0.015, 0.55, 0x9aa1ab, 0, 0.33, -0.24, g, 5); cyl(0.12, 0.14, 0.32, 0xff8a1f, 0, 0.32, 0.02, g); ball(0.1, SKIN, 0, 0.58, 0.02, g); ball(0.105, 0xe5263b, 0, 0.62, 0.02, g); } },
-  police: { y0: 0, y1: 0.55, hw: 0.32, hl: 0.6, build(g) { box(0.62, 0.32, 1.15, 0xf4f6f8, 0, 0.24, 0, g); box(0.64, 0.08, 1.16, 0x1f4bd1, 0, 0.26, 0, g); box(0.54, 0.2, 0.6, 0x2a3442, 0, 0.5, 0.05, g); box(0.4, 0.06, 0.12, 0xe5263b, -0.1, 0.63, 0.05, g); box(0.2, 0.06, 0.12, 0x2f6fe0, 0.15, 0.63, 0.05, g); } },
-  parked: { y0: 0, y1: 0.55, hw: 0.32, hl: 0.6, build(g) { box(0.62, 0.3, 1.15, [0x9aa1ab, 0x6b7280, 0xc0392b, 0xffffff][(Math.random() * 4) | 0], 0, 0.23, 0, g); box(0.54, 0.2, 0.6, 0x2a3442, 0, 0.47, 0.05, g); g.userData.blink = [box(0.08, 0.05, 0.03, 0xff9f1a, -0.24, 0.3, 0.58, g), box(0.08, 0.05, 0.03, 0xff9f1a, 0.24, 0.3, 0.58, g)]; } },
-  bus: { y0: 0, y1: 1.7, hw: 0.4, hl: 1.7, front: true, build(g) { box(0.8, 1.35, 3.4, 0x1f9d55, 0, 0.8, 0, g); box(0.82, 0.38, 3.0, 0x2a3442, 0, 1.1, -0.1, g); box(0.6, 0.2, 0.04, 0x111111, 0, 1.33, -1.71, g); [[-1, -1.1], [1, -1.1], [-1, 1.1], [1, 1.1]].forEach(([sx, z]) => cyl(0.18, 0.18, 0.12, 0x0b0b0c, sx * 0.4, 0.18, z, g, 10).rotation.z = Math.PI / 2); } },
+  grandma: { y0: 0, y1: 0.85, hw: 0.28, hl: 0.25, move: 0.6, build(g) { cyl(0.2, 0.28, 0.55, 0x8e5bb0, 0, 0.28, 0, g); ball(0.13, SKIN, 0, 0.66, 0, g); ball(0.11, 0xe9e9e9, 0, 0.74, 0.02, g); cyl(0.015, 0.015, 0.6, 0x6b4a2b, 0.22, 0.3, -0.05, g, 5); box(0.32, 0.24, 0.28, 0x2f6fe0, -0.36, 0.28, 0, g); } },   // + shopping trolley
+  kid: { y0: 0, y1: 0.75, hw: 0.25, hl: 0.3, move: 1.8, erratic: true, build(g) { box(0.1, 0.03, 0.55, 0x2fbf71, 0, 0.06, 0, g); cyl(0.015, 0.015, 0.55, 0x9aa1ab, 0, 0.33, -0.24, g, 5); cyl(0.12, 0.14, 0.32, 0xff8a1f, 0, 0.32, 0.02, g); ball(0.1, SKIN, 0, 0.58, 0.02, g); ball(0.105, 0xe5263b, 0, 0.62, 0.02, g); } },
+  courier: { y0: 0, y1: 0.85, hw: 0.28, hl: 0.35, move: 2.2, erratic: true, build(g) { box(0.08, 0.05, 0.7, 0x2a2f38, 0, 0.1, 0, g); [-0.3, 0.3].forEach((z) => cyl(0.12, 0.12, 0.05, 0x111111, 0, 0.12, z, g, 10).rotation.z = Math.PI / 2); cyl(0.11, 0.13, 0.3, 0x1f9dd9, 0, 0.42, 0.05, g); ball(0.1, 0x1f9dd9, 0, 0.66, 0.05, g); box(0.3, 0.3, 0.3, 0x1f9dd9, 0, 0.55, 0.3, g); } },   // food courier with the cube bag
+  cat: { y0: 0, y1: 0.28, hw: 0.2, hl: 0.2, move: 0.9, build(g) { box(0.14, 0.12, 0.32, 0xff9f3a, 0, 0.12, 0, g); box(0.12, 0.12, 0.12, 0xff9f3a, 0, 0.2, -0.18, g); box(0.03, 0.03, 0.2, 0xff9f3a, 0, 0.2, 0.22, g); } },
+  police: { y0: 0, y1: 0.55, hw: 0.32, hl: 0.6, fatal: true, build(g) { box(0.62, 0.32, 1.15, 0xf4f6f8, 0, 0.24, 0, g); box(0.64, 0.08, 1.16, 0x1f4bd1, 0, 0.26, 0, g); box(0.54, 0.2, 0.6, 0x2a3442, 0, 0.5, 0.05, g); g.userData.blink = [box(0.2, 0.06, 0.12, 0xe5263b, -0.1, 0.63, 0.05, g), box(0.2, 0.06, 0.12, 0x2f6fe0, 0.12, 0.63, 0.05, g)]; } },
+  parked: { y0: 0, y1: 0.55, hw: 0.32, hl: 0.6, fatal: true, build(g) { box(0.62, 0.3, 1.15, [0x9aa1ab, 0x6b7280, 0xc0392b, 0xffffff][(Math.random() * 4) | 0], 0, 0.23, 0, g); box(0.54, 0.2, 0.6, 0x2a3442, 0, 0.47, 0.05, g); g.userData.blink = [box(0.08, 0.05, 0.03, 0xff9f1a, -0.24, 0.3, 0.58, g), box(0.08, 0.05, 0.03, 0xff9f1a, 0.24, 0.3, 0.58, g)]; } },
+  taxi: { y0: 0, y1: 1.0, hw: 0.36, hl: 0.9, fatal: true, v: -6, build(g) { box(0.7, 0.75, 1.8, 0xffd23f, 0, 0.5, 0, g); box(0.72, 0.25, 1.4, 0x2a3442, 0, 0.72, -0.1, g); box(0.3, 0.1, 0.2, 0x111111, 0, 0.93, -0.3, g); g.userData.blink = [box(0.1, 0.06, 0.03, 0xff3b3b, -0.28, 0.35, 0.91, g), box(0.1, 0.06, 0.03, 0xff3b3b, 0.28, 0.35, 0.91, g)]; } },   // "מונית שירות" that slams the brakes
+  oncoming: { y0: 0, y1: 0.55, hw: 0.32, hl: 0.6, fatal: true, v: 7, build(g) { box(0.62, 0.3, 1.15, 0x9b59b6, 0, 0.23, 0, g); box(0.54, 0.2, 0.6, 0x2a3442, 0, 0.47, -0.05, g); box(0.5, 0.04, 0.03, 0xfff6c0, 0, 0.28, 0.58, g); } },
+  bus: { y0: 0, y1: 1.7, hw: 0.4, hl: 1.7, fatal: true, build(g) { box(0.8, 1.35, 3.4, 0x1f9d55, 0, 0.8, 0, g); box(0.82, 0.38, 3.0, 0x2a3442, 0, 1.1, -0.1, g); [[-1, -1.1], [1, -1.1], [-1, 1.1], [1, 1.1]].forEach(([sx, z]) => cyl(0.18, 0.18, 0.12, 0x0b0b0c, sx * 0.4, 0.18, z, g, 10).rotation.z = Math.PI / 2); } },
+  garbage: { y0: 0, y1: 1.5, hw: 0.4, hl: 1.2, fatal: true, build(g) { box(0.8, 1.2, 2.4, 0x6ab04c, 0, 0.75, 0, g); box(0.82, 0.5, 0.7, 0xf4f6f8, 0, 0.6, -1.15, g); box(0.6, 0.3, 0.05, 0x2a3442, 0, 0.95, -1.5, g); for (let i = 0; i < 3; i++) box(0.4, 0.06, 0.06, 0xff9f1a, 0, 0.3 + i * 0.35, 1.21, g); } },
   cones: { y0: 0, y1: 0.4, hw: 0.45, hl: 0.15, build(g) { [-0.3, 0, 0.3].forEach((x) => { cyl(0.0, 0.11, 0.38, 0xff6a00, x, 0.19, 0, g, 8); box(0.22, 0.03, 0.22, 0xff6a00, x, 0.015, 0, g); }); } },
-  barrier: { y0: 0.22, y1: 0.36, hw: 0.6, hl: 0.08, slideOk: true, build(g) { cyl(0.05, 0.05, 0.6, 0x555b66, -0.62, 0.3, 0, g, 6); for (let i = 0; i < 6; i++) box(0.2, 0.09, 0.06, i % 2 ? 0xffffff : 0xe5263b, -0.5 + i * 0.2, 0.29, 0, g); } },
+  barrier: { y0: 0.2, y1: 0.36, hw: 0.6, hl: 0.08, fatal: true, build(g) { cyl(0.05, 0.05, 0.6, 0x555b66, -0.62, 0.3, 0, g, 6); for (let i = 0; i < 6; i++) box(0.2, 0.09, 0.06, i % 2 ? 0xffffff : 0xe5263b, -0.5 + i * 0.2, 0.29, 0, g); } },
   stall: { y0: 0, y1: 0.62, hw: 0.45, hl: 0.35, build(g) { box(0.9, 0.06, 0.6, 0x8a6a42, 0, 0.42, 0, g); [[-0.4, -0.25], [0.4, -0.25], [-0.4, 0.25], [0.4, 0.25]].forEach(([x, z]) => box(0.05, 0.42, 0.05, 0x6b4a2b, x, 0.21, z, g)); for (let i = 0; i < 6; i++) ball(0.12, 0x2f8f3a, -0.28 + (i % 3) * 0.28, 0.55, (i < 3 ? -0.12 : 0.12), g); box(0.7, 0.18, 0.04, 0xffd23f, 0, 0.75, -0.3, g); } },
-  queue: { y0: 0, y1: 0.8, hw: 1.0, hl: 0.25, build(g) { const shirts = [0xe5263b, 0x2f6fe0, 0xffd23f, 0x2fbf71, 0xff8a1f]; for (let i = 0; i < 5; i++) { const x = -0.8 + i * 0.4; cyl(0.12, 0.14, 0.45, shirts[i], x, 0.32, (i % 2) * 0.1, g); ball(0.1, SKIN, x, 0.63, (i % 2) * 0.1, g); } box(0.8, 0.5, 0.05, 0xffffff, 1.35, 0.5, 0, g).material = new THREE.MeshLambertMaterial({ map: textTex("חומוס", { w: 256, h: 160, fs: 70, fg: "#1a1a1a", bg: "#ffd23f", border: "#1a1a1a" }).t }); } },
+  // protesters holding a "בושה" banner across the whole road: duck under it or jump over it
+  protest: { y0: 0.2, y1: 0.78, hw: 2.1, hl: 0.12, fatal: true, build(g) {
+    const shirts = [0x2f6fe0, 0xffffff, 0x2f6fe0, 0xffffff];
+    [-2.25, 2.25].forEach((x, i) => { cyl(0.13, 0.15, 0.5, shirts[i], x, 0.35, 0, g); ball(0.11, SKIN, x, 0.7, 0, g); cyl(0.012, 0.012, 1.0, 0x8a6a42, x + (i ? 0.25 : -0.25), 0.9, 0, g, 4); const f = new THREE.Mesh(new THREE.PlaneGeometry(0.45, 0.3), new THREE.MeshLambertMaterial({ map: FLAG, side: THREE.DoubleSide })); f.position.set(x + (i ? 0.48 : -0.48), 1.25, 0); g.add(f); });
+    const b = new THREE.Mesh(new THREE.PlaneGeometry(4.5, 0.55), new THREE.MeshLambertMaterial({ map: BUSHA, side: THREE.DoubleSide })); b.position.set(0, 0.5, 0); g.add(b);
+  } },
+  pit: { y0: 0, y1: 0.05, hw: 0.5, hl: 0.45, pit: true, build(g) { box(0.95, 0.02, 0.9, 0x1a1a1a, 0, 0.01, 0, g); [-0.55, 0.55].forEach((z) => { for (let i = 0; i < 5; i++) box(0.2, 0.05, 0.04, i % 2 ? 0xffffff : 0xff6a00, -0.4 + i * 0.2, 0.25, z, g); cyl(0.02, 0.02, 0.28, 0x555b66, -0.5, 0.14, z, g, 4); cyl(0.02, 0.02, 0.28, 0x555b66, 0.5, 0.14, z, g, 4); }); } },
   bump: { y0: 0, y1: 0.08, hw: 2.2, hl: 0.15, soft: true, build(g) { for (let i = 0; i < 11; i++) box(0.4, 0.08, 0.3, i % 2 ? 0x1a1a1a : 0xffd23f, -2.0 + i * 0.4, 0.04, 0, g); } },
   camera: { y0: -1, y1: -1, hw: 0.6, hl: 0.4, cam: true, build(g) { cyl(0.05, 0.05, 2.4, 0x9aa1ab, 0.75, 1.2, 0, g, 6); box(0.8, 0.06, 0.06, 0x9aa1ab, 0.35, 2.35, 0, g); box(0.22, 0.2, 0.3, 0x2a2f38, 0, 2.2, 0, g); box(0.1, 0.06, 0.04, 0x9ad0ff, 0, 2.2, -0.16, g); } },
 };
+const BUSHA = textTex("בושה!", { w: 1024, h: 128, fs: 96, fg: "#e5263b", bg: "#ffffff", border: "#1a1a1a" }).t;
+const FATAL_MSG = { bus: "נכנסת באוטובוס! 🚌", garbage: "נכנסת במשאית הזבל! 🗑️", taxi: "המונית שירות עצרה פתאום! 🚖", oncoming: "נהג נגד התנועה! 😱", police: "נכנסת בניידת! 🚓", parked: "נכנסת בחנייה כפולה! 🚗", barrier: "נתקעת במחסום החניון! 🚧", protest: "נתקעת בהפגנה! 📢" };
 const obs = [];
 function spawn(kind, lane, z) {
   const k = KINDS[kind], g = new THREE.Group(); k.build(g);
-  const x = kind === "bump" ? 0 : kind === "queue" ? (lane === 0 ? -0.625 : 0.625) : LANES[lane];
-  g.position.set(x, 0, z); if (kind === "grandma" || kind === "kid") g.rotation.y = Math.PI / 2;
-  g.userData = { ...g.userData, kind, k, hit: false, dir: Math.random() < 0.5 ? -1 : 1 };
+  const x = k.hw > 2 ? 0 : LANES[lane];
+  g.position.set(x, 0, z); if (k.move) g.rotation.y = Math.PI / 2;
+  g.userData = { ...g.userData, kind, k, hit: false, dir: Math.random() < 0.5 ? -1 : 1, turn: 0.6 + Math.random() * 1.4, drive: 1 + Math.random() * 2 };
   scene.add(g); obs.push(g); return g;
 }
 const coins = []; const coinGeo = new THREE.CylinderGeometry(0.16, 0.16, 0.04, 16); coinGeo.rotateX(Math.PI / 2);
 const coinMat = new THREE.MeshLambertMaterial({ color: 0xffd23f, emissive: 0x6a5200 });
 function coinRow(lane, z, n = 4, arc = false) { for (let i = 0; i < n; i++) { const c = new THREE.Mesh(coinGeo, coinMat); c.position.set(LANES[lane], 0.45 + (arc ? Math.sin((i / (n - 1)) * Math.PI) * 1.1 : 0), z - i * 1.6); scene.add(c); coins.push(c); } }
 const pick = (a) => a[(Math.random() * a.length) | 0];
+const stageAt = (t) => Math.floor(t / 12);
+const shuffled = () => [0, 1, 2].sort(() => Math.random() - 0.5);
+// one row of the road; harder stages unlock more kinds, two-lane blocks, combos and traffic that moves
 function spawnRow(z, t) {
-  const r = Math.random();
-  if (r < 0.1 && t > 6) { spawn("bump", 1, z); coinRow((Math.random() * 3) | 0, z + 0.8, 4, true); return; }
-  if (r < 0.18 && t > 10) { const l = (Math.random() * 3) | 0; spawn("camera", l, z); coinRow((l + 1) % 3, z + 2, 4); return; }
-  if (r < 0.26 && t > 8) { const l = Math.random() < 0.5 ? 0 : 1; spawn("queue", l, z); coinRow(l === 0 ? 2 : 0, z + 2); return; }
-  const lanes = [0, 1, 2].sort(() => Math.random() - 0.5), n = t < 12 ? 1 : Math.random() < 0.55 ? 2 : 1;
-  const kinds = t < 6 ? ["cones", "parked", "stall"] : ["grandma", "kid", "police", "parked", "bus", "cones", "barrier", "stall", "police", "grandma"];
-  for (let i = 0; i < n; i++) spawn(pick(kinds), lanes[i], z - (kinds === "bus" ? 1 : 0));
-  if (Math.random() < 0.7) coinRow(lanes[n], z + 3, 4);
+  const s = stageAt(t), r = Math.random();
+  if (t % 12 < 1.6 && t > 12) { coinRow((Math.random() * 3) | 0, z, 5, Math.random() < 0.5); return; }   // breather at the start of each stage
+  if (s >= 1 && r < 0.09) { spawn("protest", 1, z); coinRow((Math.random() * 3) | 0, z + 2, 3); return; }
+  if (r < 0.15) { spawn("bump", 1, z); coinRow((Math.random() * 3) | 0, z + 0.8, 4, true); return; }
+  if (s >= 1 && r < 0.21) { const l = (Math.random() * 3) | 0; spawn("camera", l, z); coinRow((l + 1) % 3, z + 2, 4); return; }
+  const easy = ["cones", "parked", "stall", "cat", "pit"];
+  const mid = ["grandma", "kid", "police", "parked", "bus", "cones", "barrier", "stall", "pit", "courier", "garbage", "cat"];
+  const hard = [...mid, "taxi", "oncoming", "oncoming", "bus", "garbage", "courier"];
+  const kinds = s === 0 ? easy : s === 1 ? mid : hard;
+  const lanes = shuffled(), n = s === 0 ? 1 : s === 1 ? (Math.random() < 0.45 ? 2 : 1) : Math.random() < 0.7 ? 2 : 1;
+  for (let i = 0; i < n; i++) spawn(pick(kinds), lanes[i], z);
+  // the free lane is not always free: from stage 3 it often holds something you must jump or duck
+  if (s >= 3 && n === 2 && Math.random() < 0.5) spawn(pick(["cones", "pit", "barrier", "cat"]), lanes[2], z - 1.2);
+  else if (Math.random() < 0.7) coinRow(lanes[n], z + 3, 4);
+  // combos: a second row right behind the first
+  if (s >= 2 && Math.random() < 0.35) { const l2 = shuffled(); spawn(pick(["barrier", "cones", "pit", "cat"]), l2[0], z - 5); if (s >= 4) spawn(pick(["cones", "pit", "barrier"]), l2[1], z - 5); }   // combos are always jumpable / duckable, so a way through exists
 }
 
 // ---------- state ----------
-const st = { on: false, z: 0, lane: 1, x: 0, t: 0, speed: 9, dist: 0, coins: 0, air: 0, slide: 0, lastHit: -99, slow: 0, guard: 14, nextRow: -30, why: "", city: ROUTE[0], turbo: 0, nextSign: -SIGN_EVERY, signIdx: 1 };
+const st = { on: false, z: 0, lane: 1, x: 0, t: 0, speed: 11, dist: 0, coins: 0, air: 0, slide: 0, lastHit: -99, slow: 0, guard: 14, nextRow: -30, why: "", city: ROUTE[0], turbo: 0, nextSign: -SIGN_EVERY, signIdx: 1, stage: 0 };
 function reset() {
-  Object.assign(st, { on: false, z: 0, lane: 1, x: 0, t: 0, speed: 9, dist: 0, coins: 0, air: 0, slide: 0, lastHit: -99, slow: 0, guard: 14, nextRow: -30, why: "", city: ROUTE[0], turbo: CFG.turbo ? 1 : 0, nextSign: -SIGN_EVERY, signIdx: 1 });
+  Object.assign(st, { on: false, z: 0, lane: 1, x: 0, t: 0, speed: 11, dist: 0, coins: 0, air: 0, slide: 0, lastHit: -99, slow: 0, guard: 14, nextRow: -30, why: "", city: ROUTE[0], turbo: CFG.turbo ? 1 : 0, nextSign: -SIGN_EVERY, signIdx: 1, stage: 0 });
   [...obs, ...coins].forEach((o) => scene.remove(o)); obs.length = 0; coins.length = 0;
   chunks.forEach((c, i) => { c.position.z = -i * CH; decorate(c, i); });
   gantry.position.z = st.nextSign; signT.draw(ROUTE[1] + " ←");
@@ -141,14 +169,14 @@ function act(a) {
   if (!st.on) return;
   if (a === "L" && st.lane > 0) st.lane--;
   if (a === "R" && st.lane < 2) st.lane++;
-  if (a === "U" && st.air <= 0) { st.air = 0.75; st.slide = 0; for (let i = 0; i < 6; i++) puff(car.position.clone().add(new THREE.Vector3((Math.random() - 0.5) * 0.4, 0, 0.3)), 1); }
-  if (a === "D") { if (st.air > 0) st.air = Math.min(st.air, 0.12); st.slide = 0.65; }
+  if (a === "U" && st.air <= 0) { st.air = 0.7; st.slide = 0; for (let i = 0; i < 6; i++) puff(car.position.clone().add(new THREE.Vector3((Math.random() - 0.5) * 0.4, 0, 0.3)), 1); }
+  if (a === "D") { if (st.air > 0) st.air = Math.min(st.air, 0.1); st.slide = 0.6; }
 }
 let sx = 0, sy = 0, swiped = false;
 $("gl").addEventListener("pointerdown", (e) => { sx = e.clientX; sy = e.clientY; swiped = false; });
 $("gl").addEventListener("pointermove", (e) => {
   if (swiped || !e.buttons) return; const dx = e.clientX - sx, dy = e.clientY - sy;
-  if (Math.max(Math.abs(dx), Math.abs(dy)) < 28) return;
+  if (Math.max(Math.abs(dx), Math.abs(dy)) < 24) return;
   swiped = true; act(Math.abs(dx) > Math.abs(dy) ? (dx < 0 ? "L" : "R") : dy < 0 ? "U" : "D");
 });
 addEventListener("keydown", (e) => { const m = { ArrowLeft: "L", ArrowRight: "R", ArrowUp: "U", ArrowDown: "D", " ": "U" }[e.key]; if (m) { e.preventDefault(); act(m); } });
@@ -158,43 +186,55 @@ function resize() { renderer.setSize(innerWidth, innerHeight, false); camera.asp
 addEventListener("resize", resize); resize();
 let alertT = 0;
 function flash(msg) { $("alert").textContent = msg; $("alert").hidden = false; alertT = 1.6; }
-function hit(o) {
+function hit(o, side) {
   o.userData.hit = true;
-  if (st.turbo > 1) return;                                                      // ⚡ pickup / global turbo shield
-  if (o.userData.k.front && Math.abs(st.z - (o.position.z + o.userData.k.hl)) < 0.6) return end("נכנסת באוטובוס! 🚌");
+  if (st.turbo > 1) return;
+  const k = o.userData.k;
+  if (k.fatal && !side) return end(FATAL_MSG[o.userData.kind] || "בום! 💥");                  // head-on into something big
   if (st.t - st.lastHit < 6) return end("המאבטחים תפסו אותך! 🚙");
-  st.lastHit = st.t; st.slow = 1.2; st.guard = 2.2; flash("💥 המאבטחים מאחוריך!");
+  st.lastHit = st.t; st.slow = 1.0; st.guard = 2.2; flash(side ? "💥 נשפשפת! המאבטחים מאחוריך!" : "💥 המאבטחים מאחוריך!");
 }
 function step(dt) {
   st.t += dt;
-  const base = Math.min(20, 9 + st.t * 0.14) * (CFG.turbo ? 1.12 : 1);
-  st.speed = base * (st.slow > 0 ? 0.6 : 1); if (st.slow > 0) st.slow -= dt;
+  const s = stageAt(st.t);
+  if (s !== st.stage) { st.stage = s; flash(`🔥 שלב ${s + 1}! יותר מהר`); }
+  // stair-steps: each stage jumps the speed, then it creeps up until the next one
+  const base = Math.min(30, 11 + Math.min(s, 4) * 2.2 + Math.max(0, s - 4) * 0.9 + (st.t % 12) * 0.08) * (CFG.turbo ? 1.12 : 1);   // steep to stage 5, then a slower climb so skill keeps paying off
+  st.speed = base * (st.slow > 0 ? 0.65 : 1); if (st.slow > 0) st.slow -= dt;
   st.z -= st.speed * dt; st.dist += st.speed * dt;
-  st.x += (LANES[st.lane] - st.x) * Math.min(1, dt * 14);
+  const changing = Math.abs(LANES[st.lane] - st.x) > 0.3;
+  st.x += (LANES[st.lane] - st.x) * Math.min(1, dt * 16);
   if (st.air > 0) st.air = Math.max(0, st.air - dt); if (st.slide > 0) st.slide = Math.max(0, st.slide - dt);
-  const h = st.air > 0 ? Math.sin((1 - st.air / 0.75) * Math.PI) * 1.35 : 0;
+  const h = st.air > 0 ? Math.sin((1 - st.air / 0.7) * Math.PI) * 1.3 : 0;
   const carTop = h + (st.slide > 0 ? 0.12 : CAR_H);
   car.position.set(st.x, h + 0.13, st.z);
-  car.rotation.set(st.air > 0 ? -2 * Math.PI * (1 - st.air / 0.75) : 0, 0, (LANES[st.lane] - st.x) * -0.25);
+  car.rotation.set(st.air > 0 ? -2 * Math.PI * (1 - st.air / 0.7) : 0, 0, (LANES[st.lane] - st.x) * -0.25);
   body.scale.set(0.9, st.slide > 0 ? 0.55 : 0.9, 0.9);
   if (st.slide > 0 && Math.random() < 0.6) puff(car.position.clone().add(new THREE.Vector3((Math.random() - 0.5) * 0.4, -0.1, 0.4)), 0.5);
 
-  // world recycling, signs, spawns
+  // world recycling, signs, spawns (rows get closer every stage)
   chunks.forEach((c) => { if (c.position.z > st.z + CH) { c.position.z -= NCH * CH; decorate(c, Math.round(-c.position.z / CH)); } });
   if (st.z < st.nextSign + 2) { st.city = ROUTE[Math.min(st.signIdx, ROUTE.length - 1)]; flash("🏁 " + st.city + "!"); st.signIdx++; st.nextSign -= SIGN_EVERY; gantry.position.z = st.nextSign; signT.draw((ROUTE[Math.min(st.signIdx, ROUTE.length - 1)]) + " ←"); }
-  while (st.nextRow > st.z - 60) { spawnRow(st.nextRow, st.t + (st.z - st.nextRow) / st.speed); st.nextRow -= Math.max(9, 17 - st.t * 0.12) + Math.random() * 4; }
+  while (st.nextRow > st.z - 70) { const ta = st.t + (st.z - st.nextRow) / st.speed; spawnRow(st.nextRow, ta); st.nextRow -= Math.max(7, 15 - stageAt(ta) * 1.3) + Math.random() * 3; }
 
   for (let i = obs.length - 1; i >= 0; i--) {
     const o = obs[i], u = o.userData, k = u.k;
-    if (k.move) { o.position.x += u.dir * k.move * dt; if (Math.abs(o.position.x) > 1.4) { u.dir *= -1; o.position.x = Math.sign(o.position.x) * 1.4; } o.rotation.y = u.dir > 0 ? -Math.PI / 2 : Math.PI / 2; }
+    if (k.move) {
+      if (k.erratic && (u.turn -= dt) < 0) { u.dir *= -1; u.turn = 0.4 + Math.random() * 1.2; }    // kids and couriers change direction without warning
+      o.position.x += u.dir * k.move * (1 + st.stage * 0.08) * dt; if (Math.abs(o.position.x) > 1.4) { u.dir *= -1; o.position.x = Math.sign(o.position.x) * 1.4; }
+      o.rotation.y = u.dir > 0 ? -Math.PI / 2 : Math.PI / 2;
+    }
+    if (k.v > 0) o.position.z += k.v * dt;                                                   // oncoming traffic
+    if (k.v < 0 && (u.drive -= dt) > 0) o.position.z += k.v * dt;                             // the sherut drives ahead… then stops dead
     if (u.blink) u.blink.forEach((b) => (b.visible = Math.floor(st.t * 3) % 2 === 0));
     if (o.position.z > st.z + 6) { scene.remove(o); obs.splice(i, 1); continue; }
     if (u.hit) continue;
     const dz = Math.abs(st.z - o.position.z), dx = Math.abs(st.x - o.position.x);
     if (dz > k.hl + 0.45 || dx > k.hw + 0.22) continue;
     if (k.cam) { u.hit = true; if (st.turbo > 1) continue; st.coins = Math.max(0, st.coins - 10); st.slow = 0.8; st.guard = Math.min(st.guard, 5); flash("📸 דוח מהירות! −10 ₪"); continue; }
-    if (k.soft) { if (h < 0.1) { u.hit = true; st.slow = 0.7; st.guard = Math.min(st.guard, 5); flash("⚠️ פס האטה!"); } continue; }
-    if (carTop > k.y0 + 0.02 && h < k.y1 - 0.02) hit(o);
+    if (k.soft) { if (h < 0.1) { u.hit = true; st.slow = 0.8; st.guard = Math.min(st.guard, 5); flash("⚠️ פס האטה!"); } continue; }
+    if (k.pit) { if (h < 0.05 && dz < k.hl) { u.hit = true; return end("נפלת לבור של עבודות הכביש! 🕳️"); } continue; }
+    if (carTop > k.y0 + 0.02 && h < k.y1 - 0.02) hit(o, changing && dz < k.hl);
   }
   for (let i = coins.length - 1; i >= 0; i--) {
     const c = coins[i]; c.rotation.y += dt * 4;
@@ -291,5 +331,5 @@ const LOCKED = CFG.locked && new URLSearchParams(location.search).get("preview")
 if (LOCKED) { $("start").hidden = true; $("locked").hidden = false; } else loadTop("top");
 $("loading").classList.add("done");
 requestAnimationFrame(frame);
-if (new URLSearchParams(location.search).has("debug")) window.__game = { st, step, start, end, act, obs };
+if (new URLSearchParams(location.search).has("debug")) window.__game = { st, step, start, end, act, obs, spawn, scene, camera, renderer, car };
 if (!LOCKED && new URLSearchParams(location.search).has("autostart")) start();
