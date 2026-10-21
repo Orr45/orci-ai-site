@@ -247,15 +247,87 @@ function step(dt) {
   if (st.t - st.lastHit > 6 && st.lastHit > 0 && st.guard > 12.5) st.lastHit = -99;
 }
 
+
+// ---------- intro (7 s, first run only): a hooded thief steals the mayor's Roadster, the mayor runs out, the chase begins ----------
+const intro = new THREE.Group(); scene.add(intro); intro.visible = false;
+const MZ = new THREE.Vector3(4.7, 0, 8.6);                                    // the mayor's house, right of the road, behind the start line
+box(2.6, 1.6, 2.2, 0xf2e3d0, MZ.x, 0.8, MZ.z, intro); box(2.8, 0.18, 2.4, 0xc0392b, MZ.x, 1.69, MZ.z, intro);
+[-0.8, -0.27, 0.27, 0.8].forEach((dz) => cyl(0.06, 0.06, 1.5, 0xffffff, MZ.x - 1.35, 0.75, MZ.z + dz, intro, 8));
+box(0.05, 0.9, 0.55, 0x5a3a22, MZ.x - 1.31, 0.45, MZ.z, intro);
+box(1.7, 0.03, 1.6, 0x5d6470, 2.95, 0.06, 7.25, intro);                        // driveway
+const mSign = new THREE.Mesh(new THREE.PlaneGeometry(2.2, 0.5), new THREE.MeshBasicMaterial({ map: textTex("בית ראש העיר", { w: 768, h: 176, fs: 100, fg: "#1a1a1a", bg: "#ffffff", border: "#1a1a1a" }).t, side: THREE.DoubleSide }));
+mSign.position.set(MZ.x - 1.45, 2.3, MZ.z); mSign.rotation.y = -Math.PI / 2; intro.add(mSign);
+[-0.95, 0.95].forEach((dz) => cyl(0.03, 0.03, 0.7, 0x555b66, MZ.x - 1.45, 1.95, MZ.z + dz, intro, 5));
+const PS = 0.42;                                                              // people at the car's scale
+function person(suit, head, extra) {
+  const g = new THREE.Group(), legs = [], arms = [];
+  [-0.07, 0.07].forEach((x) => { const l = new THREE.Group(); l.position.set(x, 0.32, 0); box(0.09, 0.32, 0.1, 0x1d1f24, 0, -0.16, 0, l); g.add(l); legs.push(l); });
+  box(0.3, 0.36, 0.18, suit, 0, 0.5, 0, g);
+  [-0.19, 0.19].forEach((x) => { const a = new THREE.Group(); a.position.set(x, 0.66, 0); box(0.08, 0.3, 0.08, suit, 0, -0.15, 0, a); g.add(a); arms.push(a); });
+  ball(0.12, head, 0, 0.82, 0, g); extra?.(g);
+  g.userData = { legs, arms }; g.scale.setScalar(PS); intro.add(g); return g;
+}
+const thief = person(0x1b1f27, 0x1b1f27, (g) => { box(0.16, 0.1, 0.02, SKIN, 0, 0.8, -0.115, g); });   // hood with just the eyes showing
+const mayor = person(0x1d2b4a, SKIN, (g) => { box(0.12, 0.3, 0.02, 0xffffff, 0, 0.53, -0.095, g); box(0.04, 0.26, 0.025, 0x2f6fe0, 0, 0.53, -0.1, g); ball(0.115, 0xd9d9d9, 0, 0.88, 0.02, g); });
+function walk(p, t, speed) { const a = Math.sin(t * speed) * 0.7; p.userData.legs[0].rotation.x = a; p.userData.legs[1].rotation.x = -a; p.userData.arms[0].rotation.x = -a; p.userData.arms[1].rotation.x = a; }
+const cs = { on: false, t: 0, seen: false };
+const CAR0 = new THREE.Vector3(1.25, 0.13, 7.2);
+const lerp = (a, b, k) => a + (b - a) * k, cl = (k) => Math.min(1, Math.max(0, k)), eio = (k) => (k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2);
+const camA = new THREE.Vector3(), lookA = new THREE.Vector3(), pvI = new THREE.Vector3();
+function cutscene(dt) {
+  cs.t += dt; const t = cs.t;
+  // the thief sneaks to the car, hops in
+  if (t < 2.0) { const k = t / 2.0; thief.position.set(lerp(-2.6, 0.85, k), 0, lerp(9.8, 7.4, k)); thief.rotation.y = Math.atan2(-(0.85 + 2.6), -(7.4 - 9.8)); walk(thief, t, 9); }
+  thief.visible = t < 2.4; if (t >= 2.0 && t < 2.4) { const k = (t - 2.0) / 0.4; thief.position.set(lerp(0.85, 1.25, k), 0.3 * Math.sin(k * Math.PI), 7.3); thief.scale.setScalar(PS * (1 - k * 0.8)); }
+  // engine on: lights + cold-gas puffs, then it launches and merges into the middle lane
+  const go = cl((t - 3.6) / 3.4), e = go * go;
+  car.position.set(lerp(CAR0.x, 0, eio(cl((t - 4.6) / 2.2))), 0.13, lerp(CAR0.z, 0, e));
+  car.rotation.set(0, 0, 0);
+  if (t > 2.6 && t < 3.6 && Math.random() < 0.5) puff(car.position.clone().add(new THREE.Vector3((Math.random() - 0.5) * 0.4, 0, 0.45)), 0.8);
+  if (go > 0 && Math.random() < 0.4) puff(car.position.clone().add(new THREE.Vector3((Math.random() - 0.5) * 0.3, 0, 0.5)), 0.6);
+  // the mayor bursts out of the door and runs after it, losing ground
+  mayor.visible = t > 3.1;
+  if (t <= 4.6) { const k = cl((t - 3.1) / 1.5); mayor.position.set(lerp(MZ.x - 1.5, 2.1, k), 0, lerp(MZ.z, 7.8, k)); mayor.rotation.y = Math.PI / 2; }
+  else { mayor.position.set(2.1 - (t - 4.6) * 0.4, 0, 7.8 - (t - 4.6) * 2.6); mayor.rotation.y = 0; }
+  walk(mayor, t, 14); mayor.userData.arms[0].rotation.x = -2.6 + Math.sin(t * 18) * 0.4;   // shaking a fist
+  // the security SUVs pull out behind
+  guards.forEach((g, i) => { g.visible = t > 4.4; g.position.set(lerp(2.6 + i * 0.9, (i ? 0.7 : -0.7), cl((t - 4.4) / 2.6)), 0, lerp(11 + i, car.position.z + 4.8 + i * 0.6, eio(cl((t - 4.4) / 2.6)))); });
+  // camera: wide on the house → on the car → on the mayor → swings into the chase view
+  if (t < 2.2) { const k = t / 2.2; camA.set(lerp(-1.7, -1.2, k), lerp(1.15, 0.95, k), lerp(4.3, 5.0, k)); lookA.set(lerp(-0.4, 0.8, k), 0.25, 8.0); }
+  else if (t < 3.3) { camA.set(-0.8, 0.7, 5.7); lookA.set(CAR0.x, 0.25, CAR0.z); }
+  else if (t < 4.6) { camA.set(0.9, 0.75, 5.6); lookA.set(2.6, 0.35, 8.0); }
+  else { const k = eio(cl((t - 4.6) / 2.4)); camA.set(lerp(car.position.x + 1.6, car.position.x * 0.7, k), lerp(0.9, 2.25, k), lerp(car.position.z + 1.8, car.position.z + 4.3, k)); lookA.set(lerp(car.position.x, car.position.x * 0.7, k), lerp(0.25, 0.7, k), lerp(car.position.z, car.position.z - 5, k)); }
+  camera.position.copy(camA); camera.lookAt(lookA);
+  // speech bubble over the mayor
+  pvI.set(mayor.position.x, 0.55, mayor.position.z).project(camera);
+  const b = $("bubble"); b.hidden = !(t > 3.3 && t < 6.6) || pvI.z > 1;
+  b.style.left = ((pvI.x * 0.5 + 0.5) * innerWidth) + "px"; b.style.top = ((-pvI.y * 0.5 + 0.5) * innerHeight) + "px";
+  if (t >= 7.0) finishIntro();
+}
+function playIntro() {
+  cs.on = true; cs.t = 0; intro.visible = true; thief.visible = true; thief.scale.setScalar(PS); mayor.visible = false; chunks[0].userData.deco.visible = false;
+  $("hud").hidden = true; $("skip").hidden = false;
+  flash("🤫 שקט... הרודסטר של ראש העיר");
+  setTimeout(() => { if (cs.on) flash("🔑 נכנסת! עכשיו סע!"); }, 2400);
+}
+function finishIntro() {
+  if (!cs.on) return;
+  cs.on = false; $("skip").hidden = true; $("bubble").hidden = true; thief.visible = false;
+  begin(); st.guard = 4.8;                                                       // the guards start right behind you and fall back if you drive clean
+}
+$("skip").addEventListener("click", (e) => { e.stopPropagation(); finishIntro(); });
+
 const camPos = new THREE.Vector3(), look = new THREE.Vector3();
 let last = performance.now();
 function frame(now) {
   const dt = Math.min(0.05, (now - last) / 1000); last = now;
-  if (st.on) step(dt);
+  if (st.on) step(dt); else if (cs.on) cutscene(dt);
   for (let i = puffs.length - 1; i >= 0; i--) { const p = puffs[i]; p.userData.t += dt; p.scale.setScalar(p.userData.s * (1 + p.userData.t * 3)); p.material.opacity = Math.max(0, 0.85 - p.userData.t * 1.4); if (p.userData.t > 0.6) { scene.remove(p); puffs.splice(i, 1); } }
   if (alertT > 0 && (alertT -= dt) <= 0) $("alert").hidden = true;
-  camPos.set(st.x * 0.7, 2.25, st.z + 4.3); camera.position.lerp(camPos, st.on ? 0.2 : 0.06);
-  look.set(st.x * 0.7, 0.7, st.z - 5); camera.lookAt(look);
+  if (!cs.on) {
+    camPos.set(st.x * 0.7, 2.25, st.z + 4.3); camera.position.lerp(camPos, st.on ? 0.2 : 0.06);
+    look.set(st.x * 0.7, 0.7, st.z - 5); camera.lookAt(look);
+  }
   if (st.on) { $("km").textContent = (st.dist * KM_PER_UNIT).toFixed(1) + " ק״מ"; $("coins").textContent = "₪ " + st.coins; }
   renderer.render(scene, camera);
   requestAnimationFrame(frame);
@@ -264,8 +336,13 @@ function frame(now) {
 // ---------- start / end ----------
 const score = () => Math.round(st.dist * KM_PER_UNIT * 10) + st.coins * 50;   // same formula the server uses
 function start() {
-  reset(); st.on = true;
-  $("start").hidden = true; $("over").hidden = true; $("hud").hidden = false;
+  reset(); $("start").hidden = true; $("over").hidden = true; $("rank").hidden = true; $("send").disabled = false;
+  if (!cs.seen && !new URLSearchParams(location.search).has("autostart")) { cs.seen = true; playIntro(); return; }
+  begin();
+}
+function begin() {
+  intro.visible = false; chunks[0].userData.deco.visible = true; car.position.set(0, 0.13, 0);
+  st.on = true; $("hud").hidden = false;
   $("swipehint").hidden = false; setTimeout(() => ($("swipehint").hidden = true), 3200);
   $("rank").hidden = true; $("send").disabled = false;
   flash(CFG.turbo ? "⚡ טורבו פעיל! סע!" : "🏎️ גנבת את הרודסטר! סע!");
@@ -331,5 +408,6 @@ const LOCKED = CFG.locked && new URLSearchParams(location.search).get("preview")
 if (LOCKED) { $("start").hidden = true; $("locked").hidden = false; } else loadTop("top");
 $("loading").classList.add("done");
 requestAnimationFrame(frame);
-if (new URLSearchParams(location.search).has("debug")) window.__game = { st, step, start, end, act, obs, spawn, scene, camera, renderer, car };
+if (new URLSearchParams(location.search).has("debug")) window.__game = { st, step, start, end, act, obs, spawn, scene, camera, renderer, car, cs, cutscene, playIntro };
 if (!LOCKED && new URLSearchParams(location.search).has("autostart")) start();
+if (!LOCKED && new URLSearchParams(location.search).has("autointro")) start();

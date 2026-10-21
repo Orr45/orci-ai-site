@@ -52,3 +52,6 @@ h1 { font-weight: 900; font-size: 34px; line-height: 1.08; margin: 4px 0 6px; co
 .lockbig { font-size: 72px; line-height: 1; margin: 6px 0; }
 .goal { margin-top: 8px; font-weight: 900; font-size: 22px; background: #fff6d1; border: 3px solid var(--ink); border-radius: 14px; padding: 6px 10px 8px; }
 #locked .btn.primary { display: block; margin-top: 12px; text-decoration: none; color: var(--ink); }
+#bubble { position: fixed; z-index: 12; transform: translate(-50%, -100%); background: #fff; border: 4px solid var(--ink); border-radius: 18px; padding: 6px 14px 9px; font-weight: 900; font-size: 22px; white-space: nowrap; pointer-events: none; box-shadow: 0 6px 16px rgba(0,0,0,.3); }
+#bubble::after { content: ""; position: absolute; left: 50%; bottom: -14px; transform: translateX(-50%); border: 8px solid transparent; border-top-color: var(--ink); }
+#skip { position: fixed; z-index: 13; bottom: max(18px, env(safe-area-inset-bottom)); left: 16px; background: rgba(29,36,51,.85); color: #fff; border: 0; border-radius: 20px; padding: 8px 16px 10px; font-weight: 800; font-size: 16px; }
