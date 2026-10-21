@@ -2,6 +2,7 @@
 // One hit and the mayor's security SUVs are right behind you; a second hit within 6 seconds and they catch you.
 import * as THREE from "three";
 import { makeRoadster } from "/ir/roadster/car.js";
+import * as sfx from "/ir/roadster/sfx.js";
 
 const API = "https://orciai.vercel.app/api/site/game";
 const TRACK = "https://orciai.vercel.app/api/site/track";
@@ -167,19 +168,19 @@ function reset() {
 // ---------- input: swipes + arrows ----------
 function act(a) {
   if (!st.on) return;
-  if (a === "L" && st.lane > 0) st.lane--;
-  if (a === "R" && st.lane < 2) st.lane++;
-  if (a === "U" && st.air <= 0) { st.air = 0.7; st.slide = 0; for (let i = 0; i < 6; i++) puff(car.position.clone().add(new THREE.Vector3((Math.random() - 0.5) * 0.4, 0, 0.3)), 1); }
-  if (a === "D") { if (st.air > 0) st.air = Math.min(st.air, 0.1); st.slide = 0.6; }
+  if (a === "L" && st.lane > 0) { st.lane--; sfx.play("lane"); }
+  if (a === "R" && st.lane < 2) { st.lane++; sfx.play("lane"); }
+  if (a === "U" && st.air <= 0) { sfx.play("jump"); st.air = 0.7; st.slide = 0; for (let i = 0; i < 6; i++) puff(car.position.clone().add(new THREE.Vector3((Math.random() - 0.5) * 0.4, 0, 0.3)), 1); }
+  if (a === "D") { sfx.play("duck", { gap: 0.3 }); if (st.air > 0) st.air = Math.min(st.air, 0.1); st.slide = 0.6; }
 }
 let sx = 0, sy = 0, swiped = false;
-$("gl").addEventListener("pointerdown", (e) => { sx = e.clientX; sy = e.clientY; swiped = false; });
+$("gl").addEventListener("pointerdown", (e) => { sfx.unlock(); sx = e.clientX; sy = e.clientY; swiped = false; });
 $("gl").addEventListener("pointermove", (e) => {
   if (swiped || !e.buttons) return; const dx = e.clientX - sx, dy = e.clientY - sy;
   if (Math.max(Math.abs(dx), Math.abs(dy)) < 24) return;
   swiped = true; act(Math.abs(dx) > Math.abs(dy) ? (dx < 0 ? "L" : "R") : dy < 0 ? "U" : "D");
 });
-addEventListener("keydown", (e) => { const m = { ArrowLeft: "L", ArrowRight: "R", ArrowUp: "U", ArrowDown: "D", " ": "U" }[e.key]; if (m) { e.preventDefault(); act(m); } });
+addEventListener("keydown", (e) => { sfx.unlock(); const m = { ArrowLeft: "L", ArrowRight: "R", ArrowUp: "U", ArrowDown: "D", " ": "U" }[e.key]; if (m) { e.preventDefault(); act(m); } });
 
 // ---------- loop ----------
 function resize() { renderer.setSize(innerWidth, innerHeight, false); camera.aspect = innerWidth / innerHeight; camera.fov = camera.aspect < 0.8 ? 68 : 55; camera.updateProjectionMatrix(); }
@@ -192,19 +193,19 @@ function hit(o, side) {
   const k = o.userData.k;
   if (k.fatal && !side) return end(FATAL_MSG[o.userData.kind] || "בום! 💥");                  // head-on into something big
   if (st.t - st.lastHit < 6) return end("המאבטחים תפסו אותך! 🚙");
-  st.lastHit = st.t; st.slow = 1.0; st.guard = 2.2; flash(side ? "💥 נשפשפת! המאבטחים מאחוריך!" : "💥 המאבטחים מאחוריך!");
+  sfx.play("scrape"); st.lastHit = st.t; st.slow = 1.0; st.guard = 2.2; flash(side ? "💥 נשפשפת! המאבטחים מאחוריך!" : "💥 המאבטחים מאחוריך!");
 }
 function step(dt) {
   st.t += dt;
   const s = stageAt(st.t);
-  if (s !== st.stage) { st.stage = s; flash(`🔥 שלב ${s + 1}! יותר מהר`); }
+  if (s !== st.stage) { st.stage = s; sfx.play("stage"); flash(`🔥 שלב ${s + 1}! יותר מהר`); }
   // stair-steps: each stage jumps the speed, then it creeps up until the next one
   const base = Math.min(30, 11 + Math.min(s, 4) * 2.2 + Math.max(0, s - 4) * 0.9 + (st.t % 12) * 0.08) * (CFG.turbo ? 1.12 : 1);   // steep to stage 5, then a slower climb so skill keeps paying off
   st.speed = base * (st.slow > 0 ? 0.65 : 1); if (st.slow > 0) st.slow -= dt;
   st.z -= st.speed * dt; st.dist += st.speed * dt;
   const changing = Math.abs(LANES[st.lane] - st.x) > 0.3;
   st.x += (LANES[st.lane] - st.x) * Math.min(1, dt * 16);
-  if (st.air > 0) st.air = Math.max(0, st.air - dt); if (st.slide > 0) st.slide = Math.max(0, st.slide - dt);
+  if (st.air > 0) { st.air = Math.max(0, st.air - dt); if (st.air === 0) sfx.play("land"); } if (st.slide > 0) st.slide = Math.max(0, st.slide - dt);
   const h = st.air > 0 ? Math.sin((1 - st.air / 0.7) * Math.PI) * 1.3 : 0;
   const carTop = h + (st.slide > 0 ? 0.12 : CAR_H);
   car.position.set(st.x, h + 0.13, st.z);
@@ -228,18 +229,24 @@ function step(dt) {
     if (k.v < 0 && (u.drive -= dt) > 0) o.position.z += k.v * dt;                             // the sherut drives ahead… then stops dead
     if (u.blink) u.blink.forEach((b) => (b.visible = Math.floor(st.t * 3) % 2 === 0));
     if (o.position.z > st.z + 6) { scene.remove(o); obs.splice(i, 1); continue; }
+    if (!u.heard && st.z - o.position.z < 24) {                                         // a heads-up sound as it comes into view
+      u.heard = true; const kd = u.kind;
+      if (kd === "police") sfx.play("siren", { gap: 3 });
+      else if (kd === "protest") sfx.play("protest", { gap: 3 });
+      else if ((kd === "bus" || kd === "taxi" || kd === "garbage") && Math.random() < 0.5) sfx.play("horn", { gap: 2.5 });
+    }
     if (u.hit) continue;
     const dz = Math.abs(st.z - o.position.z), dx = Math.abs(st.x - o.position.x);
     if (dz > k.hl + 0.45 || dx > k.hw + 0.22) continue;
-    if (k.cam) { u.hit = true; if (st.turbo > 1) continue; st.coins = Math.max(0, st.coins - 10); st.slow = 0.8; st.guard = Math.min(st.guard, 5); flash("📸 דוח מהירות! −10 ₪"); continue; }
-    if (k.soft) { if (h < 0.1) { u.hit = true; st.slow = 0.8; st.guard = Math.min(st.guard, 5); flash("⚠️ פס האטה!"); } continue; }
+    if (k.cam) { u.hit = true; if (st.turbo > 1) continue; sfx.play("camera"); st.coins = Math.max(0, st.coins - 10); st.slow = 0.8; st.guard = Math.min(st.guard, 5); flash("📸 דוח מהירות! −10 ₪"); continue; }
+    if (k.soft) { if (h < 0.1) { u.hit = true; sfx.play("bump"); st.slow = 0.8; st.guard = Math.min(st.guard, 5); flash("⚠️ פס האטה!"); } continue; }
     if (k.pit) { if (h < 0.05 && dz < k.hl) { u.hit = true; return end("נפלת לבור של עבודות הכביש! 🕳️"); } continue; }
     if (carTop > k.y0 + 0.02 && h < k.y1 - 0.02) hit(o, changing && dz < k.hl);
   }
   for (let i = coins.length - 1; i >= 0; i--) {
     const c = coins[i]; c.rotation.y += dt * 4;
     if (c.position.z > st.z + 4) { scene.remove(c); coins.splice(i, 1); continue; }
-    if (Math.abs(st.z - c.position.z) < 0.5 && Math.abs(st.x - c.position.x) < 0.5 && Math.abs(h + 0.2 - c.position.y) < 0.6) { st.coins++; scene.remove(c); coins.splice(i, 1); }
+    if (Math.abs(st.z - c.position.z) < 0.5 && Math.abs(st.x - c.position.x) < 0.5 && Math.abs(h + 0.2 - c.position.y) < 0.6) { st.coins++; sfx.play("coin", { rate: 0.95 + Math.random() * 0.15, gap: 0.03 }); scene.remove(c); coins.splice(i, 1); }
   }
   // the mayor's security: two black SUVs that close in after a hit
   st.guard += ((st.t - st.lastHit < 6 ? 2.6 : 14) - st.guard) * Math.min(1, dt * (st.t - st.lastHit < 6 ? 3 : 0.5));
@@ -270,12 +277,14 @@ function person(suit, head, extra) {
 const thief = person(0x1b1f27, 0x1b1f27, (g) => { box(0.16, 0.1, 0.02, SKIN, 0, 0.8, -0.115, g); });   // hood with just the eyes showing
 const mayor = person(0x1d2b4a, SKIN, (g) => { box(0.12, 0.3, 0.02, 0xffffff, 0, 0.53, -0.095, g); box(0.04, 0.26, 0.025, 0x2f6fe0, 0, 0.53, -0.1, g); ball(0.115, 0xd9d9d9, 0, 0.88, 0.02, g); });
 function walk(p, t, speed) { const a = Math.sin(t * speed) * 0.7; p.userData.legs[0].rotation.x = a; p.userData.legs[1].rotation.x = -a; p.userData.arms[0].rotation.x = -a; p.userData.arms[1].rotation.x = a; }
-const cs = { on: false, t: 0, seen: false };
+const cs = { on: false, t: 0, seen: false, fx: {} };
 const CAR0 = new THREE.Vector3(1.25, 0.13, 7.2);
 const lerp = (a, b, k) => a + (b - a) * k, cl = (k) => Math.min(1, Math.max(0, k)), eio = (k) => (k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2);
 const camA = new THREE.Vector3(), lookA = new THREE.Vector3(), pvI = new THREE.Vector3();
 function cutscene(dt) {
   cs.t += dt; const t = cs.t;
+  [[2.3, "door"], [2.6, "start"], [3.4, "hey"], [3.6, "screech"]].forEach(([at, n]) => { if (t >= at && !cs.fx[at]) { cs.fx[at] = 1; sfx.play(n); } });
+  sfx.engineHum(t > 2.8, 11 * Math.min(1, Math.max(0, (t - 3.6) / 3.4)));
   // the thief sneaks to the car, hops in
   if (t < 2.0) { const k = t / 2.0; thief.position.set(lerp(-2.6, 0.85, k), 0, lerp(9.8, 7.4, k)); thief.rotation.y = Math.atan2(-(0.85 + 2.6), -(7.4 - 9.8)); walk(thief, t, 9); }
   thief.visible = t < 2.4; if (t >= 2.0 && t < 2.4) { const k = (t - 2.0) / 0.4; thief.position.set(lerp(0.85, 1.25, k), 0.3 * Math.sin(k * Math.PI), 7.3); thief.scale.setScalar(PS * (1 - k * 0.8)); }
@@ -305,7 +314,7 @@ function cutscene(dt) {
   if (t >= 7.0) finishIntro();
 }
 function playIntro() {
-  cs.on = true; cs.t = 0; intro.visible = true; thief.visible = true; thief.scale.setScalar(PS); mayor.visible = false; chunks[0].userData.deco.visible = false;
+  cs.on = true; cs.t = 0; cs.fx = {}; intro.visible = true; thief.visible = true; thief.scale.setScalar(PS); mayor.visible = false; chunks[0].userData.deco.visible = false;
   $("hud").hidden = true; $("skip").hidden = false;
   flash("🤫 שקט... הרודסטר של ראש העיר");
   setTimeout(() => { if (cs.on) flash("🔑 נכנסת! עכשיו סע!"); }, 2400);
@@ -322,6 +331,7 @@ let last = performance.now();
 function frame(now) {
   const dt = Math.min(0.05, (now - last) / 1000); last = now;
   if (st.on) step(dt); else if (cs.on) cutscene(dt);
+  if (!cs.on) sfx.engineHum(st.on, st.speed);
   for (let i = puffs.length - 1; i >= 0; i--) { const p = puffs[i]; p.userData.t += dt; p.scale.setScalar(p.userData.s * (1 + p.userData.t * 3)); p.material.opacity = Math.max(0, 0.85 - p.userData.t * 1.4); if (p.userData.t > 0.6) { scene.remove(p); puffs.splice(i, 1); } }
   if (alertT > 0 && (alertT -= dt) <= 0) $("alert").hidden = true;
   if (!cs.on) {
@@ -349,14 +359,18 @@ function begin() {
 }
 function end(why) {
   st.on = false; st.why = why;
+  sfx.engineHum(false); sfx.play(why.includes("לבור") ? "pit" : why.includes("המאבטחים") ? "caught" : "crash");
   $("hud").hidden = true; $("swipehint").hidden = true;
   $("why").textContent = why; $("okm").textContent = (st.dist * KM_PER_UNIT).toFixed(1);
   $("ocity").textContent = `ברחת עד ${st.city} 🏁`; $("oscore").textContent = score().toLocaleString("he-IL"); $("ocoins").textContent = st.coins;
   try { $("handle").value = localStorage.getItem("roadster-handle") || ""; } catch {}
   $("over").hidden = false; loadTop("top2");
 }
-$("go").addEventListener("click", () => { if (!LOCKED) start(); });
-$("again").addEventListener("click", start);
+$("go").addEventListener("click", () => { sfx.unlock(); if (!LOCKED) start(); });
+$("again").addEventListener("click", () => { sfx.unlock(); start(); });
+const muteBtn = $("mute");
+const showMute = () => { muteBtn.textContent = sfx.isMuted() ? "🔇" : "🔊"; muteBtn.setAttribute("aria-label", sfx.isMuted() ? "הפעלת סאונד" : "השתקת סאונד"); };
+muteBtn.addEventListener("click", (e) => { e.stopPropagation(); sfx.unlock(); sfx.setMuted(!sfx.isMuted()); showMute(); muteBtn.blur(); }); showMute();
 $("share").addEventListener("click", () => {
   const text = `גנבתי לביבי את הרודסטר וברחתי ${(st.dist * KM_PER_UNIT).toFixed(1)} ק״מ עד ${st.city} 🏎️ נסו לעקוף אותי:`;
   const url = location.origin + "/roadster?src=share";
@@ -408,6 +422,6 @@ const LOCKED = CFG.locked && new URLSearchParams(location.search).get("preview")
 if (LOCKED) { $("start").hidden = true; $("locked").hidden = false; } else loadTop("top");
 $("loading").classList.add("done");
 requestAnimationFrame(frame);
-if (new URLSearchParams(location.search).has("debug")) window.__game = { st, step, start, end, act, obs, spawn, scene, camera, renderer, car, cs, cutscene, playIntro };
+if (new URLSearchParams(location.search).has("debug")) window.__game = { st, step, start, end, act, obs, spawn, scene, camera, renderer, car, cs, cutscene, playIntro, sfx };
 if (!LOCKED && new URLSearchParams(location.search).has("autostart")) start();
 if (!LOCKED && new URLSearchParams(location.search).has("autointro")) start();
