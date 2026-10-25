@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'instagram-cutouts-story',
+    title: 'סטורי שבו הפוסט קופץ מהמסך',
+    description: 'מדריך לסטורי שבו הדמויות יוצאות מתוך הפוסט, עם מדבקת Cutouts המובנית של אינסטגרם, בלי אפליקציות נוספות',
+    summary: 'הפוסטים שלכם נראים כמו של כולם? צילום מסך של פוסט, שתי תמונות ומדבקת Cutouts שכבר יש לכם באינסטגרם: הבינה גוזרת את הדמות לבד, ומניחים אותה בדיוק מעל התמונה כך שהיא יוצאת מהמסגרת. מדריך צעד אחר צעד עם צילומי מסך מכל שלב, ובסוף סטורי שכולם עוצרים עליו.',
+    image: '/guides/guide-instagram-cutouts-story.png',
+    href: '/guides/instagram-cutouts-story',
+    category: 'טריקים',
+    popular: false,
+    isNew: true,
+    date: '2026-10-25',
+    free: false,
+  },
+  {
     id: 'rea-reverse-engineer',
     title: 'Claude מפרק אפליקציה ובונה לך אחת משלך',
     description: 'מדריך התקנה ל-REA: כלי חינמי שמחברים ל-Claude Code, שלומד איך אפליקציה עובדת בלי קוד המקור ובונה לכם גרסה משלכם',

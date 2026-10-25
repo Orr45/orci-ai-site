@@ -1,0 +1,230 @@
+import Image from 'next/image'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'סטורי שבו הפוסט קופץ מהמסך | Orci AI',
+  description: 'מדריך צעד אחר צעד לסטורי שבו הדמויות קופצות מתוך הפוסט, עם מדבקת Cutouts המובנית של אינסטגרם. בלי אפליקציות נוספות ובלי עריכה.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        סטורי שבו הפוסט קופץ מהמסך
+      </h1>
+      <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        הפוסטים שלכם נראים כמו של כולם? עם מדבקה אחת שכבר יש לכם באינסטגרם, הדמויות יוצאות מתוך המסגרת וכולם עוצרים על הסטורי.
+      </div>
+
+      {/* Tools Badges */}
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">📸 Instagram Stories</span>
+        <span className="cap-badge text-sm">✂️ Cutouts</span>
+        <span className="cap-badge text-sm">⏱️ 3 דקות</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* The reel */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        הסרטון
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        כל הטריק קורה בתוך אינסטגרם: צילום מסך של פוסט, שתי תמונות, ומדבקת <span className="text-orci-cyan font-bold">Cutouts</span> שגוזרת את הדמות לבד עם בינה מלאכותית.
+      </div>
+      <div className="my-8 max-w-sm mx-auto">
+        <video src="/guides/instagram-cutouts-story/reel.mp4" poster="/guides/instagram-cutouts-story/poster-reel.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הסרטון המלא</p>
+      </div>
+    </div>
+
+    {/* Step 0 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        לפני הכל: מה צריך
+      </h2>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>אינסטגרם מעודכן בטלפון. אם אין לכם <span className="text-orci-cyan font-bold">Cutouts</span> במגש המדבקות של הסטורי, תעדכנו את האפליקציה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>פוסט שאתם רוצים שכולם יראו. זה יכול להיות פוסט קיים שלכם.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>שתי תמונות עם <span className="text-orci-cyan font-bold">דמות אחת ברורה</span> ורקע פשוט. ככה הבינה גוזרת הכי מדויק.</li>
+      </ul>
+    </div>
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: שתי תמונות וצילום מסך של הפוסט
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        מצלמים שתי תמונות, ונכנסים לפוסט שאתם רוצים שכולם יראו. עושים לו <span className="text-orci-cyan font-bold">צילום מסך</span> ושומרים אותו בגלריה.
+      </div>
+      <div className="my-8 grid grid-cols-2 gap-4">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/instagram-cutouts-story/step1-photo1.jpg" alt="תמונה ראשונה: ילדה ואור ליד מכונה כתומה" width={700} height={525} className="w-full h-auto" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">תמונה 1</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/instagram-cutouts-story/step1-photo2.jpg" alt="תמונה שנייה: אור עומד מול נוף הרים" width={700} height={525} className="w-full h-auto" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">תמונה 2</p>
+        </div>
+      </div>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-xs mx-auto">
+        <Image src="/guides/instagram-cutouts-story/step1-post.png" alt="הפוסט באינסטגרם לפני צילום המסך" width={600} height={1195} className="w-full h-auto" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הפוסט שעושים לו צילום מסך</p>
+      </div>
+    </div>
+
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: צילום המסך כרקע של הסטורי
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        לוחצים על <span className="text-orci-cyan font-bold">+</span> ובוחרים <span className="text-orci-cyan font-bold">Story</span>, ומהגלריה בוחרים את צילום המסך. עכשיו הפוסט ממלא את כל הסטורי.
+      </div>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-xs mx-auto">
+        <Image src="/guides/instagram-cutouts-story/step2-background.png" alt="סטורי שהרקע שלו הוא צילום המסך של הפוסט" width={600} height={1195} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 3 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3: התמונה הראשונה, על כל הפוסט
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        פותחים את מגש המדבקות, בוחרים <span className="text-orci-cyan font-bold">Photo</span> ומוסיפים את התמונה הראשונה. מגדילים אותה עם שתי אצבעות עד שהיא <span className="text-orci-cyan font-bold">מכסה בדיוק את התמונה של הפוסט</span>.
+      </div>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-xs mx-auto">
+        <Image src="/guides/instagram-cutouts-story/step3-photo.png" alt="התמונה הראשונה מוגדלת על התמונה של הפוסט" width={600} height={1195} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 4 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 4: Cutouts גוזר את הדמות לבד
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        שוב מגש המדבקות, והפעם <span className="text-orci-cyan font-bold">Cutouts</span>. בוחרים <span className="text-orci-cyan font-bold">את אותה תמונה</span>, והבינה של אינסטגרם מסמנת את הדמויות וגוזרת אותן מהרקע. לוחצים <span className="text-orci-cyan font-bold">Use sticker</span>.
+      </div>
+      <div className="my-8 grid grid-cols-2 gap-4">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/instagram-cutouts-story/step4-cutouts.png" alt="מגש המדבקות של הסטורי עם הכפתור Cutouts" width={600} height={1195} className="w-full h-auto" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">Cutouts במגש המדבקות</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/instagram-cutouts-story/step4-outline.png" alt="המסך Create a cutout sticker עם הדמויות מסומנות בקו לבן" width={600} height={1195} className="w-full h-auto" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">הבינה גוזרת את הדמויות</p>
+        </div>
+      </div>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        <span className="text-orci-cyan font-bold">הגזירה פספסה משהו?</span> לוחצים <span className="text-orci-cyan font-bold">Select manually</span> ומסמנים בעצמכם.
+      </div>
+    </div>
+
+    {/* Step 5 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 5: בדיוק מעל, וקצת מחוץ למסגרת
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        שמים את המדבקה <span className="text-orci-cyan font-bold">בדיוק מעל</span> הדמויות שבתמונה, כך שהן מתלכדות. אחר כך גוררים אותה קצת, כך שחלק מהדמות <span className="text-orci-cyan font-bold">יוצא מהמסגרת</span> אל שורת הלייקים. זה כל הקסם.
+      </div>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-xs mx-auto">
+        <Image src="/guides/instagram-cutouts-story/step5-out.png" alt="הדמויות הגזורות יוצאות מהמסגרת של התמונה אל שורת הלייקים" width={600} height={1195} className="w-full h-auto" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הרגליים יוצאות מעל שורת הלייקים</p>
+      </div>
+    </div>
+
+    {/* Step 6 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 6: אותו דבר עם התמונה השנייה, בריבוע
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        מוסיפים את התמונה השנייה דרך <span className="text-orci-cyan font-bold">Photo</span>, לוחצים עליה כדי לשנות צורה ובוחרים <span className="text-orci-cyan font-bold">ריבוע</span>, ומניחים אותה על התמונה של הפוסט הבא בצילום המסך. אחר כך שוב <span className="text-orci-cyan font-bold">Cutouts</span> על אותה תמונה, והדמות שלכם יוצאת גם מהמסגרת הזאת.
+      </div>
+      <div className="my-8 grid grid-cols-2 gap-4">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/instagram-cutouts-story/step6-square.png" alt="התמונה השנייה בצורת ריבוע" width={600} height={1195} className="w-full h-auto" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">משנים צורה לריבוע</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/instagram-cutouts-story/step6-outline2.png" alt="Cutouts גוזר את הדמות מהתמונה השנייה" width={600} height={1195} className="w-full h-auto" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">Cutouts על התמונה השנייה</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Result Card */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          ובום. יש לכם פוסט שנראה כאילו <span className="text-orci-cyan font-bold">קפץ מהמסך</span>, וכולם עוצרים עליו ולא מבינים איך עשיתם אותו.
+        </div>
+      </div>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-xs mx-auto">
+        <Image src="/guides/instagram-cutouts-story/result-story.jpg" alt="הסטורי הגמור: הדמויות קופצות מתוך שני הפוסטים" width={700} height={1244} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">לא צריך אפליקציית עריכה כדי לעצור גלילה.</span>
+        </div>
+        <div className="text-lg text-slate-300">
+          המדבקה כבר מחכה לכם בסטורי. מה שהופך פוסט רגיל למשהו שעוצרים עליו הוא דמות אחת שיוצאת מהמסגרת.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <div className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+      </div>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>
