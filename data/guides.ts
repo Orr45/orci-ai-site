@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'rea-reverse-engineer',
+    title: 'Claude מפרק אפליקציה ובונה לך אחת משלך',
+    description: 'מדריך התקנה ל-REA: כלי חינמי שמחברים ל-Claude Code, שלומד איך אפליקציה עובדת בלי קוד המקור ובונה לכם גרסה משלכם',
+    summary: 'משלמים מנוי על אפליקציה שסופרת קלוריות מתמונה? REA (Reverse Engineer Anything) הוא כלי חינמי וקוד פתוח שמתחבר ל-Claude Code בפקודה אחת. הוא בודק את האפליקציה כמו משתמש ורושם מה ראה, מה הסיק ומה לא ידוע, ואז Claude בונה לכם גרסה משלכם, בלי קוד המקור ובלי מנוי. כולל פקודות התקנה ושלושה פרומפטים מוכנים.',
+    image: '/guides/guide-rea-reverse-engineer.png',
+    href: '/guides/rea-reverse-engineer',
+    category: 'טריקים',
+    popular: false,
+    isNew: true,
+    date: '2026-10-25',
+    free: false,
+  },
+  {
     id: 'claude-video-editing',
     title: 'איך Claude עורך לי רילס שלם',
     description: 'מקליטים טייק אחד עם כל הגמגומים, ו-Claude Code חותך, כותב סטוריבורד ובונה את כל העריכה, בלי CapCut',
