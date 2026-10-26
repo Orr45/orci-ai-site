@@ -24,7 +24,7 @@ export const metadata = {
       <div className="flex flex-wrap gap-3 justify-center">
         <span className="cap-badge text-sm">🤖 Claude Code</span>
         <span className="cap-badge text-sm">🔍 REA · Reverse Engineer Anything</span>
-        <span className="cap-badge text-sm">🟢 Node.js</span>
+        <span className="cap-badge text-sm">💬 3 בקשות ל-Claude</span>
       </div>
     </div>
   </div>
@@ -48,6 +48,20 @@ export const metadata = {
       </div>
     </div>
 
+    {/* The repo */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        הקישור לכלי
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        REA חינמי ובקוד פתוח, ונמצא ב-GitHub:{' '}
+        <a href="https://github.com/morluto/rea" target="_blank" rel="noopener noreferrer" className="text-orci-cyan underline font-bold">github.com/morluto/rea</a>
+      </div>
+      <div className="text-lg text-slate-300 leading-relaxed">
+        הוא עובד עם <span className="text-orci-cyan font-bold">Claude Code</span>, וגם עם Cursor, Codex, Gemini CLI ו-Grok. במדריך הזה נעבוד עם Claude Code.
+      </div>
+    </div>
+
     {/* Step 0 */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
@@ -55,9 +69,11 @@ export const metadata = {
       </h2>
       <ul className="list-none space-y-3 mb-6">
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Claude Code</span>: הגרסה של Claude שעובדת ישירות על המחשב שלכם ומריצה כלים בעצמה. נכנסים אליה עם מנוי Claude.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Node.js</span> בגרסה 22, 24 או 26.12.1 ומעלה. לא בטוחים? תגידו ל-Claude Code ״תבדוק איזו גרסה של Node.js יש לי ותתקין גרסה נתמכת של REA אם צריך״.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>האפליקציה שאתם רוצים להבין, מותקנת אצלכם. ברילס זו אפליקציה לספירת קלוריות מתמונה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>האפליקציה שאתם רוצים להבין, <span className="text-orci-cyan font-bold">מותקנת על המחשב</span>. REA בודק תוכנות שעל המחשב, לא אפליקציות בטלפון. ברילס זו אפליקציה לספירת קלוריות מתמונה.</li>
       </ul>
+      <div className="text-lg text-slate-300 leading-relaxed">
+        זהו. את כל השאר, כולל ההתקנה של REA, Claude Code עושה בשבילכם בשלב הבא.
+      </div>
     </div>
 
     {/* Step 1 */}
@@ -66,27 +82,33 @@ export const metadata = {
         שלב 1: מתקינים את REA ומחברים ל-Claude
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        פותחים טרמינל ומריצים פקודה אחת. ההתקנה מודרכת: היא שואלת לאילו כלים לחבר את REA, ומראה בדיוק מה היא עומדת לשנות לפני שהיא כותבת משהו. כדי לחבר רק ל-<span className="text-orci-cyan font-bold">Claude Code</span>:
+        לא צריך לדעת לתכנת. מעתיקים את הבקשה הזאת ל-<span className="text-orci-cyan font-bold">Claude Code</span>, והוא מתקין הכל לבד ומראה לכם מה הוא עושה:
       </div>
-      <CopyPrompt prompt="npx rea-agents setup --client claude_code" />
-      <div className="text-lg text-slate-300 leading-relaxed mb-4 mt-6">
-        בודקים שהחיבור עבד:
+      <CopyPrompt prompt="תתקין לי את REA (github.com/morluto/rea) עם npx rea-agents setup --client claude_code, ותבדוק עם doctor שהוא מחובר אליך. אם חסר לי Node.js בגרסה מתאימה, תתקין אותו קודם. לפני כל שינוי בקבצי הגדרות תראה לי מה אתה הולך לשנות, ותסביר לי בפשטות מה קורה בכל שלב." />
+      <div className="text-lg text-slate-300 leading-relaxed mt-6 mb-4">
+        כשהוא שואל אם לאשר פעולה, קוראים מה הוא מתכוון לעשות ומאשרים. בסוף הוא יגיד לכם ש-REA מחובר.
       </div>
-      <CopyPrompt prompt="npx rea-agents doctor --client claude_code --skill --json" />
-      <div className="text-lg text-slate-300 leading-relaxed mb-4 mt-6">
-        <span className="text-orci-cyan font-bold">מעדיפים לא לגעת בטרמינל?</span> מבקשים מ-Claude Code לעשות את זה בשבילכם:
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        <span className="text-orci-cyan font-bold">חשוב:</span> אחרי ההתקנה סוגרים את Claude Code ופותחים אותו מחדש. רק אז הוא מכיר את REA.
       </div>
-      <CopyPrompt prompt="תתקין לי את REA (github.com/morluto/rea) עם npx rea-agents setup --client claude_code, ותבדוק עם doctor שהוא מחובר אליך. לפני כל שינוי בקבצי הגדרות תראה לי מה אתה הולך לשנות." />
       <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
         <Image src="/guides/rea-reverse-engineer/step1-terminal.png" alt="טרמינל עם הפקודה npx rea-agents setup" width={900} height={833} className="w-full h-auto" />
-        <p className="text-center text-sm text-orci-cyan font-bold mt-2">פקודה אחת, ו-REA מחובר ל-Claude Code</p>
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">ככה זה נראה כשההתקנה רצה</p>
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          🛠️ חיבור ידני לפרויקט אחד בלבד (מתקדמים)
+          🛠️ מעדיפים להריץ בעצמכם בטרמינל? (מתקדמים)
         </summary>
         <div className="text-lg text-slate-300 leading-relaxed mb-4">
-          במקום ההתקנה הכללית אפשר לחבר את REA רק לתיקייה שאתם עובדים בה. מריצים מתוך התיקייה, ובודקים עם <span className="text-orci-cyan font-bold">claude mcp list</span>. את מספר הגרסה העדכני תמצאו בעמוד של REA ב-GitHub.
+          צריך Node.js בגרסה 22, 24 או 26.12.1 ומעלה. ההתקנה מודרכת: היא שואלת לאילו כלים לחבר את REA, ומראה מה היא עומדת לשנות לפני שהיא כותבת משהו. מאשרים, ובסוף מפעילים מחדש את Claude Code. משתמשים בכלי אחר? מריצים <span className="text-orci-cyan font-bold">npx rea-agents setup</span> בלי התוספת, ובוחרים אותו מהרשימה.
+        </div>
+        <CopyPrompt prompt="npx rea-agents setup --client claude_code" />
+        <div className="text-lg text-slate-300 leading-relaxed mb-4 mt-6">
+          בודקים שהחיבור עבד:
+        </div>
+        <CopyPrompt prompt="npx rea-agents doctor --client claude_code --skill --json" />
+        <div className="text-lg text-slate-300 leading-relaxed mb-4 mt-6">
+          רוצים לחבר את REA רק לתיקייה אחת? מריצים מתוך התיקייה, ובודקים עם <span className="text-orci-cyan font-bold">claude mcp list</span>. את מספר הגרסה העדכני תמצאו בעמוד של REA ב-GitHub.
         </div>
         <CopyPrompt prompt="claude mcp add --scope local rea -- npx -y rea-agents@6.8.0 mcp" />
       </details>
@@ -98,14 +120,13 @@ export const metadata = {
         שלב 2: אומרים ל-Claude ״תבין איך היא עובדת״
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        REA <span className="text-orci-cyan font-bold">לא צריך את הקוד של האפליקציה</span>. הוא נכנס אליה, בודק אותה ומשחק איתה כמו משתמש, ורושם מה הוא רואה. כל מה שאתם עושים זה לבקש:
+        REA <span className="text-orci-cyan font-bold">לא צריך את הקוד של האפליקציה</span>. הוא נכנס אליה, בודק אותה ומשחק איתה כמו משתמש, ורושם מה הוא רואה. כל מה שאתם עושים זה להעתיק את הבקשה, ולהחליף את <span className="text-orci-cyan font-bold">[שם האפליקציה]</span> בשם של האפליקציה שלכם:
       </div>
-      <details className="my-6">
-        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחצו לצפייה בפרומפט המלא
-        </summary>
-        <CopyPrompt prompt={`תשתמש ב-REA כדי להבין איך עובדת אפליקציית ספירת הקלוריות [שם האפליקציה] שמותקנת אצלי. תיכנס אליה, תבדוק אותה ותשחק איתה כמו משתמש: צילום צלחת, התוצאה שמתקבלת, ומה קורה מאחורי הקלעים. אחר כך תכתוב לי מסמך מסודר בשלושה חלקים: מה ראית, מה אתה מסיק, ומה אתה עוד לא יודע. תפריד בין עובדה לניחוש.`} />
-      </details>
+      <CopyPrompt prompt={`תשתמש ב-REA כדי להבין איך עובדת אפליקציית ספירת הקלוריות [שם האפליקציה] שמותקנת אצלי. תיכנס אליה, תבדוק אותה ותשחק איתה כמו משתמש: צילום צלחת, התוצאה שמתקבלת, ומה קורה מאחורי הקלעים. אחר כך תכתוב לי מסמך מסודר בשלושה חלקים: מה ראית, מה אתה מסיק, ומה אתה עוד לא יודע. תפריד בין עובדה לניחוש.`} />
+      <div className="text-lg text-slate-300 leading-relaxed mt-6 mb-4">
+        <span className="text-orci-cyan font-bold">רוצים להתאמן קודם על משהו פשוט?</span> הבקשה הזאת עובדת על כל אפליקציה ועל כל פיצ׳ר. מחליפים את <span className="text-orci-cyan font-bold">החיפוש</span> ואת <span className="text-orci-cyan font-bold">Notes</span> במה שמעניין אתכם:
+      </div>
+      <CopyPrompt prompt="תבין איך עובד החיפוש באפליקציית Notes, תראה לי את הראיות, ותבנה פיצ׳ר דומה לפרויקט שלי." />
       <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
         <Image src="/guides/rea-reverse-engineer/step2-ask.png" alt="הבקשה ל-Claude: תבין איך עובדת אפליקציית ספירת הקלוריות" width={900} height={833} className="w-full h-auto" />
       </div>
@@ -142,18 +163,33 @@ export const metadata = {
         שלב 4: ״תבנה לי אחת כזאת״
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        עם המסמך ביד, Claude יודע בדיוק מה לבנות. מבקשים <span className="text-orci-cyan font-bold">גרסה משלכם</span>, עם עיצוב ושם משלכם, ומתחילים מגרסה פשוטה שרצה בדפדפן בטלפון.
+        עם המסמך ביד, Claude יודע בדיוק מה לבנות. מבקשים <span className="text-orci-cyan font-bold">גרסה משלכם</span>, עם עיצוב ושם משלכם, ומתחילים מגרסה פשוטה שרצה בדפדפן בטלפון:
       </div>
-      <details className="my-6">
-        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחצו לצפייה בפרומפט המלא
-        </summary>
-        <CopyPrompt prompt={`עכשיו תבנה לי אפליקציה משלי שעושה את אותו הדבר, לפי המסמך שכתבת: מצלמים צלחת, התמונה נשלחת למודל ראייה, ומקבלים קלוריות, חלבון, פחמימות ושומן. אל תעתיק קוד, עיצוב או שם מהאפליקציה המקורית. תעצב אותה בצהוב ושחור. תתחיל בגרסה פשוטה שרצה בדפדפן בטלפון, ותגיד לי מה אני צריך לחבר כדי שהיא תעבוד.`} />
-      </details>
+      <CopyPrompt prompt={`עכשיו תבנה לי אפליקציה משלי שעושה את אותו הדבר, לפי המסמך שכתבת: מצלמים צלחת, התמונה נשלחת למודל ראייה, ומקבלים קלוריות, חלבון, פחמימות ושומן. אל תעתיק קוד, עיצוב או שם מהאפליקציה המקורית. תעצב אותה בצהוב ושחור. תתחיל בגרסה פשוטה שרצה בדפדפן בטלפון. אני מתחיל, אז תסביר לי צעד אחר צעד מה אני צריך לחבר כדי שהיא תעבוד, למשל מפתח למודל הראייה ואיך משיגים אותו.`} />
+      <div className="text-lg text-slate-300 leading-relaxed mt-6 mb-4">
+        כדי שהאפליקציה תזהה אוכל היא צריכה חיבור למודל ראייה, ולרוב זה אומר מפתח API. Claude יגיד לכם מאיפה להביא אותו ואיפה להדביק אותו.
+      </div>
       <div className="my-8 rounded-2xl overflow-hidden max-w-xs mx-auto">
         <Image src="/guides/rea-reverse-engineer/step4-result.png" alt="האפליקציה החדשה: שקשוקה, 520 קלוריות" width={840} height={1140} className="w-full h-auto" />
         <p className="text-center text-sm text-orci-cyan font-bold mt-2">מצלמים את הצלחת, ומקבלים את הקלוריות. באפליקציה שלכם.</p>
       </div>
+    </div>
+
+    {/* Ideas */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        עוד רעיונות למה לבדוק
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        לא חייבים לבנות אפליקציה שלמה. לפעמים מספיק להבין איך משהו עובד:
+      </div>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">פיד ממכר</span>: איך אפליקציה טוענת את הפוסט הבא עוד לפני שגללתם אליו.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">כניסה ראשונה</span>: באיזה סדר אפליקציה מציגה את המסכים הראשונים, ומתי היא מבקשת מכם להירשם.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">אנימציות</span>: מה התזמון והתנועה שגורמים לכפתור להרגיש טוב.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">מסך שדרוג</span>: מתי אפליקציה מחליטה להראות לכם את המסך של ״שדרגו לפרימיום״.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">התראות</span>: מה גורם לאפליקציה לשלוח לכם התראה, ומתי.</li>
+      </ul>
     </div>
 
     {/* Step 5 */}
