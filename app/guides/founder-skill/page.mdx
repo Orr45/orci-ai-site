@@ -1,0 +1,288 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'בודקים רעיון לעסק על 100 לקוחות AI | Orci AI',
+  description: 'מדריך התקנה ל-Founder Skill: 11 סקילים חינמיים ל-Claude שעובדים כמו צוות סטארטאפ שלם, כולל פאנל של 100 לקוחות AI שבודק את הרעיון שלכם לפני שהוצאתם שקל.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        בודקים רעיון לעסק על 100 לקוחות AI
+      </h1>
+      <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        יש לכם רעיון לעסק ואמא שלכם אומרת שהוא גאוני? Founder Skill נותן ל-Claude צוות סטארטאפ שלם, ופאנל של 100 לקוחות שלא מכירים אתכם. ככה יודעים מי קונה, מי לא ולמה, לפני שמוציאים שקל על ההשקה.
+      </div>
+
+      {/* Tools Badges */}
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🤖 Claude Code</span>
+        <span className="cap-badge text-sm">🚀 Founder Skill</span>
+        <span className="cap-badge text-sm">💬 עובד גם בצ׳אט רגיל</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* The reel */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        הסרטון
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        <span className="text-orci-cyan font-bold">Founder Skill</span> הוא אוסף של 11 סקילים חינמיים ל-Claude, בקוד פתוח (MIT). כל סקיל הוא תפקיד אחר בסטארטאפ: דירקטוריון, מנהל שיווק, סמנכ״ל כספים, סוכן מתחרים, ועוד. הכי חזק מביניהם הוא <span className="text-orci-cyan font-bold">פאנל הלקוחות</span>.
+      </div>
+      <div className="my-8 max-w-sm mx-auto">
+        <video src="/guides/founder-skill/reel.mp4" poster="/guides/founder-skill/poster-reel.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הסרטון המלא</p>
+      </div>
+    </div>
+
+    {/* Step 0 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        לפני הכל: מה צריך
+      </h2>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Claude Code</span>: הגרסה של Claude שעובדת על המחשב שלכם. זו הדרך הכי טובה, כי הפאנל מריץ "סוכן" נפרד לכל קונה. אם חסר לכם משהו בדרך (למשל Python), Claude Code יגיד לכם ויתקין אותו אם תבקשו.</li>
+      </ul>
+      <div className="rounded-xl border border-orci-cyan/40 bg-orci-cyan/5 p-5 mt-6">
+        <div className="text-lg text-slate-300 leading-relaxed">
+          <span className="text-orci-cyan font-bold">🟢 אין לכם Claude Code? אפשר גם בצ׳אט רגיל עם Claude.</span> נכנסים לריפו ב-GitHub, פותחים את הקובץ <span className="text-orci-cyan font-bold">skills/founder-consumer/SKILL.md</span>, מעתיקים את כל הטקסט ומדביקים בתחילת שיחה חדשה. מתחתיו כותבים את הרעיון שלכם, ו-Claude יעבוד לפי השיטה. בלי סוכנים נפרדים, אבל לבדיקה ראשונה זה מספיק.
+        </div>
+      </div>
+    </div>
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: מתקינים את Founder Skill
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        בתוך <span className="text-orci-cyan font-bold">Claude Code</span> מריצים את שתי הפקודות האלה, אחת אחרי השנייה:
+      </div>
+      <CopyPrompt prompt="/plugin marketplace add Jakeschincariol/founder-skill" />
+      <div className="mt-4">
+        <CopyPrompt prompt="/plugin install founder-skill@founder-skill" />
+      </div>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4 mt-6">
+        <span className="text-orci-cyan font-bold">מעדיפים להגיד את זה במילים?</span> מדביקים ל-Claude את הקישור לריפו וכותבים מתחתיו install skill:
+      </div>
+      <CopyPrompt prompt={`https://github.com/Jakeschincariol/founder-skill
+
+install skill`} />
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/founder-skill/step1-terminal.png" alt="טרמינל עם פקודות ההתקנה של Founder Skill ב-Claude Code" width={900} height={797} className="w-full h-auto" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">שתי פקודות, ו-11 הסקילים בפנים</p>
+      </div>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        כשמתקינים כ-plugin, הסקילים מופיעים עם קידומת, למשל <span className="text-orci-cyan font-bold">/founder-skill:founder-consumer</span>.
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          🛠️ רוצים פקודות בלי קידומת? (מתקדמים)
+        </summary>
+        <div className="text-lg text-slate-300 leading-relaxed mb-4">
+          מעתיקים את תיקיות הסקילים ישירות לתיקיית הסקילים של Claude, ואז הפקודות נקראות פשוט <span className="text-orci-cyan font-bold">/founder-consumer</span>, <span className="text-orci-cyan font-bold">/founder-board</span> וכן הלאה:
+        </div>
+        <CopyPrompt prompt={`git clone https://github.com/Jakeschincariol/founder-skill.git
+cp -r founder-skill/skills/founder-* ~/.claude/skills/`} />
+      </details>
+    </div>
+
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: הצוות, ומה באמת צריך ממנו
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        יש 11 סקילים, כל אחד תפקיד אחר בסטארטאפ. <span className="text-orci-cyan font-bold">כדי להתחיל מספיקים שלושה:</span>
+      </div>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">פאנל לקוחות</span>: 100 קונים מדומים שאומרים לכם מי קונה, מי לא ולמה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">תמחור</span>: כמה הלקוחות מוכנים לשלם.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">הצעה</span>: מה להוסיף כדי שה״לא״ יהפוך ל״כן״.</li>
+      </ul>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 כל 11 התפקידים, לפי סדר ההרצה המומלץ
+        </summary>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        הם שומרים את מה שהם כותבים בתיקייה <span className="text-orci-cyan font-bold">founder/</span> בפרויקט שלכם, וכל אחד קורא את מה שהקודמים כתבו.
+      </div>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">דירקטוריון</span>: שלושה חברי בורד שמנקדים את הרעיון, אומרים מה יכול להרוג אותו ומצביעים.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">מתחרים</span>: מיפוי של מתחרים ישירים, עקיפים ותחליפים, עם מחירים ומה הלקוחות שלהם מתלוננים, וקישור לכל עובדה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">פאנל לקוחות</span>: 100 קונים מדומים, לכל אחד הכנסה, הרגלים וסיבה להגיד לא.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">תמחור</span>: הופך את תשובות הפאנל לטווח מחירים שהלקוחות מקבלים, מול המתחרים והמרווח שלכם.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">הצעה</span>: בונה הצעה שעונה על ההתנגדויות (בונוסים, אחריות, שם) ובודק אותה שוב על הפאנל.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">כספים</span>: כמה נשאר מכל מכירה, המרווח האמיתי, נקודת האיזון והשנה הראשונה חודש אחרי חודש.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">שיווק</span>: מיצוב, הערוצים שהלקוחות שלכם נמצאים בהם, קמפיין השקה ל-30 יום, ועשרה הוקים.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">מיתוג</span>: הצעות לשם, מה לבדוק בסימני מסחר ודומיינים, ושפה למותג.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">תפעול</span>: ספקים, עובדים, שגרת היום הראשון, היתרים שצריך לבדוק ורשימת סיכונים.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">השקה</span>: קודם בדיקה זולה מול אנשים אמיתיים, ואז תוכנית השקה לפי תאריכים.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">תוכנית עסקית</span>: מאחד הכל לתוכנית אחת, עם שורה תחתונה שמחושבת מהמספרים.</li>
+      </ul>
+      </details>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/founder-skill/step2-skills.png" alt="11 הסקילים של Founder Skill" width={900} height={797} className="w-full h-auto" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">צוות סטארטאפ שלם, בתוך Claude</p>
+      </div>
+    </div>
+
+    {/* Step 3 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3: פאנל של 100 לקוחות
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        זה החלק הכי חזק. כותבים את הרעיון ואת לקוח היעד, ו-Claude בונה <span className="text-orci-cyan font-bold">100 קונים</span>, לכל אחד הכנסה, הרגלי קנייה וסיבה להגיד לא. אחר כך הוא מריץ עליהם את הרעיון ומראה מי קונה, מי לא, ולמה, במילים שלהם.
+      </div>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        מעתיקים את הבקשה, ומחליפים את <span className="text-orci-cyan font-bold">בית הקפה לכלבים</span> ואת <span className="text-orci-cyan font-bold">לקוח היעד</span> ברעיון שלכם:
+      </div>
+      <CopyPrompt prompt={`תריץ את /founder-skill:founder-consumer על הרעיון שלי: בית קפה לכלבים בתל אביב. קפה ומאפים לבעלים, פינה מגודרת וחטיפים לכלבים. לקוח היעד: בעלי כלבים בני 25 עד 45 שגרים בתל אביב ויוצאים עם הכלב כל יום. תראה לי כמה מתוך 100 קונים, מה שלוש הסיבות העיקריות להגיד לא, ומה היה הופך את ה״לא״ ל״כן״.`} />
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        רק חושבים על רעיון ועוד לא בטוחים? יש גרסה מהירה:
+      </div>
+      <CopyPrompt prompt="/founder-skill:founder-consumer --quick" />
+      <div className="my-8 grid grid-cols-2 gap-4">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/founder-skill/step4-ask.png" alt="כותבים את הרעיון: בית קפה לכלבים בתל אביב" width={900} height={797} className="w-full h-auto" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">כותבים את הרעיון</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/founder-skill/step4-panel.png" alt="100 לקוחות מדומים בפאנל" width={900} height={797} className="w-full h-auto" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">ו-Claude בונה 100 לקוחות</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Step 4 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 4: משנים מחיר, משפרים הצעה ומריצים שוב
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        עם התשובות של הפאנל, <span className="text-orci-cyan font-bold">תמחור</span> מוצא טווח מחירים שהלקוחות מקבלים, ו<span className="text-orci-cyan font-bold">הצעה</span> בונה הצעה שעונה על ההתנגדויות ומריץ שוב פאנל קצר. ככה רואים אם אחוז הקונים עולה, לפני שהוצאתם שקל. באותה שיחה, מעתיקים:
+      </div>
+      <CopyPrompt prompt={`תריץ את /founder-skill:founder-pricing ואז את /founder-skill:founder-offer על התשובות של הפאנל: תמצא טווח מחיר שהלקוחות מקבלים, תבנה הצעה שעונה על שתי ההתנגדויות הכי נפוצות, ותריץ שוב פאנל קצר כדי לראות אם אחוז הקונים עולה.`} />
+      <div className="text-lg text-slate-300 leading-relaxed mb-4 mt-6">
+        <span className="text-orci-cyan font-bold">ככה זה יצא אצלנו</span>, בריצה אמיתית על בית קפה לכלבים בתל אביב (המספרים שבסרטון):
+      </div>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>פאנל מלא של 100 קונים, כניסה ב-₪45: <span className="text-orci-cyan font-bold">26 קונים, 74 לא</span>.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>הסיבות העיקריות להגיד לא: אין לי צורך בזה (28), יש לי כבר שגרה (20), לא סומך על מקום חדש (10).</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>התמחור מצא טווח של ₪20 עד ₪55, ומחיר מרכזי של <span className="text-orci-cyan font-bold">₪32</span>.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>ההצעה החדשה: ₪32, שעות שקטות לכלבים רגישים, אזור ישיבה מופרד וביקור ראשון בחינם. בפאנל קצר של 20 קונים: <span className="text-orci-cyan font-bold">9 מתוך 20 קנו (45%)</span>.</li>
+      </ul>
+    </div>
+
+    {/* Step 5 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 5: בודקים גם על אנשים אמיתיים
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        הפאנל הוא <span className="text-orci-cyan font-bold">לקוחות מדומים</span>, לא לקוחות אמיתיים. הוא דרך מהירה וזולה למצוא התנגדויות, קהלים וניסוחים, אבל הוא לא תחזית. מודלי שפה נוטים להסכים, אז את אחוז הקונים כדאי לקרוא כתקרה ולא כהבטחה.
+      </div>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/founder-skill:founder-launch</span> מתחיל בדיוק מזה: בדיקה זולה מול קונים אמיתיים, למשל דוכן פופ-אפ, לפני ההשקה הגדולה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>לעולם לא משתמשים בתשובות של הפאנל כהמלצות של לקוחות. זה מחקר, לא עדות.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>המספרים טובים כמו מה שהכנסתם. עלויות בודקים מול ספקים, ומיסים ומבנה החברה מול רואה חשבון.</li>
+      </ul>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/founder-skill/step6-real.png" alt="מדומה מול אמיתי: הפאנל ואז דוכן אמיתי" width={900} height={797} className="w-full h-auto" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">קודם מדומה, אחר כך אמיתי</p>
+      </div>
+    </div>
+
+    {/* Bonus */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        בונוס: הדירקטוריון וסמנכ״ל הכספים
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        רוצים עוד חוות דעת? כותבים <span className="text-orci-cyan font-bold">/founder-skill:founder-board</span> ומספרים את הרעיון. שלושה חברי בורד בודקים אותו, כל אחד דרך מסגרת חשיבה מספר מוכר: <span className="text-orci-cyan font-bold">הצעה</span> (לפי $100M Offers של הורמוזי), <span className="text-orci-cyan font-bold">מונופול</span> (לפי Zero to One של ת׳יל) ו<span className="text-orci-cyan font-bold">מוצר</span> (לפי הביוגרפיה של ג׳ובס). הם לא מתחזים לאנשים האלה, הם רק מפעילים את השיטות שלהם. סמנכ״ל הכספים מחשב כמה נשאר לכם מכל מכירה.
+      </div>
+      <div className="my-8 grid grid-cols-2 gap-4">
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/founder-skill/step3-board.png" alt="הדירקטוריון: הצעה, מונופול ומוצר תוקפים את הרעיון" width={900} height={797} className="w-full h-auto" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">הדירקטוריון</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <Image src="/guides/founder-skill/step3-cfo.png" alt="סמנכ״ל הכספים: מחיר, עלות ורווח" width={900} height={797} className="w-full h-auto" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">סמנכ״ל הכספים</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Result Card */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          במקום לנחש, יודעים <span className="text-orci-cyan font-bold">מי קונה, מי לא ולמה</span>, ומה לשנות במחיר ובהצעה, עוד לפני שהשקעתם שקל בהשקה.
+        </div>
+      </div>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">אמא שלכם היא לא מחקר שוק.</span>
+        </div>
+        <div className="text-lg text-slate-300">
+          תשאלו קודם 100 לקוחות שלא מכירים אתכם, ואחר כך תבדקו את מה שלמדתם מול אנשים אמיתיים.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <div className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+      </div>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>
