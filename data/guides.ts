@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'chatgpt-image-codes',
+    title: '5 פרומפטים סודיים לתמונות ב-ChatGPT',
+    description: 'מעלים תמונה אחת ל-ChatGPT, כותבים קוד קצר אחד, ומקבלים גרסה חדשה לגמרי של התמונה',
+    summary: 'מעלים תמונה אחת שלכם ל-ChatGPT וכותבים מילה אחת, כמו /GhostWalk או /Anime, בלי שום הסבר. ChatGPT מבין את הסגנון ומחזיר תמונה חדשה: רוחות שהולכות מאחוריכם, שער של מגזין רכילות, זווית מהרצפה או אש מאחוריכם. במדריך תמצאו את 5 הקודים מהסרטון ועוד 5 קודים בונוס, כל אחד עם התוצאה האמיתית שלו על אותה תמונה ומוכן להעתקה.',
+    image: '/guides/guide-chatgpt-image-codes.png',
+    href: '/guides/chatgpt-image-codes',
+    category: 'טריקים',
+    popular: false,
+    isNew: true,
+    date: '2026-11-04',
+    free: false,
+  },
+  {
     id: 'chatgpt-json-style',
     title: 'השיטה הסודית להעתיק סגנון של תמונה',
     description: 'מבקשים מ-ChatGPT קוד JSON של תמונה שאהבתם, ומלבישים את אותו סגנון בדיוק על הסלפי שלכם',

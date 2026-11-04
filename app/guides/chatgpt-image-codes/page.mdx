@@ -1,0 +1,240 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: '5 פרומפטים סודיים לתמונות ב-ChatGPT | Orci AI',
+  description: 'מעלים תמונה אחת ל-ChatGPT, כותבים קוד קצר אחד, ומקבלים גרסה חדשה לגמרי של התמונה. 5 קודים מהסרטון ועוד 5 בונוס, עם תוצאות אמיתיות.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        5 פרומפטים סודיים לתמונות ב-ChatGPT
+      </h1>
+      <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        תמונה אחת, קוד אחד, ותמונה חדשה לגמרי.
+      </p>
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🤖 ChatGPT</span>
+        <span className="cap-badge text-sm">🖼️ 5 קודים מהסרטון</span>
+        <span className="cap-badge text-sm">🎁 5 קודים בונוס</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* The reel */}
+    <div className="cap-card">
+      <div className="my-2 max-w-sm mx-auto">
+        <video
+          src="/guides/chatgpt-image-codes/reel.mp4"
+          poster="/guides/chatgpt-image-codes/poster-reel.jpg"
+          controls
+          playsInline
+          preload="none"
+          className="w-full rounded-2xl bg-black"
+        />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הסרטון המלא</p>
+      </div>
+    </div>
+
+    {/* How it works */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        איך זה עובד
+      </h2>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">1.</span><span className="pr-4 block">פותחים צ'אט חדש ב-<span className="text-orci-cyan font-bold">ChatGPT</span> ומעלים תמונה אחת שלכם. תמונה של כל הגוף עובדת הכי טוב.</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">2.</span><span className="pr-4 block">מעתיקים קוד אחד מהמדריך, מדביקים ושולחים. <span className="text-orci-cyan font-bold">בלי מילים נוספות.</span></span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">3.</span><span className="pr-4 block">רוצים סגנון נוסף? פותחים צ'אט חדש עם אותה תמונה, כדי שהסגנונות לא יתערבבו.</span></li>
+      </ul>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        חשוב לדעת: אלה לא פקודות נסתרות של ChatGPT. מודל התמונות קורא את הקוד כ<span className="text-orci-cyan font-bold">הוראת סגנון קצרה</span>, ולכן התוצאה משתנה קצת בכל פעם. כל התמונות כאן נוצרו מאותה תמונה, עם הקוד בלבד, במודל התמונות של OpenAI.
+      </p>
+    </div>
+
+    {/* Before */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        התמונה שהעליתי
+      </h2>
+      <div className="my-4 flex justify-center">
+        <div className="rounded-2xl overflow-hidden border border-white/10 bg-black/20 max-w-[260px]">
+          <Image src="/guides/chatgpt-image-codes/before.jpg" alt="התמונה המקורית: אור עומד על הר" width={900} height={1200} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-slate-400 font-bold text-sm">לפני</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* The 5 codes from the reel */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        5 הקודים מהסרטון
+      </h2>
+      <div className="my-4 grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/chatgpt-image-codes/after-ghostwalk.jpg" alt="תוצאת /GhostWalk" width={900} height={1206} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base" dir="ltr">/GhostWalk</p>
+            <p className="text-sm text-slate-400 mt-1">שלוש רוחות שקופות הולכות מאחוריכם</p>
+            <CopyPrompt prompt="/GhostWalk" />
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/chatgpt-image-codes/after-paparazzieditorial.jpg" alt="תוצאת /PaparazziEditorial" width={900} height={1206} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base" dir="ltr">/PaparazziEditorial</p>
+            <p className="text-sm text-slate-400 mt-1">שער של מגזין רכילות עם הפנים שלכם</p>
+            <CopyPrompt prompt="/PaparazziEditorial" />
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/chatgpt-image-codes/after-anime.jpg" alt="תוצאת /Anime" width={900} height={1206} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base" dir="ltr">/Anime</p>
+            <p className="text-sm text-slate-400 mt-1">גרסת אנימה מלאה של התמונה</p>
+            <CopyPrompt prompt="/Anime" />
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/chatgpt-image-codes/after-wormseyewide.jpg" alt="תוצאת /WormsEyeWide" width={900} height={1206} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base" dir="ltr">/WormsEyeWide</p>
+            <p className="text-sm text-slate-400 mt-1">זווית צילום מהרצפה שהופכת אתכם לענקים</p>
+            <CopyPrompt prompt="/WormsEyeWide" />
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20 sm:col-span-2 sm:max-w-sm sm:mx-auto">
+          <Image src="/guides/chatgpt-image-codes/after-firefade.jpg" alt="תוצאת /FireFade" width={900} height={1206} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base" dir="ltr">/FireFade</p>
+            <p className="text-sm text-slate-400 mt-1">אש וניצוצות שעולים מאחוריכם</p>
+            <CopyPrompt prompt="/FireFade" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Bonus codes */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        🎁 עוד 5 קודים בונוס
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        את אלה לא הראיתי בסרטון. בדקתי אותם על אותה תמונה, ככה שאתם רואים בדיוק מה יוצא.
+      </p>
+      <div className="my-4 grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/chatgpt-image-codes/after-claymation.jpg" alt="תוצאת /Claymation" width={900} height={1206} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base" dir="ltr">/Claymation</p>
+            <p className="text-sm text-slate-400 mt-1">אתם עשויים מפלסטלינה, כמו בסרט סטופ-מושן</p>
+            <CopyPrompt prompt="/Claymation" />
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/chatgpt-image-codes/after-pixarstyle.jpg" alt="תוצאת /PixarStyle" width={900} height={1206} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base" dir="ltr">/PixarStyle</p>
+            <p className="text-sm text-slate-400 mt-1">דמות תלת-ממד בסגנון פיקסאר</p>
+            <CopyPrompt prompt="/PixarStyle" />
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/chatgpt-image-codes/after-retropolaroid.jpg" alt="תוצאת /RetroPolaroid" width={900} height={1206} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base" dir="ltr">/RetroPolaroid</p>
+            <p className="text-sm text-slate-400 mt-1">פולארויד ישן עם מסגרת לבנה וצבעים דהויים</p>
+            <CopyPrompt prompt="/RetroPolaroid" />
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/chatgpt-image-codes/after-filmnoir.jpg" alt="תוצאת /FilmNoir" width={900} height={1206} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base" dir="ltr">/FilmNoir</p>
+            <p className="text-sm text-slate-400 mt-1">שחור-לבן קולנועי, עם מעיל ואור דרמטי</p>
+            <CopyPrompt prompt="/FilmNoir" />
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20 sm:col-span-2 sm:max-w-sm sm:mx-auto">
+          <Image src="/guides/chatgpt-image-codes/after-miniatureworld.jpg" alt="תוצאת /MiniatureWorld" width={900} height={1206} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold font-mono text-base" dir="ltr">/MiniatureWorld</p>
+            <p className="text-sm text-slate-400 mt-1">אפקט מיניאטורה, כאילו אתם בתוך דגם קטן</p>
+            <CopyPrompt prompt="/MiniatureWorld" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Tip */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        קוד לא עבד?
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        לפעמים ChatGPT עונה בטקסט במקום ליצור תמונה. במקרה כזה מוסיפים לקוד משפט אחד, ומבקשים לשמור על הפנים שלכם:
+      </p>
+      <CopyPrompt prompt="Apply /GhostWalk to this photo. Keep my face exactly the same." />
+      <p className="text-lg text-slate-300 leading-relaxed mt-4">
+        מחליפים את <span className="text-orci-cyan font-bold" dir="ltr">/GhostWalk</span> בכל קוד אחר מהמדריך.
+      </p>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">מילה אחת מספיקה כדי לתאר סגנון שלם.</span>
+        </p>
+        <p className="text-lg text-slate-300">
+          תמציאו קודים משלכם באותה שיטה: שם קצר באנגלית לסגנון שאתם רוצים, ותנו ל-ChatGPT להשלים את השאר.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <p className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+      </p>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>
