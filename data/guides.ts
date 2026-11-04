@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'claude-code-brand-videos',
+    title: 'סרטוני מותג עם Claude Code',
+    description: 'כותבים שורה אחת על העסק, מצרפים תמונה של המוצר, ו-Claude Code בונה סרטון מותג של 10 שניות לאינסטגרם בקוד',
+    summary: 'בלי צלם ובלי עורך: מורידים תיקייה אחת, פותחים אותה ב-Claude Code וכותבים שורה על העסק. Claude בודק את ההתקנה, כותב הוק, יתרונות ומבצע, מקליט קריינות בעברית, מנפיש את הסצנות בקוד ומתקן לבד את מה שנראה רע לפני שהוא מראה לכם. כולל את תיקיית הסקיל להורדה, דוגמאות לבית קפה, מסעדה וחנות בגדים, ומה זה עולה.',
+    image: '/guides/guide-claude-code-brand-videos.png',
+    href: '/guides/claude-code-brand-videos',
+    category: 'יצירת תוכן',
+    popular: false,
+    isNew: true,
+    date: '2026-11-04',
+    free: false,
+  },
+  {
     id: 'chatgpt-image-codes',
     title: '5 פרומפטים סודיים לתמונות ב-ChatGPT',
     description: 'מעלים תמונה אחת ל-ChatGPT, כותבים קוד קצר אחד, ומקבלים גרסה חדשה לגמרי של התמונה',
