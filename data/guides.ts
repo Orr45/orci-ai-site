@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'claude-code-video-effects',
+    title: '16 אפקטי וידאו עם Claude Code',
+    description: '16 אפקטים לריל, משבירת מסגרת ועד ורטיגו, שנכתבים בקוד עם Claude Code ו-HyperFrames ורצים על הצילום שלכם',
+    summary: 'בלי אפטר אפקטס ובלי תוכנת עריכה: Claude Code כותב כל אפקט בקוד, ו-HyperFrames מרנדר אותו על המחשב, על הצילום שלכם. פרומפט מוכן לכל אחד מ-16 האפקטים מהריל, משבירת מסגרת וגרין סקרין ועד ורטיגו, עומק ובועת תגובה, ועוד הרשימה שמחזיקה צופים עד הסוף ומה נתקע לנו בדרך.',
+    image: '/guides/guide-claude-code-video-effects.png',
+    href: '/guides/claude-code-video-effects',
+    category: 'יצירת תוכן',
+    popular: false,
+    isNew: true,
+    date: '2026-11-04',
+    free: false,
+  },
+  {
     id: 'claude-code-brand-videos',
     title: 'סרטוני מותג עם Claude Code',
     description: 'כותבים שורה אחת על העסק, מצרפים תמונה של המוצר, ו-Claude Code בונה סרטון מותג של 10 שניות לאינסטגרם בקוד',

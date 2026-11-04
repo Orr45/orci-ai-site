@@ -1,0 +1,290 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: '16 אפקטי וידאו עם Claude Code | Orci AI',
+  description: '16 אפקטים לריל, משבירת מסגרת ועד ורטיגו, שנכתבים בקוד עם Claude Code ו-HyperFrames ורצים על הצילום שלכם. פרומפט מוכן לכל אחד.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        16 אפקטי וידאו עם Claude Code
+      </h1>
+      <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        כל אפקט בריל נכתב בקוד ורונדר על המחשב, על הצילום שלי, בלי אפטר אפקטס. הנה הפרומפט לכל אחד מה-16.
+      </div>
+
+      {/* Tools Badges */}
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🤖 Claude Code</span>
+        <span className="cap-badge text-sm">🎬 HyperFrames</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* The reel */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        הסרטון
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        כל 16 האפקטים רצים על טייק אחד שלי שצולם בבית. <span className="text-orci-cyan font-bold">Claude Code</span> כתב את הקוד, ו-<span className="text-orci-cyan font-bold">HyperFrames</span> רינדר אותו לסרטון.
+      </div>
+      <div className="my-8 max-w-sm mx-auto">
+        <video src="/guides/claude-code-video-effects/reel.mp4" poster="/guides/claude-code-video-effects/poster-reel.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הסרטון המלא</p>
+      </div>
+    </div>
+
+    {/* What you need */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        לפני הכל: מה צריך
+      </h2>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Claude Code</span>: נכלל במנוי של Claude. אפשר באפליקציה או בטרמינל.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Node.js 22 ומעלה ו-ffmpeg</span>: לא צריך להתקין לבד. Claude בודק אם הם קיימים, ואם חסר משהו הוא מתקין.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">סרטון שלכם</span>: מצלמה קבועה, אתם במרכז הפריים. מצלמת טלפון מספיקה.</li>
+      </ul>
+      <div className="rounded-xl border border-orci-cyan/40 bg-orci-cyan/5 p-5 mt-6">
+        <div className="text-lg text-slate-300 leading-relaxed">
+          <span className="text-orci-cyan font-bold">כמה זה עולה:</span> מעבר למנוי של Claude, כלום. HyperFrames הוא קוד פתוח של HeyGen, והרינדור והחיתוך של הדמות מהרקע רצים על המחשב שלכם.
+        </div>
+      </div>
+    </div>
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: פותחים פרויקט מהסרטון
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        שמים את הסרטון בתיקייה, פותחים אותה ב-Claude Code ומדביקים את הפרומפט הזה. הוא מתקין את <span className="text-orci-cyan font-bold">HyperFrames</span>, פותח פרויקט אנכי, ומכין גרסה של הסרטון שבה אתם חתוכים מהרקע. רוב האפקטים צריכים אותה.
+      </div>
+      <CopyPrompt prompt="תתקין את HyperFrames ותפתח פרויקט אנכי 1080 על 1920 מהסרטון שלי me.mp4. אחר כך תחתוך אותי מהרקע עם hyperframes remove-background ותשמור גם את המסכה וגם את הרקע בלי הדמות, כדי שנוכל לשים דברים מאחוריי ומקדימה." />
+      <div className="text-lg text-slate-300 leading-relaxed mb-4 mt-4">
+        מכאן מוסיפים אפקט אחרי אפקט. לכל אחד יש פרומפט משלו, ואפשר לכתוב בכל אחד את השנייה שבה הוא יתחיל ("משנייה 3 עד 4.5").
+      </div>
+    </div>
+
+    {/* Step 2: the 16 effects */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: 16 האפקטים
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        בסדר שבו הם מופיעים בריל. כל תמונה היא פריים מהאפקט, על הצילום שלי.
+      </div>
+
+      <div className="my-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx01.jpg" alt="שבירת מסגרת: הראש יוצא מעל פוסט אינסטגרם" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">01 · שבירת מסגרת</p>
+            <CopyPrompt prompt="בשנייה 1 תשבור את הפריים ל-30 שברים משולשים שעפים החוצה. מתחתם תנחית כרטיס של פוסט אינסטגרם עם הסרטון שלי בפנים, והראש שלי יוצא מעל הקצה העליון של הכרטיס בעזרת המסכה. הרקע מסביב לכרטיס מטושטש וכהה." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx02.jpg" alt="גרין סקרין: קיר של רילס מאחורי הדמות" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">02 · גרין סקרין</p>
+            <CopyPrompt prompt="תחליף את הרקע שלי בקיר של פריימים מהרילס הקודמים שלי שגולל לאט למעלה, ותשאיר אותי מקדימה בעזרת המסכה. ברגע המעבר תוסיף הבזק לבן קצר." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx03.jpg" alt="מסלול: כרטיסים מסתובבים סביב הדמות" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">03 · מסלול</p>
+            <CopyPrompt prompt="5 כרטיסים של הרילס שלי מסתובבים סביבי במסלול תלת-ממדי בגובה החזה. כרטיס שעובר מאחוריי מוסתר מאחורי הגוף שלי (מתחת למסכה), וכרטיס שעובר מקדימה עולה מעליי." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx04.jpg" alt="ורטיגו: החדר נמשך אחורה" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">04 · ורטיגו</p>
+            <CopyPrompt prompt="אפקט דולי-זום: הרקע בלי הדמות מתרחק מ-125% ל-100%, ואני נשאר באותו גודל ואפילו מתקרב קצת. את החור שהדמות משאירה ברקע תמלא בטשטוש חזק של הפריים." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx05.jpg" alt="עומק מפוזר: מילה מאחורי הראש ומילה מקדימה" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">05 · עומק מפוזר</p>
+            <CopyPrompt prompt="המילה 'עומק' ענקית בלבן מאחורי הראש שלי, והמילה 'מפוזר' בצהוב מקדימה. כל אות נכנסת מכיוון אקראי עם טשטוש ומסתדרת במקום, ובסוף כל האותיות מתפזרות שוב." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx06.jpg" alt="גזירי נייר: הדמות כגזיר עם אותיות של מכתב כופר" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">06 · גזירי נייר</p>
+            <CopyPrompt prompt="תהפוך אותי לגזיר נייר: רקע של נייר משבצות עם שני פסי סלוטייפ צהובים, אני עם מסגרת לבנה עבה וצל, ומתחתיי המילים 'גזירי נייר' באותיות של מכתב כופר, כל אות בפונט ובצבע אחר." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx07.jpg" alt="שרבוט חי: קווי מתאר מצוירים סביב הדמות" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">07 · שרבוט חי</p>
+            <CopyPrompt prompt="תצייר סביב הדמות שלי שני קווי מתאר, לבן וצהוב, שנראים מצוירים ביד ורועדים 8 פעמים בשנייה. תוסיף כמה שרבוטים קטנים, עיגולים, כוכב וזיגזג, שנכתבים על המסך." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx08.jpg" alt="זום דרך אור: פיצוץ אור בין שני שוטים" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">08 · זום דרך אור</p>
+            <CopyPrompt prompt="מעבר בין שני שוטים: זום-בלר חזק לכיוון המרכז, קרני אור צהובות-לבנות ופיצוץ אור באמצע, ומשם השוט הבא נפתח. תכתוב אותו כשיידר WebGL." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx09.jpg" alt="מוקאפ טלפון עם הסרטון בתוכו" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">09 · מוקאפ טלפון</p>
+            <CopyPrompt prompt="אייפון תלת-ממדי קופץ מלמטה בצד שמאל ומסתובב לאט. על המסך שלו כותרת 'אתה מצלם. Claude עורך.', ומתחתיה הסרטון שלי מתנגן." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx10.jpg" alt="זום דיגיטלי עם ממשק של מצלמת וידאו" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">10 · זום דיגיטלי</p>
+            <CopyPrompt prompt="מראה של מצלמת וידאו: סוגריים לבנים בפינות, REC אדום שמהבהב וטיימקוד רץ. הזום נכנס בקפיצות, 1.0, 1.1, 1.2 ו-1.3, והמספר על המסך מתעדכן בהתאם." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx11.jpg" alt="מדבקה צהובה שנדבקת על חפץ בפריים" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">11 · מדבקה</p>
+            <CopyPrompt prompt="מדבקה צהובה עם המילה 'מדבקה' נדבקת בקפיצה על חפץ שלא זז בפריים, כמו המזגן או הקיר לידי, ונשארת דבוקה במקום. תשים אותה מתחת למסכה, כדי שהיד שלי תעבור מעליה." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx12.jpg" alt="קיר כותרות: גזירי עיתון סביב הדמות" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">12 · קיר כותרות</p>
+            <CopyPrompt prompt="גזירי עיתון קופצים מסביבי אחד אחרי השני: כותרת 'Claude עורך עכשיו את הסרטונים שלך', פתק צהוב 'נערך ע״י Claude', גזיר 'בלי אפטר אפקטס' וכרטיס סרטון קטן. כל אחד מוטה קצת ועם צל." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx13.jpg" alt="לפני ואחרי עם פס אור" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">13 · לפני ואחרי</p>
+            <CopyPrompt prompt="פס אור לבן עובר על המסך מימין לשמאל. מימין לפס הסרטון שטוח ודהוי ('לפני'), ומשמאל עם קונטרסט, צבע חם וויניאט ('אחרי'), עם תווית קטנה לכל צד." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx14.jpg" alt="עולם UI: חלונות ממשק מסביב לדמות" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">14 · עולם UI</p>
+            <CopyPrompt prompt="תחשיך את הסרטון ותכניס מסביבי חלונות ממשק שעפים פנימה בתלת-ממד: כרטיס פרומפט 'ערוך לי את הריל', פס התקדמות שמתמלא עד 100%, ציר זמן עם תמונות ממוזערות וכרטיס LIVE." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx15.jpg" alt="משיכה לאחור לתוך הטרמינל של Claude Code" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">15 · משיכה לאחור</p>
+            <CopyPrompt prompt="לקראת הסוף כל הפריים מתכווץ לחלון קטן בתוך טרמינל כהה. מעליו מופיעות שורות אחת אחרי השנייה: הפרומפט שלי, Write(index.html), render ו-✓ effects-reel.mp4. אחר כך הפריים חוזר למסך מלא." />
+          </div>
+        </div>
+
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-code-video-effects/fx16.jpg" alt="בועת תגובה עם המילה אפקט" width={600} height={833} className="w-full h-auto" />
+          <div className="p-4">
+            <p className="text-orci-cyan font-bold text-lg mb-2">16 · בועת תגובה</p>
+            <CopyPrompt prompt="בסוף הסרטון שורת תגובה של אינסטגרם עולה מלמטה. המילה 'אפקט' מוקלדת בה אות אחרי אות ונשלחת, ואז מופיעה בועה 'אפקט ♥' ותשובה 'שלחתי לך את הלינק' עם כפתור צהוב." />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    {/* Step 3: the list */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3: הרשימה שמחזיקה את הצופים עד הסוף
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        בריל יש כותרת קבועה ורשימה של כל 16 האפקטים משני צידי הראש, והאפקט שרץ עכשיו מסומן בצהוב. הצופה רואה כמה עוד נשאר, ונשאר.
+      </div>
+      <CopyPrompt prompt="תוסיף למעלה כותרת קבועה '16 אפקטים ש-Claude Code יוצר', ומתחתיה רשימה של כל האפקטים בשני טורים משני צידי הראש שלי. האפקט שרץ עכשיו מסומן בצהוב, ואלה שכבר עברו מעומעמים. הרשימה נכנסת רק משנייה 3." />
+    </div>
+
+    {/* Tips */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        מה נתקע לי בדרך, ואיך תיקנתי
+      </h2>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">אפקט שיוצא שחור</span>: אצלי השריפה יצאה שחורה בהתחלה. ביקשתי מ-Claude לבדוק את השגיאות בקונסול, והוא מצא פונקציה אחת שלא הוגדרה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">עובד בתצוגה ושחור בקובץ הסופי</span>: ברינדור HyperFrames מחליף כל וידאו בתמונות פריים. אם האפקט שלכם ב-WebGL, כתבו לו: "תוודא שהשיידר קורא את הפריים שהרינדור מזריק, ותתחיל לטעון כל קליפ חצי שנייה לפני שהוא מופיע".</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">לפני רינדור</span>: בקשו ממנו snapshot בכמה שניות ותסתכלו על הפריימים. זה הרבה יותר מהיר מרינדור של כל הסרטון בכל תיקון.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">טקסט בתוך האזור הבטוח</span>: כתוביות ורשימות בין גובה 310 ל-1240 פיקסלים, אחרת אינסטגרם מכסה או חותכת אותן.</li>
+      </ul>
+    </div>
+
+    {/* Result Card */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          ריל של 26 שניות עם <span className="text-orci-cyan font-bold">16 אפקטים</span> על הצילום שלכם, שנכתבו בקוד ורונדרו על המחשב, בלי אפטר אפקטס ובלי תוכנת עריכה.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <div className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+      </div>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>
