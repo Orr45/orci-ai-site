@@ -1,0 +1,236 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'סרטוני מותג עם Claude Code | Orci AI',
+  description: 'מדריך לסקיל brand-video: כותבים שורה אחת על העסק, מצרפים תמונה של המוצר, ו-Claude Code בונה סרטון מותג של 10 שניות לאינסטגרם בקוד, בלי צלם ובלי עורך.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        סרטוני מותג עם Claude Code
+      </h1>
+      <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        שורה אחת על העסק ותמונה של המוצר נכנסות, וסרטון מותג של 10 שניות לאינסטגרם יוצא. הכול נבנה בקוד: בלי צלם, בלי עורך ובלי מחולל וידאו בתשלום.
+      </div>
+
+      {/* Tools Badges */}
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🤖 Claude Code</span>
+        <span className="cap-badge text-sm">🎬 HyperFrames</span>
+        <span className="cap-badge text-sm">🎙️ Cartesia (רשות)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* The reel */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        הסרטון
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        הסקיל נקרא <span className="text-orci-cyan font-bold">brand-video</span>. זו תיקייה שפותחים ב-Claude Code, ומשם הוא עושה את כל העבודה: כותב את הטקסטים, מקליט קריינות, מנפיש את הסצנות בקוד של <span className="text-orci-cyan font-bold">HyperFrames</span>, מוסיף כתוביות, ובודק את עצמו לפני שהוא מראה לכם משהו.
+      </div>
+      <div className="my-8 max-w-sm mx-auto">
+        <video src="/guides/claude-code-brand-videos/reel.mp4" poster="/guides/claude-code-brand-videos/poster-reel.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הסרטון המלא</p>
+      </div>
+    </div>
+
+    {/* Step 0 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        לפני הכל: מה צריך
+      </h2>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Claude Code</span>: נכלל במנוי של Claude. אפשר באפליקציה של Claude למחשב או בטרמינל.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Node.js 22 ומעלה ו-ffmpeg</span>: לא צריך להתקין לבד מראש. Claude בודק אותם בשלב 2, ואם משהו חסר הוא מסביר בדיוק מה להתקין.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">מפתח של Cartesia</span> (רשות): בשביל קריינות בעברית. בלי מפתח הסרטון יוצא בלי קול, ומוסיפים מוזיקה באינסטגרם. אפשר גם מפתח של ElevenLabs.</li>
+      </ul>
+      <div className="rounded-xl border border-orci-cyan/40 bg-orci-cyan/5 p-5 mt-6">
+        <div className="text-lg text-slate-300 leading-relaxed">
+          <span className="text-orci-cyan font-bold">כמה זה עולה:</span> בניית הסרטון עצמו לא עולה כלום מעבר למנוי של Claude. הקריינות ב-Cartesia עולה קרדיט לכל תו, בערך 100 קרדיט לסרטון. בתוכנית החינמית יש 20 אלף קרדיט בחודש, אבל רישיון לשימוש מסחרי, כלומר פרסומת לעסק, מתחיל בתוכנית Pro, ב-5 דולר לחודש (נכון ל-2 בנובמבר 2026).
+        </div>
+      </div>
+    </div>
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: מורידים את התיקייה ופותחים אותה ב-Claude Code
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        מורידים את הקובץ, מחלצים אותו, ופותחים את התיקייה <span className="text-orci-cyan font-bold">brand-video</span> ב-Claude Code: באפליקציה בוחרים את התיקייה, ובטרמינל נכנסים אליה ומקלידים <span className="text-orci-cyan font-bold">claude</span>.
+      </div>
+      <div className="my-8 text-center">
+        <a href="/guides/claude-code-brand-videos/brand-video.zip" download className="cap-btn cap-btn-primary inline-flex">
+          ⬇️ הורדת התיקייה brand-video
+        </a>
+      </div>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/claude-code-brand-videos/step1-open.png" alt="התיקייה brand-video פתוחה ב-Claude Code" width={900} height={858} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: Claude בודק שיש לכם את כל מה שצריך
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        כותבים לו <span className="text-orci-cyan font-bold">היי</span>. הוא מריץ בדיקת התקנה ומראה רשימה: מה מוכן ומה חסר. על כל דבר שחסר הוא מסביר איך להתקין, אחד אחרי השני, ובודק שוב.
+      </div>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        אם רוצים קריינות, הוא מוביל אתכם בשלושה צעדים: נכנסים ל-Cartesia, יוצרים מפתח, ומדביקים אותו בקובץ <span className="text-orci-cyan font-bold">.env</span> שהוא פותח לכם. את המפתח לא מדביקים בצ'אט.
+      </div>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/claude-code-brand-videos/step2-setup.png" alt="בדיקת ההתקנה של הסקיל" width={900} height={858} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 3 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3: שורה אחת על העסק, ותמונה של המוצר
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        כותבים מה העסק, מה רוצים לקדם ובאיזה מחיר, וגוררים לצ'אט תמונה של המוצר מהטלפון. למשל:
+      </div>
+      <CopyPrompt prompt="סרטון לבית קפה בפלורנטין, קפה ומאפה בעשרים שקל" />
+      <div className="text-lg text-slate-300 leading-relaxed mb-4 mt-4">
+        הוא לא ממציא פרטים. אם חסר לו שם העסק, מחיר או שעות פתיחה, הוא שואל שאלה אחת קצרה. תמונה על רקע פשוט נגזרת הכי טוב. אם הגזירה יוצאת לא נקייה, הוא שם את התמונה בכרטיס במקום.
+      </div>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/claude-code-brand-videos/step3-line.png" alt="שורה אחת על בית הקפה בצ'אט של Claude Code" width={900} height={858} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 4 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 4: נותנים לו לעבוד
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        מהשורה והתמונה הוא כותב קובץ מותג אחד, ומשם בונה את הסרטון:
+      </div>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">הוק</span>: שתי שורות קצרות שמדברות על הלקוח, לא על העסק ("הבוקר שלך מתחיל כאן").</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">שלושה יתרונות, המבצע וקריאה לפעולה</span>, עם צבעים ופונט שמתאימים לסוג העסק.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">קריינות</span> בעברית, בקול שמתאים למותג, וכתוביות שעולות על כל מילה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">ארבע סצנות</span>: הוק, יתרונות, מחיר שרץ למעלה וקריאה לפעולה. הרקע זז כבר מהפריים הראשון.</li>
+      </ul>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/claude-code-brand-videos/step4-build.png" alt="הסרטון נבנה שכבה אחרי שכבה" width={900} height={858} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 5 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 5: הוא מתקן לבד לפני שאתם רואים
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        לפני הרינדור הוא מריץ בדיקה של HyperFrames שמוצאת טקסט חופף וניגודיות חלשה, מצלם פריימים מכל סצנה ונותן לכל אחת ציון. סצנה מתחת ל-8 מתוקנת ונבדקת שוב.
+      </div>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        זה קרה באמת כשבנינו את הסרטונים: השם <span className="text-orci-cyan font-bold">NOA STUDIO</span> יצא הפוך ("OIDUTS AON"), וההנחה הופיעה כ-"%-30". הבדיקה תפסה את שניהם לפני שראינו את הסרטון.
+      </div>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/claude-code-brand-videos/step5-fix.png" alt="לפני ואחרי התיקון של הבדיקה העצמית" width={900} height={858} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 6 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 6: מעלים לאינסטגרם, ומחר עוד אחד
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        הסרטון מחכה בתיקייה <span className="text-orci-cyan font-bold">out</span> כקובץ MP4 בגודל 1080×1920. מעלים אותו כריל, ואם אין קריינות בוחרים מוזיקה מהספרייה של אינסטגרם. בפעם הבאה כותבים שורה חדשה: מבצע אחר, מוצר אחר, אותו מותג.
+      </div>
+    </div>
+
+    {/* Result Card */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          שלושה עסקים, שלושה סרטונים, <span className="text-orci-cyan font-bold">שורה אחת לכל אחד</span>. התמונות הן תמונות מוצר רגילות.
+        </div>
+      </div>
+      <div className="my-8 grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div>
+          <video src="/guides/claude-code-brand-videos/fashion-noa.mp4" poster="/guides/claude-code-brand-videos/poster-fashion-noa.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">חנות בגדים</p>
+        </div>
+        <div>
+          <video src="/guides/claude-code-brand-videos/burger-esh.mp4" poster="/guides/claude-code-brand-videos/poster-burger-esh.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">מסעדת המבורגרים</p>
+        </div>
+        <div>
+          <video src="/guides/claude-code-brand-videos/cafe-boker.mp4" poster="/guides/claude-code-brand-videos/poster-cafe-boker.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">בית קפה</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">סרטון מותג פשוט כבר לא צריך יום צילום.</span>
+        </div>
+        <div className="text-lg text-slate-300">
+          צריך מוצר אמיתי, משפט אחד שאומר מה מיוחד בו, ו-Claude שבונה ובודק. אין לכם זמן גם לזה? <a href="/products" className="text-orci-cyan font-bold underline">אנחנו עושים את זה בשבילכם</a>.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <div className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+      </div>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>

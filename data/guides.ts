@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'chatgpt-json-style',
+    title: 'השיטה הסודית להעתיק סגנון של תמונה',
+    description: 'מבקשים מ-ChatGPT קוד JSON של תמונה שאהבתם, ומלבישים את אותו סגנון בדיוק על הסלפי שלכם',
+    summary: 'ראיתם תמונה בסגנון שבא לכם? במקום לנסות לתאר אותה במילים, ChatGPT מפרק אותה לקוד: רקע, תאורה, בגדים, זווית ועדשה. מדביקים את הקוד עם סלפי, והסגנון עובר אליכם עם אותן פנים. במדריך תמצאו את שני המשפטים לכתוב, דוגמה לקוד המלא, ואיך משנים שורה אחת (משקפיים, רקע, בגדים) בלי לאבד את שאר הסגנון.',
+    image: '/guides/guide-chatgpt-json-style.png',
+    href: '/guides/chatgpt-json-style',
+    category: 'טריקים',
+    popular: false,
+    isNew: true,
+    date: '2026-11-04',
+    free: false,
+  },
+  {
     id: 'instagram-cutouts-story',
     title: 'סטורי שבו הפוסט קופץ מהמסך',
     description: 'מדריך לסטורי שבו הדמויות יוצאות מתוך הפוסט, עם מדבקת Cutouts המובנית של אינסטגרם, בלי אפליקציות נוספות',
