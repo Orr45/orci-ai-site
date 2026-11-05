@@ -1,0 +1,352 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: '20 סגנונות עיצוב לעסק שלכם בפרומפט אחד | Orci AI',
+  description: 'פרומפט אחד ל-GPT Image 2.5 עם הלוגו של העסק, ומשנים בו רק את שם הסגנון. 20 פוסטרים אמיתיים של בית קפה אחד, עם הפרומפט המלא לכל סגנון.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        20 סגנונות עיצוב לעסק שלכם בפרומפט אחד
+      </h1>
+      <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        משלמים למעצב על כל פוסטר? מעלים את הלוגו, מדביקים פרומפט אחד, ומשנים בו רק מילה אחת: שם הסגנון.
+      </div>
+
+      {/* Tools Badges */}
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🎨 GPT Image 2.5</span>
+        <span className="cap-badge text-sm">🖼️ 20 סגנונות</span>
+        <span className="cap-badge text-sm">📋 20 פרומפטים מוכנים</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* The reel */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        הסרטון
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        בית קפה אחד, <span className="text-orci-cyan font-bold">בלומה</span>, ו-20 פוסטרים בסגנונות שונים לגמרי. כל הפוסטרים יצאו מאותו פרומפט, ורק שם הסגנון בו השתנה.
+      </div>
+      <div className="my-8 max-w-sm mx-auto">
+        <video src="/guides/20-design-styles/reel.mp4" poster="/guides/20-design-styles/poster-reel.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הסרטון המלא</p>
+      </div>
+    </div>
+
+    {/* Step 0 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        לפני הכל: מה צריך
+      </h2>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>גישה ל-<span className="text-orci-cyan font-bold">GPT Image 2.5</span>, מודל התמונות שאפשר להעלות אליו תמונת רפרנס. אנחנו עבדנו דרך Higgsfield.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>הלוגו של העסק כקובץ תמונה. אין לכם? בשלב 1 יש פרומפט ללוגו.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>שלושה טקסטים קצרים בעברית: שם העסק, שורה אחת מתחתיו, ומשהו לתחתית הפוסטר (למשל שעות פתיחה).</li>
+      </ul>
+      <div className="text-lg text-slate-300 leading-relaxed">
+        <span className="text-orci-cyan font-bold">ההגדרות שבהן יצאו כל 20 הפוסטרים:</span> יחס 2:3 (אנכי), איכות גבוהה, והלוגו מועלה כתמונת רפרנס.
+      </div>
+    </div>
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: הלוגו
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        יש לכם לוגו? מדלגים לשלב 2. אין לכם? זה הפרומפט שבו נוצר הלוגו של בלומה, ביחס <span className="text-orci-cyan font-bold">1:1</span>. מחליפים בו את סוג העסק, את השם בעברית, את השורה שמתחתיו ואת הצבעים.
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחצו לצפייה בפרומפט של הלוגו
+        </summary>
+        <CopyPrompt prompt={`A real, professionally designed logo for a small neighborhood coffee shop in Florentin, Tel Aviv, on a plain cream #F3EBDD background. A round stamp mark with a simple drawing of a white enamel cup with a blue rim, next to the Hebrew wordmark "בלומה" in a warm, slightly old-fashioned Hebrew typeface, with the smaller line "בית קפה שכונתי · פלורנטין" under it. Colors: deep blue #1F4E79 and terracotta #B5532C only. Flat vector look, no mockup, no shadows, no other text. Spell the Hebrew exactly as written, right to left.`} />
+      </details>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-xs mx-auto">
+        <Image src="/guides/20-design-styles/logo.webp" alt="הלוגו של בית הקפה בלומה: חותמת עגולה עם ספל אמייל" width={600} height={600} className="w-full h-auto" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הלוגו שממנו יצאו כל הפוסטרים</p>
+      </div>
+    </div>
+
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: הפרומפט
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        מעלים את הלוגו כתמונת רפרנס ומדביקים את הפרומפט. במקום <span className="text-orci-cyan font-bold">[STYLE]</span> כותבים את שם הסגנון, בדיוק כמו ברשימה בשלב 3.
+      </div>
+      <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in [STYLE] style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        מה מחליפים כדי שזה יהיה העסק שלכם:
+      </div>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">coffee shop</span>: סוג העסק שלכם באנגלית, למשל barbershop, bakery או yoga studio.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">a white enamel cup with a blue rim</span>: החפץ שמייצג את העסק, למשל מספריים, כיכר לחם או מזרן יוגה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>שלושת הטקסטים בעברית שבתוך המירכאות: השם, השורה שמתחתיו, והשורה התחתונה.</li>
+      </ul>
+      <div className="text-lg text-slate-300 leading-relaxed">
+        את כל השאר משאירים כמו שהוא. ככה <span className="text-orci-cyan font-bold">רק הסגנון משתנה</span>, וכל הפוסטרים נראים כמו אותו עסק.
+      </div>
+    </div>
+
+    {/* Step 3 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3: 20 הסגנונות
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        אלה 20 הפוסטרים מהסרטון, כמו שהם יצאו. מתחת לגלריה יש את הפרומפט המלא לכל סגנון, מוכן להעתקה.
+      </div>
+      <div className="my-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/minimalism.webp" alt="פוסטר של בית הקפה בלומה בסגנון Minimalism" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">1. Minimalism</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/cyberpunk.webp" alt="פוסטר של בית הקפה בלומה בסגנון Cyberpunk" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">2. Cyberpunk</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/retro.webp" alt="פוסטר של בית הקפה בלומה בסגנון Retro" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">3. Retro</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/swiss-design.webp" alt="פוסטר של בית הקפה בלומה בסגנון Swiss Design" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">4. Swiss Design</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/editorial.webp" alt="פוסטר של בית הקפה בלומה בסגנון Editorial" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">5. Editorial</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/pop-art.webp" alt="פוסטר של בית הקפה בלומה בסגנון Pop Art" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">6. Pop Art</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/handwritten.webp" alt="פוסטר של בית הקפה בלומה בסגנון Handwritten" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">7. Handwritten</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/collage-art.webp" alt="פוסטר של בית הקפה בלומה בסגנון Collage Art" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">8. Collage Art</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/vector-art.webp" alt="פוסטר של בית הקפה בלומה בסגנון Vector Art" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">9. Vector Art</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/pixel-art.webp" alt="פוסטר של בית הקפה בלומה בסגנון Pixel Art" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">10. Pixel Art</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/maximalism.webp" alt="פוסטר של בית הקפה בלומה בסגנון Maximalism" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">11. Maximalism</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/y2k.webp" alt="פוסטר של בית הקפה בלומה בסגנון Y2K" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">12. Y2K</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/clay-style.webp" alt="פוסטר של בית הקפה בלומה בסגנון Clay Style" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">13. Clay Style</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/glassmorphism.webp" alt="פוסטר של בית הקפה בלומה בסגנון Glassmorphism" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">14. Glassmorphism</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/futuristic.webp" alt="פוסטר של בית הקפה בלומה בסגנון Futuristic" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">15. Futuristic</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/aurora-gradient.webp" alt="פוסטר של בית הקפה בלומה בסגנון Aurora Gradient" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">16. Aurora Gradient</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/bohemian.webp" alt="פוסטר של בית הקפה בלומה בסגנון Bohemian" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">17. Bohemian</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/victorian-style.webp" alt="פוסטר של בית הקפה בלומה בסגנון Victorian Style" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">18. Victorian Style</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/graffiti.webp" alt="פוסטר של בית הקפה בלומה בסגנון Graffiti" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">19. Graffiti</p>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/20-design-styles/surreal-design.webp" alt="פוסטר של בית הקפה בלומה בסגנון Surreal Design" width={600} height={904} className="w-full h-auto" />
+          <p dir="ltr" className="px-2 py-2 text-center text-orci-cyan font-bold font-mono text-sm">20. Surreal Design</p>
+        </div>
+      </div>
+      <h3 className="text-2xl md:text-3xl font-bold mt-10 mb-4 text-orci-cyan">
+        הפרומפט לכל סגנון
+      </h3>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 1. Minimalism</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Minimalism style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 2. Cyberpunk</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Cyberpunk style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 3. Retro</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Retro style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 4. Swiss Design</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Swiss Design style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 5. Editorial</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Editorial style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 6. Pop Art</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Pop Art style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 7. Handwritten</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Handwritten style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 8. Collage Art</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Collage Art style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 9. Vector Art</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Vector Art style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 10. Pixel Art</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Pixel Art style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 11. Maximalism</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Maximalism style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 12. Y2K</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Y2K style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 13. Clay Style</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Clay Style style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 14. Glassmorphism</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Glassmorphism style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 15. Futuristic</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Futuristic style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 16. Aurora Gradient</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Aurora Gradient style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 17. Bohemian</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Bohemian style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 18. Victorian Style</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Victorian Style style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 19. Graffiti</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Graffiti style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+      <details className="my-3">
+        <summary dir="ltr" className="cursor-pointer text-orci-cyan font-bold font-mono text-lg list-none">📋 20. Surreal Design</summary>
+        <CopyPrompt prompt={`A vertical graphic design poster for the coffee shop in the reference logo, in Surreal Design style. Redraw the logo and the lettering fully in that style. Compose the whole poster the way a designer of that style would, not just the logo. The poster shows a white enamel cup with a blue rim. The only text on the poster is in Hebrew: the title "בלומה", below it "בית קפה שכונתי · פלורנטין", and at the bottom "כל יום מ-7:00". Spell the Hebrew exactly as written, right to left. No other text, no watermark.`} />
+      </details>
+    </div>
+
+    {/* Tips */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שני דברים שלמדנו בדרך
+      </h2>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">שם סגנון כללי מדי לא עובד.</span> עם "Aurora" לבד המודל ייצר פעמיים איור רגיל בלי שום אורורה. רק "Aurora Gradient" נתן את הגרדיאנט. אם פוסטר לא נראה כמו הסגנון, מוסיפים לשם מילה שמתארת אותו.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">בודקים את העברית בכל פוסטר.</span> השורה "Spell the Hebrew exactly as written" עוזרת, אבל מודלי תמונה עדיין יכולים לשבש אותיות בעברית. אם יש שגיאה, מייצרים שוב את אותו סגנון.</li>
+      </ul>
+    </div>
+
+    {/* Result Card */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          20 פוסטרים שונים לגמרי לאותו עסק, מ<span className="text-orci-cyan font-bold">פרומפט אחד</span>. בוחרים את הסגנון שמתאים לכם, או מחליפים אותו בכל עונה.
+        </div>
+      </div>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">כשהפרומפט קבוע, ההבדל הוא מילה אחת.</span>
+        </div>
+        <div className="text-lg text-slate-300">
+          זה מה שהופך את זה לשיטה ולא למזל: אותו לוגו, אותו טקסט, ורק הסגנון משתנה.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <div className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+      </div>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>

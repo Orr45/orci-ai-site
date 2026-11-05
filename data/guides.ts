@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: '20-design-styles',
+    title: '20 סגנונות עיצוב לעסק שלכם בפרומפט אחד',
+    description: 'מדריך עם 20 פרומפטים מוכנים ל-GPT Image 2.5: מעלים את הלוגו, משנים מילה אחת, ומקבלים פוסטר בסגנון אחר לגמרי',
+    summary: 'משלמים למעצב על כל פוסטר? מעלים את הלוגו של העסק ל-GPT Image 2.5, מדביקים פרומפט אחד ומשנים בו רק את שם הסגנון: מינימליזם, פופ ארט, פיקסל ארט, ויקטוריאני ועוד 16. במדריך תמצאו את הפרומפט המלא, מה להחליף בו כדי שיתאים לעסק שלכם, ו-20 פוסטרים אמיתיים של בית קפה אחד עם הפרומפט של כל סגנון מוכן להעתקה.',
+    image: '/guides/guide-20-design-styles.png',
+    href: '/guides/20-design-styles',
+    category: 'יצירת תוכן',
+    popular: false,
+    isNew: true,
+    date: '2026-11-04',
+    free: false,
+  },
+  {
     id: 'claude-homework-practice-site',
     title: 'שיעורי בית שהופכים לאתר תרגול עם Claude',
     description: 'מעלים ל-Claude את המצגת ואת דף שיעורי הבית, ומקבלים אתר תרגול עם בדיקה, שני רמזים ופתרון מלא',
