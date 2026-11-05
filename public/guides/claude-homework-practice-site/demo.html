@@ -1,0 +1,1027 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>תרגול עקומת התמורה</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Rubik:wght@500;600;700&display=swap">
+<style>
+/* Layout: one centered column of question cards under a sticky progress bar.
+   Palette follows the lecture deck: navy ink, deck blue, and the deck's green / red / amber for efficient / inefficient / impossible points. */
+:root{
+  --paper:#f3f5f9;
+  --paper-glass:rgba(243,245,249,.94);
+  --card:#ffffff;
+  --ink:#1c2840;
+  --ink-2:#4c5870;
+  --ink-3:#7b859a;
+  --line:#dde3ed;
+  --line-2:#c7d0df;
+  --accent:#2a5aa8;
+  --accent-ink:#ffffff;
+  --accent-soft:#ebf1fb;
+  --accent-line:#c9d8f0;
+  --ok:#2b7a4b;
+  --ok-soft:#e8f5ed;
+  --ok-line:#b8dcc5;
+  --bad:#b4442c;
+  --bad-soft:#fcece7;
+  --bad-line:#efc3b7;
+  --warn:#8d6200;
+  --warn-soft:#fcf3df;
+  --warn-line:#ecd59f;
+  --shadow:0 1px 2px rgba(28,40,64,.05),0 4px 14px rgba(28,40,64,.04);
+  --font-display:"Rubik","Assistant",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --font-body:"Assistant","Rubik",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --radius:14px;
+  --radius-sm:10px;
+  color-scheme:light;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.6;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0;line-height:1.25;color:var(--ink)}
+p{margin:0}
+button,input{font:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Sticky progress bar */
+.topbar{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:9;
+  background:var(--paper-glass);
+  -webkit-backdrop-filter:saturate(1.4) blur(8px);backdrop-filter:saturate(1.4) blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-inner{
+  max-width:760px;margin:0 auto;
+  padding-block:10px 12px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:7px;
+}
+.topbar-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.topbar-title{font-family:var(--font-display);font-weight:600;font-size:15px}
+.topbar-count{font-size:15px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.topbar-count b{color:var(--ink)}
+.progress{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
+.seg{height:7px;border-radius:4px;background:var(--line);transition:background-color .25s}
+.seg.is-correct{background:var(--ok)}
+.seg.is-shown{background:var(--line-2)}
+
+/* Page column */
+.wrap{
+  max-width:760px;margin:0 auto;
+  padding-block:24px 56px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:18px;
+}
+.intro{display:flex;flex-direction:column;gap:8px;padding-block:4px 6px}
+.eyebrow{font-size:14px;font-weight:600;color:var(--accent);letter-spacing:.02em}
+.intro h1{font-size:clamp(26px,5.2vw,34px);font-weight:700}
+.intro p{color:var(--ink-2);max-width:62ch}
+
+/* Data panel */
+.data{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow);
+}
+.data h2{font-size:19px;font-weight:600}
+.data p{color:var(--ink-2);max-width:62ch}
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;min-width:280px;font-variant-numeric:tabular-nums}
+th,td{border:1px solid var(--line-2);padding:7px 18px;text-align:center}
+th{background:var(--accent-soft);font-weight:700;font-size:15px}
+td:first-child{font-weight:700}
+
+/* Question cards */
+.q{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow);
+  scroll-margin-top:84px;transition:border-color .25s;
+}
+.q[data-state="correct"]{border-color:var(--ok-line)}
+.q-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.q-num{font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--accent)}
+.status{
+  font-size:13px;font-weight:700;padding:2px 10px;border-radius:999px;
+  background:var(--paper);color:var(--ink-3);border:1px solid var(--line);white-space:nowrap;
+}
+.q[data-state="correct"] .status{background:var(--ok-soft);color:var(--ok);border-color:var(--ok-line)}
+.q[data-state="wrong"] .status{background:var(--bad-soft);color:var(--bad);border-color:var(--bad-line)}
+.q[data-state="shown"] .status{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-line)}
+.q-text{font-size:18px;font-weight:600;line-height:1.5;max-width:62ch}
+.note{font-size:15px;color:var(--ink-3)}
+
+/* Visually hidden radio inputs, styled through their labels */
+.sr-input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+
+/* Q1: classify rows */
+.cls-list{display:flex;flex-direction:column;gap:8px}
+.cls-row{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;
+  padding:10px 12px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  transition:background-color .2s,border-color .2s;
+}
+.cls-row.is-ok{background:var(--ok-soft);border-color:var(--ok-line)}
+.cls-row.is-bad{background:var(--bad-soft);border-color:var(--bad-line)}
+.cls-label{flex:1 1 170px;min-width:0;display:flex;flex-direction:column;line-height:1.35}
+.cls-name{font-weight:700}
+.cls-coords{font-size:15px;color:var(--ink-2)}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{position:relative}
+.pill label{
+  display:inline-block;cursor:pointer;user-select:none;
+  padding:6px 13px;border-radius:999px;border:1px solid var(--line-2);
+  background:var(--card);color:var(--ink);font-size:15px;font-weight:600;line-height:1.4;
+  transition:background-color .15s,border-color .15s,color .15s;
+}
+.pill label:hover{border-color:var(--accent)}
+.pill .sr-input:checked + label{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.pill .sr-input:focus-visible + label{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Q5, Q6: choices */
+.choices{display:flex;flex-direction:column;gap:8px}
+.choices.inline{flex-direction:row;flex-wrap:wrap}
+.choice{position:relative}
+.choice label{
+  display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none;
+  padding:11px 14px;border:1px solid var(--line-2);border-radius:var(--radius-sm);
+  background:var(--card);transition:background-color .15s,border-color .15s;
+}
+.choices.inline .choice label{padding:9px 20px;font-weight:600}
+.choice label:hover{border-color:var(--accent)}
+.choice .sr-input:checked + label{border-color:var(--accent);background:var(--accent-soft)}
+.choice .sr-input:focus-visible + label{outline:2px solid var(--accent);outline-offset:2px}
+.choice.is-ok .sr-input:checked + label{border-color:var(--ok);background:var(--ok-soft)}
+.choice.is-bad .sr-input:checked + label{border-color:var(--bad);background:var(--bad-soft)}
+.letter{
+  flex:none;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;
+  border:1px solid var(--line-2);font-weight:700;font-size:15px;color:var(--ink-2);background:var(--card);
+}
+.choice .sr-input:checked + label .letter{border-color:var(--accent);color:var(--accent)}
+
+/* Number answers */
+.num-field{display:flex;flex-direction:column;gap:6px}
+.num-field > label{font-size:15px;color:var(--ink-2);font-weight:600}
+.num-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.num{
+  width:8.5em;max-width:100%;padding:9px 12px;font-size:18px;text-align:center;direction:ltr;
+  border:1px solid var(--line-2);border-radius:var(--radius-sm);background:var(--card);color:var(--ink);
+  font-variant-numeric:tabular-nums;
+}
+.num:focus-visible{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.num.is-ok{border-color:var(--ok);background:var(--ok-soft)}
+.num.is-bad{border-color:var(--bad);background:var(--bad-soft)}
+.unit{color:var(--ink-2);font-weight:600}
+
+/* Buttons */
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{
+  min-height:42px;padding:8px 16px;border-radius:var(--radius-sm);cursor:pointer;
+  border:1px solid var(--line-2);background:var(--card);color:var(--ink);font-weight:700;font-size:16px;
+  transition:background-color .15s,border-color .15s;
+}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);padding-inline:22px}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.quiet{margin-inline-start:auto;background:transparent;border-color:transparent;color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.btn.quiet:hover{border-color:transparent;background:var(--accent-soft)}
+.btn:disabled{cursor:default;opacity:.55}
+.btn:disabled:hover{border-color:var(--line-2);filter:none}
+.btn.quiet:disabled{text-decoration:none;color:var(--ink-3);background:transparent}
+
+/* Feedback */
+.feedback{font-weight:700}
+.feedback:empty{display:none}
+.feedback.ok{color:var(--ok)}
+.feedback.bad{color:var(--bad)}
+.feedback.warn{color:var(--warn)}
+
+/* Hints */
+.hints{display:flex;flex-direction:column;gap:8px}
+.hints:not(:has(.hint:not([hidden]))){display:none}
+.hint{
+  padding:12px 14px;border-radius:var(--radius-sm);
+  background:var(--accent-soft);border:1px solid var(--accent-line);
+  display:flex;flex-direction:column;gap:4px;
+}
+.hint-label{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--accent)}
+.slide{
+  font-size:13px;font-weight:700;color:var(--ink);background:var(--card);
+  border:1px solid var(--accent-line);border-radius:999px;padding:0 10px;
+}
+
+/* Confirm before solution */
+.confirm{
+  padding:12px 14px;border-radius:var(--radius-sm);
+  background:var(--warn-soft);border:1px solid var(--warn-line);
+  display:flex;flex-direction:column;gap:10px;
+}
+.confirm p{font-weight:600}
+
+/* Solution */
+.solution{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:12px}
+.solution h3{font-size:17px;font-weight:600}
+.steps{margin:0;padding-inline-start:1.5em;display:flex;flex-direction:column;gap:8px}
+.steps li{padding-inline-start:4px;max-width:64ch}
+.steps li::marker{font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.final{
+  padding:12px 16px;border-radius:var(--radius-sm);
+  background:var(--ok-soft);border:2px solid var(--ok);
+  display:flex;flex-direction:column;gap:2px;
+}
+.final-label{font-size:14px;font-weight:700;color:var(--ok)}
+.final-answer{font-family:var(--font-display);font-size:20px;font-weight:700;line-height:1.4}
+.missing{
+  font-size:15px;padding:8px 12px;border-radius:var(--radius-sm);
+  background:var(--warn-soft);border:1px solid var(--warn-line);color:var(--ink);
+}
+.missing b{color:var(--warn)}
+.eq{direction:ltr;unicode-bidi:isolate;display:inline-block;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mini-table-wrap{overflow-x:auto}
+.mini-table th,.mini-table td{padding:6px 12px;font-size:15px}
+
+/* Graphs */
+.graph{display:flex;flex-direction:column;gap:8px}
+.graph-scroll{overflow-x:auto}
+.graph svg{display:block;width:100%;max-width:440px;height:auto}
+.g-grid line{stroke:var(--line);stroke-width:1}
+.g-axis{stroke:var(--ink-2);stroke-width:1.5}
+.g-tick{fill:var(--ink-3);font-family:var(--font-body);font-size:12px}
+.g-title{fill:var(--ink-2);font-family:var(--font-body);font-size:13px;font-weight:700}
+.g-lbl{fill:var(--ink);font-family:var(--font-body);font-size:13px;font-weight:700}
+.g-curve{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round}
+.g-curve-new{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-dasharray:7 5;stroke-linejoin:round}
+.g-pt{fill:var(--accent)}
+.g-pt-new{fill:var(--card);stroke:var(--accent);stroke-width:2}
+.g-ineff{fill:var(--bad)}
+.g-imposs{fill:var(--warn)}
+.g-eff-ring{fill:none;stroke:var(--ok);stroke-width:2.5}
+.g-pivot{fill:none;stroke:var(--ink);stroke-width:2}
+.g-arrow{stroke:var(--ink-2);stroke-width:1.8}
+.g-arrowhead{fill:var(--ink-2)}
+.legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:15px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:11px;height:11px;border-radius:50%;flex:none}
+.dot.eff{background:transparent;border:2.5px solid var(--ok)}
+.dot.ineff{background:var(--bad)}
+.dot.imposs{background:var(--warn)}
+.swatch{width:24px;height:0;border-top:2.5px solid var(--accent);flex:none}
+.swatch.dashed{border-top-style:dashed}
+
+.foot{font-size:14px;color:var(--ink-3);text-align:center;padding-top:6px}
+
+@media (prefers-reduced-motion:no-preference){
+  .hint:not([hidden]),.confirm:not([hidden]),.solution:not([hidden]){animation:reveal .22s ease-out}
+  @keyframes reveal{from{opacity:.0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+}
+@media (max-width:480px){
+  body{font-size:16.5px}
+  .q,.data{padding:16px}
+  .q-text{font-size:17px}
+  .btn.quiet{margin-inline-start:0}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-row">
+      <span class="topbar-title">תרגיל בית 2 · עקומת התמורה</span>
+      <span class="topbar-count" id="progress-count"><b>0</b> מתוך 6 נענו נכון</span>
+    </div>
+    <div class="progress" id="progress" role="progressbar" aria-label="התקדמות בתרגיל" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0">
+      <span class="seg" title="שאלה 1"></span>
+      <span class="seg" title="שאלה 2"></span>
+      <span class="seg" title="שאלה 3"></span>
+      <span class="seg" title="שאלה 4"></span>
+      <span class="seg" title="שאלה 5"></span>
+      <span class="seg" title="שאלה 6"></span>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <header class="intro">
+    <span class="eyebrow">מבוא לכלכלה · לפי הרצאה 2</span>
+    <h1>תרגיל בית 2: עקומת התמורה</h1>
+    <p>שש השאלות מדף התרגיל. עונים ולוחצים על "בדוק". נתקעתם? רמז 1 מפנה לשקף בהרצאה, ורמז 2 נותן את הצעד הראשון.</p>
+  </header>
+
+  <section class="data" aria-labelledby="data-title">
+    <h2 id="data-title">נתוני התרגיל</h2>
+    <p>משק מייצר שני מוצרים בלבד: מחשבים וחיטה. הטבלה מציגה את הצירופים המקסימליים שהמשק יכול לייצר, בהנחה שכל המשאבים מנוצלים במלואם.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th scope="col">צירוף</th><th scope="col">מחשבים (יחידות)</th><th scope="col">חיטה (טון)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A</td><td>0</td><td>120</td></tr>
+          <tr><td>B</td><td>10</td><td>110</td></tr>
+          <tr><td>C</td><td>20</td><td>90</td></tr>
+          <tr><td>D</td><td>30</td><td>60</td></tr>
+          <tr><td>E</td><td>40</td><td>0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ Question 1 ============ -->
+  <article class="q" id="q1" data-q="1" data-type="classify" data-state="idle">
+    <div class="q-head">
+      <span class="q-num">שאלה 1</span>
+      <span class="status" data-status>טרם נענתה</span>
+    </div>
+    <p class="q-text" id="q1-text">סווגו כל אחת מהנקודות הבאות: יעילה, לא יעילה או בלתי אפשרית.</p>
+
+    <div class="cls-list">
+      <div class="cls-row" data-answer="inefficient" role="radiogroup" aria-labelledby="q1-F-name">
+        <div class="cls-label">
+          <span class="cls-name" id="q1-F-name">נקודה F</span>
+          <span class="cls-coords">20 מחשבים ו-80 טון חיטה</span>
+        </div>
+        <div class="pills">
+          <span class="pill"><input class="sr-input" type="radio" id="q1-F-eff" name="q1-F" value="efficient"><label for="q1-F-eff">יעילה</label></span>
+          <span class="pill"><input class="sr-input" type="radio" id="q1-F-ineff" name="q1-F" value="inefficient"><label for="q1-F-ineff">לא יעילה</label></span>
+          <span class="pill"><input class="sr-input" type="radio" id="q1-F-imp" name="q1-F" value="impossible"><label for="q1-F-imp">בלתי אפשרית</label></span>
+        </div>
+      </div>
+      <div class="cls-row" data-answer="impossible" role="radiogroup" aria-labelledby="q1-G-name">
+        <div class="cls-label">
+          <span class="cls-name" id="q1-G-name">נקודה G</span>
+          <span class="cls-coords">30 מחשבים ו-70 טון חיטה</span>
+        </div>
+        <div class="pills">
+          <span class="pill"><input class="sr-input" type="radio" id="q1-G-eff" name="q1-G" value="efficient"><label for="q1-G-eff">יעילה</label></span>
+          <span class="pill"><input class="sr-input" type="radio" id="q1-G-ineff" name="q1-G" value="inefficient"><label for="q1-G-ineff">לא יעילה</label></span>
+          <span class="pill"><input class="sr-input" type="radio" id="q1-G-imp" name="q1-G" value="impossible"><label for="q1-G-imp">בלתי אפשרית</label></span>
+        </div>
+      </div>
+      <div class="cls-row" data-answer="efficient" role="radiogroup" aria-labelledby="q1-H-name">
+        <div class="cls-label">
+          <span class="cls-name" id="q1-H-name">נקודה H</span>
+          <span class="cls-coords">10 מחשבים ו-110 טון חיטה</span>
+        </div>
+        <div class="pills">
+          <span class="pill"><input class="sr-input" type="radio" id="q1-H-eff" name="q1-H" value="efficient"><label for="q1-H-eff">יעילה</label></span>
+          <span class="pill"><input class="sr-input" type="radio" id="q1-H-ineff" name="q1-H" value="inefficient"><label for="q1-H-ineff">לא יעילה</label></span>
+          <span class="pill"><input class="sr-input" type="radio" id="q1-H-imp" name="q1-H" value="impossible"><label for="q1-H-imp">בלתי אפשרית</label></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn primary" data-action="check">בדוק</button>
+      <button type="button" class="btn" data-action="hint">רמז 1</button>
+      <button type="button" class="btn quiet" data-action="solution">הצג פתרון</button>
+    </div>
+    <p class="feedback" data-feedback role="status" aria-live="polite"></p>
+
+    <div class="hints">
+      <div class="hint" data-hint="1" hidden>
+        <div class="hint-label">רמז 1 · מההרצאה <span class="slide">שקפים 9, 10, 11</span></div>
+        <p>עקומת התמורה היא גבול יכולת הייצור של המשק. נקודה על העקומה היא יעילה (שקף 9). נקודה מתחת לעקומה היא לא יעילה, כי יש משאבים שלא מנוצלים (שקף 10). נקודה מעל העקומה היא בלתי אפשרית עם המשאבים והטכנולוגיה של היום (שקף 11).</p>
+      </div>
+      <div class="hint" data-hint="2" hidden>
+        <div class="hint-label">רמז 2 · הצעד הראשון</div>
+        <p>השוו כל נקודה לצירוף בטבלה עם אותה כמות מחשבים. למשל, בנקודה F יש 20 מחשבים. בצירוף C, עם 20 מחשבים, המשק מייצר לכל היותר 90 טון חיטה. השוו לזה את כמות החיטה בנקודה F, ואחר כך עשו אותו דבר ל-G ול-H.</p>
+      </div>
+    </div>
+
+    <div class="confirm" data-confirm hidden>
+      <p>לראות את הפתרון המלא? כדאי לנסות קודם את הרמזים.</p>
+      <div class="actions">
+        <button type="button" class="btn primary" data-action="confirm-yes">כן, הצג פתרון</button>
+        <button type="button" class="btn" data-action="confirm-no">עוד לא</button>
+      </div>
+    </div>
+
+    <div class="solution" data-solution hidden>
+      <h3>פתרון מלא</h3>
+      <ol class="steps">
+        <li>לפי ההרצאה: נקודה על העקומה היא יעילה (שקף 9), מתחת לעקומה היא לא יעילה (שקף 10), ומעל העקומה היא בלתי אפשרית (שקף 11).</li>
+        <li>לכל נקודה מוצאים בטבלה את כמות החיטה המקסימלית עם אותה כמות מחשבים, ומשווים אליה.</li>
+        <li>נקודה F: 20 מחשבים ו-80 טון. בצירוף C, עם 20 מחשבים, אפשר לייצר 90 טון. <span class="eq">80 &lt; 90</span>, כלומר F מתחת לעקומה: <b>לא יעילה</b>.</li>
+        <li>נקודה G: 30 מחשבים ו-70 טון. בצירוף D, עם 30 מחשבים, אפשר לייצר לכל היותר 60 טון. <span class="eq">70 &gt; 60</span>, כלומר G מעל העקומה: <b>בלתי אפשרית</b>.</li>
+        <li>נקודה H: 10 מחשבים ו-110 טון. זה בדיוק צירוף B, כלומר H נמצאת על העקומה: <b>יעילה</b>.</li>
+      </ol>
+      <div class="graph">
+        <div class="graph-scroll">
+          <svg viewBox="0 0 360 262" direction="ltr" role="img" aria-label="עקומת התמורה של המשק לפי הטבלה, עם הנקודות F מתחת לעקומה, G מעליה ו-H עליה">
+            <g class="g-grid">
+              <line x1="50" y1="175" x2="330" y2="175"/>
+              <line x1="50" y1="130" x2="330" y2="130"/>
+              <line x1="50" y1="85" x2="330" y2="85"/>
+              <line x1="50" y1="40" x2="330" y2="40"/>
+            </g>
+            <line class="g-axis" x1="50" y1="220" x2="342" y2="220"/>
+            <line class="g-axis" x1="50" y1="220" x2="50" y2="30"/>
+            <g class="g-tick" text-anchor="end">
+              <text x="42" y="224">0</text>
+              <text x="42" y="179">30</text>
+              <text x="42" y="134">60</text>
+              <text x="42" y="89">90</text>
+              <text x="42" y="44">120</text>
+            </g>
+            <g class="g-tick" text-anchor="middle">
+              <text x="50" y="238">0</text>
+              <text x="120" y="238">10</text>
+              <text x="190" y="238">20</text>
+              <text x="260" y="238">30</text>
+              <text x="330" y="238">40</text>
+            </g>
+            <text class="g-title" x="56" y="17" text-anchor="start">טון חיטה</text>
+            <text class="g-title" x="342" y="257" text-anchor="end">מחשבים</text>
+            <polyline class="g-curve" points="50,40 120,55 190,85 260,130 330,220"/>
+            <circle class="g-pt" cx="50" cy="40" r="4"/>
+            <circle class="g-pt" cx="120" cy="55" r="4"/>
+            <circle class="g-pt" cx="190" cy="85" r="4"/>
+            <circle class="g-pt" cx="260" cy="130" r="4"/>
+            <circle class="g-pt" cx="330" cy="220" r="4"/>
+            <text class="g-lbl" x="58" y="34">A</text>
+            <text class="g-lbl" x="196" y="76">C</text>
+            <text class="g-lbl" x="250" y="146" text-anchor="end">D</text>
+            <text class="g-lbl" x="336" y="213">E</text>
+            <circle class="g-eff-ring" cx="120" cy="55" r="9"/>
+            <text class="g-lbl" x="131" y="43">B = H</text>
+            <circle class="g-ineff" cx="190" cy="100" r="6"/>
+            <text class="g-lbl" x="179" y="105" text-anchor="end">F</text>
+            <circle class="g-imposs" cx="260" cy="115" r="6"/>
+            <text class="g-lbl" x="271" y="115">G</text>
+          </svg>
+        </div>
+        <div class="legend">
+          <span><i class="dot eff"></i>H יעילה: על העקומה, בדיוק בצירוף B</span>
+          <span><i class="dot ineff"></i>F לא יעילה: מתחת לעקומה</span>
+          <span><i class="dot imposs"></i>G בלתי אפשרית: מעל העקומה</span>
+        </div>
+      </div>
+      <div class="final">
+        <span class="final-label">תשובה סופית</span>
+        <span class="final-answer">F לא יעילה · G בלתי אפשרית · H יעילה</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ Question 2 ============ -->
+  <article class="q" id="q2" data-q="2" data-type="number" data-answer="60" data-state="idle">
+    <div class="q-head">
+      <span class="q-num">שאלה 2</span>
+      <span class="status" data-status>טרם נענתה</span>
+    </div>
+    <p class="q-text">מהו הוויתור האלטרנטיבי הכולל על ייצור 30 המחשבים הראשונים?</p>
+
+    <div class="num-field">
+      <label for="q2-input">התשובה שלך</label>
+      <div class="num-row">
+        <input class="num" id="q2-input" type="text" inputmode="decimal" autocomplete="off" placeholder="מספר">
+        <span class="unit">טון חיטה</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn primary" data-action="check">בדוק</button>
+      <button type="button" class="btn" data-action="hint">רמז 1</button>
+      <button type="button" class="btn quiet" data-action="solution">הצג פתרון</button>
+    </div>
+    <p class="feedback" data-feedback role="status" aria-live="polite"></p>
+
+    <div class="hints">
+      <div class="hint" data-hint="1" hidden>
+        <div class="hint-label">רמז 1 · מההרצאה <span class="slide">שקף 13</span></div>
+        <p>הוויתור האלטרנטיבי הוא הכמות של המוצר השני שמוותרים עליה (שקף 12). ויתור כולל מחשבים כשעוברים בין שתי נקודות על העקומה: בהרצאה, במעבר מ-A ל-D התפוזים ירדו מ-50 ל-20 טון, ולכן הוויתור הכולל היה 30 טון תפוזים (שקף 13).</p>
+      </div>
+      <div class="hint" data-hint="2" hidden>
+        <div class="hint-label">רמז 2 · הצעד הראשון</div>
+        <p>30 המחשבים הראשונים הם המעבר מצירוף A (0 מחשבים) לצירוף D (30 מחשבים). כתבו כמה טון חיטה מייצרים בכל אחד משני הצירופים האלה.</p>
+      </div>
+    </div>
+
+    <div class="confirm" data-confirm hidden>
+      <p>לראות את הפתרון המלא? כדאי לנסות קודם את הרמזים.</p>
+      <div class="actions">
+        <button type="button" class="btn primary" data-action="confirm-yes">כן, הצג פתרון</button>
+        <button type="button" class="btn" data-action="confirm-no">עוד לא</button>
+      </div>
+    </div>
+
+    <div class="solution" data-solution hidden>
+      <h3>פתרון מלא</h3>
+      <ol class="steps">
+        <li>ויתור כולל הוא כמה חיטה מוותרים בסך הכול כדי לייצר את המחשבים (שקף 13).</li>
+        <li>30 המחשבים הראשונים: מצירוף A (0 מחשבים, 120 טון חיטה) לצירוף D (30 מחשבים, 60 טון חיטה).</li>
+        <li>החיטה יורדת מ-120 טון ל-60 טון: <span class="eq">120 − 60 = 60</span></li>
+      </ol>
+      <div class="final">
+        <span class="final-label">תשובה סופית</span>
+        <span class="final-answer">60 טון חיטה</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ Question 3 ============ -->
+  <article class="q" id="q3" data-q="3" data-type="number" data-answer="2" data-state="idle">
+    <div class="q-head">
+      <span class="q-num">שאלה 3</span>
+      <span class="status" data-status>טרם נענתה</span>
+    </div>
+    <p class="q-text">מהו הוויתור האלטרנטיבי הממוצע על מחשב אחד, כשעוברים מנקודה A לנקודה D?</p>
+
+    <div class="num-field">
+      <label for="q3-input">התשובה שלך</label>
+      <div class="num-row">
+        <input class="num" id="q3-input" type="text" inputmode="decimal" autocomplete="off" placeholder="מספר">
+        <span class="unit">טון חיטה למחשב</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn primary" data-action="check">בדוק</button>
+      <button type="button" class="btn" data-action="hint">רמז 1</button>
+      <button type="button" class="btn quiet" data-action="solution">הצג פתרון</button>
+    </div>
+    <p class="feedback" data-feedback role="status" aria-live="polite"></p>
+
+    <div class="hints">
+      <div class="hint" data-hint="1" hidden>
+        <div class="hint-label">רמז 1 · מההרצאה <span class="slide">שקף 14</span></div>
+        <p>ויתור ממוצע הוא הוויתור הכולל חלקי הכמות שנוספה. בהרצאה, מ-A ל-D: 30 טון תפוזים חלקי 15 אלף טלפונים, <span class="eq">30 ÷ 15 = 2</span>, כלומר 2 טון תפוזים על כל אלף טלפונים.</p>
+      </div>
+      <div class="hint" data-hint="2" hidden>
+        <div class="hint-label">רמז 2 · הצעד הראשון</div>
+        <p>את הוויתור הכולל במעבר מ-A ל-D כבר חישבתם בשאלה 2. עכשיו מצאו כמה מחשבים נוספו במעבר הזה.</p>
+      </div>
+    </div>
+
+    <div class="confirm" data-confirm hidden>
+      <p>לראות את הפתרון המלא? כדאי לנסות קודם את הרמזים.</p>
+      <div class="actions">
+        <button type="button" class="btn primary" data-action="confirm-yes">כן, הצג פתרון</button>
+        <button type="button" class="btn" data-action="confirm-no">עוד לא</button>
+      </div>
+    </div>
+
+    <div class="solution" data-solution hidden>
+      <h3>פתרון מלא</h3>
+      <ol class="steps">
+        <li>ויתור ממוצע = ויתור כולל חלקי הכמות שנוספה (שקף 14).</li>
+        <li>הוויתור הכולל מ-A ל-D הוא 60 טון חיטה (ראו שאלה 2: <span class="eq">120 − 60 = 60</span>).</li>
+        <li>מספר המחשבים עולה מ-0 ל-30, כלומר נוספו 30 מחשבים.</li>
+        <li>מחלקים: <span class="eq">60 ÷ 30 = 2</span></li>
+      </ol>
+      <div class="final">
+        <span class="final-label">תשובה סופית</span>
+        <span class="final-answer">2 טון חיטה לכל מחשב</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ Question 4 ============ -->
+  <article class="q" id="q4" data-q="4" data-type="number" data-answer="6" data-state="idle">
+    <div class="q-head">
+      <span class="q-num">שאלה 4</span>
+      <span class="status" data-status>טרם נענתה</span>
+    </div>
+    <p class="q-text">מהו הוויתור השולי על כל אחד מהמחשבים ה-31 עד ה-40?</p>
+
+    <div class="num-field">
+      <label for="q4-input">התשובה שלך</label>
+      <div class="num-row">
+        <input class="num" id="q4-input" type="text" inputmode="decimal" autocomplete="off" placeholder="מספר">
+        <span class="unit">טון חיטה למחשב</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn primary" data-action="check">בדוק</button>
+      <button type="button" class="btn" data-action="hint">רמז 1</button>
+      <button type="button" class="btn quiet" data-action="solution">הצג פתרון</button>
+    </div>
+    <p class="feedback" data-feedback role="status" aria-live="polite"></p>
+
+    <div class="hints">
+      <div class="hint" data-hint="1" hidden>
+        <div class="hint-label">רמז 1 · מההרצאה <span class="slide">שקף 15</span></div>
+        <p>ויתור שולי הוא הוויתור על המנה הנוספת. בהרצאה מחשבים אותו בין שתי נקודות סמוכות: הירידה בתפוזים חלקי הטלפונים שנוספו. למשל, מ-A ל-B: <span class="eq">5 ÷ 5 = 1</span>.</p>
+      </div>
+      <div class="hint" data-hint="2" hidden>
+        <div class="hint-label">רמז 2 · הצעד הראשון</div>
+        <p>המחשבים ה-31 עד ה-40 הם המעבר מצירוף D (30 מחשבים) לצירוף E (40 מחשבים). בדקו בכמה טון ירדה החיטה במעבר הזה.</p>
+      </div>
+    </div>
+
+    <div class="confirm" data-confirm hidden>
+      <p>לראות את הפתרון המלא? כדאי לנסות קודם את הרמזים.</p>
+      <div class="actions">
+        <button type="button" class="btn primary" data-action="confirm-yes">כן, הצג פתרון</button>
+        <button type="button" class="btn" data-action="confirm-no">עוד לא</button>
+      </div>
+    </div>
+
+    <div class="solution" data-solution hidden>
+      <h3>פתרון מלא</h3>
+      <ol class="steps">
+        <li>ויתור שולי הוא הוויתור על המנה הנוספת, בין שתי נקודות סמוכות על העקומה (שקף 15).</li>
+        <li>המחשבים ה-31 עד ה-40 הם המעבר מצירוף D (30 מחשבים, 60 טון חיטה) לצירוף E (40 מחשבים, 0 טון חיטה).</li>
+        <li>נוספו 10 מחשבים, והחיטה ירדה ב-60 טון: <span class="eq">60 ÷ 10 = 6</span></li>
+        <li>בטבלה אין נקודות בין D ל-E. כמו בהרצאה (שקפים 8 ו-15), מחברים את שתי הנקודות הסמוכות בקו ישר, ולכן כל אחד מעשרת המחשבים האלה עולה אותו ויתור.</li>
+      </ol>
+      <div class="final">
+        <span class="final-label">תשובה סופית</span>
+        <span class="final-answer">6 טון חיטה על כל אחד מהמחשבים ה-31 עד ה-40</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ Question 5 ============ -->
+  <article class="q" id="q5" data-q="5" data-type="choice" data-answer="up" data-state="idle">
+    <div class="q-head">
+      <span class="q-num">שאלה 5</span>
+      <span class="status" data-status>טרם נענתה</span>
+    </div>
+    <p class="q-text" id="q5-text">האם הוויתור האלטרנטיבי במשק עולה, קבוע או יורד? הסבירו בעזרת הנתונים.</p>
+
+    <div class="choices inline" role="radiogroup" aria-labelledby="q5-text">
+      <div class="choice"><input class="sr-input" type="radio" id="q5-up" name="q5" value="up"><label for="q5-up">עולה</label></div>
+      <div class="choice"><input class="sr-input" type="radio" id="q5-const" name="q5" value="constant"><label for="q5-const">קבוע</label></div>
+      <div class="choice"><input class="sr-input" type="radio" id="q5-down" name="q5" value="down"><label for="q5-down">יורד</label></div>
+    </div>
+    <p class="note">הבדיקה בודקת את הבחירה. את ההסבר בעזרת הנתונים השוו לפתרון המלא.</p>
+
+    <div class="actions">
+      <button type="button" class="btn primary" data-action="check">בדוק</button>
+      <button type="button" class="btn" data-action="hint">רמז 1</button>
+      <button type="button" class="btn quiet" data-action="solution">הצג פתרון</button>
+    </div>
+    <p class="feedback" data-feedback role="status" aria-live="polite"></p>
+
+    <div class="hints">
+      <div class="hint" data-hint="1" hidden>
+        <div class="hint-label">רמז 1 · מההרצאה <span class="slide">שקפים 16, 17</span></div>
+        <p>כשהוויתור השולי גדל ככל שמייצרים יותר מהמוצר, הוויתור עולה והעקומה קעורה לראשית (שקף 16). כשהוויתור השולי זהה בכל נקודה, הוויתור קבוע והעקומה היא קו ישר (שקף 17).</p>
+      </div>
+      <div class="hint" data-hint="2" hidden>
+        <div class="hint-label">רמז 2 · הצעד הראשון</div>
+        <p>חשבו את הוויתור השולי בכל אחד מארבעת המעברים בטבלה: מ-A ל-B, מ-B ל-C, מ-C ל-D ומ-D ל-E. בכל מעבר נוספים 10 מחשבים, אז מחלקים את הירידה בחיטה ב-10. התחילו מ-A ל-B, שם החיטה יורדת מ-120 ל-110 טון.</p>
+      </div>
+    </div>
+
+    <div class="confirm" data-confirm hidden>
+      <p>לראות את הפתרון המלא? כדאי לנסות קודם את הרמזים.</p>
+      <div class="actions">
+        <button type="button" class="btn primary" data-action="confirm-yes">כן, הצג פתרון</button>
+        <button type="button" class="btn" data-action="confirm-no">עוד לא</button>
+      </div>
+    </div>
+
+    <div class="solution" data-solution hidden>
+      <h3>פתרון מלא</h3>
+      <ol class="steps">
+        <li>מחשבים את הוויתור השולי בכל מעבר בין צירופים סמוכים: הירידה בחיטה חלקי 10 המחשבים שנוספו (שקף 15).
+          <div class="mini-table-wrap">
+            <table class="mini-table">
+              <thead><tr><th scope="col">מעבר</th><th scope="col">מחשבים</th><th scope="col">ירידה בחיטה</th><th scope="col">ויתור שולי למחשב</th></tr></thead>
+              <tbody>
+                <tr><td>מ-A ל-B</td><td>מ-0 ל-10</td><td><span class="eq">120 − 110 = 10</span></td><td><span class="eq">10 ÷ 10 = 1</span></td></tr>
+                <tr><td>מ-B ל-C</td><td>מ-10 ל-20</td><td><span class="eq">110 − 90 = 20</span></td><td><span class="eq">20 ÷ 10 = 2</span></td></tr>
+                <tr><td>מ-C ל-D</td><td>מ-20 ל-30</td><td><span class="eq">90 − 60 = 30</span></td><td><span class="eq">30 ÷ 10 = 3</span></td></tr>
+                <tr><td>מ-D ל-E</td><td>מ-30 ל-40</td><td><span class="eq">60 − 0 = 60</span></td><td><span class="eq">60 ÷ 10 = 6</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+        <li>הוויתור השולי על מחשב גדל מ-1 ל-2, ל-3 ול-6 טון חיטה. כל מחשב נוסף עולה יותר חיטה מהקודם, ולכן הוויתור <b>עולה</b>.</li>
+        <li>ההסבר מההרצאה (שקף 16): לא כל המשאבים מתאימים באותה מידה לשני המוצרים. קודם מעבירים לייצור מחשבים את המשאבים שהכי מתאימים לו, ולכן בהתחלה מוותרים על מעט חיטה, ובהמשך על יותר. בגלל זה העקומה קעורה לראשית.</li>
+        <li>אילו הוויתור היה קבוע, הוויתור השולי היה זהה בכל המעברים והעקומה הייתה קו ישר (שקף 17). כאן הוא משתנה, אז הוא לא קבוע.</li>
+      </ol>
+      <div class="final">
+        <span class="final-label">תשובה סופית</span>
+        <span class="final-answer">עולה: הוויתור השולי על מחשב הוא 1, 2, 3 ואז 6 טון חיטה</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ Question 6 ============ -->
+  <article class="q" id="q6" data-q="6" data-type="choice" data-answer="b" data-state="idle">
+    <div class="q-head">
+      <span class="q-num">שאלה 6</span>
+      <span class="status" data-status>טרם נענתה</span>
+    </div>
+    <p class="q-text" id="q6-text">חל שיפור טכנולוגי בייצור מחשבים בלבד. מה יקרה לעקומת התמורה?</p>
+
+    <div class="choices" role="radiogroup" aria-labelledby="q6-text">
+      <div class="choice"><input class="sr-input" type="radio" id="q6-a" name="q6" value="a"><label for="q6-a"><span class="letter">א</span><span>כל העקומה תזוז החוצה במקביל</span></label></div>
+      <div class="choice"><input class="sr-input" type="radio" id="q6-b" name="q6" value="b"><label for="q6-b"><span class="letter">ב</span><span>העקומה תסתובב החוצה סביב הנקודה על ציר החיטה</span></label></div>
+      <div class="choice"><input class="sr-input" type="radio" id="q6-c" name="q6" value="c"><label for="q6-c"><span class="letter">ג</span><span>העקומה תזוז פנימה</span></label></div>
+      <div class="choice"><input class="sr-input" type="radio" id="q6-d" name="q6" value="d"><label for="q6-d"><span class="letter">ד</span><span>העקומה לא תשתנה</span></label></div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="btn primary" data-action="check">בדוק</button>
+      <button type="button" class="btn" data-action="hint">רמז 1</button>
+      <button type="button" class="btn quiet" data-action="solution">הצג פתרון</button>
+    </div>
+    <p class="feedback" data-feedback role="status" aria-live="polite"></p>
+
+    <div class="hints">
+      <div class="hint" data-hint="1" hidden>
+        <div class="hint-label">רמז 1 · מההרצאה <span class="slide">שקפים 18, 19</span></div>
+        <p>בהרצאה ראינו שני מקרים שבהם העקומה משתנה: צמיחה, כשיש יותר גורמי ייצור או שיפור טכנולוגי בשני המוצרים (שקף 18), ושיפור טכנולוגי במוצר אחד בלבד (שקף 19). בדקו לאיזה מקרה השאלה מתאימה, ומה קורה בו לכל אחת משתי הנקודות שעל הצירים.</p>
+      </div>
+      <div class="hint" data-hint="2" hidden>
+        <div class="hint-label">רמז 2 · הצעד הראשון</div>
+        <p>התחילו מהצירוף שבו המשק מייצר רק חיטה: צירוף A, 0 מחשבים ו-120 טון חיטה. האם שיפור בייצור מחשבים משנה את 120 הטון האלה?</p>
+      </div>
+    </div>
+
+    <div class="confirm" data-confirm hidden>
+      <p>לראות את הפתרון המלא? כדאי לנסות קודם את הרמזים.</p>
+      <div class="actions">
+        <button type="button" class="btn primary" data-action="confirm-yes">כן, הצג פתרון</button>
+        <button type="button" class="btn" data-action="confirm-no">עוד לא</button>
+      </div>
+    </div>
+
+    <div class="solution" data-solution hidden>
+      <h3>פתרון מלא</h3>
+      <ol class="steps">
+        <li>שיפור טכנולוגי בייצור מחשבים בלבד הוא המקרה של שקף 19: שיפור במוצר אחד.</li>
+        <li>הנקודה על ציר החיטה (צירוף A: 0 מחשבים, 120 טון) נשארת במקומה. כשכל המשאבים מופנים לחיטה, שיפור במחשבים לא משנה כלום, ועדיין אפשר לייצר לכל היותר 120 טון.</li>
+        <li>הנקודה על ציר המחשבים (צירוף E: 40 מחשבים) זזה החוצה: עם אותם משאבים אפשר עכשיו לייצר יותר מ-40 מחשבים.</li>
+        <li>נקודה אחת נשארת במקום ושאר העקומה זזה החוצה, ולכן העקומה מסתובבת החוצה סביב הנקודה על ציר החיטה.</li>
+        <li>למה לא התשובות האחרות: תשובה א מתאימה לשקף 18, שבו כל העקומה זזה החוצה בגלל יותר גורמי ייצור או שיפור בשני המוצרים. תשובות ג ו-ד לא מתאימות, כי אחרי השיפור אפשר לייצר יותר מחשבים מבעבר.</li>
+      </ol>
+      <div class="graph">
+        <div class="graph-scroll">
+          <svg viewBox="0 0 360 262" direction="ltr" role="img" aria-label="איור: העקומה המקורית וקו מקווקו שמסתובב החוצה סביב הנקודה A על ציר החיטה">
+            <defs>
+              <marker id="q6-arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path class="g-arrowhead" d="M0,0 L10,5 L0,10 z"/>
+              </marker>
+            </defs>
+            <g class="g-grid">
+              <line x1="50" y1="175" x2="330" y2="175"/>
+              <line x1="50" y1="130" x2="330" y2="130"/>
+              <line x1="50" y1="85" x2="330" y2="85"/>
+              <line x1="50" y1="40" x2="330" y2="40"/>
+            </g>
+            <line class="g-axis" x1="50" y1="220" x2="342" y2="220"/>
+            <line class="g-axis" x1="50" y1="220" x2="50" y2="30"/>
+            <g class="g-tick" text-anchor="end">
+              <text x="42" y="224">0</text>
+              <text x="42" y="179">30</text>
+              <text x="42" y="134">60</text>
+              <text x="42" y="89">90</text>
+              <text x="42" y="44">120</text>
+            </g>
+            <g class="g-tick" text-anchor="middle">
+              <text x="50" y="238">0</text>
+              <text x="100" y="238">10</text>
+              <text x="150" y="238">20</text>
+              <text x="200" y="238">30</text>
+              <text x="250" y="238">40</text>
+              <text x="310" y="238">?</text>
+            </g>
+            <text class="g-title" x="56" y="17" text-anchor="start">טון חיטה</text>
+            <text class="g-title" x="342" y="257" text-anchor="end">מחשבים</text>
+            <polyline class="g-curve" points="50,40 100,55 150,85 200,130 250,220"/>
+            <polyline class="g-curve-new" points="50,40 115,55 180,85 245,130 310,220"/>
+            <circle class="g-pt" cx="100" cy="55" r="3.5"/>
+            <circle class="g-pt" cx="150" cy="85" r="3.5"/>
+            <circle class="g-pt" cx="200" cy="130" r="3.5"/>
+            <circle class="g-pt" cx="250" cy="220" r="4"/>
+            <circle class="g-pt-new" cx="310" cy="220" r="4"/>
+            <circle class="g-pt" cx="50" cy="40" r="4"/>
+            <circle class="g-pivot" cx="50" cy="40" r="9"/>
+            <text class="g-lbl" x="64" y="32">A</text>
+            <text class="g-lbl" x="240" y="214" text-anchor="end">E</text>
+            <text class="g-lbl" x="318" y="213">E'</text>
+            <line class="g-arrow" x1="256" y1="211" x2="294" y2="211" marker-end="url(#q6-arrowhead)"/>
+          </svg>
+        </div>
+        <div class="legend">
+          <span><i class="swatch"></i>העקומה לפי הטבלה</span>
+          <span><i class="swatch dashed"></i>אחרי השיפור במחשבים</span>
+        </div>
+        <p class="missing"><b>חסר בחומר:</b> הדף לא מציין כמה מחשבים אפשר לייצר אחרי השיפור. לכן על הציר כתוב "?", והקו המקווקו מראה רק את הכיוון, לא כמויות.</p>
+      </div>
+      <div class="final">
+        <span class="final-label">תשובה סופית</span>
+        <span class="final-answer">ב. העקומה תסתובב החוצה סביב הנקודה על ציר החיטה</span>
+      </div>
+    </div>
+  </article>
+
+  <p class="foot">כל התוכן כאן לקוח רק ממצגת הרצאה 2 ומדף תרגיל בית 2.</p>
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  var cards = Array.prototype.slice.call(document.querySelectorAll(".q"));
+  var segs = Array.prototype.slice.call(document.querySelectorAll(".seg"));
+  var countEl = document.getElementById("progress-count");
+  var progressEl = document.getElementById("progress");
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var STATUS = { idle: "טרם נענתה", wrong: "נסו שוב", correct: "נכון", shown: "נצפה פתרון" };
+
+  var state = {};
+  cards.forEach(function (card) {
+    state[card.dataset.q] = { correct: false, tried: false, shown: false, hints: 0 };
+  });
+
+  function cardKey(s) {
+    if (s.correct) return "correct";
+    if (s.shown) return "shown";
+    if (s.tried) return "wrong";
+    return "idle";
+  }
+
+  function render(card) {
+    var key = cardKey(state[card.dataset.q]);
+    card.dataset.state = key;
+    card.querySelector("[data-status]").textContent = STATUS[key];
+
+    var solved = 0;
+    cards.forEach(function (c, i) {
+      var s = state[c.dataset.q];
+      if (s.correct) solved++;
+      var seg = segs[i];
+      if (!seg) return;
+      seg.className = "seg" + (s.correct ? " is-correct" : s.shown ? " is-shown" : "");
+      seg.title = "שאלה " + c.dataset.q + ": " + STATUS[cardKey(s)];
+    });
+    countEl.innerHTML = "<b>" + solved + "</b> מתוך " + cards.length + " נענו נכון";
+    progressEl.setAttribute("aria-valuenow", String(solved));
+  }
+
+  function setFeedback(card, kind, msg) {
+    var el = card.querySelector("[data-feedback]");
+    el.className = "feedback" + (kind ? " " + kind : "");
+    el.textContent = msg;
+  }
+
+  function parseNum(raw) {
+    var s = String(raw || "")
+      .replace(/[‎‏‪-‮\s]/g, "")
+      .replace(/[−–]/g, "-")
+      .replace(/,/g, ".");
+    var m = s.match(/-?\d+(?:\.\d+)?/);
+    return m ? parseFloat(m[0]) : null;
+  }
+
+  function clearMarks(card) {
+    card.querySelectorAll(".is-ok, .is-bad").forEach(function (el) {
+      el.classList.remove("is-ok", "is-bad");
+    });
+  }
+
+  function check(card) {
+    var type = card.dataset.type;
+    var s = state[card.dataset.q];
+    var ok = false;
+    var msg = "";
+    clearMarks(card);
+
+    if (type === "number") {
+      var input = card.querySelector("input.num");
+      var v = parseNum(input.value);
+      var ans = parseFloat(card.dataset.answer);
+      if (v === null) {
+        setFeedback(card, "warn", "הקלידו מספר ואז לחצו על \"בדוק\".");
+        input.focus();
+        return;
+      }
+      ok = Math.abs(v - ans) < 1e-9;
+      input.classList.add(ok ? "is-ok" : "is-bad");
+      if (ok) msg = "נכון!";
+      else if (Math.abs(v + ans) < 1e-9) msg = "כמעט. ויתור הוא כמות שמוותרים עליה, ולכן כותבים אותו כמספר חיובי.";
+      else msg = "לא נכון. נסו שוב, או פתחו רמז.";
+    } else if (type === "choice") {
+      var picked = card.querySelector("input[type=radio]:checked");
+      if (!picked) {
+        setFeedback(card, "warn", "בחרו תשובה ואז לחצו על \"בדוק\".");
+        return;
+      }
+      ok = picked.value === card.dataset.answer;
+      picked.closest(".choice").classList.add(ok ? "is-ok" : "is-bad");
+      msg = ok ? "נכון!" : "לא נכון. נסו שוב, או פתחו רמז.";
+    } else if (type === "classify") {
+      var rows = Array.prototype.slice.call(card.querySelectorAll(".cls-row"));
+      var missing = rows.filter(function (r) { return !r.querySelector("input:checked"); }).length;
+      if (missing) {
+        setFeedback(card, "warn", "סמנו סיווג לכל שלוש הנקודות ואז לחצו על \"בדוק\".");
+        return;
+      }
+      var right = 0;
+      rows.forEach(function (row) {
+        var good = row.querySelector("input:checked").value === row.dataset.answer;
+        row.classList.add(good ? "is-ok" : "is-bad");
+        if (good) right++;
+      });
+      ok = right === rows.length;
+      msg = ok ? "נכון! שלוש הנקודות מסווגות נכון."
+               : right + " מתוך " + rows.length + " נכונות. הנקודות המסומנות באדום עוד לא נכונות.";
+    }
+
+    s.tried = true;
+    s.correct = ok;
+    setFeedback(card, ok ? "ok" : "bad", msg);
+    render(card);
+  }
+
+  function hint(card, btn) {
+    var s = state[card.dataset.q];
+    if (s.hints >= 2) return;
+    s.hints++;
+    var h = card.querySelector('[data-hint="' + s.hints + '"]');
+    if (h) h.hidden = false;
+    if (s.hints === 1) {
+      btn.textContent = "רמז 2";
+    } else {
+      btn.textContent = "אין עוד רמזים";
+      btn.disabled = true;
+    }
+  }
+
+  function askSolution(card) {
+    var box = card.querySelector("[data-confirm]");
+    box.hidden = !box.hidden;
+    if (!box.hidden) box.querySelector('[data-action="confirm-yes"]').focus();
+  }
+
+  function showSolution(card) {
+    card.querySelector("[data-confirm]").hidden = true;
+    var sol = card.querySelector("[data-solution]");
+    sol.hidden = false;
+    var b = card.querySelector('[data-action="solution"]');
+    b.disabled = true;
+    b.textContent = "הפתרון מוצג";
+    state[card.dataset.q].shown = true;
+    render(card);
+    if (sol.scrollIntoView) sol.scrollIntoView({ block: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
+  }
+
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest("[data-action]");
+    if (!btn) return;
+    var card = btn.closest(".q");
+    if (!card) return;
+    switch (btn.dataset.action) {
+      case "check": check(card); break;
+      case "hint": hint(card, btn); break;
+      case "solution": askSolution(card); break;
+      case "confirm-yes": showSolution(card); break;
+      case "confirm-no":
+        card.querySelector("[data-confirm]").hidden = true;
+        card.querySelector('[data-action="solution"]').focus();
+        break;
+    }
+  });
+
+  document.addEventListener("change", function (e) {
+    var card = e.target.closest && e.target.closest(".q");
+    if (!card || e.target.type !== "radio") return;
+    var row = e.target.closest(".cls-row");
+    if (row) row.classList.remove("is-ok", "is-bad");
+    else clearMarks(card);
+    setFeedback(card, "", "");
+  });
+
+  document.addEventListener("input", function (e) {
+    if (!e.target.classList || !e.target.classList.contains("num")) return;
+    var card = e.target.closest(".q");
+    e.target.classList.remove("is-ok", "is-bad");
+    setFeedback(card, "", "");
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" || !e.target.classList || !e.target.classList.contains("num")) return;
+    e.preventDefault();
+    check(e.target.closest(".q"));
+  });
+
+  cards.forEach(render);
+})();
+</script>
+</body>
+</html>

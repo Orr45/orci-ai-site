@@ -1,0 +1,227 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: 'שיעורי בית שהופכים לאתר תרגול עם Claude | Orci AI',
+  description: 'מעלים ל-Claude את המצגת של ההרצאה ואת דף שיעורי הבית, ומקבלים אתר תרגול עם בדיקה, שני רמזים לכל שאלה ופתרון מלא. הפרומפט המדויק בפנים.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        שיעורי בית שהופכים לאתר תרגול עם Claude
+      </h1>
+      <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        מצגת של הרצאה, דף שיעורי בית ופרומפט אחד. יוצא אתר שבודק לכם את התשובה, נותן שני רמזים כשנתקעים, ומראה פתרון מלא רק כשאין ברירה.
+      </div>
+
+      {/* Tools Badges */}
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🤖 Claude</span>
+        <span className="cap-badge text-sm">🎓 לסטודנטים</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* The reel */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        הסרטון
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        ככה אני עושה שיעורי בית בתואר. <span className="text-orci-cyan font-bold">לומדים, לא מעתיקים</span>: האתר לא נותן לכם את התשובה, הוא מוביל אתכם אליה.
+      </div>
+      <div className="my-8 max-w-sm mx-auto">
+        <video src="/guides/claude-homework-practice-site/reel.mp4" poster="/guides/claude-homework-practice-site/poster-reel.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הסרטון המלא</p>
+      </div>
+    </div>
+
+    {/* What you need */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        לפני הכל: מה צריך
+      </h2>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Claude</span>: באתר claude.ai או באפליקציה. האתר נבנה כ-artifact, חלון שנפתח ליד הצ'אט ואפשר לעבוד בתוכו.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">המצגת של ההרצאה</span>: PDF או PowerPoint, כמו שהמרצה העלה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">דף שיעורי הבית</span>: PDF, או צילום ברור של הדף.</li>
+      </ul>
+      <div className="rounded-xl border border-orci-cyan/40 bg-orci-cyan/5 p-5 mt-6">
+        <div className="text-lg text-slate-300 leading-relaxed">
+          <span className="text-orci-cyan font-bold">אין לכם עכשיו חומר?</span> בסוף העמוד יש מצגת ודף שיעורי בית לדוגמה להורדה, ואת האתר שיצא מהם, כדי לנסות לפני שמעלים את הקורס שלכם.
+        </div>
+      </div>
+    </div>
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: מעלים את שני הקבצים
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        פותחים צ'אט חדש ב-<span className="text-orci-cyan font-bold">Claude</span> וגוררים לתוכו את <span className="text-orci-cyan font-bold">המצגת</span> ואת <span className="text-orci-cyan font-bold">דף שיעורי הבית</span>. צ'אט חדש לכל מטלה, כדי ש-Claude יעבוד רק על החומר שלה.
+      </div>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/claude-homework-practice-site/upload.jpg" alt="שני קובצי PDF מצורפים לצ'אט ב-Claude והפרומפט מודבק" width={900} height={928} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: מדביקים את הפרומפט
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        זה הפרומפט המדויק מהסרטון. הוא אומר ל-Claude לבנות <span className="text-orci-cyan font-bold">כרטיס לכל שאלה</span>, <span className="text-orci-cyan font-bold">שני רמזים</span> שנפתחים בהדרגה, ו<span className="text-orci-cyan font-bold">פתרון מלא</span> רק אחרי אישור.
+      </div>
+      <CopyPrompt prompt={`צירפתי מצגת של הרצאה ודף שיעורי בית. תבנה לי מהם אתר תרגול אינטראקטיבי, artifact אחד בעברית:
+
+1. כל שאלה מדף שיעורי הבית בכרטיס משלה, עם פס התקדמות למעלה.
+2. לכל שאלה דרך לענות שמתאימה לה: מספר, בחירה מרובה או לחיצה על גרף. כפתור "בדוק" אומר לי מיד אם צדקתי.
+3. שני רמזים לכל שאלה, שנפתחים אחד אחרי השני:
+   רמז 1: מזכיר את הרעיון מההרצאה, עם מספר השקף.
+   רמז 2: נותן את הצעד הראשון של הפתרון, בלי התשובה.
+4. כפתור "הצג פתרון" שמבקש אישור, ואז מראה פתרון מלא צעד אחר צעד, עם התשובה הסופית מודגשת.
+5. רק מהחומר שצירפתי. אם חסר נתון, תכתוב שחסר במקום להמציא.
+6. נוח בטלפון ובמחשב.`} />
+      <div className="rounded-xl border border-orci-cyan/40 bg-orci-cyan/5 p-5 mt-6">
+        <div className="text-lg text-slate-300 leading-relaxed">
+          <span className="text-orci-cyan font-bold">למה סעיף 5 חשוב:</span> בלי השורה הזאת Claude עלול להשלים נתון שחסר בשאלה. איתה, הוא כותב שהנתון חסר, ואתם יודעים לשאול את המתרגל.
+        </div>
+      </div>
+    </div>
+
+    {/* Step 3 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3: עונים ובודקים
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        כל שאלה בכרטיס משלה. כותבים תשובה, לוחצים <span className="text-orci-cyan font-bold">"בדוק"</span>, ומקבלים מיד נכון או לא נכון. פס ההתקדמות למעלה מראה כמה שאלות כבר פתרתם.
+      </div>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
+        <Image src="/guides/claude-homework-practice-site/site-check.jpg" alt="כרטיס שאלה עם תשובה שגויה וההודעה לא נכון, נסו שוב" width={900} height={533} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Step 4 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 4: נתקעתם? שני רמזים
+      </h2>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">רמז 1</span> מזכיר את הרעיון מההרצאה ומפנה לשקף המדויק, כדי לחזור למצגת בדיוק למקום הנכון.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">רמז 2</span> נותן את הצעד הראשון של הפתרון, בלי התשובה.</li>
+      </ul>
+      <div className="my-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-homework-practice-site/site-hint1.jpg" alt="רמז 1 עם הפניה לשקף 15 בהרצאה" width={900} height={797} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">רמז 1: השקף מההרצאה</p>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/claude-homework-practice-site/site-hint2.jpg" alt="רמז 2 עם הצעד הראשון של הפתרון" width={900} height={1001} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">רמז 2: הצעד הראשון</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Step 5 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 5: פתרון מלא, רק אם אין ברירה
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        <span className="text-orci-cyan font-bold">"הצג פתרון"</span> שואל קודם אם אתם בטוחים, ורק אז פותח פתרון צעד אחר צעד, עם התשובה הסופית מודגשת. כדאי לעבור על כל שורה ולהבין מאיפה כל מספר הגיע.
+      </div>
+      <div className="my-8 rounded-2xl overflow-hidden max-w-sm mx-auto">
+        <Image src="/guides/claude-homework-practice-site/site-solution.jpg" alt="פתרון מלא צעד אחר צעד עם תשובה סופית מודגשת" width={900} height={1706} className="w-full h-auto" />
+      </div>
+    </div>
+
+    {/* Tips */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        טיפים מהשימוש
+      </h2>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">משהו לא נוח? מבקשים תיקון באותו צ'אט.</span> למשל: "תוסיף שאלה שעונים עליה בלחיצה על הגרף" או "תציג שאלה אחת בכל פעם".</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">שאלות של "הסבירו"</span>: הבדיקה האוטומטית בודקת את הבחירה, לא את ההסבר שלכם. את ההסבר משווים לפתרון המלא.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">בודקים את התשובות.</span> Claude יכול לטעות כמו כל אחד. אם תשובה נראית לכם מוזרה, חוזרים לשקף שברמז 1.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">את מה שמגישים כותבים בעצמכם.</span> האתר נועד לתרגול ולהבנה, ולא להעתקה למטלה.</li>
+      </ul>
+    </div>
+
+    {/* Try it */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        נסו בעצמכם
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        אלה הקבצים מהסרטון: מצגת של 20 שקפים ודף של 6 שאלות על <span className="text-orci-cyan font-bold">עקומת התמורה</span>, ממבוא לכלכלה. כתבנו אותם בעצמנו לדוגמה. אפשר להעלות אותם ל-Claude עם הפרומפט, או לפתוח את האתר שיצא מהם.
+      </div>
+      <div className="flex flex-wrap gap-3 justify-center mt-6">
+        <a href="/guides/claude-homework-practice-site/lecture.pdf" target="_blank" rel="noopener noreferrer" className="cap-btn cap-btn-primary inline-flex">📄 המצגת לדוגמה</a>
+        <a href="/guides/claude-homework-practice-site/homework.pdf" target="_blank" rel="noopener noreferrer" className="cap-btn cap-btn-primary inline-flex">📝 שיעורי הבית לדוגמה</a>
+        <a href="/guides/claude-homework-practice-site/demo.html" target="_blank" rel="noopener noreferrer" className="cap-btn cap-btn-primary inline-flex">🎓 אתר התרגול שיצא</a>
+      </div>
+    </div>
+
+    {/* Result Card */}
+    <div className="cap-card border-2 border-orci-cyan">
+      <div className="text-center">
+        <div className="text-6xl mb-6">🔥</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orci-cyan">
+          התוצאה
+        </h2>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          במקום PDF ומצגת ענקית, <span className="text-orci-cyan font-bold">אתר תרגול לכל מטלה</span>: בודק את התשובה, מפנה לשקף הנכון כשנתקעים, ומראה פתרון מלא רק כשצריך.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <div className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+      </div>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>

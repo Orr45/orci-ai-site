@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'claude-homework-practice-site',
+    title: 'שיעורי בית שהופכים לאתר תרגול עם Claude',
+    description: 'מעלים ל-Claude את המצגת ואת דף שיעורי הבית, ומקבלים אתר תרגול עם בדיקה, שני רמזים ופתרון מלא',
+    summary: 'השיטה שלי לשיעורי בית בתואר: מצגת של הרצאה, דף שיעורי בית ופרומפט אחד, ו-Claude בונה אתר תרגול. כל שאלה בכרטיס עם בדיקה מיידית, רמז ראשון שמפנה לשקף הנכון בהרצאה, רמז שני עם הצעד הראשון, ופתרון מלא רק אחרי אישור. הפרומפט המדויק, וגם חומר לדוגמה להורדה.',
+    image: '/guides/guide-claude-homework-practice-site.png',
+    href: '/guides/claude-homework-practice-site',
+    category: 'טריקים',
+    popular: false,
+    isNew: true,
+    date: '2026-11-04',
+    free: false,
+  },
+  {
     id: 'claude-code-video-effects',
     title: '16 אפקטי וידאו עם Claude Code',
     description: '16 אפקטים לריל, משבירת מסגרת ועד ורטיגו, שנכתבים בקוד עם Claude Code ו-HyperFrames ורצים על הצילום שלכם',
