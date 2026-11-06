@@ -4,7 +4,7 @@ import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
   title: 'סקיל תכנון חופשה ל-Claude | Orci AI',
-  description: 'הסקיל שמחליף עשרים טאבים — מכניסים 4 פרטים ב-Claude ומקבלים אתר חופשה מלא עם לו"ז יומי, מסעדות ותקציב',
+  description: 'הסקיל שמחליף עשרים טאבים: מכניסים 4 פרטים ב-Claude ומקבלים אתר חופשה מלא עם לו"ז יומי, מסעדות ותקציב',
 }
 
 <div className="min-h-screen">
@@ -17,7 +17,7 @@ export const metadata = {
         סקיל תכנון חופשה ל-Claude
       </h1>
       <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
-        4 פרטים בלבד — ומקבלים אתר חופשה מלא עם לו"ז יומי, מסעדות, שכונות ותקציב
+        עונים על 4 שאלות, ומקבלים אתר חופשה מלא עם לו"ז יומי, מסעדות, שכונות ותקציב
       </p>
 
       <div className="flex flex-wrap gap-3 justify-center">
@@ -39,11 +39,11 @@ export const metadata = {
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        כולנו מבלים שעות על Google, פותחים עשרים טאבים ובסוף לא יודעים מה לבחור. <span className="text-orci-cyan font-bold">יש דרך יותר טובה.</span>
+        כולנו מבלים שעות ב-Google, פותחים עשרים טאבים ובסוף לא יודעים מה לבחור. <span className="text-orci-cyan font-bold">יש דרך פשוטה יותר.</span>
       </p>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        <span className="text-orci-cyan font-bold">סקיל</span> ב-Claude Code הוא כלי שמוסיפים לClaude פעם אחת — ואז הוא יודע לבצע משימה שלמה בפקודה אחת. הסקיל הזה מתמחה בתכנון חופשות: שואל אתכם <span className="text-orci-cyan font-bold">4 שאלות בלבד</span>, מעבד הכל ברקע, ומייצר אתר HTML מלא שנפתח ישר בדפדפן.
+        <span className="text-orci-cyan font-bold">סקיל</span> ב-Claude Code הוא קובץ הוראות שמוסיפים ל-Claude פעם אחת. מאותו רגע הוא יודע לעשות משימה שלמה מבקשה אחת. הסקיל הזה מתמחה בתכנון חופשות. הוא שואל אתכם <span className="text-orci-cyan font-bold">4 שאלות בלבד</span>, עובד ברקע, ובונה אתר HTML מלא (דף אינטרנט שנפתח ישר בדפדפן).
       </p>
 
       <div className="mt-6 p-5 rounded-2xl bg-orci-cyan/10 border border-orci-cyan/30">
@@ -56,11 +56,11 @@ export const metadata = {
     {/* Step 1 — Download */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 1: הורדת והתקנת הסקיל
+        שלב 1: מורידים ומתקינים את הסקיל
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-8">
-        שני צעדים בלבד — הורדה והעלאה:
+        שני צעדים בלבד: מורידים את הקובץ ומעלים אותו ל-Claude.
       </p>
 
       {/* Step 1a — Download */}
@@ -74,19 +74,19 @@ export const metadata = {
           <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
           </svg>
-          הורד trip-planner-skill.md
+          הורידו את trip-planner-skill.md
         </a>
       </div>
 
       <p className="text-center text-xs text-slate-500 leading-relaxed px-2">
         ⚠️ This Skill is based on AI and can make mistakes. Please double-check responses.
         <br />
-        הסקיל מבוסס על AI ועלול לטעות — מומלץ לאמת את המידע לפני הסתמכות עליו.
+        הסקיל מבוסס על AI ועלול לטעות. כדאי לבדוק את המידע לפני שסומכים עליו.
       </p>
 
       {/* Step 1b — Upload */}
       <div className="p-5 rounded-2xl bg-white/5 border border-orci-cyan/20">
-        <p className="text-orci-cyan font-bold text-lg mb-6">② העלו ל-Claude — 4 צעדים</p>
+        <p className="text-orci-cyan font-bold text-lg mb-6">② העלו ל-Claude ב-4 צעדים</p>
 
         <div className="space-y-6">
           <div>
@@ -97,21 +97,21 @@ export const metadata = {
           </div>
 
           <div>
-            <p className="text-slate-300 font-bold mb-3">② יפתח חלון העלאה</p>
+            <p className="text-slate-300 font-bold mb-3">② ייפתח חלון העלאה</p>
             <div className="rounded-2xl overflow-hidden">
               <Image src="/guides/trip-planner-skill/2.png" alt="חלון העלאת סקיל" width={600} height={400} className="w-full h-auto" />
             </div>
           </div>
 
           <div>
-            <p className="text-slate-300 font-bold mb-3">③ גררו את ה-MD לחלון — או לחצו לבחור קובץ</p>
+            <p className="text-slate-300 font-bold mb-3">③ גררו לחלון את קובץ ה-MD שהורדתם, או לחצו ובחרו אותו מהמחשב</p>
             <div className="rounded-2xl overflow-hidden">
               <Image src="/guides/trip-planner-skill/3.png" alt="גרירת קובץ MD להעלאה" width={600} height={400} className="w-full h-auto" />
             </div>
           </div>
 
           <div>
-            <p className="text-slate-300 font-bold mb-3">④ הסקיל מותקן — מוכן לשימוש ✅</p>
+            <p className="text-slate-300 font-bold mb-3">④ הסקיל מותקן ומוכן לשימוש ✅</p>
             <div className="rounded-2xl overflow-hidden">
               <Image src="/guides/trip-planner-skill/4.png" alt="הסקיל הותקן בהצלחה" width={600} height={400} className="w-full h-auto" />
             </div>
@@ -123,11 +123,11 @@ export const metadata = {
     {/* Step 2 — Activate */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 2: הפעלת הסקיל
+        שלב 2: מפעילים את הסקיל
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        פתחו <span className="text-orci-cyan font-bold">Claude Code</span> וכתבו אחד מהביטויים הבאים:
+        פתחו את <span className="text-orci-cyan font-bold">Claude Code</span> וכתבו:
       </p>
 
       <CopyPrompt prompt="תכנן לי טיול" />
@@ -139,40 +139,40 @@ export const metadata = {
       <ul className="list-none space-y-3 mb-6">
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          🌍 <span className="text-orci-cyan font-bold">לאן</span> — יעד הטיול
+          🌍 <span className="text-orci-cyan font-bold">לאן</span>: יעד הטיול
         </li>
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          📅 <span className="text-orci-cyan font-bold">מתי</span> — תאריך יציאה וחזרה
+          📅 <span className="text-orci-cyan font-bold">מתי</span>: תאריך יציאה וחזרה
         </li>
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          💰 <span className="text-orci-cyan font-bold">תקציב</span> — כמה יש לכם סה"כ
+          💰 <span className="text-orci-cyan font-bold">תקציב</span>: כמה יש לכם בסך הכל
         </li>
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          👥 <span className="text-orci-cyan font-bold">למי</span> — רווק / זוג / משפחה / קבוצת חברים
+          👥 <span className="text-orci-cyan font-bold">למי</span>: רווק / זוג / משפחה / קבוצת חברים
         </li>
       </ul>
 
       <p className="text-lg text-slate-300 leading-relaxed">
-        ענו — ותחכו שנייה. הסקיל עובד ברקע ומייצר את כל תוכנית הטיול.
+        עונים ומחכים רגע. הסקיל עובד ברקע ובונה את כל תוכנית הטיול.
       </p>
     </div>
 
     {/* Step 3 — Example */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 3: דוגמא לתוצאה — חופשה לתאילנד
+        שלב 3: דוגמה לתוצאה (חופשה בתאילנד)
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-6">
-        הנה מה שהסקיל בנה עבור <span className="text-orci-cyan font-bold">חופשה לתאילנד</span> — לו"ז יומי, מסעדות, אטרקציות ופירוט תקציב מלא:
+        זה מה שהסקיל בנה ל<span className="text-orci-cyan font-bold">חופשה בתאילנד</span>: לו"ז יומי, מסעדות, אטרקציות ופירוט תקציב מלא.
       </p>
 
       <div className="space-y-4">
         <div className="rounded-2xl overflow-hidden">
-          <Image src="/guides/trip-planner-skill/Exmple1.png" alt="דוגמא לתוצאה — חופשה לתאילנד" width={900} height={600} className="w-full h-auto" />
+          <Image src="/guides/trip-planner-skill/Exmple1.png" alt="דוגמה לתוצאה: חופשה בתאילנד" width={900} height={600} className="w-full h-auto" />
         </div>
         <div className="rounded-2xl overflow-hidden">
           <Image src="/guides/trip-planner-skill/Exmple2.png" alt="לו״ז יומי ומסעדות לתאילנד" width={900} height={600} className="w-full h-auto" />
@@ -191,7 +191,7 @@ export const metadata = {
           התוצאה
         </h2>
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-          אתר חופשה מלא שנפתח <span className="text-orci-cyan font-bold">ישירות בדפדפן</span> — לו"ז יומי, מסעדות, אטרקציות, פירוט תקציב והמלצות
+          אתר חופשה מלא שנפתח <span className="text-orci-cyan font-bold">ישר בדפדפן</span>, עם לו"ז יומי, מסעדות, אטרקציות, פירוט תקציב והמלצות
         </p>
 
         <div className="mt-8 rounded-2xl overflow-hidden" style={{ aspectRatio: '9/16', maxWidth: '400px', margin: '0 auto' }}>
@@ -214,10 +214,10 @@ export const metadata = {
           💡 המסר המרכזי
         </h3>
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-          <span className="text-orci-cyan font-bold">סקיל = כוח-על שמוסיפים ל-Claude פעם אחת</span>
+          <span className="text-orci-cyan font-bold">סקיל = יכולת חדשה שמוסיפים ל-Claude פעם אחת</span>
         </p>
         <p className="text-lg text-slate-300">
-          במקום לבצע כל פעם את אותה עבודה ידנית — מגדירים סקיל שעושה אותה אוטומטית בפקודה אחת.
+          במקום לעשות כל פעם את אותה עבודה בידיים, מוסיפים סקיל שעושה אותה לבד מבקשה אחת.
         </p>
       </div>
     </div>
@@ -230,7 +230,7 @@ export const metadata = {
   <p className="text-center text-sm text-slate-500 leading-relaxed">
     ⚠️ This Skill is based on AI and can make mistakes. Please double-check responses.
     <br />
-    הסקיל מבוסס על AI ועלול לטעות — מומלץ לאמת את המידע לפני הסתמכות עליו.
+    הסקיל מבוסס על AI ועלול לטעות. כדאי לבדוק את המידע לפני שסומכים עליו.
   </p>
 </div>
 
@@ -240,10 +240,10 @@ export const metadata = {
     <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
       <div className="text-5xl mb-6">🛠️</div>
       <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
-        מעוניינים ביצירת סקילים ל-Claude?
+        רוצים ללמוד לבנות סקילים ל-Claude?
       </h2>
       <p className="text-gray-300 mb-8 text-lg">
-        בואו ללמוד איתי איך לבנות סקילים מותאמים אישית שחוסכים לכם שעות כל שבוע
+        בואו ללמוד איתי לבנות סקילים משלכם שחוסכים לכם שעות כל שבוע
       </p>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

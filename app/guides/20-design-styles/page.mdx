@@ -17,7 +17,7 @@ export const metadata = {
         20 סגנונות עיצוב לעסק שלכם בפרומפט אחד
       </h1>
       <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
-        משלמים למעצב על כל פוסטר? מעלים את הלוגו, מדביקים פרומפט אחד, ומשנים בו רק מילה אחת: שם הסגנון.
+        משלמים למעצב על כל פוסטר? מעלים את הלוגו ומדביקים פרומפט אחד (ההוראה שכותבים ל-AI). משנים בו רק מילה אחת: שם הסגנון.
       </div>
 
       {/* Tools Badges */}
@@ -54,7 +54,7 @@ export const metadata = {
         לפני הכל: מה צריך
       </h2>
       <ul className="list-none space-y-3 mb-6">
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>גישה ל-<span className="text-orci-cyan font-bold">GPT Image 2.5</span>, מודל התמונות שאפשר להעלות אליו תמונת רפרנס. אנחנו עבדנו דרך Higgsfield.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>גישה ל-<span className="text-orci-cyan font-bold">GPT Image 2.5</span>: מודל תמונות (כלי AI שיוצר תמונות) שאפשר להעלות אליו תמונת רפרנס, כלומר תמונה שהוא עובד לפיה. אנחנו עבדנו דרך Higgsfield, אתר שמרכז כמה כלי AI.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>הלוגו של העסק כקובץ תמונה. אין לכם? בשלב 1 יש פרומפט ללוגו.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>שלושה טקסטים קצרים בעברית: שם העסק, שורה אחת מתחתיו, ומשהו לתחתית הפוסטר (למשל שעות פתיחה).</li>
       </ul>
@@ -69,7 +69,7 @@ export const metadata = {
         שלב 1: הלוגו
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        יש לכם לוגו? מדלגים לשלב 2. אין לכם? זה הפרומפט שבו נוצר הלוגו של בלומה, ביחס <span className="text-orci-cyan font-bold">1:1</span>. מחליפים בו את סוג העסק, את השם בעברית, את השורה שמתחתיו ואת הצבעים.
+        יש לכם לוגו? מדלגים לשלב 2. אין לכם? זה הפרומפט שבו נוצר הלוגו של בלומה, ביחס <span className="text-orci-cyan font-bold">1:1</span> (ריבוע). מחליפים בו את סוג העסק, את השם בעברית, את השורה שמתחתיו ואת הצבעים.
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
@@ -286,7 +286,7 @@ export const metadata = {
         שני דברים שלמדנו בדרך
       </h2>
       <ul className="list-none space-y-3 mb-6">
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">שם סגנון כללי מדי לא עובד.</span> עם "Aurora" לבד המודל ייצר פעמיים איור רגיל בלי שום אורורה. רק "Aurora Gradient" נתן את הגרדיאנט. אם פוסטר לא נראה כמו הסגנון, מוסיפים לשם מילה שמתארת אותו.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">שם סגנון כללי מדי לא עובד.</span> עם "Aurora" לבד המודל יצר פעמיים איור רגיל בלי שום אורורה. רק "Aurora Gradient" נתן את מעבר הצבעים. אם פוסטר לא נראה כמו הסגנון, מוסיפים לשם מילה שמתארת אותו.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">בודקים את העברית בכל פוסטר.</span> השורה "Spell the Hebrew exactly as written" עוזרת, אבל מודלי תמונה עדיין יכולים לשבש אותיות בעברית. אם יש שגיאה, מייצרים שוב את אותו סגנון.</li>
       </ul>
     </div>
@@ -314,7 +314,7 @@ export const metadata = {
           <span className="text-orci-cyan font-bold">כשהפרומפט קבוע, ההבדל הוא מילה אחת.</span>
         </div>
         <div className="text-lg text-slate-300">
-          זה מה שהופך את זה לשיטה ולא למזל: אותו לוגו, אותו טקסט, ורק הסגנון משתנה.
+          ככה זה עובד בכל פעם: אותו לוגו, אותו טקסט, ורק הסגנון משתנה.
         </div>
       </div>
     </div>
@@ -330,7 +330,7 @@ export const metadata = {
         רוצים להישאר מעודכנים?
       </h2>
       <div className="text-gray-300 mb-6 text-lg">
-        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+        הצטרפו לקבוצת הווטסאפ של Orci AI: מדריכים חדשים כל שבוע
       </div>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

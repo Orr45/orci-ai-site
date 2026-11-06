@@ -42,7 +42,7 @@ export function CoachingStrip({ from, trackLabel = 'coaching-strip' }: { from?: 
         <span className="grid leading-tight min-w-0 gap-0.5">
           <span className="text-[17px] md:text-lg font-black">רוצים ליווי אישי 1:1?</span>
           <span className="text-[14px] md:text-[15px] font-semibold" style={{ textWrap: 'balance' }}>
-            תלמדו ליצור תוכן ברמה הכי גבוהה שיש — צעד אחר צעד איתי
+            תלמדו ליצור תוכן ברמה הכי גבוהה שיש, צעד אחר צעד איתי
           </span>
         </span>
         <span

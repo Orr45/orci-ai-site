@@ -3,8 +3,8 @@ import { CopyPrompt } from '@/components/ui/CopyPrompt'
 import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
-  title: 'Claude מפרק אפליקציה ובונה לך אחת משלך | Orci AI',
-  description: 'מדריך התקנה ל-REA, כלי חינמי וקוד פתוח שמחברים ל-Claude Code. הוא בודק איך אפליקציה עובדת בלי קוד המקור שלה, ו-Claude בונה לך גרסה משלך. כולל פקודות התקנה ופרומפטים מוכנים.',
+  title: 'Claude מפרק אפליקציה ובונה לכם אחת משלכם | Orci AI',
+  description: 'מדריך התקנה ל-REA, כלי חינמי בקוד פתוח שמחברים ל-Claude Code. הוא בודק איך אפליקציה עובדת בלי קוד המקור שלה, ו-Claude בונה לכם גרסה משלכם. כולל בקשת התקנה ופרומפטים מוכנים.',
 }
 
 <div className="min-h-screen">
@@ -14,7 +14,7 @@ export const metadata = {
   <div className="max-w-7xl mx-auto px-6">
     <div className="cap-card text-center">
       <h1 className="cap-hero-title mb-6 text-orci-cyan">
-        Claude מפרק אפליקציה ובונה לך אחת משלך
+        Claude מפרק אפליקציה ובונה לכם אחת משלכם
       </h1>
       <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
         משלמים מנוי על אפליקציה שמצלמת את האוכל וסופרת קלוריות? עם REA, כלי חינמי שמחברים ל-Claude, הוא לומד איך היא עובדת ובונה לכם אחת משלכם. בלי קוד המקור ובלי מנוי.
@@ -54,7 +54,7 @@ export const metadata = {
         הקישור לכלי
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        REA חינמי ובקוד פתוח, ונמצא ב-GitHub:{' '}
+        REA חינמי ובקוד פתוח. הוא נמצא ב-GitHub, האתר שבו מפרסמים קוד:{' '}
         <a href="https://github.com/morluto/rea" target="_blank" rel="noopener noreferrer" className="text-orci-cyan underline font-bold">github.com/morluto/rea</a>
       </div>
       <div className="text-lg text-slate-300 leading-relaxed">
@@ -142,7 +142,7 @@ export const metadata = {
       </div>
       <ul className="list-none space-y-3 mb-6">
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">ראיתי ✓</span>: מה שהוא ראה בעיניים. למשל, מסך מצלמה שמצלם את הצלחת ושולח את התמונה.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">הסקתי ~</span>: מה שהוא מבין מזה. למשל, מודל ראייה מזהה את האוכל ואת הכמות, ומשם מחושבים הקלוריות והמאקרו.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">הסקתי ~</span>: מה שהוא מבין מזה. למשל, מודל ראייה (AI שמבין תמונות) מזהה את האוכל ואת הכמות, ומשם מחושבים הקלוריות והמאקרו (חלבון, פחמימות ושומן).</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">לא ידוע ?</span>: מה שאי אפשר לדעת מבחוץ. למשל, באיזה מודל בדיוק הם משתמשים ומה הפרומפט שלהם.</li>
       </ul>
       <div className="my-8 grid grid-cols-2 gap-4">
@@ -167,7 +167,7 @@ export const metadata = {
       </div>
       <CopyPrompt prompt={`עכשיו תבנה לי אפליקציה משלי שעושה את אותו הדבר, לפי המסמך שכתבת: מצלמים צלחת, התמונה נשלחת למודל ראייה, ומקבלים קלוריות, חלבון, פחמימות ושומן. אל תעתיק קוד, עיצוב או שם מהאפליקציה המקורית. תעצב אותה בצהוב ושחור. תתחיל בגרסה פשוטה שרצה בדפדפן בטלפון. אני מתחיל, אז תסביר לי צעד אחר צעד מה אני צריך לחבר כדי שהיא תעבוד, למשל מפתח למודל הראייה ואיך משיגים אותו.`} />
       <div className="text-lg text-slate-300 leading-relaxed mt-6 mb-4">
-        כדי שהאפליקציה תזהה אוכל היא צריכה חיבור למודל ראייה, ולרוב זה אומר מפתח API. Claude יגיד לכם מאיפה להביא אותו ואיפה להדביק אותו.
+        כדי שהאפליקציה תזהה אוכל, היא צריכה חיבור למודל ראייה. לרוב זה אומר מפתח API, מעין סיסמה שמחברת את האפליקציה לשירות. Claude יגיד לכם מאיפה להביא אותו ואיפה להדביק אותו.
       </div>
       <div className="my-8 rounded-2xl overflow-hidden max-w-xs mx-auto">
         <Image src="/guides/rea-reverse-engineer/step4-result.png" alt="האפליקציה החדשה: שקשוקה, 520 קלוריות" width={840} height={1140} className="w-full h-auto" />
@@ -249,7 +249,7 @@ export const metadata = {
         רוצים להישאר מעודכנים?
       </h2>
       <div className="text-gray-300 mb-6 text-lg">
-        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+        הצטרפו לקבוצת הווטסאפ של Orci AI: מדריכים חדשים כל שבוע
       </div>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

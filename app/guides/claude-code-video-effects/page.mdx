@@ -17,7 +17,7 @@ export const metadata = {
         16 אפקטי וידאו עם Claude Code
       </h1>
       <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
-        כל אפקט בריל נכתב בקוד ורונדר על המחשב, על הצילום שלי, בלי אפטר אפקטס. הנה הפרומפט לכל אחד מה-16.
+        כל אפקט בריל נכתב בקוד ונבנה על המחשב, על הצילום שלי, בלי אפטר אפקטס (תוכנת האפקטים המקצועית). הנה הפרומפט לכל אחד מה-16.
       </div>
 
       {/* Tools Badges */}
@@ -39,7 +39,7 @@ export const metadata = {
         הסרטון
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        כל 16 האפקטים רצים על טייק אחד שלי שצולם בבית. <span className="text-orci-cyan font-bold">Claude Code</span> כתב את הקוד, ו-<span className="text-orci-cyan font-bold">HyperFrames</span> רינדר אותו לסרטון.
+        כל 16 האפקטים רצים על טייק אחד שלי שצולם בבית. <span className="text-orci-cyan font-bold">Claude Code</span> (הגרסה של Claude שעובדת ישירות על המחשב) כתב את הקוד. <span className="text-orci-cyan font-bold">HyperFrames</span>, כלי חינמי, הפך את הקוד לקובץ וידאו. זה נקרא רינדור.
       </div>
       <div className="my-8 max-w-sm mx-auto">
         <video src="/guides/claude-code-video-effects/reel.mp4" poster="/guides/claude-code-video-effects/poster-reel.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
@@ -53,13 +53,13 @@ export const metadata = {
         לפני הכל: מה צריך
       </h2>
       <ul className="list-none space-y-3 mb-6">
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Claude Code</span>: נכלל במנוי של Claude. אפשר באפליקציה או בטרמינל.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Node.js 22 ומעלה ו-ffmpeg</span>: לא צריך להתקין לבד. Claude בודק אם הם קיימים, ואם חסר משהו הוא מתקין.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Claude Code</span>: נכלל במנוי של Claude. אפשר באפליקציה של Claude למחשב, או בטרמינל (חלון הפקודות של המחשב).</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Node.js 22 ומעלה ו-ffmpeg</span>: שני כלים ש-HyperFrames צריך כדי לעבוד. לא צריך להתקין אותם לבד. Claude בודק אם הם קיימים, ואם חסר משהו הוא מתקין.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">סרטון שלכם</span>: מצלמה קבועה, אתם במרכז הפריים. מצלמת טלפון מספיקה.</li>
       </ul>
       <div className="rounded-xl border border-orci-cyan/40 bg-orci-cyan/5 p-5 mt-6">
         <div className="text-lg text-slate-300 leading-relaxed">
-          <span className="text-orci-cyan font-bold">כמה זה עולה:</span> מעבר למנוי של Claude, כלום. HyperFrames הוא קוד פתוח של HeyGen, והרינדור והחיתוך של הדמות מהרקע רצים על המחשב שלכם.
+          <span className="text-orci-cyan font-bold">כמה זה עולה:</span> מעבר למנוי של Claude, כלום. HyperFrames הוא כלי חינמי בקוד פתוח של HeyGen. גם הרינדור וגם החיתוך שלכם מהרקע רצים על המחשב שלכם.
         </div>
       </div>
     </div>
@@ -70,7 +70,7 @@ export const metadata = {
         שלב 1: פותחים פרויקט מהסרטון
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        שמים את הסרטון בתיקייה, פותחים אותה ב-Claude Code ומדביקים את הפרומפט הזה. הוא מתקין את <span className="text-orci-cyan font-bold">HyperFrames</span>, פותח פרויקט אנכי, ומכין גרסה של הסרטון שבה אתם חתוכים מהרקע. רוב האפקטים צריכים אותה.
+        שמים את הסרטון בתיקייה, פותחים את התיקייה ב-Claude Code ומדביקים את הפרומפט הזה. הוא מתקין את <span className="text-orci-cyan font-bold">HyperFrames</span> ופותח פרויקט אנכי, כלומר תיקיית עבודה לסרטון בגודל של ריל. אחר כך הוא מכין גרסה של הסרטון שבה אתם חתוכים מהרקע. רוב האפקטים צריכים אותה.
       </div>
       <CopyPrompt prompt="תתקין את HyperFrames ותפתח פרויקט אנכי 1080 על 1920 מהסרטון שלי me.mp4. אחר כך תחתוך אותי מהרקע עם hyperframes remove-background ותשמור גם את המסכה וגם את הרקע בלי הדמות, כדי שנוכל לשים דברים מאחוריי ומקדימה." />
       <div className="text-lg text-slate-300 leading-relaxed mb-4 mt-4">
@@ -84,7 +84,7 @@ export const metadata = {
         שלב 2: 16 האפקטים
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        בסדר שבו הם מופיעים בריל. כל תמונה היא פריים מהאפקט, על הצילום שלי.
+        הם מסודרים לפי הסדר בריל. כל תמונה היא פריים מתוך האפקט, על הצילום שלי.
       </div>
 
       <div className="my-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -226,7 +226,7 @@ export const metadata = {
         שלב 3: הרשימה שמחזיקה את הצופים עד הסוף
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        בריל יש כותרת קבועה ורשימה של כל 16 האפקטים משני צידי הראש, והאפקט שרץ עכשיו מסומן בצהוב. הצופה רואה כמה עוד נשאר, ונשאר.
+        בריל יש כותרת קבועה, ורשימה של כל 16 האפקטים משני צידי הראש. האפקט שרץ עכשיו מסומן בצהוב. הצופה רואה כמה עוד נשאר, ונשאר.
       </div>
       <CopyPrompt prompt="תוסיף למעלה כותרת קבועה '16 אפקטים ש-Claude Code יוצר', ומתחתיה רשימה של כל האפקטים בשני טורים משני צידי הראש שלי. האפקט שרץ עכשיו מסומן בצהוב, ואלה שכבר עברו מעומעמים. הרשימה נכנסת רק משנייה 3." />
     </div>
@@ -237,10 +237,10 @@ export const metadata = {
         מה נתקע לי בדרך, ואיך תיקנתי
       </h2>
       <ul className="list-none space-y-3 mb-6">
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">אפקט שיוצא שחור</span>: אצלי השריפה יצאה שחורה בהתחלה. ביקשתי מ-Claude לבדוק את השגיאות בקונסול, והוא מצא פונקציה אחת שלא הוגדרה.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">עובד בתצוגה ושחור בקובץ הסופי</span>: ברינדור HyperFrames מחליף כל וידאו בתמונות פריים. אם האפקט שלכם ב-WebGL, כתבו לו: "תוודא שהשיידר קורא את הפריים שהרינדור מזריק, ותתחיל לטעון כל קליפ חצי שנייה לפני שהוא מופיע".</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">לפני רינדור</span>: בקשו ממנו snapshot בכמה שניות ותסתכלו על הפריימים. זה הרבה יותר מהיר מרינדור של כל הסרטון בכל תיקון.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">טקסט בתוך האזור הבטוח</span>: כתוביות ורשימות בין גובה 310 ל-1240 פיקסלים, אחרת אינסטגרם מכסה או חותכת אותן.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">אפקט שיוצא שחור</span>: אצלי השריפה יצאה שחורה בהתחלה. ביקשתי מ-Claude לבדוק את השגיאות בקונסול (המקום שבו הדפדפן רושם שגיאות). הוא מצא טעות קטנה בקוד: פונקציה אחת שלא הוגדרה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">עובד בתצוגה ושחור בקובץ הסופי</span>: ברינדור, HyperFrames מחליף כל וידאו בתמונות, פריים אחרי פריים. אם האפקט שלכם כתוב ב-WebGL (קוד גרפי שרץ בדפדפן), כותבים לו: "תוודא שהשיידר קורא את הפריים שהרינדור מזריק, ותתחיל לטעון כל קליפ חצי שנייה לפני שהוא מופיע".</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">לפני רינדור</span>: מבקשים ממנו snapshot (צילום של פריים בודד) בכמה שניות, ומסתכלים על הפריימים. זה הרבה יותר מהיר מלרנדר את כל הסרטון אחרי כל תיקון.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">טקסט בתוך האזור הבטוח</span>: שמים כתוביות ורשימות בין גובה 310 ל-1240 פיקסלים. אחרת אינסטגרם מכסה או חותכת אותן.</li>
       </ul>
     </div>
 
@@ -252,7 +252,7 @@ export const metadata = {
           התוצאה
         </h2>
         <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-          ריל של 26 שניות עם <span className="text-orci-cyan font-bold">16 אפקטים</span> על הצילום שלכם, שנכתבו בקוד ורונדרו על המחשב, בלי אפטר אפקטס ובלי תוכנת עריכה.
+          ריל של 26 שניות עם <span className="text-orci-cyan font-bold">16 אפקטים</span> על הצילום שלכם. הכול נכתב בקוד ורונדר על המחשב, בלי אפטר אפקטס ובלי תוכנת עריכה.
         </div>
       </div>
     </div>
@@ -268,7 +268,7 @@ export const metadata = {
         רוצים להישאר מעודכנים?
       </h2>
       <div className="text-gray-300 mb-6 text-lg">
-        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+        הצטרפו לקבוצת הווטסאפ של Orci AI: מדריכים חדשים כל שבוע
       </div>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

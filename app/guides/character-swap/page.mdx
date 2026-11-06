@@ -3,8 +3,8 @@ import { CopyPrompt } from '@/components/ui/CopyPrompt'
 import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
-  title: 'החלפת דמויות עם Kling — פרסומת מקצועית ב-5 דקות | Orci AI',
-  description: 'למד איך להפוך לכל דמות שתרצה עם Nano Banana 2 ו-Kling Motion — בלי צלם, בלי סטודיו, בלי תקציב. פרסומת מקצועית תוך 5 דקות.',
+  title: 'החלפת דמויות עם Kling: פרסומת מקצועית ב-5 דקות | Orci AI',
+  description: 'איך הופכים לכל דמות שתרצו עם Nano Banana 2 ו-Kling Motion, בלי צלם, סטודיו או תקציב. פרסומת מקצועית תוך 5 דקות.',
 }
 
 <div className="min-h-screen">
@@ -17,7 +17,7 @@ export const metadata = {
         החלפת דמויות עם Kling
       </h1>
       <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
-        פרסומת מקצועית ב-5 דקות — בלי צלם, בלי סטודיו, בלי תקציב
+        פרסומת מקצועית ב-5 דקות, בלי צלם, סטודיו או תקציב
       </p>
 
       {/* Tools Badges */}
@@ -40,33 +40,33 @@ export const metadata = {
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        מצלמים סרטון של <span className="text-orci-cyan font-bold">10 שניות</span> — אתם מדברים, מפרסמים מוצר, מה שרוצים. לא צריך תאורה מיוחדת, לא סטודיו. הטלפון מספיק.
+        מצלמים סרטון של <span className="text-orci-cyan font-bold">10 שניות</span>. מדברים, מפרסמים מוצר, מה שרוצים. לא צריך תאורה מיוחדת או סטודיו. הטלפון מספיק.
       </p>
 
       <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
         <Image src="/guides/character-swap/FirstFrame.png" alt="פריים ראשון מהסרטון המקורי" width={600} height={400} className="w-full h-auto" />
       </div>
-      <p className="text-center text-sm text-orci-cyan font-bold mt-2">הפריים הראשון מהסרטון שצילמתם</p>
+      <p className="text-center text-sm text-orci-cyan font-bold mt-2">הפריים הראשון (התמונה הראשונה) מהסרטון שצילמתם</p>
     </div>
 
     {/* Step 2 */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 2: עיצוב הדמות ב-Nano Banana 2
+        שלב 2: מעצבים את הדמות ב-Nano Banana 2
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        נכנסים ל-<span className="text-orci-cyan font-bold">Nano Banana 2</span> ומעלים שתי תמונות: פריים מהסרטון שלכם (image 1) + הדמות שאתם רוצים להיות (image 2). ה-AI לוקח את הפוזה שלכם ומחיל אותה על הדמות שבחרתם — עם כל רקע שתרצו: סטודיו, חוף, עיר.
+        נכנסים ל-<span className="text-orci-cyan font-bold">Nano Banana 2</span> (כלי AI לעריכת תמונות) ומעלים שתי תמונות: פריים מהסרטון שלכם (image 1), ותמונה של הדמות שאתם רוצים להיות (image 2). ה-AI לוקח את הפוזה שלכם ושם אותה על הדמות שבחרתם. הרקע יכול להיות מה שתרצו: סטודיו, חוף, עיר. ואז מדביקים את הפרומפט (ההוראה שכותבים ל-AI) שלמטה.
       </p>
 
       <div className="my-8 grid grid-cols-2 gap-4">
         <div className="rounded-2xl overflow-hidden">
-          <Image src="/guides/character-swap/FirstFrame.png" alt="image 1 — הפריים שלכם" width={500} height={500} className="w-full h-auto" />
-          <p className="text-center text-sm text-orci-cyan font-bold mt-2">image 1 — הפריים שלכם</p>
+          <Image src="/guides/character-swap/FirstFrame.png" alt="image 1: הפריים שלכם" width={500} height={500} className="w-full h-auto" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">image 1: הפריים שלכם</p>
         </div>
         <div className="rounded-2xl overflow-hidden">
-          <Image src="/guides/character-swap/Model.png" alt="image 2 — הדמות שתרצו להיות" width={500} height={500} className="w-full h-auto" />
-          <p className="text-center text-sm text-orci-cyan font-bold mt-2">image 2 — הדמות שתרצו להיות</p>
+          <Image src="/guides/character-swap/Model.png" alt="image 2: הדמות שתרצו להיות" width={500} height={500} className="w-full h-auto" />
+          <p className="text-center text-sm text-orci-cyan font-bold mt-2">image 2: הדמות שתרצו להיות</p>
         </div>
       </div>
 
@@ -76,11 +76,11 @@ export const metadata = {
     {/* Step 3 */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 3: Kling Motion עושה את הקסם
+        שלב 3: Kling Motion מעביר את התנועות לדמות
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        נכנסים ל-<span className="text-orci-cyan font-bold">Kling Motion</span>, מעלים את <span className="text-orci-cyan font-bold">הסרטון המקורי</span> שצילמתם יחד עם <span className="text-orci-cyan font-bold">התמונה שיצרתם</span> ב-Nano Banana — ולוחצים Generate. Kling מנתח את התנועות שלכם ומעביר אותן לדמות החדשה. בלי פרומפט, בלי הגדרות מסובכות.
+        נכנסים ל-<span className="text-orci-cyan font-bold">Kling Motion</span>, מעלים את <span className="text-orci-cyan font-bold">הסרטון המקורי</span> שצילמתם ואת <span className="text-orci-cyan font-bold">התמונה שיצרתם</span> ב-Nano Banana, ולוחצים Generate. Kling קורא את התנועות שלכם ומעביר אותן לדמות החדשה. לא צריך פרומפט או הגדרות מסובכות.
       </p>
 
       <div className="my-8 grid grid-cols-2 gap-4">
@@ -103,12 +103,12 @@ export const metadata = {
           התוצאה
         </h2>
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
-          אתם <span className="text-orci-cyan font-bold">כל דמות שרציתם</span>, עם כל רקע שרציתם. פרסומת מקצועית תוך 5 דקות — בלי תקציב, בלי צלם, בלי סטודיו.
+          אתם <span className="text-orci-cyan font-bold">כל דמות שרציתם</span>, עם כל רקע שרציתם. פרסומת מקצועית תוך 5 דקות, בלי תקציב, צלם או סטודיו.
         </p>
         <div className="my-8 rounded-2xl overflow-hidden" style={{ aspectRatio: '9/16', maxWidth: '400px', margin: '0 auto' }}>
           <iframe
             src="https://www.youtube.com/embed/iRIKX7JhDEo?rel=0"
-            title="החלפת דמויות עם Kling — תוצאה סופית"
+            title="החלפת דמויות עם Kling: תוצאה סופית"
             className="w-full h-full"
             allow="autoplay; fullscreen"
             allowFullScreen
@@ -128,7 +128,7 @@ export const metadata = {
           <span className="text-orci-cyan font-bold">אתם לא צריכים לשלם למשפיען.</span>
         </p>
         <p className="text-lg text-slate-300">
-          עם שלושה שלבים פשוטים אפשר לייצר פרסומת שנראית כאילו הופקה עם תקציב של אלפי שקלים — תוך 5 דקות בלבד.
+          בשלושה שלבים פשוטים יוצרים פרסומת שנראית כאילו עלתה אלפי שקלים. וכל זה תוך 5 דקות.
         </p>
       </div>
     </div>
@@ -144,7 +144,7 @@ export const metadata = {
         רוצים להישאר מעודכנים?
       </h2>
       <p className="text-gray-300 mb-6 text-lg">
-        לקבל את המדריכים והטריקים הכי שווים — היכנסו לקבוצת הווצ'אט השקטה שלנו
+        היכנסו לקבוצת הווטסאפ השקטה שלנו, ותקבלו את המדריכים והטריקים הכי שווים
       </p>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

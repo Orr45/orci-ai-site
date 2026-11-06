@@ -28,7 +28,7 @@ export function Footer() {
               <span style={{ color: 'var(--accent)' }}>AI</span>
             </Link>
             <p className="text-sm leading-relaxed mb-2" style={{ color: 'var(--text-secondary)' }}>
-              שיווק ופרסומות AI לעסקים — ומדריכים שילמדו אותך לעשות את זה בעצמך.
+              שיווק ופרסומות AI לעסקים, ומדריכים שילמדו אתכם לעשות את זה בעצמכם.
             </p>
             <p className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
               אור שמר · Or Shemer
@@ -84,7 +84,7 @@ export function Footer() {
                   className="transition-colors hover:opacity-70"
                   style={{ color: 'var(--text-secondary)' }}
                 >
-                  אינסטגרם — @orciai45
+                  אינסטגרם: @orciai45
                 </a>
               </li>
             </ul>
@@ -94,9 +94,9 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8" style={{ borderTop: '1px solid var(--border-subtle)' }}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm" style={{ color: 'var(--text-muted)' }}>
-            <p>© 2026 Orci AI — אור שמר. כל הזכויות שמורות.</p>
+            <p>© 2026 Orci AI · אור שמר. כל הזכויות שמורות.</p>
             <Link href="/accessibility" className="text-xs underline transition-colors hover:opacity-70">הצהרת נגישות</Link>
-            <p className="text-xs">תתחילו לחלום — כי עם AI אפשר הכל.</p>
+            <p className="text-xs">תתחילו לחלום, כי עם AI אפשר הכל.</p>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
   title: 'מסלפי לתמונת פרופיל מקצועית עם ChatGPT | Orci AI',
-  description: 'למדו איך להפוך סלפי פשוט לתמונת פרופיל מקצועית עם GPT Image 2 — 5 סגנונות מוכנים לשימוש.',
+  description: 'איך להפוך סלפי פשוט לתמונת פרופיל מקצועית עם GPT Image 2. 5 סגנונות מוכנים לשימוש.',
 }
 
 <div className="min-h-screen">
@@ -17,7 +17,7 @@ export const metadata = {
         מסלפי לתמונת פרופיל מקצועית עם ChatGPT
       </h1>
       <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
-        5 סגנונות מוכנים — מקזואל ועד דרמטי. תצלמו סלפי, תדביקו פרומפט, תקבלו תמונת פרופיל מקצועית.
+        5 סגנונות מוכנים, מקזואל ועד דרמטי. מצלמים סלפי, מדביקים פרומפט (ההוראה שכותבים ל-AI), ומקבלים תמונת פרופיל מקצועית.
       </p>
       <div className="flex flex-wrap gap-3 justify-center">
         <span className="cap-badge text-sm">🤖 ChatGPT GPT Image 2</span>
@@ -37,21 +37,21 @@ export const metadata = {
         שלב 1: צלמו סלפי של עצמכם
       </h2>
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        לא צריך ציוד מיוחד — <span className="text-orci-cyan font-bold">סלפי פשוט</span> עם הטלפון מספיק. הכי חשוב שהפנים יהיו ברורים ומוארים.
+        לא צריך ציוד מיוחד. <span className="text-orci-cyan font-bold">סלפי פשוט</span> עם הטלפון מספיק. הכי חשוב שהפנים יהיו ברורים ומוארים.
       </p>
       <div className="my-8 rounded-2xl overflow-hidden max-w-sm mx-auto">
-        <Image src="/guides/ai-headshots/selfie-input.jpg" alt="סלפי קלט לדוגמה" width={600} height={800} className="w-full h-auto" />
+        <Image src="/guides/ai-headshots/selfie-input.jpg" alt="סלפי לדוגמה" width={600} height={800} className="w-full h-auto" />
       </div>
-      <p className="text-center text-sm text-orci-cyan font-bold -mt-4 mb-2">תמונת הקלט — סלפי רגיל</p>
+      <p className="text-center text-sm text-orci-cyan font-bold -mt-4 mb-2">התמונה שהעליתי: סלפי רגיל</p>
     </div>
 
     {/* Step 2 */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 2: היכנסו ל-ChatGPT → /image
+        שלב 2: נכנסים ל-ChatGPT וכותבים /image
       </h2>
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        היכנסו ל-<span className="text-orci-cyan font-bold">ChatGPT</span>, דבר ראשון תירשמו בצ'אט <span className="text-orci-cyan font-bold">/image</span> ומשם יש לכם כאן מגוון פרומפטים לתמונות מקצועיות שתוכלו ליצור!
+        היכנסו ל-<span className="text-orci-cyan font-bold">ChatGPT</span>, ודבר ראשון כתבו בצ'אט <span className="text-orci-cyan font-bold">/image</span>. מעלים את הסלפי ומדביקים אחד מהפרומפטים שלמטה. כל פרומפט נותן סגנון אחר של תמונה מקצועית.
       </p>
     </div>
 
@@ -67,7 +67,7 @@ export const metadata = {
 
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 פרומפט מלא — קזואל / אווירה רגועה
+          📋 פרומפט מלא: קזואל, אווירה רגועה
         </summary>
         <CopyPrompt prompt={`Transform the uploaded photo into a professional, hyper-realistic headshot. Keep the person's face, identity, facial structure, natural features, age, expression, and overall appearance accurate to the uploaded image. Style the final image like a high-end personal brand / LinkedIn / founder headshot: tight portrait framing from upper chest to just above the head, subject centered and facing the camera, natural relaxed expression with a slight confident smile, clean polished skin while keeping realistic texture, pores, and natural imperfections, sharp focus on the eyes, soft flattering lighting from the front-left, subtle catchlights, realistic depth of field, smooth blurred background with warm indoor tones, 85mm portrait lens look at wide aperture, natural color grading with warm highlights and soft contrast, clean modern premium editorial feel. Clothing: simple, modern, professional dark minimal top such as a black sweater. Background: softly blurred modern office, studio, or upscale interior in neutral dark and warm tones, no logos or text. Preserve the person's real identity and facial proportions; do not make it look AI-generated, no plastic skin, no changes to ethnicity, gender, age, facial structure, or eye shape; output should look like a real professional headshot.`} />
       </details>
@@ -76,7 +76,7 @@ export const metadata = {
     {/* Style 2: Work */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        תמונה עבור העבודה
+        תמונה לעבודה
       </h2>
 
       <div className="my-8 rounded-2xl overflow-hidden max-w-sm mx-auto">
@@ -85,7 +85,7 @@ export const metadata = {
 
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 פרומפט מלא — תמונה לעבודה
+          📋 פרומפט מלא: תמונה לעבודה
         </summary>
         <CopyPrompt prompt={`Generate a 1:1 ultra-realistic 4K corporate headshot with studio lighting and keep the person's face the exact same.`} />
       </details>
@@ -94,7 +94,7 @@ export const metadata = {
     {/* Style 3: Business Owner */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        תמונה מקצועית לבעל עסק עבור לקוחות
+        תמונה מקצועית לבעלי עסקים, להציג ללקוחות
       </h2>
 
       <div className="my-8 rounded-2xl overflow-hidden max-w-sm mx-auto">
@@ -103,7 +103,7 @@ export const metadata = {
 
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 פרומפט מלא — תמונה לבעל עסק
+          📋 פרומפט מלא: תמונה לבעלי עסקים
         </summary>
         <CopyPrompt prompt={`I need a professional, high-resolution, profile photo, maintaining the exact facial structure, identity, and key features of the person in the input image. The subject is framed from the chest up, with ample headroom and negative space above their head, ensuring the top of their head is not cropped. The person looks directly at the camera with a confident, authoritative expression, and the subject's body is positioned at a slight 3/4 angle to the camera. They are styled for a professional photo studio shoot, wearing a premium navy business suit with a crisp white dress shirt and understated tie. The background is a solid '#141414' neutral studio. Shot from a high angle with bright and airy soft, diffused studio lighting, gently illuminating the face and creating a subtle catchlight in the eyes, conveying a sense of authority and leadership. Captured on an 85mm f/1.8 lens with a shallow depth of field, exquisite focus on the eyes, and beautiful, soft bokeh. Observe crisp detail on the fabric texture of the suit, individual strands of hair, and natural, realistic skin texture. The atmosphere exudes confidence, professionalism, and executive presence. Clean and bright cinematic color grading with subtle warmth and balanced tones, ensuring a polished and contemporary feel.`} />
       </details>
@@ -121,7 +121,7 @@ export const metadata = {
 
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 פרומפט מלא — אווירה מודרנית
+          📋 פרומפט מלא: אווירה מודרנית
         </summary>
         <CopyPrompt prompt={`I need a professional, high-resolution, profile photo, maintaining the exact facial structure, identity, and key features of the person in the input image. The subject is framed from the chest up, with ample headroom and negative space above their head, ensuring the top of their head is not cropped. The person looks directly at the camera with a relaxed, approachable expression, and the subject's body is casually positioned with a slight lean. They are styled for a professional photo studio shoot, wearing a modern henley shirt in heather gray with rolled sleeves. The background is a solid '#141414' neutral studio. Shot from a high angle with bright and airy soft, diffused studio lighting, gently illuminating the face and creating a subtle catchlight in the eyes, conveying a sense of innovation and accessibility. Captured on an 85mm f/1.8 lens with a shallow depth of field, exquisite focus on the eyes, and beautiful, soft bokeh. Observe crisp detail on the fabric texture of the henley, individual strands of hair, and natural, realistic skin texture. The atmosphere exudes confidence, innovation, and modern professionalism. Clean and bright cinematic color grading with subtle warmth and balanced tones, ensuring a polished and contemporary feel.`} />
       </details>
@@ -130,7 +130,7 @@ export const metadata = {
     {/* Style 5: Dramatic */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        דרמטי שחור לבן עם קלואז אפ
+        דרמטי בשחור-לבן, עם קלוז-אפ
       </h2>
 
       <div className="my-8 rounded-2xl overflow-hidden max-w-sm mx-auto">
@@ -139,7 +139,7 @@ export const metadata = {
 
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 פרומפט 1 — Cinematic Overhead
+          📋 פרומפט 1: Cinematic Overhead
         </summary>
         <CopyPrompt prompt={`Cinematic overhead shot of me standing still on a brick city sidewalk, wearing a dark oversized blazer, motion-blurred crowd rushes past around me with a moody lighting 35mm film look. Shallow depth of field, sharp focus on me. Ratio portrait 4:3`} />
       </details>
@@ -149,15 +149,15 @@ export const metadata = {
     {/* Bonus Gallery */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan text-center">
-        🎨 עוד תוצאות מרהיבות
+        🎨 עוד תוצאות
       </h2>
       <p className="text-lg text-slate-300 leading-relaxed mb-6 text-center">
-        דוגמאות נוספות של מה שאפשר ליצור עם <span className="text-orci-cyan font-bold">GPT Image 2</span> — כל תמונה נוצרה מאותו סלפי:
+        עוד דוגמאות של מה שאפשר ליצור עם <span className="text-orci-cyan font-bold">GPT Image 2</span> (מחולל התמונות של ChatGPT). כל התמונות נוצרו מאותו סלפי:
       </p>
 
       <div className="mb-8 text-center">
         <p className="text-lg text-slate-300 mb-6">
-          רוצים את הפרומפטים שלהם גם? היכנסו לקבוצת הווטסאפ בשביל לקבל את הכל!
+          רוצים גם את הפרומפטים של התמונות האלה? היכנסו לקבוצת הווטסאפ ותקבלו את כולם.
         </p>
         <a
           href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
@@ -226,7 +226,7 @@ export const metadata = {
         רוצים גישה גם לפרומפטים האלה?
       </h2>
       <p className="text-gray-300 mb-6 text-lg">
-        כל מה שאתם צריכים זה להיכנס לקבוצת הווטסאפ שלי
+        מספיק להיכנס לקבוצת הווטסאפ שלי
       </p>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

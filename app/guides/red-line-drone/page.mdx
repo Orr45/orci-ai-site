@@ -3,8 +3,8 @@ import { CopyPrompt } from '@/components/ui/CopyPrompt'
 import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
-  title: 'ציירו קו אדום — AI הפך אותו לסרטון רחפן | Orci AI',
-  description: 'למדו איך לצייר קו אדום על תמונה ו-AI הופך אותו לסרטון רחפן קולנועי — שחיין, חתול, POV של Appa ועוד.',
+  title: 'ציירו קו אדום, וה-AI יהפוך אותו לסרטון רחפן | Orci AI',
+  description: 'מציירים קו אדום על תמונה, וה-AI הופך אותו לסרטון רחפן קולנועי. שחיין, חתול, POV של Appa ועוד.',
 }
 
 <div className="min-h-screen">
@@ -14,10 +14,10 @@ export const metadata = {
   <div className="max-w-7xl mx-auto px-6">
     <div className="cap-card text-center">
       <h1 className="cap-hero-title mb-6 text-orci-cyan">
-        ציירו קו אדום — AI הפך אותו לסרטון רחפן
+        ציירו קו אדום, וה-AI יהפוך אותו לסרטון רחפן
       </h1>
       <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
-        שחיין, חתול, POV — כל מה שתרצו שיעבור שם. מתמונה אחת.
+        שחיין, חתול, POV (מבט מהעיניים של הדמות): כל מה שתרצו שיעבור לאורך הקו. מתמונה אחת.
       </p>
       <div className="flex flex-wrap gap-3 justify-center">
         <span className="cap-badge text-sm">🖼️ GPT Image 2</span>
@@ -38,16 +38,16 @@ export const metadata = {
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        תבחרו את התמונה שאתם רוצים להשתמש בה וציירו <span className="text-orci-cyan font-bold">קו אדום ברור עם חץ בסוף</span> שה-AI יכול להבין את כיוון התנועה — מאיפה הוא מתחיל ומאיפה הוא מסיים.
+        בוחרים תמונה ומציירים עליה <span className="text-orci-cyan font-bold">קו אדום ברור עם חץ בסוף</span>. ככה ה-AI מבין לאן לזוז: איפה הקו מתחיל ואיפה הוא נגמר.
       </p>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        תוכלו להשתמש בכל תמונה שתרצו — חדר, רחוב, נוף — או ליצור תמונה מיוחדת. לדוגמה, אם תרצו <span className="text-orci-cyan font-bold">מפת פנטזיה מגניבה</span>, תשתמשו בפרומפט הבא ב-GPT Image 2:
+        אפשר להשתמש בכל תמונה: חדר, רחוב, נוף. אפשר גם ליצור תמונה חדשה. למשל, בשביל <span className="text-orci-cyan font-bold">מפת פנטזיה</span> כמו בדוגמה, מדביקים ב-GPT Image 2 (מחולל התמונות של OpenAI) את הפרומפט (ההוראה שכותבים ל-AI) הבא. הוא כבר מבקש מה-AI לצייר את הקו האדום בשבילכם:
       </p>
 
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 פרומפט ליצירת מפת פנטזיה — GPT Image 2
+          📋 פרומפט ליצירת מפת פנטזיה ב-GPT Image 2
         </summary>
         <CopyPrompt prompt={`Create a high-resolution 16:9 photorealistic cinematic aerial map depicting the epic journey of a young hero across a vast fantasy world. Show realistic kingdoms, dense enchanted forests, towering mountain ranges, ancient ruins, distant magical cities, hidden cave entrances, floating islands, vast deserts, river valleys, and mysterious coastlines as believable real-world terrain and architectural landmarks. Clearly mark the complete travel route with a thick bright red line winding across the landscape from beginning to end. The route should be easy to follow, with a clear start and finish point. Use cinematic lighting, atmospheric depth, realistic terrain textures, natural shadows, dramatic cloud cover, and high-end fantasy film production design. The image should feel like a realistic aerial reconnaissance shot of an actual fantasy world, not an illustration. Highly detailed, cinematic composition, photorealistic, immersive worldbuilding, 4K quality, no cartoon style, no hand-drawn elements, no illustration, no text labels, no borders, no compass rose.`} />
       </details>
@@ -61,22 +61,22 @@ export const metadata = {
     {/* Step 2 */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 2: הכניסו ל-Seedance 2.0 וקבלו את הסרטון
+        שלב 2: מעלים ל-Seedance 2.0 ומקבלים סרטון
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        מצוין, יש לכם את התמונה! עכשיו כל מה שנותר זה להיכנס ל-<span className="text-orci-cyan font-bold">Seedance 2.0</span> ולהדביק את הפרומפט הבא. אלו ההגדרות המומלצות לתוצאה הכי טובה:
+        יש לכם תמונה. עכשיו נכנסים ל-<span className="text-orci-cyan font-bold">Seedance 2.0</span> (כלי AI שהופך תמונה לסרטון), מעלים את התמונה ומדביקים את הפרומפט הבא. אלה ההגדרות המומלצות:
       </p>
 
       <ul className="list-none space-y-3 mb-6">
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">15 שניות</span></li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">16:9</span></li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">1080p</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>אורך: <span className="text-orci-cyan font-bold">15 שניות</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>יחס מסך: <span className="text-orci-cyan font-bold">16:9</span> (לרוחב)</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>איכות: <span className="text-orci-cyan font-bold">1080p</span></li>
       </ul>
 
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 פרומפט מלא לסרטון הרחפן — Seedance 2.0
+          📋 פרומפט מלא לסרטון הרחפן ב-Seedance 2.0
         </summary>
         <CopyPrompt prompt={`Use the uploaded image as a terrain reference map.
 
@@ -107,7 +107,7 @@ Make sure the video and the music ends on a satisfying grand finale at precisely
       <div className="my-8 rounded-2xl overflow-hidden" style={{ maxWidth: '700px', margin: '0 auto' }}>
         <video src="/guides/red-line-drone/result-drone.mp4" controls className="w-full rounded-2xl" />
       </div>
-      <p className="text-center text-sm text-orci-cyan font-bold mb-2">התוצאה: טיסת רחפן קולנועית מהתמונה הסטטית</p>
+      <p className="text-center text-sm text-orci-cyan font-bold mb-2">התוצאה: טיסת רחפן קולנועית, מתמונה אחת</p>
     </div>
 
     {/* Result Card */}
@@ -118,7 +118,7 @@ Make sure the video and the music ends on a satisfying grand finale at precisely
           התוצאה
         </h2>
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-          סרטון שנראה כמו <span className="text-orci-cyan font-bold">הפקה אמיתית</span> — מתמונה אחת וקו אדום.
+          סרטון שנראה כמו <span className="text-orci-cyan font-bold">הפקה אמיתית</span>, מתמונה אחת וקו אדום.
         </p>
       </div>
     </div>
@@ -131,7 +131,7 @@ Make sure the video and the music ends on a satisfying grand finale at precisely
       <div className="my-4 rounded-2xl overflow-hidden" style={{ aspectRatio: '9/16', maxWidth: '400px', margin: '0 auto' }}>
         <iframe
           src="https://www.youtube.com/embed/21Tprn4A5Ag?rel=0"
-          title="ציירתי קו אדום — AI הפך אותו לסרטון רחפן"
+          title="ציירתי קו אדום, וה-AI הפך אותו לסרטון רחפן"
           className="w-full h-full"
           allow="autoplay; fullscreen"
           allowFullScreen
@@ -147,13 +147,13 @@ Make sure the video and the music ends on a satisfying grand finale at precisely
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        איך יצרתי את הסרטון עם החתול! בדיוק אותה טכניקה — <span className="text-orci-cyan font-bold">תמונה + קו אדום</span> — רק הפעם הפרומפט מבקש מה-AI להניע חתול גינג'י שעושה פרקור לפי המסלול. תוכלו לקחת את הפרומפט, להכניס אותו לצ'אט ולהתאים אותו לתמונה שלכם.
+        ככה יצרתי את הסרטון עם החתול. אותה שיטה בדיוק: <span className="text-orci-cyan font-bold">תמונה וקו אדום</span>. רק שהפעם הפרומפט מבקש מה-AI חתול ג'ינג'י שעושה פרקור (קפיצות בין מכשולים) לאורך הקו. הפרומפט כתוב לתמונה שלי, אז מדביקים אותו בצ'אט ומבקשים להתאים אותו לתמונה שלכם.
       </p>
 
       <div className="my-8 rounded-2xl overflow-hidden max-w-2xl mx-auto">
         <Image src="/guides/red-line-drone/cat-room.png" alt="חדר עם קו אדום לניווט החתול" width={1280} height={720} className="w-full h-auto" />
       </div>
-      <p className="text-center text-sm text-orci-cyan font-bold -mt-4 mb-6">התמונה עם הקו האדום שהוכנסה ל-Seedance</p>
+      <p className="text-center text-sm text-orci-cyan font-bold -mt-4 mb-6">התמונה עם הקו האדום, כמו שהעליתי אותה ל-Seedance</p>
 
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
@@ -165,7 +165,7 @@ Make sure the video and the music ends on a satisfying grand finale at precisely
       <div className="my-8 rounded-2xl overflow-hidden" style={{ maxWidth: '700px', margin: '0 auto' }}>
         <video src="/guides/red-line-drone/result-cat.mp4" controls className="w-full rounded-2xl" />
       </div>
-      <p className="text-center text-sm text-orci-cyan font-bold mb-2">התוצאה: חתול גינג'י פרקור בסגנון Pixar</p>
+      <p className="text-center text-sm text-orci-cyan font-bold mb-2">התוצאה: חתול ג'ינג'י עושה פרקור בסגנון Pixar</p>
     </div>
 
     {/* Bonus 2: Appa */}
@@ -175,12 +175,12 @@ Make sure the video and the music ends on a satisfying grand finale at precisely
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        רוצים תמונה מגניבה שהחיה שלכם עפה כמו <span className="text-orci-cyan font-bold">Appa</span>? הטכניקה זהה — מציירים קו אדום על תמונה אמיתית של מקום כלשהו, והפרומפט הבא יוצר <span className="text-orci-cyan font-bold">POV של Aang</span> רוכב על Appa שעוקב בדיוק אחרי המסלול, עם שוקוייב אוורנדינג ואור שעת זהב. הפרומפט כתוב כך שהוא עובד על <span className="text-orci-cyan font-bold">כל תמונה</span> — רחוב, פארק, חוף ים.
+        רוצים לעוף על <span className="text-orci-cyan font-bold">Appa</span>, הביזון המעופף מ-Avatar? השיטה זהה. מציירים קו אדום על תמונה אמיתית של מקום כלשהו. הפרומפט הבא יוצר <span className="text-orci-cyan font-bold">POV של Aang</span>, שרוכב על Appa בדיוק לאורך הקו. בכל משק זנב יוצא גל הדף של אוויר, והכל באור זהוב של שקיעה. הפרומפט כתוב כך שהוא עובד על <span className="text-orci-cyan font-bold">כל תמונה</span>: רחוב, פארק, חוף ים.
       </p>
 
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 פרומפט מלא — APPA FLIGHT (אוניברסלי לכל תמונה)
+          📋 פרומפט מלא: APPA FLIGHT (עובד על כל תמונה)
         </summary>
         <CopyPrompt prompt={`APPA FLIGHT — UNIVERSAL AVATAR AERIAL PROMPT
 Use the reference image as the starting location and flight path. The drawn arrow line in the reference image defines the exact flight route. Do not show any lines, arrows, path markings, or drawn elements of any kind in the final video — these are for direction only and must be completely invisible in the output.
@@ -224,7 +224,7 @@ No drawn lines, no red arrows, no path markings visible in video, no cuts, no fr
           <span className="text-orci-cyan font-bold">קו אדום = שפה שה-AI מבין</span>
         </p>
         <p className="text-lg text-slate-300">
-          לא צריכים ציוד, צוות הפקה, או ידע טכני. תמונה + חץ + פרומפט — וה-AI עושה את שאר העבודה.
+          לא צריך ציוד, צוות הפקה או ידע טכני. תמונה, חץ ופרומפט, וה-AI עושה את השאר.
         </p>
       </div>
     </div>
@@ -240,7 +240,7 @@ No drawn lines, no red arrows, no path markings visible in video, no cuts, no fr
         רוצים להישאר מעודכנים?
       </h2>
       <p className="text-gray-300 mb-6 text-lg">
-        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+        הצטרפו לקבוצת הווטסאפ של Orci AI: מדריכים חדשים כל שבוע
       </p>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

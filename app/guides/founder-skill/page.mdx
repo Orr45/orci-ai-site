@@ -40,7 +40,7 @@ export const metadata = {
         הסרטון
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        <span className="text-orci-cyan font-bold">Founder Skill</span> הוא אוסף של 11 סקילים חינמיים ל-Claude, בקוד פתוח (MIT). כל סקיל הוא תפקיד אחר בסטארטאפ: דירקטוריון, מנהל שיווק, סמנכ״ל כספים, סוכן מתחרים, ועוד. הכי חזק מביניהם הוא <span className="text-orci-cyan font-bold">פאנל הלקוחות</span>.
+        <span className="text-orci-cyan font-bold">Founder Skill</span> הוא אוסף של 11 סקילים חינמיים ל-Claude, בקוד פתוח (MIT). סקיל הוא קובץ הוראות ש-Claude קורא ופועל לפיו. כאן כל סקיל הוא תפקיד אחר בסטארטאפ: דירקטוריון, מנהל שיווק, סמנכ״ל כספים, סוכן מתחרים ועוד. הכי חזק מביניהם הוא <span className="text-orci-cyan font-bold">פאנל הלקוחות</span>.
       </div>
       <div className="my-8 max-w-sm mx-auto">
         <video src="/guides/founder-skill/reel.mp4" poster="/guides/founder-skill/poster-reel.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
@@ -54,11 +54,11 @@ export const metadata = {
         לפני הכל: מה צריך
       </h2>
       <ul className="list-none space-y-3 mb-6">
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Claude Code</span>: הגרסה של Claude שעובדת על המחשב שלכם. זו הדרך הכי טובה, כי הפאנל מריץ "סוכן" נפרד לכל קונה. אם חסר לכם משהו בדרך (למשל Python), Claude Code יגיד לכם ויתקין אותו אם תבקשו.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Claude Code</span>: הגרסה של Claude שעובדת על המחשב שלכם. זו הדרך הכי טובה, כי הפאנל מריץ "סוכן" נפרד לכל קונה, כלומר עוזר AI נפרד שמשחק את הקונה הזה. אם חסר לכם משהו בדרך (למשל Python, שפת תכנות), Claude Code יגיד לכם, ויתקין אותו אם תבקשו.</li>
       </ul>
       <div className="rounded-xl border border-orci-cyan/40 bg-orci-cyan/5 p-5 mt-6">
         <div className="text-lg text-slate-300 leading-relaxed">
-          <span className="text-orci-cyan font-bold">🟢 אין לכם Claude Code? אפשר גם בצ׳אט רגיל עם Claude.</span> נכנסים לריפו ב-GitHub, פותחים את הקובץ <span className="text-orci-cyan font-bold">skills/founder-consumer/SKILL.md</span>, מעתיקים את כל הטקסט ומדביקים בתחילת שיחה חדשה. מתחתיו כותבים את הרעיון שלכם, ו-Claude יעבוד לפי השיטה. בלי סוכנים נפרדים, אבל לבדיקה ראשונה זה מספיק.
+          <span className="text-orci-cyan font-bold">🟢 אין לכם Claude Code? אפשר גם בצ׳אט רגיל עם Claude.</span> נכנסים לעמוד של Founder Skill ב-GitHub (האתר שבו מפרסמים קוד, הקישור מופיע בשלב 1). פותחים את הקובץ <span className="text-orci-cyan font-bold">skills/founder-consumer/SKILL.md</span>, מעתיקים את כל הטקסט ומדביקים בתחילת שיחה חדשה. מתחתיו כותבים את הרעיון שלכם, ו-Claude יעבוד לפי השיטה. בלי סוכנים נפרדים, אבל לבדיקה ראשונה זה מספיק.
         </div>
       </div>
     </div>
@@ -69,14 +69,14 @@ export const metadata = {
         שלב 1: מתקינים את Founder Skill
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        בתוך <span className="text-orci-cyan font-bold">Claude Code</span> מריצים את שתי הפקודות האלה, אחת אחרי השנייה:
+        מדביקים בחלון של <span className="text-orci-cyan font-bold">Claude Code</span> את שתי הפקודות האלה, אחת אחרי השנייה, ולוחצים Enter אחרי כל אחת:
       </div>
       <CopyPrompt prompt="/plugin marketplace add Jakeschincariol/founder-skill" />
       <div className="mt-4">
         <CopyPrompt prompt="/plugin install founder-skill@founder-skill" />
       </div>
       <div className="text-lg text-slate-300 leading-relaxed mb-4 mt-6">
-        <span className="text-orci-cyan font-bold">מעדיפים להגיד את זה במילים?</span> מדביקים ל-Claude את הקישור לריפו וכותבים מתחתיו install skill:
+        <span className="text-orci-cyan font-bold">מעדיפים להגיד את זה במילים?</span> מדביקים ל-Claude את הקישור לעמוד ב-GitHub, וכותבים מתחתיו install skill:
       </div>
       <CopyPrompt prompt={`https://github.com/Jakeschincariol/founder-skill
 
@@ -86,7 +86,7 @@ install skill`} />
         <p className="text-center text-sm text-orci-cyan font-bold mt-2">שתי פקודות, ו-11 הסקילים בפנים</p>
       </div>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        כשמתקינים כ-plugin, הסקילים מופיעים עם קידומת, למשל <span className="text-orci-cyan font-bold">/founder-skill:founder-consumer</span>.
+        כשמתקינים ככה, כתוסף (plugin), לכל סקיל יש קידומת בשם. למשל <span className="text-orci-cyan font-bold">/founder-skill:founder-consumer</span>.
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
@@ -118,16 +118,16 @@ cp -r founder-skill/skills/founder-* ~/.claude/skills/`} />
           📋 כל 11 התפקידים, לפי סדר ההרצה המומלץ
         </summary>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        הם שומרים את מה שהם כותבים בתיקייה <span className="text-orci-cyan font-bold">founder/</span> בפרויקט שלכם, וכל אחד קורא את מה שהקודמים כתבו.
+        הם שומרים את מה שהם כותבים בתיקייה <span className="text-orci-cyan font-bold">founder/</span>, בתוך התיקייה שפתחתם ב-Claude Code. כל אחד קורא את מה שהקודמים כתבו.
       </div>
       <ul className="list-none space-y-3 mb-6">
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">דירקטוריון</span>: שלושה חברי בורד שמנקדים את הרעיון, אומרים מה יכול להרוג אותו ומצביעים.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">דירקטוריון</span>: שלושה חברי בורד שנותנים לרעיון ציון, אומרים מה יכול להרוג אותו ומצביעים.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">מתחרים</span>: מיפוי של מתחרים ישירים, עקיפים ותחליפים, עם מחירים ומה הלקוחות שלהם מתלוננים, וקישור לכל עובדה.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">פאנל לקוחות</span>: 100 קונים מדומים, לכל אחד הכנסה, הרגלים וסיבה להגיד לא.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">תמחור</span>: הופך את תשובות הפאנל לטווח מחירים שהלקוחות מקבלים, מול המתחרים והמרווח שלכם.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">הצעה</span>: בונה הצעה שעונה על ההתנגדויות (בונוסים, אחריות, שם) ובודק אותה שוב על הפאנל.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">כספים</span>: כמה נשאר מכל מכירה, המרווח האמיתי, נקודת האיזון והשנה הראשונה חודש אחרי חודש.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">שיווק</span>: מיצוב, הערוצים שהלקוחות שלכם נמצאים בהם, קמפיין השקה ל-30 יום, ועשרה הוקים.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">שיווק</span>: מיצוב, הערוצים שהלקוחות שלכם נמצאים בהם, קמפיין השקה ל-30 יום, ועשרה הוקים (משפטי פתיחה שתופסים תשומת לב).</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">מיתוג</span>: הצעות לשם, מה לבדוק בסימני מסחר ודומיינים, ושפה למותג.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">תפעול</span>: ספקים, עובדים, שגרת היום הראשון, היתרים שצריך לבדוק ורשימת סיכונים.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">השקה</span>: קודם בדיקה זולה מול אנשים אמיתיים, ואז תוכנית השקה לפי תאריכים.</li>
@@ -146,7 +146,7 @@ cp -r founder-skill/skills/founder-* ~/.claude/skills/`} />
         שלב 3: פאנל של 100 לקוחות
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        זה החלק הכי חזק. כותבים את הרעיון ואת לקוח היעד, ו-Claude בונה <span className="text-orci-cyan font-bold">100 קונים</span>, לכל אחד הכנסה, הרגלי קנייה וסיבה להגיד לא. אחר כך הוא מריץ עליהם את הרעיון ומראה מי קונה, מי לא, ולמה, במילים שלהם.
+        זה החלק הכי חזק. כותבים את הרעיון ואת לקוח היעד. Claude בונה <span className="text-orci-cyan font-bold">100 קונים</span>, ולכל אחד יש הכנסה, הרגלי קנייה וסיבה להגיד לא. אחר כך הוא בודק עליהם את הרעיון ומראה מי קונה, מי לא ולמה, במילים שלהם.
       </div>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
         מעתיקים את הבקשה, ומחליפים את <span className="text-orci-cyan font-bold">בית הקפה לכלבים</span> ואת <span className="text-orci-cyan font-bold">לקוח היעד</span> ברעיון שלכם:
@@ -174,7 +174,7 @@ cp -r founder-skill/skills/founder-* ~/.claude/skills/`} />
         שלב 4: משנים מחיר, משפרים הצעה ומריצים שוב
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        עם התשובות של הפאנל, <span className="text-orci-cyan font-bold">תמחור</span> מוצא טווח מחירים שהלקוחות מקבלים, ו<span className="text-orci-cyan font-bold">הצעה</span> בונה הצעה שעונה על ההתנגדויות ומריץ שוב פאנל קצר. ככה רואים אם אחוז הקונים עולה, לפני שהוצאתם שקל. באותה שיחה, מעתיקים:
+        עכשיו מפעילים עוד שני סקילים. <span className="text-orci-cyan font-bold">תמחור</span> לוקח את התשובות של הפאנל ומוצא טווח מחירים שהלקוחות מקבלים. <span className="text-orci-cyan font-bold">הצעה</span> בונה הצעה שעונה על ההתנגדויות, ומריץ שוב פאנל קצר. ככה רואים אם אחוז הקונים עולה, לפני שהוצאתם שקל. באותה שיחה, מעתיקים:
       </div>
       <CopyPrompt prompt={`תריץ את /founder-skill:founder-pricing ואז את /founder-skill:founder-offer על התשובות של הפאנל: תמצא טווח מחיר שהלקוחות מקבלים, תבנה הצעה שעונה על שתי ההתנגדויות הכי נפוצות, ותריץ שוב פאנל קצר כדי לראות אם אחוז הקונים עולה.`} />
       <div className="text-lg text-slate-300 leading-relaxed mb-4 mt-6">
@@ -194,12 +194,12 @@ cp -r founder-skill/skills/founder-* ~/.claude/skills/`} />
         שלב 5: בודקים גם על אנשים אמיתיים
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        הפאנל הוא <span className="text-orci-cyan font-bold">לקוחות מדומים</span>, לא לקוחות אמיתיים. הוא דרך מהירה וזולה למצוא התנגדויות, קהלים וניסוחים, אבל הוא לא תחזית. מודלי שפה נוטים להסכים, אז את אחוז הקונים כדאי לקרוא כתקרה ולא כהבטחה.
+        הפאנל הוא <span className="text-orci-cyan font-bold">לקוחות מדומים</span>, לא לקוחות אמיתיים. הוא דרך מהירה וזולה למצוא התנגדויות, קהלים וניסוחים, אבל הוא לא תחזית. מודלי שפה (ה-AI שמאחורי צ׳אטים כמו Claude) נוטים להסכים. לכן את אחוז הקונים כדאי לקרוא כתקרה, לא כהבטחה.
       </div>
       <ul className="list-none space-y-3 mb-6">
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">/founder-skill:founder-launch</span> מתחיל בדיוק מזה: בדיקה זולה מול קונים אמיתיים, למשל דוכן פופ-אפ, לפני ההשקה הגדולה.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>לעולם לא משתמשים בתשובות של הפאנל כהמלצות של לקוחות. זה מחקר, לא עדות.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>המספרים טובים כמו מה שהכנסתם. עלויות בודקים מול ספקים, ומיסים ומבנה החברה מול רואה חשבון.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>המספרים מדויקים רק כמו הנתונים שהכנסתם. עלויות בודקים מול ספקים, ומיסים ומבנה החברה מול רואה חשבון.</li>
       </ul>
       <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
         <Image src="/guides/founder-skill/step6-real.png" alt="מדומה מול אמיתי: הפאנל ואז דוכן אמיתי" width={900} height={797} className="w-full h-auto" />
@@ -213,7 +213,7 @@ cp -r founder-skill/skills/founder-* ~/.claude/skills/`} />
         בונוס: הדירקטוריון וסמנכ״ל הכספים
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        רוצים עוד חוות דעת? כותבים <span className="text-orci-cyan font-bold">/founder-skill:founder-board</span> ומספרים את הרעיון. שלושה חברי בורד בודקים אותו, כל אחד דרך מסגרת חשיבה מספר מוכר: <span className="text-orci-cyan font-bold">הצעה</span> (לפי $100M Offers של הורמוזי), <span className="text-orci-cyan font-bold">מונופול</span> (לפי Zero to One של ת׳יל) ו<span className="text-orci-cyan font-bold">מוצר</span> (לפי הביוגרפיה של ג׳ובס). הם לא מתחזים לאנשים האלה, הם רק מפעילים את השיטות שלהם. סמנכ״ל הכספים מחשב כמה נשאר לכם מכל מכירה.
+        רוצים עוד חוות דעת? כותבים <span className="text-orci-cyan font-bold">/founder-skill:founder-board</span> ומספרים את הרעיון. שלושה חברי בורד בודקים אותו, כל אחד דרך מסגרת חשיבה מספר מוכר: <span className="text-orci-cyan font-bold">הצעה</span> (לפי $100M Offers של הורמוזי), <span className="text-orci-cyan font-bold">מונופול</span> (לפי Zero to One של ת׳יל) ו<span className="text-orci-cyan font-bold">מוצר</span> (לפי הביוגרפיה של ג׳ובס). הם לא מתחזים לאנשים האלה. הם רק מפעילים את השיטות שלהם. סמנכ״ל הכספים מחשב כמה נשאר לכם מכל מכירה.
       </div>
       <div className="my-8 grid grid-cols-2 gap-4">
         <div className="rounded-2xl overflow-hidden">
@@ -266,7 +266,7 @@ cp -r founder-skill/skills/founder-* ~/.claude/skills/`} />
         רוצים להישאר מעודכנים?
       </h2>
       <div className="text-gray-300 mb-6 text-lg">
-        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+        הצטרפו לקבוצת הווטסאפ של Orci AI: מדריכים חדשים כל שבוע
       </div>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

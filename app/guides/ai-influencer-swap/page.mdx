@@ -55,10 +55,10 @@ export const metadata = {
         מה צריך
       </h2>
       <ul className="list-none space-y-3 mb-6">
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>חשבון <span className="text-orci-cyan font-bold">Higgsfield</span>: שם נמצאים GPT Image 2.5 ו-Genjutsu.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>3 עד 5 תמונות של הדמות שלכם, או תמונה אחת שיצרתם עם הפרומפט שבשלב 1.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>חשבון <span className="text-orci-cyan font-bold">Higgsfield</span>, אתר שמרכז כלי AI לתמונות ולווידאו. שם נמצאים GPT Image 2.5 (יוצר תמונות) ו-Genjutsu (מכניס את הדמות לסרטון).</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>3 עד 5 תמונות של הדמות שלכם, או תמונה אחת שיצרתם עם הפרומפט (ההוראה שכותבים ל-AI) שבשלב 1.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>סרטון ויראלי אחד שאתם רוצים "לגנוב" ממנו את התנועה.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>בשביל הבונוס (קול ודיבור): <span className="text-orci-cyan font-bold">ElevenLabs</span> ו-<span className="text-orci-cyan font-bold">Sync 3</span>.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>בשביל הבונוס (קול ודיבור): <span className="text-orci-cyan font-bold">ElevenLabs</span>, שהופך טקסט לקול, ו-<span className="text-orci-cyan font-bold">Sync 3</span>, שמתאים את תנועות הפה לקול.</li>
       </ul>
     </div>
 
@@ -68,15 +68,15 @@ export const metadata = {
         שלב 1: דף דמות ב-GPT Image 2.5
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        המודל שמנפיש את הדמות צריך לדעת איך היא נראית מכל כיוון, אחרת בכל סרטון יופיע מישהו קצת אחר. לכן הדבר הראשון הוא <span className="text-orci-cyan font-bold">דף דמות</span>: תמונה אחת רחבה עם חזית, שלושה רבעים, גב ותקריב פנים.
+        המודל (כלי ה-AI) שמנפיש את הדמות צריך לדעת איך היא נראית מכל כיוון. אחרת, בכל סרטון יופיע מישהו קצת אחר. לכן הדבר הראשון הוא <span className="text-orci-cyan font-bold">דף דמות</span>: תמונה אחת רחבה עם חזית, שלושה רבעים, גב ותקריב פנים.
       </div>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        נכנסים ל-Higgsfield, בוחרים <span className="text-orci-cyan font-bold">GPT Image 2.5</span> (איכות High, יחס 16:9), מעלים את תמונות הרפרנס ומדביקים את הפרומפט. את מה שבסוגריים המרובעים מחליפים בתיאור של הדמות שלכם.
+        נכנסים ל-Higgsfield ובוחרים <span className="text-orci-cyan font-bold">GPT Image 2.5</span>, באיכות High וביחס 16:9 (תמונה רוחבית). מעלים את תמונות הרפרנס, כלומר התמונות של הדמות, ומדביקים את הפרומפט. את מה שבסוגריים המרובעים מחליפים בתיאור של הדמות שלכם.
       </div>
 
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`Create a photorealistic character sheet of the exact person shown in the reference images, on one wide 16:9 image with a plain muted studio background. Four panels side by side, evenly spaced: (1) full-body front view standing straight, arms relaxed; (2) full-body three-quarter view; (3) full-body back view showing the back of the hair and outfit; (4) ONE large close-up of the face looking straight into the camera, neutral expression. Only one face close-up in the whole sheet. Same person, same face, same hair and same outfit in every panel, matching the references exactly: [body type and height], [skin tone], [face shape and eyes], [haircut and hair color], [facial hair or makeup], [full outfit from top to shoes]. Real photographic skin texture, natural pores, even soft studio light, sharp focus, shot on a full-frame camera. No text, no labels, no numbers, no watermark, no background from the references.`} />
       </details>
@@ -87,11 +87,11 @@ export const metadata = {
       <p className="text-center text-sm text-orci-cyan font-bold mt-2">דף הדמות שיצא לנו</p>
 
       <div className="text-lg text-slate-300 leading-relaxed mt-6 mb-4">
-        <span className="text-orci-cyan font-bold">הטיפ הכי חשוב בשלב הזה:</span> רק תקריב פנים אחד בדף. כשיש כמה תקריבים, המודל מתחיל לערבב ביניהם והפנים זזות מסרטון לסרטון.
+        <span className="text-orci-cyan font-bold">הטיפ הכי חשוב בשלב הזה:</span> רק תקריב פנים אחד בדף. כשיש כמה תקריבים, המודל מתחיל לערבב ביניהם והפנים משתנות מסרטון לסרטון.
       </div>
 
       <div className="text-lg text-slate-300 leading-relaxed mt-6 mb-4">
-        אין לכם עדיין דמות? מה שעוצר גלילה זו דמות שמזהים בפריים אחד: תספורת מוגזמת, תו פנים בולט ובגד שלא מתאים לה. הפרומפט הזה יוצר דמות כזאת מאפס:
+        אין לכם עדיין דמות? מה שגורם לאנשים להפסיק לגלול זו דמות שמזהים מהשנייה הראשונה: תספורת מוגזמת, תו פנים בולט ובגד שלא מתאים לה. הפרומפט הזה יוצר דמות כזאת מאפס:
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
@@ -107,7 +107,7 @@ export const metadata = {
         שלב 2: מוצאים טרנד שכבר התפוצץ
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        גוללים באינסטגרם או בטיקטוק ומחפשים סרטון שכבר הוכיח את עצמו: ריקוד, ליפסינק או תנועות ידיים. לא כל סרטון יעבוד טוב. מה שכדאי לבדוק:
+        גוללים באינסטגרם או בטיקטוק ומחפשים סרטון שכבר קיבל המון צפיות: ריקוד, ליפסינק (מזיזים את השפתיים לשיר) או תנועות ידיים. לא כל סרטון יעבוד טוב. מה שכדאי לבדוק:
       </div>
       <ul className="list-none space-y-3 mb-6">
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">אדם אחד בפריים</span>, רואים את כל הגוף.</li>
@@ -116,7 +116,7 @@ export const metadata = {
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>בין 4 ל-30 שניות. זה הטווח ש-Genjutsu מקבל.</li>
       </ul>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        מורידים את הסרטון למחשב ומורידים ממנו את הסאונד. את השיר מוסיפים בסוף מתוך ספריית השירים של אינסטגרם או טיקטוק, וככה הסרטון גם נכנס לעמוד של הטרנד.
+        שומרים את הסרטון במחשב ומוציאים ממנו את הסאונד. את השיר מוסיפים בסוף מתוך ספריית השירים של אינסטגרם או טיקטוק, וככה הסרטון גם נכנס לעמוד של הטרנד. את הסאונד אפשר להוציא בכל אפליקציית עריכה, או עם הפקודה הזאת בטרמינל (חלון הפקודות של המחשב):
       </div>
       <CopyPrompt prompt="ffmpeg -i trend.mp4 -an -c:v copy trend_muted.mp4" />
     </div>
@@ -130,7 +130,7 @@ export const metadata = {
         ב-Higgsfield נכנסים ל-<span className="text-orci-cyan font-bold">Genjutsu</span>. יש בו שני מצבים, ושניהם נמצאים בסרטון:
       </div>
       <ul className="list-none space-y-3 mb-6">
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Motion Transfer</span>: הדמות שלכם מבצעת את התנועה מהסרטון הוויראלי, במקום שלה.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Motion Transfer</span>: הדמות שלכם עושה את התנועה מהסרטון הוויראלי, ברקע משלה.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Swap</span>: מחליפים את האדם בתוך הסרטון בדמות שלכם, וכל השאר נשאר בדיוק אותו דבר.</li>
       </ul>
 
@@ -161,7 +161,7 @@ export const metadata = {
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`Edit the reference video: replace only the person with the person from the reference image. Keep everything else exactly the same: the room, the background, the lighting, the camera framing, the timing, and every movement - head movements, hand gestures, pointing at the camera, facial expressions and mouth movements while talking to the camera. The new person is the one from the reference image: [hair], [outfit], [one or two key features]. They talk to the camera exactly like the original person, with the same lip movements and the same gestures. Photorealistic, natural skin texture, iPhone front camera look. No text, no subtitles.`} />
       </details>
@@ -176,7 +176,7 @@ export const metadata = {
         </div>
       </div>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        <span className="text-orci-cyan font-bold">טיפ לחיסכון:</span> מריצים קודם ב-480p. רק כשהתנועה והדמות נראות טוב, מריצים שוב באיכות גבוהה.
+        <span className="text-orci-cyan font-bold">טיפ לחיסכון:</span> מייצרים קודם באיכות נמוכה (480p), שעולה פחות. רק כשהתנועה והדמות נראות טוב, מייצרים שוב באיכות גבוהה.
       </div>
     </div>
 
@@ -186,12 +186,12 @@ export const metadata = {
         🎁 בונוס: איך הדמות מדברת עברית
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        בסרטון הדמות לא רק רוקדת, היא גם מעבירה את המדריך מחדר עם נוף למגדל אייפל. ככה עשינו את זה:
+        בסרטון הדמות גם מדברת: היא מעבירה את המדריך מחדר עם נוף למגדל אייפל. ככה עשינו את זה:
       </div>
       <ul className="list-none space-y-3 mb-6">
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">1.</span>יצרנו תמונה של החדר הריק ב-GPT Image 2.5, עם קיר מלא תמונות שלו.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">2.</span>ב-Seedance 2.5 העלינו את דף הדמות ואת החדר כרפרנסים, וביקשנו סרטון של 30 שניות שבו הוא מדבר למצלמה, כמו צילום טלפון אמיתי ולא קולנועי.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">3.</span>הקלטנו את הטקסט ב-<span className="text-orci-cyan font-bold">ElevenLabs</span> בקול גבר צרפתי שמדבר עברית (מודל v3, שפה: עברית). מילים שהמודל קורא לא נכון מתקנים עם ניקוד.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">2.</span>ב-Seedance 2.5 (כלי AI שיוצר סרטונים) העלינו את דף הדמות ואת החדר כתמונות רפרנס, וביקשנו סרטון של 30 שניות שבו הוא מדבר למצלמה, כמו צילום טלפון אמיתי ולא קולנועי.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">3.</span>הפכנו את הטקסט לקול ב-<span className="text-orci-cyan font-bold">ElevenLabs</span>, בקול גבר צרפתי שמדבר עברית (מודל v3, שפה: עברית). מילים שהמודל קורא לא נכון מתקנים עם ניקוד.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">4.</span>הלבשנו את הקול על הסרטון עם <span className="text-orci-cyan font-bold">Sync 3</span>, שמתאים את תנועות הפה למילים.</li>
       </ul>
       <div className="my-8 rounded-2xl overflow-hidden max-w-xs mx-auto">
@@ -251,7 +251,7 @@ export const metadata = {
         רוצים להישאר מעודכנים?
       </h2>
       <div className="text-gray-300 mb-6 text-lg">
-        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+        הצטרפו לקבוצת הווטסאפ של Orci AI: מדריכים חדשים כל שבוע
       </div>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

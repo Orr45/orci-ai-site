@@ -3,8 +3,8 @@ import { CopyPrompt } from '@/components/ui/CopyPrompt'
 import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
-  title: 'הפוך את עצמך לדמות בכל עולם — Minecraft, הארי פוטר ועוד | Orci AI',
-  description: 'מדריך שלב אחר שלב ליצירת סרטון שבו אתה מופיע בכל עולם שרצית — Minecraft, הארי פוטר, סייברפאנק ועוד, עם SeedDream ו-Kling',
+  title: 'הפכו את עצמכם לדמות בכל עולם: Minecraft, הארי פוטר ועוד | Orci AI',
+  description: 'מדריך שלב אחר שלב: סרטון שבו אתם מופיעים בכל עולם שתבחרו, כמו Minecraft, הארי פוטר או סייברפאנק, עם SeedDream ו-Kling',
 }
 
 <div className="min-h-screen">
@@ -14,10 +14,10 @@ export const metadata = {
   <div className="max-w-7xl mx-auto px-6">
     <div className="cap-card text-center">
       <h1 className="cap-hero-title mb-6 text-orci-cyan">
-        הפוך את עצמך לדמות בכל עולם
+        הפכו את עצמכם לדמות בכל עולם
       </h1>
       <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
-        Minecraft, הארי פוטר, סייברפאנק — בחר עולם, הכנס את עצמך, קבל סרטון ויראלי!
+        Minecraft, הארי פוטר, סייברפאנק: בוחרים עולם, מכניסים את עצמכם, ומקבלים סרטון.
       </p>
 
       {/* Tools Badges */}
@@ -41,7 +41,7 @@ export const metadata = {
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        צלמו סרטון קצר של עצמכם — עדיפות ל<span className="text-orci-cyan font-bold">סביבה נקייה ופשוטה</span> כמו חדר או סלון. הצילום הזה יהפוך לבסיס של כל הסרטון.
+        צלמו סרטון קצר של עצמכם. עדיף ב<span className="text-orci-cyan font-bold">מקום נקי ופשוט</span>, כמו חדר או סלון. הצילום הזה הוא הבסיס של כל הסרטון.
       </p>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-6">
@@ -66,11 +66,11 @@ export const metadata = {
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        כנסו ל-<span className="text-orci-cyan font-bold">SeedDream 4/5</span> והכניסו את <span className="text-orci-cyan font-bold">התמונה המקורית שלכם כתמונת רפרנס</span> — זה חיוני כדי שה-AI ישמור על הפרצוף והפוזה שלכם בדיוק.
+        כנסו ל-<span className="text-orci-cyan font-bold">SeedDream 4/5</span> והעלו את <span className="text-orci-cyan font-bold">התמונה המקורית שלכם כתמונת רפרנס</span> (תמונה שה-AI עובד לפיה). ככה ה-AI שומר בדיוק על הפנים והפוזה שלכם.
       </p>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-6">
-        בחרו סביבה מהרשימה למטה, העתיקו את הפרומפט המתאים, והריצו יחד עם התמונה.
+        בחרו עולם מהרשימה למטה, העתיקו את הפרומפט שלו (ההוראה שכותבים ל-AI), ושלחו אותו יחד עם התמונה.
       </p>
 
       {/* Minecraft */}
@@ -80,7 +80,7 @@ export const metadata = {
         <div className="my-4 rounded-2xl overflow-hidden max-w-lg mx-auto">
           <Image
             src="/guides/game-world/MinecraftStyle.jpeg"
-            alt="תוצאה — סגנון מיינקראפט"
+            alt="תוצאה: סגנון מיינקראפט"
             width={600}
             height={600}
             className="w-full h-auto"
@@ -89,7 +89,7 @@ export const metadata = {
 
         <details className="my-6">
           <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-            📋 לחץ לצפייה בפרומפט מיינקראפט
+            📋 לחצו לצפייה בפרומפט מיינקראפט
           </summary>
           <CopyPrompt prompt={`Keep the photo the same but transform the entire environment and clothing into the Minecraft world. Convert all furniture, walls, floors, and surfaces into pixelated blocky textures — wood planks, stone bricks, dirt, torches on walls. Change the person's outfit to a Minecraft player skin style: pixelated blocky clothing, Steve-like aesthetic. Keep the person's pose, camera angle, lighting direction, and room layout unchanged. Stylized pixel-art 3D look.`} />
         </details>
@@ -102,7 +102,7 @@ export const metadata = {
         <div className="my-4 rounded-2xl overflow-hidden max-w-lg mx-auto">
           <Image
             src="/guides/game-world/HARRY.jpeg"
-            alt="תוצאה — סגנון הארי פוטר"
+            alt="תוצאה: סגנון הארי פוטר"
             width={600}
             height={600}
             className="w-full h-auto"
@@ -111,7 +111,7 @@ export const metadata = {
 
         <details className="my-6">
           <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-            📋 לחץ לצפייה בפרומפט הארי פוטר
+            📋 לחצו לצפייה בפרומפט הארי פוטר
           </summary>
           <CopyPrompt prompt={`Keep the photo exactly the same. Transform the room into a Hogwarts castle room: stone brick walls with torches, wooden beams become ancient carved stone arches, TV unit becomes a magical wooden cabinet with spell books and potions, round tables become antique wood with candles, window shows a magical castle courtyard outside with owls flying. Change the person's outfit to Hogwarts student robes: black robe with colored house crest (Gryffindor red or Slytherin green), white shirt underneath, wand in hand. Keep the person's face, pose, camera angle, and room layout unchanged. Photorealistic magical atmosphere.`} />
         </details>
@@ -124,7 +124,7 @@ export const metadata = {
         <div className="my-4 rounded-2xl overflow-hidden max-w-lg mx-auto">
           <Image
             src="/guides/game-world/CandyStyle.png"
-            alt="תוצאה — עולם הממתקים"
+            alt="תוצאה: עולם הממתקים"
             width={600}
             height={600}
             className="w-full h-auto"
@@ -133,7 +133,7 @@ export const metadata = {
 
         <details className="my-6">
           <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-            📋 לחץ לצפייה בפרומפט עולם הממתקים
+            📋 לחצו לצפייה בפרומפט עולם הממתקים
           </summary>
           <CopyPrompt prompt={`Keep the photo the same but change all furniture, decor, and surfaces into realistic colorful candy materials. Use textures like lollipops, gummies, marshmallows, chocolate, and candy tiles. Everything should look edible, glossy, and highly detailed. Keep the person, pose, camera angle, lighting, and room structure unchanged. Photorealistic.`} />
         </details>
@@ -146,7 +146,7 @@ export const metadata = {
         <div className="my-4 rounded-2xl overflow-hidden max-w-lg mx-auto">
           <Image
             src="/guides/game-world/NeonStyle.jpeg"
-            alt="תוצאה — סגנון סייברפאנק עתידני"
+            alt="תוצאה: סגנון סייברפאנק עתידני"
             width={600}
             height={600}
             className="w-full h-auto"
@@ -155,7 +155,7 @@ export const metadata = {
 
         <details className="my-6">
           <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-            📋 לחץ לצפייה בפרומפט סגנון עתידני
+            📋 לחצו לצפייה בפרומפט סגנון עתידני
           </summary>
           <CopyPrompt prompt={`Keep the photo exactly the same. Transform the room into a Cyberpunk 2077 Night City apartment: neon lights (pink, blue, purple) on walls, holographic ads glowing on surfaces, metal and chrome replacing wood beams, futuristic tech panels on walls, TV becomes a giant holographic display, window shows a rain-soaked neon city at night. Change the person's outfit to a cyberpunk style: sleek black jacket with neon trim, techwear pants, combat boots, cyber implant detail on neck or arm. Keep the person's face, pose, camera angle, and room structure unchanged. Photorealistic cyberpunk cinematic style.`} />
         </details>
@@ -174,19 +174,19 @@ export const metadata = {
       </p>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        הכניסו את הפרומפט הזה:
+        הדביקו את הפרומפט הזה:
       </p>
 
       <CopyPrompt prompt="@Video1 with the aesthetic of @Image1" />
 
       <p className="text-lg text-slate-300 leading-relaxed mt-6 mb-6">
-        וזהו — <span className="text-orci-cyan font-bold">תקבלו את הסרטון הגמור!</span>
+        וזהו. <span className="text-orci-cyan font-bold">תקבלו את הסרטון הגמור!</span>
       </p>
 
       <div className="my-8 rounded-2xl overflow-hidden" style={{ aspectRatio: '9/16', maxWidth: '400px', margin: '0 auto' }}>
         <iframe
           src="https://www.youtube.com/embed/2CXBKCbv0og?rel=0"
-          title="תוצאה סופית — הפיכת עצמך לדמות בעולם AI"
+          title="תוצאה סופית: הופכים את עצמכם לדמות בעולם AI"
           className="w-full h-full"
           allow="autoplay; fullscreen"
           allowFullScreen
@@ -203,10 +203,10 @@ export const metadata = {
           התוצאה
         </h2>
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-          <span className="text-orci-cyan font-bold">אתם בתוך כל עולם שרציתם</span> — בלי תלבושות, בלי ציוד, בלי סטודיו
+          <span className="text-orci-cyan font-bold">אתם בתוך כל עולם שרציתם</span>, בלי תלבושות, ציוד או סטודיו
         </p>
         <p className="text-lg text-slate-300 mt-2">
-          רק טלפון + SeedDream + Kling = תוכן שמשגע את הרשת
+          כל מה שצריך: טלפון, SeedDream ו-Kling.
         </p>
       </div>
     </div>
@@ -218,10 +218,10 @@ export const metadata = {
           💡 המסר המרכזי
         </h3>
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-          <span className="text-orci-cyan font-bold">צילום אחד = אינסוף עולמות</span>
+          <span className="text-orci-cyan font-bold">צילום אחד, כל עולם שתרצו</span>
         </p>
         <p className="text-lg text-slate-300">
-          אותו סרטון בסיסי יכול להפוך ל-4 סרטונים שונים לחלוטין. זה הכוח של AI — לא צריך לנסוע לשום מקום.
+          אותו סרטון בסיסי יכול להפוך ל-4 סרטונים שונים לגמרי, בלי לנסוע לשום מקום.
         </p>
       </div>
     </div>
@@ -237,7 +237,7 @@ export const metadata = {
         רוצים להישאר מעודכנים?
       </h2>
       <p className="text-gray-300 mb-6 text-lg">
-        לקבל את המדריכים והטריקים הכי שווים — היכנסו לקבוצת הווצ'אט השקטה שלנו
+        היכנסו לקבוצת הווטסאפ השקטה שלנו, ותקבלו את המדריכים והטריקים הכי שווים
       </p>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

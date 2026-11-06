@@ -3,8 +3,8 @@ import { CopyPrompt } from '@/components/ui/CopyPrompt'
 import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
-  title: 'טרנד הפירות עם AI — סרט אנימציה קצר בכמה שלבים | Orci AI',
-  description: 'למדו ליצור סרטון אנימציה ויראלי עם דמויות פירות תלת-מימדיות — מהדמיות, דרך התסריט, ועד לסרטון המוגמר.',
+  title: 'טרנד הפירות עם AI: סרט אנימציה קצר בכמה שלבים | Orci AI',
+  description: 'ככה יוצרים סרטון אנימציה ויראלי עם דמויות פירות בתלת-ממד: מהדמויות, דרך התסריט, ועד הסרטון המוגמר.',
 }
 
 <div className="min-h-screen">
@@ -17,7 +17,7 @@ export const metadata = {
         טרנד הפירות עם AI
       </h1>
       <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
-        מדמיות Pixar ועד סרטון מונפש מוגמר — בלי ציוד, בלי תקציב, בלי ידע בעריכה
+        מדמויות בסגנון Pixar ועד סרטון אנימציה מוגמר. בלי ציוד, בלי תקציב ובלי ידע בעריכה.
       </p>
 
       <div className="flex flex-wrap gap-3 justify-center">
@@ -37,14 +37,14 @@ export const metadata = {
     {/* Step 1 */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 1: יצירת הדמיות שלכם
+        שלב 1: יוצרים את הדמויות שלכם
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        מצאו דמות פרי שאהבתם מהאינטרנט — כזו שה-AI יבין על מה מדובר.
-        אחר כך בעזרת <span className="text-orci-cyan font-bold">Gemini או Claude</span> בנו את סט הדמיות שלכם:
-        תארו את הדמות בפירוט — צורת הגוף, הביגוד, ההבעה, הרקע — וצרפו את התמונות
-        <span className="text-orci-cyan font-bold"> אחת ליד השנייה</span> כדי לקבל גיליון דמויות אחיד.
+        מצאו באינטרנט דמות פרי שאהבתם, כזו שה-AI יבין מה היא.
+        אחר כך בנו עם <span className="text-orci-cyan font-bold">Gemini או Claude</span> את סט הדמויות שלכם.
+        תארו כל דמות בפירוט: צורת הגוף, הבגדים, ההבעה והרקע. ואז שימו את התמונות
+        <span className="text-orci-cyan font-bold"> אחת ליד השנייה</span>, כדי לקבל גיליון דמויות אחיד (דף אחד שמראה את כל הדמויות באותו סגנון).
       </p>
 
       <div className="my-8 grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -62,7 +62,7 @@ export const metadata = {
         </div>
       </div>
 
-      <p className="text-base text-slate-400 mb-4">דוגמה לפרומפט יצירת דמות — בננה:</p>
+      <p className="text-base text-slate-400 mb-4">דוגמה לפרומפט (ההוראה שכותבים ל-AI) ליצירת דמות של בננה:</p>
       <CopyPrompt prompt="A 3D Pixar-style animated banana character, male, tall and slightly lean, warm brown eyes, gentle tired smile. Wearing a dark navy blue worker's shirt with short sleeves, old dark blue jeans with slight wear marks, brown work boots. Warm indoor lighting, cozy small apartment background at night. Full body shot, standing upright with relaxed posture. High quality Pixar CGI render, soft shadows, photorealistic texture on the banana skin." />
     </div>
 
@@ -73,17 +73,17 @@ export const metadata = {
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        עכשיו שיש לכם את הדמיות, הגיע הזמן לחשוב על <span className="text-orci-cyan font-bold">הסיפור</span>.
-        פתחו Claude ובקשו ממנו לעזור לכם לבנות תסריט לסרטון קצר —
-        תארו את הדמויות שיצרתם, האווירה שאתם רוצים, והמסר.
-        Claude יעזור לכם לפרק את הסרטון ל<span className="text-orci-cyan font-bold">סצנות קצרות</span> עם זרימה טבעית.
+        יש לכם דמויות. עכשיו חושבים על <span className="text-orci-cyan font-bold">הסיפור</span>.
+        פתחו את Claude ובקשו ממנו עזרה בכתיבת תסריט לסרטון קצר.
+        תארו לו את הדמויות שיצרתם, את האווירה שאתם רוצים ואת המסר.
+        Claude יפרק לכם את הסרטון ל<span className="text-orci-cyan font-bold">סצנות קצרות</span> שזורמות באופן טבעי.
       </p>
 
       <div className="bg-orci-cyan/5 rounded-xl p-6 border border-orci-cyan/20">
         <p className="text-orci-cyan font-bold mb-2">💡 טיפ</p>
         <p className="text-slate-300 text-base">
-          ספרו ל-Claude בעברית מה אתם רוצים — הוא יבנה לכם מבנה סצנות מסודר עם זמנים ותיאורים.
-          ככל שתהיו ספציפיים יותר, התוצאה תהיה מדויקת יותר.
+          ספרו ל-Claude בעברית מה אתם רוצים, והוא יבנה לכם רשימת סצנות מסודרת עם זמנים ותיאורים.
+          ככל שתפרטו יותר, התוצאה תהיה מדויקת יותר.
         </p>
       </div>
     </div>
@@ -91,33 +91,33 @@ export const metadata = {
     {/* Step 3 */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 3: יצירת הסצנות עם GPT Image-2 / Nano Banana 2
+        שלב 3: יוצרים את הסצנות עם GPT Image-2 / Nano Banana 2
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        לכל סצנה מהתסריט — בקשו מ-Claude לכתוב פרומפט מפורט.
-        אז קחו את <span className="text-orci-cyan font-bold">תמונות הרפרנס של הדמיות</span> שיצרתם בשלב 1,
-        והכניסו אותן ל-<span className="text-orci-cyan font-bold">GPT Image-2</span> או <span className="text-orci-cyan font-bold">Nano Banana 2</span>
-        יחד עם הפרומפט — וקבלו תמונה מוגמרת לכל סצנה.
+        לכל סצנה מהתסריט, בקשו מ-Claude לכתוב פרומפט מפורט.
+        אחר כך קחו את <span className="text-orci-cyan font-bold">תמונות הרפרנס של הדמויות</span> משלב 1 (התמונות שמראות ל-AI איך כל דמות נראית),
+        והעלו אותן ל-<span className="text-orci-cyan font-bold">GPT Image-2</span> או ל-<span className="text-orci-cyan font-bold">Nano Banana 2</span> (כלים ליצירת תמונות)
+        יחד עם הפרומפט. תקבלו תמונה מוגמרת לכל סצנה.
       </p>
 
       <div className="my-8 grid grid-cols-1 md:grid-cols-3 gap-3">
         <div className="rounded-2xl overflow-hidden">
-          <Image src="/guides/fruit-trend/step3-scene1.png" alt="סצנה 1 — דמויות הפירות" width={800} height={600} className="w-full h-auto" />
+          <Image src="/guides/fruit-trend/step3-scene1.png" alt="סצנה 1: דמויות הפירות" width={800} height={600} className="w-full h-auto" />
         </div>
         <div className="rounded-2xl overflow-hidden">
-          <Image src="/guides/fruit-trend/step3-scene2.png" alt="סצנה 2 — דמויות הפירות" width={800} height={600} className="w-full h-auto" />
+          <Image src="/guides/fruit-trend/step3-scene2.png" alt="סצנה 2: דמויות הפירות" width={800} height={600} className="w-full h-auto" />
         </div>
         <div className="rounded-2xl overflow-hidden">
-          <Image src="/guides/fruit-trend/step3-scene3.png" alt="סצנה 3 — דמויות הפירות" width={800} height={600} className="w-full h-auto" />
+          <Image src="/guides/fruit-trend/step3-scene3.png" alt="סצנה 3: דמויות הפירות" width={800} height={600} className="w-full h-auto" />
         </div>
       </div>
 
-      <p className="text-base text-slate-400 mb-4">דוגמה לפרומפט סצנה — ארבעה חברים בבר:</p>
+      <p className="text-base text-slate-400 mb-4">דוגמה לפרומפט של סצנה, ארבעה חברים בבר:</p>
 
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`FIRST FRAME of a 3-5 second animation. Four 3D animated anthropomorphic fruit characters sitting together at a bar table at night, laughing and enjoying themselves.
 
@@ -137,7 +137,7 @@ Pixar/Disney 3D animation style, hyper-realistic textures, warm bar lighting, 9:
       <div className="bg-orci-cyan/5 rounded-xl p-6 border border-orci-cyan/20">
         <p className="text-orci-cyan font-bold mb-2">💡 טיפ</p>
         <p className="text-slate-300 text-base">
-          תמיד תארו כל דמות בנפרד בתוך הפרומפט — כך ה-AI שומר על העקביות בין הסצנות.
+          תמיד תארו כל דמות בנפרד בתוך הפרומפט. ככה ה-AI שומר שהדמויות ייראו אותו דבר בכל הסצנות.
         </p>
       </div>
     </div>
@@ -145,38 +145,38 @@ Pixar/Disney 3D animation style, hyper-realistic textures, warm bar lighting, 9:
     {/* Step 4 */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 4: הנפשת הסצנות עם Kling 3.0 / Veo 3.1
+        שלב 4: מנפישים את הסצנות עם Kling 3.0 / Veo 3.1
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        עכשיו מחיים את הסצנות. הכניסו את כל <span className="text-orci-cyan font-bold">תמונות הסצנות</span> ל-Claude
-        ותארו לו <span className="text-orci-cyan font-bold">בדיוק</span> מה אתם רוצים שיקרה — תנועות, רגשות, אווירה.
+        עכשיו מכניסים תנועה לסצנות. העלו ל-Claude את כל <span className="text-orci-cyan font-bold">תמונות הסצנות</span>
+        ותארו לו <span className="text-orci-cyan font-bold">בדיוק</span> מה אתם רוצים שיקרה: תנועות, רגשות, אווירה.
       </p>
 
       <div className="bg-orci-cyan/5 rounded-xl p-6 border border-orci-cyan/20 mb-6">
         <p className="text-orci-cyan font-bold mb-2">🔑 הטריק החשוב ביותר</p>
         <p className="text-slate-300 text-base">
           בקשו מ-Claude <span className="text-orci-cyan font-bold">הסבר בעברית</span> על מה שיקרה בסצנה.
-          רק כשאתם רואים שזה תואם בדיוק למה שביקשתם — תעתיקו את הפרומפט באנגלית שהוא הכין.
-          זה חוסך הרבה ניסויים מיותרים.
+          רק כשההסבר תואם בדיוק למה שביקשתם, העתיקו את הפרומפט באנגלית שהוא הכין.
+          זה חוסך הרבה ניסיונות מיותרים.
         </p>
       </div>
 
       <p className="text-lg text-slate-300 leading-relaxed">
-        הכניסו את הפרומפט ואת תמונת הסצנה ל-<span className="text-orci-cyan font-bold">Kling 3.0</span> או <span className="text-orci-cyan font-bold">Veo 3.1</span>
-        — והם יוצרים לכם את הסצנה המונפשת.
+        העלו את הפרומפט ואת תמונת הסצנה ל-<span className="text-orci-cyan font-bold">Kling 3.0</span> או ל-<span className="text-orci-cyan font-bold">Veo 3.1</span> (כלים שהופכים תמונה לסרטון),
+        ותקבלו את הסצנה המונפשת.
       </p>
     </div>
 
     {/* Step 5 */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 5: חיבור הכל ב-CapCut
+        שלב 5: מחברים הכל ב-CapCut
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        יש לכם את כל הסצנות מונפשות בדיוק כמו שרציתם.
-        פתחו <span className="text-orci-cyan font-bold">CapCut</span>, חברו את הכל ביחד —
+        עכשיו כל הסצנות זזות בדיוק כמו שרציתם.
+        פתחו את <span className="text-orci-cyan font-bold">CapCut</span> (אפליקציה לעריכת וידאו) וחברו את כל הסצנות,
         ויש לכם סרטון מוגמר לטרנד.
       </p>
     </div>
@@ -189,7 +189,7 @@ Pixar/Disney 3D animation style, hyper-realistic textures, warm bar lighting, 9:
       <div className="my-8 rounded-2xl overflow-hidden" style={{ aspectRatio: '9/16', maxWidth: '400px', margin: '0 auto' }}>
         <iframe
           src="https://www.youtube.com/embed/9yBWPLPeTNg?rel=0"
-          title="טרנד הפירות — תוצאה סופית"
+          title="טרנד הפירות: תוצאה סופית"
           className="w-full h-full"
           allow="autoplay; fullscreen"
           allowFullScreen
@@ -206,9 +206,9 @@ Pixar/Disney 3D animation style, hyper-realistic textures, warm bar lighting, 9:
           התוצאה
         </h2>
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-          חמישה שלבים —{' '}
-          <span className="text-orci-cyan font-bold">סרטון אנימציה ויראלי שנראה כאילו עולה אלפים</span>.
-          ואת זה אפשר לעשות לכל נושא, כל דמות, כל סיפור.
+          חמישה שלבים, ויש לכם{' '}
+          <span className="text-orci-cyan font-bold">סרטון אנימציה ויראלי שנראה כאילו עלה אלפים</span>.
+          אפשר לעשות את זה עם כל נושא, כל דמות וכל סיפור.
         </p>
       </div>
     </div>
@@ -223,7 +223,7 @@ Pixar/Disney 3D animation style, hyper-realistic textures, warm bar lighting, 9:
           <span className="text-orci-cyan font-bold">לא צריך להיות מאייר או עורך כדי לעשות אנימציה.</span>
         </p>
         <p className="text-lg text-slate-300">
-          Claude בונה לך את התסריט והפרומפטים, ה-AI מצייר ומנפיש, CapCut מחבר — אתה רק מכוון.
+          Claude כותב לכם את התסריט והפרומפטים, ה-AI מצייר ומנפיש, CapCut מחבר, ואתם רק מכוונים.
         </p>
       </div>
     </div>

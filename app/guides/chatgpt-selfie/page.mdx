@@ -3,8 +3,8 @@ import { CopyPrompt } from '@/components/ui/CopyPrompt'
 import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
-  title: 'ביקשתי מ-ChatGPT סלפי — וזה מה שהוא שלח לי | Orci AI',
-  description: 'הטרנד שמשגע את האינטרנט — פרומפט אחד ל-ChatGPT וכל אחד מקבל גרסה אחרת: רובוט, דמות מפחידה, ואחד אפילו קיבל חתול',
+  title: 'ביקשתי מ-ChatGPT סלפי, וזה מה שהוא שלח לי | Orci AI',
+  description: 'טרנד שבו כל אחד שולח ל-ChatGPT את אותו פרומפט ומקבל גרסה אחרת: רובוט, דמות מפחידה, ואחד אפילו קיבל חתול',
 }
 
 <div className="min-h-screen">
@@ -14,10 +14,10 @@ export const metadata = {
   <div className="max-w-7xl mx-auto px-6">
     <div className="cap-card text-center">
       <h1 className="cap-hero-title mb-6 text-orci-cyan">
-        ביקשתי מ-ChatGPT סלפי — וזה מה שהוא שלח לי
+        ביקשתי מ-ChatGPT סלפי, וזה מה שהוא שלח לי
       </h1>
       <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
-        הטרנד שמשגע את האינטרנט — כל אחד מקבל משהו אחר, ואחד קיבל חתול 😂
+        טרנד שבו כל אחד מקבל משהו אחר, ואחד קיבל חתול 😂
       </p>
 
       <div className="flex flex-wrap gap-3 justify-center">
@@ -39,16 +39,16 @@ export const metadata = {
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        נכנסים ל-<span className="text-orci-cyan font-bold">ChatGPT</span>, פותחים צ'אט חדש, וכותבים <span className="text-orci-cyan font-bold">/image</span> — זו הפקודה שמפעילה את יצירת תמונות ישירות מהצ'אט.
+        נכנסים ל-<span className="text-orci-cyan font-bold">ChatGPT</span>, פותחים צ'אט חדש, וכותבים <span className="text-orci-cyan font-bold">/image</span>. זו הפקודה שגורמת ל-ChatGPT ליצור תמונה ישר מהצ'אט.
       </p>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        אחרי ה-/image — מדביקים את הפרומפט הבא ישירות:
+        אחרי ה-/image מדביקים את הפרומפט (ההוראה שכותבים ל-AI) הזה:
       </p>
 
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`/image ChatGPT, you've been with me for a while now and I want to see what you look like. Please generate a photo of yourself that looks like a simple iPhone snapshot: no prominent subject, no intentional composition; completely ordinary, even a bit failed, like a momentary snap. In the photo, include slight motion blur, unbalanced lighting, mild overexposure, a weird angle, and a messy frame. Overall, make it look like it was accidentally taken while pulling the phone out of your pocket, conveying an excessively real and casual selfie vibe`} />
       </details>
@@ -57,19 +57,19 @@ export const metadata = {
     {/* Step 2 */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 2: שולחים — ומחכים שנייה
+        שלב 2: שולחים ומחכים שנייה
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        שולחים את הפרומפט ומחכים שנייה אחת. <span className="text-orci-cyan font-bold">ChatGPT "מדמיין" את עצמו</span> — ומייצר תמונה של איך הוא חושב שהוא נראה.
+        שולחים את הפרומפט ומחכים שנייה אחת. <span className="text-orci-cyan font-bold">ChatGPT "מדמיין" את עצמו</span>, ויוצר תמונה של איך שהוא חושב שהוא נראה.
       </p>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-6">
-        הכי מעניין? <span className="text-orci-cyan font-bold">כל אחד מקבל גרסה אחרת לגמרי</span> — יש שמקבלים רובוט, יש שמקבלים דמות מפחידה, ואחד קיבל... חתול 😂
+        והחלק הכי מעניין: <span className="text-orci-cyan font-bold">כל אחד מקבל גרסה אחרת לגמרי</span>. יש שמקבלים רובוט, יש שמקבלים דמות מפחידה, ואחד קיבל... חתול 😂
       </p>
 
       <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
-        <Image src="/guides/chatgpt-selfie/result.png" alt="ChatGPT דמיין את עצמו — דוגמא לתוצאה" width={600} height={600} className="w-full h-auto" />
+        <Image src="/guides/chatgpt-selfie/result.png" alt="ChatGPT דמיין את עצמו: דוגמה לתוצאה" width={600} height={600} className="w-full h-auto" />
       </div>
       <p className="text-center text-sm text-orci-cyan font-bold mt-2">ככה ChatGPT דמיין את עצמו 🤖</p>
     </div>
@@ -82,7 +82,7 @@ export const metadata = {
           התוצאה
         </h2>
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-          <span className="text-orci-cyan font-bold">פרומפט אחד, אלפי תוצאות שונות</span> — הטרנד שגרם לאנשים לשתף ברחבי האינטרנט
+          <span className="text-orci-cyan font-bold">פרומפט אחד, אלפי תוצאות שונות</span>. בגלל זה אנשים משתפים את הטרנד הזה בכל הרשת
         </p>
 
         <div className="mt-8 rounded-2xl overflow-hidden" style={{ aspectRatio: '9/16', maxWidth: '400px', margin: '0 auto' }}>
@@ -105,10 +105,10 @@ export const metadata = {
           💡 למה זה ויראלי?
         </h3>
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-          <span className="text-orci-cyan font-bold">כל אחד מקבל תוצאה אחרת — אף אחד לא יודע מה יצא</span>
+          <span className="text-orci-cyan font-bold">כל אחד מקבל תוצאה אחרת, ואף אחד לא יודע מראש מה ייצא</span>
         </p>
         <p className="text-lg text-slate-300">
-          הסקרנות + ההפתעה + "תראו מה אני קיבלתי" = תוכן שאנשים חייבים לשתף.
+          יש סקרנות, יש הפתעה, ויש "תראו מה אני קיבלתי". זה תוכן שאנשים חייבים לשתף.
         </p>
       </div>
     </div>
@@ -124,7 +124,7 @@ export const metadata = {
         רוצים להישאר מעודכנים?
       </h2>
       <p className="text-gray-300 mb-6 text-lg">
-        לקבל את המדריכים והטריקים הכי שווים — היכנסו לקבוצת הווצ'אט השקטה שלנו
+        היכנסו לקבוצת הווטסאפ השקטה שלנו, ותקבלו את המדריכים והטריקים הכי שווים
       </p>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

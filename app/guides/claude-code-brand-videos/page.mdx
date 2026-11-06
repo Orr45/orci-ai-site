@@ -17,7 +17,7 @@ export const metadata = {
         סרטוני מותג עם Claude Code
       </h1>
       <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
-        שורה אחת על העסק ותמונה של המוצר נכנסות, וסרטון מותג של 10 שניות לאינסטגרם יוצא. הכול נבנה בקוד: בלי צלם, בלי עורך ובלי מחולל וידאו בתשלום.
+        כותבים שורה אחת על העסק, מצרפים תמונה של המוצר, ומקבלים סרטון מותג של 10 שניות לאינסטגרם. הכול נבנה בקוד: בלי צלם, בלי עורך ובלי מחולל וידאו בתשלום.
       </div>
 
       {/* Tools Badges */}
@@ -40,7 +40,7 @@ export const metadata = {
         הסרטון
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        הסקיל נקרא <span className="text-orci-cyan font-bold">brand-video</span>. זו תיקייה שפותחים ב-Claude Code, ומשם הוא עושה את כל העבודה: כותב את הטקסטים, מקליט קריינות, מנפיש את הסצנות בקוד של <span className="text-orci-cyan font-bold">HyperFrames</span>, מוסיף כתוביות, ובודק את עצמו לפני שהוא מראה לכם משהו.
+        הסקיל נקרא <span className="text-orci-cyan font-bold">brand-video</span>. סקיל הוא תיקייה עם הוראות ש-Claude קורא ופועל לפיהן. פותחים אותה ב-Claude Code (הגרסה של Claude שעובדת ישירות על המחשב), ומשם הוא עושה את כל העבודה. הוא כותב את הטקסטים, מקליט קריינות, מנפיש את הסצנות עם <span className="text-orci-cyan font-bold">HyperFrames</span> (כלי שהופך קוד לסרטון), מוסיף כתוביות, ובודק את עצמו לפני שהוא מראה לכם משהו.
       </div>
       <div className="my-8 max-w-sm mx-auto">
         <video src="/guides/claude-code-brand-videos/reel.mp4" poster="/guides/claude-code-brand-videos/poster-reel.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
@@ -54,13 +54,13 @@ export const metadata = {
         לפני הכל: מה צריך
       </h2>
       <ul className="list-none space-y-3 mb-6">
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Claude Code</span>: נכלל במנוי של Claude. אפשר באפליקציה של Claude למחשב או בטרמינל.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Node.js 22 ומעלה ו-ffmpeg</span>: לא צריך להתקין לבד מראש. Claude בודק אותם בשלב 2, ואם משהו חסר הוא מסביר בדיוק מה להתקין.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">מפתח של Cartesia</span> (רשות): בשביל קריינות בעברית. בלי מפתח הסרטון יוצא בלי קול, ומוסיפים מוזיקה באינסטגרם. אפשר גם מפתח של ElevenLabs.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Claude Code</span>: נכלל במנוי של Claude. אפשר באפליקציה של Claude למחשב, או בטרמינל (חלון הפקודות של המחשב).</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Node.js 22 ומעלה ו-ffmpeg</span>: שני כלים שהסקיל צריך כדי לבנות את הסרטון. לא צריך להתקין אותם לבד מראש. Claude בודק אותם בשלב 2, ואם משהו חסר הוא מסביר בדיוק מה להתקין.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">מפתח של Cartesia</span> (רשות): בשביל קריינות בעברית. Cartesia הוא שירות שהופך טקסט לקול, והמפתח הוא מעין סיסמה שמחברת את Claude לחשבון שלכם שם. בלי מפתח הסרטון יוצא בלי קול, ומוסיפים מוזיקה באינסטגרם. אפשר גם מפתח של ElevenLabs.</li>
       </ul>
       <div className="rounded-xl border border-orci-cyan/40 bg-orci-cyan/5 p-5 mt-6">
         <div className="text-lg text-slate-300 leading-relaxed">
-          <span className="text-orci-cyan font-bold">כמה זה עולה:</span> בניית הסרטון עצמו לא עולה כלום מעבר למנוי של Claude. הקריינות ב-Cartesia עולה קרדיט לכל תו, בערך 100 קרדיט לסרטון. בתוכנית החינמית יש 20 אלף קרדיט בחודש, אבל רישיון לשימוש מסחרי, כלומר פרסומת לעסק, מתחיל בתוכנית Pro, ב-5 דולר לחודש (נכון ל-2 בנובמבר 2026).
+          <span className="text-orci-cyan font-bold">כמה זה עולה:</span> בניית הסרטון עצמו לא עולה כלום מעבר למנוי של Claude. הקריינות ב-Cartesia עולה קרדיט לכל תו, בערך 100 קרדיט לסרטון. בתוכנית החינמית יש 20 אלף קרדיט בחודש. אבל רישיון לשימוש מסחרי, כלומר פרסומת לעסק, מתחיל בתוכנית Pro, ב-5 דולר לחודש (נכון ל-2 בנובמבר 2026).
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@ export const metadata = {
         שלב 1: מורידים את התיקייה ופותחים אותה ב-Claude Code
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        מורידים את הקובץ, מחלצים אותו, ופותחים את התיקייה <span className="text-orci-cyan font-bold">brand-video</span> ב-Claude Code: באפליקציה בוחרים את התיקייה, ובטרמינל נכנסים אליה ומקלידים <span className="text-orci-cyan font-bold">claude</span>.
+        מורידים את הקובץ. זה קובץ zip, כלומר תיקייה דחוסה, אז קודם מחלצים אותו. אחר כך פותחים את התיקייה <span className="text-orci-cyan font-bold">brand-video</span> ב-Claude Code. באפליקציה בוחרים את התיקייה. בטרמינל נכנסים אליה ומקלידים <span className="text-orci-cyan font-bold">claude</span>.
       </div>
       <div className="my-8 text-center">
         <a href="/guides/claude-code-brand-videos/brand-video.zip" download className="cap-btn cap-btn-primary inline-flex">
@@ -89,10 +89,10 @@ export const metadata = {
         שלב 2: Claude בודק שיש לכם את כל מה שצריך
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        כותבים לו <span className="text-orci-cyan font-bold">היי</span>. הוא מריץ בדיקת התקנה ומראה רשימה: מה מוכן ומה חסר. על כל דבר שחסר הוא מסביר איך להתקין, אחד אחרי השני, ובודק שוב.
+        כותבים לו <span className="text-orci-cyan font-bold">היי</span>. הוא בודק מה מותקן אצלכם ומראה רשימה: מה מוכן ומה חסר. על כל דבר שחסר הוא מסביר איך להתקין, אחד אחרי השני, ובודק שוב.
       </div>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        אם רוצים קריינות, הוא מוביל אתכם בשלושה צעדים: נכנסים ל-Cartesia, יוצרים מפתח, ומדביקים אותו בקובץ <span className="text-orci-cyan font-bold">.env</span> שהוא פותח לכם. את המפתח לא מדביקים בצ'אט.
+        אם רוצים קריינות, הוא מוביל אתכם בשלושה צעדים: נכנסים ל-Cartesia, יוצרים מפתח, ומדביקים אותו בקובץ <span className="text-orci-cyan font-bold">.env</span> שהוא פותח לכם, קובץ קטן ששומר את המפתח על המחשב שלכם. את המפתח לא מדביקים בצ'אט.
       </div>
       <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
         <Image src="/guides/claude-code-brand-videos/step2-setup.png" alt="בדיקת ההתקנה של הסקיל" width={900} height={858} className="w-full h-auto" />
@@ -109,7 +109,7 @@ export const metadata = {
       </div>
       <CopyPrompt prompt="סרטון לבית קפה בפלורנטין, קפה ומאפה בעשרים שקל" />
       <div className="text-lg text-slate-300 leading-relaxed mb-4 mt-4">
-        הוא לא ממציא פרטים. אם חסר לו שם העסק, מחיר או שעות פתיחה, הוא שואל שאלה אחת קצרה. תמונה על רקע פשוט נגזרת הכי טוב. אם הגזירה יוצאת לא נקייה, הוא שם את התמונה בכרטיס במקום.
+        הוא לא ממציא פרטים. אם חסר לו שם העסק, מחיר או שעות פתיחה, הוא שואל שאלה אחת קצרה. הוא גוזר את המוצר מהרקע, וזה עובד הכי טוב בתמונה על רקע פשוט. אם הגזירה לא יוצאת נקייה, הוא שם במקום זה את התמונה בתוך כרטיס.
       </div>
       <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
         <Image src="/guides/claude-code-brand-videos/step3-line.png" alt="שורה אחת על בית הקפה בצ'אט של Claude Code" width={900} height={858} className="w-full h-auto" />
@@ -125,7 +125,7 @@ export const metadata = {
         מהשורה והתמונה הוא כותב קובץ מותג אחד, ומשם בונה את הסרטון:
       </div>
       <ul className="list-none space-y-3 mb-6">
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">הוק</span>: שתי שורות קצרות שמדברות על הלקוח, לא על העסק ("הבוקר שלך מתחיל כאן").</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">הוק</span>: הפתיחה שעוצרת את הגלילה. שתי שורות קצרות שמדברות על הלקוח, לא על העסק ("הבוקר שלך מתחיל כאן").</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">שלושה יתרונות, המבצע וקריאה לפעולה</span>, עם צבעים ופונט שמתאימים לסוג העסק.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">קריינות</span> בעברית, בקול שמתאים למותג, וכתוביות שעולות על כל מילה.</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">ארבע סצנות</span>: הוק, יתרונות, מחיר שרץ למעלה וקריאה לפעולה. הרקע זז כבר מהפריים הראשון.</li>
@@ -141,7 +141,7 @@ export const metadata = {
         שלב 5: הוא מתקן לבד לפני שאתם רואים
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        לפני הרינדור הוא מריץ בדיקה של HyperFrames שמוצאת טקסט חופף וניגודיות חלשה, מצלם פריימים מכל סצנה ונותן לכל אחת ציון. סצנה מתחת ל-8 מתוקנת ונבדקת שוב.
+        לפני הרינדור (הייצוא לקובץ וידאו), הוא מריץ בדיקה של HyperFrames. היא מוצאת טקסט שעולה על טקסט אחר, וטקסט שקשה לקרוא על הרקע. אחר כך הוא מצלם פריימים מכל סצנה ונותן לכל אחת ציון. סצנה שקיבלה פחות מ-8 מתוקנת ונבדקת שוב.
       </div>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
         זה קרה באמת כשבנינו את הסרטונים: השם <span className="text-orci-cyan font-bold">NOA STUDIO</span> יצא הפוך ("OIDUTS AON"), וההנחה הופיעה כ-"%-30". הבדיקה תפסה את שניהם לפני שראינו את הסרטון.
@@ -157,7 +157,7 @@ export const metadata = {
         שלב 6: מעלים לאינסטגרם, ומחר עוד אחד
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        הסרטון מחכה בתיקייה <span className="text-orci-cyan font-bold">out</span> כקובץ MP4 בגודל 1080×1920. מעלים אותו כריל, ואם אין קריינות בוחרים מוזיקה מהספרייה של אינסטגרם. בפעם הבאה כותבים שורה חדשה: מבצע אחר, מוצר אחר, אותו מותג.
+        הסרטון מחכה בתיקייה <span className="text-orci-cyan font-bold">out</span> כקובץ MP4 בגודל 1080×1920. מעלים אותו כריל. אם אין קריינות, בוחרים מוזיקה מהספרייה של אינסטגרם. בפעם הבאה כותבים שורה חדשה: מבצע אחר, מוצר אחר, אותו מותג.
       </div>
     </div>
 
@@ -214,7 +214,7 @@ export const metadata = {
         רוצים להישאר מעודכנים?
       </h2>
       <div className="text-gray-300 mb-6 text-lg">
-        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+        הצטרפו לקבוצת הווטסאפ של Orci AI: מדריכים חדשים כל שבוע
       </div>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

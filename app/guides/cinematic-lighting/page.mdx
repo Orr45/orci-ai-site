@@ -4,7 +4,7 @@ import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
   title: 'תאורה קולנועית עם AI | Orci AI',
-  description: 'איך להפוך כל סרטון רגיל לרגע קולנועי עם Nano Banana Pro ו-Kling Motion — בלי ציוד, בלי סטודיו',
+  description: 'איך להפוך כל סרטון רגיל לרגע קולנועי עם Nano Banana Pro ו-Kling Motion. בלי ציוד ובלי סטודיו.',
 }
 
 <div className="min-h-screen">
@@ -17,7 +17,7 @@ export const metadata = {
         הטריק שהופך כל סרטון לרגע קולנועי
       </h1>
       <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
-        תאורה קולנועית בלי ציוד, בלי סטודיו — רק AI וכמה רגעים
+        תאורה קולנועית בלי ציוד ובלי סטודיו. רק AI וכמה רגעים.
       </p>
 
       <div className="flex flex-wrap gap-3 justify-center">
@@ -40,9 +40,9 @@ export const metadata = {
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        צלמו סרטון רגיל — לא צריך תאורה מיוחדת, לא ציוד, ולא סטודיו.
-        אחרי הצילום, <span className="text-orci-cyan font-bold">תיקחו צילום מסך</span> מהפריים שאתם הכי אוהבים.
-        זה הפריים שישמש כבסיס לשינוי התאורה.
+        צלמו סרטון רגיל. לא צריך תאורה מיוחדת, ציוד או סטודיו.
+        אחרי הצילום, <span className="text-orci-cyan font-bold">קחו צילום מסך</span> מהפריים (רגע אחד מתוך הסרטון) שאתם הכי אוהבים.
+        על התמונה הזאת נשנה את התאורה.
       </p>
 
       <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
@@ -57,9 +57,9 @@ export const metadata = {
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        מצאו תמונה עם <span className="text-orci-cyan font-bold">תאורה קולנועית</span> שאהבתם —
-        מסרט, מתמונה ברשת, מכל מקום שתרצו.
-        הAI ינתח את התאורה ויעביר אותה לצילום שלכם.
+        מצאו תמונה עם <span className="text-orci-cyan font-bold">תאורה קולנועית</span> שאהבתם:
+        מסרט, מהרשת, מכל מקום שתרצו.
+        ה-AI יבדוק איך התמונה מוארת ויעתיק את התאורה לצילום שלכם.
         הנה כמה דוגמאות לסוגי תאורה:
       </p>
 
@@ -83,16 +83,16 @@ export const metadata = {
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        היכנסו ל-<span className="text-orci-cyan font-bold">Gemini</span> עם
-        <span className="text-orci-cyan font-bold"> Nano Banana Pro</span>,
-        העלו את <span className="text-orci-cyan font-bold">צילום המסך שלכם</span> כתמונה ראשונה
-        ואת <span className="text-orci-cyan font-bold">תמונת התאורה</span> כתמונה שנייה,
-        ואז השתמשו בפרומפט הזה:
+        היכנסו ל-<span className="text-orci-cyan font-bold">Gemini</span> (הצ'אט של גוגל) עם
+        <span className="text-orci-cyan font-bold"> Nano Banana Pro</span>, כלי התמונות שלו.
+        העלו קודם את <span className="text-orci-cyan font-bold">צילום המסך שלכם</span>,
+        ואחריו את <span className="text-orci-cyan font-bold">תמונת התאורה</span>.
+        אז הדביקו את הפרומפט (ההוראה שכותבים ל-AI) הזה:
       </p>
 
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`Use the first uploaded image as the base photo and the second uploaded image as the lighting reference.
 Analyze the lighting conditions in the reference image and realistically recreate the same lighting on the base photo. Do NOT change the person in the base image and strictly preserve identity, face, body, pose, expression, clothing, camera angle, framing, and background geometry. Do NOT change the environment or any objects. Only the lighting may be modified. Carefully anglyze the reference image to determine light direction, number of light sources, hardness or softness of light, contrast level, color temperature balance, intensity ratios, shadow depth, highlight behavior, and overall exposure.
@@ -100,7 +100,7 @@ Recreate these lighting characteristics on the base image so that it appears as 
       </details>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        תקבלו את הצילום שלכם עם <span className="text-orci-cyan font-bold">התאורה הקולנועית</span> — הנה כמה תוצאות:
+        תקבלו את הצילום שלכם עם <span className="text-orci-cyan font-bold">התאורה הקולנועית</span>. הנה כמה תוצאות:
       </p>
 
       <div className="my-8 grid grid-cols-3 gap-4">
@@ -119,18 +119,18 @@ Recreate these lighting characteristics on the base image so that it appears as 
     {/* Step 4 */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 4: Kling Motion — הופכים תמונה לסרטון
+        שלב 4: הופכים את התמונה לסרטון ב-Kling Motion
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        היכנסו ל-<span className="text-orci-cyan font-bold">Kling Motion</span>,
+        היכנסו ל-<span className="text-orci-cyan font-bold">Kling Motion</span>, כלי שלוקח את התנועה מסרטון ומחיל אותה על תמונה.
         העלו את <span className="text-orci-cyan font-bold">הסרטון המקורי</span> ואת
         <span className="text-orci-cyan font-bold"> תמונת התאורה החדשה</span> שיצרתם.
-        ללא פרומפט — פשוט תנו ל-AI לעשות את העבודה.
+        לא צריך לכתוב פרומפט. ה-AI עושה את השאר.
       </p>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        התוצאה: הסרטון שלכם עם <span className="text-orci-cyan font-bold">תאורה קולנועית מושלמת</span>,
+        התוצאה: הסרטון שלכם עם <span className="text-orci-cyan font-bold">תאורה קולנועית</span>,
         כאילו יצא מהפקה מקצועית.
       </p>
     </div>
@@ -143,7 +143,7 @@ Recreate these lighting characteristics on the base image so that it appears as 
           התוצאה
         </h2>
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-          סרטון שנראה כאילו הופק עם <span className="text-orci-cyan font-bold">תקציב של אולפן</span> —
+          סרטון שנראה כאילו הופק עם <span className="text-orci-cyan font-bold">תקציב של אולפן</span>,
           בלי לצאת מהבית ובלי שום ציוד.
         </p>
       </div>
@@ -159,7 +159,7 @@ Recreate these lighting characteristics on the base image so that it appears as 
           <span className="text-orci-cyan font-bold">התאורה היא ההבדל בין תוכן רגיל לתוכן ויראלי.</span>
         </p>
         <p className="text-lg text-slate-300">
-          עכשיו יש לכם את הכלים להפוך כל צילום פשוט לרגע קולנועי — בכמה רגעים בלבד.
+          עכשיו אתם יודעים להפוך כל צילום פשוט לרגע קולנועי, בכמה רגעים.
         </p>
       </div>
     </div>
@@ -175,7 +175,7 @@ Recreate these lighting characteristics on the base image so that it appears as 
         רוצים להישאר מעודכנים?
       </h2>
       <p className="text-gray-300 mb-6 text-lg">
-        לקבל את המדריכים והטריקים הכי שווים — היכנסו לקבוצת הווצ'אט השקטה שלנו
+        היכנסו לקבוצת הווטסאפ השקטה שלנו, ותקבלו את המדריכים והטריקים הכי שווים
       </p>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

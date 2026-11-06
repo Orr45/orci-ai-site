@@ -41,7 +41,7 @@ export const metadata = {
         הסרטון
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        את הרילס הזה אף אחד לא ערך ידנית. כל קאט, כתובית, מעבר ואפקט נבנה על ידי <span className="text-orci-cyan font-bold">Claude</span> מהמשפטים שבמדריך הזה.
+        את הרילס הזה אף אחד לא ערך ידנית. <span className="text-orci-cyan font-bold">Claude</span> בנה כל קאט, כתובית, מעבר ואפקט, מהמשפטים שבמדריך הזה.
       </div>
       <div className="my-8 max-w-sm mx-auto">
         <video src="/guides/claude-video-editing/reel.mp4" poster="/guides/claude-video-editing/poster-reel.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
@@ -55,9 +55,9 @@ export const metadata = {
         לפני הכל: מה צריך
       </h2>
       <ul className="list-none space-y-3 mb-6">
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Claude Code</span>: הגרסה של Claude שעובדת ישירות על המחשב שלכם ומריצה כלים בעצמה. נכנס עם מנוי Claude בתשלום.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">HyperFrames</span>: כלי קוד פתוח שהופך עמוד אינטרנט לסרטון. Claude כותב את העריכה כקוד, והכלי מרנדר אותה ל-MP4. אין צורך להתקין מראש, Claude מריץ אותו בעצמו.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>פשוט תגידו ל-Claude Code ״תוודא שיש לי ffmpeg ו-Node.js מותקנים״, והוא יבדוק ויתקין מה שחסר.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">Claude Code</span>: הגרסה של Claude שעובדת ישירות על המחשב שלכם ומריצה כלים בעצמה. נכנסים אליה עם מנוי Claude בתשלום.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold">HyperFrames</span>: כלי חינמי בקוד פתוח שהופך עמוד אינטרנט לסרטון. Claude כותב את העריכה כקוד, והכלי מייצא אותה לקובץ MP4. הייצוא הזה נקרא רינדור. לא צריך להתקין אותו מראש, Claude מריץ אותו בעצמו.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>צריך גם ffmpeg ו-Node.js, שני כלים חינמיים שהעריכה רצה עליהם. לא צריך להבין בהם: תגידו ל-Claude Code ״תוודא שיש לי ffmpeg ו-Node.js מותקנים״, והוא יבדוק ויתקין מה שחסר.</li>
       </ul>
     </div>
 
@@ -67,7 +67,7 @@ export const metadata = {
         שלב 1: מקליטים טייק אחד, גולמי
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        מקליטים את כל הטקסט <span className="text-orci-cyan font-bold">ברצף, בלי לעצור</span>. התבלבלתם? פשוט אומרים את המשפט שוב וממשיכים. גמגומים וטייקים כפולים זה בסדר גמור, בשביל זה יש את השלב הבא. ברילס הזה ההקלטה הגולמית הייתה 1:13, והסרטון המוגמר 0:56.
+        מקליטים את כל הטקסט <span className="text-orci-cyan font-bold">ברצף, בלי לעצור</span>. התבלבלתם? פשוט אומרים את המשפט שוב וממשיכים. גמגומים וטייקים כפולים זה בסדר גמור. בשביל זה יש את השלב הבא. ברילס הזה ההקלטה הגולמית הייתה 1:13, והסרטון המוגמר 0:56.
       </div>
       <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
         <Image src="/guides/claude-video-editing/step1-raw.png" alt="טייק גרוע: 1:13 של צילום גולמי" width={900} height={583} className="w-full h-auto" />
@@ -80,7 +80,7 @@ export const metadata = {
         שלב 2: Claude חותך את הטייקים הגרועים
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        Claude מתמלל את ההקלטה מילה-מילה עם <span className="text-orci-cyan font-bold">Whisper</span>, מזהה איפה התחלתם משפט ולא סיימתם, ושומר רק את הטייק האחרון. בלי טיימליין ובלי גרירה של קליפים.
+        Claude מתמלל את ההקלטה מילה אחרי מילה עם <span className="text-orci-cyan font-bold">Whisper</span> (כלי שהופך דיבור לטקסט). הוא מזהה איפה התחלתם משפט ולא סיימתם, ושומר רק את הטייק האחרון. בלי טיימליין ובלי לגרור קליפים.
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
@@ -100,11 +100,11 @@ export const metadata = {
         שלב 3 (אופציונלי): לא צילמתם? רק הקלטתם
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        את הרילס הזה הקלטתי באודיו בלבד. מעלים ל-<span className="text-orci-cyan font-bold">Higgsfield</span> סרטון בסיס קיים שלכם יחד עם <span className="text-orci-cyan font-bold">voice_clean.wav</span>, בוחרים <span className="text-orci-cyan font-bold">Sync Lipsync 3</span>, והשפתיים שלכם זזות לפי ההקלטה החדשה.
+        את הרילס הזה רק הקלטתי, בלי לצלם. נכנסים ל-<span className="text-orci-cyan font-bold">Higgsfield</span> (אתר ליצירת וידאו עם AI). מעלים סרטון קיים שלכם שישמש כבסיס, ואת <span className="text-orci-cyan font-bold">voice_clean.wav</span>, קובץ הקול הנקי מהשלב הקודם. בוחרים <span className="text-orci-cyan font-bold">Sync Lipsync 3</span>, והשפתיים שלכם זזות לפי ההקלטה החדשה.
       </div>
       <ul className="list-none space-y-3 mb-6">
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>סרטון בסיס טוב: מצלמה יציבה, פנים במרכז, ושום דבר לא מסתיר את הפה.</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>אם ההקלטה ארוכה מהבסיס, מחלקים אותה לשני חלקים בהפסקה טבעית ומסנכרנים כל חלק על בסיס אחר. זה גם נראה כמו החלפת זווית.</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span>אם ההקלטה ארוכה מסרטון הבסיס, מחלקים אותה לשני חלקים בהפסקה טבעית ומסנכרנים כל חלק על בסיס אחר. זה גם נראה כמו החלפת זווית.</li>
       </ul>
     </div>
 
@@ -114,7 +114,7 @@ export const metadata = {
         שלב 4: סטוריבורד לפני שמרנדרים
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        זה ההבדל הגדול. לפני שנבנה פריים אחד, Claude כותב <span className="text-orci-cyan font-bold">לוח סצנות</span>: מה נאמר, מה רואים ואיזה אפקט. אתם רואים מה הוא חושב, ומתקנים כשזה עוד זול.
+        זה ההבדל הגדול. לפני שהוא בונה משהו, Claude כותב <span className="text-orci-cyan font-bold">לוח סצנות</span> (סטוריבורד): מה נאמר, מה רואים ואיזה אפקט. ככה אתם רואים מה הוא מתכנן, ומתקנים כשזה עוד זול.
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
@@ -143,7 +143,7 @@ export const metadata = {
         שלב 5: עריכה ב-HyperFrames, והערות בעברית פשוטה
       </h2>
       <div className="text-lg text-slate-300 leading-relaxed mb-4">
-        אחרי שאישרתם את הסטוריבורד, Claude בונה את העריכה ומרנדר. משהו לא מוצא חן בעיניכם? כותבים לו כמו לעורך, במשפט אחד.
+        אחרי שאישרתם את הסטוריבורד, Claude בונה את העריכה ומרנדר אותה לסרטון. משהו לא מוצא חן בעיניכם? כותבים לו כמו לעורך, במשפט אחד.
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
@@ -221,7 +221,7 @@ export const metadata = {
           <span className="text-orci-cyan font-bold">אתם כבר לא עורכים. אתם במאים.</span>
         </div>
         <div className="text-lg text-slate-300">
-          העבודה שלכם היא לדעת מה אתם רוצים לראות ולהגיד את זה במשפט. כל השאר, מהחיתוך ועד הצליל על כל כרטיס, קורה בקוד.
+          העבודה שלכם היא לדעת מה אתם רוצים לראות ולהגיד את זה במשפט. כל השאר, מהחיתוך ועד הצליל על כל כרטיס, Claude עושה בקוד.
         </div>
       </div>
     </div>
@@ -237,7 +237,7 @@ export const metadata = {
         רוצים להישאר מעודכנים?
       </h2>
       <div className="text-gray-300 mb-6 text-lg">
-        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+        הצטרפו לקבוצת הווטסאפ של Orci AI: מדריכים חדשים כל שבוע
       </div>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

@@ -4,7 +4,7 @@ import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
   title: 'ככה ChatGPT מוצא לכם קוד קופון שבאמת עובד | Orci AI',
-  description: 'שני פרומפטים שגורמים ל-ChatGPT למצוא כל קוד הנחה למוצר שאתם קונים — ואז לבדוק אותם אחד-אחד בדפדפן עד שהוא מוצא את זה שעובד.',
+  description: 'שני פרומפטים שגורמים ל-ChatGPT למצוא כל קוד הנחה למוצר שאתם קונים, ואז לבדוק אותם אחד-אחד בדפדפן עד שהוא מוצא את זה שעובד.',
 }
 
 <div className="min-h-screen">
@@ -17,7 +17,7 @@ export const metadata = {
         ככה ChatGPT מוצא לכם קוד קופון שבאמת עובד
       </h1>
       <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
-        הוא לא רק מחפש את הקודים — הוא פותח את הדפדפן ובודק כל אחד מהם בעצמו.
+        הוא מוצא את הקודים, פותח את הדפדפן ובודק כל אחד מהם בעצמו.
       </p>
       <div className="flex flex-wrap gap-3 justify-center">
         <span className="cap-badge text-sm">🤖 ChatGPT</span>
@@ -65,11 +65,11 @@ export const metadata = {
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        תיכנסו ל-ChatGPT ותחליפו את המתג מ-<span className="text-orci-cyan font-bold">Chat</span> ל-<span className="text-orci-cyan font-bold">Work</span>. זה השלב שרוב האנשים מדלגים עליו — ובלעדיו כלום לא יעבוד.
+        היכנסו ל-ChatGPT והעבירו את המתג מ-<span className="text-orci-cyan font-bold">Chat</span> ל-<span className="text-orci-cyan font-bold">Work</span>. רוב האנשים מדלגים על השלב הזה, ובלעדיו שום דבר לא יעבוד.
       </p>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        במצב Chat הוא רק מדבר איתכם. במצב Work הוא מקבל <span className="text-orci-cyan font-bold">גישה לחיפוש באינטרנט ולדפדפן</span> — כלומר הוא באמת יכול לגלוש, להיכנס לדף התשלום ולנסות קודים. זה ההבדל בין עוזר שמנחש לעוזר שבודק.
+        במצב Chat הוא רק מדבר איתכם. במצב Work הוא מקבל <span className="text-orci-cyan font-bold">גישה לחיפוש באינטרנט ולדפדפן</span>. כלומר, הוא באמת יכול לגלוש, להיכנס לדף התשלום ולנסות קודים. זה ההבדל בין עוזר שמנחש לעוזר שבודק.
       </p>
 
       <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto">
@@ -81,11 +81,11 @@ export const metadata = {
     {/* Step 2 */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 2: הפרומפט הראשון — מצא לי את כל הקודים
+        שלב 2: הפרומפט הראשון, שמוצא את כל הקודים
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        קחו את <span className="text-orci-cyan font-bold">הלינק לדף המוצר</span> שאתם רוצים לקנות (או לעגלת הקניות), הדביקו אותו במקום המסומן בפרומפט, ושלחו:
+        העתיקו את <span className="text-orci-cyan font-bold">הלינק לדף המוצר</span> שאתם רוצים לקנות (או לעגלת הקניות). הדביקו אותו בפרומפט (ההוראה שכותבים ל-ChatGPT) במקום המסומן, ושלחו:
       </p>
 
       <CopyPrompt prompt={`I'm about to buy this: [ paste the product link ].
@@ -96,7 +96,7 @@ Use web search to find me every working discount code, coupon, and promo for thi
       </h3>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        עובד גם בעברית, אבל <span className="text-orci-cyan font-bold">מומלץ להשתמש באנגלית</span> — רוב אתרי הקופונים באינטרנט הם באנגלית, וכך החיפוש מוצא יותר תוצאות.
+        עובד גם בעברית, אבל <span className="text-orci-cyan font-bold">עדיף באנגלית</span>. רוב אתרי הקופונים כתובים באנגלית, וככה החיפוש מוצא יותר תוצאות.
       </p>
 
       <CopyPrompt prompt={`אני עומד/ת לקנות את זה: [ הדביקו כאן את הלינק למוצר ].
@@ -109,19 +109,19 @@ Use web search to find me every working discount code, coupon, and promo for thi
       <ul className="list-none space-y-3 mb-6">
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          <span className="text-orci-cyan font-bold">"use web search"</span> — מכריח אותו לחפש באמת במקום לשלוף קודים מהזיכרון (שכמעט תמיד פג תוקפם).
+          <span className="text-orci-cyan font-bold">"use web search"</span>: מכריח אותו לחפש באמת, ולא לשלוף קודים מהזיכרון. קודים מהזיכרון כמעט תמיד כבר לא בתוקף.
         </li>
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          <span className="text-orci-cyan font-bold">"where you found it"</span> — דורש מקור לכל קוד, כך שאתם יכולים לאמת ולא לקבל קודים מומצאים.
+          <span className="text-orci-cyan font-bold">"where you found it"</span>: דורש מקור לכל קוד. ככה אפשר לבדוק אותו, ולא מקבלים קודים מומצאים.
         </li>
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          <span className="text-orci-cyan font-bold">"first-order / newsletter / free-shipping"</span> — אלה ההטבות שהכי קל לפספס, ולרוב הן הכי שוות.
+          <span className="text-orci-cyan font-bold">"first-order / newsletter / free-shipping"</span>: הנחה להזמנה ראשונה, הטבת הרשמה לניוזלטר ומשלוח חינם. אלה ההטבות שהכי קל לפספס, ולרוב הן הכי שוות.
         </li>
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          <span className="text-orci-cyan font-bold">"most promising at the top"</span> — חוסך לכם זמן בשלב הבא, כי הבדיקה מתחילה מהקוד הכי שווה.
+          <span className="text-orci-cyan font-bold">"most promising at the top"</span>: חוסך לכם זמן בשלב הבא, כי הבדיקה מתחילה מהקוד הכי שווה.
         </li>
       </ul>
 
@@ -134,11 +134,11 @@ Use web search to find me every working discount code, coupon, and promo for thi
     {/* Step 3 */}
     <div className="cap-card border-2 border-orci-cyan">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 3: הפרומפט השני — זה שהופך את זה לקסם
+        שלב 3: הפרומפט השני, שבודק כל קוד בשבילכם
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        עכשיו מגיע החלק שאף אחד לא עושה. במקום שאתם תעתיקו ותדביקו כל קוד בעצמכם — <span className="text-orci-cyan font-bold">תגידו לו לעשות את זה</span>:
+        עכשיו מגיע החלק שאף אחד לא עושה. במקום להעתיק ולהדביק כל קוד בעצמכם, <span className="text-orci-cyan font-bold">תגידו לו לעשות את זה</span>:
       </p>
 
       <CopyPrompt prompt={`Now open your browser, go to the checkout page for this item with it in my cart, and test each of those codes one at a time. Tell me exactly which code works and which saves the most. Apply each code, note the new total, then move to the next. Do NOT complete the purchase, stop at the discount so I can check out myself.`} />
@@ -156,19 +156,19 @@ Use web search to find me every working discount code, coupon, and promo for thi
       <ul className="list-none space-y-3 mb-6">
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          <span className="text-orci-cyan font-bold">"open your browser"</span> — מפעיל את יכולת הגלישה בפועל. בלי זה הוא רק ישער אילו קודים כנראה עובדים.
+          <span className="text-orci-cyan font-bold">"open your browser"</span>: גורם לו באמת לגלוש. בלי זה הוא רק ינחש אילו קודים כנראה עובדים.
         </li>
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          <span className="text-orci-cyan font-bold">"one at a time... note the new total"</span> — מאלץ אותו לבדוק כל קוד בנפרד ולתעד את הסכום, במקום לנסות הכול ביחד ולהתבלבל.
+          <span className="text-orci-cyan font-bold">"one at a time... note the new total"</span>: מכריח אותו לבדוק כל קוד בנפרד ולרשום את הסכום, במקום לנסות הכל ביחד ולהתבלבל.
         </li>
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          <span className="text-orci-cyan font-bold">"which saves the most"</span> — לפעמים שני קודים עובדים אבל אחד שווה פי שלושה. זה מה שמוצא אותו.
+          <span className="text-orci-cyan font-bold">"which saves the most"</span>: לפעמים שני קודים עובדים, אבל אחד שווה פי שלושה. השורה הזאת מוצאת אותו.
         </li>
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          <span className="text-orci-cyan font-bold">"Do NOT complete the purchase"</span> — ⚠️ השורה הכי חשובה בכל המדריך. בלעדיה הוא עלול להמשיך עד לתשלום בפועל.
+          <span className="text-orci-cyan font-bold">"Do NOT complete the purchase"</span>: ⚠️ השורה הכי חשובה במדריך. בלעדיה הוא עלול להמשיך עד התשלום עצמו.
         </li>
       </ul>
 
@@ -191,10 +191,10 @@ Use web search to find me every working discount code, coupon, and promo for thi
           התוצאה
         </h2>
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-          במקום חמש דקות של ניחושים — אתם מקבלים <span className="text-orci-cyan font-bold">קוד אחד מאומת</span> שנבדק בפועל בדף התשלום, עם הסכום המדויק שהוא חוסך לכם.
+          במקום חמש דקות של ניחושים, אתם מקבלים <span className="text-orci-cyan font-bold">קוד אחד בדוק</span>. הוא נוסה בדף התשלום עצמו, ואתם רואים בדיוק כמה הוא חוסך לכם.
         </p>
         <p className="text-lg text-slate-300">
-          אני עושה את זה באופן קבוע לפני כל קנייה אונליין — וזה חוסך המון כסף לאורך זמן.
+          אני עושה את זה לפני כל קנייה באינטרנט, וזה חוסך המון כסף לאורך זמן.
         </p>
       </div>
     </div>
@@ -209,7 +209,7 @@ Use web search to find me every working discount code, coupon, and promo for thi
           <span className="text-orci-cyan font-bold">הפרומפט השני הוא כל ההבדל.</span>
         </p>
         <p className="text-lg text-slate-300">
-          רוב האנשים מבקשים מ-AI <span className="text-orci-cyan font-bold">מידע</span> ואז עושים את העבודה בעצמם. הטריק האמיתי הוא לבקש ממנו <span className="text-orci-cyan font-bold">לבצע פעולה</span> ולחזור אליכם עם תשובה מאומתת. זה נכון לקופונים — וזה נכון לעוד מאה דברים.
+          רוב האנשים מבקשים מ-AI <span className="text-orci-cyan font-bold">מידע</span> ואז עושים את העבודה בעצמם. הטריק הוא לבקש ממנו <span className="text-orci-cyan font-bold">לעשות את העבודה</span> ולחזור אליכם עם תשובה בדוקה. זה עובד בקופונים, וזה עובד בעוד מאה דברים.
         </p>
       </div>
     </div>
@@ -225,7 +225,7 @@ Use web search to find me every working discount code, coupon, and promo for thi
         רוצים להישאר מעודכנים?
       </h2>
       <p className="text-gray-300 mb-6 text-lg">
-        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+        הצטרפו לקבוצת הווטסאפ של Orci AI: מדריכים חדשים כל שבוע
       </p>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

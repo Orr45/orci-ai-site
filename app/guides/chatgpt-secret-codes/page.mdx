@@ -17,7 +17,7 @@ export const metadata = {
         10 קודים שבורים ל-ChatGPT
       </h1>
       <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
-        מילה אחת לפני הפרומפט, ו-ChatGPT עונה אחרת לגמרי.
+        מילה אחת לפני הפרומפט (ההודעה שאתם שולחים לו), ו-ChatGPT עונה אחרת לגמרי.
       </p>
       <div className="flex flex-wrap gap-3 justify-center">
         <span className="cap-badge text-sm">🤖 ChatGPT</span>
@@ -53,12 +53,12 @@ export const metadata = {
         איך זה עובד
       </h2>
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        אלה לא פקודות מובנות של ChatGPT, ואין שום מתג נסתר שנדלק. הקוד הוא <span className="text-orci-cyan font-bold">קיצור להוראה</span>: הוא מבין מה הוא אומר, וכשמוסיפים לו הגדרה של שורה אחת, הוא עובד בכל צ'אט, גם כזה שלא ראה את הקוד אף פעם.
+        אלה לא פקודות מובנות של ChatGPT, ואין שום מתג נסתר שנדלק. הקוד הוא <span className="text-orci-cyan font-bold">קיצור של הוראה</span>, ו-ChatGPT מבין לבד מה המילה אומרת. כשמוסיפים לקוד הגדרה של שורה אחת, הוא עובד בכל צ'אט, גם בצ'אט חדש שלא ראה אותו אף פעם.
       </p>
       <ul className="list-none space-y-3 mb-6">
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">1.</span><span className="pr-4 block">מעתיקים את <span className="text-orci-cyan font-bold">הפרומפט המוכן</span> של הקוד מהמדריך. הוא כולל את הקוד ואת ההגדרה שלו.</span></li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">2.</span><span className="pr-4 block">מחליפים את מה שבסוגריים המרובעים בשאלה או בטקסט שלכם.</span></li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">3.</span><span className="pr-4 block">רוצים שזה יעבוד תמיד? מדביקים את ההגדרות ב-<span className="text-orci-cyan font-bold">Custom Instructions</span> (הגדרות ← התאמה אישית), ומאז מספיק לכתוב רק את הקוד.</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">3.</span><span className="pr-4 block">רוצים שזה יעבוד תמיד? מדביקים את ההגדרות ב-<span className="text-orci-cyan font-bold">Custom Instructions</span>, ההוראות הקבועות ש-ChatGPT קורא בכל צ'אט (הגדרות ← התאמה אישית). מעכשיו מספיק לכתוב רק את הקוד.</span></li>
       </ul>
     </div>
 
@@ -75,7 +75,7 @@ export const metadata = {
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`/truth = drop the politeness and the compliments. Tell me what you honestly think, including the parts I probably don't want to hear. Be direct and specific, and explain why. Answer in Hebrew.
 
@@ -96,7 +96,7 @@ export const metadata = {
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`/human = write like a real person, not like an AI. No clichés, no buzzwords, no "we're excited to announce". Mix short and long sentences, use everyday words, and keep my voice. Answer in Hebrew.
 
@@ -117,7 +117,7 @@ export const metadata = {
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`/nofluff = give me only what matters. No intro, no recap, no filler, no disclaimers unless critical. About half your usual length. Answer in Hebrew.
 
@@ -138,7 +138,7 @@ export const metadata = {
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`/devil = act as a tough devil's advocate. Stop agreeing with me and attack my idea from every angle: market, money, competition, execution, timing. List the strongest objections first, and finish with the one question I must answer before moving on. Answer in Hebrew.
 
@@ -152,14 +152,14 @@ export const metadata = {
         #5 <span className="font-mono" dir="ltr">/odds</span> | אחוזים על הסיכוי
       </h2>
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        שואלים כל דבר, והוא שם אחוז על הסיכוי שזה יצליח ומסביר מה מעלה ומה מוריד אותו. זו הערכה של המודל ולא הסתברות אמיתית, אבל היא מכריחה אותו להתחייב לתשובה ולפרט את השיקולים.
+        שואלים כל דבר, והוא שם אחוז על הסיכוי שזה יצליח ומסביר מה מעלה ומה מוריד אותו. זו הערכה של ChatGPT, לא חישוב אמיתי. אבל היא מכריחה אותו להתחייב לתשובה ולפרט את השיקולים.
       </p>
       <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
         <Image src="/guides/chatgpt-secret-codes/odds.jpg" alt="ChatGPT עונה לפקודה /odds" width={900} height={783} className="w-full h-auto" />
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`/odds = estimate the probability (in %) that this will succeed. Show the 3 factors that raise the odds, the 3 that lower them, and what I could change to improve them. Be honest about uncertainty. Answer in Hebrew.
 
@@ -180,7 +180,7 @@ export const metadata = {
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`/decode = read the text below like a skeptical lawyer. Tell me in plain language what they hoped I wouldn't notice: auto-renewals, fees, penalties, liability waivers, data use, cancellation terms. Quote the exact clause for each point. Answer in Hebrew.
 
@@ -195,14 +195,14 @@ export const metadata = {
         #7 <span className="font-mono" dir="ltr">/simulate</span> | 5 שנים קדימה
       </h2>
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        מתלבטים בהחלטה גדולה? הוא מריץ אותה חמש שנים קדימה ומציג שלושה תרחישים זה לצד זה: אופטימי, סביר ופסימי, עם מה שקורה בכל שנה.
+        מתלבטים בהחלטה גדולה? הוא בודק לאן היא תוביל בחמש השנים הקרובות, ומציג שלושה תרחישים זה לצד זה: אופטימי, סביר ופסימי, עם מה שקורה בכל שנה.
       </p>
       <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
         <Image src="/guides/chatgpt-secret-codes/simulate.jpg" alt="ChatGPT עונה לפקודה /simulate" width={900} height={783} className="w-full h-auto" />
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`/simulate = run my decision 5 years into the future. Show 3 scenarios side by side in a table (optimistic, realistic, pessimistic) with what happens in year 1, 3 and 5, plus the early warning signs for each one. Answer in Hebrew.
 
@@ -223,7 +223,7 @@ export const metadata = {
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`/genius = think deeply before answering. Consider at least 3 different approaches, question my assumptions, check for mistakes, and only then give me your best answer as a clear, structured plan. Answer in Hebrew.
 
@@ -244,7 +244,7 @@ export const metadata = {
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`/shrink = analyze me like a thoughtful psychologist. Based on what I describe, explain the likely real reason behind my behavior, the pattern it fits, and one small experiment to break it. Be kind but honest, and end with one question for me to reflect on. Answer in Hebrew.
 
@@ -258,14 +258,14 @@ export const metadata = {
         #10 <span className="font-mono" dir="ltr">/rewire</span> | השגרה שאתם באמת צריכים
       </h2>
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        הוא לוקח את כל מה שהוא יודע עליכם, מהזיכרון ומהשיחות הקודמות, ובונה שגרה יומית שמתאימה לכם ולא לאיזה מנכ"ל מיוטיוב. הוא עובד הכי טוב כשהזיכרון של ChatGPT דלוק.
+        הוא לוקח את כל מה שהוא יודע עליכם, מהזיכרון ומהשיחות הקודמות, ובונה שגרה יומית שמתאימה לכם ולא לאיזה מנכ"ל מיוטיוב. הוא עובד הכי טוב כשהזיכרון של ChatGPT דלוק, כלומר כשהוא זוכר דברים עליכם משיחות קודמות.
       </p>
       <div className="my-8 rounded-2xl overflow-hidden max-w-lg mx-auto border border-orci-cyan/25">
         <Image src="/guides/chatgpt-secret-codes/rewire.jpg" alt="ChatGPT עונה לפקודה /rewire" width={900} height={783} className="w-full h-auto" />
       </div>
       <details className="my-6">
         <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
-          📋 לחץ לצפייה בפרומפט המלא
+          📋 לחצו לצפייה בפרומפט המלא
         </summary>
         <CopyPrompt prompt={`/rewire = using everything you know about me (memory and our past chats), build the daily routine I actually need, not a generic productivity routine. Give it hour by hour, explain why each block is there, and tell me which one change to start with tomorrow. Answer in Hebrew.
 
@@ -295,7 +295,7 @@ export const metadata = {
         🎁 בונוס: עוד 42 קודים לפי נושא
       </h2>
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        את אותו טריק אפשר להפעיל על כל קוד ברשימה: כותבים את הקוד, ההגדרה שלו במילה או שתיים והמשימה. הרשימה מבוססת על האוסף של <a href="https://mavgpt.ai/resources/chatgpt-secret-codes" target="_blank" rel="noopener noreferrer" className="text-orci-cyan underline">Maverick AI</a>.
+        אותו טריק עובד עם כל קוד ברשימה: כותבים את הקוד, מה הוא אומר במילה או שתיים, ואת המשימה. הרשימה מבוססת על האוסף של <a href="https://mavgpt.ai/resources/chatgpt-secret-codes" target="_blank" rel="noopener noreferrer" className="text-orci-cyan underline">Maverick AI</a>.
       </p>
       <CopyPrompt prompt={`Use [CODE] ([what it means]) for this task: [your task]. Answer in Hebrew.`} />
 
@@ -374,7 +374,7 @@ export const metadata = {
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">HIDDENASSUMPTIONS</span> | מוצא הנחות שקל לפספס</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">BLACKSWAN</span> | תרחישים נדירים עם השפעה גדולה</li>
         <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">REVERSEENGINEER</span> | עובד אחורה כדי להבין איך משהו בנוי</li>
-        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">META</span> | בודק את השאלה עצמה ואת המסגור שלה</li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="text-orci-cyan font-bold font-mono" dir="ltr">META</span> | בודק את השאלה עצמה ואת הדרך שבה היא מנוסחת</li>
       </ul>
     </div>
 
@@ -398,7 +398,7 @@ export const metadata = {
           💡 המסר המרכזי
         </h3>
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-          <span className="text-orci-cyan font-bold">הקוד פותח את הדלת, וההקשר עושה את העבודה.</span>
+          <span className="text-orci-cyan font-bold">הקוד הוא רק ההתחלה. הפרטים שאתם מוסיפים עושים את העבודה.</span>
         </p>
         <p className="text-lg text-slate-300">
           תוסיפו לכל קוד למי זה מיועד, מה התוצאה שאתם רוצים ואת החומר עצמו, והתשובה תהיה טובה פי כמה.
@@ -417,7 +417,7 @@ export const metadata = {
         רוצים להישאר מעודכנים?
       </h2>
       <p className="text-gray-300 mb-6 text-lg">
-        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+        הצטרפו לקבוצת הווטסאפ של Orci AI: מדריכים חדשים כל שבוע
       </p>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"

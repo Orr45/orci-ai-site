@@ -3,8 +3,8 @@ import { CopyPrompt } from '@/components/ui/CopyPrompt'
 import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
-  title: 'איך ליצור את טרנד הדמיות הנטושות | Orci AI',
-  description: 'במדריך הזה אלמד אתכם צעד אחרי צעד כיצד תוכלו ליצור את טרנד הדמיות הנטושות',
+  title: 'איך ליצור את טרנד הדמויות הנטושות | Orci AI',
+  description: 'איך יוצרים את טרנד הדמויות הנטושות, צעד אחרי צעד',
 }
 
 <div className="min-h-screen">
@@ -14,10 +14,10 @@ export const metadata = {
   <div className="max-w-7xl mx-auto px-6">
     <div className="cap-card text-center">
       <h1 className="cap-hero-title mb-6 text-orci-cyan">
-        איך ליצור את טרנד הדמיות הנטושות
+        איך ליצור את טרנד הדמויות הנטושות
       </h1>
       <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
-        במדריך הזה אלמד אתכם צעד אחרי צעד כיצד תוכלו ליצור את טרנד הדמיות הנטושות
+        בוחרים דמות, וה-AI מציב אותה במנהרה חשוכה שמוארת רק בפנס. צעד אחרי צעד.
       </p>
     </div>
   </div>
@@ -34,7 +34,7 @@ export const metadata = {
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        כל מה שאתם צריכים לבחור איזה דמות שתרצו, תיקחו תמונות רפרנס שלה ברמה גבוה, וכל מה שאתם צריכים לעשות זה להעתיק את הפרומפט שהכנתי לכם כאן:
+        בוחרים דמות שאתם רוצים ומוצאים כמה תמונות רפרנס שלה (תמונות ברורות ובאיכות גבוהה, שה-AI ייעזר בהן). אחר כך מעתיקים את הפרומפט (ההוראה שכותבים ל-AI) שהכנתי לכם. בתוך הפרומפט מחליפים את [REFERENCE_SUBJECT] בשם של הדמות:
       </p>
 
       <CopyPrompt prompt="Vertical 9:16, hyper-realistic horror documentary photo.
@@ -50,8 +50,8 @@ NEGATIVE PROMPT
 cartoon, anime, illustration, 3d render, CGI, clean plastic look, glossy skin, beauty lighting, studio softbox, colorful neon, fantasy glow, perfect symmetry, smooth skin, low detail, blur, motion blur, overexposed, extra limbs, deformed face, wrong identity, inaccurate likeness, duplicated head, warped eyes, text, watermark, logo, frame" />
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        עכשיו תיכנסו פשוט ל-<span className="text-orci-cyan font-bold">Nano Banana Pro</span>.
-        תחברו את התמונת רפרנס עם הפרומפט הזה ותקבלו את התוצאה המטורפת של הטרנד
+        עכשיו נכנסים ל-<span className="text-orci-cyan font-bold">Nano Banana Pro</span> (מחולל התמונות של Google).
+        מעלים את תמונות הרפרנס, מדביקים את הפרומפט ומקבלים את התמונה של הטרנד:
       </p>
 
       <div className="my-8 rounded-2xl overflow-hidden">
@@ -68,13 +68,13 @@ cartoon, anime, illustration, 3d render, CGI, clean plastic look, glossy skin, b
     {/* Step 2 */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        שלב 2: הפיכת התמונה לסרטון
+        שלב 2: הופכים את התמונה לסרטון
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        עכשיו אתם אמורים לקבל תוצאה ברמה גבוה, תשחקו קצת עם התוצאה בשביל לקבל בדיוק את מה שאתם רוצים.
-        משם זה הכי פשוט בעולם - לוקחים את התוצר ומכניסים אותו ל-<span className="text-orci-cyan font-bold">Veo 3.1</span>.
-        תעתיקו את הפרומפט הזה וזהו קיבלתם את הטרנד הזה בסגנון שלכם!
+        לא יצא בדיוק מה שרציתם? תשחקו קצת עם התוצאה עד שתקבלו את מה שאתם רוצים.
+        אחר כך מעלים את התמונה ל-<span className="text-orci-cyan font-bold">Veo 3.1</span> (כלי הסרטונים של Google).
+        מדביקים את הפרומפט הזה, וזהו. יש לכם את הטרנד בסגנון שלכם.
       </p>
 
       <CopyPrompt prompt="POV video shot using a start frame and an end frame. The camera represents a real human point of view. The user is not just walking forward, but actively exploring and scanning the environment with the flashlight. The walking pace is very slow and cautious. The movement is grounded and realistic: Subtle vertical bob from slow, cautious footsteps. Gentle side-to-side sway. Imperfect handheld motion, showing slight hesitation. The user is holding a flashlight. The flashlight beam is the main actor in the scene, exploring the character: The beam doesn't just point forward; it actively scans. It moves up and down the character's body, from head to toe. The beam explores from different angles: The user slowly circles the character partially, or leans in and out, causing the light to hit the character's face and body from the side, below, and above, creating dramatic, shifting shadows. The movement of the light is natural and imperfect: Delayed movement, small overcorrections, uneven scanning, and slight shaking from the hand holding it. The light intensity on the character changes: As the user gets closer or the beam hits directly, the light is harsher (blown highlights); as it moves away or hits from an angle, the light is softer and shadows deepen. The character must remain completely still and lifeless at all times. No character animation. No blinking. No breathing. No movement. Only environmental motion is allowed: Floating dust motes illuminated by the flashlight beam. Minimal light flicker from the flashlight itself. Very subtle movement of loose elements (e.g., cobwebs, torn fabric) caused by air drafts. The environment must remain consistent throughout the entire shot. No set changes. No teleporting. No new objects. photorealistic video, found-footage realism, handheld walking and exploring camera, low light, strong dramatic shadows, gritty textures, natural imperfections, tense atmosphere." />
@@ -83,17 +83,17 @@ cartoon, anime, illustration, 3d render, CGI, clean plastic look, glossy skin, b
     {/* Result Example */}
     <div className="cap-card">
       <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
-        דוגמא לתוצאה שלי
+        דוגמה לתוצאה שלי
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        הנה דוגמא לתוצאה שיצרתי עם השיטה הזאת:
+        הנה סרטון שיצרתי בשיטה הזאת:
       </p>
 
       <div className="my-8 rounded-2xl overflow-hidden" style={{ aspectRatio: '9/16', maxWidth: '400px', margin: '0 auto' }}>
         <iframe
           src="https://www.youtube.com/embed/lxrvd_y8tPI?rel=0"
-          title="דוגמא לתוצאה"
+          title="דוגמה לתוצאה"
           className="w-full h-full"
           allow="autoplay; fullscreen"
           allowFullScreen

@@ -2,7 +2,7 @@ import { Footer } from '@/components/layout/Footer'
 
 export const metadata = {
   title: 'תמונה אחת. 16 פרסומות. | Orci AI',
-  description: 'מתמונת מוצר אחת ל-16 סרטוני פרסומת בסגנונות שונים — אונבוקסינג, UGC, לפני ואחרי, טסטימוניאל ועוד — עם 16 פקודות קצרות ב-Gemini.',
+  description: 'מתמונת מוצר אחת ל-16 סרטוני פרסומת בסגנונות שונים: אונבוקסינג, UGC, לפני ואחרי, טסטימוניאל ועוד. הכל עם 16 פקודות קצרות ב-Gemini.',
 }
 
 <div className="min-h-screen">
@@ -37,7 +37,7 @@ export const metadata = {
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        כשמותג רוצה לבדוק איזה סגנון פרסומת עובד לו, הוא צריך <span className="text-orci-cyan font-bold">להפיק כל סגנון בנפרד</span>. אונבוקסינג דורש סט אחד, טסטימוניאל דורש שחקנית, מאחורי הקלעים דורש צוות צילום. כל אחד מאלה זה יום צילום, עורך ותקציב.
+        כשמותג רוצה לבדוק איזה סגנון פרסומת עובד לו, הוא צריך <span className="text-orci-cyan font-bold">להפיק כל סגנון בנפרד</span>. אונבוקסינג (פתיחת האריזה מול המצלמה) דורש סט אחד. טסטימוניאל (לקוח שממליץ על המוצר) דורש שחקנית. מאחורי הקלעים דורש צוות צילום. כל אחד מאלה זה יום צילום, עורך ותקציב.
       </p>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
@@ -45,12 +45,12 @@ export const metadata = {
       </p>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        לקחתי <span className="text-orci-cyan font-bold">תמונה אחת של שקית במבה</span>, והרצתי עליה 16 פקודות שונות ב-<span className="text-orci-cyan font-bold">Gemini</span>. כל מה שאתם עומדים לראות למטה נוצר מאותה תמונה.
+        לקחתי <span className="text-orci-cyan font-bold">תמונה אחת של שקית במבה</span>, והרצתי עליה 16 פקודות שונות ב-<span className="text-orci-cyan font-bold">Gemini</span> (הצ'אט של גוגל). כל מה שאתם עומדים לראות למטה נוצר מאותה תמונה.
       </p>
 
       <div className="rounded-2xl bg-orci-cyan/5 border border-orci-cyan/30 p-6">
         <p className="text-lg text-slate-300 leading-relaxed">
-          <span className="text-orci-cyan font-bold">איך זה עובד:</span> נכנסים ל-Gemini, מעלים תמונת מוצר אחת, וכותבים את הפקודה — רק אותה, בלי שום דבר נוסף. אחר כך חוזרים על זה עם הפקודה הבאה. אותה תמונה, פקודה אחרת, תוצאה אחרת לגמרי.
+          <span className="text-orci-cyan font-bold">איך זה עובד:</span> נכנסים ל-Gemini, מעלים תמונת מוצר אחת, וכותבים פקודה אחת מהרשימה למטה, למשל /unboxing. רק את הפקודה, בלי שום מילה נוספת. אחר כך חוזרים על זה עם הפקודה הבאה. אותה תמונה, פקודה אחרת, תוצאה אחרת לגמרי.
         </p>
       </div>
     </div>
@@ -87,7 +87,7 @@ export const metadata = {
         <div>
           <video src="/guides/multi-ad-generator/ugcad.mp4" poster="/guides/multi-ad-generator/poster-ugcad.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
           <p className="text-center text-sm text-orci-cyan font-bold mt-2 font-mono">/ugcad</p>
-          <p className="text-center text-sm text-slate-400">מודעה בסגנון תוכן גולשים אותנטי</p>
+          <p className="text-center text-sm text-slate-400">מודעה שנראית כאילו גולש רגיל צילם אותה</p>
         </div>
 
         <div>
@@ -172,25 +172,25 @@ export const metadata = {
       </h2>
 
       <p className="text-lg text-slate-300 leading-relaxed mb-4">
-        אם אתם מתחילים מאפס, זה הסדר שאני ממליץ עליו — <span className="text-orci-cyan font-bold">ארבעה סגנונות שמכסים את כל שלבי המשפך</span>:
+        אם אתם מתחילים מאפס, זה הסדר שאני ממליץ עליו: <span className="text-orci-cyan font-bold">ארבעה סגנונות שמכסים את כל שלבי המשפך</span>. המשפך הוא הדרך של לקוח, מהפעם הראשונה שהוא רואה את המוצר ועד שהוא קונה:
       </p>
 
       <ul className="list-none space-y-3 mb-6">
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          <span className="text-orci-cyan font-bold font-mono">/ugcad</span> — לקהל קר. נראה אותנטי, לא כמו פרסומת, ולכן עוצר את הגלילה.
+          <span className="text-orci-cyan font-bold font-mono">/ugcad</span>: לקהל קר, כלומר אנשים שעוד לא מכירים אתכם. הסרטון נראה אמיתי ולא כמו פרסומת, ולכן עוצר את הגלילה.
         </li>
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          <span className="text-orci-cyan font-bold font-mono">/unboxing</span> — יוצר ציפייה. עובד מצוין כשהאריזה עצמה יפה.
+          <span className="text-orci-cyan font-bold font-mono">/unboxing</span>: יוצר ציפייה. עובד מצוין כשהאריזה עצמה יפה.
         </li>
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          <span className="text-orci-cyan font-bold font-mono">/beforeafter</span> — למוצרים שפותרים בעיה. ההוכחה הכי מהירה שיש.
+          <span className="text-orci-cyan font-bold font-mono">/beforeafter</span>: למוצרים שפותרים בעיה. ההוכחה הכי מהירה שיש.
         </li>
         <li className="text-lg text-slate-300 pr-6 relative">
           <span className="absolute right-0 text-orci-cyan">•</span>
-          <span className="text-orci-cyan font-bold font-mono">/testimonial</span> — לסגירת העסקה. אמון זה מה שמזיז מ"מעניין" ל"קונה".
+          <span className="text-orci-cyan font-bold font-mono">/testimonial</span>: לסגירת העסקה. אמון הוא מה שהופך "מעניין" ל"קונה".
         </li>
       </ul>
 
@@ -210,7 +210,7 @@ export const metadata = {
           16 סרטוני פרסומת, <span className="text-orci-cyan font-bold">מתמונה אחת</span>. בלי סט, בלי שחקנים, בלי צוות הפקה.
         </p>
         <p className="text-lg text-slate-300">
-          נראה כאילו צוות שלם צילם את כל המוצרים האלה — אבל תנחשו מה, הכל AI.
+          נראה כאילו צוות שלם צילם את כל זה. אבל הכל AI.
         </p>
       </div>
     </div>
@@ -222,10 +222,10 @@ export const metadata = {
           💡 המסר המרכזי
         </h3>
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
-          <span className="text-orci-cyan font-bold">היתרון האמיתי הוא לא החיסכון — הוא הבדיקה.</span>
+          <span className="text-orci-cyan font-bold">החיסכון נחמד. היתרון האמיתי הוא הבדיקה.</span>
         </p>
         <p className="text-lg text-slate-300">
-          כשהפקה עולה אלפי שקלים, אתם מהמרים על סגנון אחד. כשהיא עולה כמה דקות, אתם יכולים לבדוק שישה-עשר סגנונות ולראות מה באמת מוכר. <span className="text-orci-cyan font-bold">זה מה שמשנה את המשחק.</span>
+          כשהפקה עולה אלפי שקלים, אתם מהמרים על סגנון אחד. כשהיא לוקחת כמה דקות, אפשר לבדוק שישה-עשר סגנונות <span className="text-orci-cyan font-bold">ולראות מה באמת מוכר.</span>
         </p>
       </div>
     </div>
@@ -241,7 +241,7 @@ export const metadata = {
         רוצים להישאר מעודכנים?
       </h2>
       <p className="text-gray-300 mb-6 text-lg">
-        הצטרפו לקבוצת הווטסאפ של Orci AI — מדריכים חדשים כל שבוע
+        הצטרפו לקבוצת הווטסאפ של Orci AI: מדריכים חדשים כל שבוע
       </p>
       <a
         href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
