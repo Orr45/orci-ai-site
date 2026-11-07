@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'ai-video-pipeline',
+    title: 'פס ייצור לסרטונים עם AI: סרטון כל יום בלי לצלם',
+    description: 'ככה אני מוציא סרטון כל יום בלי לצלם: 6 שלבים, מסוכן שמוצא רעיונות ועד תזמון לכל הרשתות',
+    summary: 'צילמתי את עצמי פעם אחת, שתי דקות, ומאז AI עושה את העבודה הידנית. סוכן מוצא רעיונות אצל המתחרים, Claude כותב תסריט עם 3 פתיחים, הקול משובט, השפתיים מסונכרנות על צילום אמיתי, Claude Code עורך בקוד, וכל סרטון נבדק ומתוזמן לכל הרשתות. הצצה ל-6 השלבים עם צילומי מסך אמיתיים, וההדרכה המלאה בשיחה.',
+    image: '/guides/guide-ai-video-pipeline.png',
+    href: '/guides/ai-video-pipeline',
+    category: 'שיווק דיגיטלי',
+    popular: false,
+    isNew: true,
+    date: '2026-11-07',
+    free: true,
+  },
+  {
     id: '20-design-styles',
     title: '20 סגנונות עיצוב לעסק שלכם בפרומפט אחד',
     description: 'מדריך עם 20 פרומפטים מוכנים ל-GPT Image 2.5: מעלים את הלוגו, משנים מילה אחת, ומקבלים פוסטר בסגנון אחר לגמרי',
