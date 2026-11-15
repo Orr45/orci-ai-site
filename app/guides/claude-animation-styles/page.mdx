@@ -1,0 +1,180 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: '10 סגנונות אנימציה ב-Claude | Orci AI',
+  description: 'פרומפט אחד ל-Claude שבונה אנימציה שלמה בקוד. משנים שורה אחת ומקבלים סגנון אחר: פיקסל ארט, גיר על לוח, לגו, קומיקס, PS2 ועוד.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        10 סגנונות אנימציה ב-Claude
+      </h1>
+      <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        פרומפט אחד, משנים בו שורה אחת, ומקבלים אנימציה שלמה בסגנון אחר. בלי תוכנת אנימציה ובלי מחולל וידאו.
+      </div>
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🤖 Claude</span>
+        <span className="cap-badge text-sm">💻 נכתב בקוד</span>
+        <span className="cap-badge text-sm">🎨 10 סגנונות</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-4xl mx-auto px-6 space-y-8">
+
+    {/* The reel */}
+    <div className="cap-card">
+      <div className="my-2 max-w-sm mx-auto">
+        <video src="/guides/claude-animation-styles/reel.mp4" poster="/guides/claude-animation-styles/poster-reel.jpg" controls playsInline preload="none" className="w-full rounded-2xl bg-black" />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הסרטון המלא</p>
+      </div>
+    </div>
+
+    {/* How it works */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        איך זה עובד
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        זה לא מחולל וידאו. <span className="text-orci-cyan font-bold">Claude כותב את כל האנימציה בקוד</span>, בקובץ HTML אחד, ומציג אותה בחלון ליד הצ'אט. כל 10 האנימציות כאן יצאו מאותו פרומפט, ושונתה בו רק שורת הסגנון.
+      </div>
+      <ul className="list-none space-y-3 mb-6">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">1.</span><span className="pr-4 block">פותחים צ'אט חדש ב-<span className="text-orci-cyan font-bold">Claude</span> (באתר או באפליקציה).</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">2.</span><span className="pr-4 block">מדביקים את הפרומפט, ומשנים בו שתי שורות: <span className="text-orci-cyan font-bold">STORY</span> (הסיפור במשפט אחד, אפשר גם בעברית) ו-<span className="text-orci-cyan font-bold">STYLE</span> (אחת מ-10 השורות למטה). רוצים כיתוב אחר? משנים גם את CAPTION.</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">3.</span><span className="pr-4 block">Claude בונה את האנימציה, 8 שניות בלופ, בפורמט של רילס.</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">4.</span><span className="pr-4 block">מקליטים: לוחצים על כפתור <span className="text-orci-cyan font-bold">⏺ Record</span> שבאנימציה, והיא יורדת כקובץ וידאו. אם ההורדה לא עובדת מתוך החלון של Claude, מורידים את קובץ ה-HTML, פותחים אותו בכרום ולוחצים שם. אפשר גם פשוט להקליט את המסך.</span></li>
+      </ul>
+    </div>
+
+    {/* Step 1: the prompt */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: הפרומפט
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        הוא כבר מוכן עם הסיפור שלנו (אוטו שעף מעל הפקק באיילון) ועם סגנון הפיקסל ארט, כדי שתוכלו לנסות אותו כמו שהוא.
+      </div>
+      <details className="my-6">
+        <summary className="cursor-pointer text-orci-cyan font-bold text-lg mb-3 list-none">
+          📋 לחצו לצפייה בפרומפט המלא
+        </summary>
+        <CopyPrompt prompt={`You are a motion designer who animates in code. Build ONE self-contained HTML file: a vertical 9:16 animated scene (1080×1920), 8 seconds long, that loops.
+
+STORY: A red car is stuck in a traffic jam on the Ayalon highway in Tel Aviv. Wheels fold in, thrusters fire, and it lifts off and flies over the jam while the other drivers stare.
+STYLE: Pixel Art — 16-bit arcade game, chunky pixels, limited retro palette, pixel font, a little HUD in the corner.
+CAPTION (Hebrew, appears at the payoff): עפים מעל הפקק
+
+RULES
+1. Beats: setup 0–2s, the moment 2–5s, payoff 5–8s. Something moves on screen at every moment. The last frame matches the first so it loops cleanly.
+2. Commit 100% to the STYLE: palette, line quality, texture, lighting, typography and the way things move. Someone should name the style from one frame.
+   The hero of the STORY is big (at least a third of the frame width) and is always the clear focus.
+3. Draw everything in code on ONE <canvas> of 1080×1920 (Canvas 2D, or Three.js from a CDN for 3D styles). No external images.
+4. The caption is big, bold and readable, right-to-left, with a Hebrew font from Google Fonts (Heebo or Rubik), styled to match the STYLE.
+5. Keep everything important between y 250 and y 1600 and x 90–990 (the Reels UI covers the edges).
+6. All motion is computed from the time t inside one function seek(t) (no setTimeout, no CSS transitions, no random values that change between frames; seed any randomness). requestAnimationFrame calls seek(t) in a loop. Expose window.seek = seek so it can be rendered frame by frame.
+7. The canvas scales to fit the browser window and keeps 9:16, centered on black.
+8. Add a small "⏺ Record" button: it records exactly one loop of the canvas (canvas.captureStream + MediaRecorder, 30fps), downloads it as a video file, and hides itself while recording.
+
+Return only the complete HTML file.`} />
+      </details>
+    </div>
+
+    {/* Step 2: the 10 styles */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: מחליפים את שורת הסגנון
+      </h2>
+      <div className="text-lg text-slate-300 leading-relaxed mb-4">
+        מעתיקים שורה אחת ומדביקים אותה במקום השורה שמתחילה ב-<span className="text-orci-cyan font-bold">STYLE:</span>. כל סרטון כאן הוא התוצאה האמיתית של השורה שמתחתיו.
+      </div>
+      <div className="my-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {[
+          ['pixel-art', 'פיקסל ארט', 'Pixel Art — 16-bit arcade game, chunky pixels, limited retro palette, pixel font, a little HUD in the corner.'],
+          ['chalkboard', 'גיר על לוח', "Chalkboard — white and pastel chalk on a dark green board, hand-drawn wobbly lines, chalk dust, arrows and little physics notes like a teacher's sketch."],
+          ['glow-sketch', 'סקיצה זוהרת', 'Glow Sketch — thin glowing gold/white line drawings on pure black, lines draw themselves on, soft bloom, minimal and elegant.'],
+          ['ps2', 'פלייסטיישן 2', 'PS2 Style — low-poly 3D like a 2002 PlayStation 2 game, flat shading, blurry low-res textures, foggy draw distance, stiff blocky characters.'],
+          ['comic', 'קומיקס', 'Comic Art — pop-art comic panel, bold black ink outlines, Ben-Day halftone dots, a big "WHOOSH!" burst, primary colors.'],
+          ['flat-vector', 'וקטור שטוח', 'Flat Vector — clean flat illustration, geometric shapes, no outlines, soft pastel palette, smooth eased motion like a modern explainer.'],
+          ['stick-minimal', 'סטיקמן מינימליסטי', 'Stick-Figure Minimal — black and white only, thin stick figures and simple line art, lots of empty space, calm and philosophical.'],
+          ['cgi', 'CGI', 'CGI Motion — glossy cinematic 3D, dramatic lighting, reflections, volumetric fog, slow-motion camera move.'],
+          ['lego', 'לגו', 'Lego Style — everything built from LEGO bricks in 3D: studs, plastic shine, minifigure drivers, bricks pop when the car lifts off.'],
+          ['explainer-3d', 'ככה זה עובד בסוד', '3D Explainer — "how it secretly works" cutaway: the car turns semi-transparent, labeled parts (tanks, valves, thrusters) light up in sequence, documentary feel.'],
+        ].map(([id, name, line], i) => (
+          <div key={id} className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+            <video src={`/guides/claude-animation-styles/${id}.mp4`} poster={`/guides/claude-animation-styles/poster-${id}.jpg`} controls playsInline preload="none" loop className="w-full bg-black" />
+            <div className="px-4 py-3">
+              <p className="text-orci-cyan font-bold text-lg text-center mb-2">{i + 1}. {name}</p>
+              <CopyPrompt prompt={line} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Tips */}
+    <div className="cap-card bg-orci-cyan/5 border border-orci-cyan/30">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        ⚡ טיפים מהבדיקה שלנו
+      </h2>
+      <ul className="list-none space-y-3 mb-2">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="pr-4 block">9 מתוך 10 הסגנונות יצאו טובים כבר בניסיון הראשון. בפיקסל ארט האוטו יצא קטן, ותוקן בהודעה אחת: <span className="text-orci-cyan font-bold">"the car is too small, make it bigger"</span>. ככה מתקנים כל דבר.</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="pr-4 block">בסגנונות התלת-ממד (PS2, CGI, "ככה זה עובד בסוד") הקוד ארוך יותר. אם Claude נעצר באמצע, כותבים לו <span className="text-orci-cyan font-bold">continue</span>.</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="pr-4 block">הסיפור יכול להיות כל דבר: המוצר שלכם, העסק או חדשה של היום. משפט אחד ברור עם רגע שיא אחד עובד הכי טוב.</span></li>
+      </ul>
+    </div>
+
+    {/* Related guide */}
+    <div className="cap-card">
+      <div className="text-lg text-slate-300 leading-relaxed">
+        רוצים סרטון תדמית מלא לעסק, על הביט של שיר? יש לנו מדריך גם לזה: <a href="/guides/claude-ui-animation" className="text-orci-cyan font-bold underline">אנימציה בפרומפט אחד</a>.
+      </div>
+    </div>
+
+    {/* Key Takeaway */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 המסר המרכזי
+        </h3>
+        <div className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-4">
+          <span className="text-orci-cyan font-bold">שורה אחת משנה את כל הסגנון.</span>
+        </div>
+        <div className="text-lg text-slate-300">
+          תמציאו סגנונות משלכם באותה שיטה: שם הסגנון, ואחריו מה מאפיין אותו בצבע, בקו ובתנועה.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <div className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI: מדריכים חדשים כל שבוע
+      </div>
+      <a href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0" target="_blank" rel="noopener noreferrer" className="cap-btn cap-btn-primary inline-flex">
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>
