@@ -1,0 +1,441 @@
+import Image from 'next/image'
+import { CopyPrompt } from '@/components/ui/CopyPrompt'
+import { Footer } from '@/components/layout/Footer'
+
+export const metadata = {
+  title: '24 פרומפטים לתאורה קולנועית | Orci AI',
+  description: 'מעלים תמונה אחת ל-ChatGPT ומקבלים אותה ב-24 תאורות של סט צילום: ברק, אש, צללית, רמברנדט, שעת זהב ועוד. כל 24 הפרומפטים מוכנים להעתקה.',
+}
+
+<div className="min-h-screen">
+
+{/* Hero Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="cap-card text-center">
+      <h1 className="cap-hero-title mb-6 text-orci-cyan">
+        24 פרומפטים לתאורה קולנועית
+      </h1>
+      <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-6">
+        תמונה אחת, 24 תאורות של סט צילום. בלי פנסים ובלי סטודיו.
+      </p>
+      <div className="flex flex-wrap gap-3 justify-center">
+        <span className="cap-badge text-sm">🤖 ChatGPT</span>
+        <span className="cap-badge text-sm">💡 24 תאורות</span>
+        <span className="cap-badge text-sm">📋 פרומפטים מוכנים להעתקה</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Main Content */}
+<article className="cap-section cap-section-white">
+  <div className="max-w-5xl mx-auto px-6 space-y-8">
+
+    {/* The reel */}
+    <div className="cap-card">
+      <div className="my-2 max-w-sm mx-auto">
+        <video
+          src="/guides/lighting-prompts/reel.mp4"
+          poster="/guides/lighting-prompts/poster-reel.jpg"
+          controls
+          playsInline
+          preload="none"
+          className="w-full rounded-2xl bg-black"
+        />
+        <p className="text-center text-sm text-orci-cyan font-bold mt-2">הסרטון המלא</p>
+      </div>
+    </div>
+
+    {/* Step 1 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 1: מעלים תמונה אחת
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        פותחים צ'אט חדש ב-<span className="text-orci-cyan font-bold">ChatGPT</span> ומעלים תמונה אחת. הכי טוב: תמונה חדה שהפנים רואים בה טוב, בתאורה רגילה. השתמשו בתמונות שלכם, או בתמונות של מי שהסכים לזה.
+      </p>
+      <div className="my-4 flex justify-center">
+        <div className="rounded-2xl overflow-hidden border border-white/10 bg-black/20 max-w-[260px]">
+          <Image src="/guides/lighting-prompts/before.jpg" alt="התמונה המקורית של דני אבדיה" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-4 py-3 text-center">
+            <p className="text-slate-400 font-bold text-sm">התמונה המקורית</p>
+          </div>
+        </div>
+      </div>
+      <p className="text-sm text-slate-400 text-center">
+        התמונות של דני אבדיה מופיעות כאן באישורו.
+      </p>
+    </div>
+
+    {/* Step 2 */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 2: מדביקים פרומפט אחד
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-4">
+        כל הפרומפטים בנויים אותו דבר: שורה ששומרת על <span className="text-orci-cyan font-bold">הפנים, התנוחה והבגדים</span> בדיוק כמו שהם, ושורה אחת שמתארת את התאורה. בכל כרטיס למטה הפרומפט כבר מלא, אז פשוט מעתיקים ומדביקים. זו התבנית, אם תרצו לבנות תאורה משלכם:
+      </p>
+      <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: [THE LIGHTING]. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+      <p className="text-lg text-slate-300 leading-relaxed">
+        במקום <span className="text-orci-cyan font-bold" dir="ltr">[THE LIGHTING]</span> כותבים באנגלית מאיפה האור מגיע, איזה צבע הוא, וכמה הוא קשה או רך.
+      </p>
+    </div>
+
+    {/* The 24 lights */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        שלב 3: בוחרים תאורה מתוך 24
+      </h2>
+      <p className="text-lg text-slate-300 leading-relaxed mb-6">
+        באותו סדר כמו בסרטון. לוחצים על "הפרומפט המלא", מעתיקים, ומדביקים בצ'אט עם התמונה.
+      </p>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/01-lightning-flash.jpg" alt="דני אבדיה בתאורת ברק" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">01 · ברק</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Lightning Flash</p>
+            <p className="text-sm text-slate-400 mt-1">סערת לילה, ברק מאחור והבזק כחול-לבן על הפנים</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: night storm with rain, a lightning bolt in the sky behind, cold blue-white flash on the subject. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/02-rim-light.jpg" alt="דני אבדיה בתאורת אור קצה" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">02 · אור קצה</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Rim Light</p>
+            <p className="text-sm text-slate-400 mt-1">קו אור דק על השיער והכתפיים, רקע כהה</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: strong backlight from behind outlining hair, shoulders and arms with a thin bright edge, face mostly in shadow, dark background. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/03-firelight.jpg" alt="דני אבדיה בתאורת אש" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">03 · אש</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Firelight</p>
+            <p className="text-sm text-slate-400 mt-1">אור כתום מהבהב וניצוצות באוויר</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: warm flickering firelight from low left, orange glow, embers in the air. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/04-low-key.jpg" alt="דני אבדיה בתאורת לואו קי" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">04 · לואו קי</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Low Key</p>
+            <p className="text-sm text-slate-400 mt-1">כמעט הכול שחור, אור רך מצד אחד</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: almost black frame, one soft side key light on part of the face and chest, deep shadows, high contrast. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/05-high-key.jpg" alt="דני אבדיה בתאורת היי קי" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">05 · היי קי</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">High Key</p>
+            <p className="text-sm text-slate-400 mt-1">לבן ובהיר, כמעט בלי צללים</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: very bright airy white light from every side, a glowing white seamless background replaces the crowd, almost no shadows, clean bright fashion-campaign look. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/06-venetian-blinds.jpg" alt="דני אבדיה בתאורת תריסים" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">06 · תריסים</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Venetian Blinds</p>
+            <p className="text-sm text-slate-400 mt-1">פסי אור וצל חזקים על הפנים והגוף</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: bold high-contrast parallel stripes of hard sunlight and deep shadow from venetian blinds falling across his face, body and the background, the rest of the scene dim. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/07-colored-gels.jpg" alt="דני אבדיה בתאורת ג'לים צבעוניים" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">07 · ג'לים צבעוניים</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Colored Gels</p>
+            <p className="text-sm text-slate-400 mt-1">טורקיז מצד אחד, מג'נטה מהצד השני</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: teal light from the left, magenta light from the right, colored shadows. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/08-rembrandt.jpg" alt="דני אבדיה בתאורת רמברנדט" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">08 · רמברנדט</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Rembrandt</p>
+            <p className="text-sm text-slate-400 mt-1">משולש אור קטן על הלחי שבצל</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: key light 45° above one side, small triangle of light on the shadow-side cheek, dark background. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/09-moonlight.jpg" alt="דני אבדיה בתאורת אור ירח" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">09 · אור ירח</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Moonlight</p>
+            <p className="text-sm text-slate-400 mt-1">אור כחול וקר מלמעלה, לילה</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: cold blue moonlight from high above at night, soft blue shadows, desaturated. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/10-underlighting.jpg" alt="דני אבדיה בתאורת אור מלמטה" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">10 · אור מלמטה</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Underlighting</p>
+            <p className="text-sm text-slate-400 mt-1">אור מתחת לסנטר, מראה של סרט אימה</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: a single strong light directly below his chin pointing up, bright underside of jaw, nose and brows, dark shadows going upward on the face, horror-movie look, very dark background. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/11-sodium-vapor.jpg" alt="דני אבדיה בתאורת פנס רחוב" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">11 · פנס רחוב</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Sodium Vapor</p>
+            <p className="text-sm text-slate-400 mt-1">אור נתרן כתום של פנס רחוב</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: orange sodium-vapor street light from above at night, nearly monochrome orange. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/12-direct-flash.jpg" alt="דני אבדיה בתאורת פלאש ישיר" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">12 · פלאש ישיר</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Direct Flash</p>
+            <p className="text-sm text-slate-400 mt-1">פלאש של מצלמה, מראה של פפראצי</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: harsh on-camera direct flash at night, subject brightly and flatly lit with hot skin highlights and a crisp hard shadow cast right behind him, background falls off to near black, 2000s paparazzi snapshot look. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/13-overcast-soft-light.jpg" alt="דני אבדיה בתאורת יום מעונן" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">13 · יום מעונן</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Overcast Soft Light</p>
+            <p className="text-sm text-slate-400 mt-1">אור יום רך, צבעים טבעיים</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: flat soft daylight from an overcast sky, low contrast, natural colors. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/14-split-lighting.jpg" alt="דני אבדיה בתאורת חצי פנים" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">14 · חצי פנים</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Split Lighting</p>
+            <p className="text-sm text-slate-400 mt-1">חצי פנים מואר וחצי בצל מלא</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: hard light exactly from one side, half the face lit and the other half in full shadow. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/15-red-emergency.jpg" alt="דני אבדיה בתאורת חירום אדום" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">15 · חירום אדום</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Red Emergency</p>
+            <p className="text-sm text-slate-400 mt-1">אור אדום של מנורת חירום</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: red emergency beacon light from above, red cast on skin and haze, rest of the frame dark. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/16-practicals-only.jpg" alt="דני אבדיה בתאורת מנורות בפריים" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">16 · מנורות בפריים</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Practicals Only</p>
+            <p className="text-sm text-slate-400 mt-1">נורות חשופות בתוך התמונה עצמה</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: the arena is dark and the only light comes from several visible bare tungsten bulbs hanging in the frame close to him, warm pools of light with strong falloff. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/17-fluorescent.jpg" alt="דני אבדיה בתאורת ניאון" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">17 · ניאון</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Fluorescent</p>
+            <p className="text-sm text-slate-400 mt-1">פלורסנט ירקרק וקר מלמעלה</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: greenish overhead fluorescent tubes, cold flat light, slight green cast. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/18-candlelight.jpg" alt="דני אבדיה בתאורת נרות" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">18 · נרות</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Candlelight</p>
+            <p className="text-sm text-slate-400 mt-1">אור חם ועמום של נרות</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: dim warm candlelight close to the subject, very dark surroundings. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/19-dappled-light.jpg" alt="דני אבדיה בתאורת אור דרך עלים" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">19 · אור דרך עלים</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Dappled Light</p>
+            <p className="text-sm text-slate-400 mt-1">כתמי שמש שעוברים דרך עלים</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: sunlight through tree leaves, scattered spots of light and shadow. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/20-hard-top-light.jpg" alt="דני אבדיה בתאורת אור מלמעלה" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">20 · אור מלמעלה</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Hard Top Light</p>
+            <p className="text-sm text-slate-400 mt-1">אור קשה ישר מעל הראש</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: single hard light directly overhead, deep shadows under the brows, dark surroundings. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/21-golden-hour.jpg" alt="דני אבדיה בתאורת שעת זהב" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">21 · שעת זהב</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Golden Hour</p>
+            <p className="text-sm text-slate-400 mt-1">שמש נמוכה וחמה מהצד</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: low warm sun from the side, long shadows, warm glow. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/22-flashlight.jpg" alt="דני אבדיה בתאורת פנס" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">22 · פנס</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Flashlight</p>
+            <p className="text-sm text-slate-400 mt-1">אלומת פנס אחת בתוך אובך</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: a single flashlight beam from the upper left, visible beam in light haze, everything outside the beam dark. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/23-clamshell.jpg" alt="דני אבדיה בתאורת ביוטי" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">23 · ביוטי</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Clamshell</p>
+            <p className="text-sm text-slate-400 mt-1">אור רך מלמעלה ומלמטה, רקע סטודיו כהה</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: beauty-dish clamshell setup, soft light from above the face and a reflector below, glowing even skin, two catchlights in the eyes, dark plain studio background. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden border border-orci-cyan/25 bg-black/20">
+          <Image src="/guides/lighting-prompts/24-backlit-silhouette.jpg" alt="דני אבדיה בתאורת צללית" width={720} height={1274} className="w-full h-auto" />
+          <div className="px-3 py-3 text-center">
+            <p className="text-orci-cyan font-bold text-base">24 · צללית</p>
+            <p className="text-xs text-slate-400 mt-1" dir="ltr">Backlit Silhouette</p>
+            <p className="text-sm text-slate-400 mt-1">אור לבן חזק מאחור, הדמות שחורה לגמרי</p>
+            <details className="mt-2 text-right">
+              <summary className="cursor-pointer text-orci-cyan font-bold text-sm list-none">📋 הפרומפט המלא</summary>
+              <CopyPrompt prompt={`Relight this exact photo. Keep the person's face, identity, body, pose, expression, clothing and the exact framing and composition exactly the same. You may adjust the background and atmosphere only as needed to make the new light believable. Lighting: a blinding white light directly behind him in haze, he is an almost completely black silhouette with no visible detail on the face, only a glowing outline. Photorealistic, real camera photo, natural skin texture, no text, no logos added.`} />
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Tips */}
+    <div className="cap-card">
+      <h2 className="text-2xl md:text-3xl font-bold mb-6 text-orci-cyan">
+        טיפים מהניסיון שלי
+      </h2>
+      <ul className="list-none space-y-3 mb-2">
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="pr-4 block"><span className="text-orci-cyan font-bold">צ'אט חדש לכל תאורה.</span> ככה התאורות לא מתערבבות, והפנים לא משתנות מתמונה לתמונה.</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="pr-4 block"><span className="text-orci-cyan font-bold">תאורה יצאה חלשה? תתארו אותה בפירוט.</span> אצלי "תריסים" נתן בהתחלה רק כמה פסים על הכתף. כשכתבתי "פסים חזקים של אור וצל על הפנים, הגוף והרקע" זה יצא מושלם. ככה תיקנתי גם את הצללית, הפלאש, ההיי קי והביוטי.</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="pr-4 block"><span className="text-orci-cyan font-bold">גם הרקע יכול להשתנות.</span> בברק יורד גשם, ובמנורות בפריים מופיעות נורות. זה בכוונה: הפרומפט מרשה לשנות את הרקע רק כמה שהתאורה צריכה.</span></li>
+        <li className="text-lg text-slate-300 pr-6 relative"><span className="absolute right-0 text-orci-cyan">•</span><span className="pr-4 block">את כל התמונות כאן יצרתי במודל התמונות של <span className="text-orci-cyan font-bold">OpenAI</span>, החברה שמאחורי ChatGPT. אותם פרומפטים אמורים לעבוד גם ב-Gemini, אבל שם לא בדקתי.</span></li>
+      </ul>
+    </div>
+
+    {/* Related guide */}
+    <div className="cap-card bg-orci-cyan/5">
+      <div className="text-center">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-orci-cyan">
+          💡 רוצים להעתיק תאורה מתמונה שאהבתם?
+        </h3>
+        <p className="text-lg text-slate-300 mb-6">
+          במדריך "תאורה קולנועית עם AI" מעלים תמונה שאהבתם כרפרנס, וה-AI מעתיק את התאורה שלה לתמונה שלכם. ואז הופכים אותה לסרטון.
+        </p>
+        <a href="/guides/cinematic-lighting" className="cap-btn cap-btn-primary inline-flex">למדריך תאורה קולנועית</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+{/* CTA Section */}
+<section className="cap-section cap-section-teal">
+  <div className="max-w-4xl mx-auto px-6">
+    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 md:p-12 text-center shadow-2xl">
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+        רוצים להישאר מעודכנים?
+      </h2>
+      <p className="text-gray-300 mb-6 text-lg">
+        הצטרפו לקבוצת הווטסאפ של Orci AI: מדריכים חדשים כל שבוע
+      </p>
+      <a
+        href="https://chat.whatsapp.com/FWfA1JK4NQ93apZAFNOB3n?s=cl&p=i&ilr=0"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cap-btn cap-btn-primary inline-flex"
+      >
+        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        הצטרפו לקבוצה
+      </a>
+    </div>
+  </div>
+</section>
+
+<Footer />
+
+</div>

@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'lighting-prompts',
+    title: '24 פרומפטים לתאורה קולנועית',
+    description: 'מעלים תמונה אחת ל-ChatGPT ומקבלים אותה ב-24 תאורות של סט צילום, בלי פנסים ובלי סטודיו',
+    summary: 'תמונה אחת של דני אבדיה, 24 תאורות שונות: ברק בגשם, אש, צללית, רמברנדט, תריסים, שעת זהב ועוד. כל הפרומפטים בנויים אותו דבר: שומרים על הפנים, התנוחה והבגדים, ומשנים רק את התאורה. במדריך תמצאו את כל 24 הפרומפטים מוכנים להעתקה, כל אחד עם התוצאה האמיתית שלו, ואת התבנית לבנות תאורה משלכם.',
+    image: '/guides/guide-lighting-prompts.png',
+    href: '/guides/lighting-prompts',
+    category: 'טריקים',
+    popular: false,
+    isNew: true,
+    date: '2026-11-17',
+    free: false,
+  },
+  {
     id: 'claude-slides-tutor',
     title: 'המורה מהמצגות: מורה פרטי מהשקפים של הקורס',
     description: 'מעלים את המצגות של ההרצאה ואת דף התרגיל, ו-Claude Code בונה אתר תרגול שבו כל רמז פותח את השקף שמסביר את השאלה',
