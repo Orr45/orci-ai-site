@@ -15,6 +15,32 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'claude-slides-tutor',
+    title: 'המורה מהמצגות: מורה פרטי מהשקפים של הקורס',
+    description: 'מעלים את המצגות של ההרצאה ואת דף התרגיל, ו-Claude Code בונה אתר תרגול שבו כל רמז פותח את השקף שמסביר את השאלה',
+    summary: 'מורידים סקיל אחד, פותחים אותו ב-Claude Code וגוררים פנימה את המצגות ואת דף התרגיל. Claude קורא כל שקף, מחבר כל שאלה לשקף שמסביר אותה, ובודק כל תשובה בחישוב. מקבלים אתר תרגול עם שני רמזים לכל שאלה, פתרון שלב אחרי שלב, תרגילים מקבילים, שיעורים על לוח עם הקראה ומעבדה. שיעורי בית שמוגשים לציון מקבלים רק רמזים. כולל את הסקיל להורדה.',
+    image: '/guides/guide-claude-slides-tutor.png',
+    href: '/guides/claude-slides-tutor',
+    category: 'טריקים',
+    popular: false,
+    isNew: true,
+    date: '2026-11-17',
+    free: false,
+  },
+  {
+    id: 'claude-business-marketing-kit',
+    title: 'מכונת העסק: כל השיווק מ-6 תמונות',
+    description: 'מעלים כמה תמונות של העסק, ו-Claude Code בונה מהן צבעי מותג, 9 פוסטים, סטוריז, דף נחיתה ולוח תוכן לחודש',
+    summary: 'בלי מעצב ובלי פוטושופ: מורידים סקיל אחד, פותחים אותו ב-Claude Code וגוררים פנימה תמונות של העסק. Claude שולף מהן את צבעי המותג, מסתכל על כל תמונה, ובונה ערכה שלמה: 9 פוסטים עם כפתור הורדה וכיתוב, 3 סטוריז, דף נחיתה, פרומו של 10 שניות, 3 מודעות, לוח תוכן ל-30 יום ופרומפטים לתמונות פרסום. הוא לא ממציא מחירים או המלצות. כולל את הסקיל להורדה.',
+    image: '/guides/guide-claude-business-marketing-kit.png',
+    href: '/guides/claude-business-marketing-kit',
+    category: 'שיווק דיגיטלי',
+    popular: false,
+    isNew: true,
+    date: '2026-11-17',
+    free: false,
+  },
+  {
     id: 'claude-motion-from-link',
     title: 'סרטון מושן דיזיין לעסק מלינק אחד',
     description: 'מדביקים לינק לאתר או לאינסטגרם של העסק, ו-Claude Code בונה סרטון מושן בשפה העיצובית של המותג',
