@@ -15,6 +15,19 @@ export interface GuideData {
 
 export const GUIDES: GuideData[] = [
   {
+    id: 'claude-motion-from-link',
+    title: 'סרטון מושן דיזיין לעסק מלינק אחד',
+    description: 'מדביקים לינק לאתר או לאינסטגרם של העסק, ו-Claude Code בונה סרטון מושן בשפה העיצובית של המותג',
+    summary: 'בלי After Effects ובלי קרדיטים: מורידים סקיל אחד, פותחים אותו ב-Claude Code ומדביקים לינק לעסק. Claude לוקח את הלוגו, הצבעים והתמונות האמיתיות, בוחר אחד משלושה סגנונות (קולנועי, שידור ספורט או מגזין אופנה), בודק את עצמו ומרנדר סרטון של 8 שניות ל-16:10 ול-9:16. כולל את הסקיל להורדה ושלוש דוגמאות של עסקים אמיתיים.',
+    image: '/guides/guide-claude-motion-from-link.png',
+    href: '/guides/claude-motion-from-link',
+    category: 'יצירת תוכן',
+    popular: false,
+    isNew: true,
+    date: '2026-11-17',
+    free: false,
+  },
+  {
     id: 'ai-video-pipeline',
     title: 'פס ייצור לסרטונים עם AI: סרטון כל יום בלי לצלם',
     description: 'ככה אני מוציא סרטון כל יום בלי לצלם: 6 שלבים, מסוכן שמוצא רעיונות ועד תזמון לכל הרשתות',
