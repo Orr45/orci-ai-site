@@ -17,9 +17,9 @@ const RSS_SOURCES = [
   },
 ];
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Created on first use, so a build without OPENAI_API_KEY (e.g. a preview deploy) doesn't fail.
+let client: OpenAI | null = null;
+const getOpenAI = () => (client ??= new OpenAI({ apiKey: process.env.OPENAI_API_KEY }));
 
 interface NewsSource {
   title: string;
@@ -72,7 +72,7 @@ async function generateDailySummary(headlines: NewsSource[]): Promise<string> {
     .map((h, i) => `${i + 1}. [${h.source}] ${h.title}`)
     .join('\n');
 
-  const response = await openai.chat.completions.create({
+  const response = await getOpenAI().chat.completions.create({
     model: 'gpt-4o-mini',
     messages: [
       {
